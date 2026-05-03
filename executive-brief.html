@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Executive Brief</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .date {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .header .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            margin-right: 6px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Top KPI strip */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .kpi-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--kpi-color, var(--accent));
+        }
+        .kpi-card .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .kpi-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.1;
+        }
+        .kpi-card .sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .kpi-card .trend {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .trend-up { color: var(--green); }
+        .trend-down { color: var(--red); }
+        .trend-flat { color: var(--yellow); }
+
+        /* Sections */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 768px) {
+            .section-grid { grid-template-columns: 1fr; }
+        }
+        .section {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .section h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .icon { font-size: 18px; }
+
+        /* Revenue Pace gauge */
+        .gauge-container {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto 12px;
+        }
+        .gauge-bg {
+            width: 100%;
+            height: 14px;
+            background: #1e1e2e;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gauge-fill {
+            height: 100%;
+            border-radius: 7px;
+            transition: width 1s ease;
+        }
+        .gauge-marker {
+            position: absolute;
+            top: -4px;
+            width: 2px;
+            height: 22px;
+            background: white;
+            opacity: 0.5;
+        }
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* CSR Table */
+        .csr-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .csr-table th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .csr-table td {
+            padding: 8px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .csr-table .name { font-weight: 600; }
+        .csr-bar {
+            display: inline-block;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--accent);
+            min-width: 4px;
+        }
+
+        /* Alert banner */
+        .alerts {
+            margin-bottom: 16px;
+        }
+        .alert {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .alert-warn {
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            color: var(--yellow);
+        }
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: var(--red);
+        }
+        .alert-good {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: var(--green);
+        }
+        .alert .icon { font-size: 18px; }
+
+        /* Ops mini table */
+        .ops-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .ops-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .ops-item .ops-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .ops-item .ops-value {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Fleet status */
+        .fleet-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .fleet-row:last-child { border-bottom: none; }
+
+        /* Back to hub */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 1; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 16px 0;
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* Full width section */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Quick action links */
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .quick-link {
+            padding: 6px 12px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .quick-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        /* Cancel reasons mini chart */
+        .cancel-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .cancel-bar-label {
+            font-size: 12px;
+            width: 90px;
+            text-align: right;
+            color: var(--text-muted);
+        }
+        .cancel-bar-track {
+            flex: 1;
+            height: 8px;
+            background: #1e1e2e;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .cancel-bar-fill {
+            height: 100%;
+            background: var(--red);
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+        .cancel-bar-count {
+            font-size: 12px;
+            font-weight: 600;
+            width: 30px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Back to Hub</a>
+
+    <div class="header">
+        <h1>🎯 Executive Brief</h1>
+        <div class="date">
+            <span class="pulse"></span>
+            <span id="briefDate">Loading...</span>
+        </div>
+    </div>
+
+    <div id="alerts" class="alerts"></div>
+
+    <div id="kpiStrip" class="kpi-strip">
+        <div class="loading">Loading data...</div>
+    </div>
+
+    <div class="section-grid">
+        <!-- Revenue Pace -->
+        <div class="section">
+            <h2><span class="icon">📈</span> Revenue Pace → $5M Target</h2>
+            <div id="revenuePace">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Operations Snapshot -->
+        <div class="section">
+            <h2><span class="icon">⚙️</span> Operations</h2>
+            <div id="opsSnapshot">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- CSR Performance -->
+        <div class="section">
+            <h2><span class="icon">🏆</span> CSR Performance (YTD)</h2>
+            <div id="csrPerf">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Cancel Pulse -->
+        <div class="section">
+            <h2><span class="icon">🚨</span> Cancel Pulse</h2>
+            <div id="cancelPulse">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Fleet Status -->
+        <div class="section">
+            <h2><span class="icon">🚛</span> Fleet</h2>
+            <div id="fleetStatus">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Marketing -->
+        <div class="section">
+            <h2><span class="icon">📣</span> Marketing</h2>
+            <div id="marketingStatus">
+                <div class="loading">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="section full-width">
+            <h2><span class="icon">🔗</span> Deep Dive</h2>
+            <div class="quick-links">
+                <a href="revenue-pace.html" class="quick-link">💰 Revenue Pace</a>
+                <a href="sales-kpi-dashboard.html" class="quick-link">📊 Sales KPIs</a>
+                <a href="owners-dashboard.html" class="quick-link">👑 Owners View</a>
+                <a href="financial-dashboard.html" class="quick-link">💵 Financial</a>
+                <a href="operations-dashboard.html" class="quick-link">⚙️ Operations</a>
+                <a href="tech-dashboard.html" class="quick-link">🔧 Technicians</a>
+                <a href="fleet-dashboard.html" class="quick-link">🚛 Fleet</a>
+                <a href="cancel-analysis.html" class="quick-link">❌ Cancel Analysis</a>
+                <a href="retention-intelligence.html" class="quick-link">🧲 Retention Intel</a>
+                <a href="marketing-dashboard.html" class="quick-link">📣 Marketing</a>
+                <a href="chemical-dashboard.html" class="quick-link">🧪 Chemicals</a>
+                <a href="sm-kpi-dashboard.html" class="quick-link">📋 SM KPIs</a>
+                <a href="pipeline-monitor.html" class="quick-link">🔄 Pipeline</a>
+                <a href="data-quality.html" class="quick-link">✅ Data Quality</a>
+                <a href="system-status.html" class="quick-link">🖥️ System Status</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Auto-refreshes every 5 minutes · Data from nightly sync · <span id="lastUpdate">—</span>
+    </div>
+
+    <script>
+        const DATA_SOURCES = {
+            owners: 'owners-data.json',
+            salesKpi: 'sales-kpi-data.json',
+            sales: 'sales-data.json',
+            tech: 'tech-data.json',
+            retention: 'retention-data.json',
+            pipeline: 'pipeline-status.json',
+            marketing: 'marketing-data.json'
+        };
+
+        let allData = {};
+
+        async function fetchAll() {
+            const entries = Object.entries(DATA_SOURCES);
+            const results = await Promise.allSettled(
+                entries.map(([key, url]) =>
+                    fetch(url + '?t=' + Date.now())
+                        .then(r => r.ok ? r.json() : null)
+                        .catch(() => null)
+                )
+            );
+            results.forEach((r, i) => {
+                allData[entries[i][0]] = r.status === 'fulfilled' ? r.value : null;
+            });
+            render();
+        }
+
+        function fmt(n) {
+            if (n == null) return '—';
+            if (n >= 1000000) return '$' + (n / 1000000).toFixed(2) + 'M';
+            if (n >= 1000) return '$' + Math.round(n).toLocaleString();
+            return n.toLocaleString();
+        }
+
+        function fmtPct(n) {
+            if (n == null) return '—';
+            return n.toFixed(1) + '%';
+        }
+
+        function render() {
+            const o = allData.owners || {};
+            const sk = allData.salesKpi || {};
+            const s = allData.sales || {};
+            const t = allData.tech || {};
+            const ret = allData.retention || {};
+            const mkt = allData.marketing || {};
+            const pipe = allData.pipeline || {};
+
+            const rev = o.revenue || {};
+            const ops = o.operations || {};
+            const fleet = o.fleet || {};
+            const ads = o.google_ads || {};
+            const sales = o.sales || {};
+            const pace = sk.revenue_pace || {};
+            const summary = sk.summary || {};
+
+            // Date
+            const genDate = o.generated_date || sk.updated_at || 'Unknown';
+            document.getElementById('briefDate').textContent =
+                new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) +
+                ' · Data as of ' + (o.generated_date || 'last sync');
+            document.getElementById('lastUpdate').textContent = 'Updated ' + (o.generated_date || genDate);
+
+            // Alerts
+            renderAlerts(pace, sales, ops, fleet);
+
+            // KPI Strip
+            renderKPIs(rev, sales, ops, pace, sk);
+
+            // Revenue Pace
+            renderRevenuePace(pace, rev);
+
+            // Ops
+            renderOps(ops);
+
+            // CSR
+            renderCSR(sk.csrs || s.csrs || []);
+
+            // Cancel
+            renderCancelPulse(sales, s);
+
+            // Fleet
+            renderFleet(fleet);
+
+            // Marketing
+            renderMarketing(ads, mkt);
+        }
+
+        function renderAlerts(pace, sales, ops, fleet) {
+            const el = document.getElementById('alerts');
+            let html = '';
+
+            // Revenue pace alert
+            if (pace.pct_of_target != null) {
+                if (pace.pct_of_target < 40) {
+                    html += `<div class="alert alert-danger"><span class="icon">🔴</span> Revenue pace at ${pace.pct_of_target.toFixed(1)}% of $5M target — significantly behind</div>`;
+                } else if (pace.pct_of_target < 80) {
+                    html += `<div class="alert alert-warn"><span class="icon">🟡</span> Revenue pace at ${pace.pct_of_target.toFixed(1)}% of $5M target — needs acceleration</div>`;
+                }
+            }
+
+            // Cancel ratio alert
+            if (sales.total_sales > 0 && sales.total_cancels > 0) {
+                const ratio = sales.total_cancels / sales.total_sales;
+                if (ratio > 3) {
+                    html += `<div class="alert alert-danger"><span class="icon">🔴</span> Cancel-to-sale ratio: ${ratio.toFixed(1)}x — cancels outpacing new sales significantly</div>`;
+                } else if (ratio > 2) {
+                    html += `<div class="alert alert-warn"><span class="icon">🟡</span> Cancel-to-sale ratio: ${ratio.toFixed(1)}x — retention needs attention</div>`;
+                }
+            }
+
+            // Fleet alert
+            if (fleet.vehicles_with_codes > 4) {
+                html += `<div class="alert alert-warn"><span class="icon">🟡</span> ${fleet.vehicles_with_codes} fleet vehicles with active trouble codes</div>`;
+            }
+
+            // Good news
+            if (ops.first_time_success >= 99) {
+                html += `<div class="alert alert-good"><span class="icon">✅</span> First-time success rate: ${ops.first_time_success}% — excellent quality</div>`;
+            }
+
+            el.innerHTML = html;
+        }
+
+        function renderKPIs(rev, sales, ops, pace, sk) {
+            const el = document.getElementById('kpiStrip');
+            const projected = pace.projected_annual || 0;
+            const projColor = pace.on_pace ? 'var(--green)' : projected > 3000000 ? 'var(--yellow)' : 'var(--red)';
+
+            el.innerHTML = `
+                <div class="kpi-card" style="--kpi-color: var(--green)">
+                    <div class="label">YTD Revenue</div>
+                    <div class="value">${fmt(rev.ytd_invoiced)}</div>
+                    <div class="sub">${fmt(rev.mtd)} MTD · ${rev.mtd_jobs || '—'} jobs</div>
+                </div>
+                <div class="kpi-card" style="--kpi-color: ${projColor}">
+                    <div class="label">Projected Annual</div>
+                    <div class="value">${fmt(projected)}</div>
+                    <div class="trend ${pace.on_pace ? 'trend-up' : 'trend-down'}">${pace.pct_of_target ? pace.pct_of_target.toFixed(0) + '% of $5M' : '—'}</div>
+                </div>
+                <div class="kpi-card" style="--kpi-color: var(--accent)">
+                    <div class="label">Active Customers</div>
+                    <div class="value">${(sk.active_customers || '—').toLocaleString()}</div>
+                    <div class="sub">Goal: ${(sk.customer_goal || 4000).toLocaleString()}</div>
+                </div>
+                <div class="kpi-card" style="--kpi-color: ${(sales.total_sales || 0) > (sales.total_cancels || 0) ? 'var(--green)' : 'var(--red)'}">
+                    <div class="label">Net Sales YTD</div>
+                    <div class="value">${sales.total_sales || 0} / ${sales.total_cancels || 0}</div>
+                    <div class="trend ${(sales.net || 0) >= 0 ? 'trend-up' : 'trend-down'}">Net: ${sales.net || 0}</div>
+                </div>
+                <div class="kpi-card" style="--kpi-color: var(--accent)">
+                    <div class="label">Jobs Completed</div>
+                    <div class="value">${(ops.total_jobs || 0).toLocaleString()}</div>
+                    <div class="sub">${ops.jobs_per_tech_day || '—'} per tech/day</div>
+                </div>
+                <div class="kpi-card" style="--kpi-color: var(--green)">
+                    <div class="label">Rev/Tech/Day</div>
+                    <div class="value">${fmt(ops.revenue_per_tech_day)}</div>
+                    <div class="sub">${ops.active_techs || '—'} active techs</div>
+                </div>
+            `;
+        }
+
+        function renderRevenuePace(pace, rev) {
+            const el = document.getElementById('revenuePace');
+            const pct = pace.pct_of_target || 0;
+            const dayPct = ((pace.days_elapsed || 79) / (pace.days_total || 365) * 100);
+            const fillColor = pct >= 90 ? 'var(--green)' : pct >= 60 ? 'var(--yellow)' : 'var(--red)';
+
+            el.innerHTML = `
+                <div style="text-align: center; margin-bottom: 16px;">
+                    <div style="font-size: 36px; font-weight: 800; color: ${fillColor};">${fmtPct(pct)}</div>
+                    <div style="font-size: 13px; color: var(--text-muted);">of $5M target pace</div>
+                </div>
+                <div class="gauge-container">
+                    <div class="gauge-bg">
+                        <div class="gauge-fill" style="width: ${Math.min(pct, 100)}%; background: ${fillColor};"></div>
+                        <div class="gauge-marker" style="left: ${dayPct}%;" title="Time elapsed: ${dayPct.toFixed(0)}%"></div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>$0</span>
+                        <span>Projected: ${fmt(pace.projected_annual)}</span>
+                        <span>$5M</span>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 16px; text-align: center;">
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Day ${pace.days_elapsed || '?'}</div>
+                        <div style="font-size: 18px; font-weight: 700;">${fmt(rev.ytd_invoiced)}</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Avg/Day</div>
+                        <div style="font-size: 18px; font-weight: 700;">${fmt(Math.round((rev.ytd_invoiced || 0) / (pace.days_elapsed || 1)))}</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Need/Day</div>
+                        <div style="font-size: 18px; font-weight: 700;">${fmt(Math.round(5000000 / (pace.days_total || 365)))}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderOps(ops) {
+            const el = document.getElementById('opsSnapshot');
+            el.innerHTML = `
+                <div class="ops-grid">
+                    <div class="ops-item">
+                        <span class="ops-label">Total Jobs</span>
+                        <span class="ops-value">${(ops.total_jobs || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Jobs/Tech/Day</span>
+                        <span class="ops-value">${ops.jobs_per_tech_day || '—'}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">First-Time Success</span>
+                        <span class="ops-value" style="color: ${(ops.first_time_success || 0) >= 98 ? 'var(--green)' : 'var(--yellow)'};">${ops.first_time_success || '—'}%</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Callback Rate</span>
+                        <span class="ops-value" style="color: ${(ops.callback_rate || 0) <= 1 ? 'var(--green)' : 'var(--red)'};">${ops.callback_rate || '—'}%</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Active Techs</span>
+                        <span class="ops-value">${ops.active_techs || '—'}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Resprays</span>
+                        <span class="ops-value" style="color: ${(ops.resprays || 0) <= 10 ? 'var(--green)' : 'var(--yellow)'};">${ops.resprays || '—'}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCSR(csrs) {
+            const el = document.getElementById('csrPerf');
+            if (!csrs || csrs.length === 0) {
+                el.innerHTML = '<div style="color: var(--text-muted); font-size: 13px;">No CSR data available</div>';
+                return;
+            }
+            const maxSales = Math.max(...csrs.map(c => c.sales || 0));
+            let rows = '';
+            for (const csr of csrs) {
+                const convRate = csr.sales && csr.cancels ? ((csr.sales / (csr.sales + csr.cancels)) * 100).toFixed(0) : '—';
+                const barW = maxSales > 0 ? ((csr.sales || 0) / maxSales * 100) : 0;
+                rows += `
+                    <tr>
+                        <td class="name">${csr.name}</td>
+                        <td>${csr.sales || 0}</td>
+                        <td>${csr.cancels || 0}</td>
+                        <td style="color: ${parseInt(convRate) > 40 ? 'var(--green)' : parseInt(convRate) > 30 ? 'var(--yellow)' : 'var(--red)'}">${convRate}%</td>
+                        <td><span class="csr-bar" style="width: ${barW}%"></span></td>
+                    </tr>
+                `;
+            }
+            el.innerHTML = `
+                <table class="csr-table">
+                    <thead>
+                        <tr><th>CSR</th><th>Sales</th><th>Cancels</th><th>Win%</th><th></th></tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            `;
+        }
+
+        function renderCancelPulse(sales, salesDetail) {
+            const el = document.getElementById('cancelPulse');
+            const reasons = sales.cancel_reasons || {};
+            const sorted = Object.entries(reasons).sort((a, b) => b[1] - a[1]);
+            const maxCount = sorted.length > 0 ? sorted[0][1] : 1;
+
+            let barsHtml = '';
+            for (const [reason, count] of sorted.slice(0, 6)) {
+                const pct = (count / maxCount * 100).toFixed(0);
+                barsHtml += `
+                    <div class="cancel-bar-row">
+                        <span class="cancel-bar-label">${reason}</span>
+                        <div class="cancel-bar-track">
+                            <div class="cancel-bar-fill" style="width: ${pct}%"></div>
+                        </div>
+                        <span class="cancel-bar-count">${count}</span>
+                    </div>
+                `;
+            }
+
+            const paused = sales.paused || 0;
+            const total = sales.total_cancels || 0;
+            const pausedPct = total > 0 ? ((paused / total) * 100).toFixed(0) : 0;
+
+            el.innerHTML = `
+                <div style="display: flex; justify-content: space-around; margin-bottom: 14px; text-align: center;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--red);">${total}</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Total Cancels</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--yellow);">${paused}</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Paused (${pausedPct}%)</div>
+                    </div>
+                </div>
+                ${barsHtml}
+            `;
+        }
+
+        function renderFleet(fleet) {
+            const el = document.getElementById('fleetStatus');
+            const safetyColor = (fleet.avg_safety_score || 0) >= 90 ? 'var(--green)' : (fleet.avg_safety_score || 0) >= 80 ? 'var(--yellow)' : 'var(--red)';
+
+            el.innerHTML = `
+                <div class="ops-grid">
+                    <div class="ops-item">
+                        <span class="ops-label">Vehicles</span>
+                        <span class="ops-value">${fleet.total_vehicles || '—'}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Safety Score</span>
+                        <span class="ops-value" style="color: ${safetyColor};">${fleet.avg_safety_score || '—'}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Miles (7d)</span>
+                        <span class="ops-value">${(fleet.total_miles_7d || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Trouble Codes</span>
+                        <span class="ops-value" style="color: ${(fleet.vehicles_with_codes || 0) > 3 ? 'var(--yellow)' : 'var(--green)'};">${fleet.vehicles_with_codes || 0} trucks</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMarketing(ads, mkt) {
+            const el = document.getElementById('marketingStatus');
+            const campaigns = ads.campaigns || [];
+            let campHtml = '';
+            for (const c of campaigns.slice(0, 3)) {
+                campHtml += `
+                    <div class="fleet-row">
+                        <span style="font-size: 12px;">${c.name?.substring(0, 35) || '—'}</span>
+                        <span style="font-weight: 600;">${c.conversions || 0} leads · $${(c.cpa || 0).toFixed(0)} CPA</span>
+                    </div>
+                `;
+            }
+
+            el.innerHTML = `
+                <div class="ops-grid" style="margin-bottom: 12px;">
+                    <div class="ops-item">
+                        <span class="ops-label">Total Spend</span>
+                        <span class="ops-value">${fmt(ads.total_spend)}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Cost/Lead</span>
+                        <span class="ops-value">$${(ads.cost_per_lead || 0).toFixed(2)}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Clicks</span>
+                        <span class="ops-value">${(ads.total_clicks || 0).toLocaleString()}</span>
+                    </div>
+                    <div class="ops-item">
+                        <span class="ops-label">Conversions</span>
+                        <span class="ops-value">${ads.total_conversions || '—'}</span>
+                    </div>
+                </div>
+                ${campHtml}
+            `;
+        }
+
+        // Initial load
+        fetchAll();
+
+        // Auto-refresh every 5 minutes
+        setInterval(fetchAll, 5 * 60 * 1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="120">
+    <title>MoJo Sales Leaderboard</title>
+    <style>
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes firePulse { 0%, 100% { text-shadow: 0 0 8px rgba(255,107,53,0.6); } 50% { text-shadow: 0 0 20px rgba(255,107,53,0.9); } }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255,107,53,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(56,189,248,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 32px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .date-badge {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* Top bar: summary metrics */
+        .summary-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .summary-card {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 16px 20px;
+            text-align: center;
+            animation: slideIn 0.5s ease;
+        }
+        .summary-card .sc-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        .summary-card .sc-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .green { color: #22c55e; }
+        .red { color: #ef4444; }
+        .amber { color: #f59e0b; }
+        .blue { color: #38bdf8; }
+        .gold { color: #fbbf24; }
+
+        /* Leaderboard */
+        .leaderboard {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #475569;
+            margin-top: 8px;
+        }
+
+        .csr-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 16px 24px;
+            animation: slideIn 0.5s ease;
+            transition: transform 0.3s;
+        }
+        .csr-row:hover { transform: translateX(4px); }
+        .csr-row.rank-1 {
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,53,0.05));
+            border-color: rgba(255,215,0,0.2);
+        }
+        .csr-row.rank-2 {
+            background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(148,163,184,0.04));
+            border-color: rgba(192,192,192,0.15);
+        }
+        .csr-row.rank-3 {
+            background: linear-gradient(135deg, rgba(205,127,50,0.08), rgba(148,163,184,0.04));
+            border-color: rgba(205,127,50,0.12);
+        }
+
+        .rank-badge {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .rank-1 .rank-badge { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; animation: pulse 2s infinite; }
+        .rank-2 .rank-badge { background: linear-gradient(135deg, #c0c0c0, #94a3b8); color: #1e293b; }
+        .rank-3 .rank-badge { background: linear-gradient(135deg, #cd7f32, #8b5e3c); color: #fff; }
+
+        .csr-info { flex: 1; }
+        .csr-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .csr-streak {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .csr-stats {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .stat-block {
+            text-align: center;
+        }
+        .stat-block .st-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .stat-block .st-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        .sales-bar-bg {
+            width: 200px;
+            height: 14px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .sales-bar-fill {
+            height: 100%;
+            border-radius: 7px;
+            background: linear-gradient(90deg, #22c55e, #34d399);
+            transition: width 0.8s ease;
+        }
+
+        /* Upsell section */
+        .upsell-section {
+            margin-top: auto;
+            padding-top: 16px;
+        }
+        .upsell-grid {
+            display: flex;
+            gap: 12px;
+        }
+        .upsell-card {
+            flex: 1;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            text-align: center;
+        }
+        .upsell-card .u-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .upsell-card .u-count {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #a78bfa;
+        }
+        .upsell-card .u-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        /* Recent activity ticker */
+        .ticker {
+            display: flex;
+            gap: 16px;
+            overflow: hidden;
+            padding: 12px 0;
+            margin-top: 8px;
+        }
+        .ticker-item {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ticker-item.sale { border-left: 3px solid #22c55e; }
+        .ticker-item.cancel { border-left: 3px solid #ef4444; }
+
+        .footer {
+            text-align: center;
+            padding: 8px;
+            color: #334155;
+            font-size: 0.65rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .header h1 { font-size: 1.4rem; }
+            .summary-bar { flex-wrap: wrap; }
+            .summary-card .sc-value { font-size: 1.4rem; }
+            .csr-name { font-size: 1.2rem; }
+            .csr-stats { gap: 12px; }
+            .stat-block .st-value { font-size: 1.2rem; }
+            .sales-bar-bg { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link" style="position:fixed;top:16px;left:16px;z-index:100;color:#71717a;text-decoration:none;font-size:14px;display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.05);">← Hub</a>
+    <div class="bg-glow"></div>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Sales Leaderboard</h1>
+            <div class="date-badge" id="dateBadge">Loading...</div>
+        </div>
+
+        <div class="summary-bar" id="summaryBar"></div>
+
+        <div class="leaderboard" id="leaderboard">
+            <div class="section-title">CSR Rankings — YTD 2026</div>
+        </div>
+
+        <div class="upsell-section">
+            <div class="section-title">🔧 Tech Upsells</div>
+            <div class="upsell-grid" id="upsellGrid"></div>
+        </div>
+
+        <div class="ticker" id="ticker"></div>
+
+        <div class="footer">Auto-refreshes every 2 minutes &nbsp;|&nbsp; MoJo Sales Leaderboard</div>
+    </div>
+
+    <script>
+        function fmtMoney(v) {
+            if (!v || isNaN(v)) return '$0';
+            if (v >= 1000000) return '$' + (v / 1000000).toFixed(2) + 'M';
+            if (v >= 1000) return '$' + (v / 1000).toFixed(0) + 'K';
+            return '$' + v.toFixed(0);
+        }
+
+        async function load() {
+            try {
+                const [salesRes, kpiRes] = await Promise.all([
+                    fetch('sales-data.json?t=' + Date.now()),
+                    fetch('sales-kpi-data.json?t=' + Date.now())
+                ]);
+                const sales = await salesRes.json();
+                const kpi = await kpiRes.json();
+
+                const csrs = sales.csrs || kpi.csrs || [];
+                const summary = sales.summary || kpi.summary || {};
+                const recent = sales.recent_activity || [];
+                const upsells = sales.tech_upsells || [];
+                const pace = kpi.revenue_pace || {};
+
+                // Date badge
+                document.getElementById('dateBadge').textContent =
+                    sales.period || kpi.period || new Date().toLocaleDateString();
+
+                // Summary bar
+                const summaryBar = document.getElementById('summaryBar');
+                summaryBar.innerHTML = [
+                    { value: summary.total_sales || 0, label: 'Total Sales', color: 'green' },
+                    { value: summary.total_cancels || 0, label: 'Cancels', color: 'red' },
+                    { value: (summary.total_sales || 0) - (summary.total_cancels || 0), label: 'Net', color: ((summary.total_sales || 0) - (summary.total_cancels || 0)) >= 0 ? 'green' : 'red' },
+                    { value: fmtMoney(pace.ytd_revenue || summary.total_revenue || 0), label: 'YTD Revenue', color: 'blue', raw: true },
+                    { value: (sales.total_upsells || 0), label: 'Tech Upsells', color: 'gold' }
+                ].map(m => `
+                    <div class="summary-card">
+                        <div class="sc-value ${m.color}">${m.raw ? m.value : m.value}</div>
+                        <div class="sc-label">${m.label}</div>
+                    </div>
+                `).join('');
+
+                // Leaderboard
+                const board = document.getElementById('leaderboard');
+                board.innerHTML = '<div class="section-title">CSR Rankings — YTD 2026</div>';
+
+                // Sort by sales desc (primary), net desc (secondary)
+                const ranked = [...csrs].sort((a, b) => {
+                    if (b.sales !== a.sales) return b.sales - a.sales;
+                    return (b.sales - b.cancels) - (a.sales - a.cancels);
+                });
+
+                const maxSales = Math.max(...ranked.map(c => c.sales), 1);
+
+                ranked.forEach((csr, i) => {
+                    const rank = i + 1;
+                    const net = csr.sales - csr.cancels;
+                    const convRate = csr.sales + csr.cancels > 0
+                        ? Math.round(csr.sales / (csr.sales + csr.cancels) * 100) : 0;
+                    const barPct = (csr.sales / maxSales * 100);
+
+                    const medals = ['🥇', '🥈', '🥉'];
+                    const medal = medals[rank - 1] || rank;
+
+                    const row = document.createElement('div');
+                    row.className = 'csr-row rank-' + rank;
+                    row.style.animationDelay = (i * 0.1) + 's';
+                    row.innerHTML = `
+                        <div class="rank-badge">${medal}</div>
+                        <div class="csr-info">
+                            <div class="csr-name">${csr.name}</div>
+                            <div class="csr-streak">${convRate}% conversion rate</div>
+                        </div>
+                        <div class="csr-stats">
+                            <div class="stat-block">
+                                <div class="st-value green">${csr.sales}</div>
+                                <div class="st-label">Sales</div>
+                            </div>
+                            <div class="stat-block">
+                                <div class="st-value red">${csr.cancels}</div>
+                                <div class="st-label">Cancels</div>
+                            </div>
+                            <div class="stat-block">
+                                <div class="st-value ${net >= 0 ? 'green' : 'red'}">${net >= 0 ? '+' : ''}${net}</div>
+                                <div class="st-label">Net</div>
+                            </div>
+                            <div>
+                                <div class="sales-bar-bg">
+                                    <div class="sales-bar-fill" style="width: ${barPct}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    board.appendChild(row);
+                });
+
+                // Upsells
+                const upsellGrid = document.getElementById('upsellGrid');
+                if (upsells.length > 0) {
+                    upsellGrid.innerHTML = upsells.slice(0, 6).map(u => `
+                        <div class="upsell-card">
+                            <div class="u-name">${u.name}</div>
+                            <div class="u-count">${u.count}</div>
+                            <div class="u-label">Upsells</div>
+                        </div>
+                    `).join('');
+                } else {
+                    upsellGrid.innerHTML = '<div style="color: #475569; font-size: 0.85rem;">No upsells recorded yet</div>';
+                }
+
+                // Recent activity ticker
+                const ticker = document.getElementById('ticker');
+                ticker.innerHTML = recent.slice(0, 8).map(r => `
+                    <div class="ticker-item ${r.type.toLowerCase()}">
+                        <span>${r.type === 'Sale' ? '✅' : '❌'}</span>
+                        <span>${r.dateFmt} — ${r.csr}: ${r.category} (${r.customer})</span>
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                console.error('Load error:', err);
+            }
+        }
+
+        load();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

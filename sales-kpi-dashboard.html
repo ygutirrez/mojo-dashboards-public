@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Sales & Retention Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { font-size: 2.2rem; color: #00ff88; }
+        .updated { color: #888; font-size: 0.9rem; margin-top: 5px; }
+        .period { display: inline-block; background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; color: #ccc; margin-top: 8px; }
+        .insight-box { background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 12px; padding: 15px 20px; margin-bottom: 20px; }
+        .insight-box h4 { color: #00ff88; margin-bottom: 8px; }
+        .insight-box p { color: #ccc; line-height: 1.5; font-size: 0.9rem; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .metric-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 18px; text-align: center; }
+        .metric-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 5px; }
+        .metric-card .value { font-size: 2rem; font-weight: 700; }
+        .metric-card .subtext { font-size: 0.75rem; color: #666; margin-top: 3px; }
+        .metric-card.positive .value { color: #00ff88; }
+        .metric-card.negative .value { color: #ff6b6b; }
+        .metric-card.warning .value { color: #ffd700; }
+        .metric-card.neutral .value { color: #00d9ff; }
+        .leaderboard { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .leaderboard h3 { color: #ffd700; margin-bottom: 15px; }
+        .leaderboard-podium { display: flex; justify-content: center; align-items: flex-end; gap: 20px; }
+        .podium-spot { text-align: center; padding: 15px; border-radius: 12px; min-width: 100px; }
+        .podium-spot.first { background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); }
+        .podium-spot.second { background: rgba(192, 192, 192, 0.1); border: 1px solid rgba(192, 192, 192, 0.3); }
+        .podium-spot.third { background: rgba(205, 127, 50, 0.1); border: 1px solid rgba(205, 127, 50, 0.3); }
+        .podium-spot .rank { font-size: 2rem; }
+        .podium-spot .name { font-weight: 600; margin: 5px 0; }
+        .podium-spot .sales-count { font-size: 2rem; font-weight: 700; color: #00ff88; }
+        .podium-spot .sales-label { font-size: 0.75rem; color: #888; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .chart-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; }
+        .chart-card h3 { color: #ccc; margin-bottom: 15px; font-size: 1rem; }
+        .table-section { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .table-section h3 { color: #ccc; margin-bottom: 15px; }
+        .csr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .csr-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 15px; }
+        .csr-card .name { font-weight: 600; margin-bottom: 8px; }
+        .csr-card .stats { display: flex; gap: 15px; font-size: 0.85rem; }
+        .csr-card .sales { color: #00ff88; }
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.5rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .metric-card { padding: 12px; }
+            .metric-card .value { font-size: 1.5rem; }
+            .metric-card .label { font-size: 0.68rem; }
+            .leaderboard-podium { flex-direction: column; align-items: center; gap: 12px; }
+            .podium-spot { min-width: 80%; }
+            .charts-grid { grid-template-columns: 1fr; gap: 14px; }
+            .chart-card { padding: 14px; }
+            .csr-grid { grid-template-columns: 1fr; }
+            .insight-box { padding: 12px 14px; }
+            .insight-box p { font-size: 0.85rem; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .header h1 { font-size: 1.2rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .metric-card .value { font-size: 1.3rem; }
+            .leaderboard { padding: 14px; }
+            .podium-spot .sales-count { font-size: 1.5rem; }
+        }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="header">
+        <h1>💰 Sales & Retention Dashboard</h1>
+        <div class="updated">Last updated: May 3, 2026 @ 2:32 pm</div>
+        <div class="period">📅 Jan 1 - May 3, 2026 (YTD)</div>
+    </div>
+
+    <div class="insight-box">
+        <h4>📊 Key Insight</h4>
+        <p><strong>145 unique accounts cancelled</strong> (477 events). Top reason: Moved (146). 125 cancel events are potentially recoverable (seasonal/financial/change of program) as mosquito season ramps up.</p>
+    </div>
+
+    <div class="leaderboard">
+        <h3>🏆 Sales Leaderboard (YTD)</h3>
+        <div class="leaderboard-podium">
+            <div class="podium-spot second">
+                <div class="rank">🥈</div>
+                <div class="name">Norma</div>
+                <div class="sales-count">91</div>
+                <div class="sales-label">sales | 68 cancels</div>
+            </div>
+            <div class="podium-spot first">
+                <div class="rank">🥇</div>
+                <div class="name">Lucy</div>
+                <div class="sales-count">104</div>
+                <div class="sales-label">sales | 35 cancels</div>
+            </div>
+            <div class="podium-spot third">
+                <div class="rank">🥉</div>
+                <div class="name">Bev</div>
+                <div class="sales-count">32</div>
+                <div class="sales-label">sales | 52 cancels</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="metrics-grid">
+        <div class="metric-card positive">
+            <div class="label">Total Sales</div>
+            <div class="value">249</div>
+            <div class="subtext">$243,563 value</div>
+        </div>
+        <div class="metric-card negative">
+            <div class="label">Cancel Events</div>
+            <div class="value">477</div>
+            <div class="subtext">YTD</div>
+        </div>
+        <div class="metric-card negative">
+            <div class="label">Accounts Cancelled</div>
+            <div class="value">145</div>
+            <div class="subtext">Unique customers lost</div>
+        </div>
+        <div class="metric-card positive">
+            <div class="label">Net Change</div>
+            <div class="value">+104</div>
+            <div class="subtext">Customer base growing</div>
+        </div>
+        <div class="metric-card neutral">
+            <div class="label">Total Revenue</div>
+            <div class="value">$839k</div>
+            <div class="subtext">8715 invoices YTD</div>
+        </div>
+        <div class="metric-card neutral">
+            <div class="label">Days Tracked</div>
+            <div class="value">123</div>
+            <div class="subtext">Jan 1 - May 3</div>
+        </div>
+    </div>
+
+    <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
+        <div class="metric-card warning">
+            <div class="label">Moved</div>
+            <div class="value">146</div>
+            <div class="subtext">31% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Financial Reasons</div>
+            <div class="value">57</div>
+            <div class="subtext">12% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Not Interested at this time</div>
+            <div class="value">55</div>
+            <div class="subtext">12% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Bad Debt</div>
+            <div class="value">53</div>
+            <div class="subtext">11% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Other - Review Note</div>
+            <div class="value">47</div>
+            <div class="subtext">10% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Unhappy w Service</div>
+            <div class="value">45</div>
+            <div class="subtext">9% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Went w Competition</div>
+            <div class="value">29</div>
+            <div class="subtext">6% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Customer only wanted one spray</div>
+            <div class="value">16</div>
+            <div class="subtext">3% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Unknown</div>
+            <div class="value">15</div>
+            <div class="subtext">3% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Change of Program</div>
+            <div class="value">13</div>
+            <div class="subtext">3% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">One Time to On Going Customer</div>
+            <div class="value">1</div>
+            <div class="subtext">0% of cancellations</div>
+        </div>
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-card">
+            <h3>📍 Lead Sources (YTD)</h3>
+            <canvas id="leadSourceChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>📊 Cancel Reasons Breakdown</h3>
+            <canvas id="cancelReasonsChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>🎯 Services Sold</h3>
+            <canvas id="servicesSoldChart"></canvas>
+        </div>
+    </div>
+
+    <div class="table-section">
+        <h3>👥 CSR Performance</h3>
+        <div class="csr-grid">
+            <div class="csr-card">
+                <div class="name">Lucy</div>
+                <div class="stats">
+                    <span class="sales">📈 104 sales</span>
+                    <span>❌ 35 cancels</span>
+                    <span>📊 Net: 69</span>
+                </div>
+            </div>
+
+            <div class="csr-card">
+                <div class="name">Norma</div>
+                <div class="stats">
+                    <span class="sales">📈 91 sales</span>
+                    <span>❌ 68 cancels</span>
+                    <span>📊 Net: 23</span>
+                </div>
+            </div>
+
+            <div class="csr-card">
+                <div class="name">Bev</div>
+                <div class="stats">
+                    <span class="sales">📈 32 sales</span>
+                    <span>❌ 52 cancels</span>
+                    <span>📊 Net: -20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Chart.defaults.color = '#888';
+        Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
+
+        new Chart(document.getElementById('leadSourceChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ["Online","MoJo Customer","Referral","Yard Sign","Online Search","Printed Material","Mosquito Joe Vehicle","Advertising","Mass Media","Direct Mail Postcard","Local Branding"],
+                datasets: [{
+                    data: [105,65,43,17,7,4,3,2,1,1,1],
+                    backgroundColor: ["#00ff88","#00d9ff","#ffd700","#ff9f43","#c792ea","#ff78c5","#82aaff","#ff6b6b"],
+                    borderWidth: 0
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#ccc' } } } }
+        });
+
+        new Chart(document.getElementById('cancelReasonsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ["Moved","Financial Reasons","Not Interested at this time","Bad Debt","Other - Review Note","Unhappy w Service","Went w Competition","Customer only wanted one spray","Unknown","Change of Program","One Time to On Going Customer"],
+                datasets: [{
+                    data: [146,57,55,53,47,45,29,16,15,13,1],
+                    backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
+                    borderWidth: 0
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#ccc' } } } }
+        });
+
+        new Chart(document.getElementById('servicesSoldChart'), {
+            type: 'bar',
+            data: {
+                labels: ["Signature Program","Re-Spray","Residential - One Time Services","Misting Systems","Home Pest Defense","Other Insects / Specialty Services","Misting System Service","Synthetic Barrier Spray"],
+                datasets: [{
+                    label: 'Sales',
+                    data: [88,26,21,17,14,9,9,7],
+                    backgroundColor: '#00ff88',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: { legend: { display: false }, title: { display: true, text: 'Services Sold YTD', color: '#888' } },
+                scales: {
+                    x: { beginAtZero: true, ticks: { stepSize: 1, color: '#888' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                    y: { ticks: { color: '#ccc' }, grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

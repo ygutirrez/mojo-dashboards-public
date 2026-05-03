@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo ServiceMinder KPIs v2</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #00d4ff;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+            --purple: #a78bfa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #00d4ff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
+
+        /* Tabs */
+        .tab-bar { display: flex; gap: 4px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab { padding: 8px 18px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--card); border: 1px solid var(--card-border); color: var(--text-muted); transition: all 0.2s; }
+        .tab:hover { border-color: var(--accent); color: var(--text); }
+        .tab.active { background: rgba(0,212,255,0.12); border-color: var(--accent); color: var(--accent); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* KPI Strip */
+        .kpi-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .kpi { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 14px; text-align: center; position: relative; overflow: hidden; }
+        .kpi::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--kpi-color, var(--accent)); }
+        .kpi .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+        .kpi .value { font-size: 1.6rem; font-weight: 700; }
+        .kpi .sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .kpi .change { font-size: 0.7rem; font-weight: 600; margin-top: 3px; }
+        .kpi .change.up { color: var(--green); }
+        .kpi .change.down { color: var(--red); }
+
+        /* Score Ring */
+        .score-ring { display: flex; align-items: center; gap: 20px; background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .score-ring .ring { width: 100px; height: 100px; position: relative; flex-shrink: 0; }
+        .score-ring .ring svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+        .score-ring .ring .bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; }
+        .score-ring .ring .progress { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+        .score-ring .ring .score-val { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.6rem; font-weight: 700; }
+        .score-ring .factors { flex: 1; }
+        .score-ring .factors .factor { font-size: 0.82rem; padding: 3px 0; color: var(--text-muted); }
+
+        /* Cards */
+        .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+        .card h3 { font-size: 1rem; margin-bottom: 12px; color: var(--accent); }
+
+        /* Chart containers */
+        .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .chart-box { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; }
+        .chart-box canvas { max-height: 300px; }
+
+        /* Monthly comparison */
+        .comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; margin-bottom: 16px; }
+        .comparison .month-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; }
+        .comparison .month-card h4 { font-size: 0.85rem; color: var(--accent); margin-bottom: 10px; }
+        .comparison .month-card .stat { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.82rem; }
+        .comparison .month-card .stat .val { font-weight: 600; }
+        .comparison .vs { font-size: 1.2rem; font-weight: 700; color: var(--text-muted); text-align: center; }
+
+        /* Table */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        th { background: rgba(0,212,255,0.08); padding: 10px 12px; text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); border-bottom: 1px solid var(--card-border); }
+        td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        tr:hover { background: rgba(255,255,255,0.02); }
+        .rank { display: inline-flex; width: 24px; height: 24px; border-radius: 50%; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; background: rgba(0,212,255,0.15); }
+        .rank.gold { background: rgba(255,215,0,0.2); color: #ffd93d; }
+        .rank.silver { background: rgba(192,192,192,0.2); color: #c0c0c0; }
+        .rank.bronze { background: rgba(205,127,50,0.2); color: #cd7f32; }
+        .bar-cell { display: flex; align-items: center; gap: 8px; }
+        .bar-cell .bar { height: 6px; border-radius: 3px; background: var(--accent); min-width: 2px; }
+
+        /* Sparkline */
+        .sparkline { display: inline-block; vertical-align: middle; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.4rem; }
+            .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+            .chart-row { grid-template-columns: 1fr; }
+            .comparison { grid-template-columns: 1fr; }
+            .comparison .vs { display: none; }
+            .score-ring { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 ServiceMinder KPIs</h1>
+        <div class="subtitle" id="updated">Loading...</div>
+    </div>
+
+    <div class="tab-bar">
+        <div class="tab active" data-tab="overview">Overview</div>
+        <div class="tab" data-tab="techs">Technicians</div>
+        <div class="tab" data-tab="production">Production</div>
+        <div class="tab" data-tab="sales">Sales & Cancels</div>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div class="tab-content active" id="tab-overview">
+        <div class="kpi-strip" id="kpi-strip"></div>
+        <div id="season-score"></div>
+        <div id="monthly-comparison"></div>
+        <div class="chart-row">
+            <div class="chart-box"><canvas id="weeklyChart"></canvas></div>
+            <div class="chart-box"><canvas id="programChart"></canvas></div>
+        </div>
+    </div>
+
+    <!-- TECHNICIANS TAB -->
+    <div class="tab-content" id="tab-techs">
+        <div id="tech-efficiency-strip" class="kpi-strip"></div>
+        <div class="card">
+            <h3>Technician Leaderboard</h3>
+            <div class="table-wrap" id="tech-table"></div>
+        </div>
+        <div class="chart-row">
+            <div class="chart-box"><canvas id="techRevChart"></canvas></div>
+            <div class="chart-box"><canvas id="techVisitsChart"></canvas></div>
+        </div>
+    </div>
+
+    <!-- PRODUCTION TAB -->
+    <div class="tab-content" id="tab-production">
+        <div class="kpi-strip" id="production-kpis"></div>
+        <div class="chart-row">
+            <div class="chart-box"><canvas id="dailyStopsChart"></canvas></div>
+            <div class="chart-box"><canvas id="dailyRevenueChart"></canvas></div>
+        </div>
+        <div class="card">
+            <h3>Monthly Breakdown</h3>
+            <div class="table-wrap" id="monthly-table"></div>
+        </div>
+    </div>
+
+    <!-- SALES TAB -->
+    <div class="tab-content" id="tab-sales">
+        <div class="kpi-strip" id="sales-kpis"></div>
+        <div class="chart-row">
+            <div class="chart-box"><canvas id="sourceChart"></canvas></div>
+            <div class="chart-box"><canvas id="cancelReasonChart"></canvas></div>
+        </div>
+        <div class="chart-row">
+            <div class="chart-box"><canvas id="salesProgramChart"></canvas></div>
+            <div class="chart-box"><canvas id="monthlyBarsChart"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+    const COLORS = ['#00d4ff','#00ff88','#ffd93d','#ff6b6b','#a78bfa','#f97316','#ec4899','#14b8a6','#6366f1','#84cc16'];
+
+    function $(sel) { return document.querySelector(sel); }
+    function fmt(n) { return n >= 1000 ? '$' + (n/1000).toFixed(n >= 100000 ? 0 : 1) + 'k' : '$' + Math.round(n); }
+    function fmtN(n) { return n >= 1000 ? (n/1000).toFixed(1) + 'k' : String(n); }
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    async function loadDashboard() {
+        try {
+            const res = await fetch('sm-kpi-data.json?t=' + Date.now());
+            const data = await res.json();
+            render(data);
+        } catch (e) {
+            console.error('Load failed:', e);
+            $('#updated').textContent = '❌ Failed to load data';
+        }
+    }
+
+    function render(data) {
+        const s = data.summary;
+        const gen = new Date(data.meta.generated);
+        $('#updated').innerHTML = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:6px;"></span>Updated ${gen.toLocaleString()} • v${data.meta.version || 1}`;
+
+        renderOverview(data);
+        renderTechs(data);
+        renderProduction(data);
+        renderSales(data);
+    }
+
+    function renderOverview(data) {
+        const s = data.summary.ytd;
+        const mc = data.monthlyComparison;
+
+        // KPI Strip
+        const kpis = [
+            { label: 'YTD Revenue', value: fmt(s.production), color: '#00d4ff', sub: `${s.stops} stops` },
+            { label: 'Avg/Stop', value: '$' + s.avgRevPerStop.toFixed(2), color: '#00ff88', sub: mc ? (mc.changes.revPerStop >= 0 ? '↑' : '↓') + ' $' + Math.abs(mc.changes.revPerStop).toFixed(2) + ' vs prev' : '' },
+            { label: 'Annual Pace', value: fmt(s.annualPace), color: s.annualPace >= 5000000 ? '#22c55e' : s.annualPace >= 4000000 ? '#eab308' : '#ef4444', sub: s.annualPace >= 5000000 ? '✅ On target' : '⚠️ Below $5M' },
+            { label: 'Net Customers', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444', sub: `${s.sales} sales / ${s.cancels} cancels` },
+            { label: 'Daily Pace', value: fmt(s.dailyProductionRate), color: '#a78bfa', sub: `Day ${s.daysElapsed} of 365` },
+            { label: 'Active Techs', value: s.techCount || data.summary.techCount, color: '#f97316', sub: data.summary.programCount + ' programs' },
+        ];
+
+        let html = '';
+        kpis.forEach(k => {
+            html += `<div class="kpi" style="--kpi-color:${k.color}">
+                <div class="label">${k.label}</div>
+                <div class="value" style="color:${k.color}">${k.value}</div>
+                <div class="sub">${k.sub}</div>
+            </div>`;
+        });
+        $('#kpi-strip').innerHTML = html;
+
+        // Season Score Ring
+        if (data.seasonScore) {
+            const ss = data.seasonScore;
+            const circumference = 2 * Math.PI * 42;
+            const offset = circumference - (ss.score / 100) * circumference;
+            const scoreColor = ss.score >= 70 ? '#22c55e' : ss.score >= 50 ? '#eab308' : '#ef4444';
+            let factorsHtml = ss.factors.map(f => `<div class="factor">${f}</div>`).join('');
+            $('#season-score').innerHTML = `
+                <div class="score-ring">
+                    <div class="ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="42"/>
+                            <circle class="progress" cx="50" cy="50" r="42"
+                                stroke="${scoreColor}"
+                                stroke-dasharray="${circumference}"
+                                stroke-dashoffset="${offset}"/>
+                        </svg>
+                        <div class="score-val" style="color:${scoreColor}">${ss.score}</div>
+                    </div>
+                    <div class="factors">
+                        <h3 style="font-size:0.95rem;margin-bottom:8px;color:var(--accent)">Season Readiness</h3>
+                        ${factorsHtml}
+                    </div>
+                </div>`;
+        }
+
+        // Monthly Comparison
+        if (mc) {
+            const c = mc.current, p = mc.previous;
+            const paceArrow = mc.changes.productionPace >= 0 ? '↑' : '↓';
+            const paceColor = mc.changes.productionPace >= 0 ? 'var(--green)' : 'var(--red)';
+            $('#monthly-comparison').innerHTML = `
+                <div class="comparison">
+                    <div class="month-card">
+                        <h4>${p.period}</h4>
+                        <div class="stat"><span>Production</span><span class="val">${fmt(p.production)}</span></div>
+                        <div class="stat"><span>Stops</span><span class="val">${fmtN(p.stops)}</span></div>
+                        <div class="stat"><span>Sales</span><span class="val">${p.sales}</span></div>
+                        <div class="stat"><span>Cancels</span><span class="val">${p.cancels}</span></div>
+                        <div class="stat"><span>Daily Pace</span><span class="val">${fmt(p.dailyPace)}</span></div>
+                    </div>
+                    <div class="vs">
+                        <div style="font-size:0.7rem;color:var(--text-muted)">Pace</div>
+                        <div style="color:${paceColor};font-size:1.4rem">${paceArrow} ${Math.abs(mc.changes.productionPace)}%</div>
+                    </div>
+                    <div class="month-card">
+                        <h4>${c.period} <span style="font-size:0.7rem;color:var(--text-muted)">(${c.daysElapsed} days)</span></h4>
+                        <div class="stat"><span>Production</span><span class="val">${fmt(c.production)}</span></div>
+                        <div class="stat"><span>Stops</span><span class="val">${fmtN(c.stops)}</span></div>
+                        <div class="stat"><span>Sales</span><span class="val">${c.sales}</span></div>
+                        <div class="stat"><span>Cancels</span><span class="val">${c.cancels}</span></div>
+                        <div class="stat"><span>Daily Pace</span><span class="val">${fmt(c.dailyPace)}</span></div>
+                    </div>
+                </div>`;
+        }
+
+        // Weekly Trend Chart
+        if (data.workOrders?.weeklyTrend?.length > 0) {
+            new Chart($('#weeklyChart'), {
+                type: 'line',
+                data: {
+                    labels: data.workOrders.weeklyTrend.map(w => w.week),
+                    datasets: [{
+                        label: 'Stops/Week', data: data.workOrders.weeklyTrend.map(w => w.stops),
+                        borderColor: '#00d4ff', backgroundColor: 'rgba(0,212,255,0.08)', fill: true, tension: 0.3
+                    }, {
+                        label: 'Revenue/Week', data: data.workOrders.weeklyTrend.map(w => w.revenue),
+                        borderColor: '#00ff88', backgroundColor: 'rgba(0,255,136,0.08)', fill: true, tension: 0.3, yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Weekly Production Trend', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa', font: { size: 11 } } } },
+                    scales: {
+                        x: { ticks: { color: '#666', maxRotation: 45, font: { size: 10 } } },
+                        y: { position: 'left', ticks: { color: '#00d4ff', font: { size: 10 } }, title: { display: true, text: 'Stops', color: '#00d4ff', font: { size: 11 } } },
+                        y1: { position: 'right', ticks: { color: '#00ff88', callback: v => fmt(v), font: { size: 10 } }, title: { display: true, text: 'Revenue', color: '#00ff88', font: { size: 11 } }, grid: { drawOnChartArea: false } }
+                    }
+                }
+            });
+        }
+
+        // Program Chart
+        const topProgs = (data.workOrders?.byProgram || []).slice(0, 8);
+        if (topProgs.length > 0) {
+            new Chart($('#programChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: topProgs.map(p => p.name.length > 25 ? p.name.substring(0,22)+'...' : p.name),
+                    datasets: [{ data: topProgs.map(p => p.count), backgroundColor: COLORS.slice(0, topProgs.length) }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: { display: true, text: 'Work Orders by Program', color: '#fff', font: { size: 14 } },
+                        legend: { position: 'right', labels: { color: '#aaa', font: { size: 10 }, padding: 8 } }
+                    }
+                }
+            });
+        }
+    }
+
+    function renderTechs(data) {
+        const techs = data.technicians || [];
+        const eff = data.techEfficiency || {};
+        const maxRev = Math.max(...techs.map(t => t.revenue));
+
+        // Efficiency KPIs
+        const effKpis = [
+            { label: 'Avg Visits/Tech', value: eff.avgVisitsPerTech || '-', color: '#00d4ff' },
+            { label: 'Avg Rev/Visit', value: eff.avgRevPerVisit ? '$' + eff.avgRevPerVisit.toFixed(2) : '-', color: '#00ff88' },
+            { label: 'Top Revenue', value: eff.topPerformer ? eff.topPerformer.name.split(' ')[0] : '-', color: '#ffd93d', sub: eff.topPerformer ? fmt(eff.topPerformer.revenue) : '' },
+            { label: 'Revenue Concentration', value: eff.revenueConcentration ? eff.revenueConcentration + '%' : '-', color: '#a78bfa', sub: 'Top tech share' },
+        ];
+        let effHtml = '';
+        effKpis.forEach(k => {
+            effHtml += `<div class="kpi" style="--kpi-color:${k.color}"><div class="label">${k.label}</div><div class="value" style="color:${k.color}">${k.value}</div>${k.sub ? `<div class="sub">${k.sub}</div>` : ''}</div>`;
+        });
+        $('#tech-efficiency-strip').innerHTML = effHtml;
+
+        // Tech table
+        let tableHtml = `<table><thead><tr><th>#</th><th>Technician</th><th>Visits</th><th>Revenue</th><th>$/Visit</th><th>Initials</th><th>Svc Calls</th><th></th></tr></thead><tbody>`;
+        techs.forEach((t, i) => {
+            const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+            const barW = Math.max(2, Math.round(t.revenue / maxRev * 100));
+            tableHtml += `<tr>
+                <td><span class="rank ${rankClass}">${i + 1}</span></td>
+                <td style="font-weight:600">${t.name}</td>
+                <td>${t.visits}</td>
+                <td>${fmt(t.revenue)}</td>
+                <td>$${t.avgRevPerVisit.toFixed(2)}</td>
+                <td>${t.initials}</td>
+                <td>${t.serviceCalls}</td>
+                <td><div class="bar-cell"><div class="bar" style="width:${barW}px;background:${COLORS[i % COLORS.length]}"></div></div></td>
+            </tr>`;
+        });
+        tableHtml += '</tbody></table>';
+        $('#tech-table').innerHTML = tableHtml;
+
+        // Tech Revenue Chart
+        const top8 = techs.slice(0, 8);
+        new Chart($('#techRevChart'), {
+            type: 'bar',
+            data: {
+                labels: top8.map(t => t.name.split(' ')[0]),
+                datasets: [
+                    { label: 'Revenue', data: top8.map(t => t.revenue), backgroundColor: COLORS.slice(0, 8).map(c => c + '88') },
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { title: { display: true, text: 'Revenue by Tech (Top 8)', color: '#fff', font: { size: 14 } }, legend: { display: false } },
+                scales: { y: { ticks: { color: '#888', callback: v => fmt(v) } }, x: { ticks: { color: '#ccc' } } }
+            }
+        });
+
+        // Tech Visits Chart
+        new Chart($('#techVisitsChart'), {
+            type: 'bar',
+            data: {
+                labels: top8.map(t => t.name.split(' ')[0]),
+                datasets: [
+                    { label: 'Visits', data: top8.map(t => t.visits), backgroundColor: '#00d4ff55' },
+                    { label: 'Initials', data: top8.map(t => t.initials), backgroundColor: '#00ff8855' },
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: { title: { display: true, text: 'Visits & Initials by Tech', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa' } } },
+                scales: { y: { ticks: { color: '#888' } }, x: { ticks: { color: '#ccc' } } }
+            }
+        });
+    }
+
+    function renderProduction(data) {
+        const s = data.summary.ytd;
+        const daily = data.dailyProduction || [];
+        const monthly = data.monthly || [];
+
+        // Production KPIs
+        const last7 = daily.slice(-7);
+        const prev7 = daily.slice(-14, -7);
+        const last7Avg = last7.length > 0 ? last7.reduce((s, d) => s + d.stops, 0) / last7.length : 0;
+        const prev7Avg = prev7.length > 0 ? prev7.reduce((s, d) => s + d.stops, 0) / prev7.length : 0;
+        const stopsTrend = prev7Avg > 0 ? Math.round((last7Avg - prev7Avg) / prev7Avg * 100) : 0;
+
+        const prodKpis = [
+            { label: 'YTD Stops', value: fmtN(s.stops), color: '#00d4ff', sub: `${Math.round(s.stops / Math.max(s.daysElapsed,1))}/day avg` },
+            { label: 'Avg Stops/Day (7d)', value: last7Avg.toFixed(1), color: '#00ff88', sub: stopsTrend !== 0 ? `${stopsTrend > 0 ? '↑' : '↓'} ${Math.abs(stopsTrend)}% vs prev week` : 'Same as prev week', change: stopsTrend },
+            { label: 'YTD Revenue', value: fmt(s.production), color: '#ffd93d' },
+            { label: 'Estimate Conv', value: s.estimateConversion + '%', color: '#a78bfa', sub: `${s.estimates} estimates` },
+        ];
+        let html = '';
+        prodKpis.forEach(k => {
+            const changeClass = k.change > 0 ? 'up' : k.change < 0 ? 'down' : '';
+            html += `<div class="kpi" style="--kpi-color:${k.color}"><div class="label">${k.label}</div><div class="value" style="color:${k.color}">${k.value}</div>${k.sub ? `<div class="sub">${k.sub}</div>` : ''}${k.change !== undefined ? `<div class="change ${changeClass}">${k.change > 0 ? '+' : ''}${k.change}%</div>` : ''}</div>`;
+        });
+        $('#production-kpis').innerHTML = html;
+
+        // Daily Stops Chart (last 30 days)
+        if (daily.length > 0) {
+            new Chart($('#dailyStopsChart'), {
+                type: 'bar',
+                data: {
+                    labels: daily.map(d => d.date.substring(5)),
+                    datasets: [{
+                        label: 'Stops', data: daily.map(d => d.stops),
+                        backgroundColor: daily.map(d => {
+                            const dayOfWeek = new Date(d.date + 'T12:00:00').getDay();
+                            return dayOfWeek === 0 || dayOfWeek === 6 ? '#ff6b6b44' : '#00d4ff44';
+                        }),
+                        borderColor: '#00d4ff', borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Daily Stops (Last 30 Days)', color: '#fff', font: { size: 14 } }, legend: { display: false } },
+                    scales: { y: { ticks: { color: '#888' } }, x: { ticks: { color: '#888', maxRotation: 45, font: { size: 9 } } } }
+                }
+            });
+
+            // Daily Revenue Chart
+            new Chart($('#dailyRevenueChart'), {
+                type: 'line',
+                data: {
+                    labels: daily.map(d => d.date.substring(5)),
+                    datasets: [{
+                        label: 'Revenue', data: daily.map(d => d.revenue),
+                        borderColor: '#00ff88', backgroundColor: 'rgba(0,255,136,0.08)', fill: true, tension: 0.3, pointRadius: 2
+                    }, {
+                        label: 'Avg Stops/Tech', data: daily.map(d => d.avgStopsPerTech),
+                        borderColor: '#ffd93d', backgroundColor: 'rgba(255,217,61,0.08)', fill: false, tension: 0.3, yAxisID: 'y1', pointRadius: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Daily Revenue & Efficiency', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa', font: { size: 11 } } } },
+                    scales: {
+                        x: { ticks: { color: '#888', maxRotation: 45, font: { size: 9 } } },
+                        y: { position: 'left', ticks: { color: '#00ff88', callback: v => fmt(v) } },
+                        y1: { position: 'right', ticks: { color: '#ffd93d' }, grid: { drawOnChartArea: false }, title: { display: true, text: 'Stops/Tech', color: '#ffd93d', font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        // Monthly breakdown table
+        let tableHtml = `<table><thead><tr><th>Month</th><th>Production</th><th>Stops</th><th>$/Stop</th><th>Sales</th><th>Cancels</th><th>Net</th><th>Estimates</th></tr></thead><tbody>`;
+        monthly.forEach(m => {
+            const net = m.salesAccounts - m.cancelsAccounts;
+            tableHtml += `<tr>
+                <td style="font-weight:600">${m.period}</td>
+                <td>${fmt(m.production)}</td>
+                <td>${fmtN(m.stops)}</td>
+                <td>$${m.revenuePerStop.toFixed(2)}</td>
+                <td style="color:var(--green)">${m.salesAccounts}</td>
+                <td style="color:var(--red)">${m.cancelsAccounts}</td>
+                <td style="color:${net >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:600">${net >= 0 ? '+' : ''}${net}</td>
+                <td>${m.estimatesReceived}</td>
+            </tr>`;
+        });
+        // Totals row
+        const totals = {
+            prod: monthly.reduce((s,m) => s + m.production, 0),
+            stops: monthly.reduce((s,m) => s + m.stops, 0),
+            sales: monthly.reduce((s,m) => s + m.salesAccounts, 0),
+            cancels: monthly.reduce((s,m) => s + m.cancelsAccounts, 0),
+            estimates: monthly.reduce((s,m) => s + m.estimatesReceived, 0)
+        };
+        const tNet = totals.sales - totals.cancels;
+        tableHtml += `<tr style="border-top:2px solid var(--accent);font-weight:700">
+            <td>YTD Total</td><td>${fmt(totals.prod)}</td><td>${fmtN(totals.stops)}</td>
+            <td>$${(totals.prod/Math.max(totals.stops,1)).toFixed(2)}</td>
+            <td style="color:var(--green)">${totals.sales}</td><td style="color:var(--red)">${totals.cancels}</td>
+            <td style="color:${tNet>=0?'var(--green)':'var(--red)'}">${tNet>=0?'+':''}${tNet}</td>
+            <td>${totals.estimates}</td></tr>`;
+        tableHtml += '</tbody></table>';
+        $('#monthly-table').innerHTML = tableHtml;
+    }
+
+    function renderSales(data) {
+        const sb = data.salesBreakdown || {};
+        const cb = data.cancelsBreakdown || {};
+        const s = data.summary.ytd;
+
+        // Sales KPIs
+        const salesKpis = [
+            { label: 'YTD Sales', value: sb.total || s.sales, color: '#22c55e' },
+            { label: 'YTD Cancels', value: cb.totalEvents || s.cancels, color: '#ef4444' },
+            { label: 'Net Change', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444' },
+            { label: 'Recoverable', value: cb.recoverable || 0, color: '#eab308', sub: 'Paused/WP' },
+        ];
+        let html = '';
+        salesKpis.forEach(k => {
+            html += `<div class="kpi" style="--kpi-color:${k.color}"><div class="label">${k.label}</div><div class="value" style="color:${k.color}">${k.value}</div>${k.sub ? `<div class="sub">${k.sub}</div>` : ''}</div>`;
+        });
+        $('#sales-kpis').innerHTML = html;
+
+        // Sales by Source
+        if (sb.bySource) {
+            const sources = Object.entries(sb.bySource).sort((a,b) => b[1] - a[1]).slice(0, 8);
+            new Chart($('#sourceChart'), {
+                type: 'bar',
+                data: {
+                    labels: sources.map(s => s[0].length > 20 ? s[0].substring(0,17)+'...' : s[0]),
+                    datasets: [{ label: 'Sales', data: sources.map(s => s[1]), backgroundColor: COLORS.slice(0, sources.length) }]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true,
+                    plugins: { title: { display: true, text: 'Sales by Source', color: '#fff', font: { size: 14 } }, legend: { display: false } },
+                    scales: { x: { ticks: { color: '#888' } }, y: { ticks: { color: '#ccc', font: { size: 10 } } } }
+                }
+            });
+        }
+
+        // Cancel Reasons
+        if (cb.byReason) {
+            const reasons = Object.entries(cb.byReason).sort((a,b) => b[1] - a[1]).slice(0, 8);
+            new Chart($('#cancelReasonChart'), {
+                type: 'bar',
+                data: {
+                    labels: reasons.map(r => r[0].length > 22 ? r[0].substring(0,19)+'...' : r[0]),
+                    datasets: [{ label: 'Cancels', data: reasons.map(r => r[1]), backgroundColor: '#ef444488', borderColor: '#ef4444', borderWidth: 1 }]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true,
+                    plugins: { title: { display: true, text: 'Cancel Reasons', color: '#fff', font: { size: 14 } }, legend: { display: false } },
+                    scales: { x: { ticks: { color: '#888' } }, y: { ticks: { color: '#ccc', font: { size: 10 } } } }
+                }
+            });
+        }
+
+        // Sales by Program
+        if (sb.byProgram) {
+            const progs = Object.entries(sb.byProgram).sort((a,b) => b[1] - a[1]).slice(0, 8);
+            new Chart($('#salesProgramChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: progs.map(p => p[0].length > 25 ? p[0].substring(0,22)+'...' : p[0]),
+                    datasets: [{ data: progs.map(p => p[1]), backgroundColor: COLORS.slice(0, progs.length) }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Sales by Program', color: '#fff', font: { size: 14 } }, legend: { position: 'right', labels: { color: '#aaa', font: { size: 10 } } } }
+                }
+            });
+        }
+
+        // Monthly Sales vs Cancels bar chart
+        if (data.monthly?.length > 0) {
+            new Chart($('#monthlyBarsChart'), {
+                type: 'bar',
+                data: {
+                    labels: data.monthly.map(m => m.period.split(' - ')[0].substring(0,3)),
+                    datasets: [
+                        { label: 'Sales', data: data.monthly.map(m => m.salesAccounts), backgroundColor: '#22c55e88', borderColor: '#22c55e', borderWidth: 1 },
+                        { label: 'Cancels', data: data.monthly.map(m => -m.cancelsAccounts), backgroundColor: '#ef444488', borderColor: '#ef4444', borderWidth: 1 },
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Monthly Sales vs Cancels', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa' } } },
+                    scales: {
+                        x: { ticks: { color: '#ccc' } },
+                        y: { ticks: { color: '#888' } }
+                    }
+                }
+            });
+        }
+    }
+
+    loadDashboard();
+    setInterval(loadDashboard, 5 * 60 * 1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

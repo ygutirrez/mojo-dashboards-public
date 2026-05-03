@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Chemical Usage Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        .header .subtitle { color: #888; font-size: 1rem; }
+        .header .correction-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00ff88, #00cc66);
+            color: #000;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card h2 {
+            font-size: 1.1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .card.wide { grid-column: span 2; }
+        .card.full { grid-column: 1 / -1; }
+        .big-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+            max-width: 1800px;
+            margin: 0 auto 20px;
+        }
+        .big-stat {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .big-stat .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .big-stat .value.green { background: linear-gradient(90deg, #00ff88, #00cc66); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .big-stat .value.gold { background: linear-gradient(90deg, #ffd700, #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .big-stat .value.blue { background: linear-gradient(90deg, #00d9ff, #0099cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .big-stat .value.red { background: linear-gradient(90deg, #ff6b6b, #ee5a5a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .big-stat .label { font-size: 0.9rem; color: #888; margin-top: 10px; }
+        .big-stat .sublabel { font-size: 0.75rem; color: #555; margin-top: 4px; }
+        .chart-container { height: 280px; position: relative; }
+        .tech-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        .tech-table th {
+            text-align: left; padding: 8px 12px; color: #888;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .tech-table th.right { text-align: right; }
+        .tech-table td {
+            padding: 14px 12px;
+            background: rgba(255,255,255,0.03);
+        }
+        .tech-table tr td:first-child { border-radius: 12px 0 0 12px; }
+        .tech-table tr td:last-child { border-radius: 0 12px 12px 0; }
+        .tech-table td.right { text-align: right; }
+        .tech-table td.green { color: #00ff88; }
+        .tech-table td.gold { color: #ffd700; font-weight: bold; }
+        .tech-table td.red { color: #ff6b6b; }
+        .flag-badge {
+            display: inline-block;
+            background: rgba(255,107,107,0.2);
+            color: #ff6b6b;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .product-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .product-row:last-child { border-bottom: none; }
+        .product-name { flex: 1; font-size: 0.95rem; }
+        .product-cost { font-weight: bold; min-width: 80px; text-align: right; }
+        .product-bar-container { width: 120px; margin: 0 16px; }
+        .product-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+        .product-bar-fill { height: 100%; border-radius: 4px; }
+        .unverified-badge {
+            display: inline-block;
+            background: rgba(255,165,0,0.2);
+            color: #ffa500;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            margin-left: 6px;
+        }
+        .correction-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .correction-label { font-size: 0.9rem; }
+        .correction-values { display: flex; gap: 16px; align-items: center; }
+        .correction-old { color: #888; text-decoration: line-through; font-size: 0.85rem; }
+        .correction-new { color: #00ff88; font-weight: bold; }
+        .correction-delta { font-size: 0.75rem; padding: 2px 6px; border-radius: 8px; }
+        .correction-delta.up { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+        .correction-delta.down { background: rgba(0,255,136,0.2); color: #00ff88; }
+        .service-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+        .service-name { font-size: 0.9rem; flex: 1; }
+        .service-stat { text-align: right; min-width: 70px; }
+        .progress-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 4px; }
+        .progress-fill.blue { background: linear-gradient(90deg, #00d9ff, #0099cc); }
+        .progress-fill.green { background: linear-gradient(90deg, #00ff88, #00cc66); }
+        .progress-fill.orange { background: linear-gradient(90deg, #ff6b35, #cc5500); }
+        .progress-fill.purple { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+        .progress-fill.gold { background: linear-gradient(90deg, #ffd700, #ffaa00); }
+        .progress-fill.red { background: linear-gradient(90deg, #ff6b6b, #ee5a5a); }
+        .category-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px; background: rgba(255,255,255,0.03);
+            border-radius: 12px; margin-bottom: 8px;
+        }
+        .cat-icon { font-size: 1.5rem; width: 40px; text-align: center; }
+        .cat-info { flex: 1; }
+        .cat-name { font-weight: 600; font-size: 0.95rem; }
+        .cat-count { font-size: 0.75rem; color: #888; }
+        .cat-cost { font-weight: bold; font-size: 1.1rem; color: #ffd700; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.8rem; }
+        @media (max-width: 1200px) {
+            .big-stats { grid-template-columns: repeat(2, 1fr); }
+            .card.wide { grid-column: span 1; }
+        }
+        @media (max-width: 768px) {
+            .big-stats { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8rem; }
+            .tech-table { font-size: 0.85rem; }
+        }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="header">
+        <h1>🧪 Chemical Usage Dashboard</h1>
+        <div class="subtitle" id="dateRange">Loading...</div>
+        <div class="correction-badge">✅ REAL PRICES — ServSuite Costs Replaced</div>
+    </div>
+
+    <div class="big-stats" id="summaryCards">
+        <div class="big-stat"><div class="value gold">--</div><div class="label">Loading...</div></div>
+    </div>
+
+    <div class="grid" id="mainGrid">
+        <!-- Cards injected by JS -->
+    </div>
+
+    <div style="max-width:900px;margin:30px auto;padding:16px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;font-size:0.85rem;color:#aaa;line-height:1.6">
+        <div style="color:#ffa500;font-weight:bold;margin-bottom:8px">📋 How This Maps to the P&L</div>
+        <div>This dashboard tracks <strong style="color:#eee">chemical product usage</strong> from ServSuite — what techs apply on each job. It does <strong style="color:#eee">NOT</strong> include:</div>
+        <ul style="margin:8px 0;padding-left:20px">
+            <li><strong style="color:#eee">Misting hardware</strong> — pumps, tubing, nozzles, fittings (~$60-65K/yr). These are in the P&L "Misting Materials" line.</li>
+            <li><strong style="color:#eee">Supplies</strong> — sprayer parts, backpacks, gloves (~$23K/yr). P&L line: "Supplies"</li>
+            <li><strong style="color:#eee">Small tools & equipment</strong> (~$2K/yr)</li>
+        </ul>
+        <div style="margin-top:8px">
+            <strong style="color:#eee">2025 P&L Materials: $241,194</strong> = Pest chemicals ($122K) + Misting materials & hardware ($94K) + Supplies ($23K) + Tools ($2K)<br>
+            <strong style="color:#00ff88">This dashboard</strong> ≈ pest chemicals + misting chemicals only (excludes ~$85K in hardware/supplies/tools)
+        </div>
+    </div>
+
+    <div class="footer" id="footer">Loading data...</div>
+
+    <script>
+    // Color palette
+    const COLORS = {
+        gold: '#ffd700', green: '#00ff88', blue: '#00d9ff', orange: '#ff6b35',
+        purple: '#a855f7', red: '#ff6b6b', cyan: '#00bcd4', pink: '#ff69b4',
+        lime: '#cddc39', teal: '#009688'
+    };
+    const CHART_COLORS = ['#ffd700','#00ff88','#00d9ff','#ff6b35','#a855f7','#ff6b6b','#00bcd4','#ff69b4','#cddc39','#009688'];
+    const CAT_ICONS = {
+        'Misting (Concentrate)': '💨',
+        'Barrier Spray Chemicals': '🛡️',
+        'Noseeum/Gnat Additives': '🦟',
+        'Traps & Stations': '🪤',
+        'Larvicide': '💧',
+        'Bait': '🪳',
+        'Perimeter Pest': '🏠',
+        'Other': '📦',
+    };
+
+    fetch('chemical-data.json')
+        .then(r => r.json())
+        .then(data => render(data))
+        .catch(err => {
+            document.getElementById('footer').textContent = 'Error loading data: ' + err.message;
+        });
+
+    function fmt$(n) { return n == null ? '—' : '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+    function fmtN(n) { return n == null ? '—' : Number(n).toLocaleString('en-US'); }
+
+    function render(data) {
+        const s = data.summary;
+        document.getElementById('dateRange').textContent = data.meta.date_range + ' • Mosquito Joe of Miami';
+
+        // Summary cards
+        const isUnder = s.servsuite_overstatement < 0;
+        const diffAbs = Math.abs(s.servsuite_overstatement);
+        const diffPct = Math.abs(s.servsuite_overstatement_pct);
+        document.getElementById('summaryCards').innerHTML = `
+            <div class="big-stat">
+                <div class="value gold">${fmt$(s.total_real_cost)}</div>
+                <div class="label">💰 Real Chemical Spend</div>
+                <div class="sublabel">YTD (corrected pricing)</div>
+            </div>
+            <div class="big-stat">
+                <div class="value blue">${fmt$(s.cost_per_stop)}</div>
+                <div class="label">📊 Cost Per Service Stop</div>
+                <div class="sublabel">${fmtN(s.total_stops)} total stops</div>
+            </div>
+            <div class="big-stat">
+                <div class="value ${isUnder ? 'red' : 'green'}">${isUnder ? '+' : '-'}${fmt$(diffAbs)}</div>
+                <div class="label">${isUnder ? '⚠️' : '✅'} ServSuite Was ${isUnder ? 'Under' : 'Over'}</div>
+                <div class="sublabel">${diffPct}% ${isUnder ? 'understated' : 'overstated'} (SS: ${fmt$(s.total_servsuite_cost)})</div>
+            </div>
+            <div class="big-stat">
+                <div class="value ${s.materials_pct_of_revenue <= 5 ? 'green' : s.materials_pct_of_revenue <= 8 ? 'gold' : 'red'}">${s.materials_pct_of_revenue || '—'}%</div>
+                <div class="label">📈 % of YTD Revenue</div>
+                <div class="sublabel">${fmt$(s.total_real_cost)} / ${fmt$(s.ytd_revenue)} rev<br>2025 P&L: ${s.pl_2025_materials_pct || '—'}% (incl. hardware)</div>
+            </div>
+        `;
+
+        let html = '';
+
+        // === COST BY CATEGORY ===
+        html += `<div class="card"><h2>📂 Cost by Category</h2>`;
+        const totalCat = data.by_category.reduce((a, c) => a + c.real_cost, 0);
+        data.by_category.forEach(c => {
+            const pct = (c.real_cost / totalCat * 100).toFixed(1);
+            html += `<div class="category-item">
+                <div class="cat-icon">${CAT_ICONS[c.category] || '📦'}</div>
+                <div class="cat-info">
+                    <div class="cat-name">${c.category}</div>
+                    <div class="cat-count">${fmtN(c.count)} uses • ${pct}%</div>
+                </div>
+                <div class="cat-cost">${fmt$(c.real_cost)}</div>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // === PRODUCT BREAKDOWN ===
+        html += `<div class="card"><h2>🧪 Product Breakdown (Real Cost)</h2>`;
+        const maxProductCost = data.by_product[0]?.real_cost || 1;
+        data.by_product.slice(0, 12).forEach((p, i) => {
+            const barPct = (p.real_cost / maxProductCost * 100);
+            const uvBadge = p.unverified ? '<span class="unverified-badge">UNVERIFIED</span>' : '';
+            const colorIdx = i % CHART_COLORS.length;
+            html += `<div class="product-row">
+                <div class="product-name">${p.product}${uvBadge}</div>
+                <div class="product-bar-container">
+                    <div class="product-bar"><div class="product-bar-fill" style="width:${barPct}%;background:${CHART_COLORS[colorIdx]}"></div></div>
+                </div>
+                <div class="product-cost" style="color:${CHART_COLORS[colorIdx]}">${fmt$(p.real_cost)}</div>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // === KEY CORRECTIONS (ServSuite vs Real) ===
+        html += `<div class="card wide"><h2>🔧 Key Price Corrections (ServSuite → Real)</h2>`;
+        const corrections = data.by_product.filter(p => !p.unverified && Math.abs(p.real_cost - p.servsuite_cost) > 5)
+            .sort((a, b) => Math.abs(b.real_cost - b.servsuite_cost) - Math.abs(a.real_cost - a.servsuite_cost))
+            .slice(0, 10);
+        corrections.forEach(p => {
+            const delta = p.real_cost - p.servsuite_cost;
+            const isUp = delta > 0;
+            const deltaPct = p.servsuite_cost > 0 ? Math.abs(delta / p.servsuite_cost * 100).toFixed(0) : '∞';
+            html += `<div class="correction-row">
+                <div class="correction-label">${p.product}</div>
+                <div class="correction-values">
+                    <span class="correction-old">${fmt$(p.servsuite_cost)}</span>
+                    <span class="correction-new">${fmt$(p.real_cost)}</span>
+                    <span class="correction-delta ${isUp ? 'up' : 'down'}">${isUp ? '▲' : '▼'} ${deltaPct}%</span>
+                </div>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // === USAGE BY TECH — KEY SECTION ===
+        html += `<div class="card full"><h2>👷 Usage by Tech — Barrier Spray</h2>
+            <p style="color:#888;margin-bottom:12px;font-size:0.85rem">Fleet avg: ${data.fleet_averages.barrier_gal_per_stop} gal/stop • ${fmt$(data.fleet_averages.barrier_cost_per_stop)}/stop</p>
+            <table class="tech-table">
+                <thead><tr>
+                    <th>Tech</th>
+                    <th class="right">Stops</th>
+                    <th class="right">Gallons</th>
+                    <th class="right">Gal/Stop</th>
+                    <th class="right">Barrier Cost</th>
+                    <th class="right">$/Stop</th>
+                    <th class="right">Total Cost</th>
+                    <th>Flag</th>
+                </tr></thead>
+                <tbody>`;
+        const barrierTechs = data.by_tech.filter(t => t.barrier.stops > 0).sort((a, b) => b.barrier.gallons - a.barrier.gallons);
+        barrierTechs.forEach(t => {
+            const flagHtml = t.flagged ? `<span class="flag-badge">🚩 ${t.flag_reason}</span>` : '<span style="color:#00ff88">✓</span>';
+            const galClass = t.flagged ? 'red' : 'green';
+            html += `<tr>
+                <td><strong>${t.tech}</strong></td>
+                <td class="right">${fmtN(t.barrier.stops)}</td>
+                <td class="right ${galClass}">${t.barrier.gallons.toFixed(1)}</td>
+                <td class="right ${galClass}" style="font-weight:bold">${t.barrier.gal_per_stop.toFixed(2)}</td>
+                <td class="right gold">${fmt$(t.barrier.cost)}</td>
+                <td class="right">${fmt$(t.barrier.cost_per_stop)}</td>
+                <td class="right gold">${fmt$(t.total_cost)}</td>
+                <td>${flagHtml}</td>
+            </tr>`;
+        });
+        html += `</tbody></table></div>`;
+
+        // === MISTING BY TECH ===
+        const mistingTechs = data.by_tech.filter(t => t.misting.stops > 0).sort((a, b) => b.misting.cost - a.misting.cost);
+        if (mistingTechs.length > 0) {
+            html += `<div class="card"><h2>💨 Misting by Tech (Concentrate)</h2>`;
+            mistingTechs.forEach(t => {
+                html += `<div class="category-item">
+                    <div class="cat-icon">🧑‍🔧</div>
+                    <div class="cat-info">
+                        <div class="cat-name">${t.tech}</div>
+                        <div class="cat-count">${t.misting.stops} refills • ${t.misting.gallons.toFixed(1)} gal concentrate</div>
+                    </div>
+                    <div class="cat-cost">${fmt$(t.misting.cost)}</div>
+                </div>`;
+            });
+            html += `</div>`;
+        }
+
+        // === COST PER SERVICE TYPE ===
+        html += `<div class="card"><h2>🎯 Cost by Service Type</h2>`;
+        const svcColors = ['blue','green','orange','purple','gold','red','blue','green','orange','purple'];
+        data.by_service_type.slice(0, 12).forEach((sv, i) => {
+            const maxStops = data.by_service_type[0].stops;
+            const pct = Math.max(5, sv.stops / maxStops * 100);
+            html += `<div style="margin-bottom:12px">
+                <div class="service-row">
+                    <div class="service-name">${sv.service}</div>
+                    <div class="service-stat" style="color:${CHART_COLORS[i % CHART_COLORS.length]}">${fmt$(sv.cost_per_stop)}/stop</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#888;margin-bottom:4px">
+                    <span>${fmtN(sv.stops)} stops</span>
+                    <span>Total: ${fmt$(sv.real_cost)}</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill ${svcColors[i % svcColors.length]}" style="width:${pct}%"></div></div>
+            </div>`;
+        });
+        html += `</div>`;
+
+        // === MONTHLY TREND CHART ===
+        html += `<div class="card"><h2>📈 Monthly Trend</h2><div class="chart-container"><canvas id="monthlyChart"></canvas></div></div>`;
+
+        // === CATEGORY PIE CHART ===
+        html += `<div class="card"><h2>🥧 Cost Distribution</h2><div class="chart-container"><canvas id="categoryChart"></canvas></div></div>`;
+
+        document.getElementById('mainGrid').innerHTML = html;
+
+        // Render charts
+        renderMonthlyChart(data);
+        renderCategoryChart(data);
+
+        document.getElementById('footer').innerHTML = `
+            Generated ${new Date(data.meta.generated).toLocaleString()} • ${fmtN(data.meta.total_rows)} material records processed<br>
+            <span style="color:#ffa500">⚠️ Products marked UNVERIFIED use ServSuite placeholder pricing</span><br>
+            <span style="color:#00ff88">✅ All other costs from real MoJo purchase prices & verified mix ratios</span>
+        `;
+    }
+
+    function renderMonthlyChart(data) {
+        const canvas = document.getElementById('monthlyChart');
+        if (!canvas) return;
+        new Chart(canvas, {
+            type: 'bar',
+            data: {
+                labels: data.by_month.map(m => m.month),
+                datasets: [
+                    {
+                        label: 'Real Cost',
+                        data: data.by_month.map(m => m.real_cost),
+                        backgroundColor: 'rgba(0,255,136,0.6)',
+                        borderColor: '#00ff88',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                    },
+                    {
+                        label: 'ServSuite Cost',
+                        data: data.by_month.map(m => m.servsuite_cost),
+                        backgroundColor: 'rgba(255,255,255,0.15)',
+                        borderColor: 'rgba(255,255,255,0.3)',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                    },
+                    {
+                        label: '$/Stop',
+                        data: data.by_month.map(m => m.cost_per_stop),
+                        type: 'line',
+                        yAxisID: 'y1',
+                        borderColor: '#ffd700',
+                        backgroundColor: 'rgba(255,215,0,0.1)',
+                        pointBackgroundColor: '#ffd700',
+                        tension: 0.3,
+                        borderWidth: 2,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#888' } },
+                },
+                scales: {
+                    x: { ticks: { color: '#888' }, grid: { display: false } },
+                    y: {
+                        ticks: { color: '#888', callback: v => '$' + v.toLocaleString() },
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                    },
+                    y1: {
+                        position: 'right',
+                        ticks: { color: '#ffd700', callback: v => '$' + v.toFixed(2) },
+                        grid: { display: false },
+                    }
+                }
+            }
+        });
+    }
+
+    function renderCategoryChart(data) {
+        const canvas = document.getElementById('categoryChart');
+        if (!canvas) return;
+        new Chart(canvas, {
+            type: 'doughnut',
+            data: {
+                labels: data.by_category.map(c => c.category),
+                datasets: [{
+                    data: data.by_category.map(c => c.real_cost),
+                    backgroundColor: CHART_COLORS.slice(0, data.by_category.length),
+                    borderWidth: 0,
+                    hoverOffset: 10,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '55%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#ccc', font: { size: 11 }, padding: 12 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.label + ': $' + ctx.raw.toLocaleString('en-US', {minimumFractionDigits:2})
+                        }
+                    }
+                }
+            }
+        });
+    }
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

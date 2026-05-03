@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Pipeline Monitor — CTO Ops</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 28px; padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .header .meta { text-align: right; font-size: 0.78rem; color: #64748b; }
+        .header .meta .live { color: #34d399; }
+
+        /* Status Hero */
+        .hero {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+            margin-bottom: 28px;
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 20px; text-align: center;
+        }
+        .hero-card .val { font-size: 2rem; font-weight: 700; }
+        .hero-card .lbl { font-size: 0.75rem; color: #94a3b8; margin-top: 4px; }
+        .hero-card.ok .val { color: #34d399; }
+        .hero-card.warn .val { color: #fbbf24; }
+        .hero-card.error .val { color: #ef4444; }
+        .hero-card.info .val { color: #60a5fa; }
+
+        /* Section */
+        .section { margin-bottom: 28px; }
+        .section h2 {
+            font-size: 1rem; margin-bottom: 14px; padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* Data freshness table */
+        .freshness-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px;
+        }
+        .freshness-item {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 12px 16px;
+            transition: background 0.2s;
+        }
+        .freshness-item:hover { background: rgba(255,255,255,0.06); }
+        .freshness-item .name { font-size: 0.85rem; font-weight: 500; }
+        .freshness-item .age {
+            font-size: 0.75rem; font-weight: 600;
+            padding: 3px 10px; border-radius: 20px;
+        }
+        .freshness-item .age.fresh { background: rgba(52,211,153,0.15); color: #34d399; }
+        .freshness-item .age.aging { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .freshness-item .age.stale { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .freshness-item .age.unknown { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+        /* Dashboard status */
+        .dash-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px;
+        }
+        .dash-item {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 10px 14px;
+            font-size: 0.82rem;
+        }
+        .dash-item .dot {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .dash-item .dot.up { background: #34d399; }
+        .dash-item .dot.down { background: #ef4444; }
+        .dash-item .dot.checking { background: #fbbf24; animation: pulse 1.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Pipeline timeline */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute; left: 8px; top: 0; bottom: 0;
+            width: 2px; background: rgba(255,255,255,0.08);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 10px 0 10px 16px;
+            font-size: 0.82rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute; left: -20px; top: 16px;
+            width: 10px; height: 10px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: #0a0a1a;
+        }
+        .timeline-item.ok::before { border-color: #34d399; background: #34d399; }
+        .timeline-item.warn::before { border-color: #fbbf24; background: #fbbf24; }
+        .timeline-item.error::before { border-color: #ef4444; background: #ef4444; }
+        .timeline-item .step-name { font-weight: 600; }
+        .timeline-item .step-detail { color: #94a3b8; font-size: 0.75rem; margin-top: 2px; }
+
+        /* Metric sanity */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 14px 16px;
+        }
+        .metric-card .val { font-size: 1.4rem; font-weight: 700; }
+        .metric-card .lbl { font-size: 0.72rem; color: #94a3b8; margin-top: 2px; }
+        .metric-card.ok .val { color: #34d399; }
+        .metric-card.warn .val { color: #fbbf24; }
+        .metric-card.error .val { color: #ef4444; }
+
+        /* Footer */
+        .footer {
+            margin-top: 36px; padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.7rem; color: #4b5563;
+            display: flex; justify-content: space-between;
+        }
+        .footer a { color: #60a5fa; text-decoration: none; }
+
+        /* Anomaly alerts */
+        .anomaly-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 14px 16px; margin-bottom: 8px;
+        }
+        .anomaly-item.critical { border-left: 3px solid #ef4444; }
+        .anomaly-item.warning { border-left: 3px solid #fbbf24; }
+        .anomaly-item.info { border-left: 3px solid #60a5fa; }
+        .anomaly-item .badge {
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            padding: 2px 8px; border-radius: 4px; white-space: nowrap; margin-top: 2px;
+        }
+        .anomaly-item.critical .badge { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .anomaly-item.warning .badge { background: rgba(251,191,36,0.2); color: #fbbf24; }
+        .anomaly-item.info .badge { background: rgba(96,165,250,0.2); color: #60a5fa; }
+        .anomaly-item .content { flex: 1; }
+        .anomaly-item .msg { font-size: 0.85rem; font-weight: 500; }
+        .anomaly-item .detail { font-size: 0.75rem; color: #94a3b8; margin-top: 4px; }
+        .anomaly-item .category { font-size: 0.65rem; color: #64748b; margin-top: 4px; text-transform: uppercase; }
+
+        /* Loading */
+        .loading { color: #64748b; font-size: 0.85rem; padding: 20px; text-align: center; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 16px; }
+            .hero { grid-template-columns: repeat(2, 1fr); }
+            .freshness-grid { grid-template-columns: 1fr; }
+        }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+
+<div class="header">
+    <h1>🔬 Pipeline Monitor</h1>
+    <div class="meta">
+        <div class="live">● LIVE</div>
+        <div id="check-time">Checking...</div>
+    </div>
+</div>
+
+<div class="hero" id="hero">
+    <div class="hero-card info"><div class="val" id="total-files">—</div><div class="lbl">Data Files</div></div>
+    <div class="hero-card ok"><div class="val" id="fresh-count">—</div><div class="lbl">Fresh</div></div>
+    <div class="hero-card warn"><div class="val" id="aging-count">—</div><div class="lbl">Aging</div></div>
+    <div class="hero-card error"><div class="val" id="stale-count">—</div><div class="lbl">Stale</div></div>
+</div>
+
+<div class="section" id="pipeline-section">
+    <h2>⏱️ Last Pipeline Run</h2>
+    <div id="pipeline-status" class="loading">Loading pipeline status...</div>
+</div>
+
+<div class="section">
+    <h2>📡 Data Freshness</h2>
+    <div class="freshness-grid" id="freshness-grid">
+        <div class="loading">Checking data files...</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>📈 Metric Sanity</h2>
+    <div class="metrics-grid" id="metrics-grid">
+        <div class="loading">Loading metrics...</div>
+    </div>
+</div>
+
+<div class="section" id="anomaly-section">
+    <h2>🔍 Anomaly Detection</h2>
+    <div id="anomaly-list" class="loading">Loading anomaly report...</div>
+</div>
+
+<div class="section">
+    <h2>🖥️ Dashboard Status</h2>
+    <div class="dash-grid" id="dash-grid">
+        <div class="loading">Checking dashboards...</div>
+    </div>
+</div>
+
+<div class="footer">
+    <span>MoJo Pipeline Monitor — CTO Infrastructure</span>
+    <span>Auto-refresh: 5 min | <a href="index.html">← Command Center</a> | <a href="system-status.html">System Status</a></span>
+</div>
+
+<script>
+const BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+
+const DATA_FILES = [
+    { name: 'Dashboard Core', file: 'dashboard-data.json', tsField: 'updated_at' },
+    { name: 'Owners Data', file: 'owners-data.json', tsField: 'meta.generated' },
+    { name: 'Sales KPI', file: 'sales-kpi-data.json', tsField: 'generated_at' },
+    { name: 'Tech Data', file: 'tech-data.json', tsField: 'generated_at' },
+    { name: 'Ops Data', file: 'ops-data.json', tsField: 'meta.generated' },
+    { name: 'Sales Data', file: 'sales-data.json', tsField: 'generated_at' },
+    { name: 'Marketing Data', file: 'marketing-data.json', tsField: 'generated_at' },
+    { name: 'Fleet Data', file: 'fleet-data.json', tsField: 'generated_at' },
+    { name: 'Retention Data', file: 'retention-data.json', tsField: 'generated_at' },
+    { name: 'Cancel Analysis', file: 'cancel-analysis.json', tsField: 'meta.generated' },
+    { name: 'Chemical Data', file: 'chemical-data.json', tsField: 'generated_at' },
+    { name: 'SM KPI Data', file: 'sm-kpi-data.json', tsField: 'generated_at' },
+];
+
+const DASHBOARDS = [
+    { name: 'Command Center', file: 'index.html' },
+    { name: 'Owners Dashboard', file: 'owners-dashboard.html' },
+    { name: 'Sales KPI', file: 'sales-kpi-dashboard.html' },
+    { name: 'Sales TV', file: 'sales-kpi-tv.html' },
+    { name: 'Tech Leaderboard', file: 'tech-dashboard.html' },
+    { name: 'Operations', file: 'operations-dashboard.html' },
+    { name: 'Marketing', file: 'marketing-dashboard.html' },
+    { name: 'Social Media', file: 'social-media-dashboard.html' },
+    { name: 'Retention', file: 'retention-dashboard.html' },
+    { name: 'Cancel Analysis', file: 'cancel-analysis.html' },
+    { name: 'SM KPI', file: 'sm-kpi-dashboard.html' },
+    { name: 'Fleet', file: 'fleet-dashboard.html' },
+    { name: 'Season Readiness', file: 'season-readiness.html' },
+    { name: 'Mission Control', file: 'mission-control.html' },
+    { name: 'System Status', file: 'system-status.html' },
+    { name: 'Pipeline Monitor', file: 'pipeline-monitor.html' },
+];
+
+function getNestedField(obj, path) {
+    return path.split('.').reduce((o, k) => o && o[k], obj);
+}
+
+function ageStr(hours) {
+    if (hours < 0) return 'Unknown';
+    if (hours < 1) return 'Just now';
+    if (hours < 24) return Math.round(hours) + 'h ago';
+    const days = Math.round(hours / 24);
+    return days + 'd ago';
+}
+
+function ageClass(hours) {
+    if (hours < 0) return 'unknown';
+    if (hours <= 26) return 'fresh';
+    if (hours <= 48) return 'aging';
+    return 'stale';
+}
+
+function hoursFromTs(ts) {
+    if (!ts) return -1;
+    try {
+        const d = new Date(ts);
+        if (isNaN(d.getTime())) return -1;
+        return (Date.now() - d.getTime()) / 3600000;
+    } catch { return -1; }
+}
+
+async function checkDataFreshness() {
+    const grid = document.getElementById('freshness-grid');
+    grid.innerHTML = '';
+
+    let fresh = 0, aging = 0, stale = 0;
+
+    for (const df of DATA_FILES) {
+        const item = document.createElement('div');
+        item.className = 'freshness-item';
+
+        try {
+            const resp = await fetch(df.file + '?t=' + Date.now());
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+
+            const data = await resp.json();
+            const ts = getNestedField(data, df.tsField);
+            const hours = hoursFromTs(ts);
+            const cls = ageClass(hours);
+
+            if (cls === 'fresh') fresh++;
+            else if (cls === 'aging') aging++;
+            else if (cls === 'stale') stale++;
+
+            item.innerHTML = `
+                <span class="name">${df.name}</span>
+                <span class="age ${cls}">${hours >= 0 ? ageStr(hours) : 'No timestamp'}</span>
+            `;
+        } catch (e) {
+            stale++;
+            item.innerHTML = `
+                <span class="name">${df.name}</span>
+                <span class="age stale">Not found</span>
+            `;
+        }
+
+        grid.appendChild(item);
+    }
+
+    document.getElementById('total-files').textContent = DATA_FILES.length;
+    document.getElementById('fresh-count').textContent = fresh;
+    document.getElementById('aging-count').textContent = aging;
+    document.getElementById('stale-count').textContent = stale;
+
+    // Update hero card classes
+    const heroCards = document.querySelectorAll('.hero-card');
+    if (stale > 0) heroCards[3].className = 'hero-card error';
+    else heroCards[3].className = 'hero-card ok';
+    if (aging > 0) heroCards[2].className = 'hero-card warn';
+    else heroCards[2].className = 'hero-card ok';
+}
+
+async function checkDashboards() {
+    const grid = document.getElementById('dash-grid');
+    grid.innerHTML = '';
+
+    for (const dash of DASHBOARDS) {
+        const item = document.createElement('div');
+        item.className = 'dash-item';
+        item.innerHTML = `<span class="dot checking"></span><span>${dash.name}</span>`;
+        grid.appendChild(item);
+
+        fetch(dash.file, { method: 'HEAD' }).then(resp => {
+            const dot = item.querySelector('.dot');
+            dot.className = 'dot ' + (resp.ok ? 'up' : 'down');
+        }).catch(() => {
+            item.querySelector('.dot').className = 'dot down';
+        });
+    }
+}
+
+async function checkMetrics() {
+    const grid = document.getElementById('metrics-grid');
+    grid.innerHTML = '';
+
+    const metrics = [
+        { name: 'YTD Sales', file: 'sales-data.json', extract: d => d.totalSales || (d.sales && d.sales.length) || 0, warn: v => v < 10 },
+        { name: 'YTD Revenue', file: 'dashboard-data.json', extract: d => d.revenue || d.ytd_revenue || 0, format: v => '$' + Number(v).toLocaleString(), warn: v => v < 100000 },
+        { name: 'Tech Visits', file: 'tech-data.json', extract: d => d.totalVisits || (d.techs && d.techs.reduce((a, t) => a + (t.visits || 0), 0)) || 0, warn: v => v < 100 },
+        { name: 'Active Cancels', file: 'cancel-analysis.json', extract: d => d.totalEvents || (d.cancels && d.cancels.length) || 0, warn: v => v > 500 },
+        { name: 'Fleet Vehicles', file: 'fleet-data.json', extract: d => (d.vehicles && d.vehicles.length) || d.totalVehicles || 0, warn: v => v < 5 },
+        { name: 'Retention Rate', file: 'retention-data.json', extract: d => d.retention_rate_90day || 0, format: v => v.toFixed(1) + '%', warn: v => v < 90 },
+    ];
+
+    for (const m of metrics) {
+        const card = document.createElement('div');
+        card.className = 'metric-card';
+
+        try {
+            const resp = await fetch(m.file + '?t=' + Date.now());
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            const data = await resp.json();
+            const val = m.extract(data);
+            const display = m.format ? m.format(val) : Number(val).toLocaleString();
+            const isWarn = m.warn && m.warn(val);
+
+            card.className = 'metric-card ' + (isWarn ? 'warn' : 'ok');
+            card.innerHTML = `<div class="val">${display}</div><div class="lbl">${m.name}</div>`;
+        } catch {
+            card.className = 'metric-card error';
+            card.innerHTML = `<div class="val">—</div><div class="lbl">${m.name}</div>`;
+        }
+
+        grid.appendChild(card);
+    }
+}
+
+async function checkPipeline() {
+    const container = document.getElementById('pipeline-status');
+
+    try {
+        const resp = await fetch('pipeline-status.json?t=' + Date.now());
+        if (!resp.ok) throw new Error('not found');
+        const data = await resp.json();
+
+        const runTime = data.timestamp ? new Date(data.timestamp).toLocaleString() : 'Unknown';
+        const duration = data.duration_seconds ? Math.round(data.duration_seconds / 60) + ' min' : '—';
+        const statusEmoji = data.status === 'ok' ? '✅' : data.status === 'warn' ? '⚠️' : '❌';
+
+        let html = `
+            <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 16px; flex-wrap: wrap;">
+                <div><span style="font-size: 0.75rem; color: #94a3b8;">Last Run</span><br><strong>${runTime}</strong></div>
+                <div><span style="font-size: 0.75rem; color: #94a3b8;">Duration</span><br><strong>${duration}</strong></div>
+                <div><span style="font-size: 0.75rem; color: #94a3b8;">Status</span><br><strong>${statusEmoji} ${data.status || 'Unknown'}</strong></div>
+                <div><span style="font-size: 0.75rem; color: #94a3b8;">Steps</span><br><strong>${data.steps_passed || 0}/${data.steps_total || 0}</strong></div>
+            </div>
+        `;
+
+        if (data.steps && data.steps.length > 0) {
+            html += '<div class="timeline">';
+            for (const step of data.steps) {
+                const cls = step.status === 'ok' ? 'ok' : step.status === 'warn' ? 'warn' : 'error';
+                html += `
+                    <div class="timeline-item ${cls}">
+                        <div class="step-name">${step.name}</div>
+                        <div class="step-detail">${step.detail || ''}</div>
+                    </div>
+                `;
+            }
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
+    } catch {
+        container.innerHTML = `
+            <div style="color: #94a3b8; font-size: 0.85rem;">
+                <p>No pipeline status data found. Pipeline status will appear after the next nightly sync run.</p>
+                <p style="margin-top: 8px; font-size: 0.75rem;">Expected file: <code>pipeline-status.json</code></p>
+            </div>
+        `;
+    }
+}
+
+async function checkAnomalies() {
+    const container = document.getElementById('anomaly-list');
+    
+    try {
+        const resp = await fetch('anomaly-report.json?t=' + Date.now());
+        if (!resp.ok) throw new Error('not found');
+        const data = await resp.json();
+        
+        if (!data.anomalies || data.anomalies.length === 0) {
+            container.innerHTML = '<div style="color: #34d399; font-size: 0.85rem;">🟢 No anomalies detected</div>';
+            return;
+        }
+        
+        let html = '';
+        // Show criticals first, then warnings, then infos
+        const sorted = data.anomalies.sort((a, b) => {
+            const order = { critical: 0, warning: 1, info: 2 };
+            return (order[a.level] || 3) - (order[b.level] || 3);
+        });
+        
+        for (const a of sorted) {
+            html += `
+                <div class="anomaly-item ${a.level}">
+                    <span class="badge">${a.level}</span>
+                    <div class="content">
+                        <div class="msg">${a.message}</div>
+                        ${a.detail ? `<div class="detail">${a.detail}</div>` : ''}
+                        <div class="category">${a.category}</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        const genTime = data.generated_at ? new Date(data.generated_at).toLocaleString() : '';
+        if (genTime) {
+            html += `<div style="font-size: 0.7rem; color: #4b5563; margin-top: 8px;">Last scan: ${genTime}</div>`;
+        }
+        
+        container.innerHTML = html;
+    } catch {
+        container.innerHTML = `
+            <div style="color: #94a3b8; font-size: 0.85rem;">
+                No anomaly report found. Run <code>node scripts/anomaly-detector.js</code> to generate.
+            </div>
+        `;
+    }
+}
+
+// Run all checks
+async function runChecks() {
+    document.getElementById('check-time').textContent = 'Checked: ' + new Date().toLocaleTimeString();
+    await Promise.all([
+        checkDataFreshness(),
+        checkDashboards(),
+        checkMetrics(),
+        checkPipeline(),
+        checkAnomalies(),
+    ]);
+}
+
+runChecks();
+</script>
+    <script src="navigator.js"></script>
+</body>
+</html>

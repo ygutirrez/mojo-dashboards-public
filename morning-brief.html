@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☀️ Morning Brief — MoJo</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --surface2: #232736;
+            --border: #2d3142;
+            --text: #e8eaed;
+            --text-dim: #8b8fa3;
+            --green: #00cc66;
+            --red: #ff4444;
+            --yellow: #ffaa00;
+            --blue: #4488ff;
+            --purple: #6c5ce7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .brief-header {
+            background: linear-gradient(135deg, #1a1d27 0%, #232736 100%);
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .brief-header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .brief-date {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+        .brief-greeting {
+            font-size: 15px;
+            color: var(--text-dim);
+            margin-top: 8px;
+        }
+
+        .section {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Hero metrics */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .hero-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .hero-card.full-width {
+            grid-column: 1 / -1;
+        }
+        .hero-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .hero-value {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+        .hero-sub {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+        .hero-value.positive { color: var(--green); }
+        .hero-value.negative { color: var(--red); }
+        .hero-value.neutral { color: var(--blue); }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: var(--surface2);
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Alert strip */
+        .alert-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .alert-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .alert-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .alert-dot.red { background: var(--red); }
+        .alert-dot.yellow { background: var(--yellow); }
+        .alert-dot.blue { background: var(--blue); }
+        .alert-dot.green { background: var(--green); }
+
+        /* Pipeline mini */
+        .pipeline-mini {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        .pipeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+        }
+        .pipeline-dot.ok { background: var(--green); }
+        .pipeline-dot.error { background: var(--red); }
+        .pipeline-dot.warn { background: var(--yellow); }
+        .pipeline-summary {
+            margin-left: 8px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* Quick stats row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px 6px;
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .stat-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
+
+        /* Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+        .quick-link:hover { border-color: var(--purple); }
+        .quick-link-icon { font-size: 18px; }
+
+        .loading { color: var(--text-dim); font-size: 13px; }
+
+        @media (min-width: 600px) {
+            body { max-width: 600px; margin: 0 auto; }
+            .hero-grid { grid-template-columns: repeat(3, 1fr); }
+            .stats-row { grid-template-columns: repeat(5, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="brief-header">
+        <h1>☀️ Morning Brief</h1>
+        <div class="brief-date" id="briefDate">Loading...</div>
+        <div class="brief-greeting" id="greeting">Good morning, Yoel.</div>
+    </div>
+
+    <!-- Revenue & Target -->
+    <div class="section">
+        <div class="section-title">💰 Revenue & Target</div>
+        <div class="hero-grid">
+            <div class="hero-card">
+                <div class="hero-label">YTD Revenue</div>
+                <div class="hero-value positive" id="ytdRevenue">—</div>
+                <div class="hero-sub" id="ytdRevenueNote"></div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-label">Revenue / Stop</div>
+                <div class="hero-value neutral" id="revPerStop">—</div>
+                <div class="hero-sub" id="revPerStopNote"></div>
+            </div>
+            <div class="hero-card full-width">
+                <div class="hero-label">$5M Target Pace</div>
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                    <div class="hero-value" id="pacePercent" style="font-size: 24px;">—</div>
+                    <div class="hero-sub" id="paceProjected"></div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="paceBar" style="width: 0%; background: var(--green);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="section">
+        <div class="section-title">🚨 Active Alerts</div>
+        <div class="alert-strip" id="alertStrip">
+            <div class="loading">Loading alerts...</div>
+        </div>
+    </div>
+
+    <!-- Operations Snapshot -->
+    <div class="section">
+        <div class="section-title">📊 Operations Snapshot</div>
+        <div class="stats-row" id="opsStats">
+            <div class="stat-item">
+                <div class="stat-value" id="salesCount">—</div>
+                <div class="stat-label">Sales YTD</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="cancelCount">—</div>
+                <div class="stat-label">Cancels</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="cancelRatio">—</div>
+                <div class="stat-label">C:S Ratio</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalStops">—</div>
+                <div class="stat-label">Stops YTD</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="activeTechs">—</div>
+                <div class="stat-label">Active Techs</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline Health -->
+    <div class="section">
+        <div class="section-title">⚙️ Data Pipeline</div>
+        <div class="pipeline-mini" id="pipelineMini">
+            <span class="loading">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="section" style="border-bottom: none;">
+        <div class="section-title">🔗 Quick Links</div>
+        <div class="quick-links">
+            <a href="executive-brief.html" class="quick-link">
+                <span class="quick-link-icon">📋</span> Exec Brief
+            </a>
+            <a href="sales-kpi-dashboard.html" class="quick-link">
+                <span class="quick-link-icon">📈</span> Sales KPIs
+            </a>
+            <a href="alerts-dashboard.html" class="quick-link">
+                <span class="quick-link-icon">🚨</span> All Alerts
+            </a>
+            <a href="operations-dashboard.html" class="quick-link">
+                <span class="quick-link-icon">🔧</span> Operations
+            </a>
+            <a href="fleet-dashboard.html" class="quick-link">
+                <span class="quick-link-icon">🚗</span> Fleet
+            </a>
+            <a href="hub.html" class="quick-link">
+                <span class="quick-link-icon">🏠</span> Full Hub
+            </a>
+        </div>
+    </div>
+
+    <script>
+    async function fetchJSON(url) {
+        try {
+            const res = await fetch(`${url}?t=${Date.now()}`);
+            if (!res.ok) return null;
+            return await res.json();
+        } catch { return null; }
+    }
+
+    function fmt$(n) {
+        if (n >= 1000000) return `$${(n/1000000).toFixed(1)}M`;
+        if (n >= 1000) return `$${(n/1000).toFixed(0)}K`;
+        return `$${n.toFixed(0)}`;
+    }
+
+    async function loadBrief() {
+        // Date and greeting
+        const now = new Date();
+        const opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+        document.getElementById('briefDate').textContent = now.toLocaleDateString('en-US', opts);
+        
+        const hour = now.getHours();
+        const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+        document.getElementById('greeting').textContent = `${greeting}, Yoel.`;
+
+        // Fetch all data in parallel
+        const [salesKpi, anomaly, pipeline, alerts, opsData, techData] = await Promise.all([
+            fetchJSON('sales-kpi-data.json'),
+            fetchJSON('anomaly-report.json'),
+            fetchJSON('pipeline-status.json'),
+            fetchJSON('alerts-data.json'),
+            fetchJSON('ops-data.json'),
+            fetchJSON('tech-data.json')
+        ]);
+
+        // Revenue section
+        if (salesKpi) {
+            const revenue = salesKpi.ytd_revenue || salesKpi.total_revenue || 0;
+            document.getElementById('ytdRevenue').textContent = fmt$(revenue);
+            
+            const target = 5000000;
+            const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+            const daysInYear = 365;
+            const expectedPace = target * (dayOfYear / daysInYear);
+            const pacePercent = Math.round((revenue / expectedPace) * 100);
+            const projected = Math.round(revenue * (daysInYear / dayOfYear));
+            
+            document.getElementById('pacePercent').textContent = `${Math.round(revenue / target * 100)}%`;
+            document.getElementById('pacePercent').style.color = pacePercent >= 90 ? 'var(--green)' : pacePercent >= 70 ? 'var(--yellow)' : 'var(--red)';
+            document.getElementById('paceProjected').textContent = `Projected: ${fmt$(projected)}`;
+            document.getElementById('paceBar').style.width = `${Math.min(100, revenue / target * 100)}%`;
+            document.getElementById('paceBar').style.background = pacePercent >= 90 ? 'var(--green)' : pacePercent >= 70 ? 'var(--yellow)' : 'var(--red)';
+            
+            const avgPerStop = salesKpi.avg_per_visit || salesKpi.revenue_per_stop || 0;
+            document.getElementById('revPerStop').textContent = `$${avgPerStop}`;
+            
+            const totalStops = salesKpi.total_stops || salesKpi.total_invoices || 0;
+            document.getElementById('totalStops').textContent = totalStops.toLocaleString();
+
+            // Sales count
+            const sales = salesKpi.total_sales || salesKpi.ytd_sales || 0;
+            document.getElementById('salesCount').textContent = sales;
+        }
+
+        // Cancel data from anomaly/ops
+        if (anomaly && anomaly.anomalies) {
+            const cancelAnomaly = anomaly.anomalies.find(a => a.category === 'cancellations' && a.message.includes('ratio'));
+            if (cancelAnomaly) {
+                const match = cancelAnomaly.detail.match(/(\d+)\s*cancels\s*vs\s*(\d+)\s*sales/i);
+                if (match) {
+                    document.getElementById('cancelCount').textContent = match[1];
+                    document.getElementById('cancelRatio').textContent = cancelAnomaly.message.match(/([\d.]+)x/)?.[1] + 'x' || '—';
+                }
+            }
+        }
+
+        // Active techs
+        if (techData && techData.technicians) {
+            const activeTechs = techData.technicians.filter(t => (t.visits || t.total_visits || 0) > 0).length;
+            document.getElementById('activeTechs').textContent = activeTechs;
+        } else if (opsData && opsData.technicians) {
+            document.getElementById('activeTechs').textContent = opsData.technicians.length;
+        }
+
+        // Alerts section
+        const alertStrip = document.getElementById('alertStrip');
+        let alertItems = [];
+        
+        if (alerts && alerts.alerts) {
+            alertItems = alerts.alerts.filter(a => a.level !== 'info').slice(0, 5);
+        } else if (anomaly && anomaly.anomalies) {
+            alertItems = anomaly.anomalies.filter(a => a.level !== 'info').slice(0, 5).map(a => ({
+                level: a.level,
+                message: a.message
+            }));
+        }
+
+        if (alertItems.length === 0) {
+            alertStrip.innerHTML = '<div class="alert-row"><span class="alert-dot green"></span> All clear — no active alerts</div>';
+        } else {
+            alertStrip.innerHTML = alertItems.map(a => {
+                const color = a.level === 'critical' ? 'red' : a.level === 'warning' ? 'yellow' : 'blue';
+                return `<div class="alert-row"><span class="alert-dot ${color}"></span>${escapeHTML(a.message)}</div>`;
+            }).join('');
+        }
+
+        // Pipeline health
+        const pipelineMini = document.getElementById('pipelineMini');
+        if (pipeline && pipeline.steps) {
+            const deduped = new Map();
+            pipeline.steps.forEach(s => {
+                const existing = deduped.get(s.name);
+                if (!existing || (s.status === 'error' && existing.status !== 'error')) {
+                    deduped.set(s.name, s);
+                }
+            });
+            const steps = Array.from(deduped.values());
+            const ok = steps.filter(s => s.status === 'ok').length;
+            const err = steps.filter(s => s.status === 'error').length;
+            
+            pipelineMini.innerHTML = steps.map(s => 
+                `<div class="pipeline-dot ${s.status === 'ok' ? 'ok' : s.status === 'error' ? 'error' : 'warn'}" title="${s.name}"></div>`
+            ).join('') + `<span class="pipeline-summary">${ok}/${steps.length} passed${err > 0 ? `, ${err} failed` : ''}</span>`;
+        } else {
+            pipelineMini.innerHTML = '<span style="color: var(--text-dim); font-size: 13px;">No pipeline data</span>';
+        }
+    }
+
+    function escapeHTML(str) {
+        if (!str) return '';
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    loadBrief();
+    </script>
+</body>
+</html>

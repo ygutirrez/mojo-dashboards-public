@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Misting Systems Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .back-link { color: #60a5fa; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; }
+    .back-link:hover { color: #93bbfc; }
+    .header { text-align: center; margin-bottom: 22px; }
+    .header h1 { font-size: 2.1rem; color: #a78bfa; margin-bottom: 6px; }
+    .updated { color: #888; font-size: 0.9rem; margin-top: 4px; }
+    .period { display: inline-block; background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; color: #ccc; margin-top: 8px; }
+
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 18px; }
+    .metric-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 12px; padding: 16px; text-align: center; }
+    .metric-card .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: #8b949e; margin-bottom: 6px; }
+    .metric-card .value { font-size: 2.0rem; font-weight: 800; }
+    .metric-card .subtext { color: #888; font-size: 0.78rem; margin-top: 6px; line-height: 1.25; }
+
+    .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 18px; margin-bottom: 18px; }
+    .chart-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 12px; padding: 18px; }
+    .chart-card h3 { color: #ddd; font-size: 1rem; margin-bottom: 12px; }
+
+    .table-section {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .table-section h3 { color: #ddd; font-size: 1rem; margin-bottom: 12px; }
+    .funnel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    .funnel-card { background: rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 14px; }
+    .funnel-card .k { color: #888; font-size: 0.78rem; margin-bottom: 6px; }
+    .funnel-card .v { font-weight: 800; font-size: 1.55rem; }
+    .note { color: #9aa3af; font-size: 0.82rem; line-height: 1.35; margin-top: 10px; }
+
+    @media (max-width: 900px) {
+      body { padding: 14px; }
+      .charts-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+
+    .footer { margin-top: 10px; color: #8b949e; font-size: 0.78rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <a href="hub.html" class="back-link">← Hub</a>
+
+  <div class="header">
+    <h1>💧 Misting Systems Dashboard</h1>
+    <div class="updated" id="updatedAt">Loading...</div>
+    <div class="period" id="period">—</div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="label">Stripe Misting Revenue (Gross, YTD)</div>
+      <div class="value" id="kpiRevenue">—</div>
+      <div class="subtext">Stripe gross charges Jan 1–Apr 27, 2026 (fees excluded)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Current Misting Customers</div>
+      <div class="value" id="kpiCustomers">—</div>
+      <div class="subtext" id="kpiRetention">Retention: —</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Misting Refills (Stops)</div>
+      <div class="value" id="kpiStops">—</div>
+      <div class="subtext" id="kpiGallons">Gallons: —</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Misting Refills Cost (Real)</div>
+      <div class="value" id="kpiCost">—</div>
+      <div class="subtext">Cost basis from chemical purchases / mix ratios</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Revenue per Refill Stop</div>
+      <div class="value" id="kpiRevPerStop">—</div>
+      <div class="subtext">Based on Stripe gross charges / misting stops</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Sales mix (misting-related services) — by service</h3>
+      <canvas id="salesMixChart" height="130"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Refills by tech — top performers</h3>
+      <canvas id="refillsTechChart" height="130"></canvas>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <h3>Customer funnel (Misting Systems) — YTD</h3>
+    <div class="funnel-grid">
+      <div class="funnel-card">
+        <div class="k">YTD Sales (new customers)</div>
+        <div class="v" id="funnelSales">—</div>
+      </div>
+      <div class="funnel-card">
+        <div class="k">YTD Cancels</div>
+        <div class="v" id="funnelCancels">—</div>
+      </div>
+      <div class="funnel-card">
+        <div class="k">Net customer change</div>
+        <div class="v" id="funnelNet">—</div>
+      </div>
+      <div class="funnel-card">
+        <div class="k">Retention model</div>
+        <div class="v" id="funnelRetention">—</div>
+      </div>
+    </div>
+    <div class="note" id="funnelNote"></div>
+  </div>
+
+  <div class="footer">Data updates from nightly sync. Revenue sourced from Stripe gross charges for this dashboard period (fees excluded).</div>
+
+  <script>
+    function fmtInt(n) {
+      const v = Number(n) || 0;
+      return v.toLocaleString();
+    }
+    function fmtMoney(n) {
+      const v = Number(n) || 0;
+      return '$' + Math.round(v).toLocaleString();
+    }
+    function fmtMoney1(n) {
+      const v = Number(n) || 0;
+      return '$' + (Math.round(v * 10) / 10).toLocaleString();
+    }
+
+    // Keep chart instances so repeated refreshes don't stack / resize endlessly
+    let salesMixChart = null;
+    let refillsTechChart = null;
+
+    async function load() {
+      try {
+        const res = await fetch('data/misting-dashboard-data.json?t=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const d = await res.json();
+        render(d);
+      } catch (e) {
+        document.body.innerHTML = '<div style="padding:30px;color:#fff;background:#000;">❌ Failed to load misting dashboard data: ' + (e.message || e) + '</div>';
+        console.error(e);
+      }
+    }
+
+    function render(d) {
+      document.getElementById('updatedAt').textContent = 'Last updated: ' + new Date(d.updated_at).toLocaleString();
+      document.getElementById('period').textContent = d.period || 'YTD';
+
+      const mist = d.misting || {};
+      const ref = d.refills || {};
+      const funnel = d.customerFunnel || {};
+      const sales = d.sales || {};
+
+      document.getElementById('kpiRevenue').textContent = fmtMoney(mist.estimatedRevenueYTD);
+      document.getElementById('kpiCustomers').textContent = fmtInt(mist.currentCustomers);
+      document.getElementById('kpiRetention').textContent = 'Retention: ' + fmtInt(mist.retentionRate) + '%';
+      document.getElementById('kpiStops').textContent = fmtInt(ref.mistingStops);
+      document.getElementById('kpiGallons').textContent = 'Gallons: ' + (Number(ref.mistingGallons || 0).toFixed(1));
+      document.getElementById('kpiCost').textContent = fmtMoney(ref.mistingCost);
+      document.getElementById('kpiRevPerStop').textContent = ref.mistingStops > 0 ? fmtMoney1(mist.revenuePerRefill) : '—';
+
+      document.getElementById('funnelSales').textContent = fmtInt(funnel.ytdSales);
+      document.getElementById('funnelCancels').textContent = fmtInt(funnel.ytdCancels);
+      document.getElementById('funnelNet').textContent = (Number(funnel.netCustomerChange) || 0) >= 0 ? ('+' + fmtInt(funnel.netCustomerChange)) : fmtInt(funnel.netCustomerChange);
+      document.getElementById('funnelRetention').textContent = fmtInt(funnel.retentionRate) + '%';
+      document.getElementById('funnelNote').textContent = funnel.note || '';
+
+      // Charts
+      const services = (sales.mistingServicesByService || []).slice();
+      const labels = services.map(x => x.service);
+      const counts = services.map(x => x.count);
+
+      const ctx1 = document.getElementById('salesMixChart');
+      // Prevent canvas from auto-resizing over repeated refreshes
+      ctx1.style.height = '130px';
+      ctx1.style.width = '100%';
+      ctx1.height = 130;
+
+      if (!salesMixChart) {
+        salesMixChart = new Chart(ctx1, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [{
+              label: 'Sales events',
+              data: counts,
+              borderColor: 'rgba(167, 139, 250, 1)',
+              backgroundColor: 'rgba(167, 139, 250, 0.15)',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 4,
+              tension: 0.25,
+              fill: false
+            }]
+          },
+          options: {
+            responsive: false,
+            animation: false,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: '#aaa', maxRotation: 0, autoSkip: true } },
+              y: { ticks: { color: '#aaa' }, beginAtZero: true }
+            }
+          }
+        });
+      } else {
+        salesMixChart.data.labels = labels;
+        salesMixChart.data.datasets[0].data = counts;
+        salesMixChart.update('none');
+      }
+
+      const techTop = (ref.byTechTop || []).slice();
+      const tLabels = techTop.map(x => x.tech);
+      const tStops = techTop.map(x => x.stops);
+
+      const ctx2 = document.getElementById('refillsTechChart');
+      // Prevent canvas from auto-resizing over repeated refreshes
+      ctx2.style.height = '130px';
+      ctx2.style.width = '100%';
+      ctx2.height = 130;
+
+      if (!refillsTechChart) {
+        refillsTechChart = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: tLabels,
+            datasets: [{
+              label: 'Misting stops',
+              data: tStops,
+              borderColor: 'rgba(34, 197, 94, 1)',
+              backgroundColor: 'rgba(34, 197, 94, 0.15)',
+              borderWidth: 2,
+              pointRadius: 3,
+              pointHoverRadius: 4,
+              tension: 0.25,
+              fill: false
+            }]
+          },
+          options: {
+            responsive: false,
+            animation: false,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: '#aaa', maxRotation: 0, autoSkip: true } },
+              y: { ticks: { color: '#aaa' }, beginAtZero: true }
+            }
+          }
+        });
+      } else {
+        refillsTechChart.data.labels = tLabels;
+        refillsTechChart.data.datasets[0].data = tStops;
+        refillsTechChart.update('none');
+      }
+    }
+
+    load();
+    setInterval(load, 5 * 60 * 1000);
+  </script>
+</body>
+</html>

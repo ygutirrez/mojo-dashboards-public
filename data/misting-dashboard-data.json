@@ -1,0 +1,76 @@
+{
+  "updated_at": "2026-04-28T08:43:05.634Z",
+  "period": "Jan 1 - Apr 28, 2026 (YTD)",
+  "meta": {
+    "source_files": {
+      "sales": "sales-kpi-data.json",
+      "clv": "clv-data.json",
+      "chemical": "chemical-data.json"
+    }
+  },
+  "misting": {
+    "currentCustomers": 166,
+    "visitsPerYear": 4,
+    "avgPricePerVisit": 175,
+    "retentionRate": 100,
+    "ytdSales": 29,
+    "ytdCancels": 10,
+    "annualRevenuePerCustomer": 700,
+    "estimatedAnnualRevenueRunRate": 116200,
+    "estimatedRevenueYTD": 37566.02739726027,
+    "revenuePerRefill": 124.80407773176171,
+    "revenueRunRateNote": "Revenue estimate is run-rate based on current misting customers and avg price per visit from CLV. Marked as estimate (not QuickBooks line-item revenue)."
+  },
+  "sales": {
+    "mistingProgramSalesFromSalesKPI": 29,
+    "mistingServiceEventsTotal": 11,
+    "mistingServicesByService": [
+      {
+        "service": "Misting System Service",
+        "count": 8
+      },
+      {
+        "service": "Misting system - 6 Weeks",
+        "count": 1
+      },
+      {
+        "service": "Misting System Recurring Service Bi-Monthly",
+        "count": 1
+      },
+      {
+        "service": "Misting system - 4 Weeks",
+        "count": 1
+      }
+    ]
+  },
+  "refills": {
+    "mistingStops": 301,
+    "mistingGallons": 111,
+    "mistingCost": 10812.789999999999,
+    "byTechTop": [
+      {
+        "tech": "Joseph Pagan",
+        "stops": 300,
+        "gallons": 109,
+        "cost": 10812.07
+      },
+      {
+        "tech": "Stanley Prophete",
+        "stops": 1,
+        "gallons": 2,
+        "cost": 0.72
+      }
+    ]
+  },
+  "customerFunnel": {
+    "ytdSales": 29,
+    "ytdCancels": 10,
+    "netCustomerChange": 19,
+    "retentionRate": 100,
+    "currentCustomers": 166,
+    "note": "YTD Sales/Cancels and retention come from the CLV model (customer lifecycle), not invoice line items."
+  },
+  "insights": {
+    "refillCoverage": 1.8132530120481927
+  }
+}

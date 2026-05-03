@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Command Center</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 24px rgba(255, 107, 53, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #8892a4;
+            font-size: 1.05rem;
+            margin-top: 8px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            padding-left: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: var(--accent-bg);
+        }
+
+        .card-badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #8892a4;
+        }
+
+        .card-badge.live {
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+        }
+
+        .card-badge.building {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+
+        .card-badge.tv {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #8892a4;
+            line-height: 1.5;
+        }
+
+        .card-metrics {
+            display: flex;
+            gap: 16px;
+            margin-top: 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-metric {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .card-metric strong {
+            color: #d1d5db;
+            font-weight: 600;
+        }
+
+        .card-data-date {
+            width: 100%;
+            font-size: 0.7rem;
+            color: #4b5563;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: 4px;
+        }
+        .card-data-date .fresh { color: #34d399; }
+        .card-data-date .stale { color: #fbbf24; }
+
+        .coming-soon {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .coming-soon .card-badge {
+            background: rgba(255, 255, 255, 0.04);
+            color: #4b5563;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
+        .footer span {
+            color: #ffd700;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 48px;
+            padding: 24px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 16px; }
+            .header h1 { font-size: 1.6rem; }
+            .grid { grid-template-columns: 1fr; }
+            .quick-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">🦟</div>
+                <div>
+                    <h1>MoJo <span>Command Center</span></h1>
+                    <p>Mosquito Joe of Miami — Business Intelligence</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-stats" id="quickStats">
+            <div class="stat-item">
+                <div class="stat-value" id="totalDashboards">7</div>
+                <div class="stat-label">Dashboards</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="dataSources">4</div>
+                <div class="stat-label">Data Sources</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">Daily</div>
+                <div class="stat-label">Auto-Refresh</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Monitoring</div>
+            </div>
+        </div>
+
+        <!-- BUSINESS PERFORMANCE -->
+        <div class="section-label">📊 Business Performance</div>
+        <div class="grid">
+
+            <a href="owners-dashboard.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">👑</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Owner's Dashboard</h3>
+                <p>High-level business overview. Revenue, customer counts, and key business health metrics at a glance.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="servsuite"></span></div>
+                </div>
+            </a>
+
+            <a href="sales-kpi-dashboard.html" class="card" style="--accent: #34d399; --accent-bg: rgba(52, 211, 153, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">💰</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Sales & Retention KPIs</h3>
+                <p>Sales vs cancels, CSR performance breakdown, cancel reasons, net customer growth, and retention rate.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite → Power Automate</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily 7:30 AM</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+            <a href="dashboard.html" class="card" style="--accent: #60a5fa; --accent-bg: rgba(96, 165, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Main Dashboard</h3>
+                <p>Combined business metrics, trends, and operational data in one comprehensive view.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Multiple</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="main"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- OPERATIONS -->
+        <div class="section-label">🔧 Operations</div>
+        <div class="grid">
+
+            <a href="operations-dashboard.html" class="card" style="--accent: #f97316; --accent-bg: rgba(249, 115, 22, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">⚙️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Operations</h3>
+                <p>Daily ops overview. Work orders, route efficiency, scheduling, and operational health.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Zubie</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily 6 AM</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="ops"></span></div>
+                </div>
+            </a>
+
+            <a href="tech-dashboard.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🛠️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Tech Performance & Fleet</h3>
+                <p>Technician stats, Google reviews by tech, fleet safety scores, vehicle tracking via Zubie.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Zubie API + Google Reviews</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="tech"></span></div>
+                </div>
+            </a>
+
+            <a href="sales-kpi-tv.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📺</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>Office TV Display</h3>
+                <p>Auto-rotating sales KPIs optimized for wall-mounted TV. Large fonts, dark mode, no interaction needed.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Fire TV Stick</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- MARKETING & SOCIAL -->
+        <div class="section-label">📣 Marketing & Social</div>
+        <div class="grid">
+
+            <a href="social-media-dashboard.html" class="card" style="--accent: #ec4899; --accent-bg: rgba(236, 72, 153, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📱</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Social Media</h3>
+                <p>YouTube channel analytics, subscriber growth, video performance, and social media presence tracking.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> YouTube API</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="social"></span></div>
+                </div>
+            </a>
+
+            <a href="marketing-dashboard.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge building">Coming Soon</span>
+                </div>
+                <h3>Marketing Performance</h3>
+                <p>Paid ads across all channels. Google Ads, Facebook, NextDoor. Spend, CPL, CPA, ROAS, optimization alerts.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Google Ads + Meta + GHL</div>
+                    <div class="card-metric"><strong>Status:</strong> Awaiting access</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="marketing"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            <p>Built by <span>MoJoe</span> 🫡 — Powered by MoJo data, updated automatically</p>
+            <p style="margin-top: 8px;">Last updated: <span id="lastUpdate"></span></p>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        // Data pull timestamps — populated by sync script or fetched from data files
+        const dataPullDates = {
+            servsuite: null,
+            sales: null,
+            main: null,
+            ops: null,
+            tech: null,
+            social: null,
+            marketing: null
+        };
+
+        function formatTs(d) {
+            if (!d) return '—';
+            const date = new Date(d);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHrs = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            const formatted = date.toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric'
+            }) + ' ' + date.toLocaleTimeString('en-US', {
+                hour: 'numeric', minute: '2-digit'
+            });
+
+            let freshness = '';
+            if (diffHrs < 12) {
+                freshness = ' <span class="fresh">● Fresh</span>';
+            } else if (diffDays > 3) {
+                freshness = ' <span class="stale">● ' + diffDays + 'd ago</span>';
+            }
+
+            return formatted + freshness;
+        }
+
+        // Try to load ops-data.json for ops timestamp
+        fetch('ops-data.json').then(r => r.json()).then(data => {
+            if (data.updated_at) {
+                dataPullDates.ops = data.updated_at;
+                dataPullDates.tech = data.updated_at; // same source
+                dataPullDates.servsuite = data.updated_at; // servsuite synced at same time
+                renderTimestamps();
+            }
+        }).catch(() => {});
+
+        // Try to load dashboard-data.json for main dashboard timestamp
+        fetch('../Users/ygutierrez/clawd/projects/mojo-dashboard/dashboard-data.json')
+            .catch(() => fetch('dashboard-data.json'))
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+                if (data && data.generated_at) {
+                    dataPullDates.main = data.generated_at;
+                    renderTimestamps();
+                }
+            }).catch(() => {});
+
+        // Fallback: use file-embedded timestamps (set by sync script)
+        const embeddedTimestamps = {"ops": "2026-02-13T11:00:47.057Z", "tech": "2026-02-13T11:00:47.057Z", "servsuite": "2026-02-13T11:00:47.057Z", "sales": "2026-02-12T07:31:27.919046", "main": "2026-02-13T05:00:53.735253", "social": "2026-02-09T23:00:59.404335", "marketing": null};
+        if (embeddedTimestamps) {
+            Object.assign(dataPullDates, embeddedTimestamps);
+        }
+
+        function renderTimestamps() {
+            document.querySelectorAll('.data-ts').forEach(el => {
+                const source = el.dataset.source;
+                el.innerHTML = formatTs(dataPullDates[source]);
+            });
+        }
+
+        // Initial render after a tick (let fetches settle)
+        setTimeout(renderTimestamps, 500);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

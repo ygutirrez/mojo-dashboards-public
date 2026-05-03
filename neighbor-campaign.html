@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>🏘️ Neighbor Campaign Intelligence — MoJo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e1a;
+            color: #e0e6f0;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 32px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header h1 span { color: #38bdf8; }
+        .header .subtitle { color: #64748b; font-size: 0.95rem; }
+        .header .season-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        .season-high { background: #dc262620; color: #f87171; border: 1px solid #dc262640; }
+        .season-low { background: #3b82f620; color: #60a5fa; border: 1px solid #3b82f640; }
+
+        /* Hero KPIs */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .kpi-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 8px; }
+        .kpi-card .value { font-size: 1.8rem; font-weight: 700; }
+        .kpi-card .sub { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+        .kpi-card.highlight { border-color: #38bdf840; }
+        .kpi-card.highlight .value { color: #38bdf8; }
+        .kpi-card.success .value { color: #34d399; }
+        .kpi-card.warning .value { color: #fbbf24; }
+
+        /* Section headers */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .emoji { font-size: 1.4rem; }
+
+        /* Campaign Phases */
+        .phases { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+        .phase-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            border-left: 4px solid;
+        }
+        .phase-card.phase-1 { border-left-color: #f59e0b; }
+        .phase-card.phase-2 { border-left-color: #8b5cf6; }
+        .phase-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+        .phase-card .phase-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 4px; }
+        .phase-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0; }
+        .phase-stat { background: #0f172a; border-radius: 8px; padding: 10px; text-align: center; }
+        .phase-stat .v { font-size: 1.2rem; font-weight: 700; }
+        .phase-stat .l { font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
+        .phase-zips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .zip-tag {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+        .channels { margin-top: 12px; }
+        .channels li { font-size: 0.85rem; color: #94a3b8; margin-left: 16px; line-height: 1.8; }
+
+        /* ZIP Table */
+        .table-container {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        thead th {
+            background: #0f172a;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+        thead th.sortable { cursor: pointer; }
+        thead th.sortable:hover { color: #38bdf8; }
+        thead th.sorted-asc::after { content: ' ▲'; color: #38bdf8; }
+        thead th.sorted-desc::after { content: ' ▼'; color: #38bdf8; }
+        tbody td {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            white-space: nowrap;
+        }
+        tbody tr:hover { background: rgba(56, 189, 248, 0.05); }
+        .tier-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .tier-1 { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b40; }
+        .tier-2 { background: #8b5cf620; color: #a78bfa; border: 1px solid #8b5cf640; }
+        .tier-3 { background: #64748b20; color: #94a3b8; border: 1px solid #64748b40; }
+        .tier-4 { background: #1e293b; color: #475569; border: 1px solid #334155; }
+
+        /* Score bar */
+        .score-bar-container { display: flex; align-items: center; gap: 8px; }
+        .score-bar {
+            flex: 1;
+            height: 6px;
+            background: #0f172a;
+            border-radius: 3px;
+            overflow: hidden;
+            max-width: 80px;
+        }
+        .score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+        /* Clusters */
+        .clusters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .cluster-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .cluster-card h4 { font-size: 1rem; margin-bottom: 8px; }
+        .cluster-stats { display: flex; gap: 16px; margin: 12px 0; }
+        .cluster-stat { text-align: center; }
+        .cluster-stat .v { font-size: 1.3rem; font-weight: 700; color: #38bdf8; }
+        .cluster-stat .l { font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
+
+        /* Postcard Preview */
+        .postcard-preview {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 16px;
+            padding: 32px;
+            color: #1e293b;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .postcard-preview::before {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px;
+            width: 120px; height: 120px;
+            background: rgba(245, 158, 11, 0.2);
+            border-radius: 50%;
+        }
+        .postcard-preview h3 { font-size: 1.5rem; font-weight: 800; color: #92400e; margin-bottom: 8px; }
+        .postcard-preview .subhead { font-size: 1.1rem; color: #b45309; margin-bottom: 16px; }
+        .postcard-features { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+        .postcard-feature {
+            background: rgba(255,255,255,0.6);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .postcard-cta {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 12px;
+        }
+
+        /* Digital Strategy */
+        .digital-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .digital-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .digital-card h4 { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .digital-card .strategy { font-size: 0.85rem; color: #94a3b8; margin-bottom: 12px; }
+        .digital-card .detail { font-size: 0.8rem; color: #64748b; line-height: 1.6; }
+        .digital-card .budget { font-size: 0.95rem; font-weight: 600; color: #34d399; margin-top: 8px; }
+
+        /* Tracking */
+        .tracking-list { list-style: none; }
+        .tracking-list li {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-family: 'SF Mono', Monaco, Consolas, monospace;
+            color: #94a3b8;
+            border-left: 3px solid #38bdf8;
+        }
+
+        /* Goal gap analysis */
+        .gap-visual {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        .gap-bar {
+            height: 32px;
+            background: #0f172a;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            margin: 16px 0;
+        }
+        .gap-segment {
+            height: 100%;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: width 0.5s;
+        }
+        .gap-current { background: linear-gradient(90deg, #34d399, #10b981); color: #064e3b; }
+        .gap-campaign { background: linear-gradient(90deg, #38bdf8, #0ea5e9); color: #0c4a6e; }
+        .gap-remaining { background: #1e293b; color: #64748b; }
+        .gap-labels { display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b; }
+        .gap-legend { display: flex; gap: 20px; margin-top: 12px; font-size: 0.8rem; }
+        .gap-legend-item { display: flex; align-items: center; gap: 6px; }
+        .gap-legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+        /* Filter bar */
+        .filter-bar {
+            display: flex; gap: 12px; flex-wrap: wrap;
+            margin-bottom: 16px; align-items: center;
+        }
+        .filter-bar select, .filter-bar input {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #e0e6f0;
+            font-size: 0.85rem;
+        }
+        .filter-bar label { font-size: 0.8rem; color: #64748b; }
+
+        /* Nav link */
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        .nav-back:hover { color: #38bdf8; }
+
+        .timestamp {
+            text-align: center;
+            padding: 24px;
+            color: #475569;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .phases { grid-template-columns: 1fr; }
+            .hero-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="hub.html" class="nav-back">← Back to Hub</a>
+
+        <div class="header">
+            <h1>🏘️ <span>Neighbor Campaign</span> Intelligence</h1>
+            <p class="subtitle">Data-driven targeting for postcard + digital campaigns around existing customers</p>
+            <div id="season-badge" class="season-badge"></div>
+        </div>
+
+        <!-- Hero KPIs -->
+        <div class="hero-grid" id="hero-kpis"></div>
+
+        <!-- Goal Gap Analysis -->
+        <div class="section-title"><span class="emoji">🎯</span> Goal Gap Analysis</div>
+        <div class="gap-visual" id="gap-visual"></div>
+
+        <!-- Campaign Phases -->
+        <div class="section-title"><span class="emoji">🚀</span> Campaign Phases</div>
+        <div class="phases" id="phases"></div>
+
+        <!-- Clusters -->
+        <div class="section-title"><span class="emoji">📍</span> Geographic Clusters</div>
+        <div class="clusters-grid" id="clusters"></div>
+
+        <!-- ZIP Analysis Table -->
+        <div class="section-title"><span class="emoji">📊</span> ZIP Code Analysis</div>
+        <div class="filter-bar">
+            <label>Tier:</label>
+            <select id="tier-filter">
+                <option value="all">All Tiers</option>
+                <option value="1">Tier 1 — Launch First</option>
+                <option value="2">Tier 2 — Strong</option>
+                <option value="3">Tier 3 — Secondary</option>
+                <option value="4">Tier 4 — Monitor</option>
+            </select>
+            <label>Min Customers:</label>
+            <input type="number" id="min-customers" value="5" min="0" max="500" style="width: 70px;">
+        </div>
+        <div class="table-container">
+            <table id="zip-table">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-col="zip">ZIP</th>
+                        <th class="sortable" data-col="neighborhood">Neighborhood</th>
+                        <th class="sortable" data-col="activeCustomers">Customers</th>
+                        <th class="sortable" data-col="saturation">Saturation</th>
+                        <th class="sortable" data-col="cancelEvents">Cancels</th>
+                        <th class="sortable" data-col="neighborScore">Score</th>
+                        <th>Tier</th>
+                        <th class="sortable" data-col="estimatedNewCustomers">Est. New</th>
+                        <th class="sortable" data-col="estimatedROI">Est. ROI</th>
+                    </tr>
+                </thead>
+                <tbody id="zip-tbody"></tbody>
+            </table>
+        </div>
+
+        <div style="margin: 12px 0 24px; text-align: right;">
+            <a href="data/neighbor-campaign-zip-targets.csv" style="color:#38bdf8;text-decoration:none;font-weight:600;">Download ZIP Targets CSV</a>
+        </div>
+
+        <!-- Postcard Preview -->
+        <div class="section-title"><span class="emoji">📬</span> Postcard Design Guide</div>
+        <div class="postcard-preview" id="postcard"></div>
+
+        <!-- Digital Strategy -->
+        <div class="section-title"><span class="emoji">📱</span> Digital Targeting Strategy</div>
+        <div class="digital-grid" id="digital-strategy"></div>
+
+        <!-- Tracking Setup -->
+        <div class="section-title"><span class="emoji">📈</span> Campaign Tracking</div>
+        <ul class="tracking-list" id="tracking"></ul>
+
+        <div class="timestamp" id="timestamp"></div>
+    </div>
+
+    <script>
+    (async function() {
+        const resp = await fetch('data/neighbor-campaign-data.json');
+        const data = await resp.json();
+        const s = data.summary;
+
+        // Season badge
+        document.getElementById('season-badge').className = 'season-badge ' + (s.isHighSeason ? 'season-high' : 'season-low');
+        document.getElementById('season-badge').textContent = s.seasonNote;
+
+        // Hero KPIs
+        const kpis = [
+            { label: 'ZIPs Analyzed', value: s.totalZipsAnalyzed, sub: `${s.tier1ZipCount} Tier 1, ${s.tier2ZipCount} Tier 2`, cls: '' },
+            { label: 'Active Customers', value: s.totalActiveCustomers.toLocaleString(), sub: `Goal: ${s.customerGoal.toLocaleString()}`, cls: '' },
+            { label: 'Est. New Customers', value: s.totalEstimatedNewCustomers.toLocaleString(), sub: `${s.campaignGapClosure}% of gap to goal`, cls: 'highlight' },
+            { label: 'Est. First-Year Revenue', value: '$' + s.totalEstimatedFirstYearRevenue.toLocaleString(), sub: 'from campaign', cls: 'success' },
+            { label: 'Campaign Cost', value: '$' + s.totalCampaignCost.toLocaleString(), sub: 'postcards + digital', cls: '' },
+            { label: 'Overall ROI', value: s.overallROI + '%', sub: 'estimated return', cls: 'success' },
+        ];
+        document.getElementById('hero-kpis').innerHTML = kpis.map(k => `
+            <div class="kpi-card ${k.cls}">
+                <div class="label">${k.label}</div>
+                <div class="value">${k.value}</div>
+                <div class="sub">${k.sub}</div>
+            </div>
+        `).join('');
+
+        // Goal gap
+        const currentPct = (s.currentCustomers / s.customerGoal * 100).toFixed(1);
+        const campaignPct = (s.totalEstimatedNewCustomers / s.customerGoal * 100).toFixed(1);
+        const remainPct = Math.max(0, 100 - parseFloat(currentPct) - parseFloat(campaignPct)).toFixed(1);
+        document.getElementById('gap-visual').innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px;">
+                <div><span style="font-size:1.5rem;font-weight:700;">${s.currentCustomers.toLocaleString()}</span>
+                <span style="color:#64748b;font-size:0.85rem;"> → ${(s.currentCustomers + s.totalEstimatedNewCustomers).toLocaleString()} with campaign</span></div>
+                <div style="font-size:1.5rem;font-weight:700;color:#fbbf24;">${s.customerGoal.toLocaleString()} goal</div>
+            </div>
+            <div class="gap-bar">
+                <div class="gap-segment gap-current" style="width:${currentPct}%">${s.currentCustomers.toLocaleString()}</div>
+                <div class="gap-segment gap-campaign" style="width:${campaignPct}%">+${s.totalEstimatedNewCustomers}</div>
+                <div class="gap-segment gap-remaining" style="width:${remainPct}%">${(s.gapToGoal - s.totalEstimatedNewCustomers).toLocaleString()}</div>
+            </div>
+            <div class="gap-legend">
+                <div class="gap-legend-item"><div class="gap-legend-dot" style="background:#34d399"></div>Current Customers</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot" style="background:#38bdf8"></div>Neighbor Campaign Impact</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot" style="background:#334155"></div>Remaining Gap</div>
+            </div>
+        `;
+
+        // Campaign Phases
+        const phaseColors = ['phase-1', 'phase-2'];
+        document.getElementById('phases').innerHTML = data.campaignPhases.map((p, i) => `
+            <div class="phase-card ${phaseColors[i]}">
+                <div class="phase-label">Phase ${p.phase} — ${p.timeline}</div>
+                <h3>${p.name}</h3>
+                <div class="phase-stats">
+                    <div class="phase-stat"><div class="v">${p.zips.length}</div><div class="l">ZIPs</div></div>
+                    <div class="phase-stat"><div class="v">${p.estimatedReach.toLocaleString()}</div><div class="l">Reach</div></div>
+                    <div class="phase-stat"><div class="v">${p.estimatedNewCustomers}</div><div class="l">Est. New</div></div>
+                    <div class="phase-stat"><div class="v">$${p.estimatedCost.toLocaleString()}</div><div class="l">Cost</div></div>
+                </div>
+                <div class="phase-zips">${p.zips.map(z => `<span class="zip-tag">${z}</span>`).join('')}</div>
+                <div style="font-size:0.85rem;color:#94a3b8;margin-top:12px;font-style:italic;">"${p.messaging}"</div>
+                <ul class="channels">${p.channels.map(c => `<li>${c}</li>`).join('')}</ul>
+            </div>
+        `).join('');
+
+        // Clusters
+        document.getElementById('clusters').innerHTML = data.clusters.map(c => `
+            <div class="cluster-card">
+                <h4>📍 ${c.name}</h4>
+                <div class="phase-zips">${c.zips.map(z => `<span class="zip-tag">${z}</span>`).join('')}</div>
+                <div class="cluster-stats">
+                    <div class="cluster-stat"><div class="v">${c.totalCustomers}</div><div class="l">Customers</div></div>
+                    <div class="cluster-stat"><div class="v">${c.avgNeighborScore}</div><div class="l">Avg Score</div></div>
+                    <div class="cluster-stat"><div class="v">${c.combinedReach.toLocaleString()}</div><div class="l">Reach</div></div>
+                    <div class="cluster-stat"><div class="v">${c.combinedEstimate}</div><div class="l">Est. New</div></div>
+                </div>
+            </div>
+        `).join('');
+
+        // ZIP Table
+        let sortCol = 'neighborScore', sortDir = 'desc';
+        function renderTable() {
+            const tierFilter = document.getElementById('tier-filter').value;
+            const minCust = parseInt(document.getElementById('min-customers').value) || 0;
+            let rows = data.zipAnalysis.filter(z => {
+                if (tierFilter !== 'all') {
+                    const tierNum = z.tier.match(/Tier (\d)/)?.[1];
+                    if (tierNum !== tierFilter) return false;
+                }
+                if (z.activeCustomers < minCust) return false;
+                return true;
+            });
+
+            rows.sort((a, b) => {
+                let va = a[sortCol], vb = b[sortCol];
+                if (sortCol === 'estimatedNewCustomers') { va = a.campaign.estimatedNewCustomers; vb = b.campaign.estimatedNewCustomers; }
+                if (sortCol === 'estimatedROI') { va = a.campaign.estimatedROI; vb = b.campaign.estimatedROI; }
+                if (typeof va === 'string') return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+                return sortDir === 'asc' ? va - vb : vb - va;
+            });
+
+            const maxScore = Math.max(...data.zipAnalysis.map(z => z.neighborScore));
+            document.getElementById('zip-tbody').innerHTML = rows.map(z => {
+                const tierNum = z.tier.match(/Tier (\d)/)?.[1] || '4';
+                const scorePct = (z.neighborScore / maxScore * 100).toFixed(0);
+                const barColor = z.neighborScore >= 8 ? '#f59e0b' : z.neighborScore >= 5 ? '#8b5cf6' : '#64748b';
+                return `<tr>
+                    <td style="font-family:monospace;font-weight:600;">${z.zip}</td>
+                    <td>${z.neighborhood}</td>
+                    <td style="font-weight:600;">${z.activeCustomers}</td>
+                    <td>${z.saturation.toFixed(2)}%</td>
+                    <td style="color:${z.cancelEvents > 10 ? '#f87171' : '#94a3b8'}">${z.cancelEvents}</td>
+                    <td>
+                        <div class="score-bar-container">
+                            <span style="font-weight:700;min-width:28px;">${z.neighborScore}</span>
+                            <div class="score-bar"><div class="score-bar-fill" style="width:${scorePct}%;background:${barColor}"></div></div>
+                        </div>
+                    </td>
+                    <td><span class="tier-badge tier-${tierNum}">${z.tier.split(' — ')[0]}</span></td>
+                    <td style="font-weight:600;color:#38bdf8;">${z.campaign.estimatedNewCustomers}</td>
+                    <td style="color:#34d399;font-weight:600;">${z.campaign.estimatedROI}%</td>
+                </tr>`;
+            }).join('');
+
+            // Update sort indicators
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                if (th.dataset.col === sortCol) th.classList.add('sorted-' + sortDir);
+            });
+        }
+
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                if (sortCol === th.dataset.col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                else { sortCol = th.dataset.col; sortDir = 'desc'; }
+                renderTable();
+            });
+        });
+        document.getElementById('tier-filter').addEventListener('change', renderTable);
+        document.getElementById('min-customers').addEventListener('input', renderTable);
+        renderTable();
+
+        // Postcard
+        const pc = data.postcardDesign;
+        document.getElementById('postcard').innerHTML = `
+            <h3>${pc.headline}</h3>
+            <p class="subhead">${pc.subhead}</p>
+            <div class="postcard-features">
+                <span class="postcard-feature">✅ ${pc.socialProof}</span>
+                <span class="postcard-feature">🎁 ${pc.offer}</span>
+                <span class="postcard-feature">⏰ ${pc.urgency}</span>
+                <span class="postcard-feature">📱 QR Code to Book</span>
+            </div>
+            <div class="postcard-cta">${pc.cta}</div>
+        `;
+
+        // Digital Strategy
+        const platformIcons = { 'Facebook / Instagram': '📘', 'Google Display + Search': '🔍', 'Nextdoor': '🏡' };
+        document.getElementById('digital-strategy').innerHTML = data.digitalTargeting.platforms.map(p => `
+            <div class="digital-card">
+                <h4>${platformIcons[p.name] || '📱'} ${p.name}</h4>
+                <p class="strategy">${p.strategy}</p>
+                <p class="detail"><strong>Audience:</strong> ${p.audience}</p>
+                <p class="detail"><strong>Formats:</strong> ${p.adFormats.join(', ')}</p>
+                <p class="budget">${p.budget}</p>
+            </div>
+        `).join('');
+
+        // Tracking
+        document.getElementById('tracking').innerHTML = data.digitalTargeting.trackingSetup.map(t =>
+            `<li>${t}</li>`
+        ).join('');
+
+        // Timestamp
+        const ts = new Date(data.generated_at);
+        document.getElementById('timestamp').textContent = `Last updated: ${ts.toLocaleString('en-US', { timeZone: 'America/New_York' })}`;
+    })();
+    </script>
+</body>
+</html>

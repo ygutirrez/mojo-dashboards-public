@@ -1,0 +1,417 @@
+{
+  "generated_at": "2026-04-23T17:28:19.283Z",
+  "title": "Sales Data Reconciliation",
+  "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
+  "csvSource": {
+    "file": "sales-data-2026-04-23.csv",
+    "date": "2026-04-23",
+    "totalSales": 193,
+    "totalCancels": 143,
+    "net": 50,
+    "upsells": 6,
+    "csrs": [
+      {
+        "name": "Lucy",
+        "sales": 87,
+        "cancels": 33
+      },
+      {
+        "name": "Norma",
+        "sales": 79,
+        "cancels": 63
+      },
+      {
+        "name": "Bev",
+        "sales": 27,
+        "cancels": 47
+      }
+    ],
+    "weekly": [
+      {
+        "week": "2026-01-05",
+        "sales": 0,
+        "cancels": 10
+      },
+      {
+        "week": "2026-01-12",
+        "sales": 7,
+        "cancels": 7
+      },
+      {
+        "week": "2026-01-19",
+        "sales": 1,
+        "cancels": 13
+      },
+      {
+        "week": "2026-01-26",
+        "sales": 4,
+        "cancels": 9
+      },
+      {
+        "week": "2026-02-02",
+        "sales": 3,
+        "cancels": 7
+      },
+      {
+        "week": "2026-02-09",
+        "sales": 3,
+        "cancels": 13
+      },
+      {
+        "week": "2026-02-16",
+        "sales": 3,
+        "cancels": 5
+      },
+      {
+        "week": "2026-02-23",
+        "sales": 6,
+        "cancels": 11
+      },
+      {
+        "week": "2026-03-02",
+        "sales": 14,
+        "cancels": 12
+      },
+      {
+        "week": "2026-03-09",
+        "sales": 15,
+        "cancels": 10
+      },
+      {
+        "week": "2026-03-16",
+        "sales": 16,
+        "cancels": 8
+      },
+      {
+        "week": "2026-03-23",
+        "sales": 19,
+        "cancels": 16
+      },
+      {
+        "week": "2026-03-30",
+        "sales": 32,
+        "cancels": 4
+      },
+      {
+        "week": "2026-04-06",
+        "sales": 21,
+        "cancels": 5
+      },
+      {
+        "week": "2026-04-13",
+        "sales": 31,
+        "cancels": 6
+      },
+      {
+        "week": "2026-04-20",
+        "sales": 17,
+        "cancels": 6
+      }
+    ]
+  },
+  "servSuiteSource": {
+    "date": "2026-04-23T17:28:05.963Z",
+    "totalSales": 207,
+    "totalSaleValue": 195996,
+    "totalRevenue": 778248,
+    "totalInvoices": 8042,
+    "totalCancelEvents": 441,
+    "uniqueCancels": 134,
+    "recoverableCancels": 121
+  },
+  "reconciliation": {
+    "discrepancies": [
+      {
+        "metric": "Sales Count",
+        "csv": 193,
+        "servSuite": 207,
+        "gap": 14,
+        "gapPct": 7,
+        "severity": "medium",
+        "explanation": "ServSuite shows 14 more sales than CSR tracking. CSRs may miss logging some sales, or ServSuite counts program upgrades as new sales."
+      },
+      {
+        "metric": "Cancel Events",
+        "csv": 143,
+        "servSuite": 441,
+        "servSuiteUnique": 134,
+        "gap": 298,
+        "severity": "info",
+        "explanation": "ServSuite records ALL cancel events (441 events, 134 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (143). These are fundamentally different counts."
+      },
+      {
+        "metric": "Revenue (YTD)",
+        "csv": "Not tracked",
+        "servSuite": 778248,
+        "gap": null,
+        "severity": "info",
+        "explanation": "Revenue is only tracked in ServSuite via invoices. $778,248 from 8,042 invoices. The Office Tracking CSV does not capture revenue amounts."
+      }
+    ],
+    "cancelReasonComparison": {
+      "csv": [
+        {
+          "name": "Paused/WP",
+          "count": 41
+        },
+        {
+          "name": "Moved",
+          "count": 37
+        },
+        {
+          "name": "Not Interested",
+          "count": 14
+        },
+        {
+          "name": "Financial",
+          "count": 13
+        },
+        {
+          "name": "One Time",
+          "count": 11
+        },
+        {
+          "name": "Bad Debt",
+          "count": 9
+        },
+        {
+          "name": "Unhappy",
+          "count": 8
+        },
+        {
+          "name": "Went w/Competitor",
+          "count": 5
+        }
+      ],
+      "servSuite": [
+        {
+          "name": "Moved",
+          "count": 138
+        },
+        {
+          "name": "Financial Reasons",
+          "count": 57
+        },
+        {
+          "name": "Not Interested at this time",
+          "count": 55
+        },
+        {
+          "name": "Bad Debt",
+          "count": 53
+        },
+        {
+          "name": "Other - Review Note",
+          "count": 43
+        },
+        {
+          "name": "Unhappy w Service",
+          "count": 33
+        },
+        {
+          "name": "Went w Competition",
+          "count": 23
+        },
+        {
+          "name": "Customer only wanted one spray",
+          "count": 15
+        },
+        {
+          "name": "Unknown",
+          "count": 14
+        },
+        {
+          "name": "Change of Program",
+          "count": 9
+        }
+      ],
+      "note": "CSV uses simplified categories (Paused/WP, Moved, etc.). ServSuite has granular reasons. Direct comparison is approximate."
+    },
+    "salesComparison": {
+      "csvCategories": [
+        {
+          "name": "Restart",
+          "count": 64
+        },
+        {
+          "name": "Barrier Spray",
+          "count": 55
+        },
+        {
+          "name": "Event Spray",
+          "count": 25
+        },
+        {
+          "name": "Noseeum",
+          "count": 10
+        },
+        {
+          "name": "Misting System",
+          "count": 9
+        },
+        {
+          "name": "One Time",
+          "count": 7
+        },
+        {
+          "name": "Bundle - HPD/Barrier",
+          "count": 7
+        },
+        {
+          "name": "Fleas/Ticks",
+          "count": 4
+        },
+        {
+          "name": "HPD  (Indoor)",
+          "count": 3
+        },
+        {
+          "name": "MS Takeover",
+          "count": 3
+        },
+        {
+          "name": "Barrier Spray + Flea",
+          "count": 2
+        },
+        {
+          "name": "Mosquito/PP",
+          "count": 1
+        },
+        {
+          "name": "Perimeter Pest",
+          "count": 1
+        },
+        {
+          "name": "New",
+          "count": 1
+        },
+        {
+          "name": "Rodent Station",
+          "count": 1
+        }
+      ],
+      "servSuitePrograms": [
+        {
+          "name": "Signature Program",
+          "count": 122
+        },
+        {
+          "name": "Misting Systems",
+          "count": 26
+        },
+        {
+          "name": "Residential - One Time Services",
+          "count": 16
+        },
+        {
+          "name": "Home Pest Defense",
+          "count": 16
+        },
+        {
+          "name": "Residential Service",
+          "count": 10
+        },
+        {
+          "name": "Other Insects / Specialty Services",
+          "count": 8
+        },
+        {
+          "name": "Barrier Spray Program - 1 week",
+          "count": 4
+        },
+        {
+          "name": "Flea & Tick Treatment",
+          "count": 2
+        },
+        {
+          "name": "In2Care ",
+          "count": 1
+        },
+        {
+          "name": "Inzecto Traps",
+          "count": 1
+        }
+      ],
+      "servSuiteSources": [
+        {
+          "name": "Online",
+          "count": 89
+        },
+        {
+          "name": "MoJo Customer",
+          "count": 57
+        },
+        {
+          "name": "Referral",
+          "count": 36
+        },
+        {
+          "name": "Yard Sign",
+          "count": 13
+        },
+        {
+          "name": "Online Search",
+          "count": 6
+        },
+        {
+          "name": "Mass Media",
+          "count": 1
+        },
+        {
+          "name": "Direct Mail Postcard",
+          "count": 1
+        },
+        {
+          "name": "Advertising",
+          "count": 1
+        },
+        {
+          "name": "Printed Material",
+          "count": 1
+        },
+        {
+          "name": "Mosquito Joe Vehicle",
+          "count": 1
+        }
+      ],
+      "note": "CSV tracks sale type (Standard, Misting System, etc.). ServSuite tracks both program and lead source independently."
+    }
+  },
+  "insights": [
+    {
+      "priority": "high",
+      "title": "CSR tracking misses sales",
+      "detail": "14 sales (7%) in ServSuite are not reflected in CSR tracking. This means the daily sales count Yoel sees is underreported. Possible causes: techs closing sales in the field (not logged by CSRs), online self-service activations, or program upgrades counted as new sales in ServSuite.",
+      "action": "Audit the sales gap — pull ServSuite new customer list and cross-reference with CSR log to find the missing entries."
+    },
+    {
+      "priority": "medium",
+      "title": "Tech upsells severely underreported",
+      "detail": "Only 6 tech upsells logged in the CSV. With 91 total sales and techs in the field daily, this is almost certainly incomplete. Upsell attribution helps measure tech sales performance and incentives.",
+      "action": "Implement a simple upsell logging workflow — tech texts CSR with customer name, CSR logs it. Or build a simple form in GHL."
+    },
+    {
+      "priority": "medium",
+      "title": "Revenue tracking gap",
+      "detail": "YTD revenue is $778,248 across 8,042 invoices (avg $97/invoice). The Office Tracking CSV doesn't include revenue amounts, so the sales dashboard can't show dollar values per sale or per CSR.",
+      "action": "Add a \"Sale Value\" column to the Office Tracking sheet, or better yet, pull revenue data directly from ServSuite into the dashboard."
+    },
+    {
+      "priority": "high",
+      "title": "Recoverable cancel opportunity",
+      "detail": "121 cancel events (27%) are flagged as recoverable in ServSuite. These are customers who paused or expressed temporary disinterest — prime targets for reactivation as peak season starts.",
+      "action": "Build a reactivation campaign list from recoverable cancels. Target with seasonal restart offer via GHL automation."
+    }
+  ],
+  "methodology": {
+    "csvTracking": "CSRs manually enter each sale and cancel event in the Office Tracking Excel sheet. Power Automate exports this to CSV daily.",
+    "servSuiteTracking": "ServSuite records all account activations, work orders, invoices, and cancel events automatically. Data is exported nightly via Playwright automation.",
+    "keyDifferences": [
+      "CSV counts CSR-entered events; ServSuite counts system events",
+      "CSV cancel categories are simplified (6-8 buckets); ServSuite has 15+ specific reasons",
+      "ServSuite includes revenue data; CSV does not",
+      "ServSuite counts ALL cancel events including program changes; CSV only counts customer-initiated cancels",
+      "CSV includes tech upsell attribution; ServSuite does not easily surface this"
+    ]
+  }
+}

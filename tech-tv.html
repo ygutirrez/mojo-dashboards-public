@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Tech Leaderboard — TV</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 1920px; height: 1080px; overflow: hidden; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+            color: #e6edf3;
+            padding: 24px 32px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-shrink: 0; }
+        .header h1 { font-size: 1.8rem; background: linear-gradient(90deg, #ffd700, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header .meta { text-align: right; font-size: 0.75rem; color: #8b949e; }
+        .live-dot { display: inline-block; width: 8px; height: 8px; background: #3fb950; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+        .kpi-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; flex-shrink: 0; }
+        .kpi { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; text-align: center; }
+        .kpi .val { font-size: 2.4rem; font-weight: 700; line-height: 1.1; }
+        .kpi .lbl { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+        .g { color: #3fb950; } .y { color: #d29922; } .b { color: #58a6ff; } .gold { color: #ffd700; }
+
+        .main { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; min-height: 0; grid-template-rows: 1fr; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; overflow: hidden; }
+        .card h2 { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; flex-shrink: 0; }
+        .card-body { flex: 1; overflow: hidden; }
+
+        .podium-wrap { display: flex; justify-content: center; align-items: flex-end; gap: 12px; height: 100%; padding-bottom: 10px; padding-top: 20px; }
+        .pod { text-align: center; min-width: 85px; }
+        .pod-avatar { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; margin: 0 auto 6px; position: relative; }
+        .pod.first .pod-avatar { width: 68px; height: 68px; background: linear-gradient(135deg, #ffd700, #ffaa00); box-shadow: 0 0 20px rgba(255,215,0,0.4); font-size: 1.4rem; }
+        .pod.second .pod-avatar { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); box-shadow: 0 0 12px rgba(192,192,192,0.3); }
+        .pod.third .pod-avatar { background: linear-gradient(135deg, #cd7f32, #a0522d); box-shadow: 0 0 12px rgba(205,127,50,0.3); }
+        .crown { position: absolute; top: -18px; font-size: 1.2rem; }
+        .pod-name { font-weight: 600; font-size: 0.85rem; }
+        .pod-jobs { font-size: 1.6rem; font-weight: 700; }
+        .pod.first .pod-jobs { color: #ffd700; } .pod.second .pod-jobs { color: #c0c0c0; } .pod.third .pod-jobs { color: #cd7f32; }
+        .pod-label { font-size: 0.65rem; color: #8b949e; }
+        .pod-stand { width: 80px; margin: 6px auto 0; border-radius: 6px 6px 0 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; }
+        .pod.first .pod-stand { height: 60px; background: linear-gradient(180deg, rgba(255,215,0,0.25), rgba(255,215,0,0.08)); color: #ffd700; }
+        .pod.second .pod-stand { height: 42px; background: linear-gradient(180deg, rgba(192,192,192,0.25), rgba(192,192,192,0.08)); color: #c0c0c0; }
+        .pod.third .pod-stand { height: 30px; background: linear-gradient(180deg, rgba(205,127,50,0.25), rgba(205,127,50,0.08)); color: #cd7f32; }
+
+        .lb-row { display: grid; grid-template-columns: 30px 1fr 60px; align-items: center; padding: 6px 10px; border-radius: 6px; margin-bottom: 3px; background: rgba(255,255,255,0.02); position: relative; overflow: hidden; }
+        .lb-row .bg { position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, rgba(63,185,80,0.12), transparent); border-radius: 6px; z-index: 0; }
+        .lb-row > * { position: relative; z-index: 1; }
+        .lb-rank { font-weight: 700; color: #8b949e; text-align: center; font-size: 0.8rem; }
+        .lb-name { font-weight: 600; font-size: 0.85rem; }
+        .lb-jobs { font-weight: 700; color: #3fb950; text-align: right; font-size: 1rem; }
+
+        .racer { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .racer-ava { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.7rem; flex-shrink: 0; }
+        .racer-info { flex: 1; min-width: 0; }
+        .racer-name { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .racer-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-top: 3px; overflow: hidden; position: relative; }
+        .racer-bar::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: #ffd700; }
+        .racer-fill { height: 100%; border-radius: 4px; }
+        .racer-count { font-size: 0.7rem; color: #8b949e; flex-shrink: 0; width: 70px; text-align: right; }
+
+        .ach { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .ach:last-child { border-bottom: none; }
+        .ach-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .ach-title { font-size: 0.7rem; color: #ffd700; font-weight: 700; }
+        .ach-name { font-size: 0.78rem; }
+        .ach-stat { font-size: 0.65rem; color: #8b949e; }
+
+        .fleet-row { display: grid; grid-template-columns: 24px 1fr 52px 55px; align-items: center; padding: 4px 6px; border-radius: 4px; margin-bottom: 2px; font-size: 0.75rem; }
+        .fleet-row.top { background: rgba(255,215,0,0.06); }
+        .fleet-row.warn { background: rgba(248,81,73,0.06); }
+
+        .footer { text-align: center; font-size: 0.6rem; color: #484f58; margin-top: 6px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏆 Tech Leaderboard</h1>
+        <div class="meta">
+            <div><span class="live-dot"></span><span id="period">Loading...</span></div>
+            <div>Mosquito Joe of Miami</div>
+            <div id="lastUpdate"></div>
+        </div>
+    </div>
+
+    <div class="kpi-bar" id="kpiBar">
+        <div class="kpi"><div class="val g">—</div><div class="lbl">Loading...</div></div>
+    </div>
+
+    <div class="main" id="dashboard">
+        <div style="text-align:center;padding:40px;color:#8b949e;grid-column:1/-1;">Loading dashboard data...</div>
+    </div>
+
+    <div class="footer">🟢 80+ Great | 🟡 50-79 Needs Work | 🔴 &lt;50 Talk to Manager • Mosquito Joe of Miami 🦟</div>
+
+    <script>
+    async function load() {
+        try {
+            const [techRes, stopRes] = await Promise.all([
+                fetch('tech-data.json?t=' + Date.now()),
+                fetch('zubie-stops-data.json?t=' + Date.now()).catch(() => null)
+            ]);
+            const d = await techRes.json();
+            let stopData = null;
+            if (stopRes && stopRes.ok) {
+                try { stopData = await stopRes.json(); } catch(e) {}
+            }
+            render(d, stopData);
+        } catch(e) {
+            document.getElementById('dashboard').innerHTML = '<div style="text-align:center;padding:40px;color:#8b949e;grid-column:1/-1;">⚠️ Could not load data — retrying in 5 min</div>';
+        }
+    }
+
+    function render(d, stopData) {
+        const s = d.summary;
+        const up = new Date(d.updated_at).toLocaleString();
+        document.getElementById('lastUpdate').textContent = 'Updated: ' + up;
+        document.getElementById('period').textContent = d.period;
+
+        // KPI bar
+        document.getElementById('kpiBar').innerHTML = `
+            <div class="kpi"><div class="val g">${s.total_jobs.toLocaleString()}</div><div class="lbl">✅ Jobs Completed</div></div>
+            <div class="kpi"><div class="val b">${s.first_time_success}</div><div class="lbl">⭐ First-Time Success</div></div>
+            <div class="kpi"><div class="val gold">${s.resprays} <span style="font-size:1.2rem;color:${(s.resprays / s.total_jobs * 100) < 1 ? '#3fb950' : '#8b949e'};">(${(s.resprays / s.total_jobs * 100).toFixed(1)}%${(s.resprays / s.total_jobs * 100) < 1 ? ' 🔥' : ''})</span></div><div class="lbl">🔄 Re-Sprays Total${(s.resprays / s.total_jobs * 100) < 1 ? ' — <span style="color:#3fb950;font-weight:bold;">ELITE</span>' : ''}</div></div>
+            <div class="kpi"><div class="val" style="color:#ff6bff;">${s.total_upsells || 0}</div><div class="lbl">💰 Tech Upsells</div></div>
+        `;
+
+        const emps = d.employees;
+        const maxJobs = emps[0]?.jobs || 1;
+        const top3 = emps.slice(0, 3);
+        const rankColors = ['#ffd700', '#c0c0c0', '#cd7f32'];
+        const medals = ['🥇', '🥈', '🥉'];
+
+        // Podium (order: 2nd, 1st, 3rd)
+        const podiumOrder = top3.length >= 3 ? [top3[1], top3[0], top3[2]] : top3;
+        const podClasses = top3.length >= 3 ? ['second', 'first', 'third'] : ['first', 'second', 'third'];
+        let podiumHTML = podiumOrder.map((e, i) => `
+            <div class="pod ${podClasses[i]}">
+                <div class="pod-avatar">${podClasses[i] === 'first' ? '<span class="crown">👑</span>' : ''}${e.initials}</div>
+                <div class="pod-name">${e.name.split(' ')[0]} ${e.name.split(' ').slice(1).join(' ').substring(0,1)}.</div>
+                <div class="pod-jobs">${e.jobs}</div>
+                <div class="pod-label">jobs</div>
+                <div class="pod-stand">${e.rank}</div>
+            </div>`).join('');
+
+        // Achievements
+        let achHTML = d.achievements.map(a => `
+            <div class="ach"><div class="ach-icon">${a.icon}</div><div><div class="ach-title">${a.title}</div><div class="ach-name">${a.name}</div><div class="ach-stat">${a.stat}</div></div></div>`).join('');
+
+        // Respray accountability — handle both object {name: count} and array [{name, count}] formats
+        const rbtRaw = d.resprays_by_tech || {};
+        const rbt = Array.isArray(rbtRaw) ? rbtRaw : Object.entries(rbtRaw).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
+        let resprayHTML = rbt.length > 0 ? rbt.map((r, i) => {
+            const barPct = Math.round(r.count / (rbt[0]?.count || 1) * 100);
+            return `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+                <span style="color:#f85149;font-size:0.8rem;width:18px;text-align:center;">${r.count}</span>
+                <div style="flex:1;"><div style="font-size:0.78rem;font-weight:600;">${r.name}</div>
+                <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin-top:2px;"><div style="height:100%;width:${barPct}%;background:linear-gradient(90deg,#f85149,#f8514988);border-radius:2px;"></div></div></div></div>`;
+        }).join('') : '<div style="color:#3fb950;font-size:0.85rem;text-align:center;padding:12px;">✨ No re-sprays!</div>';
+
+        // Days out (YTD)
+        const daysOut = d.days_out || {};
+        const y2025 = daysOut.y2025 || daysOut['2025'] || [];
+        const y2026 = daysOut.y2026 || daysOut['2026'] || [];
+        const map = new Map();
+        y2025.forEach(r => map.set(r.name, { name: r.name, y2025: r.days || r.count || r.value || r.days_2025 || 0, y2026: 0 }));
+        y2026.forEach(r => {
+            const cur = map.get(r.name) || { name: r.name, y2025: 0, y2026: 0 };
+            cur.y2026 = r.days || r.count || r.value || r.days_2026 || 0;
+            map.set(r.name, cur);
+        });
+        const daysRows = Array.from(map.values());
+        // Sort worst (most days out) at top
+        daysRows.sort((a,b) => (b.y2026||0) - (a.y2026||0) || (b.y2025||0) - (a.y2025||0));
+        const maxOut = Math.max(...daysRows.map(r => r.y2026||0), 1);
+        let daysOutHTML = daysRows.length ? `
+            <div style="display:grid;grid-template-columns:1fr 60px 60px;font-size:0.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">
+                <span>Tech</span><span style="text-align:right;">2025</span><span style="text-align:right;">2026</span>
+            </div>
+            ${daysRows.map(r => {
+                const val = r.y2026 || 0;
+                const pct = Math.min(1, val / maxOut);
+                const hue = Math.round((1 - pct) * 120); // 0=red,120=green
+                const color = `hsl(${hue}, 70%, 50%)`;
+                return `<div style="position:relative;display:grid;grid-template-columns:1fr 60px 60px;align-items:center;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
+                    <div style="position:absolute;left:0;top:0;bottom:0;width:${Math.round(pct*100)}%;background:linear-gradient(90deg, rgba(248,81,73,0.25), rgba(63,185,80,0.10));opacity:0.6;"></div>
+                    <span style="position:relative;font-size:0.78rem;font-weight:600;">${r.name}</span>
+                    <span style="position:relative;text-align:right;">${r.y2025 ?? 0}</span>
+                    <span style="position:relative;text-align:right;color:${color};font-weight:700;">${r.y2026 ?? 0}</span>
+                </div>`;
+            }).join('')}
+        ` : '<div style="color:#8b949e;font-size:0.8rem;text-align:center;padding:12px;">No days-off data yet</div>';
+
+        // Full rankings
+        let rankHTML = emps.map(e => {
+            const pct = Math.round(e.jobs / maxJobs * 100);
+            const rc = e.rank <= 3 ? `style="color:${rankColors[e.rank-1]};"` : '';
+            const badge = e.rank === 1 ? ' 👑' : '';
+            const upsell = e.upsells ? ` <span style="color:#ff6bff;font-size:0.7rem;">💰${e.upsells}</span>` : '';
+            return `<div class="lb-row"><div class="bg" style="width:${pct}%"></div><div class="lb-rank" ${rc}>${e.rank}</div><div class="lb-name">${e.name}${badge}${upsell}</div><div class="lb-jobs">${e.jobs}</div></div>`;
+        }).join('');
+
+        // Stop times card
+        let stopTimeHTML = '';
+        if (stopData && stopData.techs && stopData.techs.length > 0) {
+            const tgtMin = stopData.target_min || 15;
+            const tgtMax = stopData.target_max || 20;
+            const maxAvg = Math.max(...stopData.techs.map(t => t.avg_min), tgtMax + 5);
+
+            // Fleet average header
+            const fleetAvg = stopData.fleet_avg || 0;
+            const fleetMed = stopData.fleet_median || 0;
+            const fleetColor = fleetAvg >= tgtMin && fleetAvg <= tgtMax ? '#3fb950' : fleetAvg < tgtMin ? '#d29922' : '#f85149';
+            stopTimeHTML += `<div style="text-align:center;margin-bottom:8px;padding:6px;background:rgba(255,255,255,0.03);border-radius:8px;">
+                <span style="font-size:1.6rem;font-weight:bold;color:${fleetColor};">${fleetAvg}</span>
+                <span style="font-size:0.7rem;color:#8b949e;"> min avg</span>
+                <span style="font-size:0.85rem;color:#8b949e;margin-left:12px;">med ${fleetMed}</span>
+                <div style="font-size:0.6rem;color:#8b949e;margin-top:2px;">🎯 Target: ${tgtMin}-${tgtMax} min per property</div>
+            </div>`;
+
+            // Per-tech rows — sorted: on-target first, then closest to target range
+            const tgtMid = (tgtMin + tgtMax) / 2;
+            const sorted = [...stopData.techs].sort((a, b) => {
+                const aIn = a.avg_min >= tgtMin && a.avg_min <= tgtMax;
+                const bIn = b.avg_min >= tgtMin && b.avg_min <= tgtMax;
+                if (aIn && !bIn) return -1;
+                if (!aIn && bIn) return 1;
+                return Math.abs(a.avg_min - tgtMid) - Math.abs(b.avg_min - tgtMid);
+            });
+            sorted.forEach(t => {
+                const avg = t.avg_min;
+                const firstName = t.name.split(' ')[0];
+                const lastName = t.name.includes(' ') ? t.name.split(' ').slice(1).join(' ').substring(0,1) + '.' : '';
+                const displayName = t.name.startsWith('Truck') ? t.name : `${firstName} ${lastName}`;
+
+                // Color: green=on target, yellow=too fast, red=too slow
+                let color, bg, emoji;
+                if (avg >= tgtMin && avg <= tgtMax) {
+                    color = '#3fb950'; bg = 'rgba(63,185,80,0.12)'; emoji = '✅';
+                } else if (avg < tgtMin) {
+                    color = '#d29922'; bg = 'rgba(210,153,34,0.08)'; emoji = '⚡';
+                } else {
+                    color = '#f85149'; bg = 'rgba(248,81,73,0.10)'; emoji = '🐢';
+                }
+
+                // Bar: show position relative to target range
+                const barMax = maxAvg + 2;
+                const pct = Math.min(100, Math.round(avg / barMax * 100));
+                const tgtStartPct = Math.round(tgtMin / barMax * 100);
+                const tgtEndPct = Math.round(tgtMax / barMax * 100);
+
+                const noteHTML = t.note ? `<span style="font-size:0.55rem;color:#8b949e;margin-left:4px;">*</span>` : '';
+
+                stopTimeHTML += `<div style="display:flex;align-items:center;gap:6px;padding:4px 6px;margin-bottom:2px;background:${bg};border-radius:5px;">
+                    <span style="font-size:0.75rem;width:14px;text-align:center;">${emoji}</span>
+                    <span style="font-size:0.75rem;font-weight:600;width:90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${displayName}${noteHTML}</span>
+                    <div style="flex:1;height:10px;background:rgba(255,255,255,0.06);border-radius:5px;position:relative;overflow:hidden;">
+                        <div style="position:absolute;left:${tgtStartPct}%;width:${tgtEndPct - tgtStartPct}%;top:0;bottom:0;background:rgba(63,185,80,0.15);"></div>
+                        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,${color},${color}88);border-radius:5px;position:relative;z-index:1;"></div>
+                    </div>
+                    <span style="font-size:0.85rem;font-weight:bold;color:${color};width:45px;text-align:right;">${avg}</span>
+                    <span style="font-size:0.6rem;color:#8b949e;width:25px;">(${t.stops})</span>
+                </div>`;
+            });
+
+            // Footer note for flagged drivers
+            const flagged = stopData.techs.filter(t => t.note);
+            if (flagged.length > 0) {
+                stopTimeHTML += `<div style="font-size:0.55rem;color:#8b949e;margin-top:4px;padding-left:4px;">`;
+                flagged.forEach(t => {
+                    stopTimeHTML += `* ${t.name.split(' ')[0]}: ${t.note}<br>`;
+                });
+                stopTimeHTML += `</div>`;
+            }
+        } else {
+            stopTimeHTML = '<div style="color:#8b949e;font-size:0.8rem;text-align:center;padding:12px;">No stop time data available</div>';
+        }
+
+        // Fleet safety
+        let fleetHTML = d.fleet_safety.map((f, i) => {
+            const cls = i < 3 ? 'top' : f.score < 50 ? 'warn' : '';
+            const medal = i < 3 ? medals[i] : (i + 1);
+            const scoreColor = f.score >= 80 ? '#3fb950' : f.score >= 50 ? '#d29922' : '#f85149';
+            const warn = f.score < 50 ? ' ⚠️' : '';
+            const idleH = f.idle_min ? (f.idle_min / 60).toFixed(1) : '0.0';
+            const idleColor = f.idle_min > 120 ? '#f85149' : f.idle_min > 60 ? '#d29922' : '#8b949e';
+            return `<div class="fleet-row ${cls}"><span>${medal}</span><span><strong>${f.name}</strong></span><span style="font-size:0.65rem;color:${idleColor}">${idleH}h idle</span><span style="color:${scoreColor};font-weight:bold;">${f.score} pts${warn}</span></div>`;
+        }).join('');
+
+        // Review race
+        let raceHTML = d.review_race.map(r => {
+            const pct = Math.round(r.count / r.target * 100);
+            const note = r.note ? ` <span style="color:${r.color};font-size:0.65rem;">🔥 ${r.note}</span>` : '';
+            return `<div class="racer">
+                <div class="racer-ava" style="background:linear-gradient(135deg,${r.color},${r.color}88);color:#fff;">${r.initials}</div>
+                <div class="racer-info">
+                    <div class="racer-name">${r.name}${note}</div>
+                    <div class="racer-bar"><div class="racer-fill" style="width:${pct}%;background:linear-gradient(90deg,${r.color},${r.color}88);"></div></div>
+                </div>
+                <div class="racer-count">${r.count}/${r.target} <span style="color:#555;font-size:0.6rem;">(${Math.round(r.totalCredits || 0)})</span></div>
+            </div>`;
+        }).join('');
+
+        // Featured review
+        const fr = d.featured_review;
+        const stars = '⭐'.repeat(fr.stars);
+
+        // Payouts
+        function buildPayoutLine(payouts, year) {
+            if (!payouts || !payouts.length) return '';
+            const total = payouts.reduce((s, p) => s + p.amount, 0);
+            const items = payouts.map((p, i) => `${medals[i] || '🏅'} ${p.name.split(' ')[0]} — $${p.amount.toLocaleString()}`).join(' · ');
+            return `<div style="font-size:0.65rem;color:#8b949e;text-transform:uppercase;margin-bottom:4px;">${year} Payouts — <span style="color:#3fb950;">$${total.toLocaleString()} Total</span></div><div style="font-size:0.7rem;color:#ccc;margin-bottom:6px;">${items}</div>`;
+        }
+        const payouts2026HTML = buildPayoutLine(d.payouts_2026, '2026');
+        const payouts2025HTML = buildPayoutLine(d.payouts_2025, '2025');
+
+        let html = `
+        <!-- LEFT: Podium + Achievements -->
+        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
+            <div class="card" style="flex:0 0 auto;">
+                <h2>🥇 Most Jobs</h2>
+                <div class="card-body" style="overflow:visible;"><div class="podium-wrap">${podiumHTML}</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;">
+                <div class="card">
+                    <h2>🎖️ Achievements</h2>
+                    <div class="card-body">${achHTML}</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:14px;flex:1;">
+                    <div class="card">
+                        <h2>🔄 Re-Spray Accountability</h2>
+                        <div class="card-body">${resprayHTML}</div>
+                    </div>
+                    <div class="card">
+                        <h2>🏖️ Days Out (YTD)</h2>
+                        <div class="card-body">${daysOutHTML}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER: Rankings + Stop Times side by side, Fleet below -->
+        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:0 1 auto;min-height:0;max-height:55%;">
+                <div class="card" style="overflow:hidden;">
+                    <h2>📊 Full Rankings</h2>
+                    <div class="card-body" style="overflow-y:auto;">${rankHTML}</div>
+                </div>
+                <div class="card" style="overflow:hidden;">
+                    <h2>⏱️ Avg Stop Time</h2>
+                    <div class="card-body" style="overflow-y:auto;">${stopTimeHTML}</div>
+                </div>
+            </div>
+            <div class="card" style="flex:1;overflow-y:auto;">
+                <h2>🚛 Fleet Safety Scores</h2>
+                <div style="display:grid;grid-template-columns:24px 1fr 52px 55px;padding:0 6px 4px;font-size:0.6rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px"><span></span><span>Driver</span><span>7-day idle</span><span style="text-align:right">Score</span></div>
+                <div class="card-body">${fleetHTML}</div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Review Race + Review + Stats -->
+        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
+            <div class="card" style="flex:1;overflow:hidden;min-height:0;">
+                <h2>⭐ Review Race — $50 Bonus</h2>
+                <div class="card-body" style="overflow-y:auto;">
+                    <div style="text-align:center;margin-bottom:10px;">
+                        <span style="background:linear-gradient(90deg,#ffd700,#ff6b35);color:#000;padding:4px 14px;border-radius:12px;font-weight:bold;font-size:0.8rem;">💰 $500 / 10 REVIEWS</span>
+                    </div>
+                    ${raceHTML}
+                    <div style="margin-top:10px;padding:8px;background:rgba(255,215,0,0.06);border-radius:8px;text-align:center;border:1px dashed rgba(255,215,0,0.2);">
+                        <div style="font-size:0.75rem;color:#ffd700;">💡 PRO TIP</div>
+                        <div style="font-size:0.7rem;color:#ccc;margin-top:4px;">"Hi, I'm <strong>[YOUR NAME]</strong>! Mention me by name in your Google review!"</div>
+                        <div style="font-size:0.65rem;color:#3fb950;margin-top:4px;">= $50 per mention → $500 every 10!</div>
+                    </div>
+                    <div style="margin-top:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
+                        ${payouts2026HTML}
+                        ${payouts2025HTML}
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="flex:0 0 160px;">
+                <h2>⭐ Review of the Week</h2>
+                <div class="card-body">
+                    <div style="padding:12px;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.03));border-radius:10px;border-left:3px solid #ffd700;">
+                        <div style="font-size:1.1rem;margin-bottom:6px;">${stars}</div>
+                        <div style="font-style:italic;color:#ccc;font-size:0.85rem;line-height:1.4;">"${fr.text}"</div>
+                        <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;">
+                            <span style="color:#8b949e;font-size:0.75rem;">— ${fr.author}</span>
+                            <span style="background:#ffd700;color:#000;padding:2px 10px;border-radius:12px;font-weight:bold;font-size:0.7rem;">🏆 ${fr.tech.toUpperCase()}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        document.getElementById('dashboard').innerHTML = html;
+    }
+
+    load();
+    setInterval(load, 5 * 60 * 1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

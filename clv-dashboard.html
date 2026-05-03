@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Customer Lifetime Value</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+            --purple: #8b5cf6;
+            --emerald: #10b981;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .back-link {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 100;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.2s;
+        }
+        .back-link:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+        /* Top KPI strip */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .kpi {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--kpi-color, var(--accent));
+        }
+        .kpi .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .kpi .value { font-size: 28px; font-weight: 700; }
+        .kpi .sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .full { grid-column: 1 / -1; }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .kpi-strip { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .kpi-strip { grid-template-columns: 1fr; }
+            body { padding: 12px; }
+            .header h1 { font-size: 22px; }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .card h2 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h2 .icon { font-size: 18px; }
+
+        /* CLV Bar Chart */
+        .clv-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .clv-bar-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 80px;
+            align-items: center;
+            gap: 12px;
+        }
+        @media (max-width: 768px) {
+            .clv-bar-row { grid-template-columns: 100px 1fr 70px; }
+        }
+        .clv-bar-label {
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .clv-bar-bg {
+            height: 24px;
+            background: var(--card-border);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .clv-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        .clv-bar-fill .inner-label {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        .clv-bar-value {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .data-table th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            padding: 8px;
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            background: var(--card);
+        }
+        .data-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .data-table tr:hover { background: rgba(255,255,255,0.02); }
+        .data-table .money { font-family: 'SF Mono', 'Fira Code', monospace; font-weight: 600; }
+        .data-table .green { color: var(--green); }
+        .data-table .red { color: var(--red); }
+        .data-table .yellow { color: var(--yellow); }
+
+        /* Insight cards */
+        .insights { display: flex; flex-direction: column; gap: 10px; }
+        .insight {
+            padding: 14px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            font-size: 14px;
+        }
+        .insight-opportunity { background: rgba(34,197,94,0.08); border-color: var(--green); }
+        .insight-risk { background: rgba(239,68,68,0.08); border-color: var(--red); }
+        .insight-positive { background: rgba(59,130,246,0.08); border-color: var(--accent); }
+        .insight-warning { background: rgba(234,179,8,0.08); border-color: var(--yellow); }
+        .insight .title { font-weight: 600; margin-bottom: 4px; }
+        .insight .detail { font-size: 13px; color: var(--text-muted); }
+        .insight .badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .badge-high { background: rgba(239,68,68,0.15); color: var(--red); }
+        .badge-medium { background: rgba(234,179,8,0.15); color: var(--yellow); }
+
+        /* Portfolio donut */
+        .donut-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 24px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-muted);
+        }
+        .spinner {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--card-border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* CPA gauge */
+        .gauge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .gauge-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        .gauge-circle svg { transform: rotate(-90deg); }
+        .gauge-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .gauge-value { font-size: 22px; font-weight: 700; }
+        .gauge-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="container">
+        <div class="header">
+            <h1>💎 Customer Lifetime Value</h1>
+            <div class="subtitle">What each customer is worth — and where the money flows</div>
+        </div>
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <div>Calculating lifetime values...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (async function() {
+        let data;
+        try {
+            const res = await fetch('clv-data.json?t=' + Date.now());
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            data = await res.json();
+        } catch (e) {
+            document.getElementById('content').innerHTML =
+                '<div class="loading"><h2>CLV data not available</h2><p>Run build-clv-data.js to generate.</p></div>';
+            return;
+        }
+
+        const s = data.summary;
+        const programs = data.programs.filter(p => p.currentCustomers > 0 || p.ytdSales > 0);
+        const insights = data.insights || [];
+
+        function fmt(n) {
+            if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+            if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'K';
+            return '$' + n.toLocaleString();
+        }
+
+        let html = '';
+
+        // KPI strip
+        html += '<div class="kpi-strip">';
+        html += `<div class="kpi" style="--kpi-color: #ffd700"><div class="label">Avg Customer CLV</div><div class="value" style="color:#ffd700">${fmt(s.weightedAvgCLV)}</div><div class="sub">Weighted by program</div></div>`;
+        html += `<div class="kpi" style="--kpi-color: #22c55e"><div class="label">Portfolio Value</div><div class="value" style="color:#22c55e">${fmt(s.totalPortfolioValue)}</div><div class="sub">${s.totalActiveCustomers.toLocaleString()} active customers</div></div>`;
+        html += `<div class="kpi" style="--kpi-color: #ef4444"><div class="label">Lost CLV (YTD)</div><div class="value" style="color:#ef4444">${fmt(s.totalLostCLV_ytd)}</div><div class="sub">From cancellations</div></div>`;
+        html += `<div class="kpi" style="--kpi-color: #3b82f6"><div class="label">CPA vs CLV</div><div class="value" style="color:#3b82f6">${s.cpaVsCLV ? s.cpaVsCLV.ratio + '%' : 'N/A'}</div><div class="sub">${s.cpaVsCLV ? s.cpaVsCLV.verdict : ''} efficiency</div></div>`;
+        html += `<div class="kpi" style="--kpi-color: #8b5cf6"><div class="label">Avg Invoice</div><div class="value" style="color:#8b5cf6">$${s.avgInvoiceAmount}</div><div class="sub">Across all services</div></div>`;
+        html += '</div>';
+
+        // CLV by program bar chart + Insights
+        html += '<div class="grid">';
+
+        // CLV bars
+        html += '<div class="card"><h2><span class="icon">📊</span> CLV by Program</h2>';
+        html += '<div class="clv-bars">';
+        const maxCLV = Math.max(...programs.map(p => p.clv));
+        const colors = ['#ffd700', '#ff6b35', '#22c55e', '#3b82f6', '#8b5cf6', '#ef4444', '#f97316', '#ec4899', '#14b8a6', '#6366f1', '#84cc16', '#f43f5e'];
+        programs.filter(p => p.clv > 0).slice(0, 10).forEach((p, i) => {
+            const pct = (p.clv / maxCLV * 100).toFixed(0);
+            const color = colors[i % colors.length];
+            html += `<div class="clv-bar-row">
+                <div class="clv-bar-label" title="${p.program}">${p.program.replace(' Program', '').replace(' Services', '')}</div>
+                <div class="clv-bar-bg">
+                    <div class="clv-bar-fill" style="width:${pct}%;background:${color}">
+                        ${pct > 20 ? `<span class="inner-label">${p.avgLifespanYears}yr avg</span>` : ''}
+                    </div>
+                </div>
+                <div class="clv-bar-value" style="color:${color}">${fmt(p.clv)}</div>
+            </div>`;
+        });
+        html += '</div></div>';
+
+        // Insights
+        html += '<div class="card"><h2><span class="icon">💡</span> Key Insights</h2>';
+        html += '<div class="insights">';
+        for (const ins of insights) {
+            html += `<div class="insight insight-${ins.type}">
+                <div class="badge badge-${ins.impact}">${ins.impact} impact</div>
+                <div class="title">${ins.title}</div>
+                <div class="detail">${ins.detail}</div>
+            </div>`;
+        }
+        html += '</div></div>';
+
+        html += '</div>'; // close grid
+
+        // CPA Efficiency + Portfolio Concentration
+        html += '<div class="grid">';
+
+        // CPA Efficiency gauge
+        if (s.currentGoogleAdsCPA) {
+            html += '<div class="card"><h2><span class="icon">🎯</span> Acquisition Efficiency</h2>';
+            html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">';
+
+            // Visual gauge
+            const ratio = s.cpaVsCLV.ratio;
+            const gaugeColor = ratio < 10 ? '#22c55e' : ratio < 25 ? '#3b82f6' : ratio < 35 ? '#eab308' : '#ef4444';
+            const circumference = 2 * Math.PI * 45;
+            const strokeDash = (Math.min(ratio, 50) / 50) * circumference;
+
+            html += `<div class="gauge">
+                <div class="gauge-circle">
+                    <svg width="120" height="120">
+                        <circle cx="60" cy="60" r="45" fill="none" stroke="var(--card-border)" stroke-width="10"/>
+                        <circle cx="60" cy="60" r="45" fill="none" stroke="${gaugeColor}" stroke-width="10"
+                            stroke-dasharray="${strokeDash} ${circumference}" stroke-linecap="round"/>
+                    </svg>
+                    <div class="gauge-text">
+                        <div class="gauge-value" style="color:${gaugeColor}">${ratio}%</div>
+                        <div class="gauge-label">CPA/CLV</div>
+                    </div>
+                </div>
+            </div>`;
+
+            // Numbers
+            html += `<div>
+                <div style="margin-bottom:16px">
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Google Ads CPA</div>
+                    <div style="font-size:24px;font-weight:700">$${Math.round(s.currentGoogleAdsCPA)}</div>
+                </div>
+                <div style="margin-bottom:16px">
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Avg Customer CLV</div>
+                    <div style="font-size:24px;font-weight:700;color:var(--green)">${fmt(s.weightedAvgCLV)}</div>
+                </div>
+                <div>
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">ROI Per Acquired Customer</div>
+                    <div style="font-size:24px;font-weight:700;color:var(--accent)">${Math.round(s.weightedAvgCLV / s.currentGoogleAdsCPA)}x</div>
+                </div>
+            </div>`;
+
+            html += '</div></div>';
+        }
+
+        // Portfolio breakdown
+        html += '<div class="card"><h2><span class="icon">🏦</span> Portfolio Concentration</h2>';
+        const topPrograms = programs.filter(p => p.totalPortfolioValue > 0).sort((a,b) => b.totalPortfolioValue - a.totalPortfolioValue).slice(0, 6);
+        const totalPV = programs.reduce((s, p) => s + p.totalPortfolioValue, 0);
+
+        html += '<div style="display:flex;flex-direction:column;gap:12px">';
+        topPrograms.forEach((p, i) => {
+            const pct = (p.totalPortfolioValue / totalPV * 100).toFixed(1);
+            const color = colors[i % colors.length];
+            html += `<div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:13px">${p.program}</span>
+                    <span style="font-size:13px;font-weight:600">${fmt(p.totalPortfolioValue)} (${pct}%)</span>
+                </div>
+                <div style="height:10px;background:var(--card-border);border-radius:5px;overflow:hidden">
+                    <div style="width:${pct}%;height:100%;background:${color};border-radius:5px;transition:width 0.8s"></div>
+                </div>
+                <div style="font-size:11px;color:var(--text-muted);margin-top:2px">${p.currentCustomers} customers × ${fmt(p.clv)} CLV</div>
+            </div>`;
+        });
+        html += '</div></div>';
+
+        html += '</div>'; // close grid
+
+        // Full program table
+        html += '<div class="grid"><div class="card full"><h2><span class="icon">📋</span> Program Detail</h2>';
+        html += '<div style="overflow-x:auto">';
+        html += '<table class="data-table"><thead><tr>';
+        html += '<th>Program</th><th>CLV</th><th>Annual Rev</th><th>Visits/Yr</th><th>Avg Price</th><th>Retention</th><th>Lifespan</th><th>Customers</th><th>YTD Sales</th><th>YTD Cancels</th><th>Max CAC</th>';
+        html += '</tr></thead><tbody>';
+
+        programs.forEach(p => {
+            const retClass = p.retentionRate >= 95 ? 'green' : p.retentionRate >= 80 ? 'yellow' : 'red';
+            html += `<tr>
+                <td><strong>${p.program}</strong><br><span style="color:var(--text-muted);font-size:11px">${p.description}</span></td>
+                <td class="money">${fmt(p.clv)}</td>
+                <td class="money">${fmt(p.annualRevenue)}</td>
+                <td>${p.visitsPerYear}</td>
+                <td class="money">$${p.avgPricePerVisit}</td>
+                <td class="${retClass}">${p.retentionRate}%</td>
+                <td>${p.avgLifespanYears} yr</td>
+                <td>${p.currentCustomers}</td>
+                <td class="green">${p.ytdSales}</td>
+                <td class="${p.ytdCancels > 0 ? 'red' : ''}">${p.ytdCancels}</td>
+                <td class="money" style="font-size:12px">$${p.maxCAC.low}-$${p.maxCAC.high}</td>
+            </tr>`;
+        });
+
+        html += '</tbody></table></div></div></div>';
+
+        // Cancel cost analysis
+        html += '<div class="grid"><div class="card full"><h2><span class="icon">🚨</span> Cancel Revenue Impact</h2>';
+        html += '<p style="color:var(--text-muted);font-size:13px;margin-bottom:16px">Every cancel costs more than the single service — it costs the entire remaining customer lifetime.</p>';
+
+        const cancelPrograms = programs.filter(p => p.ytdCancels > 0).sort((a,b) => b.cancelledCLV - a.cancelledCLV);
+        if (cancelPrograms.length > 0) {
+            html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">';
+            cancelPrograms.forEach(p => {
+                html += `<div style="padding:16px;background:rgba(239,68,68,0.06);border-radius:8px;border:1px solid rgba(239,68,68,0.15)">
+                    <div style="font-size:13px;color:var(--text-muted)">${p.program}</div>
+                    <div style="font-size:24px;font-weight:700;color:var(--red);margin:4px 0">${fmt(p.cancelledCLV)}</div>
+                    <div style="font-size:12px;color:var(--text-muted)">${p.ytdCancels} cancels × ${fmt(p.clv)} CLV</div>
+                </div>`;
+            });
+            html += '</div>';
+        }
+        html += '</div></div>';
+
+        html += `<div class="footer">
+            Generated: ${new Date(data.generated_at).toLocaleString()} • CLV = Annual Revenue × Avg Lifespan • Auto-refreshes every 5 min
+        </div>`;
+
+        document.getElementById('content').innerHTML = html;
+    })();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

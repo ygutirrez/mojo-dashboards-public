@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Customer Retention Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 2.2rem; background: linear-gradient(90deg, #00ff88, #00d9ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .updated { color: #888; font-size: 0.85rem; margin-top: 6px; }
+
+        .hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .hero-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; text-align: center; position: relative; overflow: hidden; }
+        .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+        .hero-card.green::before { background: linear-gradient(90deg, #00ff88, #00d9ff); }
+        .hero-card.red::before { background: linear-gradient(90deg, #ff6b6b, #ff9f43); }
+        .hero-card.gold::before { background: linear-gradient(90deg, #ffd700, #ff9f43); }
+        .hero-card.blue::before { background: linear-gradient(90deg, #00d9ff, #c792ea); }
+        .hero-card .metric-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: #888; margin-bottom: 8px; }
+        .hero-card .metric-value { font-size: 2.8rem; font-weight: 800; }
+        .hero-card .metric-sub { font-size: 0.8rem; color: #666; margin-top: 4px; }
+        .hero-card.green .metric-value { color: #00ff88; }
+        .hero-card.red .metric-value { color: #ff6b6b; }
+        .hero-card.gold .metric-value { color: #ffd700; }
+        .hero-card.blue .metric-value { color: #00d9ff; }
+
+        .section { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+        .section h2 { font-size: 1.1rem; color: #ccc; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .section.full { grid-column: 1 / -1; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; margin-bottom: 20px; }
+
+        /* Loyalty tiers */
+        .loyalty-bar { display: flex; align-items: center; margin-bottom: 10px; }
+        .loyalty-bar .tier-label { min-width: 100px; font-size: 0.85rem; color: #aaa; }
+        .loyalty-bar .bar-wrap { flex: 1; height: 28px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; position: relative; }
+        .loyalty-bar .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 0.75rem; font-weight: 600; color: #fff; min-width: 40px; transition: width 0.8s ease; }
+        .loyalty-bar .bar-count { margin-left: 8px; font-size: 0.8rem; color: #888; min-width: 50px; text-align: right; }
+
+        /* Program mix */
+        .program-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .program-item:last-child { border-bottom: none; }
+        .program-item .prog-name { flex: 1; font-size: 0.85rem; color: #ccc; }
+        .program-item .prog-count { font-size: 0.9rem; font-weight: 600; color: #00d9ff; min-width: 50px; text-align: right; }
+        .program-item .prog-pct { font-size: 0.75rem; color: #666; min-width: 50px; text-align: right; }
+
+        /* Monthly cancel trend */
+        .month-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .month-row:last-child { border-bottom: none; }
+        .month-row .month-label { min-width: 80px; font-size: 0.85rem; color: #aaa; }
+        .month-row .month-bar-wrap { flex: 1; height: 24px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+        .month-row .month-bar { height: 100%; background: linear-gradient(90deg, #ff6b6b, #ff9f43); border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 0.75rem; font-weight: 600; }
+        .month-row .month-count { min-width: 40px; text-align: right; font-size: 0.85rem; color: #ff9f43; margin-left: 8px; }
+
+        /* Lifetime stats */
+        .lifetime-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+        .lifetime-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px; text-align: center; }
+        .lifetime-stat .ls-value { font-size: 1.6rem; font-weight: 700; color: #00d9ff; }
+        .lifetime-stat .ls-label { font-size: 0.7rem; color: #888; margin-top: 4px; text-transform: uppercase; }
+
+        .insight-banner { background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+        .insight-banner h4 { color: #00ff88; margin-bottom: 6px; font-size: 0.9rem; }
+        .insight-banner p { color: #ccc; font-size: 0.85rem; line-height: 1.6; }
+        .insight-banner .highlight { color: #ffd700; font-weight: 600; }
+
+        .footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; }
+        .footer a { color: #555; }
+        .loading { text-align: center; padding: 60px; color: #888; font-size: 1.1rem; }
+        .error { background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); border-radius: 12px; padding: 15px; text-align: center; color: #ff6b6b; display: none; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.4rem; }
+            .hero-card .metric-value { font-size: 2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero-card { padding: 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px 6px; }
+        }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div id="error" class="error">⚠️ Could not load retention data.</div>
+
+    <div class="header">
+        <h1>🛡️ Customer Retention Dashboard</h1>
+        <div class="updated" id="updated-at">Loading...</div>
+    </div>
+
+    <div id="content">
+        <div class="loading" id="loading">Loading retention data...</div>
+    </div>
+
+    <div class="footer">
+        Auto-refreshes every 5 min · <a href="index.html">← Command Center</a>
+    </div>
+
+    <script>
+        const TIER_COLORS = {
+            '0-90 days': '#ff6b6b',
+            '91-180 days': '#ff9f43',
+            '6-12 months': '#ffd700',
+            '1-2 years': '#00d9ff',
+            '2-3 years': '#c792ea',
+            '3+ years': '#00ff88'
+        };
+        const TIER_LABELS = {
+            '0-90 days': '🌱 New',
+            '91-180 days': '🌿 Growing',
+            '6-12 months': '🌳 Established',
+            '1-2 years': '⭐ Loyal',
+            '2-3 years': '💎 VIP',
+            '3+ years': '👑 Legacy'
+        };
+
+        function fmtDate(iso) {
+            try { return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }); }
+            catch { return iso; }
+        }
+
+        async function loadData() {
+            try {
+                const res = await fetch('retention-data.json?' + Date.now());
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                render(data);
+            } catch (err) {
+                console.error('Load failed:', err);
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('loading').textContent = 'Failed to load data.';
+            }
+        }
+
+        function render(d) {
+            document.getElementById('updated-at').textContent = 'Data as of: ' + fmtDate(d.generated_at);
+            const totalActive = d.total_active;
+            const cancelsYTD = d.total_cancels_ytd;
+            const net = d.net_change_ytd;
+            const ls = d.lifetime_stats;
+            const ret90 = d.retention_90d;
+            const programs = d.programs;
+            const ageDistro = d.age_distribution;
+            const cancelReasons = d.cancel_reasons;
+            const monthlyCancels = d.monthly_cancels;
+
+            // Calculate churn rate
+            const churnRate = totalActive > 0 ? ((cancelsYTD / totalActive) * 100).toFixed(1) : '0';
+            const annualizedChurn = totalActive > 0 ? ((cancelsYTD / totalActive) * (365 / daysInYear()) * 100).toFixed(0) : '0';
+            const medianYears = (ls.median_days / 365).toFixed(1);
+
+            let html = '';
+
+            // Insight banner
+            const topReason = Object.entries(cancelReasons).sort((a,b) => b[1] - a[1])[0];
+            const legacyPct = totalActive > 0 ? Math.round((ageDistro['3+ years'] || 0) / totalActive * 100) : 0;
+            html += `
+            <div class="insight-banner">
+                <h4>🔎 Retention Insight</h4>
+                <p>
+                    <span class="highlight">${legacyPct}% of customers</span> have been with MoJo for 3+ years — that's your foundation.
+                    YTD churn rate is <span class="highlight">${churnRate}%</span> (${cancelsYTD} of ${totalActive}).
+                    Top cancel reason: <span class="highlight">${topReason[0]}</span> (${topReason[1]}).
+                    ${net.net >= 0
+                        ? `Net growth of +${net.net} customers so far! 🚀`
+                        : `Net loss of ${net.net} customers — ${net.new_customers} new vs ${net.cancelled} cancelled. Recovery campaigns are critical as season ramps up.`
+                    }
+                </p>
+            </div>`;
+
+            // Hero metrics
+            html += `<div class="hero-grid">
+                <div class="hero-card green">
+                    <div class="metric-label">Active Customers</div>
+                    <div class="metric-value">${totalActive.toLocaleString()}</div>
+                    <div class="metric-sub">Current base</div>
+                </div>
+                <div class="hero-card ${ret90.rate >= 95 ? 'green' : ret90.rate >= 90 ? 'gold' : 'red'}">
+                    <div class="metric-label">90-Day Retention</div>
+                    <div class="metric-value">${ret90.rate}%</div>
+                    <div class="metric-sub">${ret90.cohort_window}</div>
+                </div>
+                <div class="hero-card ${net.net >= 0 ? 'green' : 'red'}">
+                    <div class="metric-label">Net Change YTD</div>
+                    <div class="metric-value">${net.net >= 0 ? '+' : ''}${net.net}</div>
+                    <div class="metric-sub">${net.new_customers} new / ${net.cancelled} lost</div>
+                </div>
+                <div class="hero-card blue">
+                    <div class="metric-label">Median Tenure</div>
+                    <div class="metric-value">${medianYears}y</div>
+                    <div class="metric-sub">${ls.median_days.toLocaleString()} days</div>
+                </div>
+                <div class="hero-card gold">
+                    <div class="metric-label">YTD Churn</div>
+                    <div class="metric-value">${churnRate}%</div>
+                    <div class="metric-sub">~${annualizedChurn}% annualized</div>
+                </div>
+                <div class="hero-card green">
+                    <div class="metric-label">Loyalty Rate</div>
+                    <div class="metric-value">${ls.pct_over_1yr}%</div>
+                    <div class="metric-sub">Over 1 year</div>
+                </div>
+            </div>`;
+
+            // Customer Age Distribution
+            html += `<div class="grid-2">
+                <div class="section">
+                    <h2>📊 Customer Loyalty Tiers</h2>`;
+
+            const tierOrder = ['3+ years', '2-3 years', '1-2 years', '6-12 months', '91-180 days', '0-90 days'];
+            const maxTier = Math.max(...Object.values(ageDistro));
+            for (const tier of tierOrder) {
+                const count = ageDistro[tier] || 0;
+                const pct = totalActive > 0 ? (count / totalActive * 100).toFixed(1) : 0;
+                const barW = maxTier > 0 ? Math.max(8, (count / maxTier * 100)) : 0;
+                const color = TIER_COLORS[tier] || '#888';
+                const label = TIER_LABELS[tier] || tier;
+                html += `
+                <div class="loyalty-bar">
+                    <div class="tier-label">${label}</div>
+                    <div class="bar-wrap">
+                        <div class="bar-fill" style="width:${barW}%; background:${color};">${pct}%</div>
+                    </div>
+                    <div class="bar-count">${count}</div>
+                </div>`;
+            }
+            html += `</div>`;
+
+            // Monthly cancel trend
+            html += `<div class="section">
+                    <h2>📉 Monthly Cancels (YTD)</h2>`;
+            const months = Object.entries(monthlyCancels).sort((a,b) => a[0].localeCompare(b[0]));
+            const maxMonth = Math.max(...months.map(m => m[1]));
+            for (const [month, count] of months) {
+                const barW = maxMonth > 0 ? Math.max(8, (count / maxMonth * 100)) : 0;
+                const monthName = new Date(month + '-01').toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                html += `
+                <div class="month-row">
+                    <div class="month-label">${monthName}</div>
+                    <div class="month-bar-wrap">
+                        <div class="month-bar" style="width:${barW}%;">${count}</div>
+                    </div>
+                    <div class="month-count">${count}</div>
+                </div>`;
+            }
+            html += `</div></div>`;
+
+            // Cancel reasons + Programs
+            html += `<div class="grid-2">
+                <div class="section">
+                    <h2>🚪 Cancel Reasons (YTD)</h2>
+                    <canvas id="cancelChart" height="250"></canvas>
+                </div>
+                <div class="section">
+                    <h2>📋 Active Programs</h2>`;
+
+            const progEntries = Object.entries(programs).sort((a,b) => b[1] - a[1]);
+            const totalProgs = progEntries.reduce((s, p) => s + p[1], 0);
+            for (const [name, count] of progEntries.slice(0, 12)) {
+                const pct = totalProgs > 0 ? (count / totalProgs * 100).toFixed(1) : 0;
+                html += `
+                <div class="program-item">
+                    <div class="prog-name">${name}</div>
+                    <div class="prog-count">${count}</div>
+                    <div class="prog-pct">${pct}%</div>
+                </div>`;
+            }
+            html += `</div></div>`;
+
+            // Lifetime stats
+            html += `
+            <div class="section">
+                <h2>⏱️ Customer Lifetime Stats</h2>
+                <div class="lifetime-grid">
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${medianYears}y</div>
+                        <div class="ls-label">Median Tenure</div>
+                    </div>
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${(ls.avg_days / 365).toFixed(1)}y</div>
+                        <div class="ls-label">Average Tenure</div>
+                    </div>
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${ls.pct_over_1yr}%</div>
+                        <div class="ls-label">Over 1 Year</div>
+                    </div>
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${ls.pct_over_2yr}%</div>
+                        <div class="ls-label">Over 2 Years</div>
+                    </div>
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${ls.pct_over_3yr}%</div>
+                        <div class="ls-label">Over 3 Years</div>
+                    </div>
+                    <div class="lifetime-stat">
+                        <div class="ls-value">${(ls.max_days / 365).toFixed(1)}y</div>
+                        <div class="ls-label">Longest Customer</div>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById('content').innerHTML = html;
+
+            // Render cancel reasons chart
+            setTimeout(() => {
+                const canvas = document.getElementById('cancelChart');
+                if (!canvas) return;
+                const sorted = Object.entries(cancelReasons).sort((a,b) => b[1] - a[1]);
+                const COLORS = ['#ff6b6b','#ffd700','#ff9f43','#00d9ff','#00ff88','#c792ea','#ff78c5','#82aaff','#7bed9f','#70a1ff'];
+                new Chart(canvas, {
+                    type: 'doughnut',
+                    data: {
+                        labels: sorted.map(r => r[0]),
+                        datasets: [{ data: sorted.map(r => r[1]), backgroundColor: COLORS, borderWidth: 0 }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#ccc', font: { size: 11 }, padding: 12 } }
+                        }
+                    }
+                });
+            }, 50);
+        }
+
+        function daysInYear() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 1);
+            return Math.ceil((now - start) / (1000 * 60 * 60 * 24)) || 1;
+        }
+
+        loadData();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>Route Profitability — MoJo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #e5e7eb;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
+
+        /* Header */
+        .header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 32px; padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .header-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px; box-shadow: 0 4px 20px rgba(34,197,94,0.3);
+        }
+        .header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .header h1 span { color: #ffd700; }
+        .header-sub { color: #6b7280; font-size: 0.85rem; margin-top: 4px; }
+        .header-right { margin-left: auto; text-align: right; }
+        .header-right .generated { color: #4b5563; font-size: 0.75rem; }
+
+        /* Hero KPIs */
+        .hero-kpis {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; margin-bottom: 32px;
+        }
+        .kpi-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; text-align: center;
+        }
+        .kpi-value {
+            font-size: 2rem; font-weight: 700;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .kpi-value.green { background: linear-gradient(90deg, #22c55e, #16a34a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .kpi-value.red { background: linear-gradient(90deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .kpi-label {
+            font-size: 0.75rem; color: #6b7280; text-transform: uppercase;
+            letter-spacing: 1px; margin-top: 6px;
+        }
+
+        /* Section */
+        .section { margin-bottom: 32px; }
+        .section-title {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; color: #ffd700; margin-bottom: 16px;
+        }
+
+        /* Cost Waterfall */
+        .waterfall {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px;
+        }
+        .waterfall-bar {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .waterfall-bar:last-child { border-bottom: none; }
+        .waterfall-label { width: 140px; font-size: 0.85rem; color: #9ca3af; }
+        .waterfall-fill-container { flex: 1; height: 28px; background: rgba(255,255,255,0.04); border-radius: 6px; overflow: hidden; position: relative; }
+        .waterfall-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease; display: flex; align-items: center; padding-left: 10px; font-size: 0.8rem; font-weight: 600; }
+        .waterfall-fill.revenue { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .waterfall-fill.cost { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .waterfall-fill.profit { background: linear-gradient(90deg, #ffd700, #f59e0b); color: #0f0f1a; }
+        .waterfall-amount { width: 80px; text-align: right; font-weight: 600; font-size: 0.9rem; }
+        .waterfall-amount.positive { color: #22c55e; }
+        .waterfall-amount.negative { color: #ef4444; }
+
+        /* Tech Table */
+        .table-container {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; overflow: hidden;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            background: rgba(255,215,0,0.08); padding: 14px 16px;
+            text-align: left; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 1px; color: #ffd700; font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        td {
+            padding: 12px 16px; font-size: 0.88rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        tr:hover { background: rgba(255,255,255,0.03); }
+        .rank-badge {
+            display: inline-flex; width: 28px; height: 28px; border-radius: 50%;
+            align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 700;
+        }
+        .rank-1 { background: rgba(255,215,0,0.2); color: #ffd700; }
+        .rank-2 { background: rgba(192,192,192,0.2); color: #c0c0c0; }
+        .rank-3 { background: rgba(205,127,50,0.2); color: #cd7f32; }
+        .rank-other { background: rgba(255,255,255,0.06); color: #6b7280; }
+        .efficiency-bar {
+            width: 80px; height: 8px; background: rgba(255,255,255,0.06);
+            border-radius: 4px; overflow: hidden; display: inline-block; vertical-align: middle; margin-left: 8px;
+        }
+        .efficiency-fill { height: 100%; border-radius: 4px; }
+        .eff-high { background: #22c55e; }
+        .eff-med { background: #fbbf24; }
+        .eff-low { background: #ef4444; }
+        .money { font-variant-numeric: tabular-nums; }
+
+        /* Scaling Section */
+        .scaling-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 28px;
+        }
+        .scaling-metric {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .scaling-metric:last-child { border-bottom: none; }
+        .scaling-label { color: #9ca3af; font-size: 0.9rem; }
+        .scaling-value { font-weight: 700; font-size: 1.1rem; }
+        .pace-bar {
+            width: 100%; height: 24px; background: rgba(255,255,255,0.06);
+            border-radius: 12px; overflow: hidden; margin: 16px 0; position: relative;
+        }
+        .pace-fill {
+            height: 100%; background: linear-gradient(90deg, #ef4444, #fbbf24, #22c55e);
+            border-radius: 12px; transition: width 0.5s ease;
+            display: flex; align-items: center; justify-content: flex-end;
+            padding-right: 8px; font-size: 0.7rem; font-weight: 700; color: #0f0f1a;
+        }
+        .pace-target {
+            position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+            font-size: 0.7rem; color: #6b7280;
+        }
+
+        /* Opportunities */
+        .opp-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 20px; margin-bottom: 12px;
+        }
+        .opp-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .opp-impact {
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; padding: 3px 8px; border-radius: 12px;
+        }
+        .opp-high { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .opp-medium { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .opp-title { font-weight: 600; color: #fff; }
+        .opp-desc { color: #9ca3af; font-size: 0.88rem; line-height: 1.5; }
+        .opp-value { color: #22c55e; font-weight: 600; margin-top: 6px; font-size: 0.9rem; }
+
+        /* Navigation */
+        .nav-back {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: #6b7280; text-decoration: none; font-size: 0.85rem;
+            margin-bottom: 16px; transition: color 0.2s;
+        }
+        .nav-back:hover { color: #ffd700; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .header h1 { font-size: 1.4rem; }
+            .hero-kpis { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .kpi-value { font-size: 1.5rem; }
+            .kpi-card { padding: 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px 10px; }
+            .waterfall-label { width: 100px; font-size: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-kpis { grid-template-columns: 1fr 1fr; }
+            .kpi-value { font-size: 1.2rem; }
+            .header { flex-direction: column; text-align: center; }
+            .header-right { margin-left: 0; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="nav-back">← Back to Command Center</a>
+
+    <div class="header">
+        <div class="header-icon">💰</div>
+        <div>
+            <h1>Route <span>Profitability</span></h1>
+            <div class="header-sub">Per-stop economics, tech profitability, and scaling analysis</div>
+        </div>
+        <div class="header-right">
+            <div id="period" style="color:#fff;font-weight:600;"></div>
+            <div class="generated" id="generated"></div>
+        </div>
+    </div>
+
+    <!-- Hero KPIs -->
+    <div class="hero-kpis" id="heroKPIs">
+        <div class="kpi-card"><div class="kpi-value" id="kpiRevPerStop">—</div><div class="kpi-label">Revenue / Stop</div></div>
+        <div class="kpi-card"><div class="kpi-value green" id="kpiProfitPerStop">—</div><div class="kpi-label">Profit / Stop</div></div>
+        <div class="kpi-card"><div class="kpi-value green" id="kpiMargin">—</div><div class="kpi-label">Gross Margin</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpiTotalStops">—</div><div class="kpi-label">Total Stops YTD</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpiTotalRevenue">—</div><div class="kpi-label">Total Revenue</div></div>
+        <div class="kpi-card"><div class="kpi-value" id="kpiActiveTechs">—</div><div class="kpi-label">Active Techs</div></div>
+    </div>
+
+    <!-- Cost Waterfall -->
+    <div class="section">
+        <div class="section-title">💧 Cost Breakdown Per Stop</div>
+        <div class="waterfall" id="waterfall"></div>
+    </div>
+
+    <!-- Tech Profitability Table -->
+    <div class="section">
+        <div class="section-title">👷 Tech Profitability Ranking</div>
+        <div class="table-container">
+            <table id="techTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Technician</th>
+                        <th>Jobs</th>
+                        <th>Revenue</th>
+                        <th>Cost</th>
+                        <th>Gross Profit</th>
+                        <th>Margin</th>
+                        <th>Efficiency</th>
+                    </tr>
+                </thead>
+                <tbody id="techBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- $5M Scaling Analysis -->
+    <div class="section">
+        <div class="section-title">🎯 $5M Scaling Analysis</div>
+        <div class="scaling-card" id="scalingCard"></div>
+    </div>
+
+    <!-- Improvement Opportunities -->
+    <div class="section">
+        <div class="section-title">🔍 Improvement Opportunities</div>
+        <div id="opportunities"></div>
+    </div>
+
+    <div style="text-align:center;color:#4b5563;font-size:0.75rem;margin-top:32px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.04);">
+        MoJo Command Center — Route Profitability Analysis • Auto-refreshes every 5 minutes
+    </div>
+</div>
+
+<script>
+(async function() {
+    try {
+        const resp = await fetch('profitability-data.json');
+        if (!resp.ok) throw new Error('Failed to load data');
+        const d = await resp.json();
+        render(d);
+    } catch(e) {
+        document.querySelector('.container').innerHTML += `<div style="color:#ef4444;padding:20px;">❌ Error loading profitability data: ${e.message}. Run <code>node scripts/build-profitability-data.js</code> to generate.</div>`;
+    }
+})();
+
+function render(d) {
+    const s = d.executive_summary;
+    const c = d.cost_breakdown_per_stop;
+    const sc = d.scaling_analysis;
+
+    // Period & generated
+    document.getElementById('period').textContent = d.period || '';
+    document.getElementById('generated').textContent = d.generated_at ? 'Updated ' + new Date(d.generated_at).toLocaleString() : '';
+
+    // Hero KPIs
+    document.getElementById('kpiRevPerStop').textContent = '$' + s.avg_revenue_per_stop.toFixed(2);
+    document.getElementById('kpiProfitPerStop').textContent = '$' + s.estimated_gross_profit_per_stop.toFixed(2);
+    document.getElementById('kpiMargin').textContent = s.estimated_gross_margin + '%';
+    document.getElementById('kpiTotalStops').textContent = s.total_stops.toLocaleString();
+    document.getElementById('kpiTotalRevenue').textContent = '$' + (s.total_revenue / 1000).toFixed(0) + 'K';
+    document.getElementById('kpiActiveTechs').textContent = s.active_techs;
+
+    // Cost Waterfall
+    const maxVal = c.revenue;
+    const wf = document.getElementById('waterfall');
+    const items = [
+        { label: 'Revenue / Stop', value: c.revenue, cls: 'revenue', positive: true },
+        { label: 'Chemical Cost', value: c.chemical, cls: 'cost', positive: false },
+        { label: 'Labor (est.)', value: c.labor_estimate, cls: 'cost', positive: false },
+        { label: 'Fuel (est.)', value: c.fuel_estimate, cls: 'cost', positive: false },
+        { label: 'Vehicle (est.)', value: c.vehicle_estimate, cls: 'cost', positive: false },
+        { label: 'Gross Profit', value: c.gross_profit, cls: 'profit', positive: true },
+    ];
+
+    wf.innerHTML = items.map(item => {
+        const pct = Math.max((item.value / maxVal) * 100, 3);
+        return `<div class="waterfall-bar">
+            <div class="waterfall-label">${item.label}</div>
+            <div class="waterfall-fill-container">
+                <div class="waterfall-fill ${item.cls}" style="width:${pct}%">
+                    ${pct > 20 ? '$' + item.value.toFixed(2) : ''}
+                </div>
+            </div>
+            <div class="waterfall-amount ${item.positive ? 'positive' : 'negative'}">
+                ${item.positive ? '' : '-'}$${item.value.toFixed(2)}
+            </div>
+        </div>`;
+    }).join('') + `<div style="color:#4b5563;font-size:0.72rem;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.04);">
+        ℹ️ ${c.note}
+    </div>`;
+
+    // Tech Table
+    const tbody = document.getElementById('techBody');
+    tbody.innerHTML = d.tech_profitability.map(t => {
+        const rankCls = t.rank <= 3 ? 'rank-' + t.rank : 'rank-other';
+        const effCls = t.efficiencyRating >= 70 ? 'eff-high' : t.efficiencyRating >= 40 ? 'eff-med' : 'eff-low';
+        return `<tr>
+            <td><span class="rank-badge ${rankCls}">${t.rank}</span></td>
+            <td style="color:#fff;font-weight:600;">${t.name}</td>
+            <td class="money">${t.jobs.toLocaleString()}</td>
+            <td class="money" style="color:#22c55e;">$${t.revenue.toLocaleString()}</td>
+            <td class="money" style="color:#ef4444;">$${t.costs.total.toLocaleString()}</td>
+            <td class="money" style="color:#ffd700;font-weight:600;">$${t.grossProfit.toLocaleString()}</td>
+            <td>${t.margin}%</td>
+            <td>
+                ${t.efficiencyRating}/100
+                <div class="efficiency-bar"><div class="efficiency-fill ${effCls}" style="width:${t.efficiencyRating}%"></div></div>
+            </td>
+        </tr>`;
+    }).join('');
+
+    // Scaling Analysis
+    const pct = Math.min(Math.round((sc.current_annual_run_rate / sc.target) * 100), 100);
+    const scalingCard = document.getElementById('scalingCard');
+    scalingCard.innerHTML = `
+        <div style="text-align:center;margin-bottom:16px;">
+            <div style="font-size:0.8rem;color:#6b7280;text-transform:uppercase;letter-spacing:1px;">Annual Run Rate vs $5M Target</div>
+            <div class="pace-bar">
+                <div class="pace-fill" style="width:${pct}%">${pct}%</div>
+                <div class="pace-target">$5M →</div>
+            </div>
+            <div style="font-size:1.3rem;font-weight:700;color:${pct >= 80 ? '#22c55e' : pct >= 50 ? '#fbbf24' : '#ef4444'};">
+                $${(sc.current_annual_run_rate / 1000000).toFixed(2)}M run rate
+            </div>
+        </div>
+        <div class="scaling-metric">
+            <span class="scaling-label">Revenue Gap to $5M</span>
+            <span class="scaling-value" style="color:#ef4444;">$${(sc.gap / 1000000).toFixed(2)}M</span>
+        </div>
+        <div class="scaling-metric">
+            <span class="scaling-label">Additional Stops Needed (Annual)</span>
+            <span class="scaling-value">${sc.additional_stops_needed.toLocaleString()}</span>
+        </div>
+        <div class="scaling-metric">
+            <span class="scaling-label">Current Daily Average</span>
+            <span class="scaling-value">${sc.current_daily_avg} stops/day</span>
+        </div>
+        <div class="scaling-metric">
+            <span class="scaling-label">Required Daily Average</span>
+            <span class="scaling-value" style="color:#fbbf24;">${sc.required_daily_avg} stops/day</span>
+        </div>
+        <div class="scaling-metric">
+            <span class="scaling-label">Capacity Increase Needed</span>
+            <span class="scaling-value" style="color:#ef4444;">+${sc.capacity_increase_pct}%</span>
+        </div>
+    `;
+
+    // Opportunities
+    const opps = document.getElementById('opportunities');
+    opps.innerHTML = (d.improvement_opportunities || []).map(o => `
+        <div class="opp-card">
+            <div class="opp-header">
+                <span class="opp-impact opp-${o.impact}">${o.impact}</span>
+                <span class="opp-title">${o.title}</span>
+            </div>
+            <div class="opp-desc">${o.description}</div>
+            ${o.potential_value ? `<div class="opp-value">💰 Potential impact: $${o.potential_value.toLocaleString()}</div>` : ''}
+        </div>
+    `).join('');
+}
+</script>
+</body>
+</html>

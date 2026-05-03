@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="120">
+    <title>MoJo Activity Log</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .header .meta { text-align: right; font-size: 0.8rem; color: #64748b; }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: #60a5fa; text-decoration: none; font-size: 0.85rem;
+            margin-bottom: 16px; transition: color 0.2s;
+        }
+        .back-link:hover { color: #93bbfc; }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: #94a3b8;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .filter-btn:hover { background: rgba(255,255,255,0.08); color: #e2e8f0; }
+        .filter-btn.active { background: rgba(255,215,0,0.12); color: #ffd700; border-color: rgba(255,215,0,0.3); }
+
+        /* Stats bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-card .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .stat-card .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 32px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px; top: 0; bottom: 0;
+            width: 2px;
+            background: rgba(255,255,255,0.06);
+        }
+        .day-group { margin-bottom: 24px; }
+        .day-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ffd700;
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+        .event {
+            position: relative;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+        .event:hover { background: rgba(255,255,255,0.06); }
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -25px; top: 16px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+        .event.type-sync::before { border-color: #22c55e; background: rgba(34,197,94,0.3); }
+        .event.type-deploy::before { border-color: #60a5fa; background: rgba(96,165,250,0.3); }
+        .event.type-alert::before { border-color: #f59e0b; background: rgba(245,158,11,0.3); }
+        .event.type-build::before { border-color: #8b5cf6; background: rgba(139,92,246,0.3); }
+        .event.type-fix::before { border-color: #06b6d4; background: rgba(6,182,212,0.3); }
+        .event.type-error::before { border-color: #ef4444; background: rgba(239,68,68,0.3); }
+        .event.type-info::before { border-color: #64748b; background: rgba(100,116,139,0.3); }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        .event-type {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .type-sync .event-type { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .type-deploy .event-type { background: rgba(96,165,250,0.15); color: #60a5fa; }
+        .type-alert .event-type { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .type-build .event-type { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        .type-fix .event-type { background: rgba(6,182,212,0.15); color: #06b6d4; }
+        .type-error .event-type { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .type-info .event-type { background: rgba(100,116,139,0.15); color: #94a3b8; }
+
+        .event-time {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        .event-description {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .event-details {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #4b5563;
+        }
+        .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+        .loading { text-align: center; padding: 60px; color: #64748b; }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #475569;
+            font-size: 0.7rem;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            body { padding: 16px; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .timeline { padding-left: 24px; }
+            .event::before { left: -17px; width: 8px; height: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Command Center</a>
+    <div class="header">
+        <h1>📋 Activity Log</h1>
+        <div class="meta">
+            <div id="total-events">Loading...</div>
+            <div id="last-updated"></div>
+        </div>
+    </div>
+
+    <div class="stats-bar" id="stats-bar"></div>
+
+    <div class="filters" id="filters">
+        <button class="filter-btn active" data-type="all">All</button>
+        <button class="filter-btn" data-type="sync">🔄 Sync</button>
+        <button class="filter-btn" data-type="deploy">🚀 Deploy</button>
+        <button class="filter-btn" data-type="build">🏗️ Build</button>
+        <button class="filter-btn" data-type="fix">🔧 Fix</button>
+        <button class="filter-btn" data-type="alert">⚠️ Alert</button>
+        <button class="filter-btn" data-type="error">❌ Error</button>
+    </div>
+
+    <div id="timeline" class="timeline">
+        <div class="loading">Loading activity log...</div>
+    </div>
+
+    <div class="footer">
+        <p>MoJo Activity Log — Events auto-captured by pipeline scripts</p>
+    </div>
+
+    <script src="navigator.js"></script>
+    <script>
+    (function() {
+        let allEvents = [];
+        let activeFilter = 'all';
+
+        const TYPE_ICONS = {
+            sync: '🔄', deploy: '🚀', build: '🏗️', fix: '🔧',
+            alert: '⚠️', error: '❌', info: 'ℹ️'
+        };
+
+        async function loadLog() {
+            try {
+                const cacheBust = '?t=' + Date.now();
+                const resp = await fetch('activity-log.json' + cacheBust);
+                if (!resp.ok) throw new Error('No log file');
+                const data = await resp.json();
+                allEvents = data.events || [];
+
+                document.getElementById('total-events').textContent =
+                    `${allEvents.length} events`;
+                document.getElementById('last-updated').textContent =
+                    data.meta?.lastUpdated ?
+                    'Last: ' + new Date(data.meta.lastUpdated).toLocaleString() : '';
+
+                renderStats();
+                renderTimeline();
+            } catch (e) {
+                document.getElementById('timeline').innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">📋</div>
+                        <h3>No Activity Yet</h3>
+                        <p style="margin-top:8px">Events will appear here as the pipeline runs.</p>
+                        <p style="margin-top:4px;font-size:0.8rem">The nightly sync, deploys, and alerts all write to this log automatically.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderStats() {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const week = new Date(today - 7 * 86400000);
+
+            const todayEvents = allEvents.filter(e => new Date(e.timestamp) >= today);
+            const weekEvents = allEvents.filter(e => new Date(e.timestamp) >= week);
+            const errors = weekEvents.filter(e => e.type === 'error').length;
+            const syncs = weekEvents.filter(e => e.type === 'sync').length;
+
+            const stats = [
+                { value: todayEvents.length, label: 'Today', color: '#ffd700' },
+                { value: weekEvents.length, label: 'This Week', color: '#60a5fa' },
+                { value: syncs, label: 'Syncs (7d)', color: '#22c55e' },
+                { value: errors, label: 'Errors (7d)', color: errors > 0 ? '#ef4444' : '#22c55e' },
+            ];
+
+            document.getElementById('stats-bar').innerHTML = stats.map(s => `
+                <div class="stat-card">
+                    <div class="value" style="color:${s.color}">${s.value}</div>
+                    <div class="label">${s.label}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timeline');
+            const events = activeFilter === 'all'
+                ? allEvents
+                : allEvents.filter(e => e.type === activeFilter);
+
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">${TYPE_ICONS[activeFilter] || '📋'}</div>
+                        <h3>No ${activeFilter} events</h3>
+                    </div>
+                `;
+                return;
+            }
+
+            // Group by day
+            const groups = {};
+            for (const event of events) {
+                const d = new Date(event.timestamp);
+                const dayKey = d.toLocaleDateString('en-US', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+                if (!groups[dayKey]) groups[dayKey] = [];
+                groups[dayKey].push(event);
+            }
+
+            let html = '';
+            for (const [day, dayEvents] of Object.entries(groups)) {
+                html += `<div class="day-group">
+                    <div class="day-label">${day}</div>`;
+
+                for (const event of dayEvents) {
+                    const time = new Date(event.timestamp).toLocaleTimeString('en-US', {
+                        hour: 'numeric', minute: '2-digit'
+                    });
+                    const type = event.type || 'info';
+
+                    html += `
+                        <div class="event type-${type}">
+                            <div class="event-header">
+                                <span class="event-type">${type}</span>
+                                <span class="event-time">${time}</span>
+                            </div>
+                            <div class="event-description">${escapeHtml(event.description)}</div>
+                            ${event.details ? `<div class="event-details">${escapeHtml(event.details)}</div>` : ''}
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        // Filter buttons
+        document.getElementById('filters').addEventListener('click', function(e) {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilter = btn.dataset.type;
+            renderTimeline();
+        });
+
+        loadLog();
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Owners Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --mojo-green: #1a5c1a; --mojo-green-light: #2d8f2d;
+            --positive: #16a34a; --negative: #dc2626; --warning: #d97706;
+            --neutral: #64748b; --bg: #0f172a; --card-bg: #1e293b;
+            --text: #f1f5f9; --text-muted: #94a3b8; --placeholder: #6366f1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 20px; }
+        @media (min-width: 1800px) { body { padding: 30px; font-size: 18px; } .header h1 { font-size: 32px; } .metric-card .value { font-size: 48px; } }
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header { flex-direction: column; text-align: center; gap: 8px; }
+            .header h1 { font-size: 22px; }
+            .header .meta { text-align: center; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 16px; }
+            .panel { padding: 16px; max-height: none; }
+            .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .metrics-row.compact { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .metric-card { padding: 12px; }
+            .metric-card .value { font-size: 26px; }
+            .metric-card .value.small { font-size: 22px; }
+            .metric-card .label { font-size: 10px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .data-table { font-size: 12px; }
+            .data-table th, .data-table td { padding: 8px 6px; }
+            .kpi-pills { gap: 6px; }
+            .kpi-pill { padding: 6px 10px; font-size: 11px; }
+            .reasons-legend { flex-wrap: wrap; gap: 8px; }
+            .section-header { font-size: 12px; margin: 16px 0 12px 0; }
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 20px; }
+            .metric-card .value { font-size: 22px; }
+            .metric-card .value.small { font-size: 18px; }
+        }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .header h1 { font-size: 28px; display: flex; align-items: center; gap: 12px; }
+        .header h1 .logo { font-size: 40px; }
+        .header .meta { text-align: right; color: var(--text-muted); font-size: 13px; }
+        .header .meta .date { font-size: 16px; color: var(--text); }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 25px; min-height: calc(100vh - 120px); }
+        .panel { background: var(--card-bg); border-radius: 16px; padding: 25px; overflow-y: auto; max-height: 85vh; }
+        .panel.full-width { grid-column: 1 / -1; }
+        .panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .panel-header h2 { font-size: 18px; font-weight: 600; }
+        .panel-header .badge { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 12px; font-size: 11px; color: var(--text-muted); }
+        .panel-header .badge.placeholder { background: rgba(99,102,241,0.2); color: var(--placeholder); }
+        .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .metrics-row.compact { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+        .metric-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; text-align: center; position: relative; overflow: hidden; }
+        .metric-card.highlight { border: 2px solid var(--mojo-green); }
+        .metric-card.placeholder { border: 1px dashed var(--placeholder); background: rgba(99,102,241,0.05); }
+        .metric-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+        .metric-card .value { font-size: 36px; font-weight: 700; line-height: 1; }
+        .metric-card .value.small { font-size: 28px; }
+        .metric-card .subtext { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+        .metric-card .trend { font-size: 12px; margin-top: 6px; }
+        .metric-card .trend.up { color: var(--positive); }
+        .metric-card .trend.down { color: var(--negative); }
+        .metric-card .awaiting { font-size: 10px; color: var(--placeholder); margin-top: 4px; }
+        .positive { color: var(--positive); } .negative { color: var(--negative); } .warning { color: var(--warning); } .neutral { color: var(--neutral); }
+        .placeholder-text { color: var(--placeholder); }
+        .progress-section { margin-bottom: 20px; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+        .progress-bar { height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease; }
+        .progress-fill.good { background: linear-gradient(90deg, var(--positive), #22d3ee); }
+        .progress-fill.warning { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+        .progress-fill.danger { background: linear-gradient(90deg, var(--negative), #f87171); }
+        .section-header { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 20px 0 15px 0; display: flex; align-items: center; gap: 8px; }
+        .section-header::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+        .section-header .new-badge { background: rgba(99,102,241,0.2); color: var(--placeholder); font-size: 9px; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .data-table th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .data-table td { padding: 12px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+        .team-card { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 15px; text-align: center; }
+        .team-card .name { font-weight: 600; margin-bottom: 10px; }
+        .team-card .stats { display: flex; justify-content: center; gap: 15px; font-size: 12px; }
+        .team-card .stat { display: flex; flex-direction: column; }
+        .team-card .stat-value { font-size: 18px; font-weight: 600; }
+        .team-card .stat-label { font-size: 10px; color: var(--text-muted); }
+        .kpi-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+        .kpi-pill { background: rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 20px; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+        .kpi-pill .val { font-weight: 600; }
+        .reasons-bar { display: flex; height: 24px; border-radius: 6px; overflow: hidden; margin-top: 10px; }
+        .reasons-bar .segment { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #000; }
+        .reasons-bar .paused { background: #94a3b8; } .reasons-bar .moved { background: #fb923c; }
+        .reasons-bar .not-interested { background: #f87171; } .reasons-bar .financial { background: #fbbf24; }
+        .reasons-legend { display: flex; gap: 15px; margin-top: 8px; font-size: 10px; color: var(--text-muted); }
+        .reasons-legend span { display: flex; align-items: center; gap: 4px; }
+        .reasons-legend .dot { width: 8px; height: 8px; border-radius: 2px; }
+        .alert-box { background: rgba(234,179,8,0.1); border-left: 3px solid var(--warning); padding: 12px 15px; border-radius: 0 8px 8px 0; margin-bottom: 15px; font-size: 13px; }
+        .alert-box.positive { background: rgba(22,163,74,0.1); border-left-color: var(--positive); }
+        .alert-box.negative { background: rgba(220,38,38,0.1); border-left-color: var(--negative); }
+        .alert-box.info { background: rgba(99,102,241,0.1); border-left-color: var(--placeholder); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .live-dot { width: 8px; height: 8px; background: var(--positive); border-radius: 50%; animation: pulse 2s infinite; }
+        .loading { text-align: center; padding: 60px; color: var(--text-muted); font-size: 16px; grid-column: 1/-1; }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <a href="index.html" style="color:#64748b; text-decoration:none; font-size:0.85rem; display:inline-block; margin-bottom:12px;">← Back to Hub</a>
+    <header class="header">
+        <h1>
+            <span class="logo">🦟</span>
+            MoJo Owners Dashboard
+        </h1>
+        <div class="meta">
+            <div class="date" id="currentDate">Loading...</div>
+            <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 4px;">
+                <span class="live-dot"></span>
+                <span>Auto-refresh: 5 min</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-grid" id="dashboard">
+        <div class="loading">Loading owners data...</div>
+    </div>
+
+    <script>
+        // Update current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        function fmtMoney(v) { return '$' + Number(v).toLocaleString('en-US', { maximumFractionDigits: 0 }); }
+        function fmtK(v) { return v >= 1000 ? '$' + (v / 1000).toFixed(0) + 'K' : '$' + v; }
+
+        async function loadDashboard() {
+            try {
+                const res = await fetch('owners-data.json?t=' + Date.now());
+                const data = await res.json();
+                renderDashboard(data);
+            } catch (err) {
+                console.error('Failed to load owners data:', err);
+                document.getElementById('dashboard').innerHTML = '<div class="loading">⚠️ Could not load data. Refresh to retry.</div>';
+            }
+        }
+
+        function renderDashboard(d) {
+            const sales = d.sales || {};
+            const revenue = d.revenue || {};
+            const ops = d.operations || {};
+            const fleet = d.fleet || {};
+            const ads = d.google_ads || {};
+            const team = sales.team || {};
+            const cancelReasons = sales.cancel_reasons || {};
+            const totalCancels = sales.total_cancels || 0;
+
+            // Calculate derived metrics
+            const totalSales = sales.total_sales || 0;
+            const net = sales.net || (totalSales - totalCancels);
+            const paused = sales.paused || 0;
+            const adjustedNet = net + paused;
+
+            // Google Ads derived
+            const leadToSale = ads.total_conversions > 0 ? Math.round(totalSales / ads.total_conversions * 100) : 0;
+            const cac = totalSales > 0 ? Math.round(ads.total_spend / totalSales) : 0;
+            const ltvCac = cac > 0 ? (2000 / cac).toFixed(1) : '—';
+            const churnRate = totalCancels > 0 ? ((totalCancels / 500) * 100).toFixed(1) : '—'; // Estimate base of ~500 customers
+
+            // Cancel reason bar segments
+            const reasonKeys = Object.keys(cancelReasons);
+            const reasonTotal = Object.values(cancelReasons).reduce((s, v) => s + v, 0);
+
+            // Sort team by sales desc
+            const sortedTeam = Object.entries(team)
+                .map(([name, data]) => ({ name, ...data, net: data.sales - data.cancels }))
+                .sort((a, b) => b.net - a.net);
+
+            // Top 4 cancel reasons for bar
+            const topReasons = Object.entries(cancelReasons).sort((a, b) => b[1] - a[1]).slice(0, 4);
+            const reasonColors = ['#94a3b8', '#fb923c', '#f87171', '#fbbf24'];
+            const reasonClasses = ['paused', 'moved', 'not-interested', 'financial'];
+
+            // Revenue progress
+            const monthlyTarget = 416000;
+            const revMTD = revenue.feb_mtd || 0;
+            const revPct = monthlyTarget > 0 ? Math.round(revMTD / monthlyTarget * 100) : 0;
+            const now = new Date();
+            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            const daysRemaining = daysInMonth - now.getDate();
+
+            // Campaign data
+            const campaigns = ads.campaigns || [];
+
+            let html = `
+            <!-- LEFT PANEL: Business Development -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>📈</span>
+                    <h2>Business Development</h2>
+                    <span class="badge">Daily Check-in</span>
+                </div>
+
+                <div class="section-header">Lead Flow & Acquisition</div>
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="label">Google Ads Leads (30d)</div>
+                        <div class="value positive">${ads.total_conversions || '—'}</div>
+                        <div class="subtext">From ${campaigns.length} active campaigns</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Ad Spend (30d)</div>
+                        <div class="value neutral">${ads.total_spend ? fmtMoney(ads.total_spend) : '—'}</div>
+                        <div class="subtext">${ads.total_spend ? fmtMoney(Math.round(ads.total_spend / 30)) + '/day avg' : ''}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Cost Per Lead</div>
+                        <div class="value warning">${ads.cost_per_lead ? '$' + ads.cost_per_lead.toFixed(2) : '—'}</div>
+                        <div class="trend down">Target: &lt;$15</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Lead → Sale</div>
+                        <div class="value warning">${leadToSale}%</div>
+                        <div class="subtext">${totalSales} of ${ads.total_conversions || 0} converted</div>
+                    </div>
+                </div>
+
+                <div class="section-header">Campaign Performance</div>
+                <table class="data-table">
+                    <thead><tr><th>Campaign</th><th>Clicks</th><th>Conv</th><th>Cost</th><th>CPA</th></tr></thead>
+                    <tbody>`;
+
+            campaigns.forEach(c => {
+                const cpaClass = c.cpa < 20 ? 'positive' : 'warning';
+                html += `<tr>
+                    <td>${c.name}</td>
+                    <td>${c.clicks}</td>
+                    <td>${c.conversions}</td>
+                    <td>${fmtMoney(c.cost)}</td>
+                    <td class="${cpaClass}">${'$' + c.cpa.toFixed(2)}</td>
+                </tr>`;
+            });
+
+            // Winback opportunities from cancel reasons
+            const winbackHigh = cancelReasons['Not Interested'] || 0;
+            const winbackMedium = cancelReasons['Financial'] || 0;
+            const winbackLow = (cancelReasons['Program Change'] || 0) + (cancelReasons['Other'] || 0);
+
+            html += `</tbody></table>
+
+                <div class="section-header">Winback Opportunities</div>
+                <div class="kpi-pills">
+                    <div class="kpi-pill"><span>🎯 Not Interested:</span> <span class="val positive">${winbackHigh}</span></div>
+                    <div class="kpi-pill"><span>💰 Financial:</span> <span class="val warning">${winbackMedium}</span></div>
+                    <div class="kpi-pill"><span>📞 Other/Change:</span> <span class="val neutral">${winbackLow}</span></div>
+                </div>
+                <div class="alert-box" style="margin-top: 15px;">
+                    💡 <strong>${winbackHigh + winbackMedium} recoverable cancels</strong> — prime winback targets for spring. Reach out with restart discount offer.
+                </div>
+
+                <div class="section-header">Cancel Reasons (YTD)</div>
+                <div class="reasons-bar">`;
+
+            topReasons.forEach(([name, count], i) => {
+                const pct = reasonTotal > 0 ? Math.round(count / reasonTotal * 100) : 0;
+                html += `<div class="segment ${reasonClasses[i] || ''}" style="width: ${pct}%; background: ${reasonColors[i]}">${count}</div>`;
+            });
+
+            html += `</div>
+                <div class="reasons-legend">`;
+            topReasons.forEach(([name, count], i) => {
+                const pct = reasonTotal > 0 ? Math.round(count / reasonTotal * 100) : 0;
+                html += `<span><div class="dot" style="background: ${reasonColors[i]}"></div> ${name} (${pct}%)</span>`;
+            });
+
+            html += `</div>
+            </div>
+
+            <!-- RIGHT PANEL: Owners Scorecard -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>🎯</span>
+                    <h2>Owners Scorecard</h2>
+                    <span class="badge">Weekly Review</span>
+                </div>
+
+                <div class="section-header">Revenue vs Target</div>
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span>MTD: <strong>${fmtK(revMTD)}</strong></span>
+                        <span>Target: ${fmtK(monthlyTarget)}/mo</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill ${revPct >= 50 ? 'good' : revPct >= 25 ? 'warning' : 'danger'}" style="width: ${Math.min(100, revPct)}%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-muted);">
+                        <span>${revPct}% of monthly target</span>
+                        <span>${daysRemaining} days remaining</span>
+                    </div>
+                </div>
+
+                <div class="metrics-row">
+                    <div class="metric-card highlight">
+                        <div class="label">YTD Revenue</div>
+                        <div class="value neutral">${fmtK(revenue.ytd_invoiced || 0)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Avg Rev/Visit</div>
+                        <div class="value neutral">${revenue.avg_per_visit ? '$' + revenue.avg_per_visit : '—'}</div>
+                    </div>
+                </div>
+
+                <div class="section-header">Customer Base</div>
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <div class="label">New Sales (YTD)</div>
+                        <div class="value positive">${totalSales}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Cancels (YTD)</div>
+                        <div class="value negative">${totalCancels}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Net Change</div>
+                        <div class="value negative">${net >= 0 ? '+' : ''}${net}</div>
+                        <div class="subtext">${net < 0 ? '⚠️ Shrinking base' : '✅ Growing'}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Recoverable</div>
+                        <div class="value warning">${paused}</div>
+                        <div class="subtext">seasonal/financial</div>
+                    </div>
+                </div>
+
+                <div class="alert-box ${net < -10 ? 'negative' : net < 0 ? '' : 'positive'}">
+                    ⚠️ <strong>Net ${net} customers YTD.</strong> ${paused} cancels are potentially recoverable (seasonal/financial). Focus on reactivating before spring.
+                </div>
+
+                <div class="section-header">Team Performance</div>
+                <div class="team-grid">`;
+
+            const medals = ['🥇 ', '', ''];
+            sortedTeam.forEach((csr, i) => {
+                html += `
+                    <div class="team-card">
+                        <div class="name">${i === 0 ? '🥇 ' : ''}${csr.name}</div>
+                        <div class="stats">
+                            <div class="stat"><span class="stat-value positive">${csr.sales}</span><span class="stat-label">Sales</span></div>
+                            <div class="stat"><span class="stat-value negative">${csr.cancels}</span><span class="stat-label">Cancels</span></div>
+                            <div class="stat"><span class="stat-value ${csr.net >= 0 ? 'positive' : 'negative'}">${csr.net >= 0 ? '+' : ''}${csr.net}</span><span class="stat-label">Net</span></div>
+                        </div>
+                    </div>`;
+            });
+
+            html += `</div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 10px;">
+                    💡 Note: Norma handles most inbound cancellation calls (retention role).
+                </div>
+            </div>
+
+            <!-- BOTTOM LEFT: Operations -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>⚙️</span>
+                    <h2>Operations KPIs</h2>
+                    <span class="badge">${ops.total_jobs ? 'Live' : 'Awaiting Data'}</span>
+                </div>
+
+                <div class="section-header">Technician Productivity</div>
+                <div class="metrics-row compact">
+                    <div class="metric-card">
+                        <div class="label">Total Jobs (YTD)</div>
+                        <div class="value small" style="color: #00ff88;">${ops.total_jobs || '—'}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Jobs/Tech/Day</div>
+                        <div class="value small ${ops.jobs_per_tech_day >= 12 ? 'positive' : 'warning'}">${ops.jobs_per_tech_day || '—'}</div>
+                        <div class="subtext">Target: 12+</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Rev/Tech/Day</div>
+                        <div class="value small neutral">${ops.revenue_per_tech_day ? '$' + ops.revenue_per_tech_day : '—'}</div>
+                        <div class="subtext">Target: $1,800</div>
+                    </div>
+                </div>
+
+                <div class="section-header">Service Quality</div>
+                <div class="metrics-row compact">
+                    <div class="metric-card">
+                        <div class="label">First-Time Success</div>
+                        <div class="value small positive">${ops.first_time_success ? ops.first_time_success + '%' : '—'}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Callback Rate</div>
+                        <div class="value small ${ops.callback_rate < 1 ? 'positive' : 'warning'}">${ops.callback_rate != null ? ops.callback_rate + '%' : '—'}</div>
+                        <div class="subtext">Target: &lt;5%</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Re-sprays</div>
+                        <div class="value small">${ops.resprays || '—'}</div>
+                        <div class="subtext">of ${ops.total_jobs || '?'} jobs</div>
+                    </div>
+                </div>
+
+                <div class="section-header">🚛 Fleet Operations</div>
+                <div class="metrics-row compact">
+                    <div class="metric-card">
+                        <div class="label">Total Miles (7d)</div>
+                        <div class="value small" style="color: #00ff88;">${fleet.total_miles_7d ? fleet.total_miles_7d.toLocaleString() : '—'}</div>
+                        <div class="subtext">${fleet.total_vehicles || '?'} vehicles active</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Avg Safety Score</div>
+                        <div class="value small" style="color: ${(fleet.avg_safety_score || 0) >= 80 ? '#00ff88' : '#ffaa00'}">${fleet.avg_safety_score || '—'}</div>
+                        <div class="subtext">Target: 80+</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Vehicles w/ Codes</div>
+                        <div class="value small ${(fleet.vehicles_with_codes || 0) > 0 ? 'warning' : ''}">${fleet.vehicles_with_codes ?? '—'}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Blowers Active</div>
+                        <div class="value small">${fleet.blowers_active || '—'}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM RIGHT: Unit Economics -->
+            <div class="panel">
+                <div class="panel-header">
+                    <span>👥</span>
+                    <h2>Unit Economics</h2>
+                    <span class="badge">Calculated</span>
+                </div>
+
+                <div class="section-header">Acquisition</div>
+                <div class="metrics-row compact">
+                    <div class="metric-card">
+                        <div class="label">Customer Acq Cost</div>
+                        <div class="value small warning">${cac ? '$' + cac : '—'}</div>
+                        <div class="subtext">${ads.total_spend ? fmtMoney(ads.total_spend) : ''} ÷ ${totalSales} sales</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">LTV:CAC Ratio</div>
+                        <div class="value small positive">${ltvCac}x</div>
+                        <div class="subtext">Target: &gt;3x ✓</div>
+                    </div>
+                </div>
+
+                <div class="section-header">Services Sold Breakdown</div>
+                <table class="data-table" style="font-size: 12px;">
+                    <thead><tr><th>Service</th><th>Count</th></tr></thead>
+                    <tbody>`;
+
+            const saleCats = sales.sale_categories || {};
+            Object.entries(saleCats).sort((a, b) => b[1] - a[1]).forEach(([name, count]) => {
+                html += `<tr><td>${name}</td><td>${count}</td></tr>`;
+            });
+
+            html += `</tbody></table>
+
+                <div class="section-header" style="margin-top: 20px;">Data Freshness</div>
+                <div style="font-size: 12px; color: var(--text-muted);">
+                    <div>📊 Data generated: ${d.generated_date || '—'}</div>
+                    <div>📋 Sales CSV: ${sales.csv_date || '—'}</div>
+                    <div>📡 Ads data: ${ads.data_date || '—'}</div>
+                    <div>⚙️ Ops updated: ${d.ops_updated_at ? new Date(d.ops_updated_at).toLocaleString() : '—'}</div>
+                </div>
+            </div>`;
+
+            document.getElementById('dashboard').innerHTML = html;
+        }
+
+        // Load on start
+        loadDashboard();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

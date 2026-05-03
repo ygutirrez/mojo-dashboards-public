@@ -1,0 +1,380 @@
+{
+  "generated_at": "2026-05-03T08:31:54.739Z",
+  "period": {
+    "current_week": "Apr 27 - May 3",
+    "previous_week": "Mar 23 - Mar 29",
+    "ytd_days": 123,
+    "year": 2026
+  },
+  "hero": {
+    "active_customers": {
+      "value": 2017,
+      "goal": 4000,
+      "gap": 1983,
+      "pct_of_goal": 50.4
+    },
+    "revenue_ytd": {
+      "value": 820094,
+      "target": 5000000,
+      "projected": 2433614,
+      "on_pace": false,
+      "pct_of_target": 48.7
+    },
+    "net_customers_ytd": {
+      "value": 1,
+      "new": 131,
+      "cancelled": 130,
+      "sentiment": "positive"
+    },
+    "cancel_ratio": {
+      "value": 0.61,
+      "sentiment": "positive",
+      "target": 0.5
+    }
+  },
+  "wow": {
+    "sales": {
+      "current": 233,
+      "previous": 101,
+      "trend": {
+        "direction": "up",
+        "icon": "↑",
+        "sentiment": "positive",
+        "change": 130.7
+      },
+      "weekly_delta": 132
+    },
+    "cancel_events": {
+      "current": 469,
+      "previous": 348,
+      "trend": {
+        "direction": "up",
+        "icon": "↑",
+        "sentiment": "negative",
+        "change": 34.8
+      },
+      "weekly_delta": 121
+    },
+    "revenue": {
+      "current": 820094,
+      "previous": 580494,
+      "trend": {
+        "direction": "up",
+        "icon": "↑",
+        "sentiment": "positive",
+        "change": 41.3
+      },
+      "weekly_delta": 239600
+    },
+    "avg_invoice": {
+      "current": 97,
+      "previous": 98,
+      "trend": {
+        "direction": "down",
+        "icon": "↓",
+        "sentiment": "negative",
+        "change": -1
+      }
+    },
+    "visits": {
+      "current": 8592,
+      "previous": 5965,
+      "trend": {
+        "direction": "up",
+        "icon": "↑",
+        "sentiment": "positive",
+        "change": 44
+      }
+    },
+    "net": {
+      "current": 90,
+      "previous": -4,
+      "trend": {
+        "direction": "up",
+        "icon": "↑",
+        "sentiment": "positive",
+        "change": 2350
+      }
+    }
+  },
+  "monthly_cancels": [
+    {
+      "month": "2026-01",
+      "events": 110,
+      "unique_accounts": 30,
+      "annual_value_lost": 107814.76
+    },
+    {
+      "month": "2026-02",
+      "events": 67,
+      "unique_accounts": 22,
+      "annual_value_lost": 32499.38
+    },
+    {
+      "month": "2026-03",
+      "events": 180,
+      "unique_accounts": 57,
+      "annual_value_lost": 133808.2
+    },
+    {
+      "month": "2026-04",
+      "events": 112,
+      "unique_accounts": 35,
+      "annual_value_lost": 84519.52
+    }
+  ],
+  "cancel_reasons": [
+    {
+      "reason": "Moved",
+      "events": 144,
+      "accounts": 38,
+      "annual_value_lost": 102130.8,
+      "recoverable": false,
+      "avg_value": 2687.65
+    },
+    {
+      "reason": "Financial Reasons",
+      "events": 57,
+      "accounts": 13,
+      "annual_value_lost": 36843.52,
+      "recoverable": true,
+      "avg_value": 2834.12
+    },
+    {
+      "reason": "Not Interested at this time",
+      "events": 55,
+      "accounts": 16,
+      "annual_value_lost": 44532.6,
+      "recoverable": true,
+      "avg_value": 2783.29
+    },
+    {
+      "reason": "Bad Debt",
+      "events": 53,
+      "accounts": 13,
+      "annual_value_lost": 65551.8,
+      "recoverable": false,
+      "avg_value": 5042.45
+    },
+    {
+      "reason": "Other - Review Note",
+      "events": 47,
+      "accounts": 15,
+      "annual_value_lost": 34627.5,
+      "recoverable": true,
+      "avg_value": 2308.5
+    },
+    {
+      "reason": "Unhappy w Service",
+      "events": 45,
+      "accounts": 10,
+      "annual_value_lost": 40395.4,
+      "recoverable": false,
+      "avg_value": 4039.54
+    },
+    {
+      "reason": "Went w Competition",
+      "events": 23,
+      "accounts": 5,
+      "annual_value_lost": 16278.42,
+      "recoverable": false,
+      "avg_value": 3255.68
+    },
+    {
+      "reason": "Customer only wanted one spray",
+      "events": 16,
+      "accounts": 15,
+      "annual_value_lost": 0,
+      "recoverable": true,
+      "avg_value": 0
+    },
+    {
+      "reason": "",
+      "events": 15,
+      "accounts": 13,
+      "annual_value_lost": 14862.36,
+      "recoverable": false,
+      "avg_value": 1143.26
+    },
+    {
+      "reason": "Change of Program",
+      "events": 13,
+      "accounts": 5,
+      "annual_value_lost": 3419.46,
+      "recoverable": false,
+      "avg_value": 683.89
+    },
+    {
+      "reason": "One Time to On Going Customer",
+      "events": 1,
+      "accounts": 1,
+      "annual_value_lost": 0,
+      "recoverable": false,
+      "avg_value": 0
+    }
+  ],
+  "tenure": {
+    "0-90 days": 123,
+    "91-180 days": 31,
+    "6-12 months": 261,
+    "1-2 years": 329,
+    "2-3 years": 220,
+    "3+ years": 1053
+  },
+  "programs": {
+    "Signature Program": 1243,
+    "Residential Service": 205,
+    "Misting Systems": 181,
+    "Residential - One Time Services": 111,
+    "Home Pest Defense": 95,
+    "Inzecto Traps": 32,
+    "Commercial Service": 28,
+    "LIV System": 25,
+    "Barrier Spray Program - 1 week": 22,
+    "In2Care ": 20
+  },
+  "techs": [
+    {
+      "name": "Damian Machin",
+      "visits": 1190,
+      "revenue": 108740.63000000175,
+      "avg_per_visit": 91.38
+    },
+    {
+      "name": "Joseph  Pagan",
+      "visits": 666,
+      "revenue": 103510.54000000034,
+      "avg_per_visit": 155.42
+    },
+    {
+      "name": "Stanley Prophete",
+      "visits": 1096,
+      "revenue": 100683.90000000154,
+      "avg_per_visit": 91.86
+    },
+    {
+      "name": "John  Sabin",
+      "visits": 1078,
+      "revenue": 96114.1100000013,
+      "avg_per_visit": 89.16
+    },
+    {
+      "name": "David Carbajal",
+      "visits": 1041,
+      "revenue": 90929.97000000099,
+      "avg_per_visit": 87.35
+    },
+    {
+      "name": "Marcus   Rubi",
+      "visits": 1013,
+      "revenue": 80193.04000000033,
+      "avg_per_visit": 79.16
+    },
+    {
+      "name": "Andrew Schamel",
+      "visits": 911,
+      "revenue": 77209.70000000007,
+      "avg_per_visit": 84.75
+    },
+    {
+      "name": "Jeffrey Baptiste",
+      "visits": 575,
+      "revenue": 49407.70999999987,
+      "avg_per_visit": 85.93
+    },
+    {
+      "name": "Jorge  Navarro",
+      "visits": 504,
+      "revenue": 40791.760000000104,
+      "avg_per_visit": 80.94
+    },
+    {
+      "name": "Travis Johnson",
+      "visits": 231,
+      "revenue": 21216.940000000028,
+      "avg_per_visit": 91.85
+    },
+    {
+      "name": "Jeovany  Osorio",
+      "visits": 183,
+      "revenue": 18406.399999999994,
+      "avg_per_visit": 100.58
+    },
+    {
+      "name": "Curtis Blount",
+      "visits": 104,
+      "revenue": 8443.969999999983,
+      "avg_per_visit": 81.19
+    }
+  ],
+  "sales_sources": {
+    "MoJo Customer": 62,
+    "Mass Media": 1,
+    "Referral": 40,
+    "Online": 99,
+    "Yard Sign": 15,
+    "Direct Mail Postcard": 1,
+    "Advertising": 2,
+    "Printed Material": 3,
+    "Online Search": 7,
+    "Mosquito Joe Vehicle": 2,
+    "Local Branding": 1
+  },
+  "history": [
+    {
+      "week": "Mar 2 - Mar 8",
+      "sales": 52,
+      "cancels": 220,
+      "revenue": 443958,
+      "net": -13
+    },
+    {
+      "week": "Mar 9 - Mar 15",
+      "sales": 57,
+      "cancels": 254,
+      "revenue": 464844,
+      "net": -21
+    },
+    {
+      "week": "Mar 16 - Mar 22",
+      "sales": 82,
+      "cancels": 307,
+      "revenue": 541694,
+      "net": -11
+    },
+    {
+      "week": "Mar 23 - Mar 29",
+      "sales": 101,
+      "cancels": 348,
+      "revenue": 580494,
+      "net": -4
+    },
+    {
+      "week": "Apr 27 - May 3",
+      "sales": 233,
+      "cancels": 469,
+      "revenue": 820094,
+      "net": 90
+    }
+  ],
+  "alerts": [
+    {
+      "severity": "warning",
+      "category": "revenue",
+      "message": "Revenue tracking at 48.7% of $5M target pace",
+      "metric": 48.7
+    },
+    {
+      "severity": "critical",
+      "category": "retention",
+      "message": "March cancel spike: 180 events (169% increase over Feb)",
+      "metric": 180
+    },
+    {
+      "severity": "info",
+      "category": "opportunity",
+      "message": "$116K in recoverable annual value from 59 accounts",
+      "metric": 116003.62
+    }
+  ]
+}

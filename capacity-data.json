@@ -1,0 +1,387 @@
+{
+  "generated_at": "2026-04-23T19:01:15.039Z",
+  "period": "Jan 1 - Apr 23, 2026 (YTD)",
+  "workforce": {
+    "active_techs": 11,
+    "total_employees": 11,
+    "avg_daily_stops": 101.7,
+    "avg_stops_per_tech": 9.2,
+    "team_utilization": 77,
+    "overloaded_count": 1,
+    "high_util_count": 5,
+    "optimal_stops_per_day": 10,
+    "max_capacity_per_day": 12
+  },
+  "tech_analysis": [
+    {
+      "name": "Damian Machin",
+      "initials": "DM",
+      "jobs": 1143,
+      "revenue": 104431,
+      "dailyAvg": 14.3,
+      "utilization": 100,
+      "status": "overloaded",
+      "annualizedJobs": 3715,
+      "annualizedRevenue": 339424,
+      "revenuePerJob": 91,
+      "resprays": 9,
+      "upsells": 0
+    },
+    {
+      "name": "Stanley Prophete",
+      "initials": "SP",
+      "jobs": 1040,
+      "revenue": 95712,
+      "dailyAvg": 13,
+      "utilization": 100,
+      "status": "high",
+      "annualizedJobs": 3380,
+      "annualizedRevenue": 311064,
+      "revenuePerJob": 92,
+      "resprays": 3,
+      "upsells": 0
+    },
+    {
+      "name": "John Sabin",
+      "initials": "JS",
+      "jobs": 1025,
+      "revenue": 91492,
+      "dailyAvg": 12.8,
+      "utilization": 100,
+      "status": "high",
+      "annualizedJobs": 3331,
+      "annualizedRevenue": 297327,
+      "revenuePerJob": 89,
+      "resprays": 4,
+      "upsells": 1
+    },
+    {
+      "name": "Marcus Rubi",
+      "initials": "MR",
+      "jobs": 1001,
+      "revenue": 79294,
+      "dailyAvg": 12.5,
+      "utilization": 100,
+      "status": "high",
+      "annualizedJobs": 3253,
+      "annualizedRevenue": 257686,
+      "revenuePerJob": 79,
+      "resprays": 5,
+      "upsells": 0
+    },
+    {
+      "name": "David Carbajal",
+      "initials": "DC",
+      "jobs": 998,
+      "revenue": 86800,
+      "dailyAvg": 12.5,
+      "utilization": 100,
+      "status": "high",
+      "annualizedJobs": 3244,
+      "annualizedRevenue": 282143,
+      "revenuePerJob": 87,
+      "resprays": 7,
+      "upsells": 3
+    },
+    {
+      "name": "Andrew Schamel",
+      "initials": "AS",
+      "jobs": 854,
+      "revenue": 72346,
+      "dailyAvg": 10.7,
+      "utilization": 89,
+      "status": "normal",
+      "annualizedJobs": 2776,
+      "annualizedRevenue": 235167,
+      "revenuePerJob": 85,
+      "resprays": 5,
+      "upsells": 1
+    },
+    {
+      "name": "Joseph Pagan",
+      "initials": "JP",
+      "jobs": 640,
+      "revenue": 99081,
+      "dailyAvg": 8,
+      "utilization": 67,
+      "status": "normal",
+      "annualizedJobs": 2080,
+      "annualizedRevenue": 322013,
+      "revenuePerJob": 155,
+      "resprays": 1,
+      "upsells": 1
+    },
+    {
+      "name": "Jeffrey Baptiste",
+      "initials": "JB",
+      "jobs": 519,
+      "revenue": 44590,
+      "dailyAvg": 6.5,
+      "utilization": 54,
+      "status": "normal",
+      "annualizedJobs": 1687,
+      "annualizedRevenue": 144939,
+      "revenuePerJob": 86,
+      "resprays": 5,
+      "upsells": 0
+    },
+    {
+      "name": "Jorge Navarro",
+      "initials": "JN",
+      "jobs": 467,
+      "revenue": 37551,
+      "dailyAvg": 5.8,
+      "utilization": 49,
+      "status": "normal",
+      "annualizedJobs": 1518,
+      "annualizedRevenue": 122061,
+      "revenuePerJob": 80,
+      "resprays": 1,
+      "upsells": 1
+    },
+    {
+      "name": "Travis Johnson",
+      "initials": "TJ",
+      "jobs": 215,
+      "revenue": 19663,
+      "dailyAvg": 2.7,
+      "utilization": 22,
+      "status": "underutilized",
+      "annualizedJobs": 699,
+      "annualizedRevenue": 63928,
+      "revenuePerJob": 91,
+      "resprays": 1,
+      "upsells": 0
+    },
+    {
+      "name": "Curtis Blount",
+      "initials": "CB",
+      "jobs": 51,
+      "revenue": 4010,
+      "dailyAvg": 0.6,
+      "utilization": 5,
+      "status": "underutilized",
+      "annualizedJobs": 166,
+      "annualizedRevenue": 13052,
+      "revenuePerJob": 79,
+      "resprays": 0,
+      "upsells": 0
+    }
+  ],
+  "scaling": {
+    "current_annual_run_rate": 2433474,
+    "target": 5000000,
+    "gap": 2566526,
+    "avg_revenue_per_stop": 92.6,
+    "required_daily_stops": 208,
+    "current_daily_stops": 101.7,
+    "techs_needed_total": 21,
+    "new_hires_needed": 10,
+    "capacity_increase_pct": 105
+  },
+  "hiring_costs": {
+    "salary_annual": 38167,
+    "vehicle_monthly": 800,
+    "vehicle_annual": 9600,
+    "equipment_onetime": 2500,
+    "training_onetime": 1500,
+    "total_first_year": 51767,
+    "total_ongoing_annual": 47767,
+    "revenue_per_tech_annual": 240755,
+    "break_even_months": 1
+  },
+  "hiring_roadmap": [
+    {
+      "phase": 1,
+      "label": "Q2 2026",
+      "hires": 4,
+      "totalTechs": 15,
+      "dailyCapacity": 150,
+      "annualCapacity": 3611320,
+      "investmentCost": 207068,
+      "revenueTarget": 3611320,
+      "gapToTarget": 1388680
+    },
+    {
+      "phase": 2,
+      "label": "Q4 2026",
+      "hires": 4,
+      "totalTechs": 19,
+      "dailyCapacity": 190,
+      "annualCapacity": 4574339,
+      "investmentCost": 207068,
+      "revenueTarget": 4574339,
+      "gapToTarget": 425661
+    },
+    {
+      "phase": 3,
+      "label": "Q2 2027",
+      "hires": 2,
+      "totalTechs": 21,
+      "dailyCapacity": 210,
+      "annualCapacity": 5055849,
+      "investmentCost": 103534,
+      "revenueTarget": 5000000,
+      "gapToTarget": 0
+    }
+  ],
+  "seasonal_model": [
+    {
+      "month": "Jan",
+      "factor": 0.6,
+      "label": "Low",
+      "adjustedDailyStops": 61,
+      "techsNeeded": 7,
+      "currentTechs": 11,
+      "surplus": 4,
+      "status": "adequate"
+    },
+    {
+      "month": "Feb",
+      "factor": 0.7,
+      "label": "Ramp",
+      "adjustedDailyStops": 71,
+      "techsNeeded": 8,
+      "currentTechs": 11,
+      "surplus": 3,
+      "status": "adequate"
+    },
+    {
+      "month": "Mar",
+      "factor": 0.9,
+      "label": "Peak Start",
+      "adjustedDailyStops": 92,
+      "techsNeeded": 10,
+      "currentTechs": 11,
+      "surplus": 1,
+      "status": "tight"
+    },
+    {
+      "month": "Apr",
+      "factor": 1,
+      "label": "Peak",
+      "adjustedDailyStops": 102,
+      "techsNeeded": 11,
+      "currentTechs": 11,
+      "surplus": 0,
+      "status": "tight"
+    },
+    {
+      "month": "May",
+      "factor": 1.1,
+      "label": "Peak",
+      "adjustedDailyStops": 112,
+      "techsNeeded": 12,
+      "currentTechs": 11,
+      "surplus": -1,
+      "status": "understaffed"
+    },
+    {
+      "month": "Jun",
+      "factor": 1.15,
+      "label": "Peak",
+      "adjustedDailyStops": 117,
+      "techsNeeded": 12,
+      "currentTechs": 11,
+      "surplus": -1,
+      "status": "understaffed"
+    },
+    {
+      "month": "Jul",
+      "factor": 1.15,
+      "label": "Peak",
+      "adjustedDailyStops": 117,
+      "techsNeeded": 12,
+      "currentTechs": 11,
+      "surplus": -1,
+      "status": "understaffed"
+    },
+    {
+      "month": "Aug",
+      "factor": 1.1,
+      "label": "Peak",
+      "adjustedDailyStops": 112,
+      "techsNeeded": 12,
+      "currentTechs": 11,
+      "surplus": -1,
+      "status": "understaffed"
+    },
+    {
+      "month": "Sep",
+      "factor": 1,
+      "label": "Peak",
+      "adjustedDailyStops": 102,
+      "techsNeeded": 11,
+      "currentTechs": 11,
+      "surplus": 0,
+      "status": "tight"
+    },
+    {
+      "month": "Oct",
+      "factor": 0.9,
+      "label": "Wind Down",
+      "adjustedDailyStops": 92,
+      "techsNeeded": 10,
+      "currentTechs": 11,
+      "surplus": 1,
+      "status": "tight"
+    },
+    {
+      "month": "Nov",
+      "factor": 0.7,
+      "label": "Low",
+      "adjustedDailyStops": 71,
+      "techsNeeded": 8,
+      "currentTechs": 11,
+      "surplus": 3,
+      "status": "adequate"
+    },
+    {
+      "month": "Dec",
+      "factor": 0.5,
+      "label": "Low",
+      "adjustedDailyStops": 51,
+      "techsNeeded": 6,
+      "currentTechs": 11,
+      "surplus": 5,
+      "status": "adequate"
+    }
+  ],
+  "customer_growth": {
+    "active_customers": 1962,
+    "ytd_net_growth": 51,
+    "monthly_net_growth": 14,
+    "annualized_growth": 168,
+    "avg_visits_per_customer": 13.4,
+    "avg_revenue_per_customer": 1240,
+    "customers_for_5m": 4032,
+    "customer_gap": 2070,
+    "years_to_close_gap": 12.3
+  },
+  "insights": [
+    {
+      "type": "warning",
+      "icon": "🟡",
+      "title": "Approaching capacity limits",
+      "detail": "Team is at 77% utilization. Start recruiting now — hiring takes 4-6 weeks."
+    },
+    {
+      "type": "warning",
+      "icon": "⚠️",
+      "title": "1 tech(s) overloaded",
+      "detail": "Running 14+ stops/day. Risk of burnout, callbacks, and quality issues."
+    },
+    {
+      "type": "positive",
+      "icon": "⭐",
+      "title": "Top performer: Damian Machin",
+      "detail": "14.3 stops/day, $104,431 revenue. Model for new hires."
+    },
+    {
+      "type": "opportunity",
+      "icon": "💡",
+      "title": "Upsell opportunity",
+      "detail": "Only 7 tech upsells YTD. Each additional service adds ~$50-150/customer."
+    }
+  ]
+}

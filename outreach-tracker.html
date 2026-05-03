@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Retention Outreach Tracker</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.3rem; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .main-grid { grid-template-columns: 1fr !important; }
+            .call-list-table { font-size: 0.75rem; }
+            .call-list-table th, .call-list-table td { padding: 8px 6px; }
+            .script-popup { width: 95vw !important; left: 2.5vw !important; }
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header h1 span { color: #22c55e; }
+        .header .subtitle { color: #64748b; font-size: 0.85rem; margin-top: 4px; }
+        .header .meta { text-align: right; font-size: 0.8rem; color: #64748b; }
+
+        /* Alert Banner */
+        .peak-alert {
+            background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,215,0,0.1));
+            border: 1px solid rgba(255,107,53,0.4);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(255,107,53,0.4); }
+            50% { border-color: rgba(255,107,53,0.8); }
+        }
+        .peak-alert .icon { font-size: 1.8rem; }
+        .peak-alert .text { flex: 1; min-width: 200px; }
+        .peak-alert .text strong { color: #ff6b35; }
+        .peak-alert .countdown {
+            background: rgba(0,0,0,0.4);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .peak-alert .countdown .value { font-size: 1.8rem; font-weight: 800; color: #ffd700; }
+        .peak-alert .countdown .label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .kpi-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .kpi-card .label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .kpi-card.highlight { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.06); }
+        .kpi-card.warning { border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.06); }
+        .kpi-card .value.green { color: #22c55e; }
+        .kpi-card .value.red { color: #ef4444; }
+        .kpi-card .value.gold { color: #ffd700; }
+        .kpi-card .value.blue { color: #3b82f6; }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-btn {
+            padding: 6px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            background: transparent;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: rgba(255,255,255,0.3); color: #e2e8f0; }
+        .filter-btn.active { background: rgba(34,197,94,0.15); border-color: #22c55e; color: #22c55e; }
+        .filter-btn .count { 
+            background: rgba(255,255,255,0.1);
+            padding: 1px 6px;
+            border-radius: 10px;
+            margin-left: 4px;
+            font-size: 0.7rem;
+        }
+        .search-input {
+            padding: 6px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            outline: none;
+            width: 200px;
+        }
+        .search-input::placeholder { color: #475569; }
+        .search-input:focus { border-color: rgba(34,197,94,0.5); }
+
+        /* Main Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 20px;
+        }
+
+        /* Call List Table */
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-header h3 { font-size: 0.95rem; font-weight: 600; }
+        .card-header .badge {
+            background: rgba(34,197,94,0.15);
+            color: #22c55e;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .call-list-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .call-list-table th {
+            text-align: left;
+            padding: 10px 14px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+        }
+        .call-list-table th:hover { color: #94a3b8; }
+        .call-list-table td {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            vertical-align: middle;
+        }
+        .call-list-table tr:hover { background: rgba(255,255,255,0.03); }
+
+        .priority-badge {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .priority-badge.critical { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .priority-badge.high { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .priority-badge.medium { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .priority-badge.low { background: rgba(100,116,139,0.15); color: #94a3b8; }
+
+        .reason-tag {
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .script-btn {
+            padding: 4px 10px;
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 6px;
+            background: transparent;
+            color: #22c55e;
+            cursor: pointer;
+            font-size: 0.72rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .script-btn:hover { background: rgba(34,197,94,0.15); }
+
+        .days-badge {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+        .days-badge.urgent { color: #ef4444; font-weight: 600; }
+        .days-badge.warning { color: #f59e0b; }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .sidebar-card h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Reason Breakdown */
+        .reason-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .reason-bar .bar-label { font-size: 0.75rem; width: 110px; color: #94a3b8; }
+        .reason-bar .bar-track {
+            flex: 1;
+            height: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .reason-bar .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: width 0.8s ease;
+        }
+
+        /* CSR Assignment */
+        .csr-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .csr-row:last-child { border-bottom: none; }
+        .csr-row .name { font-size: 0.82rem; font-weight: 500; }
+        .csr-row .count {
+            background: rgba(34,197,94,0.15);
+            color: #22c55e;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        /* Schedule */
+        .schedule-day {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .schedule-day:last-child { border-bottom: none; }
+        .schedule-day .day-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+        .schedule-day .day-header .date { font-weight: 600; }
+        .schedule-day .day-header .count { color: #64748b; font-size: 0.72rem; }
+        .schedule-day .names {
+            font-size: 0.72rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Recovery Progress */
+        .progress-container {
+            margin-top: 8px;
+        }
+        .progress-bar-bg {
+            height: 24px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 600;
+            transition: width 1s ease;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Value at Risk Meter */
+        .value-meter {
+            text-align: center;
+            padding: 12px 0;
+        }
+        .value-meter .amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ef4444;
+        }
+        .value-meter .sub {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .value-meter .monthly {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-top: 8px;
+        }
+
+        /* Script Popup */
+        .script-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .script-overlay.active { display: flex; }
+        .script-popup {
+            background: #1a1a2e;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 24px;
+            width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .script-popup h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .script-popup .script-text {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            border-left: 3px solid #22c55e;
+        }
+        .script-popup .offer-box {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+        }
+        .script-popup .offer-box strong { color: #22c55e; }
+        .script-popup .close-btn {
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: #e2e8f0;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .script-popup .close-btn:hover { background: rgba(255,255,255,0.12); }
+        .script-popup .copy-btn {
+            padding: 8px 20px;
+            background: rgba(34,197,94,0.15);
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 8px;
+            color: #22c55e;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        .script-popup .copy-btn:hover { background: rgba(34,197,94,0.25); }
+        .script-popup .customer-info {
+            margin-bottom: 16px;
+        }
+        .script-popup .customer-info .detail {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+            padding: 4px 0;
+        }
+        .script-popup .customer-info .detail .label { color: #64748b; width: 100px; }
+
+        /* Table container for scroll */
+        .table-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .table-container::-webkit-scrollbar { width: 6px; }
+        .table-container::-webkit-scrollbar-track { background: transparent; }
+        .table-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        /* Print styles */
+        @media print {
+            body { background: #fff; color: #000; }
+            .filter-bar, .peak-alert, .script-btn, .sidebar-card:last-child { display: none; }
+            .main-grid { grid-template-columns: 1fr; }
+            .call-list-table th, .call-list-table td { border: 1px solid #ccc; }
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+        .nav-back:hover { color: #e2e8f0; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="nav-back">← Back to Hub</a>
+
+    <div class="header">
+        <div>
+            <h1>📞 Retention <span>Outreach Tracker</span></h1>
+            <div class="subtitle">Spring reactivation campaign — actionable call list with scripts</div>
+        </div>
+        <div class="meta" id="meta"></div>
+    </div>
+
+    <div id="peakAlert"></div>
+
+    <div class="kpi-grid" id="kpiGrid"></div>
+
+    <div class="filter-bar" id="filterBar"></div>
+
+    <div class="main-grid">
+        <div class="card">
+            <div class="card-header">
+                <h3>📋 Call List</h3>
+                <div class="badge" id="listCount"></div>
+            </div>
+            <div class="table-container">
+                <table class="call-list-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortBy('priority_score')">#</th>
+                            <th onclick="sortBy('name')">Customer</th>
+                            <th onclick="sortBy('reason')">Reason</th>
+                            <th onclick="sortBy('days_since_cancel')">Days</th>
+                            <th onclick="sortBy('csr')">CSR</th>
+                            <th onclick="sortBy('priority_score')">Priority</th>
+                            <th>Script</th>
+                        </tr>
+                    </thead>
+                    <tbody id="callList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-card">
+                <h4>💰 Revenue at Risk</h4>
+                <div class="value-meter" id="valueMeter"></div>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>🎯 Recovery Progress</h4>
+                <div class="progress-container" id="recoveryProgress"></div>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>📊 By Reason</h4>
+                <div id="reasonBreakdown"></div>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>👤 CSR Assignments</h4>
+                <div id="csrAssignments"></div>
+            </div>
+
+            <div class="sidebar-card">
+                <h4>📅 Outreach Schedule</h4>
+                <div id="schedule"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="script-overlay" id="scriptOverlay" onclick="if(event.target===this)closeScript()">
+        <div class="script-popup" id="scriptPopup"></div>
+    </div>
+
+    <script>
+        let DATA = null;
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let sortField = 'priority_score';
+        let sortDir = -1; // -1 = descending
+
+        async function loadData() {
+            try {
+                const res = await fetch('data/outreach-data.json');
+                DATA = await res.json();
+                render();
+            } catch (e) {
+                document.body.innerHTML = '<div style="padding:40px;text-align:center;color:#ef4444;"><h2>⚠️ Could not load outreach-data.json</h2><p>Run: <code>node scripts/build-outreach-data.js</code></p></div>';
+            }
+        }
+
+        function render() {
+            renderMeta();
+            renderPeakAlert();
+            renderKPIs();
+            renderFilters();
+            renderCallList();
+            renderValueMeter();
+            renderRecoveryProgress();
+            renderReasonBreakdown();
+            renderCSRAssignments();
+            renderSchedule();
+        }
+
+        function renderMeta() {
+            const d = new Date(DATA.generated_at);
+            document.getElementById('meta').innerHTML = `
+                Updated: ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+            `;
+        }
+
+        function renderPeakAlert() {
+            const alert = DATA.peak_season_alert;
+            if (!alert || alert.days_until_peak > 14) return;
+            document.getElementById('peakAlert').innerHTML = `
+                <div class="peak-alert">
+                    <div class="icon">🦟</div>
+                    <div class="text">
+                        <strong>${alert.message}</strong><br>
+                        <span style="font-size:0.82rem;color:#94a3b8">
+                            ${DATA.summary.total_recoverable} customers paused over winter. 
+                            ${DATA.summary.by_reason['Paused/WP'] || 0} are seasonal pauses — 
+                            they're <em>expecting</em> our call.
+                        </span>
+                    </div>
+                    <div class="countdown">
+                        <div class="value">${alert.days_until_peak}</div>
+                        <div class="label">Days to Peak</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderKPIs() {
+            const s = DATA.summary;
+            document.getElementById('kpiGrid').innerHTML = `
+                <div class="kpi-card warning">
+                    <div class="value red">${s.total_recoverable}</div>
+                    <div class="label">Recoverable Customers</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="value gold">$${s.total_annual_value_at_risk.toLocaleString()}</div>
+                    <div class="label">Annual Value at Risk</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="value blue">${s.recovery_goal}</div>
+                    <div class="label">Recovery Target (30%)</div>
+                </div>
+                <div class="kpi-card highlight">
+                    <div class="value green">${s.by_status.recovered || 0}</div>
+                    <div class="label">Recovered So Far</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="value" style="color:#f59e0b">${s.by_status.attempted || 0}</div>
+                    <div class="label">Outreach Attempted</div>
+                </div>
+            `;
+        }
+
+        function renderFilters() {
+            const s = DATA.summary;
+            const reasons = Object.entries(s.by_reason);
+            document.getElementById('filterBar').innerHTML = `
+                <button class="filter-btn ${currentFilter==='all'?'active':''}" onclick="setFilter('all')">
+                    All <span class="count">${s.total_recoverable}</span>
+                </button>
+                <button class="filter-btn ${currentFilter==='critical'?'active':''}" onclick="setFilter('critical')">
+                    🔴 Critical <span class="count">${s.by_tier.critical || 0}</span>
+                </button>
+                <button class="filter-btn ${currentFilter==='high'?'active':''}" onclick="setFilter('high')">
+                    🟡 High <span class="count">${s.by_tier.high || 0}</span>
+                </button>
+                ${reasons.map(([r, c]) => `
+                    <button class="filter-btn ${currentFilter===r?'active':''}" onclick="setFilter('${r}')">
+                        ${r} <span class="count">${c}</span>
+                    </button>
+                `).join('')}
+                <input type="text" class="search-input" placeholder="Search customer..." 
+                       oninput="setSearch(this.value)" value="${currentSearch}">
+            `;
+        }
+
+        function setFilter(f) {
+            currentFilter = f;
+            renderFilters();
+            renderCallList();
+        }
+
+        function setSearch(s) {
+            currentSearch = s.toLowerCase();
+            renderCallList();
+        }
+
+        function sortBy(field) {
+            if (sortField === field) sortDir *= -1;
+            else { sortField = field; sortDir = field === 'name' ? 1 : -1; }
+            renderCallList();
+        }
+
+        function getFilteredCustomers() {
+            let list = [...DATA.customers];
+            
+            if (currentFilter === 'critical' || currentFilter === 'high' || currentFilter === 'medium' || currentFilter === 'low') {
+                list = list.filter(c => c.priority_tier === currentFilter);
+            } else if (currentFilter !== 'all') {
+                list = list.filter(c => c.reason === currentFilter);
+            }
+
+            if (currentSearch) {
+                list = list.filter(c => c.name.toLowerCase().includes(currentSearch) || c.csr.toLowerCase().includes(currentSearch));
+            }
+
+            list.sort((a, b) => {
+                let va = a[sortField], vb = b[sortField];
+                if (typeof va === 'string') return va.localeCompare(vb) * sortDir;
+                return (va - vb) * sortDir;
+            });
+
+            return list;
+        }
+
+        function renderCallList() {
+            const filtered = getFilteredCustomers();
+            document.getElementById('listCount').textContent = `${filtered.length} customers`;
+
+            document.getElementById('callList').innerHTML = filtered.map((c, i) => {
+                const daysClass = c.days_since_cancel > 60 ? 'urgent' : c.days_since_cancel > 30 ? 'warning' : '';
+                return `
+                    <tr>
+                        <td style="color:#64748b;font-size:0.75rem">${i + 1}</td>
+                        <td>
+                            <div style="font-weight:500">${c.name}</div>
+                            <div style="font-size:0.7rem;color:#64748b">${c.cancel_date}</div>
+                        </td>
+                        <td><span class="reason-tag">${c.reason}</span></td>
+                        <td><span class="days-badge ${daysClass}">${c.days_since_cancel}d</span></td>
+                        <td style="font-size:0.8rem">${c.csr}</td>
+                        <td>
+                            <span class="priority-badge ${c.priority_tier}">${c.priority_tier}</span>
+                            <div style="font-size:0.65rem;color:#475569;margin-top:2px">${c.priority_score}/100</div>
+                        </td>
+                        <td>
+                            <button class="script-btn" onclick="showScript(${DATA.customers.indexOf(c)})">
+                                📝 Script
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function showScript(idx) {
+            const c = DATA.customers[idx];
+            document.getElementById('scriptPopup').innerHTML = `
+                <h3>📞 ${c.script.subject}</h3>
+                <div class="customer-info">
+                    <div class="detail"><span class="label">Customer:</span> <strong>${c.name}</strong></div>
+                    <div class="detail"><span class="label">Reason:</span> ${c.reason}</div>
+                    <div class="detail"><span class="label">Cancelled:</span> ${c.cancel_date} (${c.days_since_cancel} days ago)</div>
+                    <div class="detail"><span class="label">Original CSR:</span> ${c.csr}</div>
+                    <div class="detail"><span class="label">Est. Value:</span> $${c.estimated_annual_value.toLocaleString()}/yr</div>
+                    <div class="detail"><span class="label">Channel:</span> ${c.script.channel}</div>
+                </div>
+                <div class="script-text" id="scriptText">${c.script.script}</div>
+                <div class="offer-box">
+                    <strong>🎁 Offer:</strong> ${c.script.offer}
+                </div>
+                <div style="display:flex;gap:8px;margin-top:16px">
+                    <button class="copy-btn" onclick="copyScript()">📋 Copy Script</button>
+                    <button class="close-btn" onclick="closeScript()">Close</button>
+                </div>
+            `;
+            document.getElementById('scriptOverlay').classList.add('active');
+        }
+
+        function copyScript() {
+            const text = document.getElementById('scriptText').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => btn.textContent = '📋 Copy Script', 2000);
+            });
+        }
+
+        function closeScript() {
+            document.getElementById('scriptOverlay').classList.remove('active');
+        }
+
+        function renderValueMeter() {
+            const s = DATA.summary;
+            document.getElementById('valueMeter').innerHTML = `
+                <div class="amount">$${s.total_annual_value_at_risk.toLocaleString()}</div>
+                <div class="sub">Annual revenue at risk</div>
+                <div class="monthly">$${s.total_monthly_value_at_risk.toLocaleString()}/mo</div>
+                <div class="sub">Lost every month without action</div>
+            `;
+        }
+
+        function renderRecoveryProgress() {
+            const s = DATA.summary;
+            const recovered = s.by_status.recovered || 0;
+            const goal = s.recovery_goal;
+            const pct = goal > 0 ? Math.min(100, Math.round(recovered / goal * 100)) : 0;
+            const color = pct >= 100 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+
+            document.getElementById('recoveryProgress').innerHTML = `
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width:${Math.max(pct, 2)}%;background:${color}">
+                        ${pct}%
+                    </div>
+                </div>
+                <div class="progress-label">
+                    <span>${recovered} recovered</span>
+                    <span>Goal: ${goal} ($${s.recovery_goal_value.toLocaleString()}/yr)</span>
+                </div>
+            `;
+        }
+
+        function renderReasonBreakdown() {
+            const reasons = DATA.summary.by_reason;
+            const total = DATA.summary.total_recoverable;
+            const colors = {
+                'Paused/WP': '#3b82f6',
+                'Not Interested': '#f59e0b',
+                'Financial': '#ef4444',
+                'Unhappy': '#ec4899'
+            };
+
+            document.getElementById('reasonBreakdown').innerHTML = Object.entries(reasons)
+                .sort((a, b) => b[1] - a[1])
+                .map(([reason, count]) => {
+                    const pct = Math.round(count / total * 100);
+                    const color = colors[reason] || '#64748b';
+                    return `
+                        <div class="reason-bar">
+                            <span class="bar-label">${reason}</span>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width:${pct}%;background:${color}">${count}</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+        }
+
+        function renderCSRAssignments() {
+            document.getElementById('csrAssignments').innerHTML = DATA.csr_assignments
+                .sort((a, b) => b.assigned_count - a.assigned_count)
+                .map(a => `
+                    <div class="csr-row">
+                        <span class="name">${a.csr}</span>
+                        <span class="count">${a.assigned_count} calls</span>
+                    </div>
+                `).join('');
+        }
+
+        function renderSchedule() {
+            document.getElementById('schedule').innerHTML = DATA.outreach_schedule.slice(0, 5).map(day => `
+                <div class="schedule-day">
+                    <div class="day-header">
+                        <span class="date">${day.day_name} ${day.date.slice(5)}</span>
+                        <span class="count">${day.count} calls</span>
+                    </div>
+                    <div class="names">${day.customers.map(c => c.name.split(' ')[0]).join(', ')}</div>
+                </div>
+            `).join('');
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeScript();
+            if (e.key === '/' && !e.ctrlKey) {
+                e.preventDefault();
+                document.querySelector('.search-input')?.focus();
+            }
+        });
+
+        loadData();
+    </script>
+</body>
+</html>

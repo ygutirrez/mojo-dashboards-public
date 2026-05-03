@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Customer Growth Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --navy: #1a1a2e;
+            --navy-light: #16213e;
+            --teal: #00b4d8;
+            --teal-bright: #00d9ff;
+            --green: #00ff88;
+            --red: #ff6b6b;
+            --red-dark: #e74c3c;
+            --orange: #ff9f43;
+            --gold: #ffd700;
+            --purple: #c792ea;
+            --blue: #60a5fa;
+            --white: #ffffff;
+            --card-bg: rgba(255,255,255,0.05);
+            --card-border: rgba(255,255,255,0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --text-dim: #666666;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        a { text-decoration: none; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--blue);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #93bbfc; }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(0,255,136,0.05) 100%);
+            border: 1px solid rgba(0,180,216,0.2);
+            border-radius: 20px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--teal), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .updated {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        /* ── Alert Banner ── */
+        .alert-banner {
+            background: rgba(255,107,107,0.08);
+            border: 1px solid rgba(255,107,107,0.25);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .alert-banner .alert-icon { font-size: 1.5rem; }
+        .alert-banner .alert-content h3 { color: var(--red); font-size: 1rem; margin-bottom: 4px; }
+        .alert-banner .alert-content p { color: var(--text-secondary); font-size: 0.85rem; }
+        .alert-banner .alert-content .highlight { color: var(--gold); font-weight: 700; }
+
+        /* ── Hero KPI Bar ── */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .hero-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+        .hero-card.teal::before { background: linear-gradient(90deg, var(--teal), var(--teal-bright)); }
+        .hero-card.green::before { background: linear-gradient(90deg, var(--green), var(--teal-bright)); }
+        .hero-card.red::before { background: linear-gradient(90deg, var(--red), var(--orange)); }
+        .hero-card.gold::before { background: linear-gradient(90deg, var(--gold), var(--orange)); }
+        .hero-card.blue::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+        .hero-card.purple::before { background: linear-gradient(90deg, var(--purple), var(--teal)); }
+
+        .hero-card .metric-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .hero-card .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .hero-card .metric-sub {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+        .hero-card.teal .metric-value { color: var(--teal-bright); }
+        .hero-card.green .metric-value { color: var(--green); }
+        .hero-card.red .metric-value { color: var(--red); }
+        .hero-card.gold .metric-value { color: var(--gold); }
+        .hero-card.blue .metric-value { color: var(--blue); }
+        .hero-card.purple .metric-value { color: var(--purple); }
+
+        /* ── Progress bar ── */
+        .progress-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .progress-header .progress-title { font-size: 0.85rem; color: var(--text-secondary); }
+        .progress-header .progress-pct { font-size: 1.2rem; font-weight: 700; color: var(--teal-bright); }
+        .progress-bar-bg {
+            height: 28px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 14px;
+            background: linear-gradient(90deg, var(--teal), var(--green));
+            transition: width 1.5s ease;
+            position: relative;
+        }
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 40px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2));
+            border-radius: 0 14px 14px 0;
+        }
+        .progress-markers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        /* ── Sections / Cards ── */
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .badge {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-critical { background: rgba(255,107,107,0.2); color: var(--red); }
+        .badge-warning { background: rgba(255,159,67,0.2); color: var(--orange); }
+        .badge-good { background: rgba(0,255,136,0.2); color: var(--green); }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Chart containers ── */
+        .chart-wrap {
+            position: relative;
+            width: 100%;
+            max-height: 350px;
+        }
+        .chart-wrap canvas {
+            max-height: 350px;
+        }
+        .chart-wrap-sm {
+            position: relative;
+            width: 100%;
+            max-height: 250px;
+        }
+        .chart-wrap-sm canvas {
+            max-height: 250px;
+        }
+
+        /* ── Scenario Table ── */
+        .scenario-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .scenario-table th {
+            background: rgba(0,180,216,0.1);
+            color: var(--teal-bright);
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .scenario-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+        .scenario-table tr:hover td {
+            background: rgba(255,255,255,0.03);
+        }
+        .scenario-table .best-row td {
+            background: rgba(0,255,136,0.05);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        /* ── Stat Boxes ── */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+        .stat-box .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal-bright);
+        }
+        .stat-box .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+        .stat-box.danger .stat-value { color: var(--red); }
+        .stat-box.success .stat-value { color: var(--green); }
+        .stat-box.warning .stat-value { color: var(--gold); }
+
+        /* ── Recoverable Callout ── */
+        .callout {
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 16px;
+        }
+        .callout-green {
+            background: rgba(0,255,136,0.05);
+            border: 1px solid rgba(0,255,136,0.2);
+        }
+        .callout-red {
+            background: rgba(255,107,107,0.05);
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+        .callout-gold {
+            background: rgba(255,215,0,0.05);
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+        .callout h4 { margin-bottom: 4px; font-size: 0.9rem; }
+        .callout p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+        .callout .big-number { font-size: 1.8rem; font-weight: 800; }
+
+        /* ── Action Items ── */
+        .action-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .action-item:last-child { border-bottom: none; }
+        .action-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+        .action-body { flex: 1; }
+        .action-body h4 { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 3px; }
+        .action-body p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+        .action-body .action-impact {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .priority-critical .action-impact { background: rgba(255,107,107,0.15); color: var(--red); }
+        .priority-high .action-impact { background: rgba(255,159,67,0.15); color: var(--orange); }
+        .priority-medium .action-impact { background: rgba(0,180,216,0.15); color: var(--teal-bright); }
+
+        /* ── "What it Takes" feature box ── */
+        .feature-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+        .feature-box h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        .feature-box .big-stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .feature-box .stat-context {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* ── Inline splits ── */
+        .split-row {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .split-half { flex: 1; }
+
+        /* ── Momentum indicator ── */
+        .momentum-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .momentum-up { background: rgba(0,255,136,0.15); color: var(--green); }
+        .momentum-flat { background: rgba(255,215,0,0.15); color: var(--gold); }
+        .momentum-down { background: rgba(255,107,107,0.15); color: var(--red); }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+        }
+        .footer a { color: #555; }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .error {
+            background: rgba(255,107,107,0.1);
+            border: 1px solid rgba(255,107,107,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            color: var(--red);
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        /* ── Print ── */
+        @media print {
+            body {
+                background: #fff;
+                color: #000;
+                padding: 10px;
+            }
+            .back-link, .footer { display: none; }
+            .header { background: none; border: 2px solid #1a1a2e; }
+            .header h1 {
+                -webkit-text-fill-color: #1a1a2e;
+                color: #1a1a2e;
+            }
+            .section, .hero-card, .progress-section, .alert-banner {
+                background: #fff;
+                border: 1px solid #ddd;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .hero-card .metric-value { -webkit-text-fill-color: initial; }
+            .hero-card.red .metric-value { color: #e74c3c; }
+            .hero-card.teal .metric-value { color: #0097a7; }
+            .hero-card.green .metric-value { color: #27ae60; }
+            .hero-card.gold .metric-value { color: #f39c12; }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.5rem; }
+            .hero-card { padding: 14px; }
+            .hero-card .metric-value { font-size: 1.6rem; }
+            .hero-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .split-row { flex-direction: column; }
+            .scenario-table { font-size: 0.72rem; }
+            .scenario-table th, .scenario-table td { padding: 8px 6px; }
+            .chart-wrap, .chart-wrap-sm { max-height: 260px; }
+            .chart-wrap canvas, .chart-wrap-sm canvas { max-height: 260px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .hero-card .metric-value { font-size: 1.3rem; }
+            .hero-card .metric-label { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Back to Hub</a>
+    <div id="error" class="error">⚠️ Could not load growth tracker data. Run: <code>node scripts/build-growth-tracker.js</code></div>
+
+    <div class="header">
+        <h1>📈 Customer Growth Tracker</h1>
+        <div class="subtitle">Mosquito Joe of Miami — Path to 4,000 Customers</div>
+        <div class="updated" id="updated-at">Loading...</div>
+    </div>
+
+    <div id="dashboard-content" style="display:none">
+        <!-- Alert Banner -->
+        <div class="alert-banner" id="alert-banner">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+                <h3>Growth Crisis: Customer Base Shrinking</h3>
+                <p>At the current pace, we'll end the year with <span class="highlight" id="alert-projected">—</span> customers — 
+                <span class="highlight" id="alert-losing">—</span> fewer than today. 
+                We need to <span class="highlight">fundamentally change</span> our acquisition and retention strategy to reach 4,000.</p>
+            </div>
+        </div>
+
+        <!-- Progress to Goal -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-title">📊 Progress to 4,000 Customer Goal</span>
+                <span class="progress-pct" id="progress-pct">—%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+            </div>
+            <div class="progress-markers">
+                <span>0</span>
+                <span>1,000</span>
+                <span>2,000</span>
+                <span>3,000</span>
+                <span>4,000</span>
+            </div>
+        </div>
+
+        <!-- Hero KPI Bar -->
+        <div class="hero-grid" id="hero-grid">
+            <!-- Filled by JS -->
+        </div>
+
+        <!-- Growth Trajectory Chart -->
+        <div class="section">
+            <h2>📈 Growth Trajectory <span class="badge badge-critical" id="trajectory-badge">OFF TRACK</span></h2>
+            <div class="chart-wrap">
+                <canvas id="trajectoryChart"></canvas>
+            </div>
+            <div class="callout callout-red" style="margin-top:16px">
+                <p>🔴 <strong>The gap is growing, not shrinking.</strong> The target line demands 
+                <strong id="traj-needed-per-mo">—</strong> net new customers/month. 
+                We're currently at <strong id="traj-current-rate">—</strong>/month. 
+                At this pace, the lines <strong>never converge</strong>.</p>
+            </div>
+        </div>
+
+        <!-- Monthly Waterfall -->
+        <div class="section">
+            <h2>📊 Monthly Sales vs Cancels Waterfall</h2>
+            <div class="chart-wrap">
+                <canvas id="waterfallChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Cancel Crisis Analysis -->
+        <div class="grid-2">
+            <div class="section">
+                <h2>🔥 Cancel Reasons — Revenue Impact</h2>
+                <div class="chart-wrap">
+                    <canvas id="cancelReasonsChart"></canvas>
+                </div>
+            </div>
+            <div class="section">
+                <h2>🎯 Controllable vs Uncontrollable</h2>
+                <div class="split-row" style="margin-top:0">
+                    <div class="chart-wrap-sm" style="flex:1; max-width:220px; margin:0 auto;">
+                        <canvas id="controllablePieChart"></canvas>
+                    </div>
+                    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:10px;">
+                        <div class="stat-box danger">
+                            <div class="stat-value" id="ctrl-controllable-val">—</div>
+                            <div class="stat-label">Controllable Lost</div>
+                        </div>
+                        <div class="stat-box warning">
+                            <div class="stat-value" id="ctrl-uncontrollable-val">—</div>
+                            <div class="stat-label">Uncontrollable Lost</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="callout callout-green">
+                    <h4 style="color:var(--green)">💰 Recoverable Revenue</h4>
+                    <p><span class="big-number" style="color:var(--green)" id="recoverable-value">—</span> annual value</p>
+                    <p><strong id="recoverable-count">—</strong> accounts could be won back with targeted outreach</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cohort Survival -->
+        <div class="section">
+            <h2>👥 Customer Tenure Distribution <span class="badge badge-good">52% LOYAL BASE</span></h2>
+            <div class="grid-2" style="margin-bottom:0">
+                <div>
+                    <div class="chart-wrap">
+                        <canvas id="cohortChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-wrap">
+                        <canvas id="cancelLifetimeChart"></canvas>
+                    </div>
+                    <div class="stat-grid" style="margin-top:14px">
+                        <div class="stat-box success">
+                            <div class="stat-value" id="cohort-loyal-pct">—</div>
+                            <div class="stat-label">3+ Year Loyal</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="cohort-median">—</div>
+                            <div class="stat-label">Median Tenure</div>
+                        </div>
+                        <div class="stat-box danger">
+                            <div class="stat-value" id="cohort-new-risk">—</div>
+                            <div class="stat-label">&lt;6mo At Risk</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What Would It Take -->
+        <div class="section">
+            <h2>🧮 What Would It Take to Reach 4,000?</h2>
+            
+            <div class="grid-3" style="margin-bottom:16px">
+                <div class="feature-box">
+                    <h3>Current Reality</h3>
+                    <div class="big-stat" style="color:var(--red)" id="wwit-current-net">—</div>
+                    <div class="stat-context">net customers/month (losing)</div>
+                    <div class="stat-context" style="margin-top:8px">
+                        Projected year-end: <strong style="color:var(--red)" id="wwit-projected-ye">—</strong> customers
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <h3>The Gap</h3>
+                    <div class="big-stat" style="color:var(--gold)" id="wwit-gap">—</div>
+                    <div class="stat-context">net new customers needed</div>
+                    <div class="stat-context" style="margin-top:8px">
+                        That's <strong style="color:var(--gold)" id="wwit-per-month">—</strong> net per month remaining
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <h3>Gross Sales Needed</h3>
+                    <div class="big-stat" style="color:var(--teal-bright)" id="wwit-gross-sales">—</div>
+                    <div class="stat-context">sales/month at current cancel rate</div>
+                    <div class="stat-context" style="margin-top:8px">
+                        Currently selling <strong style="color:var(--teal-bright)" id="wwit-current-sales">—</strong>/mo 
+                        (<strong id="wwit-multiplier">—</strong>x increase needed)
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:12px; margin-top:20px;">
+                📋 Scenario Analysis: "What If..."
+            </h3>
+            <div style="overflow-x:auto;">
+                <table class="scenario-table" id="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>Cancel Reduction</th>
+                            <th>Sales Multiplier</th>
+                            <th>Mo. Sales</th>
+                            <th>Mo. Cancels</th>
+                            <th>Mo. Net</th>
+                            <th>Year-End Customers</th>
+                            <th>Months to 4K</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scenario-body">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-gold" style="margin-top:16px">
+                <h4 style="color:var(--gold)">💡 Key Insight</h4>
+                <p id="wwit-insight">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Action Items -->
+        <div class="section">
+            <h2>🎯 Recommended Actions</h2>
+            <div id="action-items">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+
+        <!-- Momentum -->
+        <div class="section">
+            <h2>📡 Weekly Momentum 
+                <span class="momentum-badge" id="momentum-badge">—</span>
+            </h2>
+            <div class="chart-wrap-sm">
+                <canvas id="momentumChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading">⏳ Loading growth tracker data...</div>
+
+    <div class="footer">
+        <p>MoJo Pest Control — Customer Growth Tracker | Auto-refreshes every 5 min</p>
+        <p>Data from ServiceMinder exports. Generated by growth-tracker build pipeline.</p>
+    </div>
+
+    <script>
+    // ── Helpers ──
+    const $ = id => document.getElementById(id);
+    const fmt = n => n == null ? '—' : n.toLocaleString();
+    const fmtMoney = n => n == null ? '—' : '$' + Math.round(n).toLocaleString();
+    const fmtPct = n => n == null ? '—' : n.toFixed(1) + '%';
+
+    // Chart.js defaults
+    Chart.defaults.color = '#888';
+    Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+
+    async function loadDashboard() {
+        try {
+            let resp = await fetch('growth-tracker-data.json?t=' + Date.now());
+            if (!resp.ok) resp = await fetch('data/growth-tracker-data.json?t=' + Date.now());
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const data = await resp.json();
+            render(data);
+        } catch (err) {
+            console.error('Failed to load data:', err);
+            $('loading').style.display = 'none';
+            $('error').style.display = 'block';
+        }
+    }
+
+    function render(data) {
+        $('loading').style.display = 'none';
+        $('dashboard-content').style.display = 'block';
+
+        const h = data.hero;
+        const t = data.trajectory;
+        const ca = data.cancelAnalysis;
+        const co = data.cohorts;
+        const w = data.whatWouldItTake;
+        const m = data.momentum;
+
+        // Updated timestamp
+        const updatedDate = new Date(data.generated_at);
+        $('updated-at').textContent = `Updated: ${updatedDate.toLocaleDateString('en-US', { 
+            weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', 
+            hour: 'numeric', minute: '2-digit' 
+        })}`;
+
+        // Alert banner
+        $('alert-projected').textContent = fmt(t.projectedYearEnd);
+        $('alert-losing').textContent = fmt(h.activeCustomers - t.projectedYearEnd);
+
+        // Progress bar
+        const pct = Math.round((h.activeCustomers / h.customerGoal) * 100);
+        $('progress-pct').textContent = pct + '%';
+        setTimeout(() => {
+            $('progress-fill').style.width = pct + '%';
+        }, 100);
+
+        // Hero cards
+        $('hero-grid').innerHTML = `
+            <div class="hero-card teal">
+                <div class="metric-label">Active Customers</div>
+                <div class="metric-value">${fmt(h.activeCustomers)}</div>
+                <div class="metric-sub">of ${fmt(h.customerGoal)} goal</div>
+            </div>
+            <div class="hero-card gold">
+                <div class="metric-label">Gap to Goal</div>
+                <div class="metric-value">${fmt(h.gap)}</div>
+                <div class="metric-sub">${pct}% of the way there</div>
+            </div>
+            <div class="hero-card red">
+                <div class="metric-label">Net Change YTD</div>
+                <div class="metric-value">${h.netChangeYTD > 0 ? '+' : ''}${fmt(h.netChangeYTD)}</div>
+                <div class="metric-sub">${fmt(h.newCustomersYTD)} new · ${fmt(h.cancelsYTD)} cancelled</div>
+            </div>
+            <div class="hero-card ${h.cancelToSalesRatio > 1 ? 'red' : 'green'}">
+                <div class="metric-label">Cancel:Sales Ratio</div>
+                <div class="metric-value">${h.cancelToSalesRatio.toFixed(2)}x</div>
+                <div class="metric-sub">${h.cancelToSalesRatio > 1 ? 'Losing > Gaining' : 'Gaining > Losing'}</div>
+            </div>
+            <div class="hero-card blue">
+                <div class="metric-label">Monthly Run Rate</div>
+                <div class="metric-value">${h.monthlyNetRate > 0 ? '+' : ''}${h.monthlyNetRate.toFixed(0)}</div>
+                <div class="metric-sub">${h.monthlySalesRate.toFixed(0)} sales · ${h.monthlyCancelRate.toFixed(0)} cancels/mo</div>
+            </div>
+            <div class="hero-card purple">
+                <div class="metric-label">Annual Value Lost</div>
+                <div class="metric-value">${fmtMoney(h.annualValueLost)}</div>
+                <div class="metric-sub">from ${fmt(h.cancelsYTD)} cancellations YTD</div>
+            </div>
+        `;
+
+        // Trajectory badge
+        if (w.currentPace.verdict === 'on_track') {
+            $('trajectory-badge').className = 'badge badge-good';
+            $('trajectory-badge').textContent = 'ON TRACK';
+        }
+
+        // Trajectory callout
+        $('traj-needed-per-mo').textContent = '+' + fmt(w.toReachGoal.netNeededPerMonth);
+        $('traj-current-rate').textContent = h.monthlyNetRate.toFixed(1);
+
+        // ── Growth Trajectory Chart ──
+        const allMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const targetData = t.target.map(t => t.count);
+        
+        // Actual data — pad with nulls for future months
+        const actualData = new Array(12).fill(null);
+        t.actual.forEach(a => {
+            const idx = parseInt(a.month.split('-')[1]) - 1;
+            actualData[idx] = a.count;
+        });
+
+        // Projected data — pad with nulls for past months
+        const projectedData = new Array(12).fill(null);
+        // Connect projection to last actual point
+        if (t.actual.length > 0) {
+            const lastActual = t.actual[t.actual.length - 1];
+            const lastIdx = parseInt(lastActual.month.split('-')[1]) - 1;
+            projectedData[lastIdx] = lastActual.count;
+        }
+        t.projected.forEach(p => {
+            const idx = parseInt(p.month.split('-')[1]) - 1;
+            projectedData[idx] = p.count;
+        });
+
+        new Chart($('trajectoryChart'), {
+            type: 'line',
+            data: {
+                labels: allMonths,
+                datasets: [
+                    {
+                        label: 'Target Pace → 4,000',
+                        data: targetData,
+                        borderColor: '#00ff88',
+                        backgroundColor: 'rgba(0,255,136,0.05)',
+                        borderWidth: 2,
+                        borderDash: [8, 4],
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Actual',
+                        data: actualData,
+                        borderColor: '#00b4d8',
+                        backgroundColor: 'rgba(0,180,216,0.1)',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#00b4d8',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Projected (Current Pace)',
+                        data: projectedData,
+                        borderColor: '#ff6b6b',
+                        backgroundColor: 'rgba(255,107,107,0.05)',
+                        borderWidth: 2,
+                        borderDash: [4, 4],
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { intersect: false, mode: 'index' },
+                plugins: {
+                    legend: { position: 'top', labels: { padding: 16, usePointStyle: true, pointStyle: 'circle' } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': ' + (ctx.parsed.y ? fmt(ctx.parsed.y) + ' customers' : '—')
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 1500,
+                        max: 4200,
+                        ticks: { callback: v => fmt(v) },
+                        grid: { color: 'rgba(255,255,255,0.04)' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.04)' }
+                    }
+                }
+            }
+        });
+
+        // ── Monthly Waterfall ──
+        const wfMonths = data.monthlyWaterfall.map(m => {
+            const d = new Date(m.month + '-15');
+            return d.toLocaleDateString('en-US', { month: 'short' });
+        });
+        const wfSales = data.monthlyWaterfall.map(m => m.sales);
+        const wfCancels = data.monthlyWaterfall.map(m => -m.cancels);
+        const wfNet = data.monthlyWaterfall.map(m => m.net);
+
+        new Chart($('waterfallChart'), {
+            type: 'bar',
+            data: {
+                labels: wfMonths,
+                datasets: [
+                    {
+                        label: 'New Sales',
+                        data: wfSales,
+                        backgroundColor: 'rgba(0,255,136,0.7)',
+                        borderColor: '#00ff88',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Cancels',
+                        data: wfCancels,
+                        backgroundColor: 'rgba(255,107,107,0.7)',
+                        borderColor: '#ff6b6b',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Net Change',
+                        data: wfNet,
+                        backgroundColor: wfNet.map(n => n >= 0 ? 'rgba(0,180,216,0.8)' : 'rgba(255,159,67,0.8)'),
+                        borderColor: wfNet.map(n => n >= 0 ? '#00b4d8' : '#ff9f43'),
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect' } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => {
+                                const v = ctx.parsed.y;
+                                const prefix = v > 0 ? '+' : '';
+                                const suffix = ctx.datasetIndex === 0 ? ' customers added' :
+                                               ctx.datasetIndex === 1 ? ' customers lost' : ' net';
+                                return ctx.dataset.label + ': ' + prefix + v + suffix;
+                            },
+                            afterBody: (items) => {
+                                const idx = items[0].dataIndex;
+                                const m = data.monthlyWaterfall[idx];
+                                return m ? ['Value lost: ' + fmtMoney(m.valueLost)] : [];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: { callback: v => (v > 0 ? '+' : '') + v }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // ── Cancel Reasons Chart ──
+        const reasons = ca.reasons.filter(r => r.annualValueLost > 0).sort((a, b) => b.annualValueLost - a.annualValueLost);
+        
+        new Chart($('cancelReasonsChart'), {
+            type: 'bar',
+            data: {
+                labels: reasons.map(r => r.reason),
+                datasets: [{
+                    label: 'Annual Value Lost',
+                    data: reasons.map(r => r.annualValueLost),
+                    backgroundColor: reasons.map(r => r.recoverable ? 'rgba(0,255,136,0.6)' : 'rgba(255,107,107,0.6)'),
+                    borderColor: reasons.map(r => r.recoverable ? '#00ff88' : '#ff6b6b'),
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => fmtMoney(ctx.parsed.x) + ' annual value lost',
+                            afterLabel: ctx => {
+                                const r = reasons[ctx.dataIndex];
+                                return [
+                                    `${r.accounts} accounts · ${r.events} events`,
+                                    r.recoverable ? '✅ Potentially recoverable' : '❌ Unrecoverable'
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { callback: v => '$' + (v / 1000).toFixed(0) + 'K' },
+                        grid: { color: 'rgba(255,255,255,0.04)' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
+        // ── Controllable Pie ──
+        $('ctrl-controllable-val').textContent = fmtMoney(ca.controllable.valueLost);
+        $('ctrl-uncontrollable-val').textContent = fmtMoney(ca.uncontrollable.valueLost);
+        $('recoverable-value').textContent = fmtMoney(ca.recoverableValue);
+        $('recoverable-count').textContent = ca.recoverableAccounts;
+
+        new Chart($('controllablePieChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Controllable', 'Uncontrollable'],
+                datasets: [{
+                    data: [ca.controllable.events, ca.uncontrollable.events],
+                    backgroundColor: ['rgba(255,107,107,0.7)', 'rgba(136,136,136,0.5)'],
+                    borderColor: ['#ff6b6b', '#888'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, pointStyle: 'circle', font: { size: 11 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => {
+                                const total = ca.controllable.events + ca.uncontrollable.events;
+                                const pct = Math.round((ctx.parsed / total) * 100);
+                                return ctx.label + ': ' + ctx.parsed + ' events (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ── Cohort Chart ──
+        const cohortColors = [
+            'rgba(255,107,107,0.7)',  // 0-90 days
+            'rgba(255,159,67,0.7)',   // 91-180 days
+            'rgba(255,215,0,0.7)',    // 6-12 months
+            'rgba(0,180,216,0.7)',    // 1-2 years
+            'rgba(96,165,250,0.7)',   // 2-3 years
+            'rgba(0,255,136,0.7)'     // 3+ years
+        ];
+
+        $('cohort-loyal-pct').textContent = co.loyalBasePct + '%';
+        $('cohort-median').textContent = Math.round(co.lifetimeStats.median_days / 365 * 10) / 10 + ' yrs';
+        const newRisk = co.distribution.filter(d => d.bucket.includes('0-90') || d.bucket.includes('91-180'))
+            .reduce((a, b) => a + b.count, 0);
+        $('cohort-new-risk').textContent = fmt(newRisk);
+
+        new Chart($('cohortChart'), {
+            type: 'doughnut',
+            data: {
+                labels: co.distribution.map(d => d.bucket),
+                datasets: [{
+                    data: co.distribution.map(d => d.count),
+                    backgroundColor: cohortColors,
+                    borderColor: cohortColors.map(c => c.replace('0.7', '1')),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '45%',
+                plugins: {
+                    title: { display: true, text: 'Active Customer Tenure', color: '#ccc', font: { size: 13 } },
+                    legend: { position: 'bottom', labels: { padding: 8, usePointStyle: true, pointStyle: 'circle', font: { size: 10 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => {
+                                const d = co.distribution[ctx.dataIndex];
+                                return `${d.bucket}: ${fmt(d.count)} (${d.pct}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ── Cancel Lifetime Distribution ──
+        const clBuckets = co.cancelLifetime.map(c => c.bucket);
+        const clCounts = co.cancelLifetime.map(c => c.count);
+        const clColors = co.cancelLifetime.map((c, i) => {
+            if (i < 2) return 'rgba(255,107,107,0.7)';    // 0-90 days - high risk
+            if (i < 4) return 'rgba(255,159,67,0.7)';      // 91-365 days
+            return 'rgba(136,136,136,0.5)';                  // 1+ years
+        });
+
+        new Chart($('cancelLifetimeChart'), {
+            type: 'bar',
+            data: {
+                labels: clBuckets,
+                datasets: [{
+                    label: 'Cancelled Accounts',
+                    data: clCounts,
+                    backgroundColor: clColors,
+                    borderColor: clColors.map(c => c.replace(/0\.\d\)/, '1)')),
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: 'Cancelled by Customer Age', color: '#ccc', font: { size: 13 } },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.parsed.y + ' accounts cancelled at ' + clBuckets[ctx.dataIndex] + ' tenure'
+                        }
+                    }
+                },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.04)' } },
+                    x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 45 } }
+                }
+            }
+        });
+
+        // ── What Would It Take ──
+        $('wwit-current-net').textContent = w.currentPace.monthlyNet.toFixed(1);
+        $('wwit-projected-ye').textContent = fmt(w.currentPace.projectedYearEnd);
+        $('wwit-gap').textContent = fmt(w.toReachGoal.netNeededTotal);
+        $('wwit-per-month').textContent = fmt(w.toReachGoal.netNeededPerMonth);
+        $('wwit-gross-sales').textContent = fmt(w.toReachGoal.grossSalesNeededPerMonth);
+        $('wwit-current-sales').textContent = w.toReachGoal.currentMonthlySales.toFixed(0);
+        $('wwit-multiplier').textContent = w.toReachGoal.salesMultiplierNeeded;
+
+        // Scenario table
+        const tbody = $('scenario-body');
+        tbody.innerHTML = '';
+        
+        const displayScenarios = w.scenarios.slice(0, 8);
+        displayScenarios.forEach((s, i) => {
+            const tr = document.createElement('tr');
+            if (i === 0) tr.className = 'best-row';
+            const yeColor = s.yearEndCustomers > h.activeCustomers ? 'var(--green)' : 'var(--red)';
+            tr.innerHTML = `
+                <td>${s.cancelReduction > 0 ? '↓ ' + s.cancelReduction + '%' : 'No change'}</td>
+                <td>${s.salesMultiplier}x</td>
+                <td>${s.monthlySales.toFixed(0)}/mo</td>
+                <td>${s.monthlyCancels.toFixed(0)}/mo</td>
+                <td style="color:${s.monthlyNet > 0 ? 'var(--green)' : 'var(--red)'}">
+                    ${s.monthlyNet > 0 ? '+' : ''}${s.monthlyNet.toFixed(0)}/mo
+                </td>
+                <td style="color:${yeColor}">${fmt(s.yearEndCustomers)}</td>
+                <td>${s.monthsToGoal < 120 ? s.monthsToGoal.toFixed(0) + ' mo' : '10+ yrs'}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Insight
+        const bestScenario = displayScenarios[0];
+        if (bestScenario) {
+            $('wwit-insight').innerHTML = `Even the <strong>most aggressive scenario</strong> 
+                (${bestScenario.cancelReduction}% cancel reduction + ${bestScenario.salesMultiplier}x sales increase) 
+                only gets us to <strong>${fmt(bestScenario.yearEndCustomers)}</strong> by year-end. 
+                Reaching 4,000 requires a <strong style="color:var(--gold)">${w.toReachGoal.salesMultiplierNeeded}x increase</strong> in monthly sales. 
+                This is a <strong>multi-year journey</strong> — focus on building sustainable growth engines 
+                (referral programs, online marketing, service quality) while aggressively reducing controllable cancels.`;
+        }
+
+        // ── Action Items ──
+        const aiContainer = $('action-items');
+        aiContainer.innerHTML = '';
+        data.actionItems.forEach(item => {
+            const div = document.createElement('div');
+            div.className = `action-item priority-${item.priority}`;
+            div.innerHTML = `
+                <div class="action-icon">${item.icon}</div>
+                <div class="action-body">
+                    <h4>${item.title}</h4>
+                    <p>${item.detail}</p>
+                    <span class="action-impact">💡 ${item.impact}</span>
+                </div>
+            `;
+            aiContainer.appendChild(div);
+        });
+
+        // ── Momentum ──
+        const momentumLabels = { 
+            improving: ['↑ Improving', 'momentum-up'],
+            slightly_improving: ['↗ Slightly Improving', 'momentum-up'],
+            flat: ['→ Flat', 'momentum-flat'],
+            declining: ['↘ Declining', 'momentum-down'],
+            crisis: ['↓ Crisis', 'momentum-down']
+        };
+        const ml = momentumLabels[m.trend] || ['—', 'momentum-flat'];
+        $('momentum-badge').textContent = ml[0];
+        $('momentum-badge').className = 'momentum-badge ' + ml[1];
+
+        // Momentum chart
+        const mWeeks = m.weeklySnapshots.map(s => s.week);
+        const mNets = m.weeklySnapshots.map(s => s.net);
+
+        new Chart($('momentumChart'), {
+            type: 'line',
+            data: {
+                labels: mWeeks,
+                datasets: [{
+                    label: 'Cumulative Net',
+                    data: mNets,
+                    borderColor: mNets[mNets.length-1] >= mNets[0] ? '#00ff88' : '#ff6b6b',
+                    backgroundColor: mNets[mNets.length-1] >= mNets[0] ? 
+                        'rgba(0,255,136,0.1)' : 'rgba(255,107,107,0.1)',
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: mNets.map(n => n >= 0 ? '#00ff88' : '#ff6b6b'),
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => 'Net: ' + (ctx.parsed.y > 0 ? '+' : '') + ctx.parsed.y + ' customers YTD'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: { callback: v => (v > 0 ? '+' : '') + v }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    }
+
+    loadDashboard();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Command Center</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #ffd700, #ff6b35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 24px rgba(255, 107, 53, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #8892a4;
+            font-size: 1.05rem;
+            margin-top: 8px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            padding-left: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            .header { margin-bottom: 28px; }
+            .header h1 { font-size: 1.6rem; }
+            .header p { font-size: 0.9rem; }
+            .logo-icon { width: 44px; height: 44px; font-size: 22px; }
+            .logo { gap: 10px; }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-bottom: 32px;
+            }
+            .card {
+                padding: 20px;
+                gap: 10px;
+            }
+            .card h3 { font-size: 1rem; }
+            .card p { font-size: 0.82rem; }
+            .card-icon { width: 38px; height: 38px; font-size: 18px; border-radius: 10px; }
+            .section-label { font-size: 0.7rem; margin-bottom: 14px; }
+            .status-bar { flex-direction: column; gap: 8px; padding: 12px 16px; }
+            .status-bar .status-items { flex-wrap: wrap; gap: 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 16px 12px; }
+            .header h1 { font-size: 1.3rem; }
+            .card { padding: 16px; }
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: var(--accent-bg);
+        }
+
+        .card-badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #8892a4;
+        }
+
+        .card-badge.live {
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+        }
+
+        .card-badge.building {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+
+        .card-badge.tv {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #8892a4;
+            line-height: 1.5;
+        }
+
+        .card-metrics {
+            display: flex;
+            gap: 16px;
+            margin-top: 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-metric {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .card-metric strong {
+            color: #d1d5db;
+            font-weight: 600;
+        }
+
+        .card-data-date {
+            width: 100%;
+            font-size: 0.7rem;
+            color: #4b5563;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: 4px;
+        }
+        .card-data-date .fresh { color: #34d399; }
+        .card-data-date .stale { color: #fbbf24; }
+
+        .coming-soon {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .coming-soon .card-badge {
+            background: rgba(255, 255, 255, 0.04);
+            color: #4b5563;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
+        .footer span {
+            color: #ffd700;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 48px;
+            padding: 24px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 16px;
+                margin-bottom: 28px;
+            }
+            .stat-value { font-size: 1.4rem; }
+            .stat-label { font-size: 0.65rem; }
+        }
+
+        @media (max-width: 480px) {
+            .quick-stats { grid-template-columns: repeat(2, 1fr); padding: 12px; }
+            .stat-value { font-size: 1.2rem; }
+        }
+        /* ─── Search Bar ─── */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #4b5563;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4b5563;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #6b7280;
+            font-size: 0.7rem;
+            font-family: monospace;
+            pointer-events: none;
+        }
+
+        .search-results-count {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-top: -20px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .card.hidden-by-search {
+            display: none !important;
+        }
+
+        .section-hidden {
+            display: none !important;
+        }
+
+        /* ─── Favorites ─── */
+        .fav-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+            z-index: 10;
+            color: #6b7280;
+        }
+
+        .card:hover .fav-btn,
+        .fav-btn.is-fav {
+            opacity: 1;
+        }
+
+        .fav-btn.is-fav {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.12);
+        }
+
+        .fav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-section {
+            display: none;
+        }
+
+        .favorites-section.has-favs {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .search-container { margin-bottom: 20px; }
+            .search-input { padding: 12px 16px 12px 42px; font-size: 0.9rem; }
+            .search-shortcut { display: none; }
+            .fav-btn { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">🦟</div>
+                <div>
+                    <h1>MoJo <span>Command Center</span></h1>
+                    <p>Mosquito Joe of Miami — Business Intelligence</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-stats" id="quickStats">
+            <div class="stat-item">
+                <div class="stat-value" id="qsSales">—</div>
+                <div class="stat-label">YTD Sales</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="qsRevenue">—</div>
+                <div class="stat-label">YTD Revenue</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="qsNet">—</div>
+                <div class="stat-label">Net Customers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="qsJobs">—</div>
+                <div class="stat-label">Jobs Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="qsTechs">—</div>
+                <div class="stat-label">Active Techs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="qsPace">—</div>
+                <div class="stat-label">$5M Pace</div>
+            </div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="hubSearch" placeholder="Search dashboards... (sales, operations, fleet...)" autocomplete="off">
+            <span class="search-shortcut">/</span>
+        </div>
+        <div class="search-results-count" id="searchResultsCount"></div>
+
+        <!-- FAVORITES -->
+        <div class="favorites-section" id="favoritesSection">
+            <div class="section-label">⭐ Favorites</div>
+            <div class="grid" id="favoritesGrid"></div>
+        </div>
+
+        <!-- BUSINESS PERFORMANCE -->
+        <div class="section-label">📊 Business Performance</div>
+        <div class="grid">
+
+            <a href="goal-tracker.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>$5M Goal Tracker</h3>
+                <p>Revenue pace vs target, milestones with estimated dates, what-if scenarios, and FY2025 comparison.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Invoices</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="morning-brief.html" class="card" style="--accent: #f59e0b; --accent-bg: rgba(245, 158, 11, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">☀️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Morning Brief</h3>
+                <p>Mobile-first CEO daily view — today's numbers, alerts, and action items in under 30 seconds.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Feeds</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                </div>
+            </a>
+
+            <a href="executive-brief.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Executive Brief</h3>
+                <p>Morning one-pager: revenue pace, CSR performance, cancel pulse, ops snapshot, fleet status, and smart alerts — all critical numbers at a glance.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Data Feeds</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                </div>
+            </a>
+
+            <a href="revenue-pace.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Revenue Pace → $5M</h3>
+                <p>Daily run rate vs required pace, monthly actual + projected revenue with seasonal adjustments, weekly trend, and key financial metrics.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + QuickBooks</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="servsuite"></span></div>
+                </div>
+            </a>
+
+            <a href="weekly-trends.html" class="card" style="--accent: #22c55e; --accent-bg: rgba(34, 197, 94, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Weekly Trends</h3>
+                <p>Week-over-week business performance — sales, revenue, visits, cancels with sparklines and trend comparison.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Weekly Snapshots</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                </div>
+            </a>
+
+            <a href="clv-dashboard.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">💎</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Customer Lifetime Value</h3>
+                <p>What each customer is worth — CLV by program, acquisition efficiency, portfolio concentration, cancel cost impact.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Sales + Retention + Invoices</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="season-readiness.html" class="card" style="--accent: #ff6b35; --accent-bg: rgba(255, 107, 53, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📋</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Season Readiness</h3>
+                <p>Capacity check, customer health, risk assessment, and operational readiness for peak season.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Systems</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sm-kpi"></span></div>
+                </div>
+            </a>
+
+            <a href="owners-dashboard.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">👑</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Owner's Dashboard</h3>
+                <p>High-level business overview. Revenue, customer counts, and key business health metrics at a glance.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="servsuite"></span></div>
+                </div>
+            </a>
+
+            <a href="sales-kpi-dashboard.html" class="card" style="--accent: #34d399; --accent-bg: rgba(52, 211, 153, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">💰</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Sales & Retention KPIs</h3>
+                <p>Sales vs cancels, CSR performance breakdown, cancel reasons, net customer growth, and retention rate.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite → Power Automate</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily 7:30 AM</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+            <a href="financial-dashboard.html" class="card" style="--accent: #22c55e; --accent-bg: rgba(34, 197, 94, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📒</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Financial Performance</h3>
+                <p>QuickBooks P&L snapshot: revenue, margins, cost structure, and $5M target pacing.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> QuickBooks P&L</div>
+                    <div class="card-metric"><strong>Updates:</strong> Manual (when P&L exported)</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="financial"></span></div>
+                </div>
+            </a>
+
+            <a href="dashboard.html" class="card" style="--accent: #60a5fa; --accent-bg: rgba(96, 165, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Main Dashboard</h3>
+                <p>Combined business metrics, trends, and operational data in one comprehensive view.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Multiple</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="main"></span></div>
+                </div>
+            </a>
+
+            <a href="profitability-dashboard.html" class="card" style="--accent: #22c55e; --accent-bg: rgba(34, 197, 94, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">💰</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Route Profitability</h3>
+                <p>Per-stop economics, tech profitability rankings, cost waterfall, and $5M scaling analysis with improvement opportunities.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Chemical + Fleet</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="reconciliation-dashboard.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🔍</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Sales Reconciliation</h3>
+                <p>Cross-reference sales vs invoices vs payments. Find discrepancies and missing revenue.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + QuickBooks</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="weekly-report.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🖨️</div>
+                    <span class="card-badge" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">Print</span>
+                </div>
+                <h3>Weekly Report (PDF)</h3>
+                <p>Print-optimized weekly business report. Open and use File → Print → Save as PDF for a clean one-pager to share.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Format:</strong> A4 Print / PDF</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                </div>
+            </a>
+
+            <a href="scorecard.html" class="card" style="--accent: #00b4d8; --accent-bg: rgba(0, 180, 216, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📊</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Weekly Scorecard</h3>
+                <p>Week-over-week business comparison with trend indicators, cancel reason analysis, tech leaderboard, and active alerts.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All KPI Data</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                </div>
+            </a>
+
+            <a href="growth-tracker.html" class="card" style="--accent: #ef4444; --accent-bg: rgba(239, 68, 68, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="card-badge" style="background:rgba(239,68,68,0.2);color:#ef4444;">Critical</span>
+                </div>
+                <h3>Growth Tracker → 4,000</h3>
+                <p>Customer growth trajectory, net change analysis, cancel crisis breakdown, cohort survival, and "What Would It Take" scenario calculator.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Retention + Sales KPI</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="geo-intelligence.html" class="card" style="--accent: #f59e0b; --accent-bg: rgba(245, 158, 11, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🗺️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Geographic Intelligence</h3>
+                <p>Cancel density heatmap by zip code, risk zone analysis, North vs South comparison, and strategic expansion/retention recommendations.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Cancel Analysis</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- OPERATIONS -->
+        <div class="section-label">🔧 Operations</div>
+        <div class="grid">
+
+            <a href="capacity-planner.html" class="card" style="--accent: #06b6d4; --accent-bg: rgba(6, 182, 212, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🏗️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Staffing & Capacity</h3>
+                <p>Tech utilization, hiring roadmap, seasonal demand model, cost-per-hire, and customer growth projections for $5M.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Fleet</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="operations-dashboard.html" class="card" style="--accent: #f97316; --accent-bg: rgba(249, 115, 22, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">⚙️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Operations</h3>
+                <p>Daily ops overview. Work orders, route efficiency, scheduling, and operational health.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Zubie</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily 6 AM</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="ops"></span></div>
+                </div>
+            </a>
+
+            <a href="tech-dashboard.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🛠️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Tech Performance & Fleet</h3>
+                <p>Technician stats, Google reviews by tech, fleet safety scores, vehicle tracking via Zubie.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Zubie API + Google Reviews</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="tech"></span></div>
+                </div>
+            </a>
+
+            <a href="fleet-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🚛</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Fleet Dashboard</h3>
+                <p>Vehicle safety scores, mileage tracking, driver leaderboard, speeding alerts, and fleet utilization trends.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Zubie GPS</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="fleet"></span></div>
+                </div>
+            </a>
+
+            <a href="chemical-dashboard.html" class="card" style="--accent: #10b981; --accent-bg: rgba(16, 185, 129, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🧪</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Chemical Usage</h3>
+                <p>Chemical inventory tracking, usage per route, cost per treatment, and reorder alerts.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="chemical"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- TV DISPLAYS -->
+        <div class="section-label">📺 TV Displays</div>
+        <div class="grid">
+
+            <a href="sales-kpi-tv.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📺</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>Sales KPI — TV</h3>
+                <p>Auto-rotating sales KPIs optimized for wall-mounted TV. Large fonts, dark mode, no interaction needed.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Fire TV Stick</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+            <a href="ops-tv.html" class="card" style="--accent: #f97316; --accent-bg: rgba(249, 115, 22, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📺</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>Operations — TV</h3>
+                <p>Ops metrics auto-rotating display for office TV. Route efficiency, daily jobs, scheduling overview.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Wall Display</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="ops"></span></div>
+                </div>
+            </a>
+
+            <a href="tech-tv.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📺</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>Tech Leaderboard — TV</h3>
+                <p>Tech performance leaderboard for office display. Jobs completed, reviews, upsells — gamified.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Wall Display</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="tech"></span></div>
+                </div>
+            </a>
+
+            <a href="sales-tv.html" class="card" style="--accent: #34d399; --accent-bg: rgba(52, 211, 153, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📺</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>Sales — TV</h3>
+                <p>Sales metrics display for office TV. Daily/weekly/monthly sales, gamified CSR leaderboard.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Wall Display</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+            <a href="csr-performance.html" class="card" style="--accent: #f97316; --accent-bg: rgba(249, 115, 22, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📊</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>CSR Performance</h3>
+                <p>Individual CSR analytics: win rates, weekly trends, sale categories, cancel reasons. Deep dive into team performance.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Sales CSV + ServSuite</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="sales-leaderboard.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🏆</div>
+                    <span class="card-badge tv">TV Mode</span>
+                </div>
+                <h3>CSR Leaderboard</h3>
+                <p>Gamified sales leaderboard for office TV. CSR rankings, conversion rates, tech upsells, recent activity ticker.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>For:</strong> Office TV</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- RETENTION & CANCELS -->
+        <div class="section-label">🔄 Retention & Cancels</div>
+        <div class="grid">
+
+            <a href="cancel-analysis.html" class="card" style="--accent: #ff4444; --accent-bg: rgba(255, 68, 68, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📉</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Cancel Analysis</h3>
+                <p>Revenue impact of cancellations, controllable vs uncontrollable splits, lifetime analysis, win-back opportunities.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="cancel"></span></div>
+                </div>
+            </a>
+
+            <a href="retention-intelligence.html" class="card" style="--accent: #ef4444; --accent-bg: rgba(239, 68, 68, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🛡️</div>
+                    <span class="card-badge" style="background:rgba(239,68,68,0.2);color:#ef4444;">Strategy</span>
+                </div>
+                <h3>Retention Intelligence</h3>
+                <p>Win-back playbook, revenue impact vs $5M target, geographic hotspots, controllable loss analysis.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="cancel"></span></div>
+                </div>
+            </a>
+
+            <a href="retention-dashboard.html" class="card" style="--accent: #00c853; --accent-bg: rgba(0, 200, 83, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔒</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Retention Dashboard</h3>
+                <p>Customer retention rates, 90-day retention KPIs, program-level retention tracking.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="retention"></span></div>
+                </div>
+            </a>
+
+            <a href="sm-kpi-dashboard.html" class="card" style="--accent: #00d4ff; --accent-bg: rgba(0, 212, 255, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔧</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>ServiceMinder KPIs</h3>
+                <p>Production metrics, tech productivity leaderboard, revenue pace, program breakdown, weekly trends.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sm-kpi"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- MARKETING & SOCIAL -->
+        <div class="section-label">📣 Marketing & Social</div>
+        <div class="grid">
+
+            <a href="social-media-dashboard.html" class="card" style="--accent: #ec4899; --accent-bg: rgba(236, 72, 153, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📱</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Social Media</h3>
+                <p>YouTube channel analytics, subscriber growth, video performance, and social media presence tracking.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> YouTube API</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="social"></span></div>
+                </div>
+            </a>
+
+            <a href="marketing-dashboard.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Marketing Performance</h3>
+                <p>Google Ads campaigns, budget pacing, YouTube analytics, optimization alerts. Spend, CPA, leads, channel comparison.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Google Ads CSV + YouTube API</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="marketing"></span></div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- SYSTEM -->
+        <div class="section-label">⚙️ System</div>
+        <div class="grid">
+            <a href="system-status.html" class="card" style="--accent: #64748b; --accent-bg: rgba(100, 116, 139, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">⚙️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>System Status</h3>
+                <p>Data pipeline health, feed freshness, dashboard inventory, and sync pipeline visibility.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All data feeds</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time checks</div>
+                </div>
+            </a>
+            <a href="pipeline-monitor.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔬</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Pipeline Monitor</h3>
+                <p>Real-time data freshness, nightly sync status, metric sanity checks, and dashboard availability.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All data pipelines</div>
+                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 5 min</div>
+                </div>
+            </a>
+            <a href="data-quality.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔍</div>
+                    <span class="card-badge" style="background:rgba(251,191,36,0.15);color:#fbbf24;">New</span>
+                </div>
+                <h3>Data Quality Scorecard</h3>
+                <p>Overall data quality score, per-source freshness monitoring, and reliability tracking.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All data feeds</div>
+                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 2 min</div>
+                </div>
+            </a>
+
+            <a href="freshness-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔬</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Data Freshness Monitor</h3>
+                <p>File-level freshness tracking, pipeline run history, dashboard dependency map, and weighted health scoring.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Data Files</div>
+                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 5 min</div>
+                </div>
+            </a>
+
+            <a href="alerts-dashboard.html" class="card" style="--accent: #ff4444; --accent-bg: rgba(255, 68, 68, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🚨</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Alerts & Notifications</h3>
+                <p>Consolidated alert center. Data anomalies, stale feeds, metric thresholds, and pipeline failures in one view.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Anomaly Detector + Health Checks</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                </div>
+            </a>
+
+            <a href="activity-log.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">📋</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Activity Log</h3>
+                <p>Timeline of all pipeline events: syncs, deploys, builds, fixes, and errors. See exactly what changed and when.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Pipeline Scripts</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                </div>
+            </a>
+
+            <a href="pipeline-dashboard.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">⚡</div>
+                    <span class="card-badge" style="background:rgba(167,139,250,0.2);color:#a78bfa;">New</span>
+                </div>
+                <h3>Pipeline Runs</h3>
+                <p>Per-step execution timing, pass/fail status, timeout tracking, and 30-day run history. Powered by the v2 orchestrator.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> pipeline-orchestrator.js</div>
+                    <div class="card-metric"><strong>Updates:</strong> After each run</div>
+                </div>
+            </a>
+
+            <a href="mission-control.html" class="card" style="--accent: #4ade80; --accent-bg: rgba(74, 222, 128, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🚀</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Mission Control</h3>
+                <p>Yoel's command center. Consolidated view of priorities, tasks, key metrics, and action items across all systems.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Systems</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Built by <span>MoJoe</span> 🫡 — Powered by MoJo data, updated automatically</p>
+            <p style="margin-top: 8px;">Last updated: <span id="lastUpdate"></span></p>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+
+        // Data pull timestamps — populated dynamically from live data files
+        const dataPullDates = {};
+
+        function formatTs(d) {
+            if (!d) return '<span style="color:#4b5563">No data</span>';
+            const date = new Date(d);
+            if (isNaN(date.getTime())) return '<span style="color:#4b5563">Invalid date</span>';
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHrs = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            const formatted = date.toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric'
+            }) + ' ' + date.toLocaleTimeString('en-US', {
+                hour: 'numeric', minute: '2-digit'
+            });
+
+            let freshness = '';
+            if (diffHrs < 12) {
+                freshness = ' <span class="fresh">● Fresh</span>';
+            } else if (diffHrs < 26) {
+                freshness = ' <span class="fresh">● ' + diffHrs + 'h ago</span>';
+            } else if (diffDays > 3) {
+                freshness = ' <span class="stale">● ' + diffDays + 'd ago</span>';
+            } else {
+                freshness = ' <span class="stale">● ' + diffDays + 'd ago</span>';
+            }
+
+            return formatted + freshness;
+        }
+
+        function renderTimestamps() {
+            document.querySelectorAll('.data-ts').forEach(el => {
+                const source = el.dataset.source;
+                el.innerHTML = formatTs(dataPullDates[source]);
+            });
+        }
+
+        // Fetch timestamps from all live data files
+        const dataFileMap = {
+            'ops-data.json': { keys: ['updated_at'], sources: ['ops', 'servsuite'] },
+            'tech-data.json': { keys: ['updated_at'], sources: ['tech'] },
+            'sales-data.json': { keys: ['updated_at'], sources: ['sales'] },
+            'dashboard-data.json': { keys: ['generated_at', 'lastUpdated'], sources: ['main'] },
+            'financial-data.json': { keys: ['updated_at'], sources: ['financial'] },
+            'youtube-data.json': { keys: ['updated_at'], sources: ['social'] },
+            'marketing-data.json': { keys: ['updated_at'], sources: ['marketing'] },
+            'fleet-data.json': { keys: ['updated_at'], sources: ['fleet'] },
+            'cancel-analysis.json': { keys: ['generated_at'], sources: ['cancel'] },
+            'retention-data.json': { keys: ['generated_at'], sources: ['retention'] },
+            'sm-kpi-data.json': { keys: ['generated'], sources: ['sm-kpi'] },
+            'chemical-data.json': { keys: ['updated_at', 'generated_at'], sources: ['chemical'] }
+        };
+
+        const cacheBust = '?t=' + Date.now();
+        const fetches = Object.entries(dataFileMap).map(([file, config]) =>
+            fetch(file + cacheBust)
+                .then(r => r.ok ? r.json() : null)
+                .then(data => {
+                    if (!data) return;
+                    for (const key of config.keys) {
+                        const ts = data[key] || (data.meta && data.meta[key]);
+                        if (ts) {
+                            config.sources.forEach(src => { dataPullDates[src] = ts; });
+                            break;
+                        }
+                    }
+                })
+                .catch(() => {})
+        );
+
+        Promise.all(fetches).then(renderTimestamps);
+
+        // Populate quick stats from live data
+        fetch('sales-data.json' + cacheBust).then(r => r.json()).then(d => {
+            const s = d.summary || {};
+            document.getElementById('qsSales').textContent = s.total_sales || '—';
+            const net = s.net;
+            const netEl = document.getElementById('qsNet');
+            netEl.textContent = (net > 0 ? '+' : '') + net;
+            netEl.style.color = net >= 0 ? '#34d399' : '#ef4444';
+        }).catch(() => {});
+
+        fetch('owners-data.json' + cacheBust).then(r => r.json()).then(d => {
+            // Revenue from ops or invoices
+            const rev = d.sales?.total_revenue || d.revenue?.total;
+            if (rev) document.getElementById('qsRevenue').textContent = '$' + Math.round(rev / 1000) + 'K';
+        }).catch(() => {});
+
+        fetch('tech-data.json' + cacheBust).then(r => r.json()).then(d => {
+            const s = d.summary || {};
+            document.getElementById('qsJobs').textContent = (s.total_jobs || 0).toLocaleString();
+            document.getElementById('qsTechs').textContent = s.total_techs || '—';
+            if (s.total_revenue) {
+                document.getElementById('qsRevenue').textContent = '$' + Math.round(s.total_revenue / 1000) + 'K';
+            }
+        }).catch(() => {});
+
+        fetch('financial-data.json' + cacheBust).then(r => r.json()).then(d => {
+            const p = d.projections;
+            if (p && p.target) {
+                const paceEl = document.getElementById('qsPace');
+                const pct = p.target.pacePercent;
+                paceEl.textContent = pct + '%';
+                paceEl.style.color = p.target.onPace ? '#34d399' : (pct >= 80 ? '#fbbf24' : '#ef4444');
+            }
+        }).catch(() => {});
+    </script>
+    <script>
+    // ─── Hub Search ───────────────────────────────────────────────
+    (function() {
+        const searchInput = document.getElementById('hubSearch');
+        const resultsCount = document.getElementById('searchResultsCount');
+        const allCards = Array.from(document.querySelectorAll('.grid .card:not(#favoritesGrid .card)'));
+        const sections = document.querySelectorAll('.section-label');
+        const grids = document.querySelectorAll('.grid:not(#favoritesGrid)');
+
+        // Build search index
+        const cardData = allCards.map(card => ({
+            el: card,
+            text: (card.textContent || '').toLowerCase(),
+            href: card.getAttribute('href') || '',
+            title: (card.querySelector('h3') || {}).textContent || '',
+        }));
+
+        function doSearch(query) {
+            const q = query.trim().toLowerCase();
+            
+            if (!q) {
+                // Reset: show all
+                allCards.forEach(c => c.classList.remove('hidden-by-search'));
+                sections.forEach(s => s.classList.remove('section-hidden'));
+                grids.forEach(g => g.classList.remove('section-hidden'));
+                resultsCount.style.display = 'none';
+                return;
+            }
+
+            // Fuzzy match: split terms, all must match
+            const terms = q.split(/\s+/).filter(Boolean);
+            let visible = 0;
+
+            cardData.forEach(d => {
+                const matches = terms.every(t => d.text.includes(t) || d.href.includes(t));
+                d.el.classList.toggle('hidden-by-search', !matches);
+                if (matches) visible++;
+            });
+
+            // Hide sections where ALL cards are hidden
+            sections.forEach((sectionLabel, i) => {
+                const grid = sectionLabel.nextElementSibling;
+                if (grid && grid.classList.contains('grid')) {
+                    const visibleCards = grid.querySelectorAll('.card:not(.hidden-by-search)');
+                    const hide = visibleCards.length === 0;
+                    sectionLabel.classList.toggle('section-hidden', hide);
+                    grid.classList.toggle('section-hidden', hide);
+                }
+            });
+
+            resultsCount.textContent = `${visible} dashboard${visible !== 1 ? 's' : ''} found`;
+            resultsCount.style.display = 'block';
+        }
+
+        searchInput.addEventListener('input', () => doSearch(searchInput.value));
+
+        // Keyboard shortcut: / to focus search, Escape to clear
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                doSearch('');
+                searchInput.blur();
+            }
+        });
+    })();
+
+    // ─── Favorites ────────────────────────────────────────────────
+    (function() {
+        const STORAGE_KEY = 'mojo-hub-favorites';
+        const favSection = document.getElementById('favoritesSection');
+        const favGrid = document.getElementById('favoritesGrid');
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            } catch { return []; }
+        }
+
+        function saveFavorites(favs) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+        }
+
+        function toggleFavorite(href) {
+            let favs = getFavorites();
+            const idx = favs.indexOf(href);
+            if (idx >= 0) favs.splice(idx, 1);
+            else favs.push(href);
+            saveFavorites(favs);
+            renderFavorites();
+            updateFavButtons();
+        }
+
+        function renderFavorites() {
+            const favs = getFavorites();
+            favGrid.innerHTML = '';
+            
+            if (favs.length === 0) {
+                favSection.classList.remove('has-favs');
+                return;
+            }
+
+            favSection.classList.add('has-favs');
+
+            // Clone matching cards into favorites grid
+            favs.forEach(href => {
+                const original = document.querySelector(`.grid:not(#favoritesGrid) .card[href="${href}"]`);
+                if (original) {
+                    const clone = original.cloneNode(true);
+                    // Remove fav button from clone (we'll add a new one)
+                    const existingBtn = clone.querySelector('.fav-btn');
+                    if (existingBtn) existingBtn.remove();
+                    
+                    // Add unfavorite button
+                    const btn = document.createElement('button');
+                    btn.className = 'fav-btn is-fav';
+                    btn.innerHTML = '⭐';
+                    btn.title = 'Remove from favorites';
+                    btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(href); };
+                    clone.style.position = 'relative';
+                    clone.appendChild(btn);
+                    
+                    favGrid.appendChild(clone);
+                }
+            });
+        }
+
+        function updateFavButtons() {
+            const favs = getFavorites();
+            document.querySelectorAll('.grid:not(#favoritesGrid) .card').forEach(card => {
+                const href = card.getAttribute('href');
+                let btn = card.querySelector('.fav-btn');
+                
+                if (!btn) {
+                    btn = document.createElement('button');
+                    btn.className = 'fav-btn';
+                    card.style.position = 'relative';
+                    card.appendChild(btn);
+                }
+
+                const isFav = favs.includes(href);
+                btn.className = 'fav-btn' + (isFav ? ' is-fav' : '');
+                btn.innerHTML = isFav ? '⭐' : '☆';
+                btn.title = isFav ? 'Remove from favorites' : 'Add to favorites';
+                btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(href); };
+            });
+        }
+
+        // Init
+        updateFavButtons();
+        renderFavorites();
+    })();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

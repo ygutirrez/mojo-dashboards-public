@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Season Readiness — $5M Target</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 28px; padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .header h1 { font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+        .header h1 .target { color: #fbbf24; font-weight: 400; font-size: 1rem; }
+        .header .meta { text-align: right; font-size: 0.78rem; color: #64748b; }
+        .header .meta .last-update { color: #94a3b8; }
+
+        /* Revenue Target Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 32px; margin-bottom: 24px;
+            position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%);
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; position: relative; z-index: 1; }
+        .hero-left { display: flex; flex-direction: column; justify-content: center; }
+        .hero-amount { font-size: 3rem; font-weight: 800; margin-bottom: 4px; }
+        .hero-amount .earned { color: #fbbf24; }
+        .hero-amount .sep { color: #4b5563; font-weight: 300; }
+        .hero-amount .target { color: #64748b; }
+        .hero-label { font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px; }
+        .hero-pct { font-size: 1.1rem; font-weight: 600; }
+        .hero-pct .val { font-size: 2rem; }
+        .hero-pct.on-track { color: #34d399; }
+        .hero-pct.behind { color: #f59e0b; }
+        .hero-pct.danger { color: #ef4444; }
+
+        /* Progress bar */
+        .progress-container { margin-bottom: 16px; }
+        .progress-bar-outer {
+            height: 24px; background: rgba(255,255,255,0.06);
+            border-radius: 12px; overflow: hidden; position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%; border-radius: 12px;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            transition: width 1s ease-out;
+            position: relative;
+        }
+        .progress-bar-fill.on-track { background: linear-gradient(90deg, #059669, #34d399); }
+        .progress-bar-fill.behind { background: linear-gradient(90deg, #d97706, #f59e0b); }
+        .progress-bar-fill.danger { background: linear-gradient(90deg, #dc2626, #ef4444); }
+        .progress-marker {
+            position: absolute; top: -6px; width: 2px; height: 36px;
+            background: #e2e8f0; z-index: 2;
+        }
+        .progress-marker::after {
+            content: attr(data-label); position: absolute; top: -20px;
+            font-size: 0.6rem; color: #94a3b8; white-space: nowrap;
+            transform: translateX(-50%); left: 50%;
+        }
+        .progress-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: #64748b; margin-top: 6px; }
+
+        /* Monthly projection chart */
+        .chart-container { position: relative; }
+        .chart-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .chart-label { width: 36px; font-size: 0.7rem; color: #94a3b8; text-align: right; flex-shrink: 0; }
+        .chart-bar-bg { flex: 1; height: 20px; background: rgba(255,255,255,0.04); border-radius: 4px; position: relative; overflow: hidden; }
+        .chart-bar-actual { height: 100%; border-radius: 4px; background: #fbbf24; position: absolute; left: 0; top: 0; }
+        .chart-bar-projected { height: 100%; border-radius: 4px; background: rgba(251,191,36,0.2); border: 1px dashed rgba(251,191,36,0.3); position: absolute; left: 0; top: 0; }
+        .chart-bar-target { position: absolute; top: 0; width: 2px; height: 100%; background: rgba(239,68,68,0.6); }
+        .chart-val { width: 60px; font-size: 0.7rem; color: #94a3b8; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 24px; }
+        .card {
+            background: #111827; border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 24px;
+        }
+        .card.full { grid-column: 1 / -1; }
+        .card h2 {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px;
+            color: #6b7280; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+        }
+
+        /* Readiness checklist */
+        .check-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .check-item:last-child { border-bottom: none; }
+        .check-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+        .check-content { flex: 1; }
+        .check-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 2px; }
+        .check-detail { font-size: 0.78rem; color: #94a3b8; }
+        .check-value { font-size: 0.85rem; font-weight: 600; text-align: right; min-width: 80px; }
+        .check-value.good { color: #34d399; }
+        .check-value.warn { color: #f59e0b; }
+        .check-value.bad { color: #ef4444; }
+
+        /* KPI row */
+        .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .kpi {
+            background: rgba(255,255,255,0.03); border-radius: 10px;
+            padding: 16px; text-align: center;
+        }
+        .kpi .val { font-size: 1.6rem; font-weight: 700; }
+        .kpi .lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; margin-top: 4px; }
+        .kpi .sub { font-size: 0.72rem; color: #64748b; margin-top: 2px; }
+        .kpi .val.gold { color: #fbbf24; }
+        .kpi .val.green { color: #34d399; }
+        .kpi .val.red { color: #ef4444; }
+        .kpi .val.blue { color: #38bdf8; }
+
+        /* Seasonal curve */
+        .seasonal-bar { display: flex; gap: 4px; align-items: flex-end; height: 100px; margin: 12px 0; }
+        .seasonal-col {
+            flex: 1; border-radius: 4px 4px 0 0; position: relative;
+            transition: all 0.3s; cursor: default;
+        }
+        .seasonal-col.past { background: #fbbf24; }
+        .seasonal-col.current { background: #f59e0b; border: 2px solid #fbbf24; }
+        .seasonal-col.future { background: rgba(251,191,36,0.15); border: 1px dashed rgba(251,191,36,0.3); }
+        .seasonal-col.peak { box-shadow: 0 0 8px rgba(251,191,36,0.3); }
+        .seasonal-col .col-label {
+            position: absolute; bottom: -18px; left: 50%;
+            transform: translateX(-50%); font-size: 0.6rem; color: #6b7280;
+        }
+        .seasonal-col .col-val {
+            position: absolute; top: -16px; left: 50%;
+            transform: translateX(-50%); font-size: 0.55rem; color: #94a3b8;
+            white-space: nowrap;
+        }
+        .seasonal-legend { display: flex; gap: 16px; font-size: 0.7rem; color: #6b7280; margin-top: 24px; }
+        .seasonal-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; }
+
+        /* Risks */
+        .risk-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 12px; margin-bottom: 8px;
+            background: rgba(255,255,255,0.02); border-radius: 8px;
+            border-left: 3px solid;
+        }
+        .risk-item.high { border-color: #ef4444; }
+        .risk-item.medium { border-color: #f59e0b; }
+        .risk-item.low { border-color: #34d399; }
+        .risk-item .risk-icon { font-size: 1rem; }
+        .risk-item .risk-text { font-size: 0.85rem; }
+        .risk-item .risk-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 2px; }
+        .risk-item.high .risk-label { color: #ef4444; }
+        .risk-item.medium .risk-label { color: #f59e0b; }
+        .risk-item.low .risk-label { color: #34d399; }
+
+        .footer {
+            text-align: center; padding: 20px;
+            color: #374151; font-size: 0.7rem;
+        }
+        .footer a { color: #fbbf24; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+            .hero-amount { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+        }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="header">
+        <h1>🦟 Season Readiness <span class="target">→ $5M Target</span></h1>
+        <div class="meta">
+            <div class="last-update" id="lastUpdate">Loading...</div>
+            <div>Auto-refresh: 5 min</div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading" style="text-align:center; padding:60px; color:#64748b;">
+        Loading dashboard data...
+    </div>
+
+    <div id="content" style="display:none;">
+
+        <!-- Revenue Hero -->
+        <div class="hero" id="heroSection">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-amount">
+                        <span class="earned" id="heroRevenue">—</span>
+                        <span class="sep">/</span>
+                        <span class="target">$5M</span>
+                    </div>
+                    <div class="hero-label">YTD Revenue → Annual Target</div>
+                    <div class="hero-pct" id="heroPace">
+                        <span class="val" id="heroPacePct">—</span>
+                        <span id="heroPaceLabel">of target pace</span>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="progress-container">
+                        <div class="progress-bar-outer" id="progressOuter">
+                            <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-labels">
+                            <span>$0</span>
+                            <span>$1.25M</span>
+                            <span>$2.5M</span>
+                            <span>$3.75M</span>
+                            <span>$5M</span>
+                        </div>
+                    </div>
+                    <div class="kpi-row" id="heroKpis">
+                        <div class="kpi"><div class="val gold" id="kpiRevPerDay">—</div><div class="lbl">Rev/Day</div><div class="sub" id="kpiRevPerDayNeeded">need: —</div></div>
+                        <div class="kpi"><div class="val green" id="kpiDaysLeft">—</div><div class="lbl">Days Left</div><div class="sub">in 2026</div></div>
+                        <div class="kpi"><div class="val blue" id="kpiDaysPeak">—</div><div class="lbl">Peak Days</div><div class="sub">Apr-Oct</div></div>
+                        <div class="kpi"><div class="val" id="kpiGapVal">—</div><div class="lbl">Revenue Gap</div><div class="sub" id="kpiGapSub">to close</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <!-- Seasonal Revenue Curve -->
+            <div class="card">
+                <h2>📈 Monthly Revenue Curve</h2>
+                <div class="seasonal-bar" id="seasonalChart"></div>
+                <div class="seasonal-legend">
+                    <span><span class="dot" style="background:#fbbf24"></span> Actual</span>
+                    <span><span class="dot" style="background:rgba(251,191,36,0.2); border:1px dashed rgba(251,191,36,0.4)"></span> Projected</span>
+                    <span><span class="dot" style="background:#f59e0b; border:2px solid #fbbf24"></span> Current</span>
+                </div>
+            </div>
+
+            <!-- Season Readiness Checklist -->
+            <div class="card">
+                <h2>✅ Season Readiness Checklist</h2>
+                <div id="readinessChecklist"></div>
+            </div>
+
+            <!-- Customer Base Health -->
+            <div class="card">
+                <h2>👥 Customer Base Health</h2>
+                <div class="kpi-row" id="customerKpis"></div>
+                <div id="customerDetails"></div>
+            </div>
+
+            <!-- Capacity & Operations -->
+            <div class="card">
+                <h2>🔧 Operational Capacity</h2>
+                <div class="kpi-row" id="opsKpis"></div>
+                <div id="opsDetails"></div>
+            </div>
+
+            <!-- Revenue Scenarios -->
+            <div class="card">
+                <h2>🎯 Revenue Scenarios</h2>
+                <div id="scenarios"></div>
+            </div>
+
+            <!-- Key Risks -->
+            <div class="card">
+                <h2>⚠️ Key Risks & Opportunities</h2>
+                <div id="risks"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a href="index.html">← Back to Command Center</a> · Built by MoJoe 🫡 · Updated automatically
+    </div>
+
+    <script>
+    const TARGET_REVENUE = 5000000;
+    const CURRENT_YEAR = 2026;
+
+    // Seasonal revenue distribution for MoJo Miami (pest control)
+    // Based on typical Florida pest control seasonality
+    const SEASONAL_WEIGHTS = {
+        1: 0.05,  // Jan — slowest
+        2: 0.05,  // Feb — slow
+        3: 0.07,  // Mar — ramping up
+        4: 0.10,  // Apr — season starts
+        5: 0.12,  // May — peak building
+        6: 0.14,  // Jun — peak
+        7: 0.14,  // Jul — peak
+        8: 0.12,  // Aug — peak
+        9: 0.10,  // Sep — winding down
+        10: 0.06, // Oct — end of season
+        11: 0.03, // Nov — slow
+        12: 0.02  // Dec — slowest
+    };
+
+    const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    const cacheBust = '?t=' + Date.now();
+
+    async function loadData() {
+        const [salesKpi, smKpi, retention, techData, cancelData, fleetData, ownersData] = await Promise.all([
+            fetch('sales-kpi-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('sm-kpi-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('retention-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('tech-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('cancel-analysis.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('fleet-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch('owners-data.json' + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null)
+        ]);
+        return { salesKpi, smKpi, retention, techData, cancelData, fleetData, ownersData };
+    }
+
+    function fmt$(n) {
+        if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+        if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+        return '$' + Math.round(n);
+    }
+
+    function dayOfYear() {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        return Math.floor((now - start) / 86400000);
+    }
+
+    function daysInYear() { return 365; }
+
+    function currentMonth() { return new Date().getMonth() + 1; }
+
+    function dayOfMonth() { return new Date().getDate(); }
+
+    function daysInMonth(m) { return new Date(CURRENT_YEAR, m, 0).getDate(); }
+
+    function getExpectedPace(dayNum) {
+        // Weight-adjusted expected revenue for given day of year
+        let cumWeight = 0;
+        let dayCount = 0;
+        for (let m = 1; m <= 12; m++) {
+            const dim = daysInMonth(m);
+            const dailyWeight = SEASONAL_WEIGHTS[m] / dim;
+            for (let d = 1; d <= dim; d++) {
+                dayCount++;
+                cumWeight += dailyWeight;
+                if (dayCount >= dayNum) return cumWeight * TARGET_REVENUE;
+            }
+        }
+        return TARGET_REVENUE;
+    }
+
+    function renderHero(data) {
+        const smYtd = data.smKpi?.summary?.ytd;
+        const kpiSummary = data.salesKpi?.summary;
+
+        // Use invoice-level revenue (most accurate) — SM management report can undercount
+        const ytdRevenue = kpiSummary?.total_revenue || smYtd?.production || 0;
+        const daysElapsed = kpiSummary?.days_tracked || smYtd?.daysElapsed || dayOfYear();
+        const revPerDay = daysElapsed > 0 ? ytdRevenue / daysElapsed : 0;
+
+        // Calculate pace vs seasonal expectations
+        const expectedRevenue = getExpectedPace(dayOfYear());
+        const paceRatio = expectedRevenue > 0 ? ytdRevenue / expectedRevenue : 0;
+        const pct = (ytdRevenue / TARGET_REVENUE * 100).toFixed(1);
+
+        // Revenue needed for rest of year
+        const remaining = TARGET_REVENUE - ytdRevenue;
+        const daysLeft = daysInYear() - dayOfYear();
+        const neededPerDay = daysLeft > 0 ? remaining / daysLeft : 0;
+
+        // Peak season days (Apr 1 to Oct 31)
+        const peakStart = new Date(CURRENT_YEAR, 3, 1);
+        const peakEnd = new Date(CURRENT_YEAR, 10, 0);
+        const now = new Date();
+        const peakDaysTotal = Math.floor((peakEnd - peakStart) / 86400000);
+        const peakDaysLeft = now < peakStart ? peakDaysTotal : now > peakEnd ? 0 : Math.floor((peakEnd - now) / 86400000);
+
+        document.getElementById('heroRevenue').textContent = fmt$(ytdRevenue);
+        document.getElementById('progressFill').style.width = pct + '%';
+
+        const paceEl = document.getElementById('heroPace');
+        const pacePct = (paceRatio * 100).toFixed(0);
+        document.getElementById('heroPacePct').textContent = pacePct + '%';
+
+        if (paceRatio >= 0.90) {
+            paceEl.className = 'hero-pct on-track';
+            document.getElementById('progressFill').classList.add('on-track');
+            document.getElementById('heroPaceLabel').textContent = ' of expected pace ✓';
+        } else if (paceRatio >= 0.70) {
+            paceEl.className = 'hero-pct behind';
+            document.getElementById('progressFill').classList.add('behind');
+            document.getElementById('heroPaceLabel').textContent = ' of expected pace — recoverable';
+        } else {
+            paceEl.className = 'hero-pct danger';
+            document.getElementById('progressFill').classList.add('danger');
+            document.getElementById('heroPaceLabel').textContent = ' of expected pace — needs action';
+        }
+
+        document.getElementById('kpiRevPerDay').textContent = fmt$(revPerDay);
+        document.getElementById('kpiRevPerDayNeeded').textContent = 'need: ' + fmt$(neededPerDay) + '/day';
+        document.getElementById('kpiDaysLeft').textContent = daysLeft;
+        document.getElementById('kpiDaysPeak').textContent = peakDaysLeft;
+
+        const gapEl = document.getElementById('kpiGapVal');
+        gapEl.textContent = fmt$(remaining);
+        gapEl.className = 'val ' + (remaining > 3000000 ? 'red' : remaining > 1500000 ? 'gold' : 'green');
+    }
+
+    function renderSeasonalChart(data) {
+        const container = document.getElementById('seasonalChart');
+        const smMonthly = data.smKpi?.monthly || [];
+        const cm = currentMonth();
+
+        // Build monthly data
+        const months = [];
+        for (let m = 1; m <= 12; m++) {
+            const monthData = smMonthly.find(d =>
+                d.period && d.period.toLowerCase().includes(MONTH_NAMES[m-1].toLowerCase())
+            );
+            const actual = monthData ? monthData.production : 0;
+            const projected = SEASONAL_WEIGHTS[m] * TARGET_REVENUE;
+            const isPast = m < cm;
+            const isCurrent = m === cm;
+
+            // For current month, project based on days elapsed
+            let currentProjected = 0;
+            if (isCurrent) {
+                const dom = dayOfMonth();
+                const dim = daysInMonth(m);
+                currentProjected = actual * (dim / dom);
+            }
+
+            months.push({ m, actual, projected, isPast, isCurrent, currentProjected });
+        }
+
+        const maxVal = Math.max(...months.map(d => Math.max(d.projected, d.actual, d.currentProjected || 0)));
+
+        container.innerHTML = months.map(d => {
+            const isPeak = d.m >= 4 && d.m <= 10;
+            const h = d.isPast ? (d.actual / maxVal * 100) :
+                      d.isCurrent ? (d.actual / maxVal * 100) :
+                      (d.projected / maxVal * 100);
+            const cls = d.isPast ? 'past' : d.isCurrent ? 'current' : 'future';
+            const peakCls = isPeak ? ' peak' : '';
+            const val = d.isPast ? fmt$(d.actual) :
+                        d.isCurrent ? fmt$(d.actual) + '*' :
+                        fmt$(d.projected);
+            return `<div class="seasonal-col ${cls}${peakCls}" style="height:${Math.max(h, 5)}%"
+                title="${MONTH_NAMES[d.m-1]}: ${val}">
+                <span class="col-val">${val}</span>
+                <span class="col-label">${MONTH_NAMES[d.m-1]}</span>
+            </div>`;
+        }).join('');
+    }
+
+    function renderReadiness(data) {
+        const container = document.getElementById('readinessChecklist');
+        const smYtd = data.smKpi?.summary?.ytd;
+        const techCount = data.smKpi?.summary?.techCount || 0;
+        const totalActive = data.retention?.total_active || 0;
+        const fleetVehicles = data.fleetData?.summary?.total_active_vehicles || 0;
+        const retention90 = data.retention?.retention_90d?.rate || 0;
+        const netChange = smYtd?.netCustomerChange || 0;
+
+        const checks = [
+            {
+                title: 'Customer Base',
+                detail: `${totalActive.toLocaleString()} active customers — base for recurring revenue`,
+                value: totalActive > 1800 ? '✓ Strong' : totalActive > 1500 ? '⚠ Adequate' : '✗ Low',
+                status: totalActive > 1800 ? 'good' : totalActive > 1500 ? 'warn' : 'bad',
+                icon: '👥'
+            },
+            {
+                title: 'Tech Workforce',
+                detail: `${techCount} active technicians. Peak season may need 12-15.`,
+                value: techCount >= 12 ? '✓ Ready' : techCount >= 10 ? '⚠ Tight' : '✗ Understaffed',
+                status: techCount >= 12 ? 'good' : techCount >= 10 ? 'warn' : 'bad',
+                icon: '🛠️'
+            },
+            {
+                title: 'Fleet Capacity',
+                detail: `${fleetVehicles} active vehicles tracked via Zubie`,
+                value: fleetVehicles >= techCount ? '✓ Covered' : '✗ Shortfall',
+                status: fleetVehicles >= techCount ? 'good' : 'bad',
+                icon: '🚛'
+            },
+            {
+                title: '90-Day Retention',
+                detail: `${retention90}% of new customers retained — customer quality indicator`,
+                value: retention90 >= 95 ? '✓ Excellent' : retention90 >= 85 ? '⚠ OK' : '✗ Concern',
+                status: retention90 >= 95 ? 'good' : retention90 >= 85 ? 'warn' : 'bad',
+                icon: '🔒'
+            },
+            {
+                title: 'Net Customer Growth',
+                detail: `${netChange >= 0 ? '+' : ''}${netChange} net customers YTD (sales minus cancels)`,
+                value: netChange >= 0 ? '✓ Growing' : netChange > -20 ? '⚠ Slight Loss' : '✗ Losing',
+                status: netChange >= 0 ? 'good' : netChange > -20 ? 'warn' : 'bad',
+                icon: '📊'
+            },
+            {
+                title: 'Revenue Pace',
+                detail: `Currently at ${fmt$(smYtd?.dailyProductionRate || 0)}/day. Off-season expected.`,
+                value: (smYtd?.dailyProductionRate || 0) > 5000 ? '✓ Normal' : '⚠ Low',
+                status: (smYtd?.dailyProductionRate || 0) > 5000 ? 'good' : 'warn',
+                icon: '💰'
+            },
+            {
+                title: 'Data Pipeline',
+                detail: 'Nightly sync, dashboards, health checks all running',
+                value: '✓ Active',
+                status: 'good',
+                icon: '⚙️'
+            }
+        ];
+
+        container.innerHTML = checks.map(c => `
+            <div class="check-item">
+                <span class="check-icon">${c.icon}</span>
+                <div class="check-content">
+                    <div class="check-title">${c.title}</div>
+                    <div class="check-detail">${c.detail}</div>
+                </div>
+                <div class="check-value ${c.status}">${c.value}</div>
+            </div>
+        `).join('');
+    }
+
+    function renderCustomerHealth(data) {
+        const totalActive = data.retention?.total_active || 0;
+        const cancelsYtd = data.retention?.total_cancels_ytd || 0;
+        const ageDist = data.retention?.age_distribution || {};
+        const ret90 = data.retention?.retention_90d || {};
+        const cancelReasons = data.retention?.cancel_reasons || {};
+
+        const kpiContainer = document.getElementById('customerKpis');
+        kpiContainer.innerHTML = `
+            <div class="kpi"><div class="val green">${totalActive.toLocaleString()}</div><div class="lbl">Active Customers</div></div>
+            <div class="kpi"><div class="val red">${cancelsYtd}</div><div class="lbl">Cancels YTD</div></div>
+            <div class="kpi"><div class="val blue">${ret90.rate || '—'}%</div><div class="lbl">90-Day Retention</div></div>
+            <div class="kpi"><div class="val gold">${ageDist['3+ years'] || '—'}</div><div class="lbl">3+ Year Loyal</div></div>
+        `;
+
+        const detailContainer = document.getElementById('customerDetails');
+        const topReasons = Object.entries(cancelReasons).sort((a,b) => b[1] - a[1]).slice(0, 5);
+        const totalCancels = Object.values(cancelReasons).reduce((s,v) => s+v, 0);
+
+        detailContainer.innerHTML = `
+            <h3 style="font-size:0.8rem; color:#6b7280; margin: 16px 0 8px; text-transform:uppercase; letter-spacing:1px;">Top Cancel Reasons</h3>
+            ${topReasons.map(([reason, count]) => `
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <div style="flex:1; font-size:0.82rem;">${reason}</div>
+                    <div style="width:120px; height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden;">
+                        <div style="height:100%; width:${count/totalCancels*100}%; background:#ef4444; border-radius:3px;"></div>
+                    </div>
+                    <div style="width:30px; text-align:right; font-size:0.75rem; color:#94a3b8;">${count}</div>
+                </div>
+            `).join('')}
+            <h3 style="font-size:0.8rem; color:#6b7280; margin: 16px 0 8px; text-transform:uppercase; letter-spacing:1px;">Customer Age Distribution</h3>
+            ${Object.entries(ageDist).map(([bucket, count]) => `
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                    <div style="flex:1; font-size:0.82rem;">${bucket}</div>
+                    <div style="width:120px; height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden;">
+                        <div style="height:100%; width:${count/totalActive*100}%; background:#38bdf8; border-radius:3px;"></div>
+                    </div>
+                    <div style="width:40px; text-align:right; font-size:0.75rem; color:#94a3b8;">${count}</div>
+                </div>
+            `).join('')}
+        `;
+    }
+
+    function renderOpsCapacity(data) {
+        const techCount = data.smKpi?.summary?.techCount || 0;
+        const topTech = data.smKpi?.summary?.topTech || {};
+        const stops = data.smKpi?.summary?.ytd?.stops || 0;
+        const avgPerStop = data.smKpi?.summary?.ytd?.avgRevPerStop || 0;
+        const fleetVehicles = data.fleetData?.summary?.total_active_vehicles || 0;
+        const avgSafety = data.fleetData?.summary?.avg_safety_score || 0;
+        const daysElapsed = data.smKpi?.summary?.ytd?.daysElapsed || 1;
+        const stopsPerDay = Math.round(stops / daysElapsed);
+
+        // Peak season capacity estimate
+        const peakStopsPerDay = Math.round(stopsPerDay * 2.5); // Peak is ~2.5x winter
+        const peakCapacity = techCount * 12; // ~12 stops per tech per day
+        const capacityRatio = peakCapacity > 0 ? peakStopsPerDay / peakCapacity : 0;
+
+        const kpiContainer = document.getElementById('opsKpis');
+        kpiContainer.innerHTML = `
+            <div class="kpi"><div class="val blue">${techCount}</div><div class="lbl">Active Techs</div></div>
+            <div class="kpi"><div class="val gold">${stopsPerDay}</div><div class="lbl">Stops/Day (Avg)</div></div>
+            <div class="kpi"><div class="val green">${fmt$(avgPerStop)}</div><div class="lbl">Rev/Stop</div></div>
+            <div class="kpi"><div class="val ${avgSafety >= 90 ? 'green' : 'warn'}">${avgSafety}</div><div class="lbl">Fleet Safety</div></div>
+        `;
+
+        const detailContainer = document.getElementById('opsDetails');
+        detailContainer.innerHTML = `
+            <div style="background:rgba(255,255,255,0.03); border-radius:8px; padding:16px; margin-top:12px;">
+                <div style="font-size:0.85rem; font-weight:600; margin-bottom:8px;">Peak Season Capacity Estimate</div>
+                <div style="display:flex; gap:16px; flex-wrap:wrap;">
+                    <div style="font-size:0.8rem; color:#94a3b8;">
+                        Est. peak demand: <strong style="color:#fbbf24;">${peakStopsPerDay} stops/day</strong>
+                    </div>
+                    <div style="font-size:0.8rem; color:#94a3b8;">
+                        Team capacity: <strong style="color:#38bdf8;">${peakCapacity} stops/day</strong>
+                        (${techCount} techs × 12)
+                    </div>
+                    <div style="font-size:0.8rem; color:#94a3b8;">
+                        Utilization: <strong style="color:${capacityRatio > 0.9 ? '#ef4444' : capacityRatio > 0.7 ? '#f59e0b' : '#34d399'};">${(capacityRatio * 100).toFixed(0)}%</strong>
+                    </div>
+                </div>
+                ${capacityRatio > 0.85 ? '<div style="font-size:0.78rem; color:#f59e0b; margin-top:8px;">⚠️ Peak season may exceed current capacity — consider adding 1-2 techs before April</div>' : ''}
+            </div>
+            <div style="margin-top:12px; font-size:0.8rem; color:#6b7280;">
+                Top Tech: <strong style="color:#e2e8f0;">${topTech.name || '—'}</strong>
+                — ${topTech.visits || 0} visits, ${fmt$(topTech.revenue || 0)} revenue, ${fmt$(topTech.avgRevPerVisit || 0)}/visit
+            </div>
+        `;
+    }
+
+    function renderScenarios(data) {
+        const container = document.getElementById('scenarios');
+        const smYtd = data.smKpi?.summary?.ytd;
+        const kpiSummary = data.salesKpi?.summary;
+        const ytdRevenue = kpiSummary?.total_revenue || smYtd?.production || 0;
+        const daysElapsed = kpiSummary?.days_tracked || smYtd?.daysElapsed || dayOfYear();
+        const revPerDay = daysElapsed > 0 ? ytdRevenue / daysElapsed : 0;
+        const daysLeft = daysInYear() - dayOfYear();
+
+        // Scenario calculations
+        // Off-season (Jan-Mar) is naturally lower — project seasonal ramp
+        const offSeasonWeight = (SEASONAL_WEIGHTS[1] + SEASONAL_WEIGHTS[2] + SEASONAL_WEIGHTS[3]);
+        const remainingWeight = 1 - offSeasonWeight;
+
+        // Conservative: assume same daily rate (no seasonal boost)
+        const conservative = ytdRevenue + (revPerDay * daysLeft);
+
+        // Realistic: apply seasonal weights
+        const realistic = ytdRevenue + (ytdRevenue / offSeasonWeight * remainingWeight);
+
+        // Optimistic: 15% above realistic (growth initiatives, new customers)
+        const optimistic = realistic * 1.15;
+
+        // Stretch: what would $5M require
+        const needed = (TARGET_REVENUE - ytdRevenue);
+        const neededPerDay = needed / daysLeft;
+
+        const scenarios = [
+            {
+                name: 'Conservative',
+                desc: 'Current daily rate continues flat (no seasonal boost)',
+                value: conservative,
+                color: '#6b7280',
+                vs: conservative - TARGET_REVENUE
+            },
+            {
+                name: 'Realistic (Seasonal)',
+                desc: 'Normal seasonal ramp applies (based on weight distribution)',
+                value: realistic,
+                color: '#fbbf24',
+                vs: realistic - TARGET_REVENUE
+            },
+            {
+                name: 'Optimistic',
+                desc: 'Seasonal ramp + 15% growth from initiatives',
+                value: optimistic,
+                color: '#34d399',
+                vs: optimistic - TARGET_REVENUE
+            },
+            {
+                name: '$5M Target',
+                desc: `Requires ${fmt$(neededPerDay)}/day for remaining ${daysLeft} days`,
+                value: TARGET_REVENUE,
+                color: '#38bdf8',
+                vs: 0
+            }
+        ];
+
+        const maxScenario = Math.max(...scenarios.map(s => s.value));
+
+        container.innerHTML = scenarios.map(s => {
+            const barWidth = (s.value / maxScenario * 100);
+            const delta = s.vs;
+            const deltaStr = delta > 0 ? '+' + fmt$(delta) : delta < 0 ? '-' + fmt$(Math.abs(delta)) : 'Target';
+            const deltaColor = delta > 0 ? '#34d399' : delta < 0 ? '#ef4444' : '#38bdf8';
+            return `
+                <div style="margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                        <div>
+                            <span style="font-weight:600; font-size:0.9rem;">${s.name}</span>
+                            <span style="font-size:0.75rem; color:#6b7280; margin-left:8px;">${s.desc}</span>
+                        </div>
+                        <span style="font-weight:700; color:${s.color};">${fmt$(s.value)}</span>
+                    </div>
+                    <div style="height:12px; background:rgba(255,255,255,0.04); border-radius:6px; overflow:hidden; position:relative;">
+                        <div style="height:100%; width:${barWidth}%; background:${s.color}; border-radius:6px; opacity:0.6;"></div>
+                    </div>
+                    <div style="text-align:right; font-size:0.7rem; color:${deltaColor}; margin-top:2px;">
+                        ${deltaStr} vs target
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderRisks(data) {
+        const container = document.getElementById('risks');
+        const netChange = data.smKpi?.summary?.ytd?.netCustomerChange || 0;
+        const techCount = data.smKpi?.summary?.techCount || 0;
+        const cancelsYtd = data.retention?.total_cancels_ytd || 0;
+        const cancelReasons = data.retention?.cancel_reasons || {};
+        const controllable = (cancelReasons['Unhappy w Service'] || 0) +
+                           (cancelReasons['Went w Competition'] || 0) +
+                           (cancelReasons['Not Interested at this time'] || 0);
+
+        const risks = [];
+
+        // Net customer loss
+        if (netChange < -10) {
+            risks.push({
+                level: 'high', icon: '📉',
+                label: 'Customer Attrition',
+                text: `Net ${netChange} customers YTD. Losing more than gaining. ${cancelsYtd} total cancels. Each cancel costs ~$600-800/year in recurring revenue. This must reverse before peak season.`
+            });
+        } else if (netChange < 0) {
+            risks.push({
+                level: 'medium', icon: '📉',
+                label: 'Customer Attrition',
+                text: `Net ${netChange} customers YTD. Slight loss, but needs monitoring as season ramps. Target: net positive by end of April.`
+            });
+        }
+
+        // Controllable cancels
+        if (controllable > 10) {
+            risks.push({
+                level: 'medium', icon: '🎯',
+                label: 'Controllable Cancels',
+                text: `${controllable} cancels from controllable reasons (service quality, competition, disinterest). These are win-back opportunities.`
+            });
+        }
+
+        // Tech staffing for peak
+        if (techCount < 12) {
+            risks.push({
+                level: techCount < 10 ? 'high' : 'medium', icon: '👷',
+                label: 'Peak Season Staffing',
+                text: `${techCount} techs currently. Peak season typically needs 12-15. Hiring and training takes 2-4 weeks. ${techCount < 10 ? 'URGENT: Start hiring now.' : 'Monitor — hire by April if needed.'}`
+            });
+        }
+
+        // Opportunity: High retention
+        const ret90 = data.retention?.retention_90d?.rate || 0;
+        if (ret90 >= 95) {
+            risks.push({
+                level: 'low', icon: '🌟',
+                label: 'Strong Retention = Opportunity',
+                text: `${ret90}% 90-day retention is excellent. This means marketing dollars are well-spent — customers stick. Lean into customer acquisition during peak season.`
+            });
+        }
+
+        // Opportunity: Large loyal base
+        const loyal = data.retention?.age_distribution?.['3+ years'] || 0;
+        if (loyal > 900) {
+            risks.push({
+                level: 'low', icon: '💎',
+                label: 'Referral Gold Mine',
+                text: `${loyal} customers with 3+ years loyalty. High referral potential. A referral campaign targeting these customers could generate 50-100 new sign-ups with minimal cost.`
+            });
+        }
+
+        // Marketing gap
+        risks.push({
+            level: 'medium', icon: '📣',
+            label: 'Pre-Season Marketing',
+            text: 'Peak season starts April. Pre-season marketing push (early bird offers, renewal reminders to paused customers) should start mid-March for maximum impact.'
+        });
+
+        container.innerHTML = risks.map(r => `
+            <div class="risk-item ${r.level}">
+                <span class="risk-icon">${r.icon}</span>
+                <div>
+                    <div class="risk-label">${r.label}</div>
+                    <div class="risk-text">${r.text}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    async function init() {
+        try {
+            const data = await loadData();
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            const ts = data.smKpi?.meta?.generated || data.salesKpi?.updated_at || new Date().toISOString();
+            document.getElementById('lastUpdate').textContent =
+                'Data: ' + new Date(ts).toLocaleString('en-US', {
+                    weekday: 'short', month: 'short', day: 'numeric',
+                    hour: 'numeric', minute: '2-digit'
+                });
+
+            renderHero(data);
+            renderSeasonalChart(data);
+            renderReadiness(data);
+            renderCustomerHealth(data);
+            renderOpsCapacity(data);
+            renderScenarios(data);
+            renderRisks(data);
+
+        } catch (err) {
+            document.getElementById('loading').innerHTML =
+                '<span style="color:#ef4444;">❌ Failed to load data: ' + err.message + '</span>';
+        }
+    }
+
+    init();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

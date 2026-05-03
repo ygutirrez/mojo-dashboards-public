@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Revenue Pace — $5M Target</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header .sub {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+        .hero {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .hero-card {
+            background: #111827;
+            border-radius: 16px;
+            padding: 28px 36px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
+            min-width: 220px;
+            flex: 1;
+            max-width: 320px;
+        }
+        .hero-card .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .hero-card .big {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .hero-card .detail {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+        .green { color: #22c55e; }
+        .red { color: #ef4444; }
+        .amber { color: #f59e0b; }
+        .blue { color: #38bdf8; }
+        .purple { color: #a78bfa; }
+        .gold { color: #fbbf24; }
+
+        /* Pace bar */
+        .pace-section {
+            max-width: 900px;
+            margin: 0 auto 32px;
+        }
+        .pace-bar-container {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .pace-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .pace-bar-header h2 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .pace-bar-outer {
+            height: 32px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        .pace-bar-fill {
+            height: 100%;
+            border-radius: 16px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        .pace-bar-fill.on-pace { background: linear-gradient(90deg, #22c55e, #34d399); }
+        .pace-bar-fill.behind { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .pace-bar-fill.way-behind { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .pace-marker {
+            position: absolute;
+            top: -8px;
+            bottom: -8px;
+            width: 3px;
+            background: #94a3b8;
+            border-radius: 2px;
+            z-index: 2;
+        }
+        .pace-marker-label {
+            position: absolute;
+            top: -24px;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+        .pace-legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            max-width: 900px;
+            margin: 0 auto 32px;
+        }
+        .card {
+            background: #111827;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .card h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 14px;
+        }
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.9rem;
+        }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-row .label { color: #94a3b8; }
+        .metric-row .value { font-weight: 600; }
+
+        /* Monthly bars */
+        .monthly-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 160px;
+            margin-top: 12px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+        .monthly-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            position: relative;
+        }
+        .monthly-bar .bar-actual {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+            min-height: 2px;
+        }
+        .monthly-bar .bar-target {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(251, 191, 36, 0.5);
+            border-radius: 1px;
+        }
+        .monthly-bar .bar-label {
+            position: absolute;
+            bottom: -22px;
+            font-size: 0.6rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+        .monthly-bar .bar-value {
+            position: absolute;
+            top: -18px;
+            font-size: 0.55rem;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+        .bar-actual.past { background: linear-gradient(180deg, #38bdf8, #1e40af); }
+        .bar-actual.current { background: linear-gradient(180deg, #22c55e, #15803d); }
+        .bar-actual.future { background: linear-gradient(180deg, rgba(148,163,184,0.3), rgba(148,163,184,0.1)); border: 1px dashed rgba(148,163,184,0.3); }
+
+        /* Weekly trend */
+        .weekly-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 100px;
+            margin-top: 12px;
+        }
+        .weekly-bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            position: relative;
+        }
+        .weekly-bar {
+            width: 100%;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(180deg, #34d399, #065f46);
+            transition: height 0.5s ease;
+            min-height: 2px;
+        }
+        .weekly-bar-group .wk-label {
+            position: absolute;
+            bottom: -18px;
+            font-size: 0.55rem;
+            color: #64748b;
+        }
+        .weekly-bar-group .wk-value {
+            position: absolute;
+            top: -16px;
+            font-size: 0.55rem;
+            color: #94a3b8;
+        }
+
+        /* Seasonal factor chart */
+        .season-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 80px;
+            margin-top: 12px;
+        }
+        .season-bar {
+            flex: 1;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(180deg, #a78bfa, #4c1d95);
+            position: relative;
+        }
+        .season-bar.active { background: linear-gradient(180deg, #fbbf24, #92400e); }
+        .season-bar .s-label {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.55rem;
+            color: #64748b;
+        }
+
+        .footer {
+            text-align: center;
+            color: #475569;
+            font-size: 0.7rem;
+            margin-top: 32px;
+        }
+        .footer a { color: #64748b; text-decoration: none; }
+        .footer a:hover { color: #94a3b8; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.3rem; }
+            .hero { gap: 12px; }
+            .hero-card { min-width: 140px; padding: 16px 12px; }
+            .hero-card .big { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; gap: 14px; }
+            .card { padding: 16px; }
+            .pace-bar-container { padding: 16px; }
+            .pace-bar-outer { height: 24px; }
+            .monthly-chart { height: 120px; gap: 4px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .header h1 { font-size: 1.1rem; }
+            .hero-card .big { font-size: 1.5rem; }
+            .hero-card { min-width: 120px; padding: 12px 10px; }
+            .metric-row { font-size: 0.82rem; padding: 6px 0; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="header">
+        <h1>🎯 Revenue Pace Dashboard</h1>
+        <div class="sub" id="subtitle">Loading...</div>
+    </div>
+
+    <div class="hero" id="heroCards">
+        <div class="hero-card">
+            <div class="label">YTD Revenue</div>
+            <div class="big blue" id="ytdRevenue">—</div>
+            <div class="detail" id="ytdDetail"></div>
+        </div>
+        <div class="hero-card">
+            <div class="label">$5M Target Pace</div>
+            <div class="big" id="pacePercent">—</div>
+            <div class="detail" id="paceDetail"></div>
+        </div>
+        <div class="hero-card">
+            <div class="label">Daily Run Rate</div>
+            <div class="big gold" id="dailyRate">—</div>
+            <div class="detail" id="rateDetail"></div>
+        </div>
+        <div class="hero-card">
+            <div class="label">Projected Annual</div>
+            <div class="big" id="projectedAnnual">—</div>
+            <div class="detail" id="projDetail"></div>
+        </div>
+    </div>
+
+    <div class="pace-section">
+        <div class="pace-bar-container">
+            <div class="pace-bar-header">
+                <h2>Progress to $5,000,000</h2>
+                <span class="detail" id="paceGap"></span>
+            </div>
+            <div class="pace-bar-outer" id="paceBarOuter">
+                <div class="pace-bar-fill behind" id="paceBarFill" style="width: 0%"></div>
+            </div>
+            <div class="pace-legend">
+                <span>$0</span>
+                <span>$1.25M</span>
+                <span>$2.5M</span>
+                <span>$3.75M</span>
+                <span>$5M</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>📅 Monthly Revenue (Actual + Projected)</h3>
+            <div class="monthly-chart" id="monthlyChart"></div>
+        </div>
+        <div class="card">
+            <h3>📈 Weekly Revenue Trend</h3>
+            <div class="weekly-chart" id="weeklyChart"></div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>🔢 Key Numbers</h3>
+            <div id="keyNumbers"></div>
+        </div>
+        <div class="card">
+            <h3>🌡️ Seasonal Profile (2025 Baseline)</h3>
+            <div class="season-bars" id="seasonChart"></div>
+            <div class="detail" style="margin-top: 24px; font-size: 0.75rem; color: #64748b;">
+                MoJo is seasonal — Apr-Oct is peak. Revenue projections adjust for this seasonality.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html">← Back to Hub</a> &nbsp;|&nbsp; MoJo Revenue Pace Dashboard &nbsp;|&nbsp; Data updates daily at 5 AM
+    </div>
+
+    <script>
+        // 2025 monthly revenue distribution (actual percentages from P&L)
+        // Used to project seasonal revenue curve
+        const SEASONAL_WEIGHTS = {
+            1: 0.048, 2: 0.040, 3: 0.055, 4: 0.095,
+            5: 0.135, 6: 0.140, 7: 0.135, 8: 0.120,
+            9: 0.095, 10: 0.070, 11: 0.040, 12: 0.027
+        };
+        const MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const TARGET = 5000000;
+
+        function fmtMoney(v, dec) {
+            if (v == null || isNaN(v)) return '—';
+            const sign = v < 0 ? '-' : '';
+            v = Math.abs(v);
+            if (v >= 1000000) return sign + '$' + (v / 1000000).toFixed(dec ?? 2) + 'M';
+            if (v >= 1000) return sign + '$' + (v / 1000).toFixed(dec ?? 0) + 'K';
+            return sign + '$' + v.toFixed(0);
+        }
+
+        function fmtNum(v) {
+            if (v == null || isNaN(v)) return '—';
+            return v.toLocaleString();
+        }
+
+        async function load() {
+            try {
+                const [kpiRes, finRes] = await Promise.all([
+                    fetch('sales-kpi-data.json?t=' + Date.now()),
+                    fetch('financial-data.json?t=' + Date.now()).catch(() => null)
+                ]);
+                const kpi = await kpiRes.json();
+                const fin = finRes ? await finRes.json().catch(() => null) : null;
+
+                const pace = kpi.revenue_pace || {};
+                const summary = kpi.summary || {};
+                const weeklyTrend = kpi.weekly_trend || [];
+
+                const ytdRev = pace.ytd_revenue || summary.total_revenue || 0;
+                const daysElapsed = pace.days_elapsed || summary.days_tracked || 1;
+                const projectedAnnual = pace.projected_annual || 0;
+                const pctTarget = pace.pct_of_target || Math.round(projectedAnnual / TARGET * 100);
+                const dailyRate = summary.revenue_per_day || Math.round(ytdRev / daysElapsed);
+                const requiredDailyRate = Math.round((TARGET - ytdRev) / (365 - daysElapsed));
+                const gap = TARGET - ytdRev;
+                const ytdPct = (ytdRev / TARGET * 100);
+
+                // Subtitle
+                document.getElementById('subtitle').textContent =
+                    `Updated ${new Date(kpi.updated_at).toLocaleString()} — Day ${daysElapsed} of 365`;
+
+                // Hero cards
+                document.getElementById('ytdRevenue').textContent = fmtMoney(ytdRev);
+                document.getElementById('ytdDetail').textContent =
+                    `${ytdPct.toFixed(1)}% of $5M collected`;
+
+                const paceEl = document.getElementById('pacePercent');
+                paceEl.textContent = pctTarget + '%';
+                paceEl.className = 'big ' + (pctTarget >= 90 ? 'green' : pctTarget >= 60 ? 'amber' : 'red');
+                document.getElementById('paceDetail').textContent =
+                    pace.on_pace ? '✅ On track' : '⚠️ Behind pace — need acceleration';
+
+                document.getElementById('dailyRate').textContent = '$' + fmtNum(dailyRate) + '/day';
+                document.getElementById('rateDetail').textContent =
+                    'Need $' + fmtNum(requiredDailyRate) + '/day remaining';
+
+                const projEl = document.getElementById('projectedAnnual');
+                projEl.textContent = fmtMoney(projectedAnnual);
+                projEl.className = 'big ' + (projectedAnnual >= TARGET ? 'green' : projectedAnnual >= TARGET * 0.8 ? 'amber' : 'red');
+                document.getElementById('projDetail').textContent =
+                    projectedAnnual >= TARGET
+                        ? 'Surplus: ' + fmtMoney(projectedAnnual - TARGET)
+                        : 'Shortfall: ' + fmtMoney(TARGET - projectedAnnual);
+
+                // Pace bar
+                document.getElementById('paceBarFill').style.width = Math.min(100, ytdPct) + '%';
+                const barClass = pctTarget >= 90 ? 'on-pace' : pctTarget >= 60 ? 'behind' : 'way-behind';
+                document.getElementById('paceBarFill').className = 'pace-bar-fill ' + barClass;
+                document.getElementById('paceGap').textContent = fmtMoney(gap) + ' remaining';
+
+                // Add expected-pace marker
+                const expectedPct = (daysElapsed / 365 * 100);
+                const marker = document.createElement('div');
+                marker.className = 'pace-marker';
+                marker.style.left = expectedPct + '%';
+                marker.innerHTML = `<div class="pace-marker-label">Expected (${expectedPct.toFixed(0)}%)</div>`;
+                document.getElementById('paceBarOuter').appendChild(marker);
+
+                // Monthly revenue chart
+                buildMonthlyChart(ytdRev, daysElapsed, weeklyTrend, fin);
+
+                // Weekly trend chart
+                buildWeeklyChart(weeklyTrend);
+
+                // Key numbers
+                buildKeyNumbers(kpi, dailyRate, requiredDailyRate, fin);
+
+                // Seasonal chart
+                buildSeasonChart(daysElapsed);
+
+            } catch (err) {
+                console.error('Load error:', err);
+                document.getElementById('subtitle').textContent = 'Failed to load data: ' + err.message;
+            }
+        }
+
+        function buildMonthlyChart(ytdRev, daysElapsed, weeklyTrend, fin) {
+            const container = document.getElementById('monthlyChart');
+            container.innerHTML = '';
+
+            // Estimate monthly actuals from weekly trend data
+            const monthlyActuals = new Array(12).fill(0);
+
+            // Use weekly trend data to estimate monthly revenue
+            if (weeklyTrend.length > 0) {
+                // Distribute weekly revenue into months based on week dates
+                let runningTotal = 0;
+                weeklyTrend.forEach((w, i) => {
+                    const weekRev = w.revenue - (i > 0 ? weeklyTrend[i-1].cumulative_revenue || 0 : 0);
+                    // Use the revenue field directly (it's the delta for that week)
+                    const rev = w.revenue || 0;
+                    // Estimate month from week label (e.g., "Mar 2" → month 2)
+                    const monthMatch = (w.week || '').match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i);
+                    if (monthMatch) {
+                        const mIdx = MONTH_LABELS.indexOf(monthMatch[1].charAt(0).toUpperCase() + monthMatch[1].slice(1).toLowerCase());
+                        if (mIdx >= 0) monthlyActuals[mIdx] += rev;
+                    }
+                });
+            }
+
+            // If we have cumulative revenue but monthly estimates don't add up,
+            // redistribute proportionally using seasonal weights for elapsed months
+            const now = new Date();
+            const currentMonth = now.getMonth(); // 0-indexed
+            const monthlyEstimated = monthlyActuals.reduce((s, v) => s + v, 0);
+
+            if (monthlyEstimated < ytdRev * 0.5) {
+                // Fall back: distribute YTD revenue across elapsed months using seasonal weights
+                let totalWeight = 0;
+                for (let m = 0; m <= currentMonth; m++) totalWeight += SEASONAL_WEIGHTS[m + 1];
+                for (let m = 0; m <= currentMonth; m++) {
+                    monthlyActuals[m] = ytdRev * (SEASONAL_WEIGHTS[m + 1] / totalWeight);
+                }
+            }
+
+            // Project future months using seasonal weights scaled to hit $5M target
+            const monthlyProjected = new Array(12).fill(0);
+            const remaining = TARGET - ytdRev;
+            let futureWeight = 0;
+            for (let m = currentMonth + 1; m < 12; m++) futureWeight += SEASONAL_WEIGHTS[m + 1];
+            for (let m = currentMonth + 1; m < 12; m++) {
+                monthlyProjected[m] = futureWeight > 0 ? remaining * (SEASONAL_WEIGHTS[m + 1] / futureWeight) : 0;
+            }
+
+            // Current month partial: blend actual + projected
+            const dayInMonth = now.getDate();
+            const daysInCurrentMonth = new Date(now.getFullYear(), currentMonth + 1, 0).getDate();
+            const currentMonthProjected = monthlyActuals[currentMonth] * (daysInCurrentMonth / dayInMonth);
+            monthlyProjected[currentMonth] = Math.max(0, currentMonthProjected - monthlyActuals[currentMonth]);
+
+            // Find max for scaling
+            const allValues = monthlyActuals.map((a, i) => a + monthlyProjected[i]);
+            const maxVal = Math.max(...allValues, 1);
+
+            for (let m = 0; m < 12; m++) {
+                const actual = monthlyActuals[m];
+                const projected = monthlyProjected[m];
+                const total = actual + projected;
+                const heightPct = (total / maxVal * 100);
+
+                const bar = document.createElement('div');
+                bar.className = 'monthly-bar';
+
+                let barClass, barHeight;
+                if (m < currentMonth) {
+                    barClass = 'past';
+                    barHeight = (actual / maxVal * 100);
+                } else if (m === currentMonth) {
+                    barClass = 'current';
+                    barHeight = (total / maxVal * 100);
+                } else {
+                    barClass = 'future';
+                    barHeight = (projected / maxVal * 100);
+                }
+
+                bar.innerHTML = `
+                    <div class="bar-value">${fmtMoney(total, 0)}</div>
+                    <div class="bar-actual ${barClass}" style="height: ${Math.max(2, barHeight)}%"></div>
+                    <span class="bar-label">${MONTH_LABELS[m]}</span>
+                `;
+                container.appendChild(bar);
+            }
+        }
+
+        function buildWeeklyChart(weeklyTrend) {
+            const container = document.getElementById('weeklyChart');
+            container.innerHTML = '';
+
+            if (!weeklyTrend || weeklyTrend.length === 0) {
+                container.textContent = 'No weekly data yet';
+                return;
+            }
+
+            const maxRev = Math.max(...weeklyTrend.map(w => w.revenue || 0), 1);
+            weeklyTrend.forEach(w => {
+                const rev = w.revenue || 0;
+                const heightPct = (rev / maxRev * 100);
+                const group = document.createElement('div');
+                group.className = 'weekly-bar-group';
+                group.innerHTML = `
+                    <div class="wk-value">${fmtMoney(rev, 0)}</div>
+                    <div class="weekly-bar" style="height: ${Math.max(2, heightPct)}%"></div>
+                    <span class="wk-label">${w.week || ''}</span>
+                `;
+                container.appendChild(group);
+            });
+        }
+
+        function buildKeyNumbers(kpi, dailyRate, requiredRate, fin) {
+            const container = document.getElementById('keyNumbers');
+            const pace = kpi.revenue_pace || {};
+            const summary = kpi.summary || {};
+
+            const rows = [
+                ['YTD Sales', summary.total_sales || 0, ''],
+                ['Total Invoices', fmtNum(summary.total_invoices || 0), ''],
+                ['Avg Invoice', fmtMoney(summary.total_revenue / (summary.total_invoices || 1)), ''],
+                ['Revenue/Sale', fmtMoney(summary.total_revenue / (summary.total_sales || 1)), ''],
+                ['Current Pace', '$' + fmtNum(dailyRate) + '/day', dailyRate >= requiredRate ? 'green' : 'red'],
+                ['Required Pace', '$' + fmtNum(requiredRate) + '/day', ''],
+                ['Pace Gap', '$' + fmtNum(Math.abs(dailyRate - requiredRate)) + '/day', dailyRate >= requiredRate ? 'green' : 'red'],
+                ['Active Customers', fmtNum(kpi.active_customers || '—'), ''],
+                ['Customer Goal', fmtNum(kpi.customer_goal || '—'), ''],
+            ];
+
+            // Add margin data if financial data available
+            if (fin?.ytd2026) {
+                rows.push(['Gross Margin', ((fin.ytd2026.grossProfit / fin.ytd2026.revenue) * 100).toFixed(1) + '%', '']);
+                rows.push(['Net Margin', ((fin.ytd2026.netIncome / fin.ytd2026.revenue) * 100).toFixed(1) + '%', '']);
+            }
+
+            container.innerHTML = rows.map(([label, value, colorClass]) =>
+                `<div class="metric-row">
+                    <span class="label">${label}</span>
+                    <span class="value ${colorClass}">${value}</span>
+                </div>`
+            ).join('');
+        }
+
+        function buildSeasonChart(daysElapsed) {
+            const container = document.getElementById('seasonChart');
+            container.innerHTML = '';
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            const maxWeight = Math.max(...Object.values(SEASONAL_WEIGHTS));
+
+            for (let m = 0; m < 12; m++) {
+                const weight = SEASONAL_WEIGHTS[m + 1];
+                const heightPct = (weight / maxWeight * 100);
+                const bar = document.createElement('div');
+                bar.className = 'season-bar' + (m === currentMonth ? ' active' : '');
+                bar.style.height = heightPct + '%';
+                bar.innerHTML = `<span class="s-label">${MONTH_LABELS[m]}</span>`;
+                bar.title = MONTH_LABELS[m] + ': ' + (weight * 100).toFixed(1) + '% of annual revenue';
+                container.appendChild(bar);
+            }
+        }
+
+        load();
+        // Auto-refresh every 5 minutes
+        setInterval(load, 5 * 60 * 1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

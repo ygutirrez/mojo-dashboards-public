@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo April Peak Season Launch</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.3rem; }
+            .hero-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .main-grid { grid-template-columns: 1fr !important; }
+            .q1-months { flex-direction: column; }
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+        .nav-back:hover { color: #e2e8f0; }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .header h1 { font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+        .header h1 span { color: #ff6b35; }
+        .header .subtitle { color: #64748b; font-size: 0.85rem; margin-top: 4px; }
+        .header .meta { text-align: right; font-size: 0.8rem; color: #64748b; }
+
+        /* Season Banner */
+        .season-banner {
+            background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,215,0,0.1));
+            border: 1px solid rgba(255,107,53,0.3);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .season-banner .icon { font-size: 2.5rem; }
+        .season-banner .text { flex: 1; min-width: 200px; }
+        .season-banner .text h2 { font-size: 1.2rem; color: #ffd700; margin-bottom: 4px; }
+        .season-banner .text p { font-size: 0.85rem; color: #94a3b8; }
+        .season-banner .readiness {
+            background: rgba(0,0,0,0.4);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .season-banner .readiness .score { font-size: 2.2rem; font-weight: 800; }
+        .season-banner .readiness .label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Hero KPIs */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .hero-card .value { font-size: 1.6rem; font-weight: 700; margin-bottom: 2px; }
+        .hero-card .label { font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero-card .trend { font-size: 0.72rem; margin-top: 4px; }
+        .hero-card .trend.up { color: #22c55e; }
+        .hero-card .trend.down { color: #ef4444; }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card.full-width { grid-column: 1 / -1; }
+
+        /* Q1 Monthly Comparison */
+        .q1-months {
+            display: flex;
+            gap: 12px;
+        }
+        .month-col {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+        .month-col .name { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .month-col .stat { margin-bottom: 6px; }
+        .month-col .stat .num { font-size: 1.2rem; font-weight: 700; }
+        .month-col .stat .lbl { font-size: 0.68rem; color: #64748b; }
+        .month-col .net { font-size: 1.1rem; font-weight: 700; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 8px; }
+        .month-col .net.positive { color: #22c55e; }
+        .month-col .net.negative { color: #ef4444; }
+        .month-col.highlight { border: 1px solid rgba(34,197,94,0.3); background: rgba(34,197,94,0.06); }
+        .month-col.projection { border: 1px dashed rgba(255,215,0,0.4); background: rgba(255,215,0,0.04); }
+        .month-col.projection .name { color: #ffd700; }
+
+        /* Readiness Checklist */
+        .checklist-category {
+            margin-bottom: 16px;
+        }
+        .checklist-category .cat-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            font-size: 0.82rem;
+        }
+        .check-item:hover { background: rgba(255,255,255,0.03); }
+        .check-item .icon { font-size: 1rem; min-width: 20px; }
+        .check-item .name { flex: 1; }
+        .check-item .detail { font-size: 0.72rem; color: #64748b; }
+
+        /* Action Items */
+        .action-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .action-item:last-child { border-bottom: none; }
+        .action-item .priority-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .action-item .priority-num.p1 { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .action-item .priority-num.p2 { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .action-item .priority-num.p3 { background: rgba(59,130,246,0.2); color: #3b82f6; }
+        .action-item .priority-num.p4 { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .action-item .priority-num.p5 { background: rgba(139,92,246,0.2); color: #a78bfa; }
+        .action-item .content { flex: 1; }
+        .action-item .content .action { font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; }
+        .action-item .content .impact { font-size: 0.75rem; color: #64748b; }
+        .action-item .meta-right { text-align: right; min-width: 80px; }
+        .action-item .meta-right .owner { font-size: 0.75rem; color: #94a3b8; }
+        .action-item .meta-right .deadline { font-size: 0.7rem; color: #f59e0b; margin-top: 2px; }
+
+        /* Tech Capacity */
+        .tech-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.82rem;
+        }
+        .tech-row:last-child { border-bottom: none; }
+        .tech-row .name { font-weight: 500; }
+        .tech-row .stats { display: flex; gap: 16px; color: #94a3b8; font-size: 0.75rem; }
+        .tech-row .stats span { white-space: nowrap; }
+
+        /* Capacity Meter */
+        .capacity-meter {
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+        .capacity-bar-bg {
+            height: 28px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        .capacity-bar-fill {
+            height: 100%;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .capacity-bar-target {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            border-left: 2px dashed rgba(239,68,68,0.6);
+            display: flex;
+            align-items: center;
+        }
+        .capacity-bar-target .label {
+            font-size: 0.65rem;
+            color: #ef4444;
+            white-space: nowrap;
+            margin-left: 4px;
+        }
+        .capacity-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Retention Funnel */
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .funnel-stage .bar {
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            min-width: 40px;
+        }
+        .funnel-stage .label {
+            font-size: 0.78rem;
+            min-width: 100px;
+        }
+        .funnel-stage .value {
+            font-size: 0.82rem;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff; color: #000; padding: 10px; }
+            .nav-back { display: none; }
+            .card { border: 1px solid #ccc; }
+            .season-banner { border-color: #f90; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="nav-back">← Back to Hub</a>
+
+    <div class="header">
+        <div>
+            <h1>🦟 April <span>Peak Season Launch</span></h1>
+            <div class="subtitle">Q1 retrospective • April projections • Operational readiness</div>
+        </div>
+        <div class="meta" id="meta"></div>
+    </div>
+
+    <div id="seasonBanner"></div>
+    <div class="hero-grid" id="heroGrid"></div>
+
+    <div class="main-grid">
+        <div class="card">
+            <h3>📊 Q1 Review + April Projection</h3>
+            <div class="q1-months" id="q1Months"></div>
+        </div>
+
+        <div class="card">
+            <h3>✅ Readiness Checklist</h3>
+            <div id="readinessChecklist"></div>
+        </div>
+
+        <div class="card full-width">
+            <h3>🎯 Priority Action Items for April</h3>
+            <div id="actionItems"></div>
+        </div>
+
+        <div class="card">
+            <h3>🔧 Tech Team Capacity</h3>
+            <div id="techCapacity"></div>
+        </div>
+
+        <div class="card">
+            <h3>💰 Retention Recovery Funnel</h3>
+            <div id="retentionFunnel"></div>
+        </div>
+    </div>
+
+    <script>
+        let DATA = null;
+
+        async function loadData() {
+            try {
+                const res = await fetch('data/april-launch-data.json');
+                DATA = await res.json();
+                render();
+            } catch (e) {
+                document.body.innerHTML = '<div style="padding:40px;text-align:center;color:#ef4444;"><h2>⚠️ Could not load april-launch-data.json</h2><p>Run: <code>node scripts/build-april-launch.js</code></p></div>';
+            }
+        }
+
+        function render() {
+            renderMeta();
+            renderBanner();
+            renderHero();
+            renderQ1();
+            renderChecklist();
+            renderActions();
+            renderTechCapacity();
+            renderRetentionFunnel();
+        }
+
+        function renderMeta() {
+            const d = new Date(DATA.generated_at);
+            document.getElementById('meta').innerHTML = `Updated: ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`;
+        }
+
+        function renderBanner() {
+            const r = DATA.readiness;
+            const color = r.score >= 80 ? '#22c55e' : r.score >= 60 ? '#f59e0b' : '#ef4444';
+            document.getElementById('seasonBanner').innerHTML = `
+                <div class="season-banner">
+                    <div class="icon">🦟</div>
+                    <div class="text">
+                        <h2>Peak Season Launch Report</h2>
+                        <p>${DATA.season_context.peak_months} • ${DATA.season_context.historical_lift} revenue lift expected<br>
+                        ${DATA.season_context.weather_factor}</p>
+                    </div>
+                    <div class="readiness">
+                        <div class="score" style="color:${color}">${r.score}%</div>
+                        <div class="label">Readiness Score</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHero() {
+            const h = DATA.hero;
+            const q1 = DATA.q1_summary;
+            document.getElementById('heroGrid').innerHTML = `
+                <div class="hero-card">
+                    <div class="value" style="color:#3b82f6">${h.active_customers.toLocaleString()}</div>
+                    <div class="label">Active Customers</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value" style="color:#22c55e">$${(h.ytd_revenue/1000).toFixed(0)}K</div>
+                    <div class="label">YTD Revenue</div>
+                    <div class="trend up">${q1.total_invoices.toLocaleString()} invoices</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value" style="color:${q1.net_customers >= 0 ? '#22c55e' : '#ef4444'}">${q1.net_customers >= 0 ? '+' : ''}${q1.net_customers}</div>
+                    <div class="label">Q1 Net Customers</div>
+                    <div class="trend ${q1.net_customers >= 0 ? 'up' : 'down'}">${q1.total_sales} sales / ${q1.total_cancels} cancels</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value" style="color:#ffd700">+${DATA.april_projections.net_projection}</div>
+                    <div class="label">April Net Projection</div>
+                    <div class="trend up">${DATA.april_projections.sales_projection} sales projected</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value" style="color:#ef4444">$${(h.recovery_opportunity/1000).toFixed(0)}K</div>
+                    <div class="label">Recovery Opportunity</div>
+                    <div class="trend">${DATA.retention_opportunity.recoverable_count} customers</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value" style="color:#a78bfa">$${(DATA.april_projections.revenue_projection/1000).toFixed(0)}K</div>
+                    <div class="label">April Revenue Target</div>
+                    <div class="trend up">+35% seasonal lift</div>
+                </div>
+            `;
+        }
+
+        function renderQ1() {
+            const months = DATA.q1_summary.months;
+            const apr = DATA.april_projections;
+            
+            document.getElementById('q1Months').innerHTML = months.map((m, i) => {
+                const isHighlight = m.net > 0;
+                return `
+                    <div class="month-col ${isHighlight ? 'highlight' : ''}">
+                        <div class="name">${m.month}</div>
+                        <div class="stat"><div class="num" style="color:#22c55e">${m.sales}</div><div class="lbl">Sales</div></div>
+                        <div class="stat"><div class="num" style="color:#ef4444">${m.cancels}</div><div class="lbl">Cancels</div></div>
+                        <div class="net ${m.net >= 0 ? 'positive' : 'negative'}">${m.net >= 0 ? '+' : ''}${m.net} net</div>
+                    </div>
+                `;
+            }).join('') + `
+                <div class="month-col projection">
+                    <div class="name">🔮 April (Est.)</div>
+                    <div class="stat"><div class="num" style="color:#22c55e">${apr.sales_projection}</div><div class="lbl">Sales</div></div>
+                    <div class="stat"><div class="num" style="color:#ef4444">${apr.cancel_projection}</div><div class="lbl">Cancels</div></div>
+                    <div class="net positive">+${apr.net_projection} net</div>
+                </div>
+            `;
+        }
+
+        function renderChecklist() {
+            document.getElementById('readinessChecklist').innerHTML = DATA.readiness.items.map(cat => `
+                <div class="checklist-category">
+                    <div class="cat-name">${cat.category}</div>
+                    ${cat.checks.map(c => {
+                        const icon = c.status === 'pass' ? '✅' : c.status === 'warn' ? '⚠️' : c.status === 'fail' ? '❌' : '🔔';
+                        return `
+                            <div class="check-item">
+                                <span class="icon">${icon}</span>
+                                <span class="name">${c.name}</span>
+                                <span class="detail">${c.detail}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `).join('');
+        }
+
+        function renderActions() {
+            document.getElementById('actionItems').innerHTML = DATA.action_items.map(a => `
+                <div class="action-item">
+                    <div class="priority-num p${a.priority}">${a.priority}</div>
+                    <div class="content">
+                        <div class="action">${a.action}</div>
+                        <div class="impact">${a.impact}</div>
+                    </div>
+                    <div class="meta-right">
+                        <div class="owner">${a.owner}</div>
+                        <div class="deadline">📅 ${a.deadline}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTechCapacity() {
+            const tc = DATA.tech_capacity;
+            const pct = tc.peak_season_capacity_needed > 0 
+                ? Math.min(100, Math.round(tc.estimated_daily_capacity / tc.peak_season_capacity_needed * 100))
+                : 100;
+            const barColor = pct >= 90 ? '#22c55e' : pct >= 70 ? '#f59e0b' : '#ef4444';
+            const targetPct = Math.min(100, Math.round(tc.peak_season_capacity_needed / Math.max(tc.peak_season_capacity_needed, tc.estimated_daily_capacity) * 100));
+
+            let html = `
+                <div style="font-size:0.82rem;color:#94a3b8;margin-bottom:8px">
+                    ${tc.active_techs} active techs • ${tc.avg_visits_per_tech_per_day} visits/tech/day avg
+                </div>
+                <div class="capacity-meter">
+                    <div class="capacity-bar-bg">
+                        <div class="capacity-bar-fill" style="width:${pct}%;background:${barColor}">
+                            ${tc.estimated_daily_capacity} visits/day
+                        </div>
+                        ${tc.capacity_gap > 0 ? `
+                        <div class="capacity-bar-target" style="left:${targetPct}%">
+                            <span class="label">Need: ${tc.peak_season_capacity_needed}</span>
+                        </div>` : ''}
+                    </div>
+                    <div class="capacity-labels">
+                        <span>Current capacity</span>
+                        <span>${tc.capacity_gap > 0 ? `Gap: ${tc.capacity_gap} visits/day` : '✅ Capacity sufficient'}</span>
+                    </div>
+                </div>
+            `;
+
+            if (tc.top_performers.length > 0) {
+                html += `<div style="font-size:0.75rem;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin:12px 0 8px">Top Performers</div>`;
+                tc.top_performers.forEach(t => {
+                    html += `
+                        <div class="tech-row">
+                            <span class="name">${t.name}</span>
+                            <span class="stats">
+                                <span>${t.visits} visits</span>
+                                <span>$${t.revenue.toLocaleString()}</span>
+                                <span>$${t.avg_per_visit}/visit</span>
+                            </span>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('techCapacity').innerHTML = html;
+        }
+
+        function renderRetentionFunnel() {
+            const ret = DATA.retention_opportunity;
+            const stages = [
+                { label: 'Total Cancelled', value: ret.recoverable_count + (DATA.q1_summary.total_cancels - ret.recoverable_count), color: '#ef4444', width: 100 },
+                { label: 'Recoverable', value: ret.recoverable_count, color: '#f59e0b', width: Math.round(ret.recoverable_count / DATA.q1_summary.total_cancels * 100) },
+                { label: 'Paused/WP', value: ret.paused_wp_count, color: '#3b82f6', width: Math.round(ret.paused_wp_count / DATA.q1_summary.total_cancels * 100) },
+                { label: 'Expected Return', value: ret.expected_returns, color: '#22c55e', width: Math.round(ret.expected_returns / DATA.q1_summary.total_cancels * 100) }
+            ];
+
+            let html = stages.map(s => `
+                <div class="funnel-stage">
+                    <span class="label">${s.label}</span>
+                    <div class="bar" style="width:${Math.max(s.width, 10)}%;background:${s.color}20;color:${s.color}">${s.value}</div>
+                    <span class="value" style="color:${s.color}">$${(s.value * 1700).toLocaleString()}</span>
+                </div>
+            `).join('');
+
+            html += `
+                <div style="margin-top:16px;padding:12px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.2)">
+                    <div style="font-size:0.82rem;font-weight:600;color:#22c55e;margin-bottom:4px">
+                        🎯 Recovery Goal: ${ret.expected_returns} customers
+                    </div>
+                    <div style="font-size:0.75rem;color:#94a3b8">
+                        At 35% reactivation rate on paused accounts = $${ret.expected_value.toLocaleString()}/yr recovered revenue.
+                        <a href="outreach-tracker.html" style="color:#22c55e;margin-left:4px">→ View Call List</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('retentionFunnel').innerHTML = html;
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoJo Financial Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .header h1 { font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+        .subheader { color: #94a3b8; font-size: 0.9rem; }
+        .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .card { background: #1e293b; border-radius: 14px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 12px; }
+        .metric { font-size: 1.8rem; font-weight: 700; }
+        .metric.small { font-size: 1.2rem; }
+        .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .row .label { color: #94a3b8; font-size: 0.8rem; }
+        .bar { height: 10px; background: rgba(255,255,255,0.08); border-radius: 6px; overflow: hidden; }
+        .bar > div { height: 100%; border-radius: 6px; }
+        .accent-green { color: #22c55e; }
+        .accent-red { color: #ef4444; }
+        .accent-yellow { color: #f59e0b; }
+        .accent-blue { color: #38bdf8; }
+        .accent-purple { color: #a78bfa; }
+        .section-title { margin-top: 12px; margin-bottom: 6px; font-size: 0.8rem; text-transform: uppercase; color: #64748b; letter-spacing: 1px; }
+        .list { margin-top: 8px; }
+        .list-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+        .list-item:last-child { border-bottom: none; }
+        .footer { text-align: center; margin-top: 28px; color: #64748b; font-size: 0.75rem; }
+        .badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 999px; background: rgba(59,130,246,0.2); color: #60a5fa; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+        .info-banner { background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
+        .info-banner .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+        .info-banner strong { color: #e2e8f0; }
+        .revenue-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+        .revenue-compare .card { text-align: center; position: relative; }
+        .revenue-compare .card .metric { font-size: 1.6rem; }
+        .revenue-compare .card .compare-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .revenue-compare .card.gap-card { border: 1px solid rgba(245,158,11,0.3); background: linear-gradient(135deg, #1e293b 0%, rgba(245,158,11,0.06) 100%); }
+        .live-dot { display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; margin-right: 6px; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @media (max-width: 768px) {
+            body { padding: 14px; }
+            .header { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .header h1 { font-size: 1.3rem; }
+            .grid { gap: 14px; grid-template-columns: 1fr; }
+            .card { padding: 16px; }
+            .metric { font-size: 1.5rem; }
+            .metric.small { font-size: 1rem; }
+            .row { margin-bottom: 8px; }
+            .row .label { font-size: 0.78rem; }
+            .list-item { font-size: 0.82rem; padding: 5px 0; }
+            .footer { margin-top: 20px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .header h1 { font-size: 1.15rem; }
+            .card { padding: 14px; border-radius: 10px; }
+            .metric { font-size: 1.3rem; }
+            .bar { height: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="header">
+        <h1>💰 Financial Performance <span class="badge">P&L</span></h1>
+        <div class="subheader" id="lastUpdated">Loading…</div>
+    </div>
+
+    <div class="info-banner">
+        <span class="icon">ℹ️</span>
+        <div><strong>QuickBooks data reflects closed months only.</strong> Bookkeeper processing lag: ~60 days. For real-time revenue, see ServSuite data below.</div>
+    </div>
+
+    <div class="revenue-compare" id="revenueCompare">
+        <div class="card">
+            <h2><span class="live-dot"></span>ServSuite Live Revenue (YTD)</h2>
+            <div class="metric accent-green" id="ssRevenue">—</div>
+            <div class="compare-label" id="ssInvoices">—</div>
+        </div>
+        <div class="card">
+            <h2>QB Closed Revenue (YTD)</h2>
+            <div class="metric accent-blue" id="qbRevenue">—</div>
+            <div class="compare-label" id="qbDateRange">—</div>
+        </div>
+        <div class="card gap-card">
+            <h2>Unbooked Gap</h2>
+            <div class="metric accent-yellow" id="revenueGap">—</div>
+            <div class="compare-label">Revenue recognized in ServSuite but not yet closed in QB</div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card" id="fy2025Card">
+            <h2>FY 2025 Summary</h2>
+            <div class="metric" id="fy2025Revenue">—</div>
+            <div class="row"><span class="label">Net Income</span><span id="fy2025Net">—</span></div>
+            <div class="row"><span class="label">Net Margin</span><span id="fy2025Margin">—</span></div>
+            <div class="row"><span class="label">COGS %</span><span id="fy2025Cogs">—</span></div>
+            <div class="row"><span class="label">Expenses %</span><span id="fy2025Expenses">—</span></div>
+        </div>
+
+        <div class="card" id="ytd2026Card">
+            <h2>YTD 2026 Summary</h2>
+            <div class="metric" id="ytd2026Revenue">—</div>
+            <div class="row"><span class="label">Net Income</span><span id="ytd2026Net">—</span></div>
+            <div class="row"><span class="label">Net Margin</span><span id="ytd2026Margin">—</span></div>
+            <div class="row"><span class="label">COGS %</span><span id="ytd2026Cogs">—</span></div>
+            <div class="row"><span class="label">Expenses %</span><span id="ytd2026Expenses">—</span></div>
+        </div>
+
+        <div class="card" id="projectionCard">
+            <h2>2026 Projection vs $5M Target</h2>
+            <div class="metric" id="projectedRevenue">—</div>
+            <div class="row"><span class="label">Pace</span><span id="pacePercent">—</span></div>
+            <div class="bar"><div id="paceBar" style="width:0%; background:#38bdf8;"></div></div>
+            <div class="row" style="margin-top:10px;"><span class="label">Gap to $5M</span><span id="gapToTarget">—</span></div>
+            <div class="row"><span class="label">Daily Run Rate</span><span id="dailyRunRate">—</span></div>
+        </div>
+
+        <div class="card" id="revenueBreakdownCard">
+            <h2>Revenue Breakdown</h2>
+            <div id="revenueBreakdown">Loading…</div>
+        </div>
+
+        <div class="card" id="topExpensesCard">
+            <h2>Top Expenses (FY2025)</h2>
+            <div id="topExpenses">Loading…</div>
+        </div>
+
+        <div class="card" id="topExpenses2026Card">
+            <h2>Top Expenses (YTD2026)</h2>
+            <div id="topExpenses2026">Loading…</div>
+        </div>
+    </div>
+
+    <div class="footer">MoJo Financial Dashboard — QuickBooks P&L Snapshot</div>
+
+    <script>
+        function fmtMoney(val) {
+            if (val === null || val === undefined) return '—';
+            const sign = val < 0 ? '-' : '';
+            val = Math.abs(val);
+            if (val >= 1000000) return sign + '$' + (val / 1000000).toFixed(2) + 'M';
+            if (val >= 1000) return sign + '$' + (val / 1000).toFixed(0) + 'K';
+            return sign + '$' + val.toFixed(0);
+        }
+
+        function fmtPct(val) {
+            if (val === null || val === undefined || isNaN(val)) return '—';
+            return val.toFixed(1) + '%';
+        }
+
+        function buildList(container, items) {
+            if (!items || items.length === 0) {
+                container.textContent = 'No data';
+                return;
+            }
+            container.innerHTML = '';
+            items.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'list-item';
+                el.innerHTML = `<span>${item.name}</span><span>${fmtMoney(item.amount)}</span>`;
+                container.appendChild(el);
+            });
+        }
+
+        async function load() {
+            try {
+                const [res, salesRes] = await Promise.all([
+                    fetch('financial-data.json?t=' + Date.now()),
+                    fetch('sales-kpi-data.json?t=' + Date.now())
+                ]);
+                const data = await res.json();
+                let salesData = null;
+                try { salesData = await salesRes.json(); } catch(e) { console.warn('Sales KPI data unavailable', e); }
+
+                document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date(data.updated_at).toLocaleString();
+
+                // Revenue comparison: ServSuite vs QB
+                if (salesData && salesData.summary) {
+                    const ssRev = salesData.summary.total_revenue || 0;
+                    const qbRev = (data.ytd2026 && data.ytd2026.revenue) || 0;
+                    const gap = ssRev - qbRev;
+                    document.getElementById('ssRevenue').textContent = fmtMoney(ssRev);
+                    document.getElementById('ssInvoices').textContent = (salesData.summary.total_invoices || 0).toLocaleString() + ' invoices • ' + (salesData.summary.total_sales || 0) + ' new sales';
+                    document.getElementById('qbRevenue').textContent = fmtMoney(qbRev);
+                    document.getElementById('qbDateRange').textContent = (data.ytd2026 && data.ytd2026.dateRange) ? 'Through ' + data.ytd2026.dateRange.replace(/,\s*$/, '') : '';
+                    document.getElementById('revenueGap').textContent = fmtMoney(gap);
+                }
+
+                const fy = data.fy2025;
+                const ytd = data.ytd2026;
+                const p = data.projections;
+
+                if (fy) {
+                    document.getElementById('fy2025Revenue').textContent = fmtMoney(fy.revenue);
+                    document.getElementById('fy2025Net').textContent = fmtMoney(fy.netIncome);
+                    document.getElementById('fy2025Margin').textContent = fmtPct(p?.margins?.netMargin2025 || (fy.netIncome / fy.revenue * 100));
+                    document.getElementById('fy2025Cogs').textContent = fmtPct(p?.costStructure?.cogsPercent2025 || (fy.cogs / fy.revenue * 100));
+                    document.getElementById('fy2025Expenses').textContent = fmtPct(p?.costStructure?.expensePercent2025 || (fy.expenses / fy.revenue * 100));
+                }
+
+                if (ytd) {
+                    document.getElementById('ytd2026Revenue').textContent = fmtMoney(ytd.revenue);
+                    document.getElementById('ytd2026Net').textContent = fmtMoney(ytd.netIncome);
+                    document.getElementById('ytd2026Margin').textContent = fmtPct(p?.margins?.netMargin2026 || (ytd.netIncome / ytd.revenue * 100));
+                    document.getElementById('ytd2026Cogs').textContent = fmtPct(p?.costStructure?.cogsPercent2026 || (ytd.cogs / ytd.revenue * 100));
+                    document.getElementById('ytd2026Expenses').textContent = fmtPct(p?.costStructure?.expensePercent2026 || (ytd.expenses / ytd.revenue * 100));
+                }
+
+                if (p) {
+                    document.getElementById('projectedRevenue').textContent = fmtMoney(p.projectedAnnual2026) + ' (proj)';
+                    document.getElementById('pacePercent').textContent = p.target.pacePercent + '% of $5M';
+                    document.getElementById('gapToTarget').textContent = fmtMoney(p.target.gap);
+                    document.getElementById('dailyRunRate').textContent = '$' + p.dailyRunRate2026.toLocaleString() + '/day';
+                    document.getElementById('paceBar').style.width = Math.min(100, p.target.pacePercent) + '%';
+                    document.getElementById('paceBar').style.background = p.target.onPace ? '#22c55e' : '#f59e0b';
+                }
+
+                buildList(document.getElementById('revenueBreakdown'), ytd?.revenueBreakdown || fy?.revenueBreakdown);
+                buildList(document.getElementById('topExpenses'), fy?.topExpenses);
+                buildList(document.getElementById('topExpenses2026'), ytd?.topExpenses);
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('lastUpdated').textContent = 'Failed to load data';
+            }
+        }
+
+        load();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

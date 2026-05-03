@@ -1,0 +1,194 @@
+{
+  "timestamp": "2026-05-03T09:30:00Z",
+  "generated_at": "2026-05-03T18:32:45Z",
+  "status": "error",
+  "steps_total": 36,
+  "steps_passed": 26,
+  "steps_warned": 4,
+  "steps_failed": 6,
+  "steps_downgraded": 0,
+  "duration_seconds": null,
+  "log_file": "nightly-sync-2026-05-03.log",
+  "steps": [
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "ServSuite Export",
+      "status": "error",
+      "detail": "name: 'Error'"
+    },
+    {
+      "name": "Data Processing",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Clone Repository",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Update Data Files",
+      "status": "error",
+      "detail": "Error: Command failed: gog sheets get 1Ap7FsLnizKDfq8YyhTn-k8QSb9V87FkX3eT97wEEXZo \"Sheet1!A1:D1000\" --json --account mojoeagent@gmail.com"
+    },
+    {
+      "name": "Sync Back to Project",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Deploy to GH Pages",
+      "status": "error",
+      "detail": "error: unknown option `cached'"
+    },
+    {
+      "name": "Health Check",
+      "status": "warn",
+      "detail": "HEALTH CHECK: 3 warnings, 40/43 passed"
+    },
+    {
+      "name": "Self-Healing Refresh",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Pipeline Status",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "ServSuite Export",
+      "status": "error",
+      "detail": "name: 'Error'"
+    },
+    {
+      "name": "Data Processing",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Clone Repository",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Update Data Files",
+      "status": "error",
+      "detail": "Error: Command failed: gog sheets get 1Ap7FsLnizKDfq8YyhTn-k8QSb9V87FkX3eT97wEEXZo \"Sheet1!A1:D1000\" --json --account mojoeagent@gmail.com"
+    },
+    {
+      "name": "Sync Back to Project",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Deploy to GH Pages",
+      "status": "warn",
+      "detail": "[gh-pages bac656a] \ud83d\udcca Dashboard update 2026-05-03 14:21 (1 steps had warnings)"
+    },
+    {
+      "name": "Health Check",
+      "status": "warn",
+      "detail": "HEALTH CHECK: 11 warnings, 32/43 passed"
+    },
+    {
+      "name": "Self-Healing Refresh",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Pipeline Status",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Sales Import",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "ServSuite Export",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Data Processing",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Clone Repository",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Update Data Files",
+      "status": "error",
+      "detail": "Error: Command failed: gog sheets get 1Ap7FsLnizKDfq8YyhTn-k8QSb9V87FkX3eT97wEEXZo \"Sheet1!A1:D1000\" --json --account mojoeagent@gmail.com"
+    },
+    {
+      "name": "Sync Back to Project",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Deploy to GH Pages",
+      "status": "warn",
+      "detail": "[gh-pages 4e81f12] \ud83d\udcca Dashboard update 2026-05-03 14:32 (1 steps had warnings)"
+    },
+    {
+      "name": "Health Check",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Self-Healing Refresh",
+      "status": "ok",
+      "detail": ""
+    },
+    {
+      "name": "Pipeline Status",
+      "status": "ok",
+      "detail": ""
+    }
+  ]
+}

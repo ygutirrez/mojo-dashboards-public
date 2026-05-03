@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="120">
+    <title>Pipeline Dashboard — MoJo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f1a;
+            color: #e5e7eb;
+            min-height: 100vh;
+            padding: 32px 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+        h1 span { background: linear-gradient(90deg, #ffd700, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #6b7280; font-size: 0.9rem; margin-bottom: 32px; }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .summary-label {
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .green { color: #34d399; }
+        .red { color: #ef4444; }
+        .yellow { color: #fbbf24; }
+        .blue { color: #60a5fa; }
+
+        /* Step Timeline */
+        .timeline { margin-bottom: 32px; }
+        .step-row {
+            display: grid;
+            grid-template-columns: 32px 200px 1fr 80px 60px;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            transition: background 0.15s;
+        }
+        .step-row:hover { background: rgba(255,255,255,0.03); }
+        .step-icon { font-size: 1.2rem; text-align: center; }
+        .step-name { font-weight: 500; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .step-bar-container {
+            height: 24px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .step-bar {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            min-width: 2px;
+        }
+        .step-bar.success { background: linear-gradient(90deg, #065f46, #34d399); }
+        .step-bar.failed { background: linear-gradient(90deg, #7f1d1d, #ef4444); }
+        .step-bar.timeout { background: linear-gradient(90deg, #78350f, #fbbf24); }
+        .step-duration {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+        .step-exit {
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .exit-0 { background: rgba(52,211,153,0.15); color: #34d399; }
+        .exit-fail { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .exit-timeout { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+        /* History Chart */
+        .history-section { margin-top: 40px; }
+        .history-section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; color: #d1d5db; }
+        .history-grid {
+            display: flex;
+            gap: 4px;
+            align-items: flex-end;
+            height: 120px;
+            padding: 16px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .history-bar {
+            flex: 1;
+            max-width: 40px;
+            border-radius: 4px 4px 0 0;
+            min-height: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .history-bar:hover { opacity: 0.8; }
+        .history-bar .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #e5e7eb;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            z-index: 10;
+            margin-bottom: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .history-bar:hover .tooltip { display: block; }
+
+        .no-data {
+            text-align: center;
+            color: #4b5563;
+            padding: 48px;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        .back-link:hover { color: #ffd700; }
+
+        @media (max-width: 768px) {
+            body { padding: 16px 12px; }
+            .step-row { grid-template-columns: 28px 140px 1fr 60px; }
+            .step-exit { display: none; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="hub.html" class="back-link">← Back to Command Center</a>
+        <h1>🔬 Pipeline <span>Dashboard</span></h1>
+        <p class="subtitle">Nightly sync pipeline execution — step timing, health, and history</p>
+
+        <div class="summary-grid" id="summaryGrid">
+            <div class="summary-card">
+                <div class="summary-value" id="smStatus">—</div>
+                <div class="summary-label">Status</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value blue" id="smDuration">—</div>
+                <div class="summary-label">Total Duration</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value green" id="smPassed">—</div>
+                <div class="summary-label">Steps Passed</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value red" id="smFailed">—</div>
+                <div class="summary-label">Steps Failed</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value yellow" id="smTimeouts">—</div>
+                <div class="summary-label">Timeouts</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-value" id="smLastRun" style="font-size:1rem;color:#9ca3af;">—</div>
+                <div class="summary-label">Last Run</div>
+            </div>
+        </div>
+
+        <div class="timeline" id="timeline">
+            <div class="no-data">No pipeline run data yet. Run <code>pipeline-orchestrator.js</code> to generate.</div>
+        </div>
+
+        <div class="history-section">
+            <h2>📊 Run History (Last 30)</h2>
+            <div class="history-grid" id="historyGrid">
+                <div class="no-data" style="width:100%">No history data yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const cacheBust = '?t=' + Date.now();
+
+    function formatDuration(sec) {
+        if (sec < 60) return sec + 's';
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return s > 0 ? m + 'm ' + s + 's' : m + 'm';
+    }
+
+    function formatDate(iso) {
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+               d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    // Load current run
+    fetch('pipeline-run.json' + cacheBust)
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+            if (!data) return;
+
+            // Summary
+            document.getElementById('smStatus').innerHTML = data.all_green ?
+                '<span class="green">✅ PASS</span>' : '<span class="red">❌ FAIL</span>';
+            document.getElementById('smDuration').textContent = formatDuration(data.total_duration_sec);
+            document.getElementById('smPassed').textContent = data.steps_passed;
+            document.getElementById('smFailed').textContent = data.steps_failed;
+            document.getElementById('smTimeouts').textContent = data.steps_timed_out;
+            document.getElementById('smLastRun').textContent = formatDate(data.generated_at);
+
+            // Timeline
+            const maxDuration = Math.max(...data.steps.map(s => s.duration_sec), 1);
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+
+            for (const step of data.steps) {
+                const pct = Math.max((step.duration_sec / maxDuration) * 100, 2);
+                const barClass = step.timed_out ? 'timeout' : (step.success ? 'success' : 'failed');
+                const exitClass = step.exit_code === 0 ? 'exit-0' : (step.timed_out ? 'exit-timeout' : 'exit-fail');
+                const icon = step.success ? '✅' : (step.timed_out ? '⏰' : '❌');
+                
+                const row = document.createElement('div');
+                row.className = 'step-row';
+                row.innerHTML = `
+                    <div class="step-icon">${icon}</div>
+                    <div class="step-name" title="${step.name}">${step.name}${step.critical ? ' ⚡' : ''}</div>
+                    <div class="step-bar-container">
+                        <div class="step-bar ${barClass}" style="width:${pct}%"></div>
+                    </div>
+                    <div class="step-duration">${formatDuration(step.duration_sec)}</div>
+                    <div class="step-exit ${exitClass}">exit ${step.exit_code}</div>
+                `;
+                timeline.appendChild(row);
+            }
+        })
+        .catch(() => {});
+
+    // Load history
+    fetch('data/pipeline-history.json' + cacheBust)
+        .then(r => r.ok ? r.json() : null)
+        .then(history => {
+            if (!history || history.length === 0) return;
+            
+            const grid = document.getElementById('historyGrid');
+            grid.innerHTML = '';
+            
+            const maxDur = Math.max(...history.map(h => h.duration), 1);
+            
+            for (const run of history) {
+                const pct = Math.max((run.duration / maxDur) * 100, 5);
+                const bar = document.createElement('div');
+                bar.className = 'history-bar';
+                bar.style.height = pct + '%';
+                bar.style.background = run.all_green ?
+                    'linear-gradient(0deg, #065f46, #34d399)' :
+                    'linear-gradient(0deg, #7f1d1d, #ef4444)';
+                
+                bar.innerHTML = `
+                    <div class="tooltip">
+                        ${formatDate(run.date)}<br>
+                        Duration: ${formatDuration(run.duration)}<br>
+                        ${run.passed}/${run.passed + run.failed} passed
+                        ${run.all_green ? '' : ' ⚠️'}
+                    </div>
+                `;
+                grid.appendChild(bar);
+            }
+        })
+        .catch(() => {});
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

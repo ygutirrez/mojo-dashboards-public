@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Social Media Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --mojo-green: #1a5c1a;
+            --mojo-green-light: #2d8f2d;
+            --positive: #16a34a;
+            --negative: #dc2626;
+            --warning: #d97706;
+            --neutral: #64748b;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --facebook: #1877f2;
+            --instagram: #e4405f;
+            --google: #4285f4;
+            --tiktok: #000000;
+            --youtube: #ff0000;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* TV Mode - optimized for 1920x1080 */
+        @media (min-width: 1800px) {
+            body { padding: 30px; font-size: 18px; }
+            .header h1 { font-size: 32px; }
+            .metric-card .value { font-size: 42px; }
+            .metric-card .label { font-size: 14px; }
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .header h1 .logo { font-size: 40px; }
+        
+        .header .meta {
+            text-align: right;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        
+        .header .meta .date { font-size: 16px; color: var(--text); }
+        
+        /* Main Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            height: calc(100vh - 120px);
+        }
+        
+        .panel {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            overflow-y: auto;
+        }
+        
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .panel-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .panel-header .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        /* Channel Cards */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .channel-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            border-top: 3px solid var(--neutral);
+        }
+        
+        .channel-card.facebook { border-top-color: var(--facebook); }
+        .channel-card.instagram { border-top-color: var(--instagram); }
+        .channel-card.google { border-top-color: var(--google); }
+        .channel-card.tiktok { border-top-color: #69c9d0; }
+        .channel-card.youtube { border-top-color: var(--youtube); }
+        
+        .channel-card .icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .channel-card .name {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .channel-card .followers {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .channel-card .growth {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        
+        .channel-card .growth.up { color: var(--positive); }
+        .channel-card .growth.down { color: var(--negative); }
+        
+        /* Metric Cards */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card.highlight {
+            border: 2px solid var(--mojo-green);
+        }
+        
+        .metric-card .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .metric-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .metric-card .subtext {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+        
+        .metric-card .trend {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        
+        .metric-card .trend.up { color: var(--positive); }
+        .metric-card .trend.down { color: var(--negative); }
+        
+        .positive { color: var(--positive); }
+        .negative { color: var(--negative); }
+        .warning { color: var(--warning); }
+        .neutral { color: var(--neutral); }
+        
+        /* Section Headers */
+        .section-header {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin: 20px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Engagement Rate Chart */
+        .chart-container {
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            height: 200px;
+        }
+        
+        /* Reviews Section */
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .review-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid var(--positive);
+        }
+        
+        .review-item.pending {
+            border-left-color: var(--warning);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .review-platform {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .review-rating {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+        
+        .review-text {
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text);
+        }
+        
+        .review-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        
+        /* Content Calendar */
+        .content-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .content-item:last-child {
+            border-bottom: none;
+        }
+        
+        .content-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            width: 60px;
+        }
+        
+        .content-platform {
+            width: 30px;
+            text-align: center;
+        }
+        
+        .content-topic {
+            flex: 1;
+            font-size: 13px;
+        }
+        
+        .content-status {
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .content-status.posted {
+            background: rgba(22, 163, 74, 0.2);
+            color: var(--positive);
+        }
+        
+        .content-status.planned {
+            background: rgba(100, 116, 139, 0.2);
+            color: var(--text-muted);
+        }
+        
+        /* Top Posts */
+        .top-post {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+        
+        .top-post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .top-post-platform {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        
+        .top-post-engagement {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--positive);
+        }
+        
+        .top-post-content {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        /* Posting Frequency */
+        .frequency-bars {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            height: 80px;
+            margin-top: 10px;
+        }
+        
+        .frequency-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .frequency-bar .bar {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            min-height: 5px;
+        }
+        
+        .frequency-bar .label {
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        
+        .frequency-bar .count {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Pulse animation for live indicator */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--positive);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        /* KPI Pills */
+        .kpi-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .kpi-pill {
+            background: rgba(255,255,255,0.08);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .kpi-pill .val { font-weight: 600; }
+        
+        /* Engagement Breakdown */
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .engagement-item {
+            text-align: center;
+            padding: 10px 5px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+        
+        .engagement-item .icon { font-size: 16px; margin-bottom: 5px; }
+        .engagement-item .rate { font-size: 16px; font-weight: 600; }
+        .engagement-item .platform { font-size: 9px; color: var(--text-muted); text-transform: uppercase; }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <header class="header">
+        <h1>
+            <span class="logo">📱</span>
+            MoJo Social Media Dashboard
+        </h1>
+        <div class="meta">
+            <div class="date" id="currentDate">February 2, 2025</div>
+            <div style="display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 4px;">
+                <span class="live-dot"></span>
+                <span>Auto-refresh: 5 min</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-grid">
+        <!-- LEFT PANEL: Channel Overview & Engagement -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>📊</span>
+                <h2>Channel Overview</h2>
+                <span class="badge">Week of Feb 2</span>
+            </div>
+
+            <!-- Follower Counts by Channel -->
+            <div class="channels-grid">
+                <div class="channel-card facebook">
+                    <div class="icon">📘</div>
+                    <div class="name">Facebook</div>
+                    <div class="followers">862</div>
+                    <div class="growth up">↑ 15 this week</div>
+                </div>
+                <div class="channel-card instagram">
+                    <div class="icon">📸</div>
+                    <div class="name">Instagram</div>
+                    <div class="followers">428</div>
+                    <div class="growth up">↑ 10 this week</div>
+                </div>
+                <div class="channel-card google">
+                    <div class="icon">🔍</div>
+                    <div class="name">Google</div>
+                    <div class="followers">128</div>
+                    <div class="growth up">↑ 4 this week</div>
+                </div>
+                <div class="channel-card tiktok">
+                    <div class="icon">🎵</div>
+                    <div class="name">TikTok</div>
+                    <div class="followers">0</div>
+                    <div class="growth neutral">New channel</div>
+                </div>
+                <div class="channel-card youtube" id="yt-card">
+                    <div class="icon">▶️</div>
+                    <div class="name">YouTube</div>
+                    <div class="followers" id="yt-subs">5,730</div>
+                    <div class="growth up" id="yt-views">7.5M views</div>
+                </div>
+            </div>
+
+            <!-- Week Over Week Summary -->
+            <div class="section-header">Week Over Week</div>
+            <div class="metrics-row">
+                <div class="metric-card highlight">
+                    <div class="label">Total Followers</div>
+                    <div class="value positive">7,148</div>
+                    <div class="trend up">↑ incl. 5,730 YT subs</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Reach</div>
+                    <div class="value neutral">6.4K</div>
+                    <div class="trend up">↑ 18% vs last week</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Engagements</div>
+                    <div class="value neutral">306</div>
+                    <div class="trend up">↑ 22% vs last week</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Posts This Week</div>
+                    <div class="value neutral">12</div>
+                    <div class="subtext">across all channels</div>
+                </div>
+            </div>
+
+            <!-- Engagement Rates -->
+            <div class="section-header">Engagement Rates by Channel</div>
+            <div class="engagement-grid">
+                <div class="engagement-item">
+                    <div class="icon">📘</div>
+                    <div class="rate positive">3.4%</div>
+                    <div class="platform">Facebook</div>
+                </div>
+                <div class="engagement-item">
+                    <div class="icon">📸</div>
+                    <div class="rate positive">6.6%</div>
+                    <div class="platform">Instagram</div>
+                </div>
+                <div class="engagement-item">
+                    <div class="icon">🔍</div>
+                    <div class="rate positive">4.7%</div>
+                    <div class="platform">Google</div>
+                </div>
+                <div class="engagement-item">
+                    <div class="icon">🎵</div>
+                    <div class="rate neutral">—</div>
+                    <div class="platform">TikTok</div>
+                </div>
+                <div class="engagement-item">
+                    <div class="icon">▶️</div>
+                    <div class="rate positive">8.3%</div>
+                    <div class="platform">YouTube</div>
+                </div>
+            </div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;">
+                Industry avg: FB 3.5% | IG 4.7% | Google 4% | TikTok 6% | YT 5%
+            </div>
+
+            <!-- Posting Frequency -->
+            <div class="section-header">Posting Frequency (Last 4 Weeks)</div>
+            <div class="frequency-bars">
+                <div class="frequency-bar">
+                    <div class="bar" style="height: 40px; background: var(--facebook);"></div>
+                    <div class="count">14</div>
+                    <div class="label">FB</div>
+                </div>
+                <div class="frequency-bar">
+                    <div class="bar" style="height: 55px; background: var(--instagram);"></div>
+                    <div class="count">18</div>
+                    <div class="label">IG</div>
+                </div>
+                <div class="frequency-bar">
+                    <div class="bar" style="height: 25px; background: var(--google);"></div>
+                    <div class="count">10</div>
+                    <div class="label">Google</div>
+                </div>
+                <div class="frequency-bar">
+                    <div class="bar" style="height: 5px; background: #69c9d0;"></div>
+                    <div class="count">0</div>
+                    <div class="label">TikTok</div>
+                </div>
+                <div class="frequency-bar">
+                    <div class="bar" style="height: 5px; background: var(--youtube);"></div>
+                    <div class="count">0</div>
+                    <div class="label">YT</div>
+                </div>
+            </div>
+
+            <!-- Top Performing Posts -->
+            <div class="section-header">Top Performing Posts This Week</div>
+            <div class="top-post">
+                <div class="top-post-header">
+                    <span class="top-post-platform">📸 Instagram Reel</span>
+                    <span class="top-post-engagement">145 views, 23 likes</span>
+                </div>
+                <div class="top-post-content">"Mosquito facts that will surprise you" — Educational content driving high engagement</div>
+            </div>
+            <div class="top-post">
+                <div class="top-post-header">
+                    <span class="top-post-platform">📘 Facebook Post</span>
+                    <span class="top-post-engagement">52 engagements</span>
+                </div>
+                <div class="top-post-content">"January promo reminder" — Promotional content with clear CTA</div>
+            </div>
+
+            <!-- YouTube Analytics Section -->
+            <div class="section-header">▶️ YouTube Analytics</div>
+            <div class="metrics-row" style="margin-bottom: 15px;">
+                <div class="metric-card">
+                    <div class="label">Subscribers</div>
+                    <div class="value" id="yt-subscribers">5,730</div>
+                    <div class="trend up">+196 videos</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Total Views</div>
+                    <div class="value" id="yt-total-views">7.5M</div>
+                    <div class="trend up">Since 2015</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Avg Views/Video</div>
+                    <div class="value" id="yt-avg-views">3,968</div>
+                    <div class="trend neutral">per video</div>
+                </div>
+            </div>
+            
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">🔥 Top Performing Videos</div>
+            <div class="top-post" id="yt-top-1">
+                <div class="top-post-header">
+                    <span class="top-post-platform">▶️ YouTube Short</span>
+                    <span class="top-post-engagement">52K views, 906 likes</span>
+                </div>
+                <div class="top-post-content">"This Mosquito Trap Is Insane… But Here's the Truth 😳🦟"</div>
+            </div>
+            <div class="top-post" id="yt-top-2">
+                <div class="top-post-header">
+                    <span class="top-post-platform">▶️ YouTube Short</span>
+                    <span class="top-post-engagement">31K views, 1K likes</span>
+                </div>
+                <div class="top-post-content">"Wearing Shorts in Miami? Mosquitoes Call That a Buffet 🦟🍽️😂"</div>
+            </div>
+            <div class="top-post" id="yt-top-3">
+                <div class="top-post-header">
+                    <span class="top-post-platform">▶️ YouTube Short</span>
+                    <span class="top-post-engagement">31K views, 202 likes</span>
+                </div>
+                <div class="top-post-content">"Mosquito Science Is Wild… Here's What Happens When They Bite 🦟🔬"</div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: Reviews & Content -->
+        <div class="panel">
+            <div class="panel-header">
+                <span>⭐</span>
+                <h2>Reviews & Content</h2>
+                <span class="badge">Updated Daily</span>
+            </div>
+
+            <!-- Reviews Summary -->
+            <div class="section-header">Recent Reviews</div>
+            <div class="kpi-pills" style="margin-bottom: 15px;">
+                <div class="kpi-pill">
+                    <span>⭐ Avg Rating:</span>
+                    <span class="val positive">4.8</span>
+                </div>
+                <div class="kpi-pill">
+                    <span>📝 This Month:</span>
+                    <span class="val">5</span>
+                </div>
+                <div class="kpi-pill">
+                    <span>⏳ Need Response:</span>
+                    <span class="val warning">1</span>
+                </div>
+            </div>
+            
+            <div class="reviews-list">
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-platform">🔍 Google</span>
+                        <span class="review-rating">★★★★★</span>
+                    </div>
+                    <div class="review-text">"Amazing service! They came out same day and our backyard is mosquito-free. Highly recommend!"</div>
+                    <div class="review-date">Jan 28, 2025 • Responded ✓</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-platform">🔍 Google</span>
+                        <span class="review-rating">★★★★★</span>
+                    </div>
+                    <div class="review-text">"Very professional team. Explained everything and the treatment worked perfectly."</div>
+                    <div class="review-date">Jan 25, 2025 • Responded ✓</div>
+                </div>
+                <div class="review-item pending">
+                    <div class="review-header">
+                        <span class="review-platform">📕 Yelp</span>
+                        <span class="review-rating">★★★★★</span>
+                    </div>
+                    <div class="review-text">"Prompt, professional, effective. What more could you ask for?"</div>
+                    <div class="review-date">Jan 10, 2025 • ⚠️ Needs Response</div>
+                </div>
+            </div>
+
+            <!-- Upcoming Content -->
+            <div class="section-header">Upcoming Content</div>
+            <div class="content-list">
+                <div class="content-item">
+                    <span class="content-date">Feb 3</span>
+                    <span class="content-platform">📸</span>
+                    <span class="content-topic">Before/After backyard transformation</span>
+                    <span class="content-status planned">Planned</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-date">Feb 5</span>
+                    <span class="content-platform">📘</span>
+                    <span class="content-topic">Customer testimonial graphic</span>
+                    <span class="content-status planned">Planned</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-date">Feb 7</span>
+                    <span class="content-platform">🔍</span>
+                    <span class="content-topic">Spring prep tips</span>
+                    <span class="content-status planned">Planned</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-date">Feb 10</span>
+                    <span class="content-platform">📸</span>
+                    <span class="content-topic">Team spotlight story</span>
+                    <span class="content-status planned">Planned</span>
+                </div>
+                <div class="content-item">
+                    <span class="content-date">Feb 14</span>
+                    <span class="content-platform">📸</span>
+                    <span class="content-topic">Valentine's Day special</span>
+                    <span class="content-status planned">Planned</span>
+                </div>
+            </div>
+
+            <!-- Goals Progress -->
+            <div class="section-header">Q1 Goals Progress</div>
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="label">FB Followers</div>
+                    <div class="value">862</div>
+                    <div class="subtext">Goal: 900</div>
+                    <div class="trend up">96% to goal</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">IG Followers</div>
+                    <div class="value">428</div>
+                    <div class="subtext">Goal: 500</div>
+                    <div class="trend up">86% to goal</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Google Reviews</div>
+                    <div class="value">45</div>
+                    <div class="subtext">Goal: 55</div>
+                    <div class="trend up">82% to goal</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Leads from Social</div>
+                    <div class="value">10</div>
+                    <div class="subtext">January total</div>
+                    <div class="trend neutral">Track in Sheet</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section-header">Quick Actions</div>
+            <div class="kpi-pills">
+                <div class="kpi-pill" style="cursor: pointer;" onclick="window.open('https://docs.google.com/spreadsheets/d/1W53QzQZQPr4bQebrng2fA1PZGYiwUTTdDoZethXEckg/edit')">
+                    📊 <span>Open Tracking Sheet</span>
+                </div>
+                <div class="kpi-pill" style="cursor: pointer;">
+                    📅 <span>Content Calendar</span>
+                </div>
+                <div class="kpi-pill" style="cursor: pointer;">
+                    ⭐ <span>Respond to Reviews</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Load YouTube data from JSON
+        async function loadYouTubeData() {
+            try {
+                const res = await fetch('youtube-data.json?t=' + Date.now());
+                const data = await res.json();
+                updateYouTubeSection(data);
+            } catch (e) {
+                console.log('YouTube data not available, using static values');
+            }
+        }
+
+        function fmtNum(v) { return Number(v).toLocaleString('en-US'); }
+
+        function updateYouTubeSection(yt) {
+            const ch = yt.channel || yt;
+
+            // Update YouTube channel card
+            const ytSubs = document.getElementById('yt-subs');
+            if (ytSubs) ytSubs.textContent = fmtNum(ch.subscribers);
+            const ytViews = document.getElementById('yt-views');
+            if (ytViews) ytViews.textContent = (ch.totalViews / 1000000).toFixed(1) + 'M views';
+
+            // Update YouTube analytics section
+            const ytSubsEl = document.getElementById('yt-subscribers');
+            if (ytSubsEl) ytSubsEl.textContent = fmtNum(ch.subscribers);
+            const ytTotalViews = document.getElementById('yt-total-views');
+            if (ytTotalViews) ytTotalViews.textContent = (ch.totalViews / 1000000).toFixed(1) + 'M';
+            const ytAvgViews = document.getElementById('yt-avg-views');
+            if (ytAvgViews) ytAvgViews.textContent = fmtNum(ch.avgViewsPerVideo);
+
+            // Update total followers (add YT subs to other channels)
+            // YouTube subs are already in the Total Followers count shown
+
+            // Update top videos
+            const topVideos = yt.topVideos || [];
+            for (let i = 0; i < Math.min(3, topVideos.length); i++) {
+                const el = document.getElementById('yt-top-' + (i + 1));
+                if (el) {
+                    const v = topVideos[i];
+                    const header = el.querySelector('.top-post-header');
+                    const content = el.querySelector('.top-post-content');
+                    if (header) {
+                        const eng = header.querySelector('.top-post-engagement');
+                        if (eng) eng.textContent = fmtNum(v.views) + ' views, ' + fmtNum(v.likes) + ' likes';
+                    }
+                    if (content) content.textContent = '"' + v.title + '"';
+                }
+            }
+
+            // Update the last-updated indicator
+            if (yt.lastUpdated) {
+                const updatedDate = new Date(yt.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                console.log('YouTube data updated: ' + updatedDate);
+            }
+        }
+
+        // Load YouTube data on page load
+        loadYouTubeData();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadYouTubeData, 300000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

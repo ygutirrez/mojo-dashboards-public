@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>Data Freshness Monitor — MoJo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a14;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+        /* Header */
+        .header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 32px; flex-wrap: wrap;
+        }
+        .header h1 {
+            font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px;
+        }
+        .header h1 span {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-meta {
+            margin-left: auto; text-align: right; color: #64748b; font-size: 0.8rem;
+        }
+        .back-link {
+            color: #64748b; text-decoration: none; font-size: 0.85rem;
+            border: 1px solid #1e293b; padding: 4px 12px; border-radius: 6px;
+        }
+        .back-link:hover { border-color: #334155; color: #94a3b8; }
+
+        /* Health Banner */
+        .health-banner {
+            display: grid; grid-template-columns: 200px 1fr; gap: 24px;
+            background: #111827; border: 1px solid #1e293b; border-radius: 12px;
+            padding: 24px; margin-bottom: 24px;
+        }
+        .health-score {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center;
+        }
+        .health-ring {
+            width: 120px; height: 120px; position: relative;
+        }
+        .health-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .health-ring circle {
+            fill: none; stroke-width: 8; cx: 60; cy: 60; r: 52;
+        }
+        .health-ring .bg { stroke: #1e293b; }
+        .health-ring .fg { stroke-linecap: round; transition: stroke-dashoffset 0.8s ease; }
+        .health-value {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .health-value .num { font-size: 2rem; font-weight: 700; }
+        .health-value .label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+
+        .health-details {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px; align-content: center;
+        }
+        .health-stat {
+            background: #0f172a; border: 1px solid #1e293b; border-radius: 8px;
+            padding: 12px 16px;
+        }
+        .health-stat .val { font-size: 1.4rem; font-weight: 700; }
+        .health-stat .lbl { font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+        /* Section */
+        .section { margin-bottom: 32px; }
+        .section-title {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; color: #818cf8; margin-bottom: 16px;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%; border-collapse: collapse;
+            background: #111827; border-radius: 12px; overflow: hidden;
+            border: 1px solid #1e293b;
+        }
+        .data-table th {
+            background: #0f172a; padding: 10px 14px; text-align: left;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
+            color: #64748b; border-bottom: 1px solid #1e293b;
+        }
+        .data-table td {
+            padding: 10px 14px; border-bottom: 1px solid #1e293b;
+            font-size: 0.85rem;
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:hover { background: #1e293b44; }
+
+        /* Status badges */
+        .badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 2px 10px; border-radius: 12px; font-size: 0.7rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .badge-fresh { background: #065f4620; color: #34d399; border: 1px solid #065f4640; }
+        .badge-stale { background: #92400e20; color: #fbbf24; border: 1px solid #92400e40; }
+        .badge-missing { background: #7f1d1d20; color: #f87171; border: 1px solid #7f1d1d40; }
+        .badge-invalid { background: #7f1d1d20; color: #fb923c; border: 1px solid #7f1d1d40; }
+        .badge-no-data { background: #1e293b; color: #64748b; border: 1px solid #334155; }
+        .badge-healthy { background: #065f4620; color: #34d399; border: 1px solid #065f4640; }
+        .badge-degraded { background: #92400e20; color: #fbbf24; border: 1px solid #92400e40; }
+        .badge-failed { background: #7f1d1d20; color: #f87171; border: 1px solid #7f1d1d40; }
+        .badge-unknown { background: #1e293b; color: #64748b; border: 1px solid #334155; }
+
+        .critical-flag {
+            color: #f87171; font-size: 0.65rem; font-weight: 700;
+            margin-left: 4px;
+        }
+
+        /* Age formatting */
+        .age-fresh { color: #34d399; }
+        .age-warning { color: #fbbf24; }
+        .age-stale { color: #f87171; }
+
+        /* Pipeline Timeline */
+        .pipeline-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .pipeline-card {
+            background: #111827; border: 1px solid #1e293b; border-radius: 8px;
+            padding: 14px; cursor: default;
+        }
+        .pipeline-card .date { font-size: 0.85rem; font-weight: 600; }
+        .pipeline-card .time { font-size: 0.75rem; color: #64748b; margin-top: 2px; }
+        .pipeline-card .stats { margin-top: 8px; font-size: 0.75rem; }
+        .pipeline-card .stats .ok { color: #34d399; }
+        .pipeline-card .stats .warn { color: #fbbf24; }
+        .pipeline-card .stats .fail { color: #f87171; }
+        .pipeline-card.completed { border-left: 3px solid #34d399; }
+        .pipeline-card.partial { border-left: 3px solid #fbbf24; }
+        .pipeline-card.failed { border-left: 3px solid #f87171; }
+
+        /* Dashboard grid */
+        .dash-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 10px;
+        }
+        .dash-card {
+            background: #111827; border: 1px solid #1e293b; border-radius: 8px;
+            padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+        }
+        .dash-card .name { flex: 1; font-size: 0.85rem; font-weight: 500; }
+        .dash-card .deps { font-size: 0.7rem; color: #64748b; }
+
+        /* Filters */
+        .filters {
+            display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #1e293b; border: 1px solid #334155; color: #94a3b8;
+            padding: 4px 14px; border-radius: 6px; font-size: 0.75rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .filter-btn:hover { border-color: #475569; color: #e2e8f0; }
+        .filter-btn.active { background: #818cf820; border-color: #818cf8; color: #818cf8; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .health-banner { grid-template-columns: 1fr; }
+            .container { padding: 16px; }
+            .data-table { font-size: 0.8rem; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+
+        /* Step indicator bar */
+        .step-bar {
+            display: flex; gap: 2px; margin-top: 8px;
+        }
+        .step-dot {
+            width: 12px; height: 6px; border-radius: 2px;
+        }
+        .step-dot.ran { background: #34d399; }
+        .step-dot.missing { background: #475569; }
+
+        /* Source tag */
+        .source-tag {
+            font-size: 0.7rem; color: #64748b; background: #1e293b;
+            padding: 1px 6px; border-radius: 4px;
+        }
+
+        .empty-state {
+            text-align: center; padding: 40px 20px; color: #475569;
+        }
+
+        /* Tooltip */
+        .tip {
+            position: relative; cursor: help;
+        }
+        .tip:hover::after {
+            content: attr(data-tip);
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+            background: #1e293b; border: 1px solid #334155; color: #e2e8f0;
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem;
+            white-space: nowrap; z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <a href="hub.html" class="back-link">← Hub</a>
+        <h1>🔬 <span>Data Freshness</span> Monitor</h1>
+        <div class="header-meta">
+            <div id="generated-at">Loading...</div>
+            <div id="auto-refresh">Auto-refresh: 5 min</div>
+        </div>
+    </div>
+
+    <!-- Health Banner -->
+    <div class="health-banner">
+        <div class="health-score">
+            <div class="health-ring">
+                <svg viewBox="0 0 120 120">
+                    <circle class="bg" />
+                    <circle class="fg" id="health-circle" />
+                </svg>
+                <div class="health-value">
+                    <div class="num" id="health-num">—</div>
+                    <div class="label">Health</div>
+                </div>
+            </div>
+        </div>
+        <div class="health-details" id="health-details"></div>
+    </div>
+
+    <!-- Pipeline History -->
+    <div class="section">
+        <div class="section-title">📡 Pipeline History (Last 7 Days)</div>
+        <div class="pipeline-grid" id="pipeline-grid"></div>
+    </div>
+
+    <!-- Data Files -->
+    <div class="section">
+        <div class="section-title">📁 Data File Freshness</div>
+        <div class="filters" id="data-filters"></div>
+        <table class="data-table" id="data-table">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Status</th>
+                    <th>Age</th>
+                    <th>Source</th>
+                    <th>Size</th>
+                    <th>Max Age</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody id="data-tbody"></tbody>
+        </table>
+    </div>
+
+    <!-- Dashboard Dependencies -->
+    <div class="section">
+        <div class="section-title">📊 Dashboard Health</div>
+        <div class="filters" id="dash-filters"></div>
+        <div class="dash-grid" id="dash-grid"></div>
+    </div>
+</div>
+
+<script>
+(async function() {
+    let data = null;
+
+    // Try loading freshness data
+    try {
+        const resp = await fetch('freshness-data.json?_=' + Date.now());
+        if (!resp.ok) throw new Error(resp.statusText);
+        data = await resp.json();
+    } catch (e) {
+        document.getElementById('health-num').textContent = '?';
+        document.getElementById('data-tbody').innerHTML = '<tr><td colspan="7" class="empty-state">Could not load freshness-data.json</td></tr>';
+        return;
+    }
+
+    // --- Header ---
+    const gen = new Date(data.generated_at);
+    document.getElementById('generated-at').textContent = 'Updated: ' + gen.toLocaleString();
+
+    // --- Health Banner ---
+    const h = data.health;
+    const healthNum = document.getElementById('health-num');
+    healthNum.textContent = h.score;
+    healthNum.style.color = h.score >= 90 ? '#34d399' : h.score >= 70 ? '#fbbf24' : '#f87171';
+
+    // Draw ring
+    const circ = document.getElementById('health-circle');
+    const circumference = 2 * Math.PI * 52;
+    circ.style.strokeDasharray = circumference;
+    circ.style.strokeDashoffset = circumference * (1 - h.score / 100);
+    circ.style.stroke = h.score >= 90 ? '#34d399' : h.score >= 70 ? '#fbbf24' : '#f87171';
+
+    // Health stats
+    const statsHTML = [
+        { val: h.pipelineStatus, lbl: 'Pipeline', badge: true },
+        { val: h.fresh + '/' + h.totalDataFiles, lbl: 'Files Fresh' },
+        { val: h.stale, lbl: 'Stale Files', alert: h.stale > 0 },
+        { val: h.missing, lbl: 'Missing Files', alert: h.missing > 0 },
+        { val: h.dashboardsHealthy + '/' + h.totalDashboards, lbl: 'Dashboards OK' },
+        { val: h.criticalStale + h.criticalMissing, lbl: 'Critical Issues', alert: (h.criticalStale + h.criticalMissing) > 0 },
+    ];
+
+    document.getElementById('health-details').innerHTML = statsHTML.map(s => {
+        const valHtml = s.badge
+            ? `<span class="badge badge-${s.val}">${s.val}</span>`
+            : `<span style="color: ${s.alert ? '#f87171' : '#e2e8f0'}">${s.val}</span>`;
+        return `<div class="health-stat"><div class="val">${valHtml}</div><div class="lbl">${s.lbl}</div></div>`;
+    }).join('');
+
+    // --- Pipeline History ---
+    const pgrid = document.getElementById('pipeline-grid');
+    if (data.pipeline.history.length === 0) {
+        pgrid.innerHTML = '<div class="empty-state">No sync logs found</div>';
+    } else {
+        pgrid.innerHTML = data.pipeline.history.map(log => {
+            const cls = log.allStepsOK ? 'completed' : log.completed ? 'partial' : 'failed';
+            const steps = Object.entries(log.steps || {});
+            const ranCount = steps.filter(([,v]) => v === 'ran').length;
+            const totalSteps = steps.length;
+            const statusLabel = log.allStepsOK ? '✅ All OK'
+                : log.completed ? `⚠️ ${log.stepFailures} warnings`
+                : `❌ Incomplete (${ranCount}/${totalSteps} steps)`;
+
+            const stepBar = steps.map(([k, v]) =>
+                `<div class="step-dot ${v}" title="${k}: ${v}"></div>`
+            ).join('');
+
+            return `<div class="pipeline-card ${cls}">
+                <div class="date">${log.date}</div>
+                <div class="time">${log.startTime || 'Unknown start'}</div>
+                <div class="stats">${statusLabel}</div>
+                <div class="stats">📄 ${log.servsuitReports.exported}/${log.servsuitReports.total} reports</div>
+                <div class="step-bar">${stepBar}</div>
+                ${log.failedSteps.length > 0 ? `<div class="stats fail" style="margin-top:4px">${log.failedSteps.join(', ')}</div>` : ''}
+            </div>`;
+        }).join('');
+    }
+
+    // --- Data Files ---
+    let currentFilter = 'all';
+    const filterContainer = document.getElementById('data-filters');
+    const counts = { all: data.dataFiles.length, fresh: 0, stale: 0, missing: 0, critical: 0 };
+    data.dataFiles.forEach(f => {
+        if (f.status === 'fresh') counts.fresh++;
+        if (f.status === 'stale') counts.stale++;
+        if (f.status === 'missing') counts.missing++;
+        if (f.critical) counts.critical++;
+    });
+
+    const filters = ['all', 'critical', 'stale', 'missing', 'fresh'];
+    filterContainer.innerHTML = filters.map(f =>
+        `<button class="filter-btn ${f === 'all' ? 'active' : ''}" data-filter="${f}">${f} (${counts[f]})</button>`
+    ).join('');
+
+    filterContainer.addEventListener('click', e => {
+        if (!e.target.classList.contains('filter-btn')) return;
+        currentFilter = e.target.dataset.filter;
+        filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderDataTable();
+    });
+
+    function formatAge(hours) {
+        if (hours === Infinity || hours === null || hours === undefined) return '<span class="age-stale">—</span>';
+        if (hours < 1) return `<span class="age-fresh">${Math.round(hours * 60)}m</span>`;
+        if (hours < 24) return `<span class="${hours > 30 ? 'age-warning' : 'age-fresh'}">${Math.round(hours)}h</span>`;
+        const days = Math.round(hours / 24 * 10) / 10;
+        return `<span class="${hours > 48 ? 'age-stale' : 'age-warning'}">${days}d</span>`;
+    }
+
+    function renderDataTable() {
+        const tbody = document.getElementById('data-tbody');
+        let files = data.dataFiles;
+        if (currentFilter === 'critical') files = files.filter(f => f.critical);
+        else if (currentFilter !== 'all') files = files.filter(f => f.status === currentFilter);
+
+        if (files.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No files match filter</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = files.map(f => {
+            const mod = f.lastModified ? new Date(f.lastModified).toLocaleString() : '—';
+            return `<tr>
+                <td>
+                    <strong>${f.name}</strong>
+                    ${f.critical ? '<span class="critical-flag">CRITICAL</span>' : ''}
+                </td>
+                <td><span class="badge badge-${f.status}">${f.status}</span></td>
+                <td>${formatAge(f.ageHours)}</td>
+                <td><span class="source-tag">${f.source}</span></td>
+                <td>${f.sizeKB ? f.sizeKB + ' KB' : '—'}</td>
+                <td>${f.maxAgeHours}h</td>
+                <td style="color: #64748b; font-size: 0.75rem">${mod}</td>
+            </tr>`;
+        }).join('');
+    }
+    renderDataTable();
+
+    // --- Dashboard Health ---
+    let dashFilter = 'all';
+    const dashFilterContainer = document.getElementById('dash-filters');
+    const dashCounts = { all: data.dashboards.length, fresh: 0, stale: 0, missing: 0, 'no-data': 0 };
+    data.dashboards.forEach(d => {
+        if (dashCounts[d.status] !== undefined) dashCounts[d.status]++;
+    });
+
+    const dashFilters = ['all', 'stale', 'missing', 'fresh', 'no-data'];
+    dashFilterContainer.innerHTML = dashFilters.map(f =>
+        `<button class="filter-btn ${f === 'all' ? 'active' : ''}" data-filter="${f}">${f} (${dashCounts[f]})</button>`
+    ).join('');
+
+    dashFilterContainer.addEventListener('click', e => {
+        if (!e.target.classList.contains('filter-btn')) return;
+        dashFilter = e.target.dataset.filter;
+        dashFilterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderDashGrid();
+    });
+
+    function renderDashGrid() {
+        const grid = document.getElementById('dash-grid');
+        let dashes = data.dashboards;
+        if (dashFilter !== 'all') dashes = dashes.filter(d => d.status === dashFilter);
+
+        if (dashes.length === 0) {
+            grid.innerHTML = '<div class="empty-state">No dashboards match filter</div>';
+            return;
+        }
+
+        grid.innerHTML = dashes.map(d => {
+            const depInfo = d.dependencies.length > 0
+                ? d.dependencies.map(dep => `<span class="badge badge-${dep.status}" style="font-size:0.6rem;padding:1px 5px">${dep.file.replace('.json','')}</span>`).join(' ')
+                : '<span style="color:#475569;font-size:0.7rem">No data deps</span>';
+            return `<div class="dash-card">
+                <span class="badge badge-${d.status}" style="flex-shrink:0">${d.status === 'no-data' ? '—' : d.status === 'fresh' ? '✓' : d.status === 'stale' ? '!' : '✕'}</span>
+                <div>
+                    <div class="name">${d.name.replace('.html','')}</div>
+                    <div class="deps">${depInfo}</div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+    renderDashGrid();
+
+})();
+</script>
+</body>
+</html>

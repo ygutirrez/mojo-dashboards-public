@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo $5M Goal Tracker</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; }
+        .back-link:hover { color: #93bbfc; }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 40px 20px 48px; position: relative; }
+        .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+        .hero h1 .gold { background: linear-gradient(90deg, #ffd700, #ff8c00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero .subtitle { color: #64748b; font-size: 1rem; }
+
+        /* Big Number */
+        .big-number { margin: 32px 0; }
+        .big-number .current { font-size: 4rem; font-weight: 900; color: #ffd700; line-height: 1; }
+        .big-number .of-target { font-size: 1.5rem; color: #475569; font-weight: 400; }
+        .big-number .pct { font-size: 1.3rem; font-weight: 700; margin-top: 8px; }
+        .big-number .pct.ahead { color: #22c55e; }
+        .big-number .pct.behind { color: #f59e0b; }
+        .big-number .pct.far-behind { color: #ef4444; }
+
+        /* Progress Bar */
+        .progress-container { max-width: 700px; margin: 0 auto 16px; }
+        .progress-bar { height: 20px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-fill { height: 100%; border-radius: 10px; transition: width 1.5s ease; position: relative; }
+        .progress-fill.gold { background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700); background-size: 200% 100%; animation: shimmer 3s ease-in-out infinite; }
+        @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .progress-marker { position: absolute; top: -6px; bottom: -6px; width: 2px; background: rgba(255,255,255,0.4); }
+        .progress-marker .marker-label { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: #64748b; white-space: nowrap; }
+        .progress-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b; margin-top: 6px; }
+        .time-indicator { font-size: 0.8rem; color: #94a3b8; margin-top: 8px; }
+        .time-indicator strong { color: #e2e8f0; }
+
+        /* Pace Cards */
+        .pace-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 36px 0; }
+        .pace-card { background: #1a1a2e; border-radius: 14px; padding: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.06); }
+        .pace-card .value { font-size: 1.6rem; font-weight: 800; line-height: 1.2; }
+        .pace-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-top: 6px; }
+        .pace-card .compare { font-size: 0.75rem; margin-top: 4px; }
+        .up { color: #22c55e; }
+        .down { color: #ef4444; }
+        .neutral { color: #f59e0b; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px; margin-bottom: 24px; }
+        .card { background: #1a1a2e; border-radius: 14px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
+        .card.full { grid-column: 1 / -1; }
+        .card h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+        /* Milestones */
+        .milestone { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .milestone:last-child { border-bottom: none; }
+        .milestone .icon { font-size: 1.5rem; }
+        .milestone .info { flex: 1; }
+        .milestone .info .name { font-weight: 600; font-size: 0.95rem; }
+        .milestone .info .eta { font-size: 0.75rem; color: #64748b; }
+        .milestone .bar-outer { flex: 0 0 160px; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+        .milestone .bar-inner { height: 100%; border-radius: 3px; }
+        .milestone .bar-inner.done { background: #22c55e; }
+        .milestone .bar-inner.progress { background: linear-gradient(90deg, #ffd700, #ff8c00); }
+        .milestone .pct-label { font-size: 0.8rem; font-weight: 600; min-width: 40px; text-align: right; }
+
+        /* Monthly Chart */
+        .chart-container { height: 200px; display: flex; align-items: flex-end; gap: 8px; padding: 0 4px; }
+        .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .chart-bars { display: flex; gap: 2px; align-items: flex-end; width: 100%; height: 160px; }
+        .chart-bars .bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 2px; position: relative; }
+        .chart-bars .bar.actual { background: #ffd700; }
+        .chart-bars .bar.projected { background: rgba(255,215,0,0.3); border: 1px dashed rgba(255,215,0,0.5); }
+        .chart-bars .bar.target-line { background: rgba(239,68,68,0.4); }
+        .chart-bar-group .month { font-size: 0.65rem; color: #64748b; }
+        .chart-bar-group .amount { font-size: 0.6rem; color: #94a3b8; }
+
+        /* Scenarios */
+        .scenario { display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 10px; margin-bottom: 8px; background: rgba(255,255,255,0.03); }
+        .scenario .label { font-weight: 600; font-size: 0.9rem; min-width: 140px; }
+        .scenario .desc { font-size: 0.75rem; color: #64748b; flex: 1; }
+        .scenario .result { text-align: right; min-width: 100px; }
+        .scenario .result .proj { font-size: 1rem; font-weight: 700; }
+        .scenario .result .gap { font-size: 0.7rem; }
+        .scenario .badge { padding: 2px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 600; }
+        .scenario .badge.yes { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .scenario .badge.no { background: rgba(239,68,68,0.2); color: #ef4444; }
+
+        /* Comparison */
+        .compare-box { display: flex; align-items: center; gap: 20px; padding: 20px; background: rgba(255,255,255,0.04); border-radius: 12px; }
+        .compare-box .vs-badge { padding: 6px 12px; border-radius: 8px; background: rgba(255,215,0,0.15); color: #ffd700; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+        .compare-box .detail { flex: 1; }
+        .compare-box .detail .line { font-size: 0.85rem; margin-bottom: 4px; }
+        .compare-box .arrow { font-size: 1.5rem; flex-shrink: 0; }
+
+        .footer { text-align: center; padding: 32px 0 16px; color: #475569; font-size: 0.7rem; }
+        @media (max-width: 768px) { 
+            .grid { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 1.5rem; }
+            .big-number .current { font-size: 2.5rem; }
+            .pace-strip { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="hub.html" class="back-link">← Hub</a>
+
+        <div class="hero">
+            <h1>🎯 The Road to <span class="gold">$5 Million</span></h1>
+            <div class="subtitle" id="period">Loading...</div>
+
+            <div class="big-number">
+                <div class="current" id="currentRevenue">--</div>
+                <div class="of-target">of <span id="targetLabel">$5,000,000</span></div>
+                <div class="pct" id="paceStatus">Loading...</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill gold" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-labels">
+                    <span>$0</span>
+                    <span>$1M</span>
+                    <span>$2M</span>
+                    <span>$3M</span>
+                    <span>$4M</span>
+                    <span>$5M</span>
+                </div>
+                <div class="time-indicator">
+                    <span id="timeInfo">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pace Cards -->
+        <div class="pace-strip" id="paceStrip"></div>
+
+        <!-- Main Grid -->
+        <div class="grid">
+            <!-- Milestones -->
+            <div class="card">
+                <h2>🏆 Milestones</h2>
+                <div id="milestones"></div>
+            </div>
+
+            <!-- What-If Scenarios -->
+            <div class="card">
+                <h2>🔮 What-If Scenarios</h2>
+                <div id="scenarios"></div>
+            </div>
+
+            <!-- Monthly Revenue Chart -->
+            <div class="card full">
+                <h2>📊 Monthly Revenue (Actual vs Target)</h2>
+                <div class="chart-container" id="monthlyChart"></div>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 12px; font-size: 0.7rem; color: #64748b;">
+                    <span>🟡 Actual</span>
+                    <span style="opacity: 0.5">🟡 Projected</span>
+                    <span>🔴 $5M Target Pace</span>
+                </div>
+            </div>
+
+            <!-- YoY Comparison -->
+            <div class="card">
+                <h2>📈 Year-over-Year</h2>
+                <div id="yoyComparison"></div>
+            </div>
+
+            <!-- Key Levers -->
+            <div class="card">
+                <h2>🔧 Key Levers to Close the Gap</h2>
+                <div id="levers"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            MoJo $5M Goal Tracker — Built by CTO Overnight Session
+        </div>
+    </div>
+
+    <script>
+    async function loadData() {
+        try {
+            const resp = await fetch('goal-tracker-data.json?' + Date.now());
+            if (!resp.ok) throw new Error('Failed to load');
+            return await resp.json();
+        } catch (e) {
+            document.getElementById('currentRevenue').textContent = 'Error loading data';
+            return null;
+        }
+    }
+
+    function fmt(n) {
+        if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return '$' + Math.round(n / 1000).toLocaleString() + 'K';
+        return '$' + n.toLocaleString();
+    }
+
+    function renderHero(data) {
+        const h = data.headline;
+        document.getElementById('period').textContent = data.period;
+        document.getElementById('currentRevenue').textContent = fmt(h.ytd_revenue);
+
+        const pctFill = Math.min(100, (h.ytd_revenue / h.target) * 100);
+        document.getElementById('progressFill').style.width = pctFill + '%';
+
+        const statusEl = document.getElementById('paceStatus');
+        const p = data.pace;
+        if (p.status === 'on-track') {
+            statusEl.className = 'pct ahead';
+            statusEl.textContent = `✅ On pace — projecting ${fmt(h.annual_projection)}`;
+        } else if (p.status === 'close') {
+            statusEl.className = 'pct behind';
+            statusEl.textContent = `⚠️ Close — projecting ${fmt(h.annual_projection)} (${fmt(Math.abs(h.projection_gap))} gap)`;
+        } else {
+            statusEl.className = 'pct far-behind';
+            statusEl.textContent = `🔴 Behind pace — projecting ${fmt(h.annual_projection)} (${fmt(Math.abs(h.projection_gap))} gap)`;
+        }
+
+        document.getElementById('timeInfo').innerHTML = 
+            `<strong>${h.pct_year_elapsed}%</strong> of year elapsed · <strong>${h.days_remaining} days</strong> remaining · <strong>${fmt(h.remaining)}</strong> to go`;
+
+        // Add time marker on progress bar
+        const timeMarkerPct = h.pct_year_elapsed;
+        const pb = document.getElementById('progressBar');
+        const marker = document.createElement('div');
+        marker.className = 'progress-marker';
+        marker.style.left = timeMarkerPct + '%';
+        marker.innerHTML = `<div class="marker-label">${h.pct_year_elapsed}% of year</div>`;
+        pb.appendChild(marker);
+    }
+
+    function renderPaceCards(data) {
+        const p = data.pace;
+        const h = data.headline;
+        const cards = [
+            { value: fmt(p.daily_actual), label: 'Daily Pace', compare: `Need ${fmt(p.daily_required)}/day`, cls: p.pace_ratio >= 1 ? 'up' : 'down' },
+            { value: fmt(h.annual_projection), label: 'Projected Annual', compare: p.pace_ratio >= 1 ? 'On target' : fmt(Math.abs(h.projection_gap)) + ' gap', cls: p.pace_ratio >= 1 ? 'up' : 'neutral' },
+            { value: Math.round(p.stops_per_day), label: 'Stops/Day', compare: `Need ${Math.round(p.required_stops_per_day)}/day`, cls: p.stops_per_day >= p.required_stops_per_day ? 'up' : 'neutral' },
+            { value: (p.pace_vs_fy25_pct > 0 ? '+' : '') + p.pace_vs_fy25_pct + '%', label: 'vs FY2025 Pace', compare: `FY25: ${fmt(p.fy25_daily_pace)}/day`, cls: p.pace_vs_fy25_pct > 0 ? 'up' : 'down' },
+            { value: fmt(h.remaining), label: 'Remaining', compare: `${h.days_remaining} days left`, cls: 'neutral' }
+        ];
+
+        document.getElementById('paceStrip').innerHTML = cards.map(c => `
+            <div class="pace-card">
+                <div class="value">${c.value}</div>
+                <div class="label">${c.label}</div>
+                <div class="compare ${c.cls}">${c.compare}</div>
+            </div>
+        `).join('');
+    }
+
+    function renderMilestones(data) {
+        document.getElementById('milestones').innerHTML = data.milestones.map(m => {
+            const barCls = m.reached ? 'done' : 'progress';
+            const pctColor = m.reached ? '#22c55e' : m.pctToMilestone > 50 ? '#ffd700' : '#94a3b8';
+            return `
+                <div class="milestone">
+                    <div class="icon">${m.icon}</div>
+                    <div class="info">
+                        <div class="name">${m.label}</div>
+                        <div class="eta">${m.estimatedDate}</div>
+                    </div>
+                    <div class="bar-outer">
+                        <div class="bar-inner ${barCls}" style="width: ${m.pctToMilestone}%"></div>
+                    </div>
+                    <div class="pct-label" style="color: ${pctColor}">${m.pctToMilestone}%</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderScenarios(data) {
+        document.getElementById('scenarios').innerHTML = data.scenarios.map(s => `
+            <div class="scenario">
+                <div class="label">${s.label}</div>
+                <div class="desc">${s.description}</div>
+                <div class="result">
+                    <div class="proj">${fmt(s.projected)}</div>
+                    <div class="gap ${s.achievable ? 'up' : 'down'}">${s.achievable ? '✅ Hits target' : fmt(s.gap) + ' gap'}</div>
+                </div>
+                <span class="badge ${s.achievable ? 'yes' : 'no'}">${s.achievable ? 'YES' : 'NO'}</span>
+            </div>
+        `).join('');
+    }
+
+    function renderMonthlyChart(data) {
+        const months = data.monthly_revenue;
+        const maxVal = Math.max(...months.map(m => Math.max(m.actual || 0, m.projected || 0, m.target || 0)));
+
+        document.getElementById('monthlyChart').innerHTML = months.map(m => {
+            const actH = m.actual ? Math.max(2, (m.actual / maxVal) * 150) : 0;
+            const projH = !m.isPast && m.projected ? Math.max(2, (m.projected / maxVal) * 150) : 0;
+            const targH = Math.max(2, (m.target / maxVal) * 150);
+            
+            return `
+                <div class="chart-bar-group">
+                    <div class="amount">${m.actual ? fmt(m.actual) : m.projected ? fmt(m.projected) : ''}</div>
+                    <div class="chart-bars">
+                        ${m.actual ? `<div class="bar actual" style="height: ${actH}px"></div>` : ''}
+                        ${projH ? `<div class="bar projected" style="height: ${projH}px"></div>` : ''}
+                        <div class="bar target-line" style="height: ${targH}px"></div>
+                    </div>
+                    <div class="month" style="${m.isCurrent ? 'color: #ffd700; font-weight: 700' : ''}">${m.month}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderYoY(data) {
+        const c = data.comparisons;
+        const arrow = c.yoy_growth_pct >= 0 ? '📈' : '📉';
+        const color = c.yoy_growth_pct >= 0 ? '#22c55e' : '#ef4444';
+        
+        document.getElementById('yoyComparison').innerHTML = `
+            <div class="compare-box" style="margin-bottom: 12px;">
+                <div class="vs-badge">FY2025</div>
+                <div class="detail">
+                    <div class="line"><strong>${fmt(c.fy2025_revenue)}</strong> total revenue</div>
+                    <div class="line" style="color: #64748b">${fmt(c.fy2025_daily)}/day average</div>
+                </div>
+                <div class="arrow">${arrow}</div>
+            </div>
+            <div class="compare-box">
+                <div class="vs-badge" style="background: rgba(139,92,246,0.15); color: #8b5cf6;">2026</div>
+                <div class="detail">
+                    <div class="line"><strong>${fmt(data.headline.annual_projection)}</strong> projected</div>
+                    <div class="line" style="color: ${color}">${c.yoy_growth_pct > 0 ? '+' : ''}${c.yoy_growth_pct}% vs FY2025</div>
+                </div>
+                <div class="arrow">🎯</div>
+            </div>
+            <div style="text-align: center; margin-top: 16px; padding: 12px; background: rgba(255,215,0,0.06); border-radius: 10px;">
+                <div style="font-size: 0.8rem; color: #94a3b8;">$5M target = <strong style="color: #ffd700">+${data.comparisons.target_vs_fy25_pct}%</strong> growth over FY2025</div>
+            </div>
+        `;
+    }
+
+    function renderLevers(data) {
+        const p = data.pace;
+        const h = data.headline;
+        const gap = Math.max(0, h.projection_gap);
+
+        const levers = [
+            {
+                icon: '👷',
+                title: 'Hire More Technicians',
+                detail: `Each new tech adds ~$240K/yr capacity at 10 stops/day. Need ${Math.ceil(gap / 240000)} additional techs at current revenue per stop.`,
+                impact: 'High'
+            },
+            {
+                icon: '💰',
+                title: 'Increase Revenue Per Stop',
+                detail: `Current avg: $${Math.round(p.daily_actual / p.stops_per_day)}. A $10 increase = +$${Math.round(p.stops_per_day * 10 * 260 / 1000)}K/yr. Push upsells, premium services.`,
+                impact: 'Medium'
+            },
+            {
+                icon: '📈',
+                title: 'Reduce Cancellations',
+                detail: `Each saved customer = ~$800-1,200/yr in recurring revenue. Focus on first 90-day retention and win-back campaigns.`,
+                impact: 'High'
+            },
+            {
+                icon: '🔄',
+                title: 'Increase Stops Per Tech',
+                detail: `Current: ${p.stops_per_day} total → ${Math.round(p.stops_per_day / 11 * 10) / 10}/tech. Route optimization and scheduling can add 1-2 stops/tech/day.`,
+                impact: 'Medium'
+            },
+            {
+                icon: '📣',
+                title: 'Accelerate Customer Acquisition',
+                detail: `Increase marketing spend ROI. Each new customer = ~$93/visit × 10-12 visits = $930-1,116/yr.`,
+                impact: 'High'
+            }
+        ];
+
+        document.getElementById('levers').innerHTML = levers.map(l => `
+            <div style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+                <div style="font-size: 1.3rem; flex-shrink: 0;">${l.icon}</div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 2px;">${l.title}</div>
+                    <div style="font-size: 0.78rem; color: #94a3b8; line-height: 1.4;">${l.detail}</div>
+                </div>
+                <div style="padding: 2px 8px; border-radius: 8px; font-size: 0.65rem; font-weight: 600; height: fit-content; ${l.impact === 'High' ? 'background: rgba(34,197,94,0.15); color: #22c55e;' : 'background: rgba(245,158,11,0.15); color: #f59e0b;'}">${l.impact}</div>
+            </div>
+        `).join('');
+    }
+
+    async function init() {
+        const data = await loadData();
+        if (!data) return;
+
+        renderHero(data);
+        renderPaceCards(data);
+        renderMilestones(data);
+        renderScenarios(data);
+        renderMonthlyChart(data);
+        renderYoY(data);
+        renderLevers(data);
+    }
+
+    init();
+    </script>
+</body>
+</html>

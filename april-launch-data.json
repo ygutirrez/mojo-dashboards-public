@@ -1,0 +1,251 @@
+{
+  "generated_at": "2026-03-31T03:10:18.141Z",
+  "title": "April Peak Season Launch Report",
+  "hero": {
+    "active_customers": 2003,
+    "ytd_revenue": 587091,
+    "q1_net": -17,
+    "april_projection_net": 68,
+    "recovery_opportunity": 62900,
+    "readiness_score": 67
+  },
+  "q1_summary": {
+    "months": [
+      {
+        "month": "January",
+        "sales": 12,
+        "cancels": 39,
+        "revenue": 0,
+        "net": -27
+      },
+      {
+        "month": "February",
+        "sales": 15,
+        "cancels": 36,
+        "revenue": 0,
+        "net": -21
+      },
+      {
+        "month": "March",
+        "sales": 77,
+        "cancels": 46,
+        "revenue": 0,
+        "net": 31
+      }
+    ],
+    "total_sales": 104,
+    "total_cancels": 121,
+    "cancel_events": 362,
+    "unique_cancel_accounts": 109,
+    "net_customers": -17,
+    "total_revenue": 587091.2999999643,
+    "total_invoices": 5991,
+    "avg_per_invoice": 98,
+    "total_visits": 6041,
+    "trend": "improving"
+  },
+  "april_projections": {
+    "sales_projection": 100,
+    "cancel_projection": 32,
+    "net_projection": 68,
+    "revenue_projection": 267160,
+    "visits_projection": 2091
+  },
+  "tech_capacity": {
+    "active_techs": 11,
+    "total_visits_ytd": 6041,
+    "avg_visits_per_tech_per_day": 8.7,
+    "estimated_daily_capacity": 96,
+    "peak_season_capacity_needed": 134,
+    "capacity_gap": 38,
+    "top_performers": [
+      {
+        "name": "Joseph  Pagan",
+        "visits": 523,
+        "revenue": 80076,
+        "avg_per_visit": 153
+      },
+      {
+        "name": "Damian Machin",
+        "visits": 838,
+        "revenue": 77798,
+        "avg_per_visit": 93
+      },
+      {
+        "name": "Stanley Prophete",
+        "visits": 775,
+        "revenue": 71968,
+        "avg_per_visit": 93
+      }
+    ],
+    "efficiency_concern": [
+      {
+        "name": "Jeffrey Baptiste",
+        "visits": 262,
+        "pct_of_avg": 48
+      },
+      {
+        "name": "Jeovany  Osorio",
+        "visits": 183,
+        "pct_of_avg": 33
+      },
+      {
+        "name": "Travis Johnson",
+        "visits": 167,
+        "pct_of_avg": 30
+      }
+    ]
+  },
+  "retention_opportunity": {
+    "recoverable_count": 37,
+    "estimated_value": 62900,
+    "by_reason": {
+      "Paused/WP": 24,
+      "Financial": 5,
+      "Not Interested": 6,
+      "Unhappy": 2
+    },
+    "paused_wp_count": 24,
+    "seasonal_return_probability": 0.35,
+    "expected_returns": 8,
+    "expected_value": 13600
+  },
+  "readiness": {
+    "score": 67,
+    "items": [
+      {
+        "category": "Sales & Growth",
+        "checks": [
+          {
+            "name": "March showed positive net growth",
+            "status": "pass",
+            "detail": "March: +31 net customers"
+          },
+          {
+            "name": "Outreach campaign ready for paused customers",
+            "status": "action",
+            "detail": "24 paused customers to contact"
+          },
+          {
+            "name": "Sales trajectory improving",
+            "status": "pass",
+            "detail": "Feb: 15 → Mar: 77"
+          }
+        ]
+      },
+      {
+        "category": "Operations",
+        "checks": [
+          {
+            "name": "Tech team at capacity",
+            "status": "pass",
+            "detail": "11 active techs"
+          },
+          {
+            "name": "Daily visit capacity sufficient",
+            "status": "warn",
+            "detail": "Gap of 38 visits/day at peak"
+          },
+          {
+            "name": "All techs meeting performance baseline",
+            "status": "warn",
+            "detail": "3 tech(s) below 50% avg"
+          }
+        ]
+      },
+      {
+        "category": "Retention",
+        "checks": [
+          {
+            "name": "Cancel rate trending down",
+            "status": "fail",
+            "detail": "Feb: 36 → Mar: 46"
+          },
+          {
+            "name": "Recoverable customers identified",
+            "status": "pass",
+            "detail": "37 recoverable ($62,900 value)"
+          },
+          {
+            "name": "Seasonal reactivation calls scheduled",
+            "status": "action",
+            "detail": "24 paused/WP accounts need spring reactivation calls"
+          }
+        ]
+      },
+      {
+        "category": "Systems",
+        "checks": [
+          {
+            "name": "Dashboard pipeline healthy",
+            "status": "pass",
+            "detail": "45 dashboards, data pipeline automated"
+          },
+          {
+            "name": "ServSuite exports running nightly",
+            "status": "pass",
+            "detail": "Automated 19-report export"
+          },
+          {
+            "name": "KPI monitoring active",
+            "status": "pass",
+            "detail": "Anomaly detection, freshness monitoring, pipeline watchdog"
+          }
+        ]
+      }
+    ]
+  },
+  "action_items": [
+    {
+      "priority": 1,
+      "category": "Revenue Recovery",
+      "action": "Call 24 paused/WP customers for spring reactivation",
+      "impact": "$13,600/yr expected recovery",
+      "owner": "CSR Team (Lucy + Norma)",
+      "deadline": "April 1-7"
+    },
+    {
+      "priority": 2,
+      "category": "Sales Growth",
+      "action": "Launch Google Ads PMax campaign for April",
+      "impact": "Capture peak season demand — each week of delay costs ~$2K in missed leads",
+      "owner": "Yoel / CMO",
+      "deadline": "April 1"
+    },
+    {
+      "priority": 3,
+      "category": "Operations",
+      "action": "Route optimization for 40% volume increase",
+      "impact": "Need 134 visits/day vs current 96",
+      "owner": "Travis",
+      "deadline": "April 1"
+    },
+    {
+      "priority": 4,
+      "category": "Retention",
+      "action": "Deploy \"Unhappy\" recovery protocol for 2 unhappy cancels",
+      "impact": "$3,400/yr at stake — complimentary re-service + manager follow-up",
+      "owner": "Travis / CSR Team",
+      "deadline": "This week"
+    },
+    {
+      "priority": 5,
+      "category": "Marketing",
+      "action": "Neighbor postcard campaign around existing customers",
+      "impact": "Leverage geographic density for organic growth",
+      "owner": "CMO",
+      "deadline": "April 7"
+    }
+  ],
+  "season_context": {
+    "peak_months": "April through October",
+    "historical_lift": "30-40% revenue increase vs off-season",
+    "key_pests": [
+      "Mosquitoes",
+      "Noseeums",
+      "Fleas/Ticks"
+    ],
+    "weather_factor": "Miami wet season starts May — mosquito breeding accelerates",
+    "competitor_note": "Competitors also ramping — first-mover advantage in reactivation is critical"
+  }
+}

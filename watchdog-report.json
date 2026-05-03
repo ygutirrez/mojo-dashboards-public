@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-03-31T03:06:25.430Z",
+  "date": "2026-03-31",
+  "status": "critical",
+  "checks": [
+    {
+      "name": "Pipeline ran today",
+      "status": "fail",
+      "details": "No log file found: /Users/ygutierrez/clawd/projects/mojo-dashboard/logs/nightly-sync-2026-03-31.log"
+    },
+    {
+      "name": "Sales data freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Cancel data freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Invoice data freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Tech/WO data freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Sales KPI freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Cancel analysis freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "Scorecard freshness",
+      "status": "pass",
+      "details": "0h old"
+    },
+    {
+      "name": "GH Pages deploy",
+      "status": "warn",
+      "details": "Deploy repo not found at /tmp/mojo-dashboards"
+    },
+    {
+      "name": "Sales CSV freshness",
+      "status": "pass",
+      "details": "sales-data-2026-03-30.csv: 0h old"
+    }
+  ],
+  "warnings": [],
+  "criticals": [
+    "No pipeline log for today. Nightly sync did not run."
+  ],
+  "fixes_applied": [],
+  "summary": "8/10 checks passing. 1 critical, 0 warnings."
+}

@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-04-23T17:28:20.051Z",
+  "summary": {
+    "total": 5,
+    "critical": 1,
+    "warning": 1,
+    "info": 3,
+    "overall": "critical",
+    "health_score": 100,
+    "pipeline_status": "warn"
+  },
+  "alerts": [
+    {
+      "id": "pipeline-Health Check:HEALTH CHECK: 1 errors, 4 warnings (38/43 passed)",
+      "level": "warning",
+      "category": "pipeline",
+      "message": "Pipeline step failed: Health Check",
+      "detail": "HEALTH CHECK: 1 errors, 4 warnings (38/43 passed)",
+      "timestamp": "2026-04-04T08:43:29Z",
+      "source": "pipeline-status"
+    },
+    {
+      "id": "anomaly-seasonal-info",
+      "level": "info",
+      "category": "seasonal",
+      "message": "🔥 Peak season (month 4/12) — maximize revenue and customer retention",
+      "detail": "Focus on: route efficiency, upsells, review collection, referral programs",
+      "timestamp": "2026-04-04T08:43:29.408Z",
+      "source": "anomaly-detector"
+    },
+    {
+      "id": "anomaly-operations-info",
+      "level": "info",
+      "category": "operations",
+      "message": "2 tech(s) below 50% of avg visits (599)",
+      "detail": "Travis Johnson: 185, Jeovany  Osorio: 183",
+      "timestamp": "2026-04-04T08:43:29.407Z",
+      "source": "anomaly-detector"
+    },
+    {
+      "id": "anomaly-cancellations-info",
+      "level": "info",
+      "category": "cancellations",
+      "message": "109 potentially recoverable cancels (29%)",
+      "detail": "Win-back campaigns could target these",
+      "timestamp": "2026-04-04T08:43:29.406Z",
+      "source": "anomaly-detector"
+    },
+    {
+      "id": "anomaly-revenue-critical",
+      "level": "critical",
+      "category": "revenue",
+      "message": "Revenue pace at 49% of $5M target",
+      "detail": "Projected: $2,472,596 vs target $5,000,000",
+      "timestamp": "2026-04-04T08:43:29.406Z",
+      "source": "anomaly-detector"
+    }
+  ],
+  "kpi_history": [
+    {
+      "date": "2026-03-29",
+      "timestamp": "2026-03-29T08:45:22Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 48.7% of $5M (projected: $2,435,095)",
+        "🟡 Cancel ratio elevated: 3.5x (362 cancels vs 103 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-01",
+      "timestamp": "2026-04-01T08:45:53Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 48.5% of $5M (projected: $2,427,188)",
+        "🟡 Cancel ratio elevated: 3.1x (367 cancels vs 119 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-02",
+      "timestamp": "2026-04-02T08:48:22Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 49% of $5M (projected: $2,449,471)",
+        "🟡 Cancel ratio elevated: 3.0x (373 cancels vs 123 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-04",
+      "timestamp": "2026-04-04T08:43:32Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 49.5% of $5M (projected: $2,472,596)",
+        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-05",
+      "timestamp": "2026-04-05T08:47:08Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 48.9% of $5M (projected: $2,446,569)",
+        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-06",
+      "timestamp": "2026-04-06T08:45:07Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 48.4% of $5M (projected: $2,421,084)",
+        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    },
+    {
+      "date": "2026-04-08",
+      "timestamp": "2026-04-08T08:43:40Z",
+      "level": "warn",
+      "count": 3,
+      "alerts": [
+        "🟡 Revenue pace below target: 48.7% of $5M (projected: $2,435,081)",
+        "🟡 Cancel ratio elevated: 2.7x (387 cancels vs 142 sales)",
+        "🟡 Fleet: 9 vehicles with active trouble codes"
+      ]
+    }
+  ],
+  "sources": {
+    "anomaly": {
+      "count": 4,
+      "generated_at": "2026-04-04T08:43:29.426Z"
+    },
+    "pipeline": {
+      "status": "warn",
+      "total": 12,
+      "failed": 1,
+      "generated_at": "2026-04-04T08:43:29Z"
+    },
+    "fleet": {
+      "vehicles": 14,
+      "withTrouble": 0,
+      "generated_at": "2026-04-23T17:28:18.781Z"
+    },
+    "sync": {
+      "health_score": 100,
+      "total": 17,
+      "stale": 0,
+      "generated_at": "2026-04-04T08:43:31.672Z"
+    }
+  }
+}

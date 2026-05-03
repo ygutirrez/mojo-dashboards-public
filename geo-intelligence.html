@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geographic Intelligence — MoJo Pest Control</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy: #1a1a2e;
+  --navy-light: #16213e;
+  --navy-mid: #0f3460;
+  --teal: #00b4d8;
+  --teal-dark: #0096b7;
+  --teal-light: #48cae4;
+  --white: #ffffff;
+  --gray-50: #f8f9fa;
+  --gray-100: #e9ecef;
+  --gray-200: #dee2e6;
+  --gray-300: #ced4da;
+  --gray-500: #6c757d;
+  --gray-700: #495057;
+  --gray-900: #212529;
+  --red: #e63946;
+  --red-light: #ff6b6b;
+  --yellow: #f4a261;
+  --yellow-light: #ffd166;
+  --green: #06d6a0;
+  --green-light: #2dc653;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.6;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-mid) 100%);
+  color: var(--white);
+  padding: 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.header h1 span { color: var(--teal); }
+.header-subtitle {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+.header-actions { display: flex; gap: 0.75rem; align-items: center; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+.btn-teal { background: var(--teal); color: var(--white); }
+.btn-teal:hover { background: var(--teal-dark); }
+.timestamp {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Layout */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Hero Stats */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+}
+.hero-card.teal::after { background: var(--teal); }
+.hero-card.red::after { background: var(--red); }
+.hero-card.yellow::after { background: var(--yellow); }
+.hero-card.green::after { background: var(--green); }
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  margin-bottom: 0.25rem;
+}
+.hero-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.hero-detail {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+/* Section */
+.section {
+  margin-bottom: 1.5rem;
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-title .icon { font-size: 1.25rem; }
+
+/* Heatmap Grid */
+.heatmap-container {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.legend-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+.heatmap-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-start;
+}
+.heatmap-cell {
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.heatmap-cell:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+.heatmap-cell.selected {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+  transform: translateY(-3px);
+}
+.heatmap-cell .zip-code {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+.heatmap-cell .neighborhood-name {
+  font-size: 0.65rem;
+  opacity: 0.9;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.heatmap-cell .event-count {
+  font-size: 0.7rem;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* Tooltip */
+.heatmap-tooltip {
+  display: none;
+  position: fixed;
+  background: var(--navy);
+  color: var(--white);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: var(--shadow-lg);
+  min-width: 220px;
+}
+.heatmap-tooltip.visible { display: block; }
+.heatmap-tooltip h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--teal);
+}
+.heatmap-tooltip .tt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+.heatmap-tooltip .tt-label { opacity: 0.7; }
+.heatmap-tooltip .tt-value { font-weight: 600; }
+
+/* Risk Cards */
+.risk-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.risk-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  border-left: 4px solid var(--red);
+  transition: transform 0.2s;
+}
+.risk-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.risk-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+.risk-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.risk-card-zip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--gray-100);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--gray-700);
+}
+.risk-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.risk-badge.high { background: rgba(230,57,70,0.12); color: var(--red); }
+.risk-badge.medium { background: rgba(244,162,97,0.12); color: #e76f51; }
+.risk-badge.low { background: rgba(6,214,160,0.12); color: #059669; }
+.risk-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.risk-stat-label {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.risk-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.risk-card-action {
+  font-size: 0.78rem;
+  color: var(--gray-700);
+  background: var(--gray-50);
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+  border-left: 3px solid var(--teal);
+}
+
+/* Charts Row */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.chart-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.chart-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+/* North vs South */
+.ns-container {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.ns-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.ns-panel {
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--gray-50);
+}
+.ns-panel h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ns-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.85rem;
+}
+.ns-stat-label { color: var(--gray-500); }
+.ns-stat-value { font-weight: 700; color: var(--navy); }
+.ns-vs {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gray-300);
+  text-align: center;
+}
+.ns-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--gray-200);
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+.ns-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+
+/* Recommendations */
+.recs-container {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.rec-section {
+  margin-bottom: 1.25rem;
+}
+.rec-section:last-child { margin-bottom: 0; }
+.rec-section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.rec-section-title.danger { color: var(--red); }
+.rec-section-title.warning { color: #e76f51; }
+.rec-section-title.success { color: #059669; }
+.rec-item {
+  background: var(--gray-50);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.rec-item strong { color: var(--navy); }
+.rec-priority {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+}
+.rec-priority.critical { background: var(--red); color: white; }
+.rec-priority.high { background: var(--yellow); color: var(--navy); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--gray-500);
+  font-size: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: repeat(2, 1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  .ns-grid { grid-template-columns: 1fr; }
+  .ns-vs { display: none; }
+}
+@media (max-width: 640px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .header-content { flex-direction: column; gap: 1rem; align-items: flex-start; }
+  .container { padding: 1rem; }
+  .risk-cards { grid-template-columns: 1fr; }
+}
+
+/* Print */
+@media print {
+  .header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .btn { display: none !important; }
+  .heatmap-cell { break-inside: avoid; }
+  .section { break-inside: avoid; }
+  body { background: white; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-content">
+    <div>
+      <h1>🗺️ <span>Geographic</span> Intelligence</h1>
+      <div class="header-subtitle">MoJo Pest Control — Miami-Dade County Cancel Heatmap</div>
+    </div>
+    <div class="header-actions">
+      <a href="hub.html" class="btn btn-outline">← Back to Hub</a>
+      <button class="btn btn-teal" onclick="window.print()">🖨️ Print</button>
+      <div class="timestamp" id="timestamp"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Hero Stats -->
+  <div class="hero-grid" id="heroGrid"></div>
+
+  <!-- Cancel Heatmap -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔥</span> Cancel Heatmap — Zip Code Risk Grid</div>
+    <div class="heatmap-container">
+      <div class="heatmap-legend">
+        <span style="font-weight:600;color:var(--gray-700)">Intensity:</span>
+        <div class="legend-item"><div class="legend-swatch" style="background:#06d6a0"></div> Low (≤3.0)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#f4a261"></div> Medium (3.0–4.0)</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:#e63946"></div> High (>4.0)</div>
+        <span style="margin-left:auto;font-style:italic">Size = cancel events · Color = churn intensity</span>
+      </div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+    </div>
+  </div>
+
+  <!-- Top 5 Risk Zones -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚠️</span> Top 5 Risk Zones</div>
+    <div class="risk-cards" id="riskCards"></div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>📊 Cancel Events by Neighborhood</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>🎯 Risk Distribution</h3>
+      <canvas id="doughnutChart"></canvas>
+    </div>
+  </div>
+
+  <!-- North vs South -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🧭</span> North vs South Miami-Dade Analysis</div>
+    <div class="ns-container" id="nsContainer"></div>
+  </div>
+
+  <!-- Strategic Recommendations -->
+  <div class="section">
+    <div class="section-title"><span class="icon">💡</span> Strategic Recommendations</div>
+    <div class="recs-container" id="recsContainer"></div>
+  </div>
+</div>
+
+<div class="footer">
+  MoJo Pest Control — Geographic Intelligence Dashboard · Auto-generated from ServSuite cancel data
+</div>
+
+<div class="heatmap-tooltip" id="tooltip"></div>
+
+<script>
+let DATA = null;
+let selectedZip = null;
+
+// Color helpers
+function intensityColor(density) {
+  if (density > 4.0) return '#e63946';
+  if (density > 3.5) return '#f4722b';
+  if (density > 3.0) return '#f4a261';
+  if (density > 2.5) return '#e9c46a';
+  return '#06d6a0';
+}
+
+function intensityBg(density) {
+  if (density > 4.0) return 'linear-gradient(135deg, #e63946, #c1121f)';
+  if (density > 3.5) return 'linear-gradient(135deg, #f4722b, #e76f51)';
+  if (density > 3.0) return 'linear-gradient(135deg, #f4a261, #e9c46a)';
+  if (density > 2.5) return 'linear-gradient(135deg, #e9c46a, #90be6d)';
+  return 'linear-gradient(135deg, #06d6a0, #2dc653)';
+}
+
+function riskColor(risk) {
+  return risk === 'High' ? '#e63946' : risk === 'Medium' ? '#f4a261' : '#06d6a0';
+}
+
+// Build hero stats
+function buildHero(data) {
+  const s = data.summary;
+  const cards = [
+    { label: 'Zip Codes Tracked', value: s.totalZipCodes, detail: 'Miami-Dade County', cls: 'teal' },
+    { label: 'Total Cancel Events', value: s.totalCancelEvents, detail: `of ${s.overallCancelEvents} total YTD`, cls: 'red' },
+    { label: 'Highest Risk Zone', value: s.highestRiskZip, detail: s.highestRiskNeighborhood, cls: 'yellow' },
+    { label: 'Accounts Affected', value: s.totalAccountsAffected, detail: `of ${s.overallUniqueAccounts} total cancelled`, cls: 'green' }
+  ];
+  document.getElementById('heroGrid').innerHTML = cards.map(c => `
+    <div class="hero-card ${c.cls}">
+      <div class="hero-label">${c.label}</div>
+      <div class="hero-value">${c.value}</div>
+      <div class="hero-detail">${c.detail}</div>
+    </div>
+  `).join('');
+}
+
+// Build heatmap grid
+function buildHeatmap(data) {
+  const grid = document.getElementById('heatmapGrid');
+  const maxEvents = Math.max(...data.zipData.map(z => z.cancelEvents));
+  const minEvents = Math.min(...data.zipData.map(z => z.cancelEvents));
+
+  grid.innerHTML = data.zipData.map(z => {
+    // Size: proportional to cancel events
+    const ratio = (z.cancelEvents - minEvents) / (maxEvents - minEvents || 1);
+    const minW = 100;
+    const maxW = 200;
+    const width = Math.round(minW + ratio * (maxW - minW));
+    const minH = 80;
+    const maxH = 130;
+    const height = Math.round(minH + ratio * (maxH - minH));
+
+    return `<div class="heatmap-cell" 
+      data-zip="${z.zip}"
+      style="width:${width}px;height:${height}px;background:${intensityBg(z.cancelDensity)};flex-grow:${Math.ceil(ratio * 3 + 1)}"
+      onmouseenter="showTooltip(event,'${z.zip}')"
+      onmousemove="moveTooltip(event)"
+      onmouseleave="hideTooltip()"
+      onclick="selectZip('${z.zip}')">
+      <div class="zip-code">${z.zip}</div>
+      <div class="neighborhood-name">${z.neighborhood}</div>
+      <div class="event-count">${z.cancelEvents} events · ${z.cancelDensity}/acct</div>
+    </div>`;
+  }).join('');
+}
+
+// Tooltip
+function showTooltip(evt, zip) {
+  const z = DATA.zipData.find(d => d.zip === zip);
+  if (!z) return;
+  const tt = document.getElementById('tooltip');
+  tt.innerHTML = `
+    <h4>${z.neighborhood}</h4>
+    <div class="tt-row"><span class="tt-label">Zip Code</span><span class="tt-value">${z.zip}</span></div>
+    <div class="tt-row"><span class="tt-label">Cancel Events</span><span class="tt-value">${z.cancelEvents}</span></div>
+    <div class="tt-row"><span class="tt-label">Accounts</span><span class="tt-value">${z.uniqueAccounts}</span></div>
+    <div class="tt-row"><span class="tt-label">Intensity</span><span class="tt-value">${z.cancelDensity} events/acct</span></div>
+    <div class="tt-row"><span class="tt-label">Risk Level</span><span class="tt-value" style="color:${riskColor(z.risk)}">${z.risk}</span></div>
+    <div class="tt-row"><span class="tt-label">Est. Active</span><span class="tt-value">~${z.estimatedActive}</span></div>
+    <div class="tt-row"><span class="tt-label">Cancel Rate</span><span class="tt-value">${z.cancelRate}%</span></div>
+    <div class="tt-row"><span class="tt-label">Region</span><span class="tt-value">${z.region}</span></div>
+  `;
+  tt.classList.add('visible');
+  moveTooltip(evt);
+}
+function moveTooltip(evt) {
+  const tt = document.getElementById('tooltip');
+  const x = evt.clientX + 16;
+  const y = evt.clientY - 10;
+  tt.style.left = (x + 240 > window.innerWidth ? evt.clientX - 256 : x) + 'px';
+  tt.style.top = (y + 200 > window.innerHeight ? y - 180 : y) + 'px';
+}
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('visible');
+}
+
+function selectZip(zip) {
+  document.querySelectorAll('.heatmap-cell').forEach(el => el.classList.remove('selected'));
+  if (selectedZip === zip) { selectedZip = null; return; }
+  selectedZip = zip;
+  const cell = document.querySelector(`.heatmap-cell[data-zip="${zip}"]`);
+  if (cell) cell.classList.add('selected');
+}
+
+// Risk Cards
+function buildRiskCards(data) {
+  const top5 = data.zipData.slice(0, 5);
+  document.getElementById('riskCards').innerHTML = top5.map((z, i) => `
+    <div class="risk-card" style="border-left-color:${riskColor(z.risk)}">
+      <div class="risk-card-header">
+        <div>
+          <div class="risk-card-title">#${i + 1} ${z.neighborhood}</div>
+          <span class="risk-card-zip">${z.zip}</span>
+          <span class="risk-badge ${z.risk.toLowerCase()}">${z.risk} Risk</span>
+        </div>
+      </div>
+      <div class="risk-card-stats">
+        <div>
+          <div class="risk-stat-label">Cancel Events</div>
+          <div class="risk-stat-value">${z.cancelEvents}</div>
+        </div>
+        <div>
+          <div class="risk-stat-label">Accounts</div>
+          <div class="risk-stat-value">${z.uniqueAccounts}</div>
+        </div>
+        <div>
+          <div class="risk-stat-label">Intensity</div>
+          <div class="risk-stat-value">${z.cancelDensity}<small>/acct</small></div>
+        </div>
+        <div>
+          <div class="risk-stat-label">Cancel Rate</div>
+          <div class="risk-stat-value">${z.cancelRate}%</div>
+        </div>
+      </div>
+      <div class="risk-card-action">💡 ${z.recommendedAction}</div>
+    </div>
+  `).join('');
+}
+
+// Charts
+function buildBarChart(data) {
+  const sorted = [...data.zipData].sort((a, b) => b.cancelEvents - a.cancelEvents);
+  const ctx = document.getElementById('barChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: sorted.map(z => z.neighborhood.length > 20 ? z.neighborhood.substring(0, 18) + '…' : z.neighborhood),
+      datasets: [{
+        label: 'Cancel Events',
+        data: sorted.map(z => z.cancelEvents),
+        backgroundColor: sorted.map(z => intensityColor(z.cancelDensity) + 'cc'),
+        borderColor: sorted.map(z => intensityColor(z.cancelDensity)),
+        borderWidth: 1.5,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            afterLabel: function(ctx) {
+              const z = sorted[ctx.dataIndex];
+              return `Accounts: ${z.uniqueAccounts} · Intensity: ${z.cancelDensity}/acct`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, title: { display: true, text: 'Cancel Events', font: { size: 11 } } },
+        y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+      }
+    }
+  });
+  // Set canvas parent height for horizontal bar
+  document.getElementById('barChart').parentElement.style.minHeight = (sorted.length * 36 + 80) + 'px';
+}
+
+function buildDoughnutChart(data) {
+  const rd = data.riskDistribution;
+  const ctx = document.getElementById('doughnutChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['High Risk', 'Medium Risk', 'Low Risk'],
+      datasets: [{
+        data: [rd.High, rd.Medium, rd.Low],
+        backgroundColor: ['#e63946cc', '#f4a261cc', '#06d6a0cc'],
+        borderColor: ['#e63946', '#f4a261', '#06d6a0'],
+        borderWidth: 2,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: '55%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { padding: 20, usePointStyle: true, pointStyle: 'circle', font: { size: 12, weight: '600' } }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const total = rd.High + rd.Medium + rd.Low;
+              const pct = ((ctx.parsed / total) * 100).toFixed(0);
+              return ` ${ctx.label}: ${ctx.parsed} zones (${pct}%)`;
+            }
+          }
+        }
+      }
+    },
+    plugins: [{
+      id: 'centerText',
+      afterDraw(chart) {
+        const { ctx, width, height } = chart;
+        const total = rd.High + rd.Medium + rd.Low;
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = 'bold 28px -apple-system, sans-serif';
+        ctx.fillStyle = '#1a1a2e';
+        ctx.fillText(total, width / 2, height / 2 - 8);
+        ctx.font = '12px -apple-system, sans-serif';
+        ctx.fillStyle = '#6c757d';
+        ctx.fillText('ZIP CODES', width / 2, height / 2 + 16);
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+// North vs South
+function buildNorthSouth(data) {
+  const ns = data.northSouthAnalysis;
+  const totalEvents = ns.north.totalEvents + ns.south.totalEvents;
+  const northPct = ((ns.north.totalEvents / totalEvents) * 100).toFixed(0);
+  const southPct = ((ns.south.totalEvents / totalEvents) * 100).toFixed(0);
+
+  document.getElementById('nsContainer').innerHTML = `
+    <div class="ns-grid">
+      <div class="ns-panel">
+        <h4>🏙️ ${ns.north.label}</h4>
+        <div style="font-size:0.78rem;color:var(--gray-500);margin-bottom:0.75rem">${ns.north.description}</div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Zip Codes</span><span class="ns-stat-value">${ns.north.zipCount}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Cancel Events</span><span class="ns-stat-value">${ns.north.totalEvents}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Accounts Affected</span><span class="ns-stat-value">${ns.north.totalAccounts}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Avg Intensity</span><span class="ns-stat-value">${ns.north.avgDensity}/acct</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">High Risk Zones</span><span class="ns-stat-value" style="color:var(--red)">${ns.north.highRiskCount}</span></div>
+        <div class="ns-bar"><div class="ns-bar-fill" style="width:${northPct}%;background:var(--teal)"></div></div>
+        <div style="font-size:0.75rem;color:var(--gray-500);margin-top:4px">${northPct}% of tracked cancels</div>
+      </div>
+      <div class="ns-vs">VS</div>
+      <div class="ns-panel">
+        <h4>🌴 ${ns.south.label}</h4>
+        <div style="font-size:0.78rem;color:var(--gray-500);margin-bottom:0.75rem">${ns.south.description}</div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Zip Codes</span><span class="ns-stat-value">${ns.south.zipCount}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Cancel Events</span><span class="ns-stat-value">${ns.south.totalEvents}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Accounts Affected</span><span class="ns-stat-value">${ns.south.totalAccounts}</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">Avg Intensity</span><span class="ns-stat-value">${ns.south.avgDensity}/acct</span></div>
+        <div class="ns-stat-row"><span class="ns-stat-label">High Risk Zones</span><span class="ns-stat-value" style="color:var(--red)">${ns.south.highRiskCount}</span></div>
+        <div class="ns-bar"><div class="ns-bar-fill" style="width:${southPct}%;background:var(--yellow)"></div></div>
+        <div style="font-size:0.75rem;color:var(--gray-500);margin-top:4px">${southPct}% of tracked cancels</div>
+      </div>
+    </div>
+    <div style="margin-top:1.25rem;padding:1rem;background:var(--gray-50);border-radius:var(--radius-sm);font-size:0.85rem;line-height:1.6">
+      <strong>Key Insight:</strong> ${
+        ns.north.avgDensity > ns.south.avgDensity
+        ? `North Miami-Dade has higher average churn intensity (${ns.north.avgDensity} vs ${ns.south.avgDensity} events/account) despite fewer tracked zip codes, suggesting concentrated service issues in the urban core.`
+        : `South Miami-Dade shows higher churn intensity (${ns.south.avgDensity} vs ${ns.north.avgDensity} events/account) across more zip codes, indicating broader but potentially less concentrated retention challenges spread across suburban areas.`
+      }
+      ${ns.north.totalEvents > ns.south.totalEvents
+        ? `The North accounts for ${northPct}% of tracked cancel events with only ${ns.north.zipCount} zip codes — a concerning density that warrants immediate attention.`
+        : `The South leads with ${southPct}% of cancel events across ${ns.south.zipCount} zip codes — the wider geographic spread may indicate route/logistics factors.`
+      }
+    </div>
+  `;
+}
+
+// Recommendations
+function buildRecommendations(data) {
+  const recs = data.strategicRecommendations;
+  let html = '';
+
+  // Retention Focus
+  html += `<div class="rec-section">
+    <div class="rec-section-title danger">🚨 Priority Retention Focus</div>`;
+  recs.retentionFocus.forEach(r => {
+    html += `<div class="rec-item">
+      <strong>${r.neighborhood}</strong> (${r.zip})
+      <span class="rec-priority ${r.priority.toLowerCase()}">${r.priority}</span>
+      <br>${r.reason}
+    </div>`;
+  });
+  html += '</div>';
+
+  // Avoid Expansion
+  html += `<div class="rec-section">
+    <div class="rec-section-title warning">⛔ Caution — High Churn Intensity Zones</div>`;
+  if (recs.avoidExpansion.length === 0) {
+    html += '<div class="rec-item">No zones currently flagged for expansion caution.</div>';
+  }
+  recs.avoidExpansion.forEach(r => {
+    html += `<div class="rec-item">
+      <strong>${r.neighborhood}</strong> (${r.zip}) — ${r.reason}
+    </div>`;
+  });
+  html += '</div>';
+
+  // Double Down
+  html += `<div class="rec-section">
+    <div class="rec-section-title success">✅ Growth Opportunity Zones</div>`;
+  recs.doubleDown.forEach(r => {
+    html += `<div class="rec-item">
+      <strong>${r.neighborhood}</strong> (${r.zip}) — ${r.reason}
+      <br><em>Est. active customers: ~${r.estimatedActive}</em>
+    </div>`;
+  });
+  html += '</div>';
+
+  document.getElementById('recsContainer').innerHTML = html;
+}
+
+// Load data and render
+async function init() {
+  try {
+    let resp = await fetch('geo-intelligence-data.json?t=' + Date.now());
+    if (!resp.ok) resp = await fetch('data/geo-intelligence-data.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('Failed to load data');
+    DATA = await resp.json();
+  } catch (e) {
+    // Fallback: try relative path variants
+    try {
+      let resp2 = await fetch('geo-intelligence-data.json?t=' + Date.now());
+      if (!resp2.ok) resp2 = await fetch('./data/geo-intelligence-data.json?t=' + Date.now());
+      const resp = resp2;
+      DATA = await resp.json();
+    } catch (e2) {
+      document.querySelector('.container').innerHTML = `
+        <div style="text-align:center;padding:3rem;color:var(--red)">
+          <h2>⚠️ Data Not Found</h2>
+          <p>Run <code>node scripts/build-geo-intelligence.js</code> first to generate the data.</p>
+        </div>`;
+      return;
+    }
+  }
+
+  // Timestamp
+  const ts = new Date(DATA.generated_at);
+  document.getElementById('timestamp').textContent = `Updated: ${ts.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} · ${DATA.period}`;
+
+  buildHero(DATA);
+  buildHeatmap(DATA);
+  buildRiskCards(DATA);
+  buildBarChart(DATA);
+  buildDoughnutChart(DATA);
+  buildNorthSouth(DATA);
+  buildRecommendations(DATA);
+}
+
+init();
+</script>
+</body>
+</html>

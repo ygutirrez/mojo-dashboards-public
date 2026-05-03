@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Operations Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #ff6b35, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header .meta {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .header .live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card h2 {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .card.span-2 { grid-column: span 2; }
+        .card.span-3 { grid-column: span 3; }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-box .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .stat-box .label {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .green { color: #00ff88; }
+        .yellow { color: #ffaa00; }
+        .red { color: #ff4444; }
+        .blue { color: #4da6ff; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        
+        th {
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            color: #888;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        tr:hover { background: rgba(255,255,255,0.03); }
+        tr.critical { background: rgba(255,68,68,0.1); }
+        tr.warning { background: rgba(255,170,0,0.1); }
+        
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .badge.good { background: rgba(0,255,136,0.2); color: #00ff88; }
+        .badge.monitor { background: rgba(255,170,0,0.2); color: #ffaa00; }
+        .badge.coach, .badge.service { background: rgba(255,68,68,0.2); color: #ff4444; }
+        
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .alert.critical {
+            background: rgba(255,68,68,0.15);
+            border-left: 3px solid #ff4444;
+        }
+        
+        .alert.warning {
+            background: rgba(255,170,0,0.15);
+            border-left: 3px solid #ffaa00;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        @media (max-width: 1200px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .card.span-3 { grid-column: span 2; }
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 1.3rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card.span-2, .card.span-3 { grid-column: span 1; }
+            .card { padding: 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px 6px; }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <a href="index.html" style="color:#888; text-decoration:none; font-size:0.85rem; display:inline-block; margin-bottom:8px;">← Back to Hub</a>
+    <div class="header">
+        <h1>🦟 MoJo Operations Dashboard</h1>
+        <div class="meta">
+            <div><span class="live-dot"></span>Live Data</div>
+            <div id="lastUpdate">Loading...</div>
+            <div style="font-size: 0.75rem;">Auto-refresh: 5 min</div>
+        </div>
+    </div>
+
+    <div id="dashboard">
+        <div class="loading">Loading dashboard data...</div>
+    </div>
+
+    <div class="footer">
+        Fleet data from Zubie • Equipment from RFID Tracker • Mosquito Joe of Miami 🦟
+    </div>
+
+    <script>
+        const DATA_URL = 'ops-data.json';
+        
+        async function loadDashboard() {
+            try {
+                const res = await fetch(DATA_URL + '?t=' + Date.now());
+                const data = await res.json();
+                renderDashboard(data);
+            } catch (err) {
+                document.getElementById('dashboard').innerHTML = `
+                    <div class="loading">
+                        <p>⚠️ Could not load live data</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px;">Showing cached view. Refresh to retry.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function renderDashboard(data) {
+            const s = data.summary;
+            const updated = new Date(data.updated_at).toLocaleString();
+            document.getElementById('lastUpdate').textContent = `Updated: ${updated}`;
+            
+            let html = `
+                <!-- Quick Stats -->
+                <div class="card span-3" style="margin-bottom: 15px;">
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <div class="value green">${s.total_vehicles}</div>
+                            <div class="label">Vehicles</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value blue">${s.blowers_active}</div>
+                            <div class="label">Blowers</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value ${s.avg_safety_score >= 70 ? 'green' : s.avg_safety_score >= 50 ? 'yellow' : 'red'}">${s.avg_safety_score}</div>
+                            <div class="label">Avg Safety</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value ${s.vehicles_with_codes > 5 ? 'red' : 'yellow'}">${s.vehicles_with_codes}</div>
+                            <div class="label">w/ Codes</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value ${s.drivers_need_coaching > 0 ? 'red' : 'green'}">${s.drivers_need_coaching}</div>
+                            <div class="label">Need Coaching</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value green">${s.total_miles.toLocaleString()}</div>
+                            <div class="label">Miles (7d)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid">
+            `;
+            
+            // Alerts
+            if (data.alerts && data.alerts.length > 0) {
+                html += `
+                    <div class="card span-3">
+                        <h2>🚨 Action Required</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                `;
+                data.alerts.forEach(alert => {
+                    html += `
+                        <div class="alert ${alert.severity}">
+                            <strong>${alert.type === 'vehicle' ? '🔧' : '👤'} ${alert.title}</strong><br>
+                            <span style="color: #ccc;">${alert.detail}</span>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+            }
+            
+            // Tech Performance
+            html += `
+                <div class="card span-2">
+                    <h2>👷 Tech Performance (7 Days)</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tech</th>
+                                <th>Truck</th>
+                                <th>Safety</th>
+                                <th>Miles</th>
+                                <th>Brakes</th>
+                                <th>Accels</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            data.tech_performance.forEach(t => {
+                const rowClass = t.status === 'coach' ? 'critical' : t.status === 'monitor' ? 'warning' : '';
+                const scoreClass = t.safety_score >= 80 ? 'green' : t.safety_score >= 50 ? 'yellow' : 'red';
+                html += `
+                    <tr class="${rowClass}">
+                        <td><strong>${t.driver || 'Unassigned'}</strong></td>
+                        <td>${t.nickname}</td>
+                        <td class="${scoreClass}">${t.safety_score}</td>
+                        <td>${t.total_miles}</td>
+                        <td>${t.hard_brakes}</td>
+                        <td>${t.rapid_accels}</td>
+                        <td><span class="badge ${t.status}">${t.status === 'good' ? 'Good' : t.status === 'monitor' ? 'Monitor' : 'Coach'}</span></td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table></div>`;
+            
+            // Blowers
+            html += `
+                <div class="card">
+                    <h2>🔧 Equipment</h2>
+                    <table style="font-size: 0.8rem;">
+                        <thead>
+                            <tr><th>Tech</th><th>Model</th><th>Last Scan</th></tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            data.blowers.forEach(b => {
+                const hasIssue = b.issue && b.issue.length > 0;
+                html += `
+                    <tr class="${hasIssue ? 'warning' : ''}">
+                        <td>${b.tech}</td>
+                        <td>${b.model}</td>
+                        <td>${b.lastScan || '—'}${hasIssue ? ' ⚠️' : ''}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table></div>`;
+            
+            // Fleet Status
+            html += `
+                <div class="card span-2">
+                    <h2>🚛 Fleet Status</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Vehicle</th>
+                                <th>Driver</th>
+                                <th>Fuel</th>
+                                <th>Battery</th>
+                                <th>Odometer</th>
+                                <th>Codes</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            data.vehicles.forEach(v => {
+                const rowClass = v.status === 'service' ? 'critical' : v.status === 'monitor' ? 'warning' : '';
+                const batteryClass = parseFloat(v.battery_volts) < 12.0 ? 'red' : parseFloat(v.battery_volts) < 12.4 ? 'yellow' : 'green';
+                const codesClass = v.trouble_code_count > 5 ? 'red' : v.trouble_code_count > 0 ? 'yellow' : 'green';
+                
+                html += `
+                    <tr class="${rowClass}">
+                        <td><strong>${v.nickname}</strong></td>
+                        <td>${v.driver || '—'}</td>
+                        <td>${v.fuel_level !== null ? v.fuel_level + '%' : '—'}</td>
+                        <td class="${batteryClass}">${v.battery_volts}v</td>
+                        <td>${v.odometer?.toLocaleString() || '—'}</td>
+                        <td class="${codesClass}">${v.trouble_code_count}</td>
+                        <td><span class="badge ${v.status}">${v.status === 'good' ? 'Good' : v.status === 'monitor' ? 'Monitor' : 'Service'}</span></td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table></div>`;
+            
+            // Top Trouble Codes
+            const codeCount = {};
+            data.vehicles.forEach(v => {
+                v.top_codes?.forEach(tc => {
+                    if (!codeCount[tc.code]) {
+                        codeCount[tc.code] = { ...tc, count: 0 };
+                    }
+                    codeCount[tc.code].count++;
+                });
+            });
+            
+            const topCodes = Object.values(codeCount).sort((a, b) => b.count - a.count).slice(0, 5);
+            
+            html += `
+                <div class="card">
+                    <h2>🔧 Top Trouble Codes</h2>
+                    <div style="font-size: 0.85rem;">
+            `;
+            
+            topCodes.forEach(tc => {
+                const sevColor = tc.severity === 'high' ? 'red' : tc.severity === 'medium' ? 'yellow' : 'green';
+                html += `
+                    <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <span class="${sevColor}">${tc.severity === 'high' ? '🔴' : tc.severity === 'medium' ? '🟡' : '🟢'} ${tc.code}</span>
+                        <span style="color: #888;"> - ${tc.count} vehicle${tc.count > 1 ? 's' : ''}</span><br>
+                        <em style="color: #4da6ff; font-size: 0.8rem;">${tc.fix}</em>
+                    </div>
+                `;
+            });
+            
+            html += `</div></div></div>`;
+            
+            document.getElementById('dashboard').innerHTML = html;
+        }
+        
+        // Load on start
+        loadDashboard();
+        
+        // Refresh data every 5 minutes (page also meta-refreshes)
+        setInterval(loadDashboard, 5 * 60 * 1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

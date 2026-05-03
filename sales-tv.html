@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Sales — TV</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 1920px; height: 1080px; overflow: hidden; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%); color: #e6edf3; padding: 28px 36px; display: flex; flex-direction: column; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; flex-shrink: 0; }
+        .header h1 { font-size: 1.7rem; color: #00ff88; } .header .meta { text-align: right; font-size: 0.8rem; color: #8b949e; }
+        .live-dot { display: inline-block; width: 8px; height: 8px; background: #3fb950; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+        .period { font-size: 0.75rem; color: #8b949e; background: rgba(255,255,255,0.06); padding: 4px 14px; border-radius: 12px; }
+        .main { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto 1fr; gap: 16px; flex: 1; min-height: 0; }
+        .kpi-bar { grid-column: 1/-1; display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+        .kpi { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 12px; text-align: center; }
+        .kpi .val { font-size: 2.8rem; font-weight: 700; line-height: 1.1; } .kpi .lbl { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; } .kpi .sub { font-size: 0.65rem; color: #484f58; margin-top: 2px; }
+        .g { color: #3fb950; } .r { color: #f85149; } .y { color: #d29922; } .b { color: #58a6ff; }
+        .podium-section { grid-column: 1/-1; display: flex; align-items: flex-end; justify-content: center; gap: 24px; }
+        .podium { text-align: center; border-radius: 14px; padding: 18px 28px; min-width: 180px; }
+        .podium.first { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.25); }
+        .podium.second { background: rgba(192,192,192,0.06); border: 1px solid rgba(192,192,192,0.2); }
+        .podium.third { background: rgba(205,127,50,0.06); border: 1px solid rgba(205,127,50,0.2); }
+        .podium .rank { font-size: 2.4rem; } .podium .name { font-size: 1.3rem; font-weight: 700; margin: 4px 0; }
+        .podium .count { font-size: 2.2rem; font-weight: 700; color: #3fb950; } .podium .detail { font-size: 0.75rem; color: #8b949e; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; overflow: hidden; }
+        .card h2 { font-size: 0.8rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; flex-shrink: 0; }
+        .card-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+        .reason-row { display: flex; align-items: center; margin-bottom: 8px; }
+        .reason-label { width: 110px; font-size: 0.8rem; color: #ccc; flex-shrink: 0; }
+        .reason-bar-bg { flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; height: 22px; overflow: hidden; }
+        .reason-bar { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 0.7rem; font-weight: 600; min-width: 30px; }
+        .reason-count { margin-left: 8px; font-size: 0.75rem; color: #8b949e; flex-shrink: 0; width: 50px; text-align: right; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+        th { text-align: left; padding: 5px 6px; border-bottom: 1px solid rgba(255,255,255,0.1); color: #8b949e; font-size: 0.65rem; text-transform: uppercase; }
+        td { padding: 4px 6px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .badge { padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 600; }
+        .badge.sale { background: rgba(63,185,80,0.2); color: #3fb950; } .badge.cancel { background: rgba(248,81,73,0.2); color: #f85149; }
+        .footer { text-align: center; font-size: 0.6rem; color: #484f58; margin-top: 8px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💰 Sales & Retention Dashboard</h1>
+        <div class="meta"><div><span class="live-dot"></span>Auto-refresh 5 min</div><div id="lastUpdate"></div><span class="period" id="period"></span></div>
+    </div>
+    <div class="main" id="dashboard"><div style="text-align:center;padding:40px;color:#8b949e;grid-column:1/-1;">Loading...</div></div>
+    <div class="footer">Mosquito Joe of Miami 🦟 • Sales data from Power Automate</div>
+    <script>
+    const BAR_COLORS = ['#f85149','#d29922','#ff9f43','#58a6ff','#3fb950','#c792ea'];
+    async function load() {
+        try { const r = await fetch('sales-data.json?t='+Date.now()); render(await r.json()); }
+        catch(e) { document.getElementById('dashboard').innerHTML = '<div style="text-align:center;padding:40px;color:#8b949e;grid-column:1/-1;">⚠️ Could not load data</div>'; }
+    }
+    function render(d) {
+        const s = d.summary;
+        document.getElementById('lastUpdate').textContent = 'Updated: ' + new Date(d.updated_at).toLocaleString();
+        document.getElementById('period').textContent = '📅 ' + d.period;
+
+        const medals = ['🥇','🥈','🥉']; const podCls = ['second','first','third'];
+        let podiumHTML = '';
+        if (d.csrs.length >= 3) {
+            [d.csrs[1], d.csrs[0], d.csrs[2]].forEach((c, i) => {
+                podiumHTML += '<div class="podium ' + podCls[i] + '"><div class="rank">' + medals[[1,0,2][i]] + '</div><div class="name">' + c.name + '</div><div class="count">' + c.sales + '</div><div class="detail">sales · ' + c.cancels + ' cancels</div></div>';
+            });
+        }
+
+        const maxR = d.cancel_reasons[0]?.count || 1;
+        let reasonHTML = d.cancel_reasons.map((r, i) => {
+            const pct = Math.round(r.count / maxR * 100);
+            return '<div class="reason-row"><div class="reason-label">' + r.name + '</div><div class="reason-bar-bg"><div class="reason-bar" style="width:' + pct + '%;background:' + BAR_COLORS[i % BAR_COLORS.length] + ';">' + r.count + '</div></div><div class="reason-count">' + r.pct + '%</div></div>';
+        }).join('');
+
+        let recentHTML = d.recent_activity.map(r =>
+            '<tr><td>' + (r.dateFmt||r.date) + '</td><td><span class="badge ' + r.type.toLowerCase() + '">' + r.type + '</span></td><td>' + r.category + '</td><td>' + r.csr + '</td></tr>'
+        ).join('');
+
+        document.getElementById('dashboard').innerHTML = `
+            <div class="kpi-bar">
+                <div class="kpi"><div class="val g">${s.total_sales}</div><div class="lbl">Total Sales</div><div class="sub">YTD</div></div>
+                <div class="kpi"><div class="val r">${s.total_cancels}</div><div class="lbl">Total Cancels</div><div class="sub">YTD</div></div>
+                <div class="kpi"><div class="val ${s.net>=0?'g':'r'}">${s.net>=0?'+':''}${s.net}</div><div class="lbl">Net Change</div><div class="sub">${s.net>=0?'Growing':'Season ramping'}</div></div>
+                <div class="kpi"><div class="val y">${s.paused_wp}</div><div class="lbl">Paused / WP</div><div class="sub">${s.paused_pct}% — win-back</div></div>
+                <div class="kpi"><div class="val b">${s.days_tracked}</div><div class="lbl">Days Tracked</div></div>
+            </div>
+            <div class="podium-section">${podiumHTML}</div>
+            <div class="card"><h2>📊 Cancel Reasons</h2><div class="card-body">${reasonHTML}</div></div>
+            <div class="card"><h2>🎯 Services Sold</h2><div class="card-body"><canvas id="svcChart"></canvas></div></div>
+            <div class="card"><h2>📋 Recent Activity</h2><div class="card-body"><table><thead><tr><th>Date</th><th>Type</th><th>Category</th><th>CSR</th></tr></thead><tbody>${recentHTML}</tbody></table></div></div>
+        `;
+
+        Chart.defaults.color = '#8b949e'; Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+        new Chart(document.getElementById('svcChart'), {
+            type: 'bar',
+            data: { labels: d.sale_categories.map(s=>s.name), datasets: [{ data: d.sale_categories.map(s=>s.count), backgroundColor: '#3fb950', borderRadius: 4 }] },
+            options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } }, y: { ticks: { color: '#ccc', font: { size: 11 } }, grid: { display: false } } } }
+        });
+    }
+    load(); setInterval(load, 5*60*1000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

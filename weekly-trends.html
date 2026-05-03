@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Weekly Trends</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --card-border: #1e1e2e;
+            --text: #e4e4e7;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --orange: #f97316;
+            --purple: #8b5cf6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .back-link {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 100;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.2s;
+        }
+        .back-link:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .header .week-range {
+            color: var(--accent);
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* KPI summary row */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .kpi {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .kpi .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .kpi .value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .kpi .delta {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .delta-up { color: var(--green); }
+        .delta-down { color: var(--red); }
+        .delta-flat { color: var(--yellow); }
+
+        /* Sparkline mini-chart */
+        .sparkline-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            margin-top: 10px;
+            height: 32px;
+        }
+        .spark-bar {
+            width: 18px;
+            border-radius: 3px 3px 0 0;
+            transition: height 0.6s ease;
+            position: relative;
+        }
+        .spark-bar:last-child {
+            opacity: 1;
+        }
+        .spark-bar:not(:last-child) {
+            opacity: 0.5;
+        }
+
+        /* Chart sections */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .kpi-row { grid-template-columns: 1fr; }
+            body { padding: 12px; }
+            .header h1 { font-size: 22px; }
+        }
+
+        .chart-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chart-card h2 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-card h2 .icon { font-size: 18px; }
+
+        /* Bar chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 160px;
+            padding: 0 8px;
+        }
+        .bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+        }
+        .bar {
+            width: 100%;
+            max-width: 48px;
+            border-radius: 6px 6px 0 0;
+            transition: height 0.8s ease;
+            position: relative;
+            cursor: default;
+        }
+        .bar:hover { filter: brightness(1.2); }
+        .bar-value {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        .bar-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 64px;
+        }
+
+        /* Comparison table */
+        .trend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .trend-table th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            padding: 8px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .trend-table td {
+            padding: 10px 8px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .trend-table tr:hover { background: rgba(255,255,255,0.02); }
+
+        /* Full-width section */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        .no-data .icon { font-size: 48px; margin-bottom: 12px; }
+
+        .footer {
+            text-align: center;
+            padding: 16px;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 24px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-muted);
+        }
+        .loading .spinner {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--card-border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+    <div class="container">
+        <div class="header">
+            <h1>📈 Weekly Trends</h1>
+            <div class="subtitle">Week-over-week business performance</div>
+            <div class="week-range" id="weekRange"></div>
+        </div>
+
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <div>Loading weekly snapshots...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (async function() {
+        const BASE = window.location.hostname.includes('github.io')
+            ? '' : '';
+        const url = BASE + 'weekly-snapshots.json';
+
+        let data;
+        try {
+            const res = await fetch(url + '?t=' + Date.now());
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            data = await res.json();
+        } catch (e) {
+            document.getElementById('content').innerHTML =
+                '<div class="no-data"><div class="icon">📊</div>' +
+                '<h2>No snapshot data available</h2>' +
+                '<p>Weekly snapshots are generated every Friday by the nightly sync.</p></div>';
+            return;
+        }
+
+        const snapshots = data.snapshots || [];
+        if (snapshots.length === 0) {
+            document.getElementById('content').innerHTML =
+                '<div class="no-data"><div class="icon">📊</div>' +
+                '<h2>No weekly data yet</h2><p>Check back after the first weekly snapshot.</p></div>';
+            return;
+        }
+
+        const latest = snapshots[snapshots.length - 1];
+        const prev = snapshots.length > 1 ? snapshots[snapshots.length - 2] : null;
+
+        // Update header
+        document.getElementById('weekRange').textContent =
+            `Latest: ${latest.weekLabel} (${latest.week}) • ${snapshots.length} week${snapshots.length > 1 ? 's' : ''} tracked`;
+
+        function delta(curr, old) {
+            if (!old || old === 0) return { pct: 0, cls: 'delta-flat', arrow: '→' };
+            const pct = ((curr - old) / old * 100);
+            if (pct > 1) return { pct, cls: 'delta-up', arrow: '↑' };
+            if (pct < -1) return { pct, cls: 'delta-down', arrow: '↓' };
+            return { pct, cls: 'delta-flat', arrow: '→' };
+        }
+
+        function fmt(n) {
+            if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+            if (n >= 1000) return '$' + (n/1000).toFixed(0) + 'K';
+            return n.toLocaleString();
+        }
+
+        function fmtPct(d) {
+            return `${d.arrow} ${Math.abs(d.pct).toFixed(1)}%`;
+        }
+
+        // Build sparkline bars (max height 32px)
+        function sparkBars(values, color) {
+            const max = Math.max(...values, 1);
+            return values.map((v, i) => {
+                const h = Math.max(4, (v / max) * 32);
+                return `<div class="spark-bar" style="height:${h}px;background:${color};" title="${v.toLocaleString()}"></div>`;
+            }).join('');
+        }
+
+        // KPI metrics
+        const metrics = [
+            {
+                label: 'New Sales',
+                value: latest.sales.total,
+                prev: prev ? prev.sales.total : null,
+                color: '#22c55e',
+                values: snapshots.map(s => s.sales.total)
+            },
+            {
+                label: 'Revenue YTD',
+                value: latest.revenue.total,
+                prev: prev ? prev.revenue.total : null,
+                color: '#3b82f6',
+                format: 'money',
+                values: snapshots.map(s => s.revenue.total)
+            },
+            {
+                label: 'Avg Invoice',
+                value: latest.revenue.avg_invoice,
+                prev: prev ? prev.revenue.avg_invoice : null,
+                color: '#8b5cf6',
+                format: 'dollar',
+                values: snapshots.map(s => s.revenue.avg_invoice)
+            },
+            {
+                label: 'Tech Visits',
+                value: latest.operations.total_visits,
+                prev: prev ? prev.operations.total_visits : null,
+                color: '#f97316',
+                values: snapshots.map(s => s.operations.total_visits)
+            }
+        ];
+
+        let html = '<div class="kpi-row">';
+        for (const m of metrics) {
+            const d = delta(m.value, m.prev);
+            let displayVal = m.value;
+            if (m.format === 'money') displayVal = fmt(m.value);
+            else if (m.format === 'dollar') displayVal = '$' + m.value;
+            else displayVal = m.value.toLocaleString();
+
+            html += `<div class="kpi">
+                <div class="label">${m.label}</div>
+                <div class="value" style="color:${m.color}">${displayVal}</div>
+                ${m.prev !== null ? `<div class="delta ${d.cls}">${fmtPct(d)} vs prev week</div>` : '<div class="delta delta-flat">First week</div>'}
+                <div class="sparkline-row">${sparkBars(m.values, m.color)}</div>
+            </div>`;
+        }
+        html += '</div>';
+
+        // Bar Charts
+        html += '<div class="chart-grid">';
+
+        // Sales trend bar chart
+        html += '<div class="chart-card"><h2><span class="icon">💰</span> Sales by Week</h2>';
+        html += buildBarChart(snapshots, s => s.sales.total, '#22c55e');
+        html += '</div>';
+
+        // Revenue trend bar chart
+        html += '<div class="chart-card"><h2><span class="icon">📈</span> Revenue by Week</h2>';
+        html += buildBarChart(snapshots, s => s.revenue.total, '#3b82f6', true);
+        html += '</div>';
+
+        // Visits trend bar chart
+        html += '<div class="chart-card"><h2><span class="icon">🚐</span> Tech Visits by Week</h2>';
+        html += buildBarChart(snapshots, s => s.operations.total_visits, '#f97316');
+        html += '</div>';
+
+        // Cancel events bar chart
+        html += '<div class="chart-card"><h2><span class="icon">❌</span> Cancel Events by Week</h2>';
+        html += buildBarChart(snapshots, s => s.cancels.total_events, '#ef4444');
+        html += '</div>';
+
+        html += '</div>'; // close chart-grid
+
+        // Weekly comparison table
+        html += '<div class="chart-grid"><div class="chart-card full-width">';
+        html += '<h2><span class="icon">📋</span> Weekly Comparison</h2>';
+        html += '<div style="overflow-x:auto;">';
+        html += '<table class="trend-table"><thead><tr>';
+        html += '<th>Week</th><th>Sales</th><th>Revenue</th><th>Avg Invoice</th><th>Visits</th><th>Cancels</th><th>Active Accts</th><th>Fleet</th>';
+        html += '</tr></thead><tbody>';
+
+        // Show most recent on top
+        for (let i = snapshots.length - 1; i >= 0; i--) {
+            const s = snapshots[i];
+            const p = i > 0 ? snapshots[i - 1] : null;
+            const dSales = delta(s.sales.total, p?.sales?.total);
+            const dRev = delta(s.revenue.total, p?.revenue?.total);
+
+            html += `<tr>
+                <td><strong>${s.weekLabel}</strong><br><span style="color:var(--text-muted);font-size:11px">${s.week}</span></td>
+                <td>${s.sales.total} <span class="${dSales.cls}" style="font-size:12px">${p ? fmtPct(dSales) : ''}</span></td>
+                <td>${fmt(s.revenue.total)} <span class="${dRev.cls}" style="font-size:12px">${p ? fmtPct(dRev) : ''}</span></td>
+                <td>$${s.revenue.avg_invoice}</td>
+                <td>${s.operations.total_visits.toLocaleString()}</td>
+                <td>${s.cancels.total_events}</td>
+                <td>${s.operations?.active_accounts?.toLocaleString() || '—'}</td>
+                <td>${s.operations?.fleet_vehicles || '—'}</td>
+            </tr>`;
+        }
+        html += '</tbody></table></div>';
+        html += '</div></div>';
+
+        // Sales Breakdown section
+        html += '<div class="chart-grid">';
+
+        // Sales by type (latest week)
+        if (latest.sales.by_type) {
+            html += '<div class="chart-card"><h2><span class="icon">🎯</span> Sales by Type (Latest)</h2>';
+            const types = Object.entries(latest.sales.by_type).sort((a,b) => b[1] - a[1]);
+            const maxType = Math.max(...types.map(t => t[1]), 1);
+            html += '<div style="display:flex;flex-direction:column;gap:10px">';
+            for (const [type, count] of types) {
+                const pct = (count / maxType * 100).toFixed(0);
+                html += `<div>
+                    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                        <span>${type}</span><span style="font-weight:600">${count}</span>
+                    </div>
+                    <div style="background:var(--card-border);border-radius:4px;height:8px;overflow:hidden">
+                        <div style="width:${pct}%;height:100%;background:var(--green);border-radius:4px;transition:width 0.8s ease"></div>
+                    </div>
+                </div>`;
+            }
+            html += '</div></div>';
+        }
+
+        // Top cancel reasons (latest week)
+        if (latest.cancels.top_reason) {
+            html += '<div class="chart-card"><h2><span class="icon">🚪</span> Cancel Insights (Latest)</h2>';
+            html += `<div style="padding:12px;background:rgba(239,68,68,0.1);border-radius:8px;margin-bottom:12px">
+                <div style="font-size:24px;font-weight:700;color:var(--red)">${latest.cancels.total_events}</div>
+                <div style="font-size:12px;color:var(--text-muted)">Total cancel events</div>
+            </div>`;
+            html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px">
+                    <div style="font-size:20px;font-weight:600">${latest.cancels.unique_accounts}</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Unique Accounts</div>
+                </div>
+                <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:8px">
+                    <div style="font-size:20px;font-weight:600;color:var(--yellow)">${latest.cancels.recoverable}</div>
+                    <div style="font-size:11px;color:var(--text-muted)">Recoverable</div>
+                </div>
+            </div>`;
+            html += `<div style="margin-top:12px;padding:12px;background:rgba(255,255,255,0.03);border-radius:8px">
+                <div style="font-size:12px;color:var(--text-muted)">Top Reason</div>
+                <div style="font-size:16px;font-weight:600;margin-top:4px">${latest.cancels.top_reason[0]} <span style="color:var(--red)">(${latest.cancels.top_reason[1]})</span></div>
+            </div>`;
+            html += '</div>';
+        }
+
+        html += '</div>';
+
+        // $5M Revenue Pace
+        html += '<div class="chart-grid"><div class="chart-card full-width">';
+        html += '<h2><span class="icon">🎯</span> $5M Revenue Pace</h2>';
+        const TARGET = 5000000;
+        const currentRev = latest.revenue.total;
+        const pct = (currentRev / TARGET * 100);
+        const dayOfYear = latest.day_of_year || 80;
+        const expectedPct = (dayOfYear / 365 * 100);
+        const paceColor = pct >= expectedPct ? 'var(--green)' : pct >= expectedPct * 0.85 ? 'var(--yellow)' : 'var(--red)';
+
+        html += `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
+            <div style="text-align:center">
+                <div style="font-size:28px;font-weight:700;color:${paceColor}">${pct.toFixed(1)}%</div>
+                <div style="font-size:12px;color:var(--text-muted)">Of $5M Target</div>
+            </div>
+            <div style="text-align:center">
+                <div style="font-size:28px;font-weight:700">${fmt(currentRev)}</div>
+                <div style="font-size:12px;color:var(--text-muted)">Revenue YTD</div>
+            </div>
+            <div style="text-align:center">
+                <div style="font-size:28px;font-weight:700;color:var(--accent)">${fmt(TARGET - currentRev)}</div>
+                <div style="font-size:12px;color:var(--text-muted)">Remaining</div>
+            </div>
+        </div>`;
+
+        // Progress bar
+        html += `<div style="position:relative;margin-top:8px">
+            <div style="background:var(--card-border);border-radius:8px;height:20px;overflow:hidden;position:relative">
+                <div style="width:${Math.min(pct, 100)}%;height:100%;background:${paceColor};border-radius:8px;transition:width 1s ease"></div>
+                <div style="position:absolute;left:${expectedPct}%;top:-4px;width:2px;height:28px;background:white;opacity:0.4" title="Expected pace"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px">
+                <span>$0</span>
+                <span>Expected: ${expectedPct.toFixed(0)}% (Day ${dayOfYear}/365)</span>
+                <span>$5M</span>
+            </div>
+        </div>`;
+
+        html += '</div></div>';
+
+        html += `<div class="footer">
+            Updated: ${new Date(latest.captured_at).toLocaleString()} • ${snapshots.length} weeks tracked • Auto-refreshes every 5 min
+        </div>`;
+
+        document.getElementById('content').innerHTML = html;
+
+        function buildBarChart(snapshots, valueFn, color, isMoney) {
+            const values = snapshots.map(valueFn);
+            const max = Math.max(...values, 1);
+            let chart = '<div class="bar-chart">';
+            for (let i = 0; i < snapshots.length; i++) {
+                const v = values[i];
+                const h = Math.max(4, (v / max) * 140);
+                const label = snapshots[i].weekLabel.split(' - ')[0];
+                const displayVal = isMoney ? fmt(v) : v.toLocaleString();
+                const isLatest = i === snapshots.length - 1;
+                const opacity = isLatest ? '1' : '0.65';
+                chart += `<div class="bar-group">
+                    <div class="bar-value">${displayVal}</div>
+                    <div class="bar" style="height:${h}px;background:${color};opacity:${opacity}" title="${snapshots[i].weekLabel}: ${displayVal}"></div>
+                    <div class="bar-label">${label}</div>
+                </div>`;
+            }
+            chart += '</div>';
+            return chart;
+        }
+    })();
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo Weekly Scorecard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #1f1f35;
+            --accent: #00b4d8;
+            --accent-glow: rgba(0, 180, 216, 0.15);
+            --positive: #10b981;
+            --negative: #ef4444;
+            --warning: #f59e0b;
+            --neutral: #6b7280;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #2a2a4a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .header h1 { font-size: 28px; font-weight: 700; }
+        .header h1 span { color: var(--accent); }
+        .period-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .back-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+
+        /* Alerts Banner */
+        .alerts-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+        .alerts-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--negative);
+            margin-bottom: 8px;
+        }
+        .alert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .alert-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+        .alert-critical .alert-icon { color: var(--negative); }
+        .alert-warning .alert-icon { color: var(--warning); }
+        .alert-info .alert-icon { color: var(--accent); }
+
+        /* Hero KPIs */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .hero-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .hero-card.positive::after { background: var(--positive); }
+        .hero-card.negative::after { background: var(--negative); }
+        .hero-card.warning::after { background: var(--warning); }
+        .hero-card.accent::after { background: var(--accent); }
+        .hero-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .hero-value {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .hero-sub {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .hero-sub .positive { color: var(--positive); }
+        .hero-sub .negative { color: var(--negative); }
+        
+        /* Progress bar */
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease;
+        }
+
+        /* Section */
+        .section { margin-bottom: 24px; }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .icon { font-size: 20px; }
+
+        /* WoW Grid */
+        .wow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .wow-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+        .wow-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .wow-metric {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .wow-trend {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        .wow-trend.positive { background: rgba(16, 185, 129, 0.15); color: var(--positive); }
+        .wow-trend.negative { background: rgba(239, 68, 68, 0.15); color: var(--negative); }
+        .wow-trend.neutral { background: rgba(107, 114, 128, 0.15); color: var(--neutral); }
+        .wow-values {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .wow-current { font-size: 28px; font-weight: 700; }
+        .wow-prev { font-size: 14px; color: var(--text-muted); }
+        .wow-delta {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Chart containers */
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chart-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        .chart-wrap { position: relative; height: 260px; }
+
+        /* Cancel reasons table */
+        .reasons-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .reasons-table th {
+            text-align: left;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .reasons-table td {
+            padding: 10px 12px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .reasons-table tr:hover { background: rgba(255,255,255,0.02); }
+        .reason-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .reason-bar-fill { height: 100%; border-radius: 2px; }
+        .recoverable-badge {
+            font-size: 10px;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--positive);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Tech leaderboard */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .tech-rank {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .tech-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .tech-stat {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .tech-stat strong { color: var(--accent); font-weight: 700; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff; color: #1a1a2e; }
+            .hero-card, .wow-card, .chart-card, .tech-card { 
+                border: 1px solid #ddd; 
+                background: #f9f9f9;
+                -webkit-print-color-adjust: exact;
+            }
+            .alerts-banner { border: 1px solid #ef4444; }
+            .back-btn { display: none; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header { flex-direction: column; align-items: flex-start; }
+            .chart-row { grid-template-columns: 1fr; }
+            .hero-value { font-size: 28px; }
+            .wow-current { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <h1>📊 Weekly <span>Scorecard</span></h1>
+                <div class="period-badge" id="period-badge">Loading...</div>
+            </div>
+            <a href="hub.html" class="back-btn">← Hub</a>
+        </div>
+
+        <!-- Alerts -->
+        <div class="alerts-banner" id="alerts-banner" style="display:none;">
+            <div class="alerts-title">⚠️ Active Alerts</div>
+            <div id="alerts-list"></div>
+        </div>
+
+        <!-- Hero KPIs -->
+        <div class="hero-grid" id="hero-grid"></div>
+
+        <!-- Week over Week -->
+        <div class="section">
+            <div class="section-title"><span class="icon">📈</span> Week over Week</div>
+            <div class="wow-grid" id="wow-grid"></div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="section">
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>Monthly Cancel Trend</h3>
+                    <div class="chart-wrap"><canvas id="cancel-trend-chart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Revenue Trajectory</h3>
+                    <div class="chart-wrap"><canvas id="revenue-chart"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancel Reasons -->
+        <div class="section">
+            <div class="section-title"><span class="icon">🔍</span> Cancel Reasons — Value at Risk</div>
+            <div class="chart-card">
+                <table class="reasons-table" id="reasons-table">
+                    <thead>
+                        <tr>
+                            <th>Reason</th>
+                            <th>Events</th>
+                            <th>Accounts</th>
+                            <th>Annual Value Lost</th>
+                            <th>Avg Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reasons-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Charts Row 2 -->
+        <div class="section">
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>Customer Tenure Distribution</h3>
+                    <div class="chart-wrap"><canvas id="tenure-chart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Sales by Source</h3>
+                    <div class="chart-wrap"><canvas id="source-chart"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Leaderboard -->
+        <div class="section">
+            <div class="section-title"><span class="icon">🏆</span> Tech Leaderboard</div>
+            <div class="tech-grid" id="tech-grid"></div>
+        </div>
+
+        <div class="footer">
+            MoJo Pest Control — Weekly Business Scorecard<br>
+            Generated <span id="gen-time"></span> • Data refreshes every 5 minutes
+        </div>
+    </div>
+
+    <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+    const fmt = n => new Intl.NumberFormat('en-US').format(Math.round(n));
+    const fmtK = n => n >= 1000000 ? `$${(n/1000000).toFixed(1)}M` : n >= 1000 ? `$${(n/1000).toFixed(0)}K` : `$${fmt(n)}`;
+    const fmtD = n => `$${fmt(n)}`;
+
+    fetch('scorecard-data.json?t=' + Date.now())
+        .then(r => r.ok ? r : fetch('data/scorecard-data.json?t=' + Date.now()))
+        .then(r => r.json())
+        .then(render)
+        .catch(e => {
+            document.body.innerHTML = `<div style="padding:40px;text-align:center;color:#ef4444">
+                <h2>Failed to load scorecard data</h2><p>${e.message}</p>
+                <p>Run: <code>node scripts/build-scorecard-data.js</code></p></div>`;
+        });
+
+    function render(d) {
+        // Period
+        $('#period-badge').textContent = `${d.period.current_week} vs ${d.period.previous_week} • Day ${d.period.ytd_days} of ${d.period.year}`;
+        $('#gen-time').textContent = new Date(d.generated_at).toLocaleString();
+
+        // Alerts
+        if (d.alerts && d.alerts.length > 0) {
+            $('#alerts-banner').style.display = '';
+            $('#alerts-list').innerHTML = d.alerts.map(a => {
+                const icon = a.severity === 'critical' ? '🔴' : a.severity === 'warning' ? '🟡' : '🔵';
+                return `<div class="alert-item alert-${a.severity}">
+                    <span class="alert-icon">${icon}</span>
+                    <span>${a.message}</span>
+                </div>`;
+            }).join('');
+        }
+
+        // Hero KPIs
+        const h = d.hero;
+        const heroCards = [
+            {
+                label: 'Active Customers',
+                value: fmt(h.active_customers.value),
+                sub: `Goal: ${fmt(h.active_customers.goal)} (${h.active_customers.pct_of_goal}%)`,
+                cls: h.active_customers.pct_of_goal >= 50 ? 'warning' : 'negative',
+                progress: { pct: h.active_customers.pct_of_goal, color: h.active_customers.pct_of_goal >= 50 ? '#f59e0b' : '#ef4444' }
+            },
+            {
+                label: 'Revenue YTD',
+                value: fmtK(h.revenue_ytd.value),
+                sub: `Projected: ${fmtK(h.revenue_ytd.projected)} of ${fmtK(h.revenue_ytd.target)}`,
+                cls: h.revenue_ytd.on_pace ? 'positive' : 'warning',
+                progress: { pct: h.revenue_ytd.pct_of_target, color: h.revenue_ytd.on_pace ? '#10b981' : '#f59e0b' }
+            },
+            {
+                label: 'Net Customers YTD',
+                value: (h.net_customers_ytd.value >= 0 ? '+' : '') + h.net_customers_ytd.value,
+                sub: `<span class="positive">+${h.net_customers_ytd.new} new</span> / <span class="negative">-${h.net_customers_ytd.cancelled} lost</span>`,
+                cls: h.net_customers_ytd.sentiment
+            },
+            {
+                label: 'Cancel : Sales Ratio',
+                value: h.cancel_ratio.value.toFixed(2) + ':1',
+                sub: `Target: ${h.cancel_ratio.target}:1 • ${h.cancel_ratio.sentiment === 'positive' ? '✅ On track' : '❌ Above target'}`,
+                cls: h.cancel_ratio.sentiment
+            }
+        ];
+
+        $('#hero-grid').innerHTML = heroCards.map(c => `
+            <div class="hero-card ${c.cls}">
+                <div class="hero-label">${c.label}</div>
+                <div class="hero-value">${c.value}</div>
+                <div class="hero-sub">${c.sub}</div>
+                ${c.progress ? `<div class="progress-bar"><div class="progress-fill" style="width:${Math.min(c.progress.pct, 100)}%;background:${c.progress.color}"></div></div>` : ''}
+            </div>
+        `).join('');
+
+        // Week over Week
+        const wowMetrics = [
+            { key: 'sales', label: 'Total Sales', format: v => fmt(v) },
+            { key: 'revenue', label: 'Revenue', format: v => fmtD(v) },
+            { key: 'cancel_events', label: 'Cancel Events', format: v => fmt(v) },
+            { key: 'avg_invoice', label: 'Avg Invoice', format: v => fmtD(v) },
+            { key: 'visits', label: 'Tech Visits', format: v => fmt(v) },
+            { key: 'net', label: 'Net Customers', format: v => (v >= 0 ? '+' : '') + fmt(v) }
+        ];
+
+        $('#wow-grid').innerHTML = wowMetrics.map(m => {
+            const w = d.wow[m.key];
+            if (!w) return '';
+            const t = w.trend || {};
+            return `<div class="wow-card">
+                <div class="wow-header">
+                    <span class="wow-metric">${m.label}</span>
+                    <span class="wow-trend ${t.sentiment || 'neutral'}">${t.icon || '→'} ${t.change != null ? Math.abs(t.change) + '%' : ''}</span>
+                </div>
+                <div class="wow-values">
+                    <span class="wow-current">${m.format(w.current)}</span>
+                    <span class="wow-prev">was ${m.format(w.previous)}</span>
+                </div>
+                ${w.weekly_delta != null ? `<div class="wow-delta">Δ ${w.weekly_delta >= 0 ? '+' : ''}${m.format(w.weekly_delta)} this week</div>` : ''}
+            </div>`;
+        }).join('');
+
+        // Cancel Trend Chart
+        const months = d.monthly_cancels || [];
+        new Chart($('#cancel-trend-chart'), {
+            type: 'bar',
+            data: {
+                labels: months.map(m => m.month),
+                datasets: [
+                    {
+                        label: 'Cancel Events',
+                        data: months.map(m => m.events),
+                        backgroundColor: 'rgba(239, 68, 68, 0.6)',
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Value Lost ($K)',
+                        data: months.map(m => Math.round(m.annual_value_lost / 1000)),
+                        backgroundColor: 'rgba(245, 158, 11, 0.6)',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } },
+                scales: {
+                    x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+
+        // Revenue Chart
+        if (d.history && d.history.length > 0) {
+            new Chart($('#revenue-chart'), {
+                type: 'line',
+                data: {
+                    labels: d.history.map(h => h.week),
+                    datasets: [{
+                        label: 'YTD Revenue ($K)',
+                        data: d.history.map(h => Math.round(h.revenue / 1000)),
+                        borderColor: '#00b4d8',
+                        backgroundColor: 'rgba(0, 180, 216, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#00b4d8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } },
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#64748b', callback: v => '$' + v + 'K' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+        }
+
+        // Cancel Reasons Table
+        const maxEvents = Math.max(...(d.cancel_reasons || []).map(r => r.events));
+        $('#reasons-body').innerHTML = (d.cancel_reasons || []).slice(0, 8).map(r => `
+            <tr>
+                <td>
+                    ${r.reason}
+                    <div class="reason-bar"><div class="reason-bar-fill" style="width:${(r.events/maxEvents*100)}%;background:${r.recoverable ? '#10b981' : '#ef4444'}"></div></div>
+                </td>
+                <td>${r.events}</td>
+                <td>${r.accounts}</td>
+                <td style="color:var(--negative);font-weight:600">${fmtD(r.annual_value_lost)}</td>
+                <td>${fmtD(r.avg_value)}</td>
+                <td>${r.recoverable ? '<span class="recoverable-badge">RECOVERABLE</span>' : '<span style="color:var(--text-muted);font-size:12px">Lost</span>'}</td>
+            </tr>
+        `).join('');
+
+        // Tenure Chart
+        const tenure = d.tenure || {};
+        const tenureLabels = Object.keys(tenure);
+        const tenureValues = Object.values(tenure);
+        if (tenureLabels.length > 0) {
+            new Chart($('#tenure-chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: tenureLabels,
+                    datasets: [{
+                        data: tenureValues,
+                        backgroundColor: [
+                            '#ef4444', '#f59e0b', '#eab308', '#84cc16',
+                            '#10b981', '#06b6d4', '#3b82f6', '#8b5cf6'
+                        ].slice(0, tenureLabels.length),
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '55%',
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#94a3b8', font: { size: 11 }, padding: 12 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Source Chart
+        const sources = d.sales_sources || {};
+        const srcLabels = Object.keys(sources).sort((a, b) => sources[b] - sources[a]);
+        if (srcLabels.length > 0) {
+            new Chart($('#source-chart'), {
+                type: 'bar',
+                data: {
+                    labels: srcLabels,
+                    datasets: [{
+                        label: 'Sales',
+                        data: srcLabels.map(l => sources[l]),
+                        backgroundColor: '#00b4d8',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#94a3b8', font: { size: 11 } }, grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        // Tech Leaderboard
+        const techs = (d.techs || []).slice(0, 8);
+        const medals = ['🥇', '🥈', '🥉'];
+        $('#tech-grid').innerHTML = techs.map((t, i) => `
+            <div class="tech-card">
+                <div class="tech-rank">${medals[i] || `#${i+1}`}</div>
+                <div class="tech-name">${t.name}</div>
+                <div class="tech-stat"><strong>${fmtD(t.revenue)}</strong> revenue</div>
+                <div class="tech-stat">${fmt(t.visits)} visits • ${fmtD(t.avg_per_visit)}/visit</div>
+            </div>
+        `).join('');
+    }
+    </script>
+</body>
+</html>

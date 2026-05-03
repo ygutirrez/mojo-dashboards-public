@@ -1,0 +1,4512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control — Yoel's Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS VARIABLES — Easy re-theming
+   ============================================================ */
+:root {
+  --bg-primary: #050508;
+  --bg-secondary: #0a0a0f;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --bg-header: rgba(10,10,15,0.8);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --text-primary: #f0f0f0;
+  --text-secondary: rgba(255,255,255,0.55);
+  --text-tertiary: rgba(255,255,255,0.3);
+  --accent: #4ade80;
+  --accent-dim: rgba(74,222,128,0.15);
+  --accent-glow: rgba(74,222,128,0.3);
+  --accent-bright: #22c55e;
+  --priority-high: #ef4444;
+  --priority-high-bg: rgba(239,68,68,0.12);
+  --priority-medium: #f59e0b;
+  --priority-medium-bg: rgba(245,158,11,0.12);
+  --priority-low: #3b82f6;
+  --priority-low-bg: rgba(59,130,246,0.12);
+  --metric-blue: #3b82f6;
+  --metric-purple: #a855f7;
+  --metric-orange: #f59e0b;
+  --metric-green: #4ade80;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --blur: blur(20px);
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 30px rgba(74,222,128,0.08);
+  --max-width: 1600px;
+  --padding: 2.5rem;
+  --header-height: 64px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Subtle gradient overlay on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(74,222,128,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.animate-in {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.animate-in:nth-child(1) { animation-delay: 0.05s; }
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.15s; }
+.animate-in:nth-child(4) { animation-delay: 0.2s; }
+.animate-in:nth-child(5) { animation-delay: 0.25s; }
+.animate-in:nth-child(6) { animation-delay: 0.3s; }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--bg-header);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--padding);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.logo-text {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.logo-text span {
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+/* Tabs */
+.nav-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  padding: 4px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-subtle);
+}
+
+.nav-tab {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-tab:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.05);
+}
+
+.nav-tab.active {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Search & Status */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  width: 220px;
+  transition: all var(--transition);
+  outline: none;
+}
+
+.search-input::placeholder { color: var(--text-tertiary); }
+
+.search-input:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+  width: 280px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.search-kbd {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  background: rgba(255,255,255,0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  pointer-events: none;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+.status-dot.offline {
+  background: #ef4444;
+  animation: none;
+}
+
+/* Server status + weather indicators */
+.header-status-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-weather {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.04);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+.header-weather-temp {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.server-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-subtle);
+}
+.server-indicator .si-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.server-indicator .si-dot.offline {
+  background: #ef4444;
+}
+.server-indicator .si-label {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--padding);
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ============================================================
+   GLASS CARD
+   ============================================================ */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: all var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+}
+
+/* ============================================================
+   DASHBOARD TAB
+   ============================================================ */
+
+/* Welcome Bar */
+.welcome-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.welcome-greeting {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.welcome-greeting .wave { display: inline-block; animation: none; }
+
+.welcome-datetime {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  text-align: right;
+}
+
+.welcome-datetime .date { font-weight: 500; color: var(--text-primary); }
+
+/* Metric Cards Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.metric-card.blue::before { background: var(--metric-blue); }
+.metric-card.purple::before { background: var(--metric-purple); }
+.metric-card.orange::before { background: var(--metric-orange); }
+.metric-card.green::before { background: var(--metric-green); }
+
+.metric-icon {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.metric-trend {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.metric-trend.up { color: var(--accent); }
+.metric-trend.down { color: var(--priority-high); }
+.metric-trend.neutral { color: var(--text-secondary); }
+
+/* Dashboard Bottom Row */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Activity Feed */
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.activity-feed {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.activity-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border-subtle);
+}
+
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.activity-text {
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.activity-time {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.activity-add {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.activity-add input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.activity-add input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: var(--accent-dim);
+  border-color: rgba(74,222,128,0.2);
+  color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: rgba(74,222,128,0.25);
+  border-color: rgba(74,222,128,0.4);
+  box-shadow: 0 0 20px rgba(74,222,128,0.1);
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btn-danger {
+  color: var(--priority-high);
+  border-color: rgba(239,68,68,0.2);
+}
+
+.btn-danger:hover {
+  background: rgba(239,68,68,0.1);
+  border-color: rgba(239,68,68,0.4);
+}
+
+/* Priorities */
+.priorities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.priority-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.priority-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border-subtle);
+}
+
+.priority-item.completed .priority-text {
+  text-decoration: line-through;
+  color: var(--text-tertiary);
+}
+
+.priority-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-hover);
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.priority-checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.priority-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  color: #050508;
+  font-weight: 700;
+}
+
+.priority-checkbox:hover { border-color: var(--accent); }
+
+.priority-text {
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.priority-delete {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all var(--transition);
+  padding: 0 0.25rem;
+}
+
+.priority-item:hover .priority-delete { opacity: 1; }
+.priority-delete:hover { color: var(--priority-high); }
+
+.priority-add {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.priority-add input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.priority-add input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* ============================================================
+   PROJECTS TAB — KANBAN
+   ============================================================ */
+.kanban-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.kanban-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  height: 500px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.kanban-column {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.column-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.column-count {
+  background: rgba(255,255,255,0.08);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.column-add-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.column-add-btn:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.kanban-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  min-height: 100px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.kanban-cards::-webkit-scrollbar { width: 4px; }
+.kanban-cards::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+.kanban-cards::-webkit-scrollbar-track { background: transparent; }
+
+.kanban-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.kanban-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.kanban-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.kanban-card-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kanban-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kanban-card-date {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+}
+
+.priority-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.priority-badge.high {
+  background: var(--priority-high-bg);
+  color: var(--priority-high);
+}
+
+.priority-badge.medium {
+  background: var(--priority-medium-bg);
+  color: var(--priority-medium);
+}
+
+.priority-badge.low {
+  background: var(--priority-low-bg);
+  color: var(--priority-low);
+}
+
+.kanban-card-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.kanban-card:hover .kanban-card-actions { opacity: 1; }
+
+.card-action-btn {
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: var(--text-secondary);
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.card-action-btn:hover { color: var(--text-primary); background: rgba(0,0,0,0.8); }
+.card-action-btn.delete:hover { color: var(--priority-high); }
+
+/* ============================================================
+   TIMELINE TAB
+   ============================================================ */
+.timeline-header {
+  margin-bottom: 2rem;
+}
+
+.timeline-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-header p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--border-subtle));
+  border-radius: 1px;
+}
+
+.timeline-phase {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+
+.timeline-phase::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid var(--border-hover);
+  z-index: 1;
+  transition: all var(--transition);
+}
+
+.timeline-phase.current::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.timeline-phase.completed::before {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.phase-card {
+  transition: all var(--transition);
+}
+
+.timeline-phase.current .phase-card {
+  border-color: rgba(74,222,128,0.15);
+  box-shadow: var(--shadow-glow);
+}
+
+.phase-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.phase-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.phase-badge.current {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.phase-badge.upcoming {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-tertiary);
+}
+
+.phase-badge.completed {
+  background: rgba(74,222,128,0.08);
+  color: rgba(74,222,128,0.6);
+}
+
+.phase-dates {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.phase-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+}
+
+.milestone-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.milestone.done .milestone-check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #050508;
+}
+
+.milestone.done .milestone-text {
+  color: var(--text-secondary);
+}
+
+.milestone-text { color: var(--text-primary); }
+
+/* ============================================================
+   NOTES TAB
+   ============================================================ */
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.notes-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.notes-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 500px;
+  background: var(--bg-card);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  color: var(--text-primary);
+  font-family: 'Inter', monospace;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.notes-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.notes-textarea::placeholder { color: var(--text-tertiary); }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  width: 90%;
+  max-width: 480px;
+  animation: slideDown 0.3s ease;
+}
+
+.modal h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.form-textarea { min-height: 80px; resize: vertical; }
+
+.form-select { cursor: pointer; }
+.form-select option { background: var(--bg-secondary); }
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* ============================================================
+   REVENUE TAB
+   ============================================================ */
+.revenue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.revenue-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Revenue Gauges */
+.gauges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.gauge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.gauge-svg {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.gauge-svg circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.gauge-bg { stroke: rgba(255,255,255,0.06); }
+.gauge-fill {
+  stroke: var(--accent);
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.gauge-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge-percent {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+
+.gauge-label-small {
+  font-size: 0.6rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gauge-biz-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.gauge-amounts {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* Revenue Chart */
+.rev-chart-section {
+  margin-bottom: 2rem;
+}
+
+.rev-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  height: 220px;
+  padding: 1rem 0;
+}
+
+.rev-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.rev-bar {
+  width: 100%;
+  max-width: 60px;
+  background: linear-gradient(to top, var(--accent), rgba(74,222,128,0.4));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 4px;
+  cursor: pointer;
+}
+
+.rev-bar:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.rev-bar-amount {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.rev-bar-label {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Revenue bottom grid */
+.revenue-bottom {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Client List */
+.client-table-wrap {
+  overflow-x: auto;
+}
+
+.client-mrr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.client-mrr-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.client-mrr-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+}
+
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.client-table th {
+  text-align: left;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.client-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  vertical-align: middle;
+}
+
+.client-table tr {
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.client-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.status-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-badge.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.status-badge.pending {
+  background: var(--priority-medium-bg);
+  color: var(--priority-medium);
+}
+
+.status-badge.churned {
+  background: var(--priority-high-bg);
+  color: var(--priority-high);
+}
+
+.client-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.client-table tr:hover .client-actions { opacity: 1; }
+
+/* Revenue Projections */
+.projections-card .proj-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.projections-card .proj-item:last-child { border-bottom: none; }
+
+.proj-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.proj-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.proj-value.accent { color: var(--accent); }
+
+.proj-goal-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 120px;
+  text-align: right;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.proj-goal-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* ============================================================
+   COMMAND CENTER TAB
+   ============================================================ */
+.cc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.cc-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.agent-card {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--metric-blue);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.agent-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.agent-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent-dim), rgba(59,130,246,0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.agent-name-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.agent-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agent-role {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.agent-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.agent-status-dot.online { background: var(--accent); animation: pulse 2s infinite; }
+.agent-status-dot.busy { background: var(--priority-medium); }
+.agent-status-dot.offline { background: var(--text-tertiary); }
+
+.agent-meta {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.agent-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.agent-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.agent-card-actions .btn { flex: 1; justify-content: center; }
+
+/* Slide-out Detail Panel */
+.agent-detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-subtle);
+  z-index: 250;
+  padding: 2rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.agent-detail-panel.open {
+  transform: translateX(0);
+  box-shadow: -10px 0 40px rgba(0,0,0,0.5);
+}
+
+.detail-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.detail-close:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--text-primary);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-right: 2rem;
+}
+
+.detail-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent-dim), rgba(59,130,246,0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.detail-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.detail-role {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.detail-capabilities {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.detail-capabilities li {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.detail-capabilities li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.detail-activity-log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.detail-activity-item {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 0.5rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--accent-dim);
+}
+
+.detail-activity-item .time {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.detail-notes-textarea {
+  width: 100%;
+  min-height: 100px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.detail-notes-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* Executive Decisions */
+.decisions-section {
+  margin-top: 0.5rem;
+}
+
+.decisions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.decision-card {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition);
+}
+
+.decision-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border-hover);
+}
+
+.decision-date {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.decision-topic {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.decision-summary {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.decision-agents {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.decision-agent-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(59,130,246,0.12);
+  color: var(--metric-blue);
+}
+
+/* ============================================================
+   YOUTUBE TAB
+   ============================================================ */
+.yt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.yt-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Video Pipeline Kanban */
+.yt-pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  height: 420px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.yt-pipeline-col {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.yt-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.yt-col-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.yt-col-count {
+  background: rgba(255,255,255,0.08);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.yt-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.yt-cards::-webkit-scrollbar { width: 4px; }
+.yt-cards::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+.yt-cards::-webkit-scrollbar-track { background: transparent; }
+
+.yt-video-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.yt-video-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+
+.yt-video-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.yt-video-desc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.yt-video-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.yt-channel-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+.yt-channel-badge.m2m {
+  background: rgba(168,85,247,0.12);
+  color: var(--metric-purple);
+}
+
+.yt-channel-badge.bbtb {
+  background: rgba(245,158,11,0.12);
+  color: var(--metric-orange);
+}
+
+.yt-channel-badge.mojo {
+  background: rgba(74,222,128,0.12);
+  color: var(--accent);
+}
+
+.yt-channel-badge.mfu {
+  background: rgba(56,189,248,0.12);
+  color: #38bdf8;
+}
+
+.yt-video-date {
+  font-size: 0.6rem;
+  color: var(--text-tertiary);
+}
+
+.yt-video-actions {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: flex;
+  gap: 0.2rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.yt-video-card:hover .yt-video-actions { opacity: 1; }
+
+/* YouTube Bottom */
+.yt-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+}
+
+/* Growth Tracker */
+.growth-channel {
+  margin-bottom: 1.5rem;
+}
+
+.growth-channel:last-child { margin-bottom: 0; }
+
+.growth-channel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.growth-channel-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.growth-sub-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.5rem;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  width: 80px;
+  text-align: right;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.growth-sub-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.growth-milestone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.growth-milestone-title {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 140px;
+}
+
+.growth-xp-bar {
+  flex: 1;
+  height: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.growth-xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  border-radius: 6px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+}
+
+.growth-xp-label {
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.growth-current-milestone {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.growth-next-milestone {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  margin-top: 0.15rem;
+}
+
+/* Content Calendar */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-header-cell {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+}
+
+.cal-cell {
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  min-height: 40px;
+}
+
+.cal-cell:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--border-subtle);
+}
+
+.cal-cell.today {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.cal-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.cal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 4px;
+}
+
+.cal-dot.m2m { background: var(--metric-purple); }
+.cal-dot.bbtb { background: var(--metric-orange); }
+
+.cal-dots {
+  display: flex;
+  gap: 2px;
+  position: absolute;
+  bottom: 4px;
+}
+
+.cal-month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cal-month-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cal-nav-btn {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  font-size: 0.75rem;
+}
+
+.cal-nav-btn:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.cal-popup {
+  position: fixed;
+  z-index: 300;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-width: 200px;
+  box-shadow: var(--shadow-card);
+  animation: slideDown 0.2s ease;
+}
+
+.cal-popup-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.cal-popup-item {
+  font-size: 0.8125rem;
+  padding: 0.35rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .kanban-board { grid-template-columns: 1fr; }
+  .gauges-grid { grid-template-columns: repeat(2, 1fr); }
+  .revenue-bottom { grid-template-columns: 1fr; }
+  .yt-pipeline { grid-template-columns: repeat(3, 1fr); }
+  .yt-bottom { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  :root { --padding: 1rem; }
+  .header { padding: 0 1rem; }
+  .nav-tabs { display: none; }
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-header);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-top: 1px solid var(--border-subtle);
+    z-index: 100;
+    padding: 0.5rem;
+    gap: 0.25rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .main { padding-bottom: 5rem; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .dashboard-bottom { grid-template-columns: 1fr; }
+  .welcome-greeting { font-size: 1.25rem; }
+  .search-input { width: 160px; }
+  .search-input:focus { width: 200px; }
+  .search-kbd { display: none; }
+  .logo-text span { display: none; }
+  .gauges-grid { grid-template-columns: 1fr 1fr; }
+  .yt-pipeline { grid-template-columns: 1fr; }
+  .agents-grid { grid-template-columns: 1fr; }
+  .agent-detail-panel { width: 100vw; }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+  .gauges-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile nav hidden by default */
+.mobile-nav { display: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+</style>
+</head>
+<body>
+    <a href="hub.html" class="back-link">← Hub</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🎯</div>
+      <div class="logo-text">Mission Control<span>by Yoel</span></div>
+    </div>
+
+    <nav class="nav-tabs" id="navTabs">
+      <button class="nav-tab active" data-tab="dashboard">📊 Dashboard</button>
+      <button class="nav-tab" data-tab="projects">📋 Projects</button>
+      <button class="nav-tab" data-tab="timeline">📅 Timeline</button>
+      <button class="nav-tab" data-tab="notes">📝 Notes</button>
+      <button class="nav-tab" data-tab="revenue">💰 Revenue</button>
+      <button class="nav-tab" data-tab="commandcenter">🏢 Command Center</button>
+      <button class="nav-tab" data-tab="youtube">🎬 YouTube</button>
+    </nav>
+
+    <div class="header-right">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search everything...">
+        <span class="search-kbd">⌘K</span>
+      </div>
+      <div class="header-status-group">
+        <div class="header-weather" id="headerWeather" style="display:none" title="Miami weather">
+          <span>☀️</span>
+          <span class="header-weather-temp" id="weatherTemp">--</span>
+          <span id="weatherCondition">--</span>
+        </div>
+        <div class="server-indicator" id="serverIndicator">
+          <span class="si-dot" id="serverDot"></span>
+          <span class="si-label" id="serverLabel">Checking...</span>
+        </div>
+        <div class="status-dot" id="mainStatusDot" title="All systems operational"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="nav-tab active" data-tab="dashboard">📊</button>
+  <button class="nav-tab" data-tab="projects">📋</button>
+  <button class="nav-tab" data-tab="timeline">📅</button>
+  <button class="nav-tab" data-tab="notes">📝</button>
+  <button class="nav-tab" data-tab="revenue">💰</button>
+  <button class="nav-tab" data-tab="commandcenter">🏢</button>
+  <button class="nav-tab" data-tab="youtube">🎬</button>
+</nav>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="main">
+
+  <!-- ==================== DASHBOARD TAB ==================== -->
+  <div class="tab-content active" id="tab-dashboard">
+    <!-- Welcome Bar -->
+    <div class="welcome-bar animate-in">
+      <div>
+        <div class="welcome-greeting" id="greeting">Good morning, Yoel 👋</div>
+      </div>
+      <div class="welcome-datetime">
+        <div class="date" id="currentDate"></div>
+        <div id="currentTime"></div>
+      </div>
+    </div>
+
+    <!-- Metric Cards -->
+    <div class="metrics-grid">
+      <div class="glass-card metric-card green animate-in">
+        <div class="metric-icon">📈</div>
+        <div class="metric-label">Project Progress</div>
+        <div class="metric-value" id="metricProgress">0%</div>
+        <div class="metric-trend up" id="metricProgressTrend">↑ On track</div>
+      </div>
+      <div class="glass-card metric-card blue animate-in">
+        <div class="metric-icon">🚀</div>
+        <div class="metric-label">Active Projects</div>
+        <div class="metric-value" id="metricActive">0</div>
+        <div class="metric-trend neutral">In progress</div>
+      </div>
+      <div class="glass-card metric-card purple animate-in">
+        <div class="metric-icon">✅</div>
+        <div class="metric-label">Tasks Today</div>
+        <div class="metric-value" id="metricTasks">0</div>
+        <div class="metric-trend neutral" id="metricTasksTrend">Keep pushing</div>
+      </div>
+      <div class="glass-card metric-card orange animate-in">
+        <div class="metric-icon">🎯</div>
+        <div class="metric-label">Days to Goal</div>
+        <div class="metric-value" id="metricGoal">0</div>
+        <div class="metric-trend neutral">End of 2026</div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Activity + Priorities -->
+    <div class="dashboard-bottom">
+      <div class="glass-card animate-in">
+        <div class="section-title">⚡ Recent Activity</div>
+        <div class="activity-feed" id="activityFeed"></div>
+        <div class="activity-add">
+          <input type="text" id="activityInput" placeholder="Log an activity...">
+          <button class="btn btn-accent btn-sm" onclick="addActivity()">Add</button>
+        </div>
+      </div>
+      <div class="glass-card animate-in">
+        <div class="section-title">🔥 Top Priorities</div>
+        <div class="priorities-list" id="prioritiesList"></div>
+        <div class="priority-add">
+          <input type="text" id="priorityInput" placeholder="Add a priority...">
+          <button class="btn btn-accent btn-sm" onclick="addPriority()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROJECTS TAB ==================== -->
+  <div class="tab-content" id="tab-projects">
+    <div class="kanban-header animate-in">
+      <h2>📋 Projects & Tasks</h2>
+    </div>
+    <div class="kanban-board" id="kanbanBoard">
+      <!-- Backlog Column -->
+      <div class="kanban-column" data-column="backlog">
+        <div class="column-header">
+          <div class="column-title">
+            📥 Backlog <span class="column-count" id="count-backlog">0</span>
+          </div>
+          <button class="column-add-btn" onclick="openTaskModal('backlog')" title="Add task">+</button>
+        </div>
+        <div class="kanban-cards" id="cards-backlog"></div>
+      </div>
+      <!-- In Progress Column -->
+      <div class="kanban-column" data-column="inprogress">
+        <div class="column-header">
+          <div class="column-title">
+            🔄 In Progress <span class="column-count" id="count-inprogress">0</span>
+          </div>
+          <button class="column-add-btn" onclick="openTaskModal('inprogress')" title="Add task">+</button>
+        </div>
+        <div class="kanban-cards" id="cards-inprogress"></div>
+      </div>
+      <!-- Done Column -->
+      <div class="kanban-column" data-column="done">
+        <div class="column-header">
+          <div class="column-title">
+            ✅ Done <span class="column-count" id="count-done">0</span>
+          </div>
+          <button class="column-add-btn" onclick="openTaskModal('done')" title="Add task">+</button>
+        </div>
+        <div class="kanban-cards" id="cards-done"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TIMELINE TAB ==================== -->
+  <div class="tab-content" id="tab-timeline">
+    <div class="timeline-header animate-in">
+      <h2>📅 2026 Roadmap</h2>
+      <p>Strategic phases for building the empire</p>
+    </div>
+    <div class="timeline" id="timelineContainer"></div>
+  </div>
+
+  <!-- ==================== NOTES TAB ==================== -->
+  <div class="tab-content" id="tab-notes">
+    <div class="notes-header animate-in">
+      <h2>📝 Notes</h2>
+      <div class="notes-meta">
+        <span id="notesCharCount">0 characters</span>
+        <span id="notesLastSaved">Not saved yet</span>
+      </div>
+    </div>
+    <textarea class="notes-textarea animate-in" id="notesArea" placeholder="Start typing your notes here...
+
+Use this space for:
+• Business ideas and strategies
+• Meeting notes
+• Quick thoughts and reminders
+• Decision logs
+
+Everything auto-saves to your browser."></textarea>
+  </div>
+
+  <!-- ==================== REVENUE TAB ==================== -->
+  <div class="tab-content" id="tab-revenue">
+    <div class="revenue-header animate-in">
+      <h2>💰 Revenue</h2>
+      <button class="btn btn-accent btn-sm" onclick="openClientModal()">+ Add Client</button>
+    </div>
+
+    <!-- Gauges -->
+    <div class="gauges-grid" id="revenueGauges"></div>
+
+    <!-- Revenue Chart -->
+    <div class="glass-card rev-chart-section animate-in">
+      <div class="section-title">📊 Last 6 Months Revenue</div>
+      <div class="rev-chart" id="revenueChart"></div>
+    </div>
+
+    <!-- Bottom: Client List + Projections -->
+    <div class="revenue-bottom">
+      <div class="glass-card animate-in">
+        <div class="section-title">👥 Client List</div>
+        <div class="client-mrr">
+          <span class="client-mrr-label">Monthly Recurring Revenue</span>
+          <span class="client-mrr-value" id="mrrValue">$0</span>
+        </div>
+        <div class="client-table-wrap">
+          <table class="client-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Business</th>
+                <th>Monthly $</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="clientTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="glass-card projections-card animate-in">
+        <div class="section-title">📈 Revenue Projections</div>
+        <div id="projectionsContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COMMAND CENTER TAB ==================== -->
+  <div class="tab-content" id="tab-commandcenter">
+    <div class="cc-header animate-in">
+      <h2>🏢 Command Center</h2>
+    </div>
+
+    <!-- Agent Cards Grid -->
+    <div class="agents-grid" id="agentsGrid"></div>
+
+    <!-- Executive Decisions -->
+    <div class="glass-card decisions-section animate-in">
+      <div class="decisions-header">
+        <div class="section-title">⚖️ Executive Decisions</div>
+        <button class="btn btn-accent btn-sm" onclick="openDecisionModal()">+ New Decision</button>
+      </div>
+      <div id="decisionsList"></div>
+    </div>
+  </div>
+
+  <!-- ==================== YOUTUBE TAB ==================== -->
+  <div class="tab-content" id="tab-youtube">
+    <div class="yt-header animate-in">
+      <h2>🎬 YouTube</h2>
+      <button class="btn btn-accent btn-sm" onclick="openVideoModal()">+ Add Video</button>
+    </div>
+
+    <!-- Video Pipeline Kanban -->
+    <div class="yt-pipeline" id="ytPipeline"></div>
+
+    <!-- Bottom: Growth + Calendar -->
+    <div class="yt-bottom">
+      <div class="glass-card animate-in">
+        <div class="section-title">🚀 Growth Tracker</div>
+        <div id="growthTracker"></div>
+      </div>
+      <div class="glass-card animate-in">
+        <div class="section-title">📅 Content Calendar</div>
+        <div id="contentCalendar"></div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+<!-- ============================================================
+     TASK MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="taskModal">
+  <div class="modal">
+    <h3 id="modalTitle">Add Task</h3>
+    <div class="form-group">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-input" id="taskTitle" placeholder="Task title...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="taskDesc" placeholder="Brief description..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Priority</label>
+      <select class="form-select" id="taskPriority">
+        <option value="high">🔴 High</option>
+        <option value="medium" selected>🟡 Medium</option>
+        <option value="low">🔵 Low</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Move to Column</label>
+      <select class="form-select" id="taskColumn">
+        <option value="backlog">📥 Backlog</option>
+        <option value="inprogress">🔄 In Progress</option>
+        <option value="done">✅ Done</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeTaskModal()">Cancel</button>
+      <button class="btn btn-danger" id="modalDeleteBtn" onclick="deleteCurrentTask()" style="display:none">Delete</button>
+      <button class="btn btn-accent" id="modalSaveBtn" onclick="saveTask()">Save Task</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CLIENT MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="clientModal">
+  <div class="modal">
+    <h3 id="clientModalTitle">Add Client</h3>
+    <div class="form-group">
+      <label class="form-label">Client Name</label>
+      <input type="text" class="form-input" id="clientName" placeholder="Client name...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Business</label>
+      <select class="form-select" id="clientBusiness">
+        <option value="Mosquito Joe of Miami">Mosquito Joe of Miami</option>
+        <option value="Business Digital Marketer">Business Digital Marketer</option>
+        <option value="Best Pest Professionals">Best Pest Professionals</option>
+        <option value="MagicFollowUp">MagicFollowUp</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Monthly Value ($)</label>
+      <input type="number" class="form-input" id="clientValue" placeholder="0">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Status</label>
+      <select class="form-select" id="clientStatus">
+        <option value="active">Active</option>
+        <option value="pending">Pending</option>
+        <option value="churned">Churned</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Start Date</label>
+      <input type="date" class="form-input" id="clientStartDate">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeClientModal()">Cancel</button>
+      <button class="btn btn-danger" id="clientDeleteBtn" onclick="deleteCurrentClient()" style="display:none">Delete</button>
+      <button class="btn btn-accent" onclick="saveClient()">Save Client</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEND TASK MODAL (Command Center)
+     ============================================================ -->
+<div class="modal-overlay" id="sendTaskModal">
+  <div class="modal">
+    <h3 id="sendTaskAgentName">Send Task to Agent</h3>
+    <div class="form-group">
+      <label class="form-label">Task Description</label>
+      <textarea class="form-textarea" id="sendTaskDesc" placeholder="Describe the task..." style="min-height:120px"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeSendTaskModal()">Cancel</button>
+      <button class="btn btn-accent" onclick="saveSendTask()">Send Task</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     DECISION MODAL (Command Center)
+     ============================================================ -->
+<div class="modal-overlay" id="decisionModal">
+  <div class="modal">
+    <h3>New Executive Decision</h3>
+    <div class="form-group">
+      <label class="form-label">Topic / Question</label>
+      <input type="text" class="form-input" id="decisionTopic" placeholder="What was decided?">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Decision Summary</label>
+      <textarea class="form-textarea" id="decisionSummary" placeholder="Summarize the decision..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Agents Consulted</label>
+      <div id="decisionAgentCheckboxes" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.25rem"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeDecisionModal()">Cancel</button>
+      <button class="btn btn-accent" onclick="saveDecision()">Save Decision</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     VIDEO MODAL (YouTube)
+     ============================================================ -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal">
+    <h3 id="videoModalTitle">Add Video</h3>
+    <div class="form-group">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-input" id="videoTitle" placeholder="Video title...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Channel</label>
+      <select class="form-select" id="videoChannel">
+        <option value="Miami2theMountains">🏔️ Miami2theMountains</option>
+        <option value="Buzz Behind the Biz">🐝 Buzz Behind the Biz</option>
+        <option value="Mosquito Joe of Miami">🦟 Mosquito Joe of Miami</option>
+        <option value="MagicFollowUp">✨ MagicFollowUp</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Pipeline Stage</label>
+      <select class="form-select" id="videoStage">
+        <option value="idea">💡 Idea</option>
+        <option value="scripting">✍️ Scripting</option>
+        <option value="filming">🎥 Filming</option>
+        <option value="editing">✂️ Editing</option>
+        <option value="published">✅ Published</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Target Publish Date</label>
+      <input type="date" class="form-input" id="videoDate">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-textarea" id="videoDesc" placeholder="Brief description..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeVideoModal()">Cancel</button>
+      <button class="btn btn-danger" id="videoDeleteBtn" onclick="deleteCurrentVideo()" style="display:none">Delete</button>
+      <button class="btn btn-accent" onclick="saveVideo()">Save Video</button>
+    </div>
+  </div>
+</div>
+
+<!-- Agent Detail Panel (slide-out) -->
+<div class="agent-detail-panel" id="agentDetailPanel">
+  <button class="detail-close" onclick="closeAgentDetail()">✕</button>
+  <div id="agentDetailContent"></div>
+</div>
+
+<!-- Calendar Popup -->
+<div class="cal-popup" id="calPopup" style="display:none"></div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ============================================================
+   DATA LAYER — localStorage persistence
+   ============================================================ */
+const STORAGE_KEYS = {
+  tasks: 'mc_tasks',
+  activities: 'mc_activities',
+  priorities: 'mc_priorities',
+  notes: 'mc_notes',
+  notesSavedAt: 'mc_notes_saved_at',
+  revenue: 'mc_revenue',
+  agents: 'mc_agents',
+  decisions: 'mc_decisions',
+  videos: 'mc_videos',
+  ytGrowth: 'mc_yt_growth'
+};
+
+function loadData(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (e) { return fallback; }
+}
+
+function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+  // Log change to server activity feed (fire-and-forget)
+  if (window._mcServerOnline) {
+    const label = Object.entries(STORAGE_KEYS).find(([,v]) => v === key)?.[0] || key;
+    fetch('http://localhost:8899/mc/activity', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: `Updated ${label}`, source: 'mission-control' })
+    }).catch(() => {});
+  }
+}
+
+/* ============================================================
+   DEFAULT DATA — pre-populated for first load
+   ============================================================ */
+const DEFAULT_TASKS = [
+  { id: 't1', title: 'ServiceMinder API Migration', desc: 'Migrate MoJo data feeds from legacy to new ServiceMinder REST API. Map all endpoints and test sync.', priority: 'high', column: 'inprogress', created: '2025-06-01' },
+  { id: 't2', title: 'MoJo Dashboard v2', desc: 'Redesign Mosquito Joe operations dashboard with real-time fleet tracking from Zubie and revenue metrics.', priority: 'high', column: 'inprogress', created: '2025-06-03' },
+  { id: 't3', title: 'GoHighLevel CRM Setup', desc: 'Configure GoHighLevel for Business Digital Marketer client onboarding, AI employee workflows, and SaaS mode.', priority: 'medium', column: 'inprogress', created: '2025-06-05' },
+  { id: 't4', title: 'Best Pest Truly Nolen Transition', desc: 'Prepare all documentation and customer data for Best Pest Professionals sale to Truly Nolen.', priority: 'high', column: 'backlog', created: '2025-06-02' },
+  { id: 't5', title: 'Miami2theMountains Content Calendar', desc: 'Plan next 30 days of YouTube content for personal channel. Storyboard at least 4 videos.', priority: 'medium', column: 'backlog', created: '2025-06-04' },
+  { id: 't6', title: 'Buzz Behind the Biz — Pilot Episode', desc: 'Script, shoot, and edit pilot episode for business YouTube channel. Focus on the MoJo franchise journey.', priority: 'medium', column: 'backlog', created: '2025-06-06' },
+  { id: 't7', title: 'PA-32 Annual Inspection Prep', desc: 'Coordinate with Skipgen Holdings for PA-32 annual inspection. Gather all maintenance logs and schedule with mechanic.', priority: 'low', column: 'backlog', created: '2025-06-07' },
+  { id: 't8', title: 'High Risk Holdings — Ellijay Land Survey', desc: 'Commission updated land survey for Ellijay, GA property. Get comparable sales data for valuation.', priority: 'low', column: 'backlog', created: '2025-06-08' },
+  { id: 't9', title: 'Clawdbot AI Agent Configuration', desc: 'Finalize CTO agent setup with memory, skills, and cross-agent communication protocols.', priority: 'high', column: 'done', created: '2025-05-20' },
+  { id: 't10', title: 'MoJo Route Optimization Research', desc: 'Research route optimization algorithms for Mosquito Joe service routes. Evaluate Zubie GPS data integration.', priority: 'medium', column: 'done', created: '2025-05-15' },
+  { id: 't11', title: 'Business Entity Structure Review', desc: 'Review all holding company structures with accountant. Ensure Skipgen, High Risk, and operating entities are optimized.', priority: 'medium', column: 'done', created: '2025-05-25' },
+];
+
+const DEFAULT_ACTIVITIES = [
+  { text: 'Deployed Mission Control dashboard', time: Date.now() },
+  { text: 'Updated MoJo ServiceMinder integration endpoints', time: Date.now() - 3600000 },
+  { text: 'Completed GoHighLevel AI employee workflow v1', time: Date.now() - 7200000 },
+  { text: 'Reviewed Best Pest Professionals transition docs', time: Date.now() - 14400000 },
+  { text: 'Pushed Clawdbot CTO agent to production', time: Date.now() - 28800000 },
+  { text: 'Analyzed Zubie fleet data for route optimization', time: Date.now() - 43200000 },
+];
+
+const DEFAULT_PRIORITIES = [
+  { id: 'p1', text: 'Close ServiceMinder migration for MoJo', completed: false },
+  { id: 'p2', text: 'Finalize Best Pest → Truly Nolen sale paperwork', completed: false },
+  { id: 'p3', text: 'Launch Buzz Behind the Biz pilot episode', completed: false },
+  { id: 'p4', text: 'Set up GoHighLevel SaaS mode for BDM clients', completed: false },
+  { id: 'p5', text: 'Schedule PA-32 annual inspection', completed: false },
+];
+
+const DEFAULT_NOTES = `# Mission Control Notes
+
+## Business Overview
+- **Mosquito Joe of Miami** — Peak season operations, ServiceMinder migration in progress
+- **Business Digital Marketer** — GoHighLevel CRM + AI employee setup for clients
+- **Miami2theMountains** — Personal YouTube channel, content calendar needed
+- **Buzz Behind the Biz** — Business YouTube channel, pilot episode in planning
+- **Skipgen Holdings** — PA-32 plane, annual inspection coming up
+- **High Risk Holdings** — Ellijay, GA land, holding for appreciation
+- **Best Pest Professionals** — Transition to Truly Nolen in progress
+
+## Key Decisions
+- Moving all CRM to GoHighLevel with SaaS mode
+- Building custom dashboards via Clawdbot + GitHub Pages
+- AI-first approach: Clawdbot C-suite agents for business ops
+
+## Quick Notes
+- Check ServiceMinder API rate limits before full migration
+- Get updated comps for Ellijay property
+- Coordinate with accountant on holding company tax optimization
+`;
+
+/* ============================================================
+   TIMELINE CONFIG — Easy to edit roadmap phases
+   ============================================================ */
+const TIMELINE_PHASES = [
+  {
+    title: 'Q1 2026 — Foundation',
+    dates: 'January – March 2026',
+    status: 'upcoming',
+    description: 'Establish solid operational foundations across all businesses. Finalize tech stack, complete key migrations, and set baseline KPIs for the year.',
+    milestones: [
+      { text: 'Complete ServiceMinder API migration for MoJo', done: false },
+      { text: 'Launch MoJo Operations Dashboard v2 with live Zubie fleet data', done: false },
+      { text: 'Finalize Best Pest Professionals sale to Truly Nolen', done: false },
+      { text: 'Set up GoHighLevel SaaS mode for BDM clients', done: false },
+      { text: 'File all holding company tax documents (Skipgen, High Risk)', done: false },
+      { text: 'PA-32 annual inspection complete', done: false },
+    ]
+  },
+  {
+    title: 'Q2 2026 — Growth Season',
+    dates: 'April – June 2026',
+    status: 'upcoming',
+    description: 'Capitalize on mosquito season peak. Ramp up marketing, optimize routes for efficiency, and scale BDM client acquisition with AI-powered onboarding.',
+    milestones: [
+      { text: 'MoJo revenue target: $50K/month during peak', done: false },
+      { text: 'Launch automated route optimization using Zubie data', done: false },
+      { text: 'Onboard 5 new BDM clients via GoHighLevel SaaS', done: false },
+      { text: 'Publish first 10 Buzz Behind the Biz episodes', done: false },
+      { text: 'Miami2theMountains: hit 1K subscribers', done: false },
+      { text: 'Evaluate Ellijay land development options', done: false },
+    ]
+  },
+  {
+    title: 'Q3 2026 — Peak Operations',
+    dates: 'July – September 2026',
+    status: 'upcoming',
+    description: 'Full throttle on service delivery. Mosquito Joe at peak capacity, BDM clients generating recurring revenue, content machine running on schedule.',
+    milestones: [
+      { text: 'MoJo: 95%+ on-time service completion rate', done: false },
+      { text: 'BDM: $15K MRR from GoHighLevel SaaS clients', done: false },
+      { text: 'Buzz Behind the Biz: 25+ episodes published', done: false },
+      { text: 'Clawdbot AI agents handling 80% of routine decisions', done: false },
+      { text: 'Evaluate MoJo second territory acquisition', done: false },
+      { text: 'Complete 50 flight hours in PA-32', done: false },
+    ]
+  },
+  {
+    title: 'Q4 2026 — Scale & Optimize',
+    dates: 'October – December 2026',
+    status: 'upcoming',
+    description: 'Off-season planning and scaling. Review annual performance, plan next year, optimize all systems, and position for exponential growth in 2027.',
+    milestones: [
+      { text: 'Annual revenue review across all entities', done: false },
+      { text: 'MoJo off-season maintenance and truck fleet upgrades', done: false },
+      { text: 'BDM: launch productized service tier', done: false },
+      { text: 'YouTube channels combined: 5K+ subscribers', done: false },
+      { text: 'High Risk Holdings: decision on Ellijay land (hold/develop/sell)', done: false },
+      { text: '2027 strategic plan finalized across all businesses', done: false },
+    ]
+  }
+];
+
+/* ============================================================
+   DEFAULT DATA — NEW TABS
+   ============================================================ */
+const DEFAULT_REVENUE = {
+  gauges: {
+    'Mosquito Joe of Miami': { current: 62000, goal: 80000 },
+    'BDM / MagicFollowUp': { current: 3200, goal: 5000 },
+    'Best Pest Professionals': { current: 11500, goal: 15000 }
+  },
+  chart: [
+    { month: 'Jan', total: 50000 },
+    { month: 'Feb', total: 55000 },
+    { month: 'Mar', total: 70000 },
+    { month: 'Apr', total: 95000 },
+    { month: 'May', total: 110000 },
+    { month: 'Jun', total: 120000 }
+  ],
+  clients: [
+    { id: 'c1', name: 'Miami-Dade County Schools', business: 'Mosquito Joe of Miami', monthly: 4500, status: 'active', startDate: '2024-03-15' },
+    { id: 'c2', name: 'Coral Gables HOA Network', business: 'Mosquito Joe of Miami', monthly: 3200, status: 'active', startDate: '2024-06-01' },
+    { id: 'c3', name: 'Sunshine Realty Group', business: 'Business Digital Marketer', monthly: 1500, status: 'active', startDate: '2025-01-10' },
+    { id: 'c4', name: 'Dr. Martinez Dental', business: 'MagicFollowUp', monthly: 800, status: 'active', startDate: '2025-03-20' },
+    { id: 'c5', name: 'Pinecrest Property Mgmt', business: 'Best Pest Professionals', monthly: 2800, status: 'active', startDate: '2024-09-01' },
+    { id: 'c6', name: 'South Beach Fitness Co', business: 'Business Digital Marketer', monthly: 1200, status: 'pending', startDate: '2025-06-15' }
+  ],
+  annualGoal: 1200000
+};
+
+const DEFAULT_AGENTS = [
+  {
+    id: 'a1', name: 'MoJoe', emoji: '🎯', role: 'Chief of Staff', status: 'online',
+    model: 'claude-sonnet-4-20250514', lastActive: Date.now() - 120000,
+    description: 'Main orchestrator agent — manages cross-functional coordination, board meetings, daily briefings, and ensures all business operations run smoothly.',
+    capabilities: ['Daily business briefings', 'Cross-agent task routing', 'Board meeting facilitation', 'Priority management', 'Executive summaries'],
+    activityLog: [
+      { text: 'Completed morning briefing for all businesses', time: Date.now() - 3600000 },
+      { text: 'Routed ServiceMinder integration task to CTO', time: Date.now() - 7200000 },
+      { text: 'Generated weekly revenue summary', time: Date.now() - 86400000 }
+    ],
+    notes: ''
+  },
+  {
+    id: 'a2', name: 'CTO', emoji: '💻', role: 'Chief Technology Officer', status: 'online',
+    model: 'claude-opus-4-6', lastActive: Date.now() - 60000,
+    description: 'Technology strategy and implementation lead — handles all technical architecture, integrations, dashboards, and AI agent infrastructure.',
+    capabilities: ['System architecture', 'API integrations', 'Dashboard development', 'Technical debt management', 'AI agent configuration', 'DevOps & deployment'],
+    activityLog: [
+      { text: 'Deployed Mission Control v2 with new tabs', time: Date.now() },
+      { text: 'Updated ServiceMinder API endpoints', time: Date.now() - 3600000 },
+      { text: 'Configured GoHighLevel webhook integrations', time: Date.now() - 28800000 }
+    ],
+    notes: ''
+  },
+  {
+    id: 'a3', name: 'Personal', emoji: '🧑‍💼', role: 'Personal Assistant', status: 'online',
+    model: 'claude-sonnet-4-20250514', lastActive: Date.now() - 300000,
+    description: 'Personal task management and life admin — handles scheduling, reminders, personal projects, travel planning, and family coordination.',
+    capabilities: ['Calendar management', 'Travel planning', 'Personal reminders', 'Research & recommendations', 'Family coordination'],
+    activityLog: [
+      { text: 'Set reminder for PA-32 annual inspection', time: Date.now() - 7200000 },
+      { text: 'Researched flight routes to Ellijay, GA', time: Date.now() - 86400000 }
+    ],
+    notes: ''
+  },
+  {
+    id: 'a4', name: 'Tees', emoji: '👕', role: 'T-Shirt Design Agent', status: 'busy',
+    model: 'claude-sonnet-4-20250514', lastActive: Date.now() - 1800000,
+    description: 'Creative design agent for merchandise — generates t-shirt designs, brand concepts, and visual assets for all businesses and personal projects.',
+    capabilities: ['T-shirt design concepts', 'Brand visual identity', 'Merch line planning', 'Design briefs', 'Color palette generation'],
+    activityLog: [
+      { text: 'Generated 5 new Mosquito Joe crew shirt concepts', time: Date.now() - 3600000 },
+      { text: 'Created Buzz Behind the Biz merch mockups', time: Date.now() - 172800000 }
+    ],
+    notes: ''
+  },
+  {
+    id: 'a5', name: 'MoJoe Board Secretary', emoji: '📋', role: 'Board Meeting Facilitator', status: 'online',
+    model: 'claude-sonnet-4-20250514', lastActive: Date.now() - 600000,
+    description: 'Facilitates board meetings between all C-suite agents — collects perspectives, manages agendas, synthesizes decisions, and tracks action items.',
+    capabilities: ['Board meeting orchestration', 'Multi-agent coordination', 'Decision synthesis', 'Action item tracking', 'Meeting minutes generation'],
+    activityLog: [
+      { text: 'Facilitated Q3 planning board meeting', time: Date.now() - 86400000 },
+      { text: 'Compiled action items from last board session', time: Date.now() - 172800000 }
+    ],
+    notes: ''
+  },
+  {
+    id: 'a6', name: 'CFO', emoji: '💰', role: 'Chief Financial Officer', status: 'online',
+    model: 'claude-opus-4-6', lastActive: Date.now() - 900000,
+    description: 'Financial strategy and oversight — manages P&L analysis, budgeting, cash flow forecasting, tax planning, and financial reporting across all portfolio companies.',
+    capabilities: ['P&L analysis', 'Cash flow forecasting', 'Budget management', 'Tax strategy', 'Financial reporting', 'Revenue optimization', 'Cost reduction analysis'],
+    activityLog: [
+      { text: 'Generated Q1 2026 financial summary across all entities', time: Date.now() - 3600000 },
+      { text: 'Analyzed MoJo seasonal cash flow projections', time: Date.now() - 86400000 },
+      { text: 'Reviewed Best Pest valuation for Truly Nolen sale', time: Date.now() - 172800000 }
+    ],
+    notes: 'Numbers don\'t lie. Neither do I.'
+  },
+  {
+    id: 'a7', name: 'COO', emoji: '⚙️', role: 'Chief Operating Officer', status: 'online',
+    model: 'claude-opus-4-6', lastActive: Date.now() - 450000,
+    description: 'Operations management across all businesses — handles process optimization, team management, fleet operations, scheduling, route efficiency, and day-to-day execution.',
+    capabilities: ['Process optimization', 'Team management', 'Route planning', 'Fleet operations', 'Scheduling efficiency', 'SOP development', 'Quality assurance'],
+    activityLog: [
+      { text: 'Reviewed tech route efficiency for Miami-Dade coverage', time: Date.now() - 7200000 },
+      { text: 'Updated CSR scheduling SOPs for peak season prep', time: Date.now() - 86400000 },
+      { text: 'Analyzed fleet utilization and Zubie safety scores', time: Date.now() - 172800000 }
+    ],
+    notes: 'Ship it. Fix it. Scale it.'
+  },
+  {
+    id: 'a8', name: 'CMO', emoji: '📈', role: 'Chief Marketing Officer', status: 'online',
+    model: 'claude-opus-4-6', lastActive: Date.now() - 600000,
+    description: 'Marketing strategy and execution — manages Google Ads, social media, content marketing, brand positioning, lead generation, and customer retention campaigns across all businesses.',
+    capabilities: ['Google Ads optimization', 'Social media strategy', 'Content marketing', 'Lead generation', 'Brand positioning', 'Campaign analytics', 'SEO & local marketing'],
+    activityLog: [
+      { text: 'Optimized MoJo Google Ads campaigns for spring season', time: Date.now() - 3600000 },
+      { text: 'Drafted win-back email campaign for paused customers', time: Date.now() - 86400000 },
+      { text: 'Reviewed MagicFollowUp marketing funnel conversion rates', time: Date.now() - 172800000 }
+    ],
+    notes: 'Every dollar earns its place.'
+  }
+];
+
+const DEFAULT_DECISIONS = [
+  {
+    id: 'd1', date: '2025-06-10', topic: 'CRM Platform Consolidation',
+    summary: 'Decided to consolidate all CRM operations to GoHighLevel with SaaS mode enabled. ServiceMinder remains for field ops only. BDM clients will be onboarded through white-labeled GHL sub-accounts.',
+    agents: ['MoJoe', 'CTO']
+  },
+  {
+    id: 'd2', date: '2025-06-08', topic: 'AI Agent Infrastructure',
+    summary: 'Adopted Clawdbot as the central AI agent platform. Each C-suite role gets a dedicated agent with memory, skills, and cross-communication. CTO agent gets Opus model for complex technical reasoning.',
+    agents: ['MoJoe', 'CTO', 'MoJoe Board Secretary']
+  },
+  {
+    id: 'd3', date: '2025-06-05', topic: 'YouTube Content Strategy',
+    summary: 'Launch two channels simultaneously — Miami2theMountains for personal/lifestyle content and Buzz Behind the Biz for business education. Target 2 videos/week across both channels.',
+    agents: ['MoJoe', 'Personal']
+  }
+];
+
+const DEFAULT_VIDEOS = [
+  { id: 'v1', title: 'Flying the PA-32 to the Keys', channel: 'Miami2theMountains', stage: 'idea', date: '2025-07-15', desc: 'Epic flying adventure from Miami Executive to Marathon Key. Aerial footage of the Keys chain.' },
+  { id: 'v2', title: 'Miami Hidden Gems Tour', channel: 'Miami2theMountains', stage: 'scripting', date: '2025-07-08', desc: 'Exploring 5 hidden spots in Miami that even locals miss. Wynwood to Key Biscayne.' },
+  { id: 'v3', title: 'Mountain Property Tour - Ellijay GA', channel: 'Miami2theMountains', stage: 'idea', date: '2025-08-01', desc: 'Tour of the Ellijay property with drone footage. Why Georgia mountains are the next big thing.' },
+  { id: 'v4', title: 'How I Built a Pest Control Empire', channel: 'Buzz Behind the Biz', stage: 'filming', date: '2025-07-01', desc: 'The full story of acquiring and growing Mosquito Joe of Miami and Best Pest Professionals.' },
+  { id: 'v5', title: 'ServiceMinder vs ServSuite', channel: 'Buzz Behind the Biz', stage: 'scripting', date: '2025-07-10', desc: 'Head-to-head comparison of pest control industry software. Real user experience breakdown.' },
+  { id: 'v6', title: 'Franchise Tech Stack Tour', channel: 'Buzz Behind the Biz', stage: 'idea', date: '2025-07-20', desc: 'Full walkthrough of every tool used to run a multi-unit service franchise. From CRM to fleet tracking.' },
+  { id: 'v7', title: 'AI Agents Running My Business', channel: 'Buzz Behind the Biz', stage: 'editing', date: '2025-06-28', desc: 'Behind the scenes of Clawdbot — how AI agents handle daily operations across multiple businesses.' },
+  { id: 'v8', title: 'Day in the Life: Franchise Owner & Pilot', channel: 'Miami2theMountains', stage: 'idea', date: '2025-08-15', desc: 'From morning business briefings to afternoon flights. The multi-business owner lifestyle.' },
+  // === MoJo Short-Form Content (Reels/TikTok/Shorts) ===
+  // Week 1 — Mar 3-7
+  { id: 'mojo-s1', title: 'Before/After: Coral Gables Backyard', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-03', desc: 'Reels/Shorts. Film backyard swarming → tech sprays → family enjoying dinner outside that night. 15-30 sec. CTA: Book at mosquitojoe.com' },
+  { id: 'mojo-s2', title: 'Ride-Along with Damian', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-05', desc: 'Reels/Shorts. Day-in-the-life: Damian prepping truck at 7am → driving through Miami → treating yards → end of day. 30-60 sec. Humanizes the brand.' },
+  { id: 'mojo-s3', title: 'Did You Know: Standing Water = 10K Mosquitoes', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-07', desc: 'Reels/Shorts. Educational: puddle after rain → text overlay "This creates 10,000 mosquitoes in 7 days" → tech treating it. Gross = engagement. 15 sec.' },
+  // Week 2 — Mar 10-14
+  { id: 'mojo-s4', title: 'Customer Reaction: "Haven\'t Been Bitten in 3 Weeks"', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-10', desc: 'Reels/Shorts. Ring doorbell-style quick testimonial. Customer at door saying they love the service. 15 sec. Authentic > polished.' },
+  { id: 'mojo-s5', title: '4.9 Stars, 863 Reviews — Here\'s Why', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-12', desc: 'Reels/Shorts. Montage of happy customers + review screenshots + techs waving. Social proof play. 20 sec.' },
+  { id: 'mojo-s6', title: 'Tech Tips: Where Mosquitoes Hide in Your Yard', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-14', desc: 'Reels/Shorts. John walks through a yard pointing out breeding spots: gutters, plant saucers, pool covers, tree holes. Educational. 30-45 sec.' },
+  // Week 3 — Mar 17-21
+  { id: 'mojo-s7', title: 'Misting System Install Timelapse', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-17', desc: 'Reels/Shorts. Full misting system install sped up 8x. Satisfying timelapse content. Show the finished system misting at sunset. 30 sec.' },
+  { id: 'mojo-s8', title: 'Hurricane Season = Mosquito Season 🌀🦟', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-19', desc: 'Reels/Shorts. Miami-specific seasonal hook. Standing water after storms = mosquito explosion. Timely, shareable. CTA: Book before the swarm. 15 sec.' },
+  { id: 'mojo-s9', title: 'Ride-Along with Marcus', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-21', desc: 'Reels/Shorts. Second tech ride-along — different personality, different routes. Show the team diversity. 30-60 sec.' },
+  // Week 4 — Mar 24-28
+  { id: 'mojo-s10', title: 'Before/After: Pool Party Setup', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-24', desc: 'Reels/Shorts. Special event spray before a backyard pool party. Show the spray → guests arriving mosquito-free. 20 sec.' },
+  { id: 'mojo-s11', title: 'Forbes Best Pest Management 2025 🏆', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-26', desc: 'Reels/Shorts. Flex the Forbes recognition. Quick montage of team, trucks, happy customers + Forbes badge. Trust/authority play. 15 sec.' },
+  { id: 'mojo-s12', title: 'Meet the Fleet: Our Miami Trucks', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-03-28', desc: 'Reels/Shorts. Walk through the truck lineup. Show equipment, branding, tech loading up. Operational pride content. 20-30 sec.' },
+  // Ongoing April+
+  { id: 'mojo-s13', title: 'Peak Season Kickoff: Miami Mosquito Map', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-04-01', desc: 'Reels/Shorts. Interactive-style: show a map of Miami neighborhoods we serve. "Which neighborhood are you in? We\'ve got you covered." 15 sec.' },
+  { id: 'mojo-s14', title: 'Why Your Neighbor\'s Yard Affects Yours', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-04-07', desc: 'Reels/Shorts. Educational: mosquitoes travel 1-3 miles. Your neighbor\'s standing water = your problem. Referral program plug. 20 sec.' },
+  { id: 'mojo-s15', title: 'HOA Special: Common Area Treatment', channel: 'Mosquito Joe of Miami', stage: 'idea', date: '2026-04-14', desc: 'Reels/Shorts. Show a team treating an HOA common area. "Your HOA can protect the whole community." B2B angle. 20-30 sec.' },
+  // === MagicFollowUp Short-Form Content ===
+  { id: 'mfu-s1', title: 'This Franchisee Was Losing 40% of Leads', channel: 'MagicFollowUp', stage: 'idea', date: '2026-03-10', desc: 'Reels/Shorts. Problem → solution in 30 sec. Screen recording of GHL automation kicking in after a missed call. Speed up 4x.' },
+  { id: 'mfu-s2', title: 'AI Follow-Up vs Manual: Side by Side', channel: 'MagicFollowUp', stage: 'idea', date: '2026-03-17', desc: 'Reels/Shorts. Split screen: left side manual (calling, voicemail, giving up) vs right side MagicFollowUp (instant SMS, email, booked). 30 sec.' },
+  { id: 'mfu-s3', title: '5 Leads You\'re Losing Right Now', channel: 'MagicFollowUp', stage: 'idea', date: '2026-03-24', desc: 'Reels/Shorts. Quick-cut listicle: missed calls, slow email replies, no SMS, no follow-up after quote, no review request. 30 sec.' },
+  { id: 'mfu-s4', title: 'GHL Workflow Build: Speed to Lead', channel: 'MagicFollowUp', stage: 'idea', date: '2026-04-07', desc: 'Reels/Shorts. Screen recording of building a speed-to-lead workflow in GHL. Timelapse 4x. Value content for the GHL community. 45-60 sec.' }
+];
+
+const DEFAULT_YT_GROWTH = {
+  'Miami2theMountains': 73,
+  'Buzz Behind the Biz': 33,
+  'Mosquito Joe of Miami': 5750,
+};
+
+// Real YouTube channel data
+const YT_CHANNELS = {
+  'Miami2theMountains': {
+    id: 'UCIdOarIDgszin69kytEU1Ow',
+    handle: '@FromMiamitotheMountains',
+    url: 'https://www.youtube.com/@FromMiamitotheMountains',
+    title: 'From Miami to the Mountains',
+    totalViews: 9877,
+    totalVideos: 21,
+    created: '2023-06-25'
+  },
+  'Buzz Behind the Biz': {
+    id: 'UC_W3gwAlDnZ85RH47KrgY0Q',
+    handle: '@BuzzBehindtheBizz',
+    url: 'https://www.youtube.com/@BuzzBehindtheBizz',
+    title: 'Buzz Behind The Bizz',
+    totalViews: 32812,
+    totalVideos: 47,
+    created: '2024-12-07'
+  },
+  'Mosquito Joe of Miami': {
+    id: 'UC1qqwBHhUSEaHIkodWp_pZg',
+    handle: '@mosquitojoeofmiami',
+    url: 'https://www.youtube.com/@mosquitojoeofmiami',
+    title: 'Mosquito Joe of Miami',
+    totalViews: 7520602,
+    totalVideos: 196,
+    created: '2015-05-21'
+  },
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let tasks = loadData(STORAGE_KEYS.tasks, null) || DEFAULT_TASKS;
+let activities = loadData(STORAGE_KEYS.activities, null) || DEFAULT_ACTIVITIES;
+let priorities = loadData(STORAGE_KEYS.priorities, null) || DEFAULT_PRIORITIES;
+let revenueData = loadData(STORAGE_KEYS.revenue, null) || DEFAULT_REVENUE;
+let agentsData = loadData(STORAGE_KEYS.agents, null) || DEFAULT_AGENTS;
+// v2: Force refresh agents if missing CFO/COO/CMO (added in update)
+if (agentsData && agentsData.length < 8) { agentsData = DEFAULT_AGENTS; saveData(STORAGE_KEYS.agents, agentsData); }
+let decisionsData = loadData(STORAGE_KEYS.decisions, null) || DEFAULT_DECISIONS;
+let videosData = loadData(STORAGE_KEYS.videos, null) || DEFAULT_VIDEOS;
+// v4: Force refresh videos if missing MoJo short-form content (added by CMO)
+if (videosData && !videosData.find(v => v.id === 'mojo-s1')) { videosData = DEFAULT_VIDEOS; saveData(STORAGE_KEYS.videos, videosData); }
+let ytGrowthData = loadData(STORAGE_KEYS.ytGrowth, null) || DEFAULT_YT_GROWTH;
+// v3: Force refresh YT growth data to real subscriber counts
+// v5: Force refresh if MoJo subs are wrong (should be 5750) or missing new channels
+if (!ytGrowthData['Mosquito Joe of Miami'] || ytGrowthData['Mosquito Joe of Miami'] < 5000) { ytGrowthData = DEFAULT_YT_GROWTH; saveData(STORAGE_KEYS.ytGrowth, ytGrowthData); }
+let currentEditTaskId = null;
+let currentModalColumn = 'backlog';
+let currentEditClientId = null;
+let currentEditVideoId = null;
+let currentSendTaskAgentId = null;
+let calendarMonth = new Date().getMonth();
+let calendarYear = new Date().getFullYear();
+
+// Save defaults on first load
+if (!localStorage.getItem(STORAGE_KEYS.tasks)) saveData(STORAGE_KEYS.tasks, tasks);
+if (!localStorage.getItem(STORAGE_KEYS.activities)) saveData(STORAGE_KEYS.activities, activities);
+if (!localStorage.getItem(STORAGE_KEYS.priorities)) saveData(STORAGE_KEYS.priorities, priorities);
+if (!localStorage.getItem(STORAGE_KEYS.notes)) localStorage.setItem(STORAGE_KEYS.notes, DEFAULT_NOTES);
+if (!localStorage.getItem(STORAGE_KEYS.revenue)) saveData(STORAGE_KEYS.revenue, revenueData);
+if (!localStorage.getItem(STORAGE_KEYS.agents)) saveData(STORAGE_KEYS.agents, agentsData);
+if (!localStorage.getItem(STORAGE_KEYS.decisions)) saveData(STORAGE_KEYS.decisions, decisionsData);
+if (!localStorage.getItem(STORAGE_KEYS.videos)) saveData(STORAGE_KEYS.videos, videosData);
+if (!localStorage.getItem(STORAGE_KEYS.ytGrowth)) saveData(STORAGE_KEYS.ytGrowth, ytGrowthData);
+
+/* ============================================================
+   TAB NAVIGATION
+   ============================================================ */
+function switchTab(tabName) {
+  // Update tabs
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll(`.nav-tab[data-tab="${tabName}"]`).forEach(t => t.classList.add('active'));
+
+  // Switch content
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  const target = document.getElementById('tab-' + tabName);
+  if (target) {
+    target.classList.add('active');
+    // Re-trigger animations
+    target.querySelectorAll('.animate-in').forEach((el, i) => {
+      el.style.animation = 'none';
+      el.offsetHeight; // force reflow
+      el.style.animation = `fadeInUp 0.5s ease ${i * 0.05}s forwards`;
+    });
+  }
+}
+
+// Bind tab clicks
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+});
+
+/* ============================================================
+   DATE/TIME & GREETING
+   ============================================================ */
+function updateDateTime() {
+  const now = new Date();
+  const hour = now.getHours();
+  let greeting = 'Good evening';
+  if (hour < 12) greeting = 'Good morning';
+  else if (hour < 17) greeting = 'Good afternoon';
+
+  document.getElementById('greeting').textContent = `${greeting}, Yoel 👋`;
+  document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+  document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', {
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+/* ============================================================
+   METRICS
+   ============================================================ */
+function updateMetrics() {
+  const total = tasks.length;
+  const done = tasks.filter(t => t.column === 'done').length;
+  const active = tasks.filter(t => t.column === 'inprogress').length;
+  const progress = total > 0 ? Math.round((done / total) * 100) : 0;
+
+  // Tasks today = uncompleted priorities
+  const todayTasks = priorities.filter(p => !p.completed).length;
+
+  // Days to goal (end of 2026)
+  const goalDate = new Date('2026-12-31');
+  const daysToGoal = Math.max(0, Math.ceil((goalDate - new Date()) / (1000 * 60 * 60 * 24)));
+
+  document.getElementById('metricProgress').textContent = progress + '%';
+  document.getElementById('metricActive').textContent = active;
+  document.getElementById('metricTasks').textContent = todayTasks;
+  document.getElementById('metricGoal').textContent = daysToGoal;
+
+  // Update trend indicators
+  const progressTrend = document.getElementById('metricProgressTrend');
+  if (progress >= 50) {
+    progressTrend.textContent = '↑ Great progress';
+    progressTrend.className = 'metric-trend up';
+  } else if (progress >= 25) {
+    progressTrend.textContent = '→ On track';
+    progressTrend.className = 'metric-trend neutral';
+  } else {
+    progressTrend.textContent = '↓ Needs attention';
+    progressTrend.className = 'metric-trend down';
+  }
+
+  const tasksTrend = document.getElementById('metricTasksTrend');
+  if (todayTasks === 0) {
+    tasksTrend.textContent = '✓ All clear!';
+    tasksTrend.className = 'metric-trend up';
+  } else if (todayTasks <= 3) {
+    tasksTrend.textContent = 'Almost there';
+    tasksTrend.className = 'metric-trend neutral';
+  } else {
+    tasksTrend.textContent = 'Stay focused';
+    tasksTrend.className = 'metric-trend down';
+  }
+}
+
+/* ============================================================
+   ACTIVITY FEED
+   ============================================================ */
+function formatTimeAgo(timestamp) {
+  const diff = Date.now() - timestamp;
+  const mins = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (mins < 1) return 'Just now';
+  if (mins < 60) return `${mins}m ago`;
+  if (hours < 24) return `${hours}h ago`;
+  return `${days}d ago`;
+}
+
+function renderActivities() {
+  const feed = document.getElementById('activityFeed');
+  feed.innerHTML = '';
+  activities.slice(0, 20).forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'activity-item';
+    item.innerHTML = `
+      <div class="activity-dot"></div>
+      <div class="activity-text">${escapeHtml(a.text)}</div>
+      <div class="activity-time">${formatTimeAgo(a.time)}</div>
+    `;
+    feed.appendChild(item);
+  });
+}
+
+function addActivity(text) {
+  const input = document.getElementById('activityInput');
+  const val = text || input.value.trim();
+  if (!val) return;
+  activities.unshift({ text: val, time: Date.now() });
+  saveData(STORAGE_KEYS.activities, activities);
+  renderActivities();
+  if (!text) input.value = '';
+}
+
+// Enter key for activity input
+document.getElementById('activityInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addActivity();
+});
+
+/* ============================================================
+   PRIORITIES
+   ============================================================ */
+function renderPriorities() {
+  const list = document.getElementById('prioritiesList');
+  list.innerHTML = '';
+  priorities.forEach((p, i) => {
+    const item = document.createElement('div');
+    item.className = 'priority-item' + (p.completed ? ' completed' : '');
+    item.innerHTML = `
+      <input type="checkbox" class="priority-checkbox" ${p.completed ? 'checked' : ''} onchange="togglePriority(${i})">
+      <span class="priority-text">${escapeHtml(p.text)}</span>
+      <button class="priority-delete" onclick="deletePriority(${i})" title="Remove">×</button>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function togglePriority(index) {
+  priorities[index].completed = !priorities[index].completed;
+  saveData(STORAGE_KEYS.priorities, priorities);
+  renderPriorities();
+  updateMetrics();
+}
+
+function deletePriority(index) {
+  priorities.splice(index, 1);
+  saveData(STORAGE_KEYS.priorities, priorities);
+  renderPriorities();
+  updateMetrics();
+}
+
+function addPriority() {
+  const input = document.getElementById('priorityInput');
+  const val = input.value.trim();
+  if (!val) return;
+  priorities.push({ id: 'p' + Date.now(), text: val, completed: false });
+  saveData(STORAGE_KEYS.priorities, priorities);
+  renderPriorities();
+  updateMetrics();
+  input.value = '';
+}
+
+document.getElementById('priorityInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addPriority();
+});
+
+/* ============================================================
+   KANBAN BOARD
+   ============================================================ */
+function renderKanban(filter) {
+  const columns = ['backlog', 'inprogress', 'done'];
+  const filterLower = filter ? filter.toLowerCase() : '';
+
+  columns.forEach(col => {
+    const container = document.getElementById('cards-' + col);
+    container.innerHTML = '';
+    const colTasks = tasks.filter(t => {
+      if (t.column !== col) return false;
+      if (filterLower) {
+        return t.title.toLowerCase().includes(filterLower) ||
+               t.desc.toLowerCase().includes(filterLower);
+      }
+      return true;
+    });
+
+    document.getElementById('count-' + col).textContent = colTasks.length;
+
+    colTasks.forEach(task => {
+      const card = document.createElement('div');
+      card.className = 'kanban-card';
+      card.onclick = (e) => {
+        if (e.target.closest('.card-action-btn')) return;
+        openTaskModal(task.column, task.id);
+      };
+      card.innerHTML = `
+        <div class="kanban-card-actions">
+          <button class="card-action-btn" onclick="moveTask('${task.id}', 'prev')" title="Move left">◀</button>
+          <button class="card-action-btn" onclick="moveTask('${task.id}', 'next')" title="Move right">▶</button>
+          <button class="card-action-btn delete" onclick="deleteTask('${task.id}')" title="Delete">✕</button>
+        </div>
+        <div class="kanban-card-title">${escapeHtml(task.title)}</div>
+        <div class="kanban-card-desc">${escapeHtml(task.desc)}</div>
+        <div class="kanban-card-footer">
+          <span class="kanban-card-date">${task.created}</span>
+          <span class="priority-badge ${task.priority}">${task.priority}</span>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  });
+}
+
+function moveTask(taskId, direction) {
+  const order = ['backlog', 'inprogress', 'done'];
+  const task = tasks.find(t => t.id === taskId);
+  if (!task) return;
+  const idx = order.indexOf(task.column);
+  if (direction === 'next' && idx < order.length - 1) {
+    task.column = order[idx + 1];
+  } else if (direction === 'prev' && idx > 0) {
+    task.column = order[idx - 1];
+  }
+  saveData(STORAGE_KEYS.tasks, tasks);
+  renderKanban(document.getElementById('searchInput').value);
+  updateMetrics();
+}
+
+function deleteTask(taskId) {
+  tasks = tasks.filter(t => t.id !== taskId);
+  saveData(STORAGE_KEYS.tasks, tasks);
+  renderKanban(document.getElementById('searchInput').value);
+  updateMetrics();
+}
+
+/* ============================================================
+   TASK MODAL
+   ============================================================ */
+function openTaskModal(column, taskId) {
+  currentModalColumn = column;
+  currentEditTaskId = taskId || null;
+
+  const modal = document.getElementById('taskModal');
+  const titleEl = document.getElementById('modalTitle');
+  const deleteBtn = document.getElementById('modalDeleteBtn');
+
+  document.getElementById('taskColumn').value = column;
+
+  if (taskId) {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+    titleEl.textContent = 'Edit Task';
+    document.getElementById('taskTitle').value = task.title;
+    document.getElementById('taskDesc').value = task.desc;
+    document.getElementById('taskPriority').value = task.priority;
+    document.getElementById('taskColumn').value = task.column;
+    deleteBtn.style.display = 'inline-flex';
+  } else {
+    titleEl.textContent = 'Add Task';
+    document.getElementById('taskTitle').value = '';
+    document.getElementById('taskDesc').value = '';
+    document.getElementById('taskPriority').value = 'medium';
+    deleteBtn.style.display = 'none';
+  }
+
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('taskTitle').focus(), 100);
+}
+
+function closeTaskModal() {
+  document.getElementById('taskModal').classList.remove('open');
+  currentEditTaskId = null;
+}
+
+function saveTask() {
+  const title = document.getElementById('taskTitle').value.trim();
+  const desc = document.getElementById('taskDesc').value.trim();
+  const priority = document.getElementById('taskPriority').value;
+  const column = document.getElementById('taskColumn').value;
+
+  if (!title) {
+    document.getElementById('taskTitle').focus();
+    return;
+  }
+
+  if (currentEditTaskId) {
+    const task = tasks.find(t => t.id === currentEditTaskId);
+    if (task) {
+      task.title = title;
+      task.desc = desc;
+      task.priority = priority;
+      task.column = column;
+    }
+  } else {
+    tasks.push({
+      id: 't' + Date.now(),
+      title,
+      desc,
+      priority,
+      column,
+      created: new Date().toISOString().split('T')[0]
+    });
+    addActivity(`Created task: ${title}`);
+  }
+
+  saveData(STORAGE_KEYS.tasks, tasks);
+  renderKanban(document.getElementById('searchInput').value);
+  updateMetrics();
+  closeTaskModal();
+}
+
+function deleteCurrentTask() {
+  if (currentEditTaskId) {
+    deleteTask(currentEditTaskId);
+    closeTaskModal();
+  }
+}
+
+// Close modal on overlay click
+document.getElementById('taskModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeTaskModal();
+});
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+function renderTimeline() {
+  const container = document.getElementById('timelineContainer');
+  container.innerHTML = '';
+
+  TIMELINE_PHASES.forEach((phase, i) => {
+    const phaseEl = document.createElement('div');
+    phaseEl.className = `timeline-phase ${phase.status} animate-in`;
+    phaseEl.style.animationDelay = `${i * 0.1}s`;
+
+    let badgeClass = 'upcoming';
+    let badgeText = 'Upcoming';
+    if (phase.status === 'current') { badgeClass = 'current'; badgeText = 'Current'; }
+    if (phase.status === 'completed') { badgeClass = 'completed'; badgeText = 'Completed'; }
+
+    const milestonesHTML = phase.milestones.map(m => `
+      <div class="milestone ${m.done ? 'done' : ''}">
+        <div class="milestone-check">${m.done ? '✓' : ''}</div>
+        <span class="milestone-text">${escapeHtml(m.text)}</span>
+      </div>
+    `).join('');
+
+    phaseEl.innerHTML = `
+      <div class="phase-card glass-card">
+        <div class="phase-title">
+          ${escapeHtml(phase.title)}
+          <span class="phase-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="phase-dates">${escapeHtml(phase.dates)}</div>
+        <div class="phase-desc">${escapeHtml(phase.description)}</div>
+        <div class="milestones">${milestonesHTML}</div>
+      </div>
+    `;
+
+    container.appendChild(phaseEl);
+  });
+}
+
+/* ============================================================
+   NOTES
+   ============================================================ */
+function initNotes() {
+  const textarea = document.getElementById('notesArea');
+  const savedNotes = localStorage.getItem(STORAGE_KEYS.notes) || DEFAULT_NOTES;
+  textarea.value = savedNotes;
+  updateNotesInfo();
+
+  textarea.addEventListener('input', () => {
+    localStorage.setItem(STORAGE_KEYS.notes, textarea.value);
+    localStorage.setItem(STORAGE_KEYS.notesSavedAt, new Date().toISOString());
+    updateNotesInfo();
+  });
+}
+
+function updateNotesInfo() {
+  const textarea = document.getElementById('notesArea');
+  const charCount = textarea.value.length;
+  document.getElementById('notesCharCount').textContent = `${charCount.toLocaleString()} characters`;
+
+  const savedAt = localStorage.getItem(STORAGE_KEYS.notesSavedAt);
+  if (savedAt) {
+    const date = new Date(savedAt);
+    document.getElementById('notesLastSaved').textContent = `Saved ${date.toLocaleTimeString()}`;
+  }
+}
+
+/* ============================================================
+   REVENUE TAB
+   ============================================================ */
+function renderRevenueGauges() {
+  const container = document.getElementById('revenueGauges');
+  container.innerHTML = '';
+
+  const businesses = revenueData.gauges;
+  const keys = Object.keys(businesses);
+
+  // Calculate total
+  let totalCurrent = 0, totalGoal = 0;
+  keys.forEach(k => { totalCurrent += businesses[k].current; totalGoal += businesses[k].goal; });
+
+  const allGauges = [...keys.map(k => ({ name: k, current: businesses[k].current, goal: businesses[k].goal })),
+    { name: 'Total', current: totalCurrent, goal: totalGoal }];
+
+  allGauges.forEach((g, idx) => {
+    const pct = Math.min(100, Math.round((g.current / g.goal) * 100));
+    const circumference = 2 * Math.PI * 50;
+    const offset = circumference - (pct / 100) * circumference;
+
+    const card = document.createElement('div');
+    card.className = 'glass-card gauge-card animate-in';
+    card.innerHTML = `
+      <div class="gauge-svg" style="position:relative">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <circle class="gauge-bg" cx="60" cy="60" r="50" />
+          <circle class="gauge-fill" cx="60" cy="60" r="50"
+            stroke-dasharray="${circumference}"
+            stroke-dashoffset="${circumference}"
+            data-target="${offset}" />
+        </svg>
+        <div class="gauge-text">
+          <span class="gauge-percent">${pct}%</span>
+          <span class="gauge-label-small">of goal</span>
+        </div>
+      </div>
+      <div class="gauge-biz-name">${escapeHtml(g.name)}</div>
+      <div class="gauge-amounts">$${(g.current/1000).toFixed(1)}K / $${(g.goal/1000).toFixed(0)}K</div>
+    `;
+    container.appendChild(card);
+
+    // Animate gauge fill
+    setTimeout(() => {
+      const fill = card.querySelector('.gauge-fill');
+      if (fill) fill.style.strokeDashoffset = offset;
+    }, 100 + idx * 150);
+  });
+}
+
+function renderRevenueChart() {
+  const container = document.getElementById('revenueChart');
+  container.innerHTML = '';
+  const data = revenueData.chart;
+  const maxVal = Math.max(...data.map(d => d.total));
+
+  data.forEach((d, i) => {
+    const heightPct = (d.total / maxVal) * 100;
+    const group = document.createElement('div');
+    group.className = 'rev-bar-group';
+    group.innerHTML = `
+      <div class="rev-bar-amount">$${(d.total/1000).toFixed(0)}K</div>
+      <div class="rev-bar" style="height: 0%" data-height="${heightPct}%"></div>
+      <div class="rev-bar-label">${d.month}</div>
+    `;
+    container.appendChild(group);
+
+    // Animate bar height
+    setTimeout(() => {
+      group.querySelector('.rev-bar').style.height = heightPct + '%';
+    }, 100 + i * 100);
+  });
+}
+
+function renderClientList() {
+  const tbody = document.getElementById('clientTableBody');
+  tbody.innerHTML = '';
+
+  const mrr = revenueData.clients
+    .filter(c => c.status === 'active')
+    .reduce((sum, c) => sum + c.monthly, 0);
+
+  document.getElementById('mrrValue').textContent = '$' + mrr.toLocaleString();
+
+  revenueData.clients.forEach(c => {
+    const tr = document.createElement('tr');
+    tr.onclick = (e) => { if (!e.target.closest('.card-action-btn')) openClientModal(c.id); };
+    tr.innerHTML = `
+      <td style="font-weight:500">${escapeHtml(c.name)}</td>
+      <td style="font-size:0.75rem;color:var(--text-secondary)">${escapeHtml(c.business)}</td>
+      <td style="font-weight:600">$${c.monthly.toLocaleString()}</td>
+      <td><span class="status-badge ${c.status}">${c.status}</span></td>
+      <td style="font-size:0.7rem;color:var(--text-tertiary)">${c.startDate}</td>
+      <td>
+        <div class="client-actions">
+          <button class="card-action-btn delete" onclick="event.stopPropagation();deleteClient('${c.id}')" title="Delete">✕</button>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  renderProjections(mrr);
+}
+
+function renderProjections(mrr) {
+  const container = document.getElementById('projectionsContent');
+  const annualGoal = revenueData.annualGoal;
+  const projectedAnnual = mrr * 12;
+  const monthsLeft = 12 - new Date().getMonth();
+  const earnedSoFar = mrr * (12 - monthsLeft);
+  const remaining = annualGoal - earnedSoFar;
+  const monthlyNeeded = monthsLeft > 0 ? Math.ceil(remaining / monthsLeft) : 0;
+
+  container.innerHTML = `
+    <div class="proj-item">
+      <span class="proj-label">Current MRR</span>
+      <span class="proj-value accent">$${mrr.toLocaleString()}</span>
+    </div>
+    <div class="proj-item">
+      <span class="proj-label">Projected Annual (at current MRR)</span>
+      <span class="proj-value">$${projectedAnnual.toLocaleString()}</span>
+    </div>
+    <div class="proj-item">
+      <span class="proj-label">Annual Goal</span>
+      <input type="number" class="proj-goal-input" value="${annualGoal}" onchange="updateAnnualGoal(this.value)">
+    </div>
+    <div class="proj-item">
+      <span class="proj-label">Gap to Goal</span>
+      <span class="proj-value" style="color:${projectedAnnual >= annualGoal ? 'var(--accent)' : 'var(--priority-high)'}">
+        ${projectedAnnual >= annualGoal ? '✓ On Track' : '-$' + (annualGoal - projectedAnnual).toLocaleString()}
+      </span>
+    </div>
+    <div class="proj-item">
+      <span class="proj-label">Monthly Needed (remaining ${monthsLeft} mo)</span>
+      <span class="proj-value">$${monthlyNeeded.toLocaleString()}</span>
+    </div>
+  `;
+}
+
+function updateAnnualGoal(val) {
+  revenueData.annualGoal = parseInt(val) || 0;
+  saveData(STORAGE_KEYS.revenue, revenueData);
+  renderClientList();
+}
+
+/* Client Modal */
+function openClientModal(clientId) {
+  currentEditClientId = clientId || null;
+  const modal = document.getElementById('clientModal');
+  const titleEl = document.getElementById('clientModalTitle');
+  const deleteBtn = document.getElementById('clientDeleteBtn');
+
+  if (clientId) {
+    const client = revenueData.clients.find(c => c.id === clientId);
+    if (!client) return;
+    titleEl.textContent = 'Edit Client';
+    document.getElementById('clientName').value = client.name;
+    document.getElementById('clientBusiness').value = client.business;
+    document.getElementById('clientValue').value = client.monthly;
+    document.getElementById('clientStatus').value = client.status;
+    document.getElementById('clientStartDate').value = client.startDate;
+    deleteBtn.style.display = 'inline-flex';
+  } else {
+    titleEl.textContent = 'Add Client';
+    document.getElementById('clientName').value = '';
+    document.getElementById('clientBusiness').value = 'Mosquito Joe of Miami';
+    document.getElementById('clientValue').value = '';
+    document.getElementById('clientStatus').value = 'active';
+    document.getElementById('clientStartDate').value = new Date().toISOString().split('T')[0];
+    deleteBtn.style.display = 'none';
+  }
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('clientName').focus(), 100);
+}
+
+function closeClientModal() {
+  document.getElementById('clientModal').classList.remove('open');
+  currentEditClientId = null;
+}
+
+function saveClient() {
+  const name = document.getElementById('clientName').value.trim();
+  const business = document.getElementById('clientBusiness').value;
+  const monthly = parseInt(document.getElementById('clientValue').value) || 0;
+  const status = document.getElementById('clientStatus').value;
+  const startDate = document.getElementById('clientStartDate').value;
+
+  if (!name) { document.getElementById('clientName').focus(); return; }
+
+  if (currentEditClientId) {
+    const client = revenueData.clients.find(c => c.id === currentEditClientId);
+    if (client) {
+      client.name = name; client.business = business;
+      client.monthly = monthly; client.status = status; client.startDate = startDate;
+    }
+  } else {
+    revenueData.clients.push({ id: 'c' + Date.now(), name, business, monthly, status, startDate });
+  }
+
+  saveData(STORAGE_KEYS.revenue, revenueData);
+  renderClientList();
+  closeClientModal();
+}
+
+function deleteClient(clientId) {
+  revenueData.clients = revenueData.clients.filter(c => c.id !== clientId);
+  saveData(STORAGE_KEYS.revenue, revenueData);
+  renderClientList();
+}
+
+function deleteCurrentClient() {
+  if (currentEditClientId) {
+    deleteClient(currentEditClientId);
+    closeClientModal();
+  }
+}
+
+document.getElementById('clientModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeClientModal();
+});
+
+/* ============================================================
+   COMMAND CENTER TAB
+   ============================================================ */
+function renderAgents() {
+  const grid = document.getElementById('agentsGrid');
+  grid.innerHTML = '';
+
+  agentsData.forEach((agent, idx) => {
+    const card = document.createElement('div');
+    card.className = 'glass-card agent-card animate-in';
+    card.style.animationDelay = `${idx * 0.05}s`;
+    card.innerHTML = `
+      <div class="agent-card-header">
+        <div class="agent-avatar">${agent.emoji}</div>
+        <div class="agent-name-wrap">
+          <div class="agent-name">${escapeHtml(agent.name)}</div>
+          <div class="agent-role">${escapeHtml(agent.role)}</div>
+        </div>
+        <div class="agent-status-dot ${agent.status}" title="${agent.status}"></div>
+      </div>
+      <div class="agent-meta">
+        <span>🤖 ${escapeHtml(agent.model)}</span>
+        <span>🕐 Last active: ${formatTimeAgo(agent.lastActive)}</span>
+      </div>
+      <div class="agent-card-actions">
+        <button class="btn btn-sm" onclick="event.stopPropagation();openAgentDetail('${agent.id}')">Details</button>
+        <button class="btn btn-accent btn-sm" onclick="event.stopPropagation();openSendTaskModal('${agent.id}')">Send Task</button>
+      </div>
+    `;
+    card.onclick = () => openAgentDetail(agent.id);
+    grid.appendChild(card);
+  });
+}
+
+function openAgentDetail(agentId) {
+  const agent = agentsData.find(a => a.id === agentId);
+  if (!agent) return;
+
+  const panel = document.getElementById('agentDetailPanel');
+  const content = document.getElementById('agentDetailContent');
+
+  const capsHtml = agent.capabilities.map(c => `<li>${escapeHtml(c)}</li>`).join('');
+  const logHtml = (agent.activityLog || []).map(l => `
+    <div class="detail-activity-item">
+      ${escapeHtml(l.text)}
+      <span class="time">${formatTimeAgo(l.time)}</span>
+    </div>
+  `).join('') || '<div style="font-size:0.75rem;color:var(--text-tertiary)">No activity logged yet.</div>';
+
+  content.innerHTML = `
+    <div class="detail-header">
+      <div class="detail-avatar">${agent.emoji}</div>
+      <div>
+        <div class="detail-name">${escapeHtml(agent.name)}</div>
+        <div class="detail-role">${escapeHtml(agent.role)} · <span class="agent-status-dot ${agent.status}" style="display:inline-block;width:8px;height:8px;vertical-align:middle"></span> ${agent.status}</div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">About</div>
+      <p style="font-size:0.8125rem;color:var(--text-secondary);line-height:1.6">${escapeHtml(agent.description)}</p>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Model</div>
+      <p style="font-size:0.8125rem;color:var(--text-secondary)">🤖 ${escapeHtml(agent.model)}</p>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Capabilities</div>
+      <ul class="detail-capabilities">${capsHtml}</ul>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Recent Activity</div>
+      <div class="detail-activity-log">${logHtml}</div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Performance Notes</div>
+      <textarea class="detail-notes-textarea" placeholder="Add notes about this agent..." onchange="saveAgentNotes('${agent.id}', this.value)">${escapeHtml(agent.notes || '')}</textarea>
+    </div>
+  `;
+
+  panel.classList.add('open');
+}
+
+function closeAgentDetail() {
+  document.getElementById('agentDetailPanel').classList.remove('open');
+}
+
+function saveAgentNotes(agentId, notes) {
+  const agent = agentsData.find(a => a.id === agentId);
+  if (agent) {
+    agent.notes = notes;
+    saveData(STORAGE_KEYS.agents, agentsData);
+  }
+}
+
+/* Send Task Modal */
+function openSendTaskModal(agentId) {
+  currentSendTaskAgentId = agentId;
+  const agent = agentsData.find(a => a.id === agentId);
+  if (!agent) return;
+  document.getElementById('sendTaskAgentName').textContent = `Send Task to ${agent.name}`;
+  document.getElementById('sendTaskDesc').value = '';
+  document.getElementById('sendTaskModal').classList.add('open');
+  setTimeout(() => document.getElementById('sendTaskDesc').focus(), 100);
+}
+
+function closeSendTaskModal() {
+  document.getElementById('sendTaskModal').classList.remove('open');
+  currentSendTaskAgentId = null;
+}
+
+function saveSendTask() {
+  const desc = document.getElementById('sendTaskDesc').value.trim();
+  if (!desc || !currentSendTaskAgentId) return;
+
+  const agent = agentsData.find(a => a.id === currentSendTaskAgentId);
+  if (agent) {
+    if (!agent.activityLog) agent.activityLog = [];
+    agent.activityLog.unshift({ text: `Task received: ${desc}`, time: Date.now() });
+    agent.lastActive = Date.now();
+    saveData(STORAGE_KEYS.agents, agentsData);
+    renderAgents();
+  }
+  closeSendTaskModal();
+}
+
+document.getElementById('sendTaskModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeSendTaskModal();
+});
+
+/* Executive Decisions */
+function renderDecisions() {
+  const container = document.getElementById('decisionsList');
+  container.innerHTML = '';
+
+  decisionsData.forEach(d => {
+    const tags = d.agents.map(a => `<span class="decision-agent-tag">${escapeHtml(a)}</span>`).join('');
+    const card = document.createElement('div');
+    card.className = 'decision-card';
+    card.innerHTML = `
+      <div class="decision-date">${d.date}</div>
+      <div class="decision-topic">${escapeHtml(d.topic)}</div>
+      <div class="decision-summary">${escapeHtml(d.summary)}</div>
+      <div class="decision-agents">${tags}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function openDecisionModal() {
+  const modal = document.getElementById('decisionModal');
+  document.getElementById('decisionTopic').value = '';
+  document.getElementById('decisionSummary').value = '';
+
+  // Build agent checkboxes
+  const checkContainer = document.getElementById('decisionAgentCheckboxes');
+  checkContainer.innerHTML = '';
+  agentsData.forEach(a => {
+    const label = document.createElement('label');
+    label.style.cssText = 'display:flex;align-items:center;gap:0.3rem;font-size:0.8125rem;cursor:pointer';
+    label.innerHTML = `<input type="checkbox" value="${escapeHtml(a.name)}" style="accent-color:var(--accent)"> ${escapeHtml(a.name)}`;
+    checkContainer.appendChild(label);
+  });
+
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('decisionTopic').focus(), 100);
+}
+
+function closeDecisionModal() {
+  document.getElementById('decisionModal').classList.remove('open');
+}
+
+function saveDecision() {
+  const topic = document.getElementById('decisionTopic').value.trim();
+  const summary = document.getElementById('decisionSummary').value.trim();
+  if (!topic) { document.getElementById('decisionTopic').focus(); return; }
+
+  const agents = [];
+  document.querySelectorAll('#decisionAgentCheckboxes input:checked').forEach(cb => agents.push(cb.value));
+
+  decisionsData.unshift({
+    id: 'd' + Date.now(),
+    date: new Date().toISOString().split('T')[0],
+    topic, summary, agents
+  });
+
+  saveData(STORAGE_KEYS.decisions, decisionsData);
+  renderDecisions();
+  closeDecisionModal();
+}
+
+document.getElementById('decisionModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeDecisionModal();
+});
+
+/* ============================================================
+   YOUTUBE TAB
+   ============================================================ */
+const YT_STAGES = [
+  { key: 'idea', label: '💡 Idea' },
+  { key: 'scripting', label: '✍️ Scripting' },
+  { key: 'filming', label: '🎥 Filming' },
+  { key: 'editing', label: '✂️ Editing' },
+  { key: 'published', label: '✅ Published' }
+];
+
+function renderYTPipeline() {
+  const container = document.getElementById('ytPipeline');
+  container.innerHTML = '';
+
+  YT_STAGES.forEach(stage => {
+    const stageVideos = videosData.filter(v => v.stage === stage.key);
+    const col = document.createElement('div');
+    col.className = 'yt-pipeline-col';
+    col.innerHTML = `
+      <div class="yt-col-header">
+        <div class="yt-col-title">${stage.label} <span class="yt-col-count">${stageVideos.length}</span></div>
+        <button class="column-add-btn" onclick="openVideoModal(null,'${stage.key}')" title="Add video" style="width:24px;height:24px;font-size:1rem">+</button>
+      </div>
+      <div class="yt-cards" id="yt-cards-${stage.key}"></div>
+    `;
+    container.appendChild(col);
+
+    const cardsContainer = col.querySelector('.yt-cards');
+    stageVideos.forEach(v => {
+      const chClass = v.channel === 'Miami2theMountains' ? 'm2m' : v.channel === 'Mosquito Joe of Miami' ? 'mojo' : v.channel === 'MagicFollowUp' ? 'mfu' : 'bbtb';
+      const chLabel = v.channel === 'Miami2theMountains' ? '🏔️ M2M' : '🐝 BBTB';
+      const card = document.createElement('div');
+      card.className = 'yt-video-card';
+      card.onclick = (e) => { if (!e.target.closest('.card-action-btn')) openVideoModal(v.id); };
+      card.innerHTML = `
+        <div class="yt-video-actions">
+          ${stage.key !== 'idea' ? `<button class="card-action-btn" onclick="event.stopPropagation();moveVideo('${v.id}','prev')" title="Move left">◀</button>` : ''}
+          ${stage.key !== 'published' ? `<button class="card-action-btn" onclick="event.stopPropagation();moveVideo('${v.id}','next')" title="Move right">▶</button>` : ''}
+          <button class="card-action-btn delete" onclick="event.stopPropagation();deleteVideo('${v.id}')" title="Delete">✕</button>
+        </div>
+        <div class="yt-video-title">${escapeHtml(v.title)}</div>
+        <div class="yt-video-desc">${escapeHtml(v.desc)}</div>
+        <div class="yt-video-footer">
+          <span class="yt-channel-badge ${chClass}">${chLabel}</span>
+          <span class="yt-video-date">${v.date || ''}</span>
+        </div>
+      `;
+      cardsContainer.appendChild(card);
+    });
+  });
+}
+
+function moveVideo(videoId, direction) {
+  const stageOrder = YT_STAGES.map(s => s.key);
+  const video = videosData.find(v => v.id === videoId);
+  if (!video) return;
+  const idx = stageOrder.indexOf(video.stage);
+  if (direction === 'next' && idx < stageOrder.length - 1) video.stage = stageOrder[idx + 1];
+  else if (direction === 'prev' && idx > 0) video.stage = stageOrder[idx - 1];
+  saveData(STORAGE_KEYS.videos, videosData);
+  renderYTPipeline();
+}
+
+function deleteVideo(videoId) {
+  videosData = videosData.filter(v => v.id !== videoId);
+  saveData(STORAGE_KEYS.videos, videosData);
+  renderYTPipeline();
+  renderContentCalendar();
+}
+
+/* Video Modal */
+function openVideoModal(videoId, stage) {
+  currentEditVideoId = videoId || null;
+  const modal = document.getElementById('videoModal');
+  const titleEl = document.getElementById('videoModalTitle');
+  const deleteBtn = document.getElementById('videoDeleteBtn');
+
+  if (videoId) {
+    const video = videosData.find(v => v.id === videoId);
+    if (!video) return;
+    titleEl.textContent = 'Edit Video';
+    document.getElementById('videoTitle').value = video.title;
+    document.getElementById('videoChannel').value = video.channel;
+    document.getElementById('videoStage').value = video.stage;
+    document.getElementById('videoDate').value = video.date || '';
+    document.getElementById('videoDesc').value = video.desc;
+    deleteBtn.style.display = 'inline-flex';
+  } else {
+    titleEl.textContent = 'Add Video';
+    document.getElementById('videoTitle').value = '';
+    document.getElementById('videoChannel').value = 'Miami2theMountains';
+    document.getElementById('videoStage').value = stage || 'idea';
+    document.getElementById('videoDate').value = '';
+    document.getElementById('videoDesc').value = '';
+    deleteBtn.style.display = 'none';
+  }
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('videoTitle').focus(), 100);
+}
+
+function closeVideoModal() {
+  document.getElementById('videoModal').classList.remove('open');
+  currentEditVideoId = null;
+}
+
+function saveVideo() {
+  const title = document.getElementById('videoTitle').value.trim();
+  const channel = document.getElementById('videoChannel').value;
+  const stage = document.getElementById('videoStage').value;
+  const date = document.getElementById('videoDate').value;
+  const desc = document.getElementById('videoDesc').value.trim();
+
+  if (!title) { document.getElementById('videoTitle').focus(); return; }
+
+  if (currentEditVideoId) {
+    const video = videosData.find(v => v.id === currentEditVideoId);
+    if (video) {
+      video.title = title; video.channel = channel; video.stage = stage;
+      video.date = date; video.desc = desc;
+    }
+  } else {
+    videosData.push({ id: 'v' + Date.now(), title, channel, stage, date, desc });
+  }
+
+  saveData(STORAGE_KEYS.videos, videosData);
+  renderYTPipeline();
+  renderContentCalendar();
+  closeVideoModal();
+}
+
+function deleteCurrentVideo() {
+  if (currentEditVideoId) {
+    deleteVideo(currentEditVideoId);
+    closeVideoModal();
+  }
+}
+
+document.getElementById('videoModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeVideoModal();
+});
+
+/* YouTube Growth Tracker */
+const YT_MILESTONES = [
+  { count: 100, title: 'First Spark 🔥' },
+  { count: 500, title: 'Building Momentum 🚀' },
+  { count: 1000, title: 'Rising Creator ⭐' },
+  { count: 5000, title: 'Community Builder 🏗️' },
+  { count: 10000, title: 'Growth Engine 💪' },
+  { count: 25000, title: 'Influencer Status 🎯' },
+  { count: 50000, title: 'Silver Play Button 🥈' },
+  { count: 100000, title: 'Gold Play Button 🥇' }
+];
+
+function renderGrowthTracker() {
+  const container = document.getElementById('growthTracker');
+  container.innerHTML = '';
+
+  const channels = [
+    { key: 'Miami2theMountains', label: '🏔️ From Miami to the Mountains', color: 'var(--metric-purple)' },
+    { key: 'Buzz Behind the Biz', label: '🐝 Buzz Behind The Bizz', color: 'var(--metric-orange)' },
+    { key: 'Mosquito Joe of Miami', label: '🦟 Mosquito Joe of Miami', color: 'var(--accent)' }
+  ];
+
+  channels.forEach(ch => {
+    const subs = ytGrowthData[ch.key] || 0;
+
+    // Find current and next milestone
+    let currentMilestone = null;
+    let nextMilestone = YT_MILESTONES[0];
+    let prevCount = 0;
+    for (let i = 0; i < YT_MILESTONES.length; i++) {
+      if (subs >= YT_MILESTONES[i].count) {
+        currentMilestone = YT_MILESTONES[i];
+        prevCount = YT_MILESTONES[i].count;
+        nextMilestone = YT_MILESTONES[i + 1] || null;
+      } else {
+        nextMilestone = YT_MILESTONES[i];
+        break;
+      }
+    }
+
+    const progressPct = nextMilestone
+      ? Math.min(100, Math.round(((subs - prevCount) / (nextMilestone.count - prevCount)) * 100))
+      : 100;
+
+    const div = document.createElement('div');
+    div.className = 'growth-channel';
+    const chInfo = YT_CHANNELS[ch.key];
+    const statsHTML = chInfo && chInfo.totalVideos ? `
+      <div style="display:flex;gap:1rem;margin-top:0.5rem;font-size:0.75rem;color:var(--text-secondary)">
+        <span>📹 ${chInfo.totalVideos} videos</span>
+        <span>👁️ ${chInfo.totalViews.toLocaleString()} views</span>
+        ${chInfo.created ? `<span>📅 Since ${chInfo.created}</span>` : ''}
+      </div>` : '';
+
+    div.innerHTML = `
+      <div class="growth-channel-header">
+        <div class="growth-channel-name">
+          ${chInfo ? `<a href="${chInfo.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--text-secondary)" title="Open on YouTube">${ch.label}</a>` : ch.label}
+        </div>
+        <input type="number" class="growth-sub-input" value="${subs}" onchange="updateSubCount('${ch.key}', this.value)" title="Current subscribers">
+      </div>${statsHTML}
+      <div class="growth-milestone">
+        <div class="growth-milestone-title">${nextMilestone ? 'Progress to ' + nextMilestone.count.toLocaleString() : 'Max level!'}</div>
+        <div class="growth-xp-bar">
+          <div class="growth-xp-fill" style="width:${progressPct}%;background:linear-gradient(90deg, ${ch.color}, ${ch.color}88)"></div>
+        </div>
+        <div class="growth-xp-label">${progressPct}%</div>
+      </div>
+      <div class="growth-current-milestone">${currentMilestone ? '🏆 ' + currentMilestone.title : '🌱 Just starting'}</div>
+      ${nextMilestone ? `<div class="growth-next-milestone">Next: ${nextMilestone.title} (${(nextMilestone.count - subs).toLocaleString()} to go)</div>` : ''}
+    `;
+    container.appendChild(div);
+  });
+}
+
+function updateSubCount(channelKey, value) {
+  ytGrowthData[channelKey] = parseInt(value) || 0;
+  saveData(STORAGE_KEYS.ytGrowth, ytGrowthData);
+  renderGrowthTracker();
+}
+
+/* Content Calendar */
+function renderContentCalendar() {
+  const container = document.getElementById('contentCalendar');
+  container.innerHTML = '';
+
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  // Nav
+  const nav = document.createElement('div');
+  nav.className = 'cal-month-nav';
+  nav.innerHTML = `
+    <button class="cal-nav-btn" onclick="changeCalMonth(-1)">◀</button>
+    <div class="cal-month-title">${monthNames[calendarMonth]} ${calendarYear}</div>
+    <button class="cal-nav-btn" onclick="changeCalMonth(1)">▶</button>
+  `;
+  container.appendChild(nav);
+
+  // Grid
+  const grid = document.createElement('div');
+  grid.className = 'cal-grid';
+
+  // Day headers
+  dayNames.forEach(d => {
+    const cell = document.createElement('div');
+    cell.className = 'cal-header-cell';
+    cell.textContent = d;
+    grid.appendChild(cell);
+  });
+
+  // Days
+  const firstDay = new Date(calendarYear, calendarMonth, 1).getDay();
+  const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+  const today = new Date();
+
+  // Empty cells before first day
+  for (let i = 0; i < firstDay; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell empty';
+    grid.appendChild(cell);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${calendarYear}-${String(calendarMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const dayVideos = videosData.filter(v => v.date === dateStr);
+    const isToday = today.getDate() === d && today.getMonth() === calendarMonth && today.getFullYear() === calendarYear;
+
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell' + (isToday ? ' today' : '');
+    cell.textContent = d;
+
+    if (dayVideos.length > 0) {
+      const dots = document.createElement('div');
+      dots.className = 'cal-dots';
+      dayVideos.forEach(v => {
+        const dot = document.createElement('div');
+        dot.className = 'cal-dot ' + (v.channel === 'Miami2theMountains' ? 'm2m' : v.channel === 'Mosquito Joe of Miami' ? 'mojo' : v.channel === 'MagicFollowUp' ? 'mfu' : 'bbtb');
+        dots.appendChild(dot);
+      });
+      cell.appendChild(dots);
+      cell.style.cursor = 'pointer';
+      cell.onclick = (e) => showCalPopup(e, dateStr, dayVideos);
+    }
+
+    grid.appendChild(cell);
+  }
+
+  container.appendChild(grid);
+}
+
+function changeCalMonth(delta) {
+  calendarMonth += delta;
+  if (calendarMonth > 11) { calendarMonth = 0; calendarYear++; }
+  if (calendarMonth < 0) { calendarMonth = 11; calendarYear--; }
+  renderContentCalendar();
+}
+
+function showCalPopup(e, dateStr, videos) {
+  const popup = document.getElementById('calPopup');
+  popup.style.display = 'block';
+  popup.style.left = Math.min(e.pageX, window.innerWidth - 240) + 'px';
+  popup.style.top = (e.pageY + 10) + 'px';
+
+  popup.innerHTML = `
+    <div class="cal-popup-title">${dateStr}</div>
+    ${videos.map(v => {
+      const badge = v.channel === 'Miami2theMountains'
+        ? '<span class="yt-channel-badge m2m" style="font-size:0.6rem">🏔️</span>'
+        : v.channel === 'Mosquito Joe of Miami' ? '<span class="yt-channel-badge mojo" style="font-size:0.6rem">🦟</span>'
+        : v.channel === 'MagicFollowUp' ? '<span class="yt-channel-badge mfu" style="font-size:0.6rem">✨</span>'
+        : '<span class="yt-channel-badge bbtb" style="font-size:0.6rem">🐝</span>';
+      return `<div class="cal-popup-item">${badge} ${escapeHtml(v.title)}</div>`;
+    }).join('')}
+  `;
+
+  // Close on click outside
+  setTimeout(() => {
+    document.addEventListener('click', closeCalPopup, { once: true });
+  }, 10);
+}
+
+function closeCalPopup() {
+  document.getElementById('calPopup').style.display = 'none';
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.trim();
+  renderKanban(query);
+  filterDashboard(query);
+});
+
+function filterDashboard(query) {
+  if (!query) return;
+  // Search also filters activities and priorities visually
+  const q = query.toLowerCase();
+  document.querySelectorAll('.activity-item').forEach(item => {
+    const text = item.querySelector('.activity-text').textContent.toLowerCase();
+    item.style.display = text.includes(q) ? 'flex' : 'none';
+  });
+  document.querySelectorAll('.priority-item').forEach(item => {
+    const text = item.querySelector('.priority-text').textContent.toLowerCase();
+    item.style.display = text.includes(q) ? 'flex' : 'none';
+  });
+}
+
+// Reset filter when search is cleared
+searchInput.addEventListener('input', () => {
+  if (!searchInput.value.trim()) {
+    document.querySelectorAll('.activity-item, .priority-item').forEach(item => {
+      item.style.display = '';
+    });
+  }
+});
+
+// Keyboard shortcut: Cmd/Ctrl + K to focus search
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  }
+  if (e.key === 'Escape') {
+    closeTaskModal();
+    closeClientModal();
+    closeSendTaskModal();
+    closeDecisionModal();
+    closeVideoModal();
+    closeAgentDetail();
+    closeCalPopup();
+  }
+});
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+/* ============================================================
+   SERVER INTEGRATION — backup + enrichment layer
+   localhost:8899 is the Mission Control server
+   localStorage remains the primary data layer
+   ============================================================ */
+// Server discovery: try localhost first (same machine), then LAN IP (other devices on network)
+const MC_CANDIDATES = ['http://localhost:8899', 'http://192.168.68.70:8899'];
+let MC_SERVER = MC_CANDIDATES[0];
+window._mcServerOnline = false;
+
+/** Discover which server URL works */
+async function discoverServer() {
+  for (const url of MC_CANDIDATES) {
+    try {
+      const resp = await fetch(`${url}/mc/status`, { signal: AbortSignal.timeout(2000) });
+      if (resp.ok) { MC_SERVER = url; return true; }
+    } catch {}
+  }
+  return false;
+}
+
+/** Check server health and update status indicators */
+async function checkServerStatus() {
+  const dot = document.getElementById('mainStatusDot');
+  const serverDot = document.getElementById('serverDot');
+  const serverLabel = document.getElementById('serverLabel');
+  // Re-discover in case network changed
+  const found = await discoverServer();
+  if (found) {
+    window._mcServerOnline = true;
+    dot.classList.remove('offline');
+    dot.title = `Server connected — ${MC_SERVER}`;
+    serverDot.classList.remove('offline');
+    serverLabel.textContent = 'Online';
+  } else {
+    window._mcServerOnline = false;
+    dot.classList.add('offline');
+    dot.title = 'Server offline — localStorage-only mode';
+    serverDot.classList.add('offline');
+    serverLabel.textContent = 'Offline';
+  }
+}
+
+/** Fetch live weather and display in header */
+async function fetchHeaderWeather() {
+  try {
+    const resp = await fetch(`${MC_SERVER}/mc/weather?city=Miami`, { signal: AbortSignal.timeout(5000) });
+    if (!resp.ok) throw new Error();
+    const w = await resp.json();
+    if (w.error) throw new Error(w.error);
+    const weatherEl = document.getElementById('headerWeather');
+    const tempEl = document.getElementById('weatherTemp');
+    const condEl = document.getElementById('weatherCondition');
+    // Pick emoji from condition
+    const cond = (w.condition || '').toLowerCase();
+    let emoji = '☀️';
+    if (cond.includes('cloud') || cond.includes('overcast')) emoji = '☁️';
+    else if (cond.includes('rain') || cond.includes('drizzle') || cond.includes('shower')) emoji = '🌧️';
+    else if (cond.includes('thunder')) emoji = '⛈️';
+    else if (cond.includes('snow')) emoji = '❄️';
+    else if (cond.includes('fog')) emoji = '🌫️';
+    else if (cond.includes('partly')) emoji = '⛅';
+    weatherEl.querySelector('span:first-child').textContent = emoji;
+    tempEl.textContent = `${Math.round(w.temp_f)}°F`;
+    condEl.textContent = w.condition;
+    weatherEl.style.display = 'flex';
+    weatherEl.title = `Miami — ${Math.round(w.temp_f)}°F (feels ${Math.round(w.feels_like_f)}°F), ${w.condition}, Humidity ${w.humidity}%, Wind ${w.wind_mph} mph`;
+  } catch {
+    // Weather unavailable — hide indicator
+    document.getElementById('headerWeather').style.display = 'none';
+  }
+}
+
+/** Backup all localStorage data to server */
+async function backupToServer() {
+  if (!window._mcServerOnline) return;
+  try {
+    const backup = {};
+    for (const [label, key] of Object.entries(STORAGE_KEYS)) {
+      const raw = localStorage.getItem(key);
+      if (raw) backup[label] = JSON.parse(raw);
+    }
+    backup._backedUpAt = new Date().toISOString();
+    await fetch(`${MC_SERVER}/mc/data`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(backup),
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch {
+    // Backup failed — no big deal, localStorage is primary
+  }
+}
+
+/** On load: merge server backup into localStorage (server fills gaps, doesn't overwrite) */
+async function mergeServerData() {
+  if (!window._mcServerOnline) return;
+  try {
+    const resp = await fetch(`${MC_SERVER}/mc/data`, { signal: AbortSignal.timeout(3000) });
+    if (!resp.ok) return;
+    const serverData = await resp.json();
+    // Only restore keys that are MISSING from localStorage
+    for (const [label, key] of Object.entries(STORAGE_KEYS)) {
+      if (!localStorage.getItem(key) && serverData[label]) {
+        localStorage.setItem(key, JSON.stringify(serverData[label]));
+      }
+    }
+  } catch {
+    // Merge failed — continue with localStorage only
+  }
+}
+
+/** Start server integration loops */
+async function initServerIntegration() {
+  // 1. Check server status
+  await checkServerStatus();
+  // 2. Merge any server backup data into missing localStorage keys
+  await mergeServerData();
+  // 3. Fetch weather
+  fetchHeaderWeather();
+  // 4. Initial backup
+  backupToServer();
+
+  // Recurring: check status every 30s, backup every 5 min, weather every 10 min
+  setInterval(checkServerStatus, 30000);
+  setInterval(backupToServer, 5 * 60 * 1000);
+  setInterval(fetchHeaderWeather, 10 * 60 * 1000);
+}
+
+/* ============================================================
+   INITIALIZATION
+   ============================================================ */
+function init() {
+  updateDateTime();
+  renderActivities();
+  renderPriorities();
+  renderKanban();
+  renderTimeline();
+  initNotes();
+  updateMetrics();
+
+  // New tabs
+  renderRevenueGauges();
+  renderRevenueChart();
+  renderClientList();
+  renderAgents();
+  renderDecisions();
+  renderYTPipeline();
+  renderGrowthTracker();
+  renderContentCalendar();
+
+  // Connect to local server (backup + weather + status)
+  initServerIntegration();
+}
+
+// Run on DOM ready
+init();
+</script>
+    <script src="navigator.js"></script>
+</body>
+</html>
