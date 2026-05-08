@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-03T08:31:53.637Z",
+  "generated_at": "2026-05-08T16:33:34.915Z",
   "summary": {
     "criticals": 1,
-    "warnings": 1,
+    "warnings": 2,
     "infos": 3,
     "overall": "critical"
   },
@@ -10,37 +10,44 @@
     {
       "level": "critical",
       "category": "revenue",
-      "message": "Revenue pace at 49% of $5M target",
-      "detail": "Projected: $2,433,614 vs target $5,000,000",
-      "timestamp": "2026-05-03T08:31:53.603Z"
+      "message": "Revenue pace at 51% of $5M target",
+      "detail": "Projected: $2,539,773 vs target $5,000,000",
+      "timestamp": "2026-05-08T16:33:34.882Z"
     },
     {
       "level": "info",
       "category": "cancellations",
-      "message": "125 potentially recoverable cancels (27%)",
+      "message": "129 potentially recoverable cancels (27%)",
       "detail": "Win-back campaigns could target these",
-      "timestamp": "2026-05-03T08:31:53.604Z"
+      "timestamp": "2026-05-08T16:33:34.883Z"
     },
     {
       "level": "warning",
       "category": "cancellations",
       "message": "\"Moved\" accounts for 31% of cancels",
-      "detail": "144 of 469 events",
-      "timestamp": "2026-05-03T08:31:53.604Z"
+      "detail": "150 of 486 events",
+      "timestamp": "2026-05-08T16:33:34.883Z"
     },
     {
       "level": "info",
       "category": "operations",
-      "message": "3 tech(s) below 50% of avg visits (716)",
-      "detail": "Travis Johnson: 231, Jeovany  Osorio: 183, Curtis Blount: 104",
-      "timestamp": "2026-05-03T08:31:53.605Z"
+      "message": "5 tech(s) below 50% of avg visits (670)",
+      "detail": "Travis Johnson: 251, Curtis Blount: 191, Jeovany  Osorio: 183, Jordan Meddock: 60, Omar Sanchez: 1",
+      "timestamp": "2026-05-08T16:33:34.884Z"
+    },
+    {
+      "level": "warning",
+      "category": "data",
+      "message": "1 of 4 key data files are stale (>48h)",
+      "detail": "Run nightly sync or manual deploy",
+      "timestamp": "2026-05-08T16:33:34.886Z"
     },
     {
       "level": "info",
       "category": "seasonal",
       "message": "🔥 Peak season (month 5/12) — maximize revenue and customer retention",
       "detail": "Focus on: route efficiency, upsells, review collection, referral programs",
-      "timestamp": "2026-05-03T08:31:53.607Z"
+      "timestamp": "2026-05-08T16:33:34.886Z"
     }
   ]
 }

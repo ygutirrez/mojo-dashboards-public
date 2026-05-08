@@ -1,11 +1,18 @@
 {
   "events": [
     {
-      "timestamp": "2026-05-03T08:31:56Z",
-      "localTime": "2026-05-03 04:31:56 EDT",
+      "timestamp": "2026-05-08T16:33:40Z",
+      "localTime": "2026-05-08 12:33:40 EDT",
       "type": "sync",
       "description": "Nightly sync completed with 2 warnings",
-      "details": "\n  - review data update\n  - GitHub Pages push",
+      "details": "\n  - Daily sales import\n  - ServSuite report export (TIMEOUT after 1200s \u2014 using cached data)\n  - GitHub Pages push (main + gh-pages)",
+      "hostname": "Mac-mini-2"
+    },
+    {
+      "timestamp": "2026-04-04T08:43:32Z",
+      "localTime": "2026-04-04 04:43:32 EDT",
+      "type": "sync",
+      "description": "Nightly sync completed successfully \u2014 all steps OK",
       "hostname": "Mac-mini-2"
     },
     {
@@ -44,7 +51,7 @@
   "meta": {
     "version": 1,
     "maxEntries": 500,
-    "lastUpdated": "2026-05-03T08:31:56Z",
-    "totalEvents": 5
+    "lastUpdated": "2026-05-08T16:33:40Z",
+    "totalEvents": 6
   }
 }

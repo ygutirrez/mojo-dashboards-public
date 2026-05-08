@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-08T16:32:39.031Z",
+  "updated_at": "2026-05-08T16:53:32.232Z",
   "period": "Jan 1 - May 8, 2026 (YTD)",
   "summary": {
     "total_jobs": 9375,
-    "total_techs": 14,
+    "total_techs": 13,
     "resprays": 50,
     "first_time_success": "99.5%",
     "total_upsells": 6,
@@ -38,19 +38,10 @@
       "resprays": 6
     },
     {
-      "name": "John Sabin",
-      "initials": "JS",
-      "jobs": 1114,
-      "rank": 4,
-      "revenue": 98890,
-      "upsells": 0,
-      "resprays": 4
-    },
-    {
       "name": "David Carbajal",
       "initials": "DC",
       "jobs": 1088,
-      "rank": 5,
+      "rank": 4,
       "revenue": 94672,
       "upsells": 3,
       "resprays": 7
@@ -59,7 +50,7 @@
       "name": "Andrew Schamel",
       "initials": "AS",
       "jobs": 963,
-      "rank": 6,
+      "rank": 5,
       "revenue": 81717,
       "upsells": 1,
       "resprays": 5
@@ -68,7 +59,7 @@
       "name": "Joseph Pagan",
       "initials": "JP",
       "jobs": 711,
-      "rank": 7,
+      "rank": 6,
       "revenue": 111648,
       "upsells": 1,
       "resprays": 1
@@ -77,7 +68,7 @@
       "name": "Jeffrey Baptiste",
       "initials": "JB",
       "jobs": 658,
-      "rank": 8,
+      "rank": 7,
       "revenue": 56986,
       "upsells": 0,
       "resprays": 6
@@ -86,7 +77,7 @@
       "name": "Jorge Navarro",
       "initials": "JN",
       "jobs": 559,
-      "rank": 9,
+      "rank": 8,
       "revenue": 45301,
       "upsells": 1,
       "resprays": 2
@@ -95,7 +86,7 @@
       "name": "Travis Johnson",
       "initials": "TJ",
       "jobs": 251,
-      "rank": 10,
+      "rank": 9,
       "revenue": 23136,
       "upsells": 0,
       "resprays": 1
@@ -104,7 +95,7 @@
       "name": "Curtis Blount",
       "initials": "CB",
       "jobs": 191,
-      "rank": 11,
+      "rank": 10,
       "revenue": 15599,
       "upsells": 0,
       "resprays": 2
@@ -113,7 +104,7 @@
       "name": "Jeovany Osorio",
       "initials": "JO",
       "jobs": 183,
-      "rank": 12,
+      "rank": 11,
       "revenue": 18406,
       "upsells": 0,
       "resprays": 1
@@ -122,7 +113,7 @@
       "name": "Jordan Meddock",
       "initials": "JM",
       "jobs": 60,
-      "rank": 13,
+      "rank": 12,
       "revenue": 4507,
       "upsells": 0,
       "resprays": 0
@@ -131,7 +122,7 @@
       "name": "Omar Sanchez",
       "initials": "OS",
       "jobs": 1,
-      "rank": 14,
+      "rank": 13,
       "revenue": 76,
       "upsells": 0,
       "resprays": 0
@@ -235,32 +226,111 @@
       "miles": 153,
       "idle_min": 92,
       "drive_min": 1048
-    },
-    {
-      "name": "John Sabin",
-      "truck": "Truck 12",
-      "score": 78,
-      "miles": 231,
-      "idle_min": 41,
-      "drive_min": 813
     }
   ],
   "days_out": {
-    "y2025": [],
-    "y2026": []
+    "y2025": [
+      {
+        "name": "Travis",
+        "days": 8
+      },
+      {
+        "name": "Stanley",
+        "days": 16
+      },
+      {
+        "name": "David",
+        "days": 13
+      },
+      {
+        "name": "Marcus",
+        "days": 24
+      },
+      {
+        "name": "Andrew",
+        "days": 9
+      },
+      {
+        "name": "Joe",
+        "days": 15
+      },
+      {
+        "name": "Jorge",
+        "days": 3
+      },
+      {
+        "name": "Damian",
+        "days": 8
+      },
+      {
+        "name": "Jeffrey",
+        "days": 0
+      },
+      {
+        "name": "$25 - Standard service",
+        "days": 0
+      },
+      {
+        "name": "$100 - Misting",
+        "days": 0
+      },
+      {
+        "name": "Misting Hold",
+        "days": 0
+      }
+    ],
+    "y2026": [
+      {
+        "name": "Travis",
+        "days": 6
+      },
+      {
+        "name": "Stanley",
+        "days": 6
+      },
+      {
+        "name": "David",
+        "days": 5
+      },
+      {
+        "name": "Marcus",
+        "days": 3
+      },
+      {
+        "name": "Andrew",
+        "days": 8
+      },
+      {
+        "name": "Joe",
+        "days": 1
+      },
+      {
+        "name": "Jorge",
+        "days": 3
+      },
+      {
+        "name": "Damian",
+        "days": 6
+      },
+      {
+        "name": "Jeffrey",
+        "days": 2
+      },
+      {
+        "name": "$25 - Standard service",
+        "days": 0
+      },
+      {
+        "name": "$100 - Misting",
+        "days": 0
+      },
+      {
+        "name": "Misting Hold",
+        "days": 0
+      }
+    ]
   },
   "review_race": [
-    {
-      "name": "Joseph Pagan",
-      "initials": "JP",
-      "count": 0.5,
-      "target": 10,
-      "color": "#00d9ff",
-      "note": "OWED 1 payout ($500)",
-      "totalCredits": 57.67,
-      "totalPayouts": 5,
-      "payoutsOwed": 1
-    },
     {
       "name": "Jorge Navarro",
       "initials": "JN",
@@ -281,17 +351,6 @@
       "note": "",
       "totalCredits": 61,
       "totalPayouts": 3,
-      "payoutsOwed": 0
-    },
-    {
-      "name": "John Sabin",
-      "initials": "JS",
-      "count": 6,
-      "target": 10,
-      "color": "#00ff88",
-      "note": "",
-      "totalCredits": 76,
-      "totalPayouts": 7,
       "payoutsOwed": 0
     },
     {
@@ -361,6 +420,17 @@
       "payoutsOwed": 0
     },
     {
+      "name": "Joseph Pagan",
+      "initials": "JP",
+      "count": 0.5,
+      "target": 10,
+      "color": "#00d9ff",
+      "note": "",
+      "totalCredits": 57.67,
+      "totalPayouts": 6,
+      "payoutsOwed": 0
+    },
+    {
       "name": "Stanley Prophete",
       "initials": "SP",
       "count": 0,
@@ -374,8 +444,8 @@
   ],
   "review_stats": {
     "total_reviews": 39,
-    "tech_mentions": 16,
-    "mention_rate": "41%"
+    "tech_mentions": 14,
+    "mention_rate": "35.9%"
   },
   "featured_review": {
     "stars": 5,
@@ -392,7 +462,7 @@
       "cashed": 30
     },
     {
-      "name": "John Sabin",
+      "name": "John",
       "amount": 1000,
       "reviews": 76,
       "cashed": 20
@@ -476,12 +546,12 @@
       "color": "#a855f7"
     },
     {
-      "reviewer": "George Nausha",
+      "reviewer": "Patrick Spillane",
       "stars": 5,
-      "date": "2026-03-07",
-      "tech": "John",
-      "quote": "John has been amazing. Prompt and professional. Really enjoying my service!",
-      "color": "#00ff88"
+      "date": "2026-03-06",
+      "tech": "Joe",
+      "quote": "We had a misting system installed at our home and it is absolutely fantastic! Joe and Andrew installed the system and did a great job, if you’re thinking about getting a system to eliminate mosquitos ",
+      "color": "#00d9ff"
     }
   ],
   "resprays_by_tech": [
@@ -558,8 +628,8 @@
     {
       "icon": "🛡️",
       "title": "Zero Callbacks",
-      "name": "John Sabin",
-      "stat": "1114 jobs, 0 re-sprays"
+      "name": "Jordan Meddock",
+      "stat": "60 jobs, 0 re-sprays"
     },
     {
       "icon": "⭐",

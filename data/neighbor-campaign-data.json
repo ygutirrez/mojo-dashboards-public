@@ -1,24 +1,97 @@
 {
-  "generated_at": "2026-04-28T08:43:21.538Z",
+  "generated_at": "2026-05-08T16:33:37.891Z",
   "summary": {
-    "totalActiveCustomers": 2013,
-    "totalZipsAnalyzed": 61,
-    "tier1ZipCount": 11,
-    "tier2ZipCount": 38,
-    "totalEstimatedReach": 144585,
-    "totalEstimatedNewCustomers": 1156,
-    "totalEstimatedFirstYearRevenue": 901680,
-    "totalCampaignCost": 166295,
+    "totalActiveCustomers": 2045,
+    "totalZipsAnalyzed": 62,
+    "tier1ZipCount": 13,
+    "tier2ZipCount": 37,
+    "totalEstimatedReach": 146835,
+    "totalEstimatedNewCustomers": 1174,
+    "totalEstimatedFirstYearRevenue": 915720,
+    "totalCampaignCost": 168883,
     "overallROI": 442,
     "customerGoal": 4000,
-    "currentCustomers": 2013,
-    "gapToGoal": 1987,
-    "campaignGapClosure": 58,
+    "currentCustomers": 2045,
+    "gapToGoal": 1955,
+    "campaignGapClosure": 60,
     "seasonalMultiplier": 1.4,
     "isHighSeason": true,
     "seasonNote": "🔥 Peak mosquito season — conversion rates ~40% higher. LAUNCH NOW."
   },
   "zipAnalysis": [
+    {
+      "zip": "33157",
+      "neighborhood": "Palmetto Bay / Cutler Bay",
+      "coords": {
+        "lat": 25.6371,
+        "lng": -80.3367
+      },
+      "households": 21000,
+      "activeCustomers": 126,
+      "programs": {
+        "Barrier Spray Program - 4 weeks": 2,
+        "Residential Service": 9,
+        "Residential - One Time Services": 12,
+        "Misting Systems": 12,
+        "Signature Program": 81,
+        "Other Insects / Specialty Services": 2,
+        "Commercial - One Time Services": 1,
+        "Home Pest Defense": 4,
+        "Commercial Service": 3
+      },
+      "recentStarts": 9,
+      "cancelEvents": 23,
+      "cancelReasons": {
+        "Other - Review Note": 4,
+        "Moved": 1,
+        "Financial Reasons": 14,
+        "One Time to On Going Customer": 1,
+        "Customer only wanted one spray": 2
+      },
+      "saturation": 0.6,
+      "cancelRate": 0.18,
+      "netGrowth": -14,
+      "neighborScore": 11.6,
+      "tier": "Tier 1 — Launch First",
+      "campaign": {
+        "estimatedReach": 3150,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 25,
+        "estimatedFirstYearRevenue": 19500,
+        "postcardCost": 2678,
+        "digitalCost": 945,
+        "totalCost": 3623,
+        "estimatedROI": 438
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 81
+        },
+        {
+          "name": "Residential - One Time Services",
+          "count": 12
+        },
+        {
+          "name": "Misting Systems",
+          "count": 12
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Financial Reasons",
+          "count": 14
+        },
+        {
+          "name": "Other - Review Note",
+          "count": 4
+        },
+        {
+          "name": "Customer only wanted one spray",
+          "count": 2
+        }
+      ]
+    },
     {
       "zip": "33176",
       "neighborhood": "Kendall",
@@ -27,13 +100,13 @@
         "lng": -80.3569
       },
       "households": 18400,
-      "activeCustomers": 131,
+      "activeCustomers": 130,
       "programs": {
         "Residential Service": 21,
         "Misting Systems": 10,
         "Signature Program": 79,
         "Barrier Spray Program - 4 weeks": 1,
-        "In2Care": 2,
+        "In2Care": 1,
         "Home Pest Defense": 9,
         "In2Care Service - 3 Weeks": 1,
         "Barrier Spray Program - 1 week": 1,
@@ -41,19 +114,20 @@
         "Inzecto Traps": 1
       },
       "recentStarts": 8,
-      "cancelEvents": 23,
+      "cancelEvents": 30,
       "cancelReasons": {
+        "Moved": 6,
         "Other - Review Note": 4,
         "Financial Reasons": 4,
         "Bad Debt": 8,
         "Change of Program": 1,
-        "Customer only wanted one spray": 2,
+        "Customer only wanted one spray": 3,
         "Not Interested at this time": 2
       },
       "saturation": 0.71,
-      "cancelRate": 0.18,
-      "netGrowth": -15,
-      "neighborScore": 11.6,
+      "cancelRate": 0.23,
+      "netGrowth": -22,
+      "neighborScore": 11.5,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 2760,
@@ -85,85 +159,12 @@
           "count": 8
         },
         {
-          "name": "Other - Review Note",
-          "count": 4
-        },
-        {
-          "name": "Financial Reasons",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "zip": "33157",
-      "neighborhood": "Palmetto Bay / Cutler Bay",
-      "coords": {
-        "lat": 25.6371,
-        "lng": -80.3367
-      },
-      "households": 21000,
-      "activeCustomers": 120,
-      "programs": {
-        "Barrier Spray Program - 4 weeks": 2,
-        "Residential Service": 9,
-        "Residential - One Time Services": 11,
-        "Misting Systems": 12,
-        "Signature Program": 77,
-        "Other Insects / Specialty Services": 2,
-        "Commercial - One Time Services": 1,
-        "Home Pest Defense": 3,
-        "Commercial Service": 3
-      },
-      "recentStarts": 3,
-      "cancelEvents": 23,
-      "cancelReasons": {
-        "Other - Review Note": 4,
-        "Moved": 1,
-        "Financial Reasons": 14,
-        "One Time to On Going Customer": 1,
-        "Customer only wanted one spray": 2
-      },
-      "saturation": 0.57,
-      "cancelRate": 0.19,
-      "netGrowth": -20,
-      "neighborScore": 10.6,
-      "tier": "Tier 1 — Launch First",
-      "campaign": {
-        "estimatedReach": 3150,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 25,
-        "estimatedFirstYearRevenue": 19500,
-        "postcardCost": 2678,
-        "digitalCost": 945,
-        "totalCost": 3623,
-        "estimatedROI": 438
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 77
-        },
-        {
-          "name": "Misting Systems",
-          "count": 12
-        },
-        {
-          "name": "Residential - One Time Services",
-          "count": 11
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Financial Reasons",
-          "count": 14
+          "name": "Moved",
+          "count": 6
         },
         {
           "name": "Other - Review Note",
           "count": 4
-        },
-        {
-          "name": "Customer only wanted one spray",
-          "count": 2
         }
       ]
     },
@@ -175,11 +176,11 @@
         "lng": -80.3088
       },
       "households": 11600,
-      "activeCustomers": 238,
+      "activeCustomers": 244,
       "programs": {
         "Residential Service": 44,
-        "Signature Program": 130,
-        "Residential - One Time Services": 14,
+        "Signature Program": 134,
+        "Residential - One Time Services": 16,
         "Barrier Spray Program - 2 weeks": 5,
         "Commercial Service": 4,
         "Misting Systems": 26,
@@ -191,7 +192,7 @@
         "Inzecto Traps": 1,
         "Flea & Tick Treatment": 1
       },
-      "recentStarts": 8,
+      "recentStarts": 11,
       "cancelEvents": 29,
       "cancelReasons": {
         "Went w Competition": 13,
@@ -200,9 +201,9 @@
         "Bad Debt": 5,
         "Financial Reasons": 5
       },
-      "saturation": 2.05,
+      "saturation": 2.1,
       "cancelRate": 0.12,
-      "netGrowth": -21,
+      "netGrowth": -18,
       "neighborScore": 9.8,
       "tier": "Tier 1 — Launch First",
       "campaign": {
@@ -218,7 +219,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 130
+          "count": 134
         },
         {
           "name": "Residential Service",
@@ -252,22 +253,22 @@
         "lng": -80.2478
       },
       "households": 16400,
-      "activeCustomers": 202,
+      "activeCustomers": 204,
       "programs": {
         "Residential Service": 11,
         "Misting Systems": 21,
-        "Signature Program": 122,
+        "Signature Program": 123,
         "Inzecto Traps": 7,
         "Residential - One Time Services": 8,
         "Barrier Spray Program - 1 week": 5,
-        "Home Pest Defense": 11,
+        "Home Pest Defense": 12,
         "Commercial - One Time Services": 1,
         "In2Care": 2,
         "LIV System": 11,
         "Commercial Service": 2,
         "Fly Program": 1
       },
-      "recentStarts": 10,
+      "recentStarts": 11,
       "cancelEvents": 38,
       "cancelReasons": {
         "Change of Program": 7,
@@ -275,9 +276,9 @@
         "Went w Competition": 5,
         "Not Interested at this time": 4
       },
-      "saturation": 1.23,
+      "saturation": 1.24,
       "cancelRate": 0.19,
-      "netGrowth": -28,
+      "netGrowth": -27,
       "neighborScore": 9.6,
       "tier": "Tier 1 — Launch First",
       "campaign": {
@@ -293,15 +294,15 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 122
+          "count": 123
         },
         {
           "name": "Misting Systems",
           "count": 21
         },
         {
-          "name": "Residential Service",
-          "count": 11
+          "name": "Home Pest Defense",
+          "count": 12
         }
       ],
       "topCancelReasons": [
@@ -320,105 +321,31 @@
       ]
     },
     {
-      "zip": "33143",
-      "neighborhood": "South Miami / Coral Gables",
-      "coords": {
-        "lat": 25.7065,
-        "lng": -80.2922
-      },
-      "households": 12800,
-      "activeCustomers": 163,
-      "programs": {
-        "Residential Service": 19,
-        "Signature Program": 103,
-        "Barrier Spray Program - 4 weeks": 2,
-        "Residential - One Time Services": 13,
-        "Home Pest Defense": 4,
-        "Misting Systems": 17,
-        "Inzecto Traps": 1,
-        "Barrier Spray Program - 1 week": 2,
-        "LIV System": 2
-      },
-      "recentStarts": 10,
-      "cancelEvents": 36,
-      "cancelReasons": {
-        "Unhappy w Service": 10,
-        "Bad Debt": 10,
-        "Other - Review Note": 4,
-        "Moved": 10,
-        "Customer only wanted one spray": 1,
-        "Not Interested at this time": 1
-      },
-      "saturation": 1.27,
-      "cancelRate": 0.22,
-      "netGrowth": -26,
-      "neighborScore": 9.6,
-      "tier": "Tier 1 — Launch First",
-      "campaign": {
-        "estimatedReach": 1920,
-        "estimatedConversionRate": 0.81,
-        "estimatedNewCustomers": 15,
-        "estimatedFirstYearRevenue": 11700,
-        "postcardCost": 1632,
-        "digitalCost": 576,
-        "totalCost": 2208,
-        "estimatedROI": 430
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 103
-        },
-        {
-          "name": "Residential Service",
-          "count": 19
-        },
-        {
-          "name": "Misting Systems",
-          "count": 17
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Unhappy w Service",
-          "count": 10
-        },
-        {
-          "name": "Bad Debt",
-          "count": 10
-        },
-        {
-          "name": "Moved",
-          "count": 10
-        }
-      ]
-    },
-    {
       "zip": "33138",
       "neighborhood": "Upper East Side",
       "coords": null,
       "households": null,
-      "activeCustomers": 62,
+      "activeCustomers": 64,
       "programs": {
         "Residential Service": 2,
         "Signature Program": 46,
         "Home Pest Defense": 6,
-        "Residential - One Time Services": 2,
-        "LIV System": 1,
+        "Residential - One Time Services": 3,
+        "LIV System": 2,
         "Misting Systems": 4,
         "Barrier Spray Program - 1 week": 1
       },
-      "recentStarts": 5,
+      "recentStarts": 7,
       "cancelEvents": 20,
       "cancelReasons": {
         "Not Interested at this time": 10,
         "Moved": 6,
         "Change of Program": 4
       },
-      "saturation": 0.41,
-      "cancelRate": 0.32,
-      "netGrowth": -15,
-      "neighborScore": 9.5,
+      "saturation": 0.43,
+      "cancelRate": 0.31,
+      "netGrowth": -13,
+      "neighborScore": 9.6,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 2250,
@@ -460,75 +387,76 @@
       ]
     },
     {
-      "zip": "33146",
-      "neighborhood": "Coral Gables (South)",
+      "zip": "33143",
+      "neighborhood": "South Miami / Coral Gables",
       "coords": {
-        "lat": 25.7153,
-        "lng": -80.2745
+        "lat": 25.7065,
+        "lng": -80.2922
       },
-      "households": 7600,
-      "activeCustomers": 108,
+      "households": 12800,
+      "activeCustomers": 165,
       "programs": {
-        "Signature Program": 70,
-        "Residential Service": 10,
-        "Residential - One Time Services": 7,
-        "Barrier Spray Program - 2 weeks": 1,
-        "Home Pest Defense": 9,
-        "Misting Systems": 6,
-        "Flea & Tick Treatment": 1,
+        "Residential Service": 19,
+        "Signature Program": 103,
+        "Barrier Spray Program - 4 weeks": 2,
+        "Residential - One Time Services": 14,
+        "Home Pest Defense": 5,
+        "Misting Systems": 17,
+        "Inzecto Traps": 1,
         "Barrier Spray Program - 1 week": 2,
-        "Other Insects / Specialty Services": 2
+        "LIV System": 2
       },
-      "recentStarts": 5,
-      "cancelEvents": 35,
+      "recentStarts": 12,
+      "cancelEvents": 43,
       "cancelReasons": {
-        "Moved": 13,
-        "Bad Debt": 4,
-        "Not Interested at this time": 9,
-        "Other - Review Note": 5,
-        "Customer only wanted one spray": 4
+        "Unhappy w Service": 16,
+        "Bad Debt": 10,
+        "Other - Review Note": 4,
+        "Moved": 10,
+        "Customer only wanted one spray": 1,
+        "Not Interested at this time": 1
       },
-      "saturation": 1.42,
-      "cancelRate": 0.32,
-      "netGrowth": -30,
-      "neighborScore": 9.4,
+      "saturation": 1.29,
+      "cancelRate": 0.26,
+      "netGrowth": -31,
+      "neighborScore": 9.5,
       "tier": "Tier 1 — Launch First",
       "campaign": {
-        "estimatedReach": 1140,
+        "estimatedReach": 1920,
         "estimatedConversionRate": 0.81,
-        "estimatedNewCustomers": 9,
-        "estimatedFirstYearRevenue": 7020,
-        "postcardCost": 969,
-        "digitalCost": 342,
-        "totalCost": 1311,
-        "estimatedROI": 435
+        "estimatedNewCustomers": 15,
+        "estimatedFirstYearRevenue": 11700,
+        "postcardCost": 1632,
+        "digitalCost": 576,
+        "totalCost": 2208,
+        "estimatedROI": 430
       },
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 70
+          "count": 103
         },
         {
           "name": "Residential Service",
-          "count": 10
+          "count": 19
         },
         {
-          "name": "Home Pest Defense",
-          "count": 9
+          "name": "Misting Systems",
+          "count": 17
         }
       ],
       "topCancelReasons": [
         {
+          "name": "Unhappy w Service",
+          "count": 16
+        },
+        {
+          "name": "Bad Debt",
+          "count": 10
+        },
+        {
           "name": "Moved",
-          "count": 13
-        },
-        {
-          "name": "Not Interested at this time",
-          "count": 9
-        },
-        {
-          "name": "Other - Review Note",
-          "count": 5
+          "count": 10
         }
       ]
     },
@@ -537,9 +465,9 @@
       "neighborhood": "Mid-Beach",
       "coords": null,
       "households": null,
-      "activeCustomers": 53,
+      "activeCustomers": 54,
       "programs": {
-        "Residential - One Time Services": 2,
+        "Residential - One Time Services": 3,
         "Residential Service": 7,
         "Signature Program": 29,
         "Barrier Spray Program - 1 week": 3,
@@ -554,10 +482,10 @@
         "Unhappy w Service": 6,
         "Not Interested at this time": 2
       },
-      "saturation": 0.35,
+      "saturation": 0.36,
       "cancelRate": 0.17,
       "netGrowth": -5,
-      "neighborScore": 9.3,
+      "neighborScore": 9.4,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 2250,
@@ -595,6 +523,79 @@
       ]
     },
     {
+      "zip": "33146",
+      "neighborhood": "Coral Gables (South)",
+      "coords": {
+        "lat": 25.7153,
+        "lng": -80.2745
+      },
+      "households": 7600,
+      "activeCustomers": 107,
+      "programs": {
+        "Signature Program": 69,
+        "Residential Service": 10,
+        "Residential - One Time Services": 7,
+        "Barrier Spray Program - 2 weeks": 1,
+        "Home Pest Defense": 9,
+        "Misting Systems": 6,
+        "Flea & Tick Treatment": 1,
+        "Barrier Spray Program - 1 week": 2,
+        "Other Insects / Specialty Services": 2
+      },
+      "recentStarts": 5,
+      "cancelEvents": 39,
+      "cancelReasons": {
+        "Moved": 17,
+        "Bad Debt": 4,
+        "Not Interested at this time": 9,
+        "Other - Review Note": 5,
+        "Customer only wanted one spray": 4
+      },
+      "saturation": 1.41,
+      "cancelRate": 0.36,
+      "netGrowth": -34,
+      "neighborScore": 9.3,
+      "tier": "Tier 1 — Launch First",
+      "campaign": {
+        "estimatedReach": 1140,
+        "estimatedConversionRate": 0.81,
+        "estimatedNewCustomers": 9,
+        "estimatedFirstYearRevenue": 7020,
+        "postcardCost": 969,
+        "digitalCost": 342,
+        "totalCost": 1311,
+        "estimatedROI": 435
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 69
+        },
+        {
+          "name": "Residential Service",
+          "count": 10
+        },
+        {
+          "name": "Home Pest Defense",
+          "count": 9
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Moved",
+          "count": 17
+        },
+        {
+          "name": "Not Interested at this time",
+          "count": 9
+        },
+        {
+          "name": "Other - Review Note",
+          "count": 5
+        }
+      ]
+    },
+    {
       "zip": "33134",
       "neighborhood": "Coral Gables (North)",
       "coords": {
@@ -602,18 +603,18 @@
         "lng": -80.2753
       },
       "households": 9200,
-      "activeCustomers": 95,
+      "activeCustomers": 97,
       "programs": {
-        "Signature Program": 68,
+        "Signature Program": 69,
         "Residential Service": 5,
         "Commercial Service": 1,
-        "Misting Systems": 11,
+        "Misting Systems": 12,
         "Home Pest Defense": 2,
         "In2Care": 3,
         "LIV System": 1,
         "Residential - One Time Services": 4
       },
-      "recentStarts": 5,
+      "recentStarts": 7,
       "cancelEvents": 33,
       "cancelReasons": {
         "Moved": 9,
@@ -622,10 +623,10 @@
         "Customer only wanted one spray": 1,
         "Other - Review Note": 9
       },
-      "saturation": 1.03,
-      "cancelRate": 0.35,
-      "netGrowth": -28,
-      "neighborScore": 9.1,
+      "saturation": 1.05,
+      "cancelRate": 0.34,
+      "netGrowth": -26,
+      "neighborScore": 9.2,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 1380,
@@ -640,11 +641,11 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 68
+          "count": 69
         },
         {
           "name": "Misting Systems",
-          "count": 11
+          "count": 12
         },
         {
           "name": "Residential Service",
@@ -674,27 +675,27 @@
         "lng": -80.3867
       },
       "households": 22600,
-      "activeCustomers": 49,
+      "activeCustomers": 51,
       "programs": {
         "Residential Service": 8,
         "Barrier Spray Program - 2 weeks": 1,
         "Residential - One Time Services": 3,
         "Barrier Spray Program - 4 weeks": 1,
-        "Signature Program": 26,
-        "Inzecto Traps": 3,
+        "Signature Program": 27,
+        "Inzecto Traps": 4,
         "Home Pest Defense": 6,
         "LIV System": 1
       },
-      "recentStarts": 3,
+      "recentStarts": 5,
       "cancelEvents": 8,
       "cancelReasons": {
         "Moved": 4,
         "Other - Review Note": 4
       },
-      "saturation": 0.22,
+      "saturation": 0.23,
       "cancelRate": 0.16,
-      "netGrowth": -5,
-      "neighborScore": 8.1,
+      "netGrowth": -3,
+      "neighborScore": 9.2,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 3390,
@@ -709,7 +710,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 26
+          "count": 27
         },
         {
           "name": "Residential Service",
@@ -739,17 +740,17 @@
         "lng": -80.3179
       },
       "households": 18200,
-      "activeCustomers": 55,
+      "activeCustomers": 57,
       "programs": {
         "Residential Service": 4,
-        "Signature Program": 41,
+        "Signature Program": 43,
         "Misting Systems": 2,
         "Home Pest Defense": 4,
         "In2Care": 1,
         "Flea & Tick Treatment": 1,
         "Residential - One Time Services": 2
       },
-      "recentStarts": 3,
+      "recentStarts": 5,
       "cancelEvents": 22,
       "cancelReasons": {
         "Change of Program": 1,
@@ -759,10 +760,10 @@
         "Financial Reasons": 4,
         "Other - Review Note": 5
       },
-      "saturation": 0.3,
-      "cancelRate": 0.4,
-      "netGrowth": -19,
-      "neighborScore": 8,
+      "saturation": 0.31,
+      "cancelRate": 0.39,
+      "netGrowth": -17,
+      "neighborScore": 9.1,
       "tier": "Tier 1 — Launch First",
       "campaign": {
         "estimatedReach": 2730,
@@ -777,7 +778,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 41
+          "count": 43
         },
         {
           "name": "Residential Service",
@@ -804,6 +805,131 @@
       ]
     },
     {
+      "zip": "33037",
+      "neighborhood": "Unknown",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 51,
+      "programs": {
+        "Signature Program": 34,
+        "Residential Service": 3,
+        "Other Insects / Specialty Services": 2,
+        "Home Pest Defense": 2,
+        "Misting Systems": 7,
+        "Residential - One Time Services": 1,
+        "Barrier Spray Program - 2 weeks": 1,
+        "In2Care": 1
+      },
+      "recentStarts": 4,
+      "cancelEvents": 15,
+      "cancelReasons": {
+        "Other - Review Note": 1,
+        "Moved": 10,
+        "Bad Debt": 4
+      },
+      "saturation": 0.34,
+      "cancelRate": 0.29,
+      "netGrowth": -11,
+      "neighborScore": 9,
+      "tier": "Tier 1 — Launch First",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 34
+        },
+        {
+          "name": "Misting Systems",
+          "count": 7
+        },
+        {
+          "name": "Residential Service",
+          "count": 3
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Moved",
+          "count": 10
+        },
+        {
+          "name": "Bad Debt",
+          "count": 4
+        },
+        {
+          "name": "Other - Review Note",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "zip": "33139",
+      "neighborhood": "South Beach",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 31,
+      "programs": {
+        "Signature Program": 16,
+        "Residential Service": 1,
+        "Commercial Service": 3,
+        "Barrier Spray Program - 1 week": 1,
+        "Misting Systems": 5,
+        "Residential - One Time Services": 1,
+        "Home Pest Defense": 2,
+        "Other Insects / Specialty Services": 1,
+        "LIV System": 1
+      },
+      "recentStarts": 4,
+      "cancelEvents": 1,
+      "cancelReasons": {
+        "Customer only wanted one spray": 1
+      },
+      "saturation": 0.21,
+      "cancelRate": 0.03,
+      "netGrowth": 3,
+      "neighborScore": 8.5,
+      "tier": "Tier 1 — Launch First",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 16
+        },
+        {
+          "name": "Misting Systems",
+          "count": 5
+        },
+        {
+          "name": "Commercial Service",
+          "count": 3
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Customer only wanted one spray",
+          "count": 1
+        }
+      ]
+    },
+    {
       "zip": "33137",
       "neighborhood": "Edgewater / Midtown",
       "coords": null,
@@ -814,8 +940,8 @@
         "Signature Program": 12,
         "Residential - One Time Services": 1,
         "Misting Systems": 3,
-        "Residential Service": 1,
         "Home Pest Defense": 1,
+        "Residential Service": 1,
         "LIV System": 1,
         "Flea & Tick Treatment": 1
       },
@@ -862,120 +988,6 @@
         {
           "name": "Unhappy w Service",
           "count": 3
-        }
-      ]
-    },
-    {
-      "zip": "33145",
-      "neighborhood": "The Roads / Shenandoah",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 15,
-      "programs": {
-        "Signature Program": 9,
-        "Residential Service": 1,
-        "Misting Systems": 2,
-        "Inzecto Traps": 2,
-        "Home Pest Defense": 1
-      },
-      "recentStarts": 4,
-      "cancelEvents": 0,
-      "cancelReasons": {},
-      "saturation": 0.1,
-      "cancelRate": 0,
-      "netGrowth": 4,
-      "neighborScore": 7.8,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 9
-        },
-        {
-          "name": "Misting Systems",
-          "count": 2
-        },
-        {
-          "name": "Inzecto Traps",
-          "count": 2
-        }
-      ],
-      "topCancelReasons": []
-    },
-    {
-      "zip": "33037",
-      "neighborhood": "Unknown",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 49,
-      "programs": {
-        "Signature Program": 32,
-        "Residential Service": 3,
-        "Other Insects / Specialty Services": 2,
-        "Home Pest Defense": 2,
-        "Misting Systems": 7,
-        "Residential - One Time Services": 1,
-        "Barrier Spray Program - 2 weeks": 1,
-        "In2Care": 1
-      },
-      "recentStarts": 3,
-      "cancelEvents": 19,
-      "cancelReasons": {
-        "Other - Review Note": 1,
-        "Moved": 14,
-        "Bad Debt": 4
-      },
-      "saturation": 0.33,
-      "cancelRate": 0.39,
-      "netGrowth": -16,
-      "neighborScore": 7.7,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 32
-        },
-        {
-          "name": "Misting Systems",
-          "count": 7
-        },
-        {
-          "name": "Residential Service",
-          "count": 3
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Moved",
-          "count": 14
-        },
-        {
-          "name": "Bad Debt",
-          "count": 4
-        },
-        {
-          "name": "Other - Review Note",
-          "count": 1
         }
       ]
     },
@@ -1038,62 +1050,6 @@
       ]
     },
     {
-      "zip": "33154",
-      "neighborhood": "Bal Harbour / Bay Harbor",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 34,
-      "programs": {
-        "In2Care": 4,
-        "Signature Program": 23,
-        "LIV System": 1,
-        "Misting Systems": 2,
-        "Residential - One Time Services": 1,
-        "Home Pest Defense": 2,
-        "Commercial Service": 1
-      },
-      "recentStarts": 2,
-      "cancelEvents": 4,
-      "cancelReasons": {
-        "Not Interested at this time": 4
-      },
-      "saturation": 0.23,
-      "cancelRate": 0.12,
-      "netGrowth": -2,
-      "neighborScore": 7.5,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 23
-        },
-        {
-          "name": "In2Care",
-          "count": 4
-        },
-        {
-          "name": "Misting Systems",
-          "count": 2
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Not Interested at this time",
-          "count": 4
-        }
-      ]
-    },
-    {
       "zip": "33196",
       "neighborhood": "West Kendall",
       "coords": {
@@ -1101,22 +1057,22 @@
         "lng": -80.4584
       },
       "households": 12400,
-      "activeCustomers": 29,
+      "activeCustomers": 31,
       "programs": {
         "Residential Service": 2,
-        "Signature Program": 23,
+        "Signature Program": 25,
         "Residential - One Time Services": 1,
         "Inzecto Traps": 1,
         "Misting Systems": 1,
         "Home Pest Defense": 1
       },
-      "recentStarts": 1,
+      "recentStarts": 2,
       "cancelEvents": 0,
       "cancelReasons": {},
-      "saturation": 0.23,
+      "saturation": 0.25,
       "cancelRate": 0,
-      "netGrowth": 1,
-      "neighborScore": 7.5,
+      "netGrowth": 2,
+      "neighborScore": 7.6,
       "tier": "Tier 2 — Strong Candidate",
       "campaign": {
         "estimatedReach": 1860,
@@ -1131,7 +1087,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 23
+          "count": 25
         },
         {
           "name": "Residential Service",
@@ -1145,64 +1101,6 @@
       "topCancelReasons": []
     },
     {
-      "zip": "33139",
-      "neighborhood": "South Beach",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 29,
-      "programs": {
-        "Signature Program": 15,
-        "Residential Service": 1,
-        "Commercial Service": 3,
-        "Barrier Spray Program - 1 week": 1,
-        "Misting Systems": 5,
-        "Residential - One Time Services": 1,
-        "Home Pest Defense": 1,
-        "Other Insects / Specialty Services": 1,
-        "LIV System": 1
-      },
-      "recentStarts": 2,
-      "cancelEvents": 1,
-      "cancelReasons": {
-        "Customer only wanted one spray": 1
-      },
-      "saturation": 0.19,
-      "cancelRate": 0.03,
-      "netGrowth": 1,
-      "neighborScore": 7.4,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 15
-        },
-        {
-          "name": "Misting Systems",
-          "count": 5
-        },
-        {
-          "name": "Commercial Service",
-          "count": 3
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Customer only wanted one spray",
-          "count": 1
-        }
-      ]
-    },
-    {
       "zip": "33158",
       "neighborhood": "Palmetto Bay",
       "coords": {
@@ -1210,25 +1108,25 @@
         "lng": -80.3175
       },
       "households": 6800,
-      "activeCustomers": 38,
+      "activeCustomers": 40,
       "programs": {
         "Residential Service": 4,
-        "Signature Program": 26,
-        "Home Pest Defense": 1,
+        "Signature Program": 27,
+        "Home Pest Defense": 2,
         "Residential - One Time Services": 3,
         "Misting Systems": 3,
         "Flea & Tick Treatment": 1
       },
-      "recentStarts": 1,
+      "recentStarts": 3,
       "cancelEvents": 10,
       "cancelReasons": {
         "Bad Debt": 5,
         "Moved": 5
       },
-      "saturation": 0.56,
-      "cancelRate": 0.26,
-      "netGrowth": -9,
-      "neighborScore": 7.4,
+      "saturation": 0.59,
+      "cancelRate": 0.25,
+      "netGrowth": -7,
+      "neighborScore": 7.5,
       "tier": "Tier 2 — Strong Candidate",
       "campaign": {
         "estimatedReach": 1020,
@@ -1243,7 +1141,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 26
+          "count": 27
         },
         {
           "name": "Residential Service",
@@ -1266,51 +1164,49 @@
       ]
     },
     {
-      "zip": "33165",
-      "neighborhood": "Westchester / Tamiami",
-      "coords": {
-        "lat": 25.7355,
-        "lng": -80.3557
-      },
-      "households": 22000,
-      "activeCustomers": 18,
+      "zip": "33154",
+      "neighborhood": "Bal Harbour / Bay Harbor",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 33,
       "programs": {
-        "Signature Program": 11,
-        "Residential - One Time Services": 2,
-        "Residential Service": 1,
+        "In2Care": 4,
+        "Signature Program": 22,
+        "LIV System": 1,
         "Misting Systems": 2,
-        "Home Pest Defense": 1,
-        "Other Insects / Specialty Services": 1
+        "Residential - One Time Services": 1,
+        "Home Pest Defense": 2,
+        "Commercial Service": 1
       },
-      "recentStarts": 4,
+      "recentStarts": 2,
       "cancelEvents": 8,
       "cancelReasons": {
-        "Bad Debt": 4,
-        "Not Interested at this time": 4
+        "Not Interested at this time": 4,
+        "Unhappy w Service": 4
       },
-      "saturation": 0.08,
-      "cancelRate": 0.44,
-      "netGrowth": -4,
-      "neighborScore": 7,
+      "saturation": 0.22,
+      "cancelRate": 0.24,
+      "netGrowth": -6,
+      "neighborScore": 7.2,
       "tier": "Tier 2 — Strong Candidate",
       "campaign": {
-        "estimatedReach": 3300,
+        "estimatedReach": 2250,
         "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 26,
-        "estimatedFirstYearRevenue": 20280,
-        "postcardCost": 2805,
-        "digitalCost": 990,
-        "totalCost": 3795,
-        "estimatedROI": 434
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
       },
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 11
+          "count": 22
         },
         {
-          "name": "Residential - One Time Services",
-          "count": 2
+          "name": "In2Care",
+          "count": 4
         },
         {
           "name": "Misting Systems",
@@ -1319,14 +1215,117 @@
       ],
       "topCancelReasons": [
         {
-          "name": "Bad Debt",
+          "name": "Not Interested at this time",
           "count": 4
         },
+        {
+          "name": "Unhappy w Service",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "zip": "33145",
+      "neighborhood": "The Roads / Shenandoah",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 14,
+      "programs": {
+        "Signature Program": 8,
+        "Residential Service": 1,
+        "Misting Systems": 2,
+        "Inzecto Traps": 2,
+        "Home Pest Defense": 1
+      },
+      "recentStarts": 4,
+      "cancelEvents": 4,
+      "cancelReasons": {
+        "Not Interested at this time": 4
+      },
+      "saturation": 0.09,
+      "cancelRate": 0.29,
+      "netGrowth": 0,
+      "neighborScore": 7.1,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 8
+        },
+        {
+          "name": "Misting Systems",
+          "count": 2
+        },
+        {
+          "name": "Inzecto Traps",
+          "count": 2
+        }
+      ],
+      "topCancelReasons": [
         {
           "name": "Not Interested at this time",
           "count": 4
         }
       ]
+    },
+    {
+      "zip": "33175",
+      "neighborhood": "Kendall West",
+      "coords": {
+        "lat": 25.7081,
+        "lng": -80.3829
+      },
+      "households": 23800,
+      "activeCustomers": 19,
+      "programs": {
+        "Residential Service": 2,
+        "Signature Program": 14,
+        "Misting Systems": 2,
+        "Home Pest Defense": 1
+      },
+      "recentStarts": 1,
+      "cancelEvents": 0,
+      "cancelReasons": {},
+      "saturation": 0.08,
+      "cancelRate": 0,
+      "netGrowth": 1,
+      "neighborScore": 7,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 3570,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 29,
+        "estimatedFirstYearRevenue": 22620,
+        "postcardCost": 3035,
+        "digitalCost": 1071,
+        "totalCost": 4106,
+        "estimatedROI": 451
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 14
+        },
+        {
+          "name": "Residential Service",
+          "count": 2
+        },
+        {
+          "name": "Misting Systems",
+          "count": 2
+        }
+      ],
+      "topCancelReasons": []
     },
     {
       "zip": "33180",
@@ -1433,84 +1432,24 @@
       "topCancelReasons": []
     },
     {
-      "zip": "33149",
-      "neighborhood": "Key Biscayne",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 24,
-      "programs": {
-        "Barrier Spray Program - 2 weeks": 1,
-        "Signature Program": 14,
-        "Barrier Spray Program - 1 week": 3,
-        "Misting Systems": 3,
-        "Commercial - One Time Services": 2,
-        "Home Pest Defense": 1
-      },
-      "recentStarts": 3,
-      "cancelEvents": 6,
-      "cancelReasons": {
-        "Customer only wanted one spray": 1,
-        "Financial Reasons": 5
-      },
-      "saturation": 0.16,
-      "cancelRate": 0.25,
-      "netGrowth": -3,
-      "neighborScore": 6.7,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 14
-        },
-        {
-          "name": "Barrier Spray Program - 1 week",
-          "count": 3
-        },
-        {
-          "name": "Misting Systems",
-          "count": 3
-        }
-      ],
-      "topCancelReasons": [
-        {
-          "name": "Financial Reasons",
-          "count": 5
-        },
-        {
-          "name": "Customer only wanted one spray",
-          "count": 1
-        }
-      ]
-    },
-    {
       "zip": "33181",
       "neighborhood": "North Miami / Biscayne Park",
       "coords": null,
       "households": null,
-      "activeCustomers": 13,
+      "activeCustomers": 14,
       "programs": {
         "Residential Service": 2,
-        "Signature Program": 8,
+        "Signature Program": 9,
         "Commercial - One Time Services": 1,
         "Commercial Service": 1,
         "Home Pest Defense": 1
       },
-      "recentStarts": 1,
+      "recentStarts": 2,
       "cancelEvents": 0,
       "cancelReasons": {},
       "saturation": 0.09,
       "cancelRate": 0,
-      "netGrowth": 1,
+      "netGrowth": 2,
       "neighborScore": 6.7,
       "tier": "Tier 2 — Strong Candidate",
       "campaign": {
@@ -1526,7 +1465,7 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 8
+          "count": 9
         },
         {
           "name": "Residential Service",
@@ -1550,8 +1489,8 @@
         "Signature Program": 7,
         "In2Care": 1,
         "LIV System": 1,
-        "Misting Systems": 1,
         "Residential - One Time Services": 2,
+        "Misting Systems": 1,
         "Home Pest Defense": 1
       },
       "recentStarts": 2,
@@ -1583,6 +1522,51 @@
         },
         {
           "name": "Residential Service",
+          "count": 1
+        }
+      ],
+      "topCancelReasons": []
+    },
+    {
+      "zip": "33150",
+      "neighborhood": "Little Haiti / Buena Vista",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 9,
+      "programs": {
+        "Signature Program": 6,
+        "Home Pest Defense": 2,
+        "Inzecto Traps": 1
+      },
+      "recentStarts": 2,
+      "cancelEvents": 0,
+      "cancelReasons": {},
+      "saturation": 0.06,
+      "cancelRate": 0,
+      "netGrowth": 2,
+      "neighborScore": 6.5,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 6
+        },
+        {
+          "name": "Home Pest Defense",
+          "count": 2
+        },
+        {
+          "name": "Inzecto Traps",
           "count": 1
         }
       ],
@@ -1714,51 +1698,6 @@
       "topCancelReasons": []
     },
     {
-      "zip": "33150",
-      "neighborhood": "Little Haiti / Buena Vista",
-      "coords": null,
-      "households": null,
-      "activeCustomers": 8,
-      "programs": {
-        "Signature Program": 6,
-        "Inzecto Traps": 1,
-        "Home Pest Defense": 1
-      },
-      "recentStarts": 1,
-      "cancelEvents": 0,
-      "cancelReasons": {},
-      "saturation": 0.05,
-      "cancelRate": 0,
-      "netGrowth": 1,
-      "neighborScore": 6.4,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 2250,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 18,
-        "estimatedFirstYearRevenue": 14040,
-        "postcardCost": 1913,
-        "digitalCost": 675,
-        "totalCost": 2588,
-        "estimatedROI": 443
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 6
-        },
-        {
-          "name": "Inzecto Traps",
-          "count": 1
-        },
-        {
-          "name": "Home Pest Defense",
-          "count": 1
-        }
-      ],
-      "topCancelReasons": []
-    },
-    {
       "zip": "33178",
       "neighborhood": "Doral",
       "coords": {
@@ -1872,8 +1811,8 @@
       "programs": {
         "Residential Service": 2,
         "Signature Program": 10,
-        "Inzecto Traps": 1,
         "Residential - One Time Services": 1,
+        "Inzecto Traps": 1,
         "Home Pest Defense": 1,
         "Misting Systems": 1
       },
@@ -1907,7 +1846,7 @@
           "count": 2
         },
         {
-          "name": "Inzecto Traps",
+          "name": "Residential - One Time Services",
           "count": 1
         }
       ],
@@ -1917,6 +1856,51 @@
           "count": 4
         }
       ]
+    },
+    {
+      "zip": "33055",
+      "neighborhood": "Miami Gardens",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 3,
+      "programs": {
+        "Misting Systems": 1,
+        "Inzecto Traps": 1,
+        "Signature Program": 1
+      },
+      "recentStarts": 2,
+      "cancelEvents": 0,
+      "cancelReasons": {},
+      "saturation": 0.02,
+      "cancelRate": 0,
+      "netGrowth": 2,
+      "neighborScore": 6.2,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Misting Systems",
+          "count": 1
+        },
+        {
+          "name": "Inzecto Traps",
+          "count": 1
+        },
+        {
+          "name": "Signature Program",
+          "count": 1
+        }
+      ],
+      "topCancelReasons": []
     },
     {
       "zip": "33169",
@@ -1952,6 +1936,71 @@
         }
       ],
       "topCancelReasons": []
+    },
+    {
+      "zip": "33149",
+      "neighborhood": "Key Biscayne",
+      "coords": null,
+      "households": null,
+      "activeCustomers": 23,
+      "programs": {
+        "Barrier Spray Program - 2 weeks": 1,
+        "Signature Program": 13,
+        "Barrier Spray Program - 1 week": 3,
+        "Misting Systems": 3,
+        "Commercial - One Time Services": 2,
+        "Home Pest Defense": 1
+      },
+      "recentStarts": 3,
+      "cancelEvents": 12,
+      "cancelReasons": {
+        "Went w Competition": 6,
+        "Customer only wanted one spray": 1,
+        "Financial Reasons": 5
+      },
+      "saturation": 0.15,
+      "cancelRate": 0.52,
+      "netGrowth": -9,
+      "neighborScore": 6.1,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 2250,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 18,
+        "estimatedFirstYearRevenue": 14040,
+        "postcardCost": 1913,
+        "digitalCost": 675,
+        "totalCost": 2588,
+        "estimatedROI": 443
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 13
+        },
+        {
+          "name": "Barrier Spray Program - 1 week",
+          "count": 3
+        },
+        {
+          "name": "Misting Systems",
+          "count": 3
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Went w Competition",
+          "count": 6
+        },
+        {
+          "name": "Financial Reasons",
+          "count": 5
+        },
+        {
+          "name": "Customer only wanted one spray",
+          "count": 1
+        }
+      ]
     },
     {
       "zip": "33161",
@@ -2013,19 +2062,19 @@
         "lng": -80.443
       },
       "households": 16200,
-      "activeCustomers": 6,
+      "activeCustomers": 7,
       "programs": {
-        "Signature Program": 6
+        "Signature Program": 7
       },
-      "recentStarts": 1,
+      "recentStarts": 2,
       "cancelEvents": 1,
       "cancelReasons": {
         "Customer only wanted one spray": 1
       },
       "saturation": 0.04,
-      "cancelRate": 0.17,
-      "netGrowth": 0,
-      "neighborScore": 6,
+      "cancelRate": 0.14,
+      "netGrowth": 1,
+      "neighborScore": 6.1,
       "tier": "Tier 2 — Strong Candidate",
       "campaign": {
         "estimatedReach": 2430,
@@ -2040,13 +2089,76 @@
       "topPrograms": [
         {
           "name": "Signature Program",
-          "count": 6
+          "count": 7
         }
       ],
       "topCancelReasons": [
         {
           "name": "Customer only wanted one spray",
           "count": 1
+        }
+      ]
+    },
+    {
+      "zip": "33165",
+      "neighborhood": "Westchester / Tamiami",
+      "coords": {
+        "lat": 25.7355,
+        "lng": -80.3557
+      },
+      "households": 22000,
+      "activeCustomers": 18,
+      "programs": {
+        "Signature Program": 11,
+        "Residential - One Time Services": 2,
+        "Residential Service": 1,
+        "Misting Systems": 2,
+        "Home Pest Defense": 1,
+        "Other Insects / Specialty Services": 1
+      },
+      "recentStarts": 3,
+      "cancelEvents": 8,
+      "cancelReasons": {
+        "Bad Debt": 4,
+        "Not Interested at this time": 4
+      },
+      "saturation": 0.08,
+      "cancelRate": 0.44,
+      "netGrowth": -5,
+      "neighborScore": 6,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 3300,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 26,
+        "estimatedFirstYearRevenue": 20280,
+        "postcardCost": 2805,
+        "digitalCost": 990,
+        "totalCost": 3795,
+        "estimatedROI": 434
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 11
+        },
+        {
+          "name": "Residential - One Time Services",
+          "count": 2
+        },
+        {
+          "name": "Misting Systems",
+          "count": 2
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Bad Debt",
+          "count": 4
+        },
+        {
+          "name": "Not Interested at this time",
+          "count": 4
         }
       ]
     },
@@ -2105,55 +2217,6 @@
           "count": 9
         }
       ]
-    },
-    {
-      "zip": "33175",
-      "neighborhood": "Kendall West",
-      "coords": {
-        "lat": 25.7081,
-        "lng": -80.3829
-      },
-      "households": 23800,
-      "activeCustomers": 18,
-      "programs": {
-        "Residential Service": 2,
-        "Signature Program": 14,
-        "Misting Systems": 1,
-        "Home Pest Defense": 1
-      },
-      "recentStarts": 0,
-      "cancelEvents": 0,
-      "cancelReasons": {},
-      "saturation": 0.08,
-      "cancelRate": 0,
-      "netGrowth": 0,
-      "neighborScore": 5.9,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 3570,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 29,
-        "estimatedFirstYearRevenue": 22620,
-        "postcardCost": 3035,
-        "digitalCost": 1071,
-        "totalCost": 4106,
-        "estimatedROI": 451
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 14
-        },
-        {
-          "name": "Residential Service",
-          "count": 2
-        },
-        {
-          "name": "Misting Systems",
-          "count": 1
-        }
-      ],
-      "topCancelReasons": []
     },
     {
       "zip": "33030",
@@ -2253,57 +2316,6 @@
         {
           "name": "Residential Service",
           "count": 2
-        }
-      ],
-      "topCancelReasons": []
-    },
-    {
-      "zip": "33185",
-      "neighborhood": "Kendall",
-      "coords": {
-        "lat": 25.6839,
-        "lng": -80.408
-      },
-      "households": 20400,
-      "activeCustomers": 19,
-      "programs": {
-        "Residential Service": 3,
-        "Signature Program": 12,
-        "In2Care Service - 3 Weeks": 1,
-        "In2Care": 1,
-        "Inzecto Traps": 1,
-        "Barrier Spray Program - 1 week": 1
-      },
-      "recentStarts": 0,
-      "cancelEvents": 1,
-      "cancelReasons": {},
-      "saturation": 0.09,
-      "cancelRate": 0.05,
-      "netGrowth": -1,
-      "neighborScore": 5.8,
-      "tier": "Tier 2 — Strong Candidate",
-      "campaign": {
-        "estimatedReach": 3060,
-        "estimatedConversionRate": 0.8,
-        "estimatedNewCustomers": 24,
-        "estimatedFirstYearRevenue": 18720,
-        "postcardCost": 2601,
-        "digitalCost": 918,
-        "totalCost": 3519,
-        "estimatedROI": 432
-      },
-      "topPrograms": [
-        {
-          "name": "Signature Program",
-          "count": 12
-        },
-        {
-          "name": "Residential Service",
-          "count": 3
-        },
-        {
-          "name": "In2Care Service - 3 Weeks",
-          "count": 1
         }
       ],
       "topCancelReasons": []
@@ -2457,8 +2469,8 @@
         "Signature Program": 2,
         "Misting Systems": 4,
         "In2Care": 1,
-        "Residential Service": 1,
-        "Residential - One Time Services": 1
+        "Residential - One Time Services": 1,
+        "Residential Service": 1
       },
       "recentStarts": 0,
       "cancelEvents": 0,
@@ -2495,6 +2507,62 @@
       "topCancelReasons": []
     },
     {
+      "zip": "33185",
+      "neighborhood": "Kendall",
+      "coords": {
+        "lat": 25.6839,
+        "lng": -80.408
+      },
+      "households": 20400,
+      "activeCustomers": 17,
+      "programs": {
+        "Residential Service": 3,
+        "Signature Program": 12,
+        "Inzecto Traps": 1,
+        "Barrier Spray Program - 1 week": 1
+      },
+      "recentStarts": 0,
+      "cancelEvents": 3,
+      "cancelReasons": {
+        "Moved": 2
+      },
+      "saturation": 0.08,
+      "cancelRate": 0.18,
+      "netGrowth": -3,
+      "neighborScore": 5.5,
+      "tier": "Tier 2 — Strong Candidate",
+      "campaign": {
+        "estimatedReach": 3060,
+        "estimatedConversionRate": 0.8,
+        "estimatedNewCustomers": 24,
+        "estimatedFirstYearRevenue": 18720,
+        "postcardCost": 2601,
+        "digitalCost": 918,
+        "totalCost": 3519,
+        "estimatedROI": 432
+      },
+      "topPrograms": [
+        {
+          "name": "Signature Program",
+          "count": 12
+        },
+        {
+          "name": "Residential Service",
+          "count": 3
+        },
+        {
+          "name": "Inzecto Traps",
+          "count": 1
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "name": "Moved",
+          "count": 2
+        }
+      ]
+    },
+    {
       "zip": "33129",
       "neighborhood": "Brickell",
       "coords": null,
@@ -2507,8 +2575,8 @@
         "Barrier Spray Program - 4 weeks": 1,
         "Misting Systems": 1,
         "Residential - One Time Services": 1,
-        "Home Pest Defense": 1,
-        "Barrier Spray Program - 1 week": 1
+        "Barrier Spray Program - 1 week": 1,
+        "Home Pest Defense": 1
       },
       "recentStarts": 0,
       "cancelEvents": 4,
@@ -3058,8 +3126,8 @@
       "households": 25200,
       "activeCustomers": 15,
       "programs": {
-        "Residential - One Time Services": 1,
         "Misting Systems": 1,
+        "Residential - One Time Services": 1,
         "Signature Program": 13
       },
       "recentStarts": 0,
@@ -3089,11 +3157,11 @@
           "count": 13
         },
         {
-          "name": "Residential - One Time Services",
+          "name": "Misting Systems",
           "count": 1
         },
         {
-          "name": "Misting Systems",
+          "name": "Residential - One Time Services",
           "count": 1
         }
       ],
@@ -3218,8 +3286,8 @@
       "activeCustomers": 8,
       "programs": {
         "Signature Program": 6,
-        "Residential - One Time Services": 1,
-        "Inzecto Traps": 1
+        "Inzecto Traps": 1,
+        "Residential - One Time Services": 1
       },
       "recentStarts": 0,
       "cancelEvents": 9,
@@ -3248,11 +3316,11 @@
           "count": 6
         },
         {
-          "name": "Residential - One Time Services",
+          "name": "Inzecto Traps",
           "count": 1
         },
         {
-          "name": "Inzecto Traps",
+          "name": "Residential - One Time Services",
           "count": 1
         }
       ],
@@ -3386,19 +3454,19 @@
   ],
   "clusters": [
     {
-      "name": "Kendall / Pinecrest / Palmetto Bay / Cutler Bay / Kendall / The Falls",
+      "name": "Palmetto Bay / Cutler Bay / Pinecrest / Palmetto Bay / Kendall / Kendall / The Falls / Cutler Bay",
       "zips": [
-        "33176",
-        "33156",
         "33157",
-        "33173",
-        "33183",
-        "33186"
+        "33156",
+        "33158",
+        "33176",
+        "33186",
+        "33189"
       ],
-      "totalCustomers": 590,
-      "avgNeighborScore": 8.5,
-      "combinedReach": 16605,
-      "combinedEstimate": 132
+      "totalCustomers": 606,
+      "avgNeighborScore": 9,
+      "combinedReach": 14280,
+      "combinedEstimate": 114
     },
     {
       "name": "Coconut Grove / Coral Gables (North) / South Miami / Coral Gables / The Roads / Shenandoah / Coral Gables (South) / Brickell",
@@ -3410,23 +3478,24 @@
         "33146",
         "33129"
       ],
-      "totalCustomers": 599,
-      "avgNeighborScore": 8.5,
+      "totalCustomers": 603,
+      "avgNeighborScore": 8.3,
       "combinedReach": 11400,
       "combinedEstimate": 91
     },
     {
-      "name": "Westchester / West Miami / Westchester / Westchester / Tamiami",
+      "name": "Westchester / West Miami / Westchester / Westchester / Tamiami / Kendall",
       "zips": [
         "33155",
         "33144",
         "33165",
+        "33173",
         "33174"
       ],
-      "totalCustomers": 92,
-      "avgNeighborScore": 6.8,
-      "combinedReach": 10890,
-      "combinedEstimate": 87
+      "totalCustomers": 138,
+      "avgNeighborScore": 7,
+      "combinedReach": 13815,
+      "combinedEstimate": 110
     },
     {
       "name": "West Kendall / Kendall / Country Walk / Three Lakes",
@@ -3436,21 +3505,10 @@
         "33193",
         "33182"
       ],
-      "totalCustomers": 59,
-      "avgNeighborScore": 6.2,
+      "totalCustomers": 60,
+      "avgNeighborScore": 6.1,
       "combinedReach": 9480,
       "combinedEstimate": 75
-    },
-    {
-      "name": "Kendall West / Kendall West / Tamiami",
-      "zips": [
-        "33175",
-        "33184"
-      ],
-      "totalCustomers": 21,
-      "avgNeighborScore": 5.6,
-      "combinedReach": 6540,
-      "combinedEstimate": 53
     },
     {
       "name": "South Kendall / Kendall / The Hammocks",
@@ -3462,6 +3520,18 @@
       "avgNeighborScore": 5.4,
       "combinedReach": 6615,
       "combinedEstimate": 53
+    },
+    {
+      "name": "Kendall West / Kendall / Kendall West / Tamiami",
+      "zips": [
+        "33175",
+        "33183",
+        "33184"
+      ],
+      "totalCustomers": 30,
+      "avgNeighborScore": 5.2,
+      "combinedReach": 9180,
+      "combinedEstimate": 74
     }
   ],
   "campaignPhases": [
@@ -3469,35 +3539,39 @@
       "phase": 1,
       "name": "Tier 1 Blitz",
       "zips": [
-        "33176",
         "33157",
+        "33176",
         "33156",
         "33133",
-        "33143",
         "33138",
-        "33146",
+        "33143",
         "33140",
+        "33146",
         "33134",
         "33186",
-        "33155"
+        "33155",
+        "33037",
+        "33139"
       ],
       "neighborhoods": [
-        "Kendall",
         "Palmetto Bay / Cutler Bay",
+        "Kendall",
         "Pinecrest",
         "Coconut Grove",
-        "South Miami / Coral Gables",
         "Upper East Side",
-        "Coral Gables (South)",
+        "South Miami / Coral Gables",
         "Mid-Beach",
+        "Coral Gables (South)",
         "Coral Gables (North)",
         "Kendall / The Falls",
-        "Westchester"
+        "Westchester",
+        "Unknown",
+        "South Beach"
       ],
-      "estimatedReach": 25170,
-      "estimatedNewCustomers": 201,
-      "estimatedCost": 28948,
-      "estimatedRevenue": 156780,
+      "estimatedReach": 29670,
+      "estimatedNewCustomers": 237,
+      "estimatedCost": 34124,
+      "estimatedRevenue": 184860,
       "timeline": "Week 1-2",
       "channels": [
         "Direct mail postcards",
@@ -3512,38 +3586,37 @@
       "name": "Tier 2 Expansion",
       "zips": [
         "33137",
-        "33145",
-        "33037",
         "33173",
-        "33154",
         "33196",
-        "33139",
         "33158",
-        "33165",
+        "33154",
+        "33145",
+        "33175",
         "33180",
         "33144",
-        "33149",
         "33181",
         "33015",
+        "33150",
         "33016",
         "33070",
         "33127",
-        "33150",
         "33178",
         "33187",
         "33179",
+        "33055",
         "33169",
+        "33149",
         "33161",
         "33193",
+        "33165",
         "33166",
-        "33175",
         "33030",
         "33033",
-        "33185",
         "33036",
         "33014",
         "33032",
         "33160",
+        "33185",
         "33129",
         "33174",
         "33182",
@@ -3552,48 +3625,47 @@
       ],
       "neighborhoods": [
         "Edgewater / Midtown",
-        "The Roads / Shenandoah",
-        "Unknown",
         "Kendall",
-        "Bal Harbour / Bay Harbor",
         "West Kendall",
-        "South Beach",
         "Palmetto Bay",
-        "Westchester / Tamiami",
+        "Bal Harbour / Bay Harbor",
+        "The Roads / Shenandoah",
+        "Kendall West",
         "Aventura / Sunny Isles",
         "West Miami / Westchester",
-        "Key Biscayne",
         "North Miami / Biscayne Park",
         "Miami Gardens / Country Club",
+        "Little Haiti / Buena Vista",
         "Hialeah",
         "Unknown",
         "Wynwood / Overtown",
-        "Little Haiti / Buena Vista",
         "Doral",
         "South Kendall",
         "North Miami Beach / Ojus",
         "Miami Gardens",
+        "Miami Gardens",
+        "Key Biscayne",
         "North Miami",
         "Country Walk / Three Lakes",
+        "Westchester / Tamiami",
         "Medley / Hialeah Gardens",
-        "Kendall West",
         "Homestead",
         "Homestead",
-        "Kendall",
         "Unknown",
         "Hialeah / Miami Lakes",
         "Homestead",
         "North Miami Beach / Aventura",
+        "Kendall",
         "Brickell",
         "Westchester / Tamiami",
         "West Kendall",
         "Little Havana",
         "Kendall West / Tamiami"
       ],
-      "estimatedReach": 90525,
-      "estimatedNewCustomers": 724,
-      "estimatedCost": 104119,
-      "estimatedRevenue": 564720,
+      "estimatedReach": 88275,
+      "estimatedNewCustomers": 706,
+      "estimatedCost": 101531,
+      "estimatedRevenue": 550680,
       "timeline": "Week 3-4",
       "channels": [
         "Direct mail postcards",
