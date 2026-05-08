@@ -156,7 +156,9 @@
         // Respray accountability — handle both object {name: count} and array [{name, count}] formats
         const rbtRaw = d.resprays_by_tech || {};
         const rbt = Array.isArray(rbtRaw) ? rbtRaw : Object.entries(rbtRaw).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
-        let resprayHTML = rbt.length > 0 ? rbt.map((r, i) => {
+        // Limit rows to avoid clipping on the 1080p TV layout
+        const rbtShown = rbt.slice(0, 6);
+        let resprayHTML = rbtShown.length > 0 ? rbtShown.map((r, i) => {
             const barPct = Math.round(r.count / (rbt[0]?.count || 1) * 100);
             return `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
                 <span style="color:#f85149;font-size:0.8rem;width:18px;text-align:center;">${r.count}</span>
@@ -179,18 +181,23 @@
         // Sort worst (most days out) at top
         daysRows.sort((a,b) => (b.y2026||0) - (a.y2026||0) || (b.y2025||0) - (a.y2025||0));
         const maxOut = Math.max(...daysRows.map(r => r.y2026||0), 1);
+        const DAYS_OUT_MAX_ROWS = 8;
+        const daysShown = daysRows.slice(0, DAYS_OUT_MAX_ROWS);
         let daysOutHTML = daysRows.length ? `
-            <div style="display:grid;grid-template-columns:1fr 60px 60px;font-size:0.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+                <div style="display:grid;grid-template-columns:1fr 52px 52px;font-size:0.6rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;flex:1;">
                 <span>Tech</span><span style="text-align:right;">2025</span><span style="text-align:right;">2026</span>
+                </div>
+                <div style="font-size:0.6rem;color:#8b949e;">Top ${Math.min(DAYS_OUT_MAX_ROWS, daysRows.length)}</div>
             </div>
-            ${daysRows.map(r => {
+            ${daysShown.map(r => {
                 const val = r.y2026 || 0;
                 const pct = Math.min(1, val / maxOut);
                 const hue = Math.round((1 - pct) * 120); // 0=red,120=green
                 const color = `hsl(${hue}, 70%, 50%)`;
-                return `<div style="position:relative;display:grid;grid-template-columns:1fr 60px 60px;align-items:center;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
+                return `<div style="position:relative;display:grid;grid-template-columns:1fr 52px 52px;align-items:center;padding:3px 6px;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
                     <div style="position:absolute;left:0;top:0;bottom:0;width:${Math.round(pct*100)}%;background:linear-gradient(90deg, rgba(248,81,73,0.25), rgba(63,185,80,0.10));opacity:0.6;"></div>
-                    <span style="position:relative;font-size:0.78rem;font-weight:600;">${r.name}</span>
+                    <span style="position:relative;font-size:0.72rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.name}</span>
                     <span style="position:relative;text-align:right;">${r.y2025 ?? 0}</span>
                     <span style="position:relative;text-align:right;color:${color};font-weight:700;">${r.y2026 ?? 0}</span>
                 </div>`;
