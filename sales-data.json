@@ -1,41 +1,41 @@
 {
-  "updated_at": "2026-05-03T18:32:28.142Z",
-  "csv_date": "2026-05-03",
-  "period": "Jan 1 - May 3, 2026 (YTD)",
+  "updated_at": "2026-05-08T16:32:45.190Z",
+  "csv_date": "2026-05-08",
+  "period": "Jan 1 - May 8, 2026 (YTD)",
   "summary": {
-    "total_sales": 226,
-    "total_cancels": 155,
-    "net": 71,
-    "paused_wp": 41,
-    "paused_pct": 26,
-    "days_tracked": 123
+    "total_sales": 250,
+    "total_cancels": 159,
+    "net": 91,
+    "paused_wp": 43,
+    "paused_pct": 27,
+    "days_tracked": 128
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 103,
+      "sales": 114,
       "cancels": 35
     },
     {
       "name": "Norma",
-      "sales": 91,
-      "cancels": 68
+      "sales": 101,
+      "cancels": 71
     },
     {
       "name": "Bev",
-      "sales": 32,
-      "cancels": 52
+      "sales": 35,
+      "cancels": 53
     }
   ],
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 41,
-      "pct": 26
+      "count": 43,
+      "pct": 27
     },
     {
       "name": "Moved",
-      "count": 41,
+      "count": 42,
       "pct": 26
     },
     {
@@ -70,7 +70,7 @@
     },
     {
       "name": "Barrier Spray",
-      "count": 4,
+      "count": 5,
       "pct": 3
     },
     {
@@ -87,38 +87,42 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 71
+      "count": 80
     },
     {
       "name": "Restart",
-      "count": 68
+      "count": 71
     },
     {
       "name": "Event Spray",
-      "count": 29
+      "count": 32
     },
     {
       "name": "Misting System",
-      "count": 13
+      "count": 14
     },
     {
       "name": "Noseeum",
-      "count": 10
+      "count": 12
     },
     {
       "name": "Bundle - HPD/Barrier",
-      "count": 10
+      "count": 11
     },
     {
       "name": "One Time",
       "count": 7
     },
     {
+      "name": "HPD  (Indoor)",
+      "count": 5
+    },
+    {
       "name": "Fleas/Ticks",
       "count": 4
     },
     {
-      "name": "HPD  (Indoor)",
+      "name": "Perimeter Pest",
       "count": 3
     },
     {
@@ -134,10 +138,6 @@
       "count": 1
     },
     {
-      "name": "Perimeter Pest",
-      "count": 1
-    },
-    {
       "name": "New",
       "count": 1
     },
@@ -148,93 +148,97 @@
     {
       "name": "Thermacell",
       "count": 1
+    },
+    {
+      "name": "Inzecto",
+      "count": 1
     }
   ],
   "recent_activity": [
     {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
+      "date": "2026-05-08",
+      "dateFmt": "May 7",
       "type": "Sale",
-      "category": "Thermacell",
+      "category": "Restart",
+      "csr": "Lucy",
+      "customer": "Andrea Koven"
+    },
+    {
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
+      "type": "Sale",
+      "category": "HPD  (Indoor)",
+      "csr": "Norma",
+      "customer": "Mark Balseca"
+    },
+    {
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
+      "type": "Sale",
+      "category": "Restart",
+      "csr": "Norma",
+      "customer": "Mark Balseca"
+    },
+    {
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
+      "type": "Sale",
+      "category": "Misting System",
       "csr": "Bev",
-      "customer": "Cathleen Wheatley"
+      "customer": "Lazaro Rojas"
     },
     {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy",
-      "customer": "Felix Garcia"
-    },
-    {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy",
-      "customer": "Willy Pichardo"
-    },
-    {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy",
-      "customer": "Eryka Delgado"
-    },
-    {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma",
-      "customer": "Andrea Meneses"
-    },
-    {
-      "date": "2026-05-01",
-      "dateFmt": "Apr 30",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma",
-      "customer": "Chris Chiapparelli"
-    },
-    {
-      "date": "2026-04-30",
-      "dateFmt": "Apr 29",
-      "type": "Sale",
-      "category": "Bundle - HPD/Barrier",
-      "csr": "Norma",
-      "customer": "Elisa Palermo"
-    },
-    {
-      "date": "2026-04-30",
-      "dateFmt": "Apr 29",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma",
-      "customer": "Julio Dominguez"
-    },
-    {
-      "date": "2026-04-30",
-      "dateFmt": "Apr 29",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma",
-      "customer": "Orlando Enrizo"
-    },
-    {
-      "date": "2026-04-30",
-      "dateFmt": "Apr 29",
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
       "type": "Cancel",
-      "category": "Barrier Spray",
+      "category": "Moved",
       "csr": "Norma",
-      "customer": "Valerie Bradford"
+      "customer": "Valeria Chamorro"
+    },
+    {
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
+      "type": "Sale",
+      "category": "Restart",
+      "csr": "Norma",
+      "customer": "John Fornengo"
+    },
+    {
+      "date": "2026-05-06",
+      "dateFmt": "May 5",
+      "type": "Sale",
+      "category": "Inzecto",
+      "csr": "Lucy",
+      "customer": "Maria Duque"
+    },
+    {
+      "date": "2026-05-06",
+      "dateFmt": "May 5",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy",
+      "customer": "Maria Duque"
+    },
+    {
+      "date": "2026-05-07",
+      "dateFmt": "May 6",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Norma",
+      "customer": "Maria Brolley"
+    },
+    {
+      "date": "2026-05-06",
+      "dateFmt": "May 5",
+      "type": "Sale",
+      "category": "Perimeter Pest",
+      "csr": "Bev",
+      "customer": "Jesus Artidiello"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 41
+    "count": 43
   },
   "tech_upsells": [
     {

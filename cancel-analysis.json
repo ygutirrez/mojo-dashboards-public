@@ -1,33 +1,41 @@
 {
-  "generated_at": "2026-05-03T18:32:27.516813+00:00",
+  "generated_at": "2026-05-08T16:32:42.576472+00:00",
   "period": "YTD 2026",
   "summary": {
-    "total_cancel_events": 477,
-    "unique_accounts_cancelled": 145,
-    "total_annual_value_lost": 367760.66,
-    "avg_annual_value_per_account": 2536.28,
-    "avg_customer_lifetime_days": 1140,
-    "median_customer_lifetime_days": 953,
-    "recoverable_accounts": 59,
-    "recoverable_annual_value": 116003.62,
-    "controllable_events": 249,
-    "uncontrollable_events": 199,
+    "total_cancel_events": 486,
+    "unique_accounts_cancelled": 148,
+    "total_annual_value_lost": 381178.88,
+    "avg_annual_value_per_account": 2575.53,
+    "avg_customer_lifetime_days": 1136,
+    "median_customer_lifetime_days": 960,
+    "recoverable_accounts": 60,
+    "recoverable_annual_value": 121282.82,
+    "controllable_events": 253,
+    "uncontrollable_events": 203,
     "structural_events": 13,
     "unknown_events": 0,
-    "controllable_value_lost": 181796.24,
-    "uncontrollable_value_lost": 167682.6,
-    "total_sales_ytd": 249,
-    "net_new_customers": 104,
-    "cancel_to_sales_ratio": 0.58
+    "controllable_value_lost": 187075.44,
+    "uncontrollable_value_lost": 174561.8,
+    "total_sales_ytd": 274,
+    "net_new_customers": 126,
+    "cancel_to_sales_ratio": 0.54
   },
   "by_reason": [
     {
       "reason": "Moved",
-      "events": 146,
-      "unique_accounts": 39,
-      "annual_value_lost": 102130.8,
-      "avg_value_per_account": 2618.74,
+      "events": 150,
+      "unique_accounts": 40,
+      "annual_value_lost": 109010.0,
+      "avg_value_per_account": 2725.25,
       "recoverable": false
+    },
+    {
+      "reason": "Not Interested at this time",
+      "events": 59,
+      "unique_accounts": 17,
+      "annual_value_lost": 49811.8,
+      "avg_value_per_account": 2930.11,
+      "recoverable": true
     },
     {
       "reason": "Financial Reasons",
@@ -35,14 +43,6 @@
       "unique_accounts": 13,
       "annual_value_lost": 36843.52,
       "avg_value_per_account": 2834.12,
-      "recoverable": true
-    },
-    {
-      "reason": "Not Interested at this time",
-      "events": 55,
-      "unique_accounts": 16,
-      "annual_value_lost": 44532.6,
-      "avg_value_per_account": 2783.29,
       "recoverable": true
     },
     {
@@ -78,20 +78,20 @@
       "recoverable": false
     },
     {
+      "reason": "",
+      "events": 16,
+      "unique_accounts": 14,
+      "annual_value_lost": 16122.18,
+      "avg_value_per_account": 1151.58,
+      "recoverable": false
+    },
+    {
       "reason": "Customer only wanted one spray",
       "events": 16,
       "unique_accounts": 15,
       "annual_value_lost": 0.0,
       "avg_value_per_account": 0.0,
       "recoverable": true
-    },
-    {
-      "reason": "",
-      "events": 15,
-      "unique_accounts": 13,
-      "annual_value_lost": 14862.36,
-      "avg_value_per_account": 1143.26,
-      "recoverable": false
     },
     {
       "reason": "Change of Program",
@@ -113,9 +113,9 @@
   "by_program": [
     {
       "program": "Signature Program",
-      "events": 396,
-      "unique_accounts": 98,
-      "annual_value_lost": 335682.28
+      "events": 404,
+      "unique_accounts": 100,
+      "annual_value_lost": 347840.68
     },
     {
       "program": "Residential - One Time Services",
@@ -143,9 +143,9 @@
     },
     {
       "program": "Residential Service",
-      "events": 8,
-      "unique_accounts": 4,
-      "annual_value_lost": 9978.48
+      "events": 9,
+      "unique_accounts": 5,
+      "annual_value_lost": 11238.3
     },
     {
       "program": "In2Care",
@@ -214,6 +214,12 @@
       "events": 120,
       "unique_accounts": 37,
       "annual_value_lost": 93638.32
+    },
+    {
+      "month": "2026-05",
+      "events": 9,
+      "unique_accounts": 3,
+      "annual_value_lost": 13418.22
     }
   ],
   "lifetime_distribution": [
@@ -227,7 +233,7 @@
     },
     {
       "bucket": "91-180 days",
-      "count": 18
+      "count": 22
     },
     {
       "bucket": "181-365 days",
@@ -243,11 +249,11 @@
     },
     {
       "bucket": "3-5 years",
-      "count": 73
+      "count": 77
     },
     {
       "bucket": "5+ years",
-      "count": 122
+      "count": 123
     }
   ],
   "top_zip_codes": [
@@ -257,14 +263,14 @@
       "unique_accounts": 11
     },
     {
-      "zip": "33133",
-      "events": 38,
+      "zip": "33146",
+      "events": 39,
       "unique_accounts": 12
     },
     {
-      "zip": "33146",
-      "events": 35,
-      "unique_accounts": 11
+      "zip": "33133",
+      "events": 38,
+      "unique_accounts": 12
     },
     {
       "zip": "33134",
