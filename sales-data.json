@@ -1,56 +1,56 @@
 {
-  "updated_at": "2026-05-08T16:32:45.190Z",
-  "csv_date": "2026-05-08",
-  "period": "Jan 1 - May 8, 2026 (YTD)",
+  "updated_at": "2026-05-14T08:40:14.515Z",
+  "csv_date": "2026-05-14",
+  "period": "Jan 1 - May 14, 2026 (YTD)",
   "summary": {
-    "total_sales": 250,
-    "total_cancels": 159,
-    "net": 91,
-    "paused_wp": 43,
-    "paused_pct": 27,
-    "days_tracked": 128
+    "total_sales": 276,
+    "total_cancels": 167,
+    "net": 109,
+    "paused_wp": 46,
+    "paused_pct": 28,
+    "days_tracked": 134
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 114,
-      "cancels": 35
+      "sales": 129,
+      "cancels": 36
     },
     {
       "name": "Norma",
-      "sales": 101,
-      "cancels": 71
+      "sales": 109,
+      "cancels": 75
     },
     {
       "name": "Bev",
-      "sales": 35,
-      "cancels": 53
+      "sales": 38,
+      "cancels": 56
     }
   ],
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 43,
-      "pct": 27
+      "count": 46,
+      "pct": 28
     },
     {
       "name": "Moved",
-      "count": 42,
+      "count": 43,
       "pct": 26
+    },
+    {
+      "name": "Financial",
+      "count": 14,
+      "pct": 8
     },
     {
       "name": "Not Interested",
       "count": 14,
-      "pct": 9
-    },
-    {
-      "name": "Financial",
-      "count": 13,
       "pct": 8
     },
     {
       "name": "One Time",
-      "count": 13,
+      "count": 14,
       "pct": 8
     },
     {
@@ -64,12 +64,12 @@
       "pct": 6
     },
     {
-      "name": "Went w/Competitor",
-      "count": 5,
-      "pct": 3
+      "name": "Barrier Spray",
+      "count": 6,
+      "pct": 4
     },
     {
-      "name": "Barrier Spray",
+      "name": "Went w/Competitor",
       "count": 5,
       "pct": 3
     },
@@ -80,30 +80,30 @@
     },
     {
       "name": "Noseeum",
-      "count": 1,
+      "count": 2,
       "pct": 1
     }
   ],
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 80
+      "count": 89
     },
     {
       "name": "Restart",
-      "count": 71
+      "count": 76
     },
     {
       "name": "Event Spray",
-      "count": 32
+      "count": 39
+    },
+    {
+      "name": "Noseeum",
+      "count": 14
     },
     {
       "name": "Misting System",
       "count": 14
-    },
-    {
-      "name": "Noseeum",
-      "count": 12
     },
     {
       "name": "Bundle - HPD/Barrier",
@@ -118,12 +118,12 @@
       "count": 5
     },
     {
-      "name": "Fleas/Ticks",
+      "name": "Perimeter Pest",
       "count": 4
     },
     {
-      "name": "Perimeter Pest",
-      "count": 3
+      "name": "Fleas/Ticks",
+      "count": 4
     },
     {
       "name": "MS Takeover",
@@ -132,6 +132,14 @@
     {
       "name": "Barrier Spray + Flea",
       "count": 3
+    },
+    {
+      "name": "Thermacell",
+      "count": 2
+    },
+    {
+      "name": "Inzecto",
+      "count": 2
     },
     {
       "name": "Mosquito/PP",
@@ -144,101 +152,93 @@
     {
       "name": "Rodent Station",
       "count": 1
-    },
-    {
-      "name": "Thermacell",
-      "count": 1
-    },
-    {
-      "name": "Inzecto",
-      "count": 1
     }
   ],
   "recent_activity": [
     {
-      "date": "2026-05-08",
-      "dateFmt": "May 7",
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
       "type": "Sale",
-      "category": "Restart",
+      "category": "Event Spray",
       "csr": "Lucy",
-      "customer": "Andrea Koven"
+      "customer": "Hector Diaz"
     },
     {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
-      "type": "Sale",
-      "category": "HPD  (Indoor)",
-      "csr": "Norma",
-      "customer": "Mark Balseca"
-    },
-    {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Norma",
-      "customer": "Mark Balseca"
-    },
-    {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
-      "type": "Sale",
-      "category": "Misting System",
-      "csr": "Bev",
-      "customer": "Lazaro Rojas"
-    },
-    {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Norma",
-      "customer": "Valeria Chamorro"
-    },
-    {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Norma",
-      "customer": "John Fornengo"
-    },
-    {
-      "date": "2026-05-06",
-      "dateFmt": "May 5",
-      "type": "Sale",
-      "category": "Inzecto",
-      "csr": "Lucy",
-      "customer": "Maria Duque"
-    },
-    {
-      "date": "2026-05-06",
-      "dateFmt": "May 5",
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Lucy",
-      "customer": "Maria Duque"
+      "customer": "Ernesto Viteri"
     },
     {
-      "date": "2026-05-07",
-      "dateFmt": "May 6",
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
+      "type": "Sale",
+      "category": "Inzecto",
+      "csr": "Lucy",
+      "customer": "Renee Mix"
+    },
+    {
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy",
+      "customer": "Renee Mix"
+    },
+    {
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
+      "type": "Sale",
+      "category": "Event Spray",
+      "csr": "Norma",
+      "customer": "Gabriela Boza"
+    },
+    {
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Norma",
+      "customer": "Steven Vivar"
+    },
+    {
+      "date": "2026-05-13",
+      "dateFmt": "May 12",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Norma",
+      "customer": "Miguel Villanueva"
+    },
+    {
+      "date": "2026-05-12",
+      "dateFmt": "May 11",
       "type": "Cancel",
       "category": "Paused/WP",
-      "csr": "Norma",
-      "customer": "Maria Brolley"
+      "csr": "Lucy",
+      "customer": "Annette Calvo Vazquez"
     },
     {
-      "date": "2026-05-06",
-      "dateFmt": "May 5",
+      "date": "2026-05-12",
+      "dateFmt": "May 11",
       "type": "Sale",
-      "category": "Perimeter Pest",
-      "csr": "Bev",
-      "customer": "Jesus Artidiello"
+      "category": "Event Spray",
+      "csr": "Lucy",
+      "customer": "Nicole Castano"
+    },
+    {
+      "date": "2026-05-12",
+      "dateFmt": "May 11",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy",
+      "customer": "Jose Ramos"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 43
+    "count": 46
   },
   "tech_upsells": [
     {

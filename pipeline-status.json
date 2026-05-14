@@ -1,35 +1,15 @@
 {
-  "timestamp": "2026-05-08T09:30:00Z",
-  "generated_at": "2026-05-08T16:33:35Z",
+  "timestamp": "2026-05-13T09:30:00Z",
+  "generated_at": "2026-05-13T13:34:56Z",
   "status": "warn",
-  "steps_total": 16,
-  "steps_passed": 10,
+  "steps_total": 12,
+  "steps_passed": 7,
   "steps_warned": 2,
-  "steps_failed": 4,
-  "steps_downgraded": 2,
+  "steps_failed": 3,
+  "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-05-08.log",
+  "log_file": "nightly-sync-2026-05-13.log",
   "steps": [
-    {
-      "name": "Sales Import",
-      "status": "info",
-      "detail": "\u26a0\ufe0f FAILED: Daily sales import (downgraded \u2014 fallback succeeded)"
-    },
-    {
-      "name": "Sales Import",
-      "status": "ok",
-      "detail": ""
-    },
-    {
-      "name": "Sales Import",
-      "status": "ok",
-      "detail": ""
-    },
-    {
-      "name": "ServSuite Export",
-      "status": "error",
-      "detail": "Error: Cannot find module 'playwright'"
-    },
     {
       "name": "Sales Import",
       "status": "info",
@@ -52,8 +32,8 @@
     },
     {
       "name": "Data Processing",
-      "status": "error",
-      "detail": "\u274c Error: page.waitForEvent: Target page, context or browser has been closed"
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Clone Repository",
@@ -62,8 +42,8 @@
     },
     {
       "name": "Update Data Files",
-      "status": "ok",
-      "detail": ""
+      "status": "error",
+      "detail": "Error: ENOENT: no such file or directory, open '/tmp/mojo-dashboards/owners-data.json'"
     },
     {
       "name": "Sync Back to Project",
@@ -73,7 +53,7 @@
     {
       "name": "Deploy to GH Pages",
       "status": "error",
-      "detail": "[main 93e294c] \ud83d\udcca Dashboard update 2026-05-08 12:32 (1 steps had warnings)"
+      "detail": "error: unknown option `cached'"
     },
     {
       "name": "Health Check",

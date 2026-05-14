@@ -1,161 +1,218 @@
 {
-  "generated_at": "2026-04-23T17:28:20.051Z",
+  "generated_at": "2026-05-13T15:01:05.823Z",
   "summary": {
-    "total": 5,
-    "critical": 1,
-    "warning": 1,
+    "total": 12,
+    "critical": 4,
+    "warning": 5,
     "info": 3,
     "overall": "critical",
-    "health_score": 100,
+    "health_score": 94,
     "pipeline_status": "warn"
   },
   "alerts": [
     {
-      "id": "pipeline-Health Check:HEALTH CHECK: 1 errors, 4 warnings (38/43 passed)",
+      "id": "anomaly-data-warning",
+      "level": "warning",
+      "category": "data",
+      "message": "1 of 4 key data files are stale (>48h)",
+      "detail": "Run nightly sync or manual deploy",
+      "timestamp": "2026-05-13T13:34:56.432Z",
+      "source": "anomaly-detector"
+    },
+    {
+      "id": "anomaly-cancellations-warning",
+      "level": "warning",
+      "category": "cancellations",
+      "message": "\"Moved\" accounts for 31% of cancels",
+      "detail": "151 of 495 events",
+      "timestamp": "2026-05-13T13:34:56.431Z",
+      "source": "anomaly-detector"
+    },
+    {
+      "id": "pipeline-ServSuite Export:❌ Error: page.waitForEvent: Timeout 120000ms exceeded while waiting for event \"download\"",
       "level": "warning",
       "category": "pipeline",
-      "message": "Pipeline step failed: Health Check",
-      "detail": "HEALTH CHECK: 1 errors, 4 warnings (38/43 passed)",
-      "timestamp": "2026-04-04T08:43:29Z",
+      "message": "Pipeline step failed: ServSuite Export",
+      "detail": "❌ Error: page.waitForEvent: Timeout 120000ms exceeded while waiting for event \"download\"",
+      "timestamp": "2026-05-13T13:34:56Z",
+      "source": "pipeline-status"
+    },
+    {
+      "id": "pipeline-Update Data Files:Error: ENOENT: no such file or directory, open '/tmp/mojo-dashboards/owners-data.json'",
+      "level": "warning",
+      "category": "pipeline",
+      "message": "Pipeline step failed: Update Data Files",
+      "detail": "Error: ENOENT: no such file or directory, open '/tmp/mojo-dashboards/owners-data.json'",
+      "timestamp": "2026-05-13T13:34:56Z",
+      "source": "pipeline-status"
+    },
+    {
+      "id": "pipeline-Deploy to GH Pages:error: unknown option `cached'",
+      "level": "warning",
+      "category": "pipeline",
+      "message": "Pipeline step failed: Deploy to GH Pages",
+      "detail": "error: unknown option `cached'",
+      "timestamp": "2026-05-13T13:34:56Z",
       "source": "pipeline-status"
     },
     {
       "id": "anomaly-seasonal-info",
       "level": "info",
       "category": "seasonal",
-      "message": "🔥 Peak season (month 4/12) — maximize revenue and customer retention",
+      "message": "🔥 Peak season (month 5/12) — maximize revenue and customer retention",
       "detail": "Focus on: route efficiency, upsells, review collection, referral programs",
-      "timestamp": "2026-04-04T08:43:29.408Z",
+      "timestamp": "2026-05-13T13:34:56.432Z",
       "source": "anomaly-detector"
     },
     {
       "id": "anomaly-operations-info",
       "level": "info",
       "category": "operations",
-      "message": "2 tech(s) below 50% of avg visits (599)",
-      "detail": "Travis Johnson: 185, Jeovany  Osorio: 183",
-      "timestamp": "2026-04-04T08:43:29.407Z",
+      "message": "5 tech(s) below 50% of avg visits (691)",
+      "detail": "Travis Johnson: 251, Curtis Blount: 230, Jeovany  Osorio: 183, Jordan Meddock: 75, Omar Sanchez: 1",
+      "timestamp": "2026-05-13T13:34:56.431Z",
       "source": "anomaly-detector"
     },
     {
       "id": "anomaly-cancellations-info",
       "level": "info",
       "category": "cancellations",
-      "message": "109 potentially recoverable cancels (29%)",
+      "message": "132 potentially recoverable cancels (27%)",
       "detail": "Win-back campaigns could target these",
-      "timestamp": "2026-04-04T08:43:29.406Z",
+      "timestamp": "2026-05-13T13:34:56.430Z",
       "source": "anomaly-detector"
+    },
+    {
+      "id": "freshness-dashboard-data.json",
+      "level": "critical",
+      "category": "data-freshness",
+      "message": "dashboard-data.json is 125h stale",
+      "detail": "Source: ServSuite, last updated 125h ago",
+      "timestamp": "2026-05-13T13:34:57.307Z",
+      "source": "sync-report"
+    },
+    {
+      "id": "freshness-owners-data.json",
+      "level": "critical",
+      "category": "data-freshness",
+      "message": "owners-data.json is 125h stale",
+      "detail": "Source: ServSuite, last updated 125h ago",
+      "timestamp": "2026-05-13T13:34:57.307Z",
+      "source": "sync-report"
+    },
+    {
+      "id": "freshness-ops-data.json",
+      "level": "critical",
+      "category": "data-freshness",
+      "message": "ops-data.json is 125h stale",
+      "detail": "Source: ServSuite, last updated 125h ago",
+      "timestamp": "2026-05-13T13:34:57.307Z",
+      "source": "sync-report"
     },
     {
       "id": "anomaly-revenue-critical",
       "level": "critical",
       "category": "revenue",
-      "message": "Revenue pace at 49% of $5M target",
-      "detail": "Projected: $2,472,596 vs target $5,000,000",
-      "timestamp": "2026-04-04T08:43:29.406Z",
+      "message": "Revenue pace at 50% of $5M target",
+      "detail": "Projected: $2,516,527 vs target $5,000,000",
+      "timestamp": "2026-05-13T13:34:56.430Z",
       "source": "anomaly-detector"
     }
   ],
   "kpi_history": [
     {
-      "date": "2026-03-29",
-      "timestamp": "2026-03-29T08:45:22Z",
+      "date": "2026-05-03",
+      "timestamp": "2026-05-03T18:32:48Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 48.7% of $5M (projected: $2,435,095)",
-        "🟡 Cancel ratio elevated: 3.5x (362 cancels vs 103 sales)",
+        "🟡 Revenue pace below target: 49.8% of $5M (projected: $2,490,144)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-01",
-      "timestamp": "2026-04-01T08:45:53Z",
+      "date": "2026-05-04",
+      "timestamp": "2026-05-04T08:40:37Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 48.5% of $5M (projected: $2,427,188)",
-        "🟡 Cancel ratio elevated: 3.1x (367 cancels vs 119 sales)",
+        "🟡 Revenue pace below target: 49.4% of $5M (projected: $2,470,062)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-02",
-      "timestamp": "2026-04-02T08:48:22Z",
+      "date": "2026-05-05",
+      "timestamp": "2026-05-05T08:40:39Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 49% of $5M (projected: $2,449,471)",
-        "🟡 Cancel ratio elevated: 3.0x (373 cancels vs 123 sales)",
+        "🟡 Revenue pace below target: 49.5% of $5M (projected: $2,473,542)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-04",
-      "timestamp": "2026-04-04T08:43:32Z",
+      "date": "2026-05-06",
+      "timestamp": "2026-05-06T08:40:59Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 49.5% of $5M (projected: $2,472,596)",
-        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Revenue pace below target: 49.6% of $5M (projected: $2,482,491)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-05",
-      "timestamp": "2026-04-05T08:47:08Z",
+      "date": "2026-05-07",
+      "timestamp": "2026-05-07T08:40:36Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 48.9% of $5M (projected: $2,446,569)",
-        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Revenue pace below target: 49.9% of $5M (projected: $2,496,754)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-06",
-      "timestamp": "2026-04-06T08:45:07Z",
+      "date": "2026-05-08",
+      "timestamp": "2026-05-08T08:40:29Z",
       "level": "warn",
-      "count": 3,
+      "count": 2,
       "alerts": [
-        "🟡 Revenue pace below target: 48.4% of $5M (projected: $2,421,084)",
-        "🟡 Cancel ratio elevated: 2.8x (379 cancels vs 134 sales)",
+        "🟡 Revenue pace below target: 50.3% of $5M (projected: $2,516,495)",
         "🟡 Fleet: 9 vehicles with active trouble codes"
       ]
     },
     {
-      "date": "2026-04-08",
-      "timestamp": "2026-04-08T08:43:40Z",
+      "date": "2026-05-13",
+      "timestamp": "2026-05-13T13:34:58Z",
       "level": "warn",
       "count": 3,
       "alerts": [
-        "🟡 Revenue pace below target: 48.7% of $5M (projected: $2,435,081)",
-        "🟡 Cancel ratio elevated: 2.7x (387 cancels vs 142 sales)",
-        "🟡 Fleet: 9 vehicles with active trouble codes"
+        "🟡 Revenue pace below target: 50.3% of $5M (projected: $2,516,527)",
+        "🟡 Fleet: 9 vehicles with active trouble codes",
+        "⏰ Owners data is 124h stale (threshold: 30h)"
       ]
     }
   ],
   "sources": {
     "anomaly": {
-      "count": 4,
-      "generated_at": "2026-04-04T08:43:29.426Z"
+      "count": 6,
+      "generated_at": "2026-05-13T13:34:56.451Z"
     },
     "pipeline": {
       "status": "warn",
       "total": 12,
-      "failed": 1,
-      "generated_at": "2026-04-04T08:43:29Z"
+      "failed": 3,
+      "generated_at": "2026-05-13T13:34:56Z"
     },
     "fleet": {
-      "vehicles": 14,
+      "vehicles": 13,
       "withTrouble": 0,
-      "generated_at": "2026-04-23T17:28:18.781Z"
+      "generated_at": "2026-05-13T13:34:37.198Z"
     },
     "sync": {
-      "health_score": 100,
+      "health_score": 94,
       "total": 17,
-      "stale": 0,
-      "generated_at": "2026-04-04T08:43:31.672Z"
+      "stale": 3,
+      "generated_at": "2026-05-13T13:34:57.307Z"
     }
   }
 }
