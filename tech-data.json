@@ -1,83 +1,84 @@
 {
-  "updated_at": "2026-05-14T11:45:13.886Z",
-  "period": "Jan 1 - May 14, 2026 (YTD)",
+  "updated_at": "2026-05-15T08:40:28.209Z",
+  "period": "Jan 1 - May 15, 2026 (YTD)",
   "summary": {
-    "total_jobs": 9798,
-    "total_techs": 14,
-    "resprays": 53,
-    "first_time_success": "99.5%",
-    "total_upsells": 7
+    "total_jobs": 8797,
+    "total_techs": 13,
+    "resprays": 54,
+    "first_time_success": "99.4%",
+    "total_upsells": 7,
+    "total_revenue": 815319
   },
   "employees": [
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 1332,
+      "jobs": 1351,
       "rank": 1,
+      "revenue": 122567,
       "upsells": 0,
       "resprays": 11
     },
     {
       "name": "Stanley Prophete",
       "initials": "SP",
-      "jobs": 1256,
+      "jobs": 1274,
       "rank": 2,
+      "revenue": 116734,
       "upsells": 0,
       "resprays": 5
     },
     {
       "name": "Marcus Rubi",
       "initials": "MR",
-      "jobs": 1171,
+      "jobs": 1189,
       "rank": 3,
+      "revenue": 93944,
       "upsells": 0,
       "resprays": 6
     },
     {
       "name": "David Carbajal",
       "initials": "DC",
-      "jobs": 1134,
+      "jobs": 1154,
       "rank": 4,
+      "revenue": 100898,
       "upsells": 3,
       "resprays": 7
     },
     {
-      "name": "John Sabin",
-      "initials": "JS",
-      "jobs": 1114,
-      "rank": 5,
-      "upsells": 1,
-      "resprays": 4
-    },
-    {
       "name": "Andrew Schamel",
       "initials": "AS",
-      "jobs": 1012,
-      "rank": 6,
+      "jobs": 1028,
+      "rank": 5,
+      "revenue": 87298,
       "upsells": 1,
       "resprays": 5
     },
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 730,
-      "rank": 7,
+      "jobs": 731,
+      "rank": 6,
+      "revenue": 115348,
       "upsells": 1,
       "resprays": 1
     },
     {
       "name": "Jeffrey Baptiste",
       "initials": "JB",
-      "jobs": 714,
-      "rank": 8,
+      "jobs": 726,
+      "rank": 7,
+      "revenue": 62957,
       "upsells": 0,
       "resprays": 8
     },
     {
       "name": "Jorge Navarro",
       "initials": "JN",
-      "jobs": 581,
-      "rank": 9,
+      "jobs": 590,
+      "rank": 8,
+      "revenue": 47580,
       "upsells": 1,
       "resprays": 2
     },
@@ -85,7 +86,8 @@
       "name": "Travis Johnson",
       "initials": "TJ",
       "jobs": 265,
-      "rank": 10,
+      "rank": 9,
+      "revenue": 24544,
       "upsells": 0,
       "resprays": 1
     },
@@ -93,15 +95,17 @@
       "name": "Curtis Blount",
       "initials": "CB",
       "jobs": 230,
-      "rank": 11,
+      "rank": 10,
+      "revenue": 19179,
       "upsells": 0,
-      "resprays": 2
+      "resprays": 3
     },
     {
       "name": "Jeovany Osorio",
       "initials": "JO",
       "jobs": 183,
-      "rank": 12,
+      "rank": 11,
+      "revenue": 18406,
       "upsells": 0,
       "resprays": 1
     },
@@ -109,15 +113,17 @@
       "name": "Jordan Meddock",
       "initials": "JM",
       "jobs": 75,
-      "rank": 13,
-      "upsells": 0,
+      "rank": 12,
+      "revenue": 5787,
+      "upsells": 1,
       "resprays": 0
     },
     {
       "name": "Omar Sanchez",
       "initials": "OS",
       "jobs": 1,
-      "rank": 14,
+      "rank": 13,
+      "revenue": 76,
       "upsells": 0,
       "resprays": 0
     }
@@ -140,58 +146,90 @@
       "count": 1
     },
     {
-      "name": "John",
+      "name": "Jordan",
       "count": 1
     }
   ],
-  "resprays_by_tech": [
+  "fleet_safety": [
     {
-      "name": "Damian Machin",
-      "count": 11
-    },
-    {
-      "name": "Jeffrey Baptiste",
-      "count": 8
-    },
-    {
-      "name": "David Carbajal",
-      "count": 7
-    },
-    {
-      "name": "Marcus Rubi",
-      "count": 6
-    },
-    {
-      "name": "Andrew Schamel",
-      "count": 5
+      "name": "Truck 4",
+      "truck": "Truck 4",
+      "score": 100,
+      "miles": 128,
+      "idle_min": 48,
+      "drive_min": 526
     },
     {
       "name": "Stanley Prophete",
-      "count": 5
+      "truck": "Truck 10",
+      "score": 100,
+      "miles": 86,
+      "idle_min": 29,
+      "drive_min": 399
     },
     {
-      "name": "John Sabin",
-      "count": 4
+      "name": "Damian Machin",
+      "truck": "Truck 9",
+      "score": 98,
+      "miles": 233,
+      "idle_min": 26,
+      "drive_min": 899
     },
     {
-      "name": "Curtis Blount",
-      "count": 2
+      "name": "Truck 3",
+      "truck": "Truck 3",
+      "score": 98,
+      "miles": 18,
+      "idle_min": 31,
+      "drive_min": 162
     },
     {
-      "name": "Jorge Navarro",
-      "count": 2
+      "name": "Truck 7",
+      "truck": "Truck 7",
+      "score": 98,
+      "miles": 372,
+      "idle_min": 0,
+      "drive_min": 1090
     },
     {
       "name": "Travis Johnson",
-      "count": 1
+      "truck": "Truck 15",
+      "score": 98,
+      "miles": 158,
+      "idle_min": 184,
+      "drive_min": 761
     },
     {
-      "name": "Jeovany Osorio",
-      "count": 1
+      "name": "Andrew Schamel",
+      "truck": "Truck 17",
+      "score": 94,
+      "miles": 192,
+      "idle_min": 267,
+      "drive_min": 1219
     },
     {
-      "name": "Joseph Pagan",
-      "count": 1
+      "name": "David Carbajal",
+      "truck": "Truck 16",
+      "score": 92,
+      "miles": 208,
+      "idle_min": 22,
+      "drive_min": 827
+    },
+    {
+      "name": "Marcus Rubi",
+      "truck": "Truck 13",
+      "score": 88,
+      "miles": 120,
+      "idle_min": 47,
+      "drive_min": 550
+    },
+    {
+      "name": "Jorge Navarro",
+      "truck": "Truck 14",
+      "score": 88,
+      "miles": 153,
+      "idle_min": 92,
+      "drive_min": 1048
     }
   ],
   "days_out": {
@@ -280,106 +318,24 @@
       }
     ]
   },
-  "fleet_safety": [
-    {
-      "name": "Truck 4",
-      "truck": "Truck 4",
-      "score": 100,
-      "miles": 128,
-      "idle_min": 48,
-      "drive_min": 526
-    },
-    {
-      "name": "Stanley Prophete",
-      "truck": "Truck 10",
-      "score": 100,
-      "miles": 86,
-      "idle_min": 29,
-      "drive_min": 399
-    },
-    {
-      "name": "Damian Machin",
-      "truck": "Truck 9",
-      "score": 98,
-      "miles": 233,
-      "idle_min": 26,
-      "drive_min": 899
-    },
-    {
-      "name": "Truck 3",
-      "truck": "Truck 3",
-      "score": 98,
-      "miles": 18,
-      "idle_min": 31,
-      "drive_min": 162
-    },
-    {
-      "name": "Truck 7",
-      "truck": "Truck 7",
-      "score": 98,
-      "miles": 372,
-      "idle_min": 0,
-      "drive_min": 1090
-    },
-    {
-      "name": "Travis Johnson",
-      "truck": "Truck 15",
-      "score": 98,
-      "miles": 158,
-      "idle_min": 184,
-      "drive_min": 761
-    },
-    {
-      "name": "Andrew Schamel",
-      "truck": "Truck 17",
-      "score": 94,
-      "miles": 192,
-      "idle_min": 267,
-      "drive_min": 1219
-    },
-    {
-      "name": "David Carbajal",
-      "truck": "Truck 16",
-      "score": 92,
-      "miles": 208,
-      "idle_min": 22,
-      "drive_min": 827
-    },
-    {
-      "name": "Marcus Rubi",
-      "truck": "Truck 13",
-      "score": 88,
-      "miles": 120,
-      "idle_min": 47,
-      "drive_min": 550
-    },
-    {
-      "name": "Jorge Navarro",
-      "truck": "Truck 14",
-      "score": 88,
-      "miles": 153,
-      "idle_min": 92,
-      "drive_min": 1048
-    }
-  ],
   "achievements": [
     {
       "icon": "🔥",
       "title": "Iron Man",
       "name": "Damian Machin",
-      "stat": "Most jobs — 1332"
+      "stat": "Most jobs — 1351"
     },
     {
       "icon": "⚡",
       "title": "Speed Demon",
       "name": "Damian Machin",
-      "stat": "9.9 jobs/day avg"
+      "stat": "10.0 jobs/day avg"
     },
     {
       "icon": "🎯",
       "title": "Runner Up",
       "name": "Stanley Prophete",
-      "stat": "1256 jobs — 76 behind!"
+      "stat": "1274 jobs — 77 behind!"
     },
     {
       "icon": "💎",
@@ -397,7 +353,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 53 re-sprays out of 8684!"
+      "stat": "Only 54 re-sprays out of 8797!"
     }
   ]
 }

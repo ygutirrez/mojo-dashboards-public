@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-05-14T08:40:32.399278+00:00",
+  "generated_at": "2026-05-15T08:40:30.943648+00:00",
   "period": "YTD 2026",
   "summary": {
-    "total_cancel_events": 495,
-    "unique_accounts_cancelled": 152,
-    "total_annual_value_lost": 388058.08,
-    "avg_annual_value_per_account": 2553.01,
-    "avg_customer_lifetime_days": 1118,
-    "median_customer_lifetime_days": 953,
-    "recoverable_accounts": 63,
+    "total_cancel_events": 509,
+    "unique_accounts_cancelled": 155,
+    "total_annual_value_lost": 397096.92,
+    "avg_annual_value_per_account": 2561.92,
+    "avg_customer_lifetime_days": 1116,
+    "median_customer_lifetime_days": 945,
+    "recoverable_accounts": 64,
     "recoverable_annual_value": 121282.82,
-    "controllable_events": 261,
-    "uncontrollable_events": 204,
+    "controllable_events": 266,
+    "uncontrollable_events": 213,
     "structural_events": 13,
     "unknown_events": 0,
-    "controllable_value_lost": 193954.64,
-    "uncontrollable_value_lost": 174561.8,
-    "total_sales_ytd": 296,
-    "net_new_customers": 144,
+    "controllable_value_lost": 200833.84,
+    "uncontrollable_value_lost": 176721.44,
+    "total_sales_ytd": 304,
+    "net_new_customers": 149,
     "cancel_to_sales_ratio": 0.51
   },
   "by_reason": [
     {
       "reason": "Moved",
-      "events": 151,
-      "unique_accounts": 40,
-      "annual_value_lost": 109010.0,
-      "avg_value_per_account": 2725.25,
+      "events": 160,
+      "unique_accounts": 42,
+      "annual_value_lost": 111169.64,
+      "avg_value_per_account": 2646.9,
       "recoverable": false
     },
     {
       "reason": "Not Interested at this time",
-      "events": 60,
-      "unique_accounts": 18,
+      "events": 61,
+      "unique_accounts": 19,
       "annual_value_lost": 49811.8,
-      "avg_value_per_account": 2767.32,
+      "avg_value_per_account": 2621.67,
       "recoverable": true
     },
     {
@@ -46,19 +46,19 @@
       "recoverable": true
     },
     {
+      "reason": "Unhappy w Service",
+      "events": 53,
+      "unique_accounts": 12,
+      "annual_value_lost": 54153.8,
+      "avg_value_per_account": 4512.82,
+      "recoverable": false
+    },
+    {
       "reason": "Bad Debt",
       "events": 53,
       "unique_accounts": 13,
       "annual_value_lost": 65551.8,
       "avg_value_per_account": 5042.45,
-      "recoverable": false
-    },
-    {
-      "reason": "Unhappy w Service",
-      "events": 49,
-      "unique_accounts": 11,
-      "annual_value_lost": 47274.6,
-      "avg_value_per_account": 4297.69,
       "recoverable": false
     },
     {
@@ -113,9 +113,9 @@
   "by_program": [
     {
       "program": "Signature Program",
-      "events": 408,
-      "unique_accounts": 102,
-      "annual_value_lost": 354719.88
+      "events": 419,
+      "unique_accounts": 105,
+      "annual_value_lost": 361599.08
     },
     {
       "program": "Residential - One Time Services",
@@ -131,8 +131,8 @@
     },
     {
       "program": "Home Pest Defense",
-      "events": 12,
-      "unique_accounts": 10,
+      "events": 13,
+      "unique_accounts": 11,
       "annual_value_lost": 3959.5
     },
     {
@@ -160,6 +160,12 @@
       "annual_value_lost": 0.0
     },
     {
+      "program": "Barrier Spray Program - 2 weeks",
+      "events": 3,
+      "unique_accounts": 2,
+      "annual_value_lost": 3983.4
+    },
+    {
       "program": "Commercial Service",
       "events": 3,
       "unique_accounts": 3,
@@ -176,12 +182,6 @@
       "events": 2,
       "unique_accounts": 1,
       "annual_value_lost": 2159.64
-    },
-    {
-      "program": "Barrier Spray Program - 2 weeks",
-      "events": 1,
-      "unique_accounts": 1,
-      "annual_value_lost": 1823.76
     },
     {
       "program": "Commercial - One Time Services",
@@ -217,9 +217,9 @@
     },
     {
       "month": "2026-05",
-      "events": 23,
-      "unique_accounts": 8,
-      "annual_value_lost": 20297.42
+      "events": 37,
+      "unique_accounts": 11,
+      "annual_value_lost": 29336.26
     }
   ],
   "lifetime_distribution": [
@@ -233,7 +233,7 @@
     },
     {
       "bucket": "91-180 days",
-      "count": 22
+      "count": 27
     },
     {
       "bucket": "181-365 days",
@@ -241,7 +241,7 @@
     },
     {
       "bucket": "1-2 years",
-      "count": 53
+      "count": 57
     },
     {
       "bucket": "2-3 years",
@@ -249,28 +249,28 @@
     },
     {
       "bucket": "3-5 years",
-      "count": 77
+      "count": 80
     },
     {
       "bucket": "5+ years",
-      "count": 123
+      "count": 125
     }
   ],
   "top_zip_codes": [
     {
-      "zip": "33133",
+      "zip": "33143",
+      "events": 48,
+      "unique_accounts": 12
+    },
+    {
+      "zip": "33146",
       "events": 44,
       "unique_accounts": 13
     },
     {
-      "zip": "33143",
-      "events": 43,
-      "unique_accounts": 11
-    },
-    {
-      "zip": "33146",
-      "events": 39,
-      "unique_accounts": 12
+      "zip": "33133",
+      "events": 44,
+      "unique_accounts": 13
     },
     {
       "zip": "33176",
@@ -278,14 +278,14 @@
       "unique_accounts": 13
     },
     {
+      "zip": "33156",
+      "events": 33,
+      "unique_accounts": 8
+    },
+    {
       "zip": "33134",
       "events": 33,
       "unique_accounts": 9
-    },
-    {
-      "zip": "33156",
-      "events": 29,
-      "unique_accounts": 7
     },
     {
       "zip": "33157",

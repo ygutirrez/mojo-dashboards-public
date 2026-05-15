@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-13T09:30:00Z",
-  "generated_at": "2026-05-13T13:34:56Z",
+  "timestamp": "2026-05-14T09:30:00Z",
+  "generated_at": "2026-05-14T08:40:46Z",
   "status": "warn",
   "steps_total": 12,
-  "steps_passed": 7,
+  "steps_passed": 8,
   "steps_warned": 2,
-  "steps_failed": 3,
+  "steps_failed": 2,
   "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-05-13.log",
+  "log_file": "nightly-sync-2026-05-14.log",
   "steps": [
     {
       "name": "Sales Import",
@@ -27,8 +27,8 @@
     },
     {
       "name": "ServSuite Export",
-      "status": "error",
-      "detail": "\u274c Error: page.waitForEvent: Timeout 120000ms exceeded while waiting for event \"download\""
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Data Processing",
