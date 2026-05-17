@@ -9,7 +9,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800;900&display=swap');
         
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { width: 1920px; height: 1080px; overflow: hidden; }
+        html { width: 100%; min-height: 100%; overflow-x: hidden; }
+        body { width: 100%; min-height: 100vh; overflow-x: hidden; overflow-y: auto; }
         
         :root {
             --mojo-green: #7AC142;
@@ -64,14 +65,25 @@
             z-index: 0;
         }
 
-        .dashboard { position: relative; z-index: 1; width: 1920px; height: 1080px; padding: 24px 30px 20px; display: flex; flex-direction: column; gap: 16px; }
+        .dashboard {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 1920px);
+            min-height: 100vh;
+            height: auto;
+            margin: 0 auto;
+            padding: clamp(10px, 1.4vw, 24px) clamp(12px, 1.6vw, 30px) clamp(12px, 1.2vw, 20px);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(10px, 1vw, 16px);
+        }
 
         /* ===== HEADER ===== */
-        .header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 64px; }
-        .header-left { display: flex; align-items: center; gap: 18px; }
+        .header { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; min-height: 64px; gap: 16px; }
+        .header-left { display: flex; align-items: center; gap: clamp(10px, 1vw, 18px); min-width: 0; }
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
+            font-size: clamp(20px, 1.7vw, 32px);
             font-weight: 900;
             background: linear-gradient(135deg, var(--mojo-green), var(--neon-green));
             -webkit-background-clip: text;
@@ -79,7 +91,7 @@
             text-shadow: 0 0 40px rgba(122,193,66,0.3);
             letter-spacing: 2px;
         }
-        .logo-emoji { font-size: 36px; -webkit-text-fill-color: initial; }
+        .logo-emoji { font-size: clamp(26px, 1.9vw, 36px); -webkit-text-fill-color: initial; }
         .arena-badge {
             background: linear-gradient(135deg, rgba(122,193,66,0.2), rgba(0,255,136,0.1));
             border: 1px solid rgba(122,193,66,0.3);
@@ -97,10 +109,10 @@
             50% { box-shadow: 0 0 25px rgba(122,193,66,0.4); }
         }
 
-        .header-right { display: flex; align-items: center; gap: 24px; }
+        .header-right { display: flex; align-items: center; gap: clamp(12px, 1.25vw, 24px); flex-shrink: 0; }
         .live-clock {
             font-family: 'Orbitron', sans-serif;
-            font-size: 36px;
+            font-size: clamp(22px, 1.9vw, 36px);
             font-weight: 700;
             color: var(--text-primary);
             font-variant-numeric: tabular-nums;
@@ -128,12 +140,22 @@
         .glass:hover { border-color: rgba(255,255,255,0.12); }
 
         /* ===== MAIN CONTENT ===== */
-        .content { flex: 1; display: grid; grid-template-columns: 1fr 1.15fr 1fr; grid-template-rows: auto 1fr auto; gap: 16px; min-height: 0; overflow: auto; }
+        .content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+            grid-template-rows: auto 1fr auto;
+            gap: clamp(10px, 0.85vw, 16px);
+            min-height: 0;
+            overflow: visible;
+        }
+
+        .content > *, .metrics-row > *, .center-col, .right-col { min-width: 0; }
 
         /* ===== TOP METRICS ROW ===== */
-        .metrics-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+        .metrics-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 0.75vw, 14px); }
         .metric-card {
-            padding: 18px 16px 14px;
+            padding: clamp(12px, 0.95vw, 18px) clamp(10px, 0.85vw, 16px) clamp(10px, 0.75vw, 14px);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -152,10 +174,10 @@
         .metric-card.pace::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
         .metric-card.neutral::before { background: linear-gradient(90deg, var(--gold), #ffaa00); }
         
-        .metric-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
+        .metric-label { font-size: clamp(9px, 0.58vw, 11px); color: var(--text-muted); text-transform: uppercase; letter-spacing: clamp(1px, 0.1vw, 2px); font-weight: 700; margin-bottom: 6px; }
         .metric-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 54px;
+            font-size: clamp(30px, 2.8vw, 54px);
             font-weight: 900;
             line-height: 1.1;
         }
@@ -169,7 +191,7 @@
         @keyframes greenGlow { 0%,100% { text-shadow: 0 0 30px rgba(0,255,136,0.4); } 50% { text-shadow: 0 0 60px rgba(0,255,136,0.7), 0 0 100px rgba(0,255,136,0.3); } }
         @keyframes redPulse { 0%,100% { text-shadow: 0 0 30px rgba(255,71,87,0.4); } 50% { text-shadow: 0 0 60px rgba(255,71,87,0.7); transform: scale(1.02); } }
         
-        .metric-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+        .metric-sub { font-size: clamp(10px, 0.65vw, 12px); color: var(--text-muted); margin-top: 4px; }
 
         /* ===== PODIUM / LEADERBOARD ===== */
         .podium-card {
@@ -606,54 +628,58 @@
         .loading-text { font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--mojo-green); letter-spacing: 4px; }
     /* ===== RESPONSIVE: Iframe/Embedded (1200-1500px) ===== */
     @media (max-width: 1500px) {
-        html, body { overflow: auto; }
-        body { padding: 14px; }
         .header { flex-wrap: wrap; }
-        .clock { font-size: 2rem; }
-        .content { grid-template-columns: 1fr 1.1fr 0.9fr; }
-        .metric-value { font-size: 3rem; }
+        .live-clock { font-size: 2rem; }
+        .content { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 0.9fr); }
+        .metric-value { font-size: clamp(2.4rem, 3.4vw, 3rem); }
         .section-title { font-size: 0.8rem; letter-spacing: 1.5px; }
         .podium-score { font-size: 2.2rem; }
-        .badge { padding: 8px 4px; }
-        .badge-icon { font-size: 1.8rem; }
+        .badge-item { padding: 8px 4px; }
+        .badge-emoji { font-size: 1.8rem; }
         .badge-name { font-size: 0.55rem; }
-        .rev-pct { font-size: 2.8rem; }
-        .cancel-row { font-size: 0.7rem; }
+        .pace-big-number { font-size: 2.8rem; }
+        .reason-row { font-size: 0.7rem; }
     }
 
     /* ===== RESPONSIVE: Tablet/Laptop (768-1200px) ===== */
     @media (max-width: 1200px) {
-        html, body { overflow: auto; }
-        body { padding: 12px; }
-        .content { grid-template-columns: 1fr 1fr; }
-        .metrics-row { grid-template-columns: repeat(3, 1fr); }
+        .content { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+        .metrics-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .metric-value { font-size: 2.5rem; }
         .section-title { font-size: 0.75rem; }
         .podium-score { font-size: 2rem; }
         .podium-name { font-size: 1rem; }
         .challenge-text { font-size: 1rem; }
-        .achievement-grid { grid-template-columns: repeat(4, 1fr); }
-        .clock { font-size: 1.5rem; }
+        .badge-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .live-clock { font-size: 1.5rem; }
     }
 
     /* ===== RESPONSIVE: Mobile (<768px) ===== */
     @media (max-width: 767px) {
-        body { padding: 10px; }
-        .header { flex-direction: column; gap: 8px; text-align: center; }
+        .dashboard { padding: 10px; }
+        .header { flex-direction: column; gap: 8px; text-align: center; align-items: stretch; }
+        .header-left, .header-right { justify-content: center; flex-wrap: wrap; }
         .header-left { flex-direction: column; gap: 4px; }
-        .logo { font-size: 1.2rem; }
-        .clock { font-size: 1.3rem; }
+        .logo { font-size: 1.2rem; letter-spacing: 1px; }
+        .arena-badge { font-size: 0.65rem; padding: 5px 10px; letter-spacing: 2px; }
+        .live-clock { font-size: 1.3rem; }
+        .live-date { text-align: center; }
         .content { grid-template-columns: 1fr; }
-        .metrics-row { grid-template-columns: repeat(2, 1fr); }
+        .metrics-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .metric-value { font-size: 2rem; }
         .metric-label { font-size: 0.55rem; }
         .podium-entry { padding: 10px; }
         .podium-score { font-size: 1.8rem; }
-        .achievement-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-        .badge { padding: 6px; }
-        .badge-icon { font-size: 1.3rem; }
+        .badge-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+        .badge-item { padding: 6px; }
+        .badge-emoji { font-size: 1.3rem; }
         .badge-name { font-size: 0.5rem; }
-        .rev-pct { font-size: 2.2rem; }
+        .pace-big-number { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 420px) {
+        .metrics-row { grid-template-columns: 1fr; }
+        .badge-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     </style>
 </head>
@@ -1110,29 +1136,6 @@
         navigator.wakeLock.request('screen').catch(() => {});
     }
     </script>
-<script>
-// Auto-scale to fit any container (iframe, TV, mobile)
-(function() {
-    const DESIGN_WIDTH = 1920;
-    function autoScale() {
-        const w = window.innerWidth;
-        if (w < DESIGN_WIDTH) {
-            const scale = w / DESIGN_WIDTH;
-            document.body.style.transform = 'scale(' + scale + ')';
-            document.body.style.transformOrigin = 'top left';
-            document.body.style.width = DESIGN_WIDTH + 'px';
-            document.body.style.height = (window.innerHeight / scale) + 'px';
-            document.body.style.overflow = 'auto';
-        } else {
-            document.body.style.transform = '';
-            document.body.style.width = '';
-            document.body.style.height = '';
-        }
-    }
-    autoScale();
-    window.addEventListener('resize', autoScale);
-})();
-</script>
     <script src="navigator.js"></script>
 </body>
 </html>
