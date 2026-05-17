@@ -1,18 +1,286 @@
 {
-  "updated_at": "2026-05-16T08:40:11.283Z",
-  "period": "Jan 1 - May 15, 2026 (YTD)",
-  "days_tracked": 135,
-  "csv_source": "root/sales-data-2026-05-15.csv",
-  "csv_rows": 452,
+  "updated_at": "2026-05-17T08:40:00.526Z",
+  "period": "Jan 1 - May 16, 2026 (YTD)",
+  "days_tracked": 136,
+  "csv_source": "root/sales-data-2026-05-16.csv",
+  "csv_rows": 456,
   "team": {
     "totalSales": 286,
     "totalCancels": 172,
     "net": 114,
     "winRate": 62.4,
-    "weeklyTrend": [],
-    "monthlyTrend": [],
-    "topCancelReasons": [],
-    "topSaleCategories": []
+    "weeklyTrend": [
+      {
+        "week": "Feb 23",
+        "weekStart": "2026-02-23",
+        "sales": 6,
+        "cancels": 11,
+        "net": -5
+      },
+      {
+        "week": "Mar 2",
+        "weekStart": "2026-03-02",
+        "sales": 14,
+        "cancels": 12,
+        "net": 2
+      },
+      {
+        "week": "Mar 9",
+        "weekStart": "2026-03-09",
+        "sales": 15,
+        "cancels": 10,
+        "net": 5
+      },
+      {
+        "week": "Mar 16",
+        "weekStart": "2026-03-16",
+        "sales": 16,
+        "cancels": 8,
+        "net": 8
+      },
+      {
+        "week": "Mar 23",
+        "weekStart": "2026-03-23",
+        "sales": 19,
+        "cancels": 16,
+        "net": 3
+      },
+      {
+        "week": "Mar 30",
+        "weekStart": "2026-03-30",
+        "sales": 32,
+        "cancels": 4,
+        "net": 28
+      },
+      {
+        "week": "Apr 6",
+        "weekStart": "2026-04-06",
+        "sales": 21,
+        "cancels": 5,
+        "net": 16
+      },
+      {
+        "week": "Apr 13",
+        "weekStart": "2026-04-13",
+        "sales": 31,
+        "cancels": 6,
+        "net": 25
+      },
+      {
+        "week": "Apr 20",
+        "weekStart": "2026-04-20",
+        "sales": 26,
+        "cancels": 8,
+        "net": 18
+      },
+      {
+        "week": "Apr 27",
+        "weekStart": "2026-04-27",
+        "sales": 24,
+        "cancels": 10,
+        "net": 14
+      },
+      {
+        "week": "May 4",
+        "weekStart": "2026-05-04",
+        "sales": 25,
+        "cancels": 4,
+        "net": 21
+      },
+      {
+        "week": "May 11",
+        "weekStart": "2026-05-11",
+        "sales": 35,
+        "cancels": 12,
+        "net": 23
+      }
+    ],
+    "monthlyTrend": [
+      {
+        "month": "Jan 2026",
+        "monthKey": "2026-01",
+        "sales": 12,
+        "cancels": 39,
+        "net": -27
+      },
+      {
+        "month": "Feb 2026",
+        "monthKey": "2026-02",
+        "sales": 15,
+        "cancels": 36,
+        "net": -21
+      },
+      {
+        "month": "Mar 2026",
+        "monthKey": "2026-03",
+        "sales": 83,
+        "cancels": 48,
+        "net": 35
+      },
+      {
+        "month": "Apr 2026",
+        "monthKey": "2026-04",
+        "sales": 110,
+        "cancels": 31,
+        "net": 79
+      },
+      {
+        "month": "May 2026",
+        "monthKey": "2026-05",
+        "sales": 65,
+        "cancels": 16,
+        "net": 49
+      }
+    ],
+    "topCancelReasons": [
+      {
+        "reason": "Paused/WP",
+        "count": 48,
+        "pct": 27.9
+      },
+      {
+        "reason": "Moved",
+        "count": 44,
+        "pct": 25.6
+      },
+      {
+        "reason": "Not Interested",
+        "count": 14,
+        "pct": 8.1
+      },
+      {
+        "reason": "Financial",
+        "count": 14,
+        "pct": 8.1
+      },
+      {
+        "reason": "One Time",
+        "count": 14,
+        "pct": 8.1
+      },
+      {
+        "reason": "Bad Debt",
+        "count": 11,
+        "pct": 6.4
+      },
+      {
+        "reason": "Unhappy",
+        "count": 10,
+        "pct": 5.8
+      },
+      {
+        "reason": "Barrier Spray",
+        "count": 6,
+        "pct": 3.5
+      },
+      {
+        "reason": "Went w/Competitor",
+        "count": 5,
+        "pct": 2.9
+      },
+      {
+        "reason": "Noseeum",
+        "count": 2,
+        "pct": 1.2
+      },
+      {
+        "reason": "Bundle - HPD/Barrier",
+        "count": 1,
+        "pct": 0.6
+      },
+      {
+        "reason": "Perimeter Pest",
+        "count": 1,
+        "pct": 0.6
+      }
+    ],
+    "topSaleCategories": [
+      {
+        "category": "Barrier Spray",
+        "count": 94,
+        "pct": 32.9
+      },
+      {
+        "category": "Restart",
+        "count": 79,
+        "pct": 27.6
+      },
+      {
+        "category": "Event Spray",
+        "count": 40,
+        "pct": 14
+      },
+      {
+        "category": "Noseeum",
+        "count": 15,
+        "pct": 5.2
+      },
+      {
+        "category": "Misting System",
+        "count": 14,
+        "pct": 4.9
+      },
+      {
+        "category": "Bundle - HPD/Barrier",
+        "count": 11,
+        "pct": 3.8
+      },
+      {
+        "category": "One Time",
+        "count": 6,
+        "pct": 2.1
+      },
+      {
+        "category": "HPD  (Indoor)",
+        "count": 5,
+        "pct": 1.7
+      },
+      {
+        "category": "Fleas/Ticks",
+        "count": 4,
+        "pct": 1.4
+      },
+      {
+        "category": "Perimeter Pest",
+        "count": 4,
+        "pct": 1.4
+      },
+      {
+        "category": "Barrier Spray + Flea",
+        "count": 3,
+        "pct": 1
+      },
+      {
+        "category": "MS Takeover",
+        "count": 3,
+        "pct": 1
+      },
+      {
+        "category": "Inzecto",
+        "count": 2,
+        "pct": 0.7
+      },
+      {
+        "category": "Thermacell",
+        "count": 2,
+        "pct": 0.7
+      },
+      {
+        "category": "Mosquito/PP",
+        "count": 1,
+        "pct": 0.3
+      },
+      {
+        "category": "New",
+        "count": 1,
+        "pct": 0.3
+      },
+      {
+        "category": "Rodent Station",
+        "count": 1,
+        "pct": 0.3
+      }
+    ]
   },
   "csrs": [
     {
@@ -21,24 +289,222 @@
       "totalCancels": 37,
       "net": 101,
       "winRate": 78.9,
-      "salesPerDay": 1.02,
-      "trend": "flat",
-      "trendPct": 0,
-      "weeklyTrend": [],
-      "monthlyTrend": [],
-      "topCategories": [],
-      "topCancelReasons": [],
+      "salesPerDay": 1.01,
+      "trend": "up",
+      "trendPct": 30,
+      "weeklyTrend": [
+        {
+          "week": "Feb 23",
+          "weekStart": "2026-02-23",
+          "sales": 0,
+          "cancels": 1,
+          "net": -1,
+          "winRate": 0
+        },
+        {
+          "week": "Mar 2",
+          "weekStart": "2026-03-02",
+          "sales": 7,
+          "cancels": 4,
+          "net": 3,
+          "winRate": 64
+        },
+        {
+          "week": "Mar 9",
+          "weekStart": "2026-03-09",
+          "sales": 9,
+          "cancels": 2,
+          "net": 7,
+          "winRate": 82
+        },
+        {
+          "week": "Mar 16",
+          "weekStart": "2026-03-16",
+          "sales": 4,
+          "cancels": 1,
+          "net": 3,
+          "winRate": 80
+        },
+        {
+          "week": "Mar 23",
+          "weekStart": "2026-03-23",
+          "sales": 6,
+          "cancels": 1,
+          "net": 5,
+          "winRate": 86
+        },
+        {
+          "week": "Mar 30",
+          "weekStart": "2026-03-30",
+          "sales": 17,
+          "cancels": 2,
+          "net": 15,
+          "winRate": 89
+        },
+        {
+          "week": "Apr 6",
+          "weekStart": "2026-04-06",
+          "sales": 12,
+          "cancels": 0,
+          "net": 12,
+          "winRate": 100
+        },
+        {
+          "week": "Apr 13",
+          "weekStart": "2026-04-13",
+          "sales": 15,
+          "cancels": 2,
+          "net": 13,
+          "winRate": 88
+        },
+        {
+          "week": "Apr 20",
+          "weekStart": "2026-04-20",
+          "sales": 16,
+          "cancels": 2,
+          "net": 14,
+          "winRate": 89
+        },
+        {
+          "week": "Apr 27",
+          "weekStart": "2026-04-27",
+          "sales": 11,
+          "cancels": 2,
+          "net": 9,
+          "winRate": 85
+        },
+        {
+          "week": "May 4",
+          "weekStart": "2026-05-04",
+          "sales": 12,
+          "cancels": 0,
+          "net": 12,
+          "winRate": 100
+        },
+        {
+          "week": "May 11",
+          "weekStart": "2026-05-11",
+          "sales": 23,
+          "cancels": 2,
+          "net": 21,
+          "winRate": 92
+        }
+      ],
+      "monthlyTrend": [
+        {
+          "month": "Jan 2026",
+          "monthKey": "2026-01",
+          "sales": 5,
+          "cancels": 13,
+          "net": -8,
+          "winRate": 28
+        },
+        {
+          "month": "Feb 2026",
+          "monthKey": "2026-02",
+          "sales": 1,
+          "cancels": 6,
+          "net": -5,
+          "winRate": 14
+        },
+        {
+          "month": "Mar 2026",
+          "monthKey": "2026-03",
+          "sales": 34,
+          "cancels": 8,
+          "net": 26,
+          "winRate": 81
+        },
+        {
+          "month": "Apr 2026",
+          "monthKey": "2026-04",
+          "sales": 61,
+          "cancels": 8,
+          "net": 53,
+          "winRate": 88
+        },
+        {
+          "month": "May 2026",
+          "monthKey": "2026-05",
+          "sales": 37,
+          "cancels": 2,
+          "net": 35,
+          "winRate": 95
+        }
+      ],
+      "topCategories": [
+        {
+          "category": "Barrier Spray",
+          "count": 58
+        },
+        {
+          "category": "Restart",
+          "count": 30
+        },
+        {
+          "category": "Event Spray",
+          "count": 24
+        },
+        {
+          "category": "Noseeum",
+          "count": 10
+        },
+        {
+          "category": "Bundle - HPD/Barrier",
+          "count": 5
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "reason": "Moved",
+          "count": 12
+        },
+        {
+          "reason": "Paused/WP",
+          "count": 9
+        },
+        {
+          "reason": "Financial",
+          "count": 6
+        },
+        {
+          "reason": "Unhappy",
+          "count": 6
+        },
+        {
+          "reason": "Not Interested",
+          "count": 1
+        }
+      ],
       "competitorLosses": [],
-      "techUpsells": [],
+      "techUpsells": [
+        {
+          "tech": "Andrew",
+          "count": 1
+        },
+        {
+          "tech": "Jordan",
+          "count": 1
+        }
+      ],
       "streaks": {
-        "currentStreak": 0,
-        "bestStreak": 0,
-        "activeDays": 0,
-        "totalDays": 0,
-        "consistency": 0
+        "currentStreak": 8,
+        "bestStreak": 27,
+        "activeDays": 48,
+        "totalDays": 131,
+        "weekdays": 95,
+        "consistency": 51
       },
-      "bestWeek": null,
-      "worstWeek": null
+      "bestWeek": {
+        "week": "May 11",
+        "net": 21,
+        "sales": 23
+      },
+      "worstWeek": {
+        "week": "Feb 23",
+        "net": -1,
+        "cancels": 1
+      }
     },
     {
       "name": "Norma",
@@ -48,22 +514,224 @@
       "winRate": 58.8,
       "salesPerDay": 0.81,
       "trend": "flat",
-      "trendPct": 0,
-      "weeklyTrend": [],
-      "monthlyTrend": [],
-      "topCategories": [],
-      "topCancelReasons": [],
+      "trendPct": 12,
+      "weeklyTrend": [
+        {
+          "week": "Feb 23",
+          "weekStart": "2026-02-23",
+          "sales": 4,
+          "cancels": 8,
+          "net": -4,
+          "winRate": 33
+        },
+        {
+          "week": "Mar 2",
+          "weekStart": "2026-03-02",
+          "sales": 4,
+          "cancels": 5,
+          "net": -1,
+          "winRate": 44
+        },
+        {
+          "week": "Mar 9",
+          "weekStart": "2026-03-09",
+          "sales": 2,
+          "cancels": 2,
+          "net": 0,
+          "winRate": 50
+        },
+        {
+          "week": "Mar 16",
+          "weekStart": "2026-03-16",
+          "sales": 10,
+          "cancels": 3,
+          "net": 7,
+          "winRate": 77
+        },
+        {
+          "week": "Mar 23",
+          "weekStart": "2026-03-23",
+          "sales": 10,
+          "cancels": 7,
+          "net": 3,
+          "winRate": 59
+        },
+        {
+          "week": "Mar 30",
+          "weekStart": "2026-03-30",
+          "sales": 12,
+          "cancels": 0,
+          "net": 12,
+          "winRate": 100
+        },
+        {
+          "week": "Apr 6",
+          "weekStart": "2026-04-06",
+          "sales": 7,
+          "cancels": 3,
+          "net": 4,
+          "winRate": 70
+        },
+        {
+          "week": "Apr 13",
+          "weekStart": "2026-04-13",
+          "sales": 14,
+          "cancels": 2,
+          "net": 12,
+          "winRate": 88
+        },
+        {
+          "week": "Apr 20",
+          "weekStart": "2026-04-20",
+          "sales": 8,
+          "cancels": 2,
+          "net": 6,
+          "winRate": 80
+        },
+        {
+          "week": "Apr 27",
+          "weekStart": "2026-04-27",
+          "sales": 9,
+          "cancels": 5,
+          "net": 4,
+          "winRate": 64
+        },
+        {
+          "week": "May 4",
+          "weekStart": "2026-05-04",
+          "sales": 10,
+          "cancels": 3,
+          "net": 7,
+          "winRate": 77
+        },
+        {
+          "week": "May 11",
+          "weekStart": "2026-05-11",
+          "sales": 9,
+          "cancels": 6,
+          "net": 3,
+          "winRate": 60
+        }
+      ],
+      "monthlyTrend": [
+        {
+          "month": "Jan 2026",
+          "monthKey": "2026-01",
+          "sales": 3,
+          "cancels": 20,
+          "net": -17,
+          "winRate": 13
+        },
+        {
+          "month": "Feb 2026",
+          "monthKey": "2026-02",
+          "sales": 11,
+          "cancels": 19,
+          "net": -8,
+          "winRate": 37
+        },
+        {
+          "month": "Mar 2026",
+          "monthKey": "2026-03",
+          "sales": 35,
+          "cancels": 17,
+          "net": 18,
+          "winRate": 67
+        },
+        {
+          "month": "Apr 2026",
+          "monthKey": "2026-04",
+          "sales": 39,
+          "cancels": 12,
+          "net": 27,
+          "winRate": 76
+        },
+        {
+          "month": "May 2026",
+          "monthKey": "2026-05",
+          "sales": 21,
+          "cancels": 9,
+          "net": 12,
+          "winRate": 70
+        }
+      ],
+      "topCategories": [
+        {
+          "category": "Restart",
+          "count": 40
+        },
+        {
+          "category": "Barrier Spray",
+          "count": 35
+        },
+        {
+          "category": "Event Spray",
+          "count": 15
+        },
+        {
+          "category": "Bundle - HPD/Barrier",
+          "count": 6
+        },
+        {
+          "category": "HPD  (Indoor)",
+          "count": 4
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "reason": "Paused/WP",
+          "count": 27
+        },
+        {
+          "reason": "Moved",
+          "count": 24
+        },
+        {
+          "reason": "Financial",
+          "count": 7
+        },
+        {
+          "reason": "Not Interested",
+          "count": 6
+        },
+        {
+          "reason": "Barrier Spray",
+          "count": 4
+        }
+      ],
       "competitorLosses": [],
-      "techUpsells": [],
+      "techUpsells": [
+        {
+          "tech": "David",
+          "count": 3
+        },
+        {
+          "tech": "Joe",
+          "count": 1
+        },
+        {
+          "tech": "Jorge",
+          "count": 1
+        }
+      ],
       "streaks": {
-        "currentStreak": 0,
-        "bestStreak": 0,
-        "activeDays": 0,
-        "totalDays": 0,
-        "consistency": 0
+        "currentStreak": 3,
+        "bestStreak": 15,
+        "activeDays": 53,
+        "totalDays": 131,
+        "weekdays": 95,
+        "consistency": 56
       },
-      "bestWeek": null,
-      "worstWeek": null
+      "bestWeek": {
+        "week": "Mar 30",
+        "net": 12,
+        "sales": 12
+      },
+      "worstWeek": {
+        "week": "Feb 23",
+        "net": -4,
+        "cancels": 8
+      }
     },
     {
       "name": "Bev",
@@ -74,22 +742,457 @@
       "salesPerDay": 0.28,
       "trend": "flat",
       "trendPct": 0,
-      "weeklyTrend": [],
-      "monthlyTrend": [],
-      "topCategories": [],
-      "topCancelReasons": [],
-      "competitorLosses": [],
+      "weeklyTrend": [
+        {
+          "week": "Feb 23",
+          "weekStart": "2026-02-23",
+          "sales": 2,
+          "cancels": 2,
+          "net": 0,
+          "winRate": 50
+        },
+        {
+          "week": "Mar 2",
+          "weekStart": "2026-03-02",
+          "sales": 3,
+          "cancels": 3,
+          "net": 0,
+          "winRate": 50
+        },
+        {
+          "week": "Mar 9",
+          "weekStart": "2026-03-09",
+          "sales": 4,
+          "cancels": 6,
+          "net": -2,
+          "winRate": 40
+        },
+        {
+          "week": "Mar 16",
+          "weekStart": "2026-03-16",
+          "sales": 2,
+          "cancels": 4,
+          "net": -2,
+          "winRate": 33
+        },
+        {
+          "week": "Mar 23",
+          "weekStart": "2026-03-23",
+          "sales": 3,
+          "cancels": 8,
+          "net": -5,
+          "winRate": 27
+        },
+        {
+          "week": "Mar 30",
+          "weekStart": "2026-03-30",
+          "sales": 3,
+          "cancels": 2,
+          "net": 1,
+          "winRate": 60
+        },
+        {
+          "week": "Apr 6",
+          "weekStart": "2026-04-06",
+          "sales": 2,
+          "cancels": 2,
+          "net": 0,
+          "winRate": 50
+        },
+        {
+          "week": "Apr 13",
+          "weekStart": "2026-04-13",
+          "sales": 2,
+          "cancels": 2,
+          "net": 0,
+          "winRate": 50
+        },
+        {
+          "week": "Apr 20",
+          "weekStart": "2026-04-20",
+          "sales": 2,
+          "cancels": 4,
+          "net": -2,
+          "winRate": 33
+        },
+        {
+          "week": "Apr 27",
+          "weekStart": "2026-04-27",
+          "sales": 4,
+          "cancels": 3,
+          "net": 1,
+          "winRate": 57
+        },
+        {
+          "week": "May 4",
+          "weekStart": "2026-05-04",
+          "sales": 3,
+          "cancels": 1,
+          "net": 2,
+          "winRate": 75
+        },
+        {
+          "week": "May 11",
+          "weekStart": "2026-05-11",
+          "sales": 3,
+          "cancels": 4,
+          "net": -1,
+          "winRate": 43
+        }
+      ],
+      "monthlyTrend": [
+        {
+          "month": "Jan 2026",
+          "monthKey": "2026-01",
+          "sales": 4,
+          "cancels": 6,
+          "net": -2,
+          "winRate": 40
+        },
+        {
+          "month": "Feb 2026",
+          "monthKey": "2026-02",
+          "sales": 3,
+          "cancels": 11,
+          "net": -8,
+          "winRate": 21
+        },
+        {
+          "month": "Mar 2026",
+          "monthKey": "2026-03",
+          "sales": 14,
+          "cancels": 23,
+          "net": -9,
+          "winRate": 38
+        },
+        {
+          "month": "Apr 2026",
+          "monthKey": "2026-04",
+          "sales": 10,
+          "cancels": 11,
+          "net": -1,
+          "winRate": 48
+        },
+        {
+          "month": "May 2026",
+          "monthKey": "2026-05",
+          "sales": 7,
+          "cancels": 5,
+          "net": 2,
+          "winRate": 58
+        }
+      ],
+      "topCategories": [
+        {
+          "category": "Misting System",
+          "count": 14
+        },
+        {
+          "category": "Restart",
+          "count": 9
+        },
+        {
+          "category": "Perimeter Pest",
+          "count": 2
+        },
+        {
+          "category": "Noseeum",
+          "count": 2
+        },
+        {
+          "category": "MS Takeover",
+          "count": 2
+        }
+      ],
+      "topCancelReasons": [
+        {
+          "reason": "Paused/WP",
+          "count": 12
+        },
+        {
+          "reason": "One Time",
+          "count": 12
+        },
+        {
+          "reason": "Bad Debt",
+          "count": 11
+        },
+        {
+          "reason": "Moved",
+          "count": 8
+        },
+        {
+          "reason": "Not Interested",
+          "count": 7
+        }
+      ],
+      "competitorLosses": [
+        {
+          "competitor": "Brooks Pest Solutions",
+          "count": 1
+        }
+      ],
       "techUpsells": [],
       "streaks": {
-        "currentStreak": 0,
-        "bestStreak": 0,
-        "activeDays": 0,
-        "totalDays": 0,
-        "consistency": 0
+        "currentStreak": 2,
+        "bestStreak": 6,
+        "activeDays": 33,
+        "totalDays": 124,
+        "weekdays": 90,
+        "consistency": 37
       },
-      "bestWeek": null,
-      "worstWeek": null
+      "bestWeek": {
+        "week": "May 4",
+        "net": 2,
+        "sales": 3
+      },
+      "worstWeek": {
+        "week": "Mar 23",
+        "net": -5,
+        "cancels": 8
+      }
     }
   ],
-  "recentActivity": []
+  "recentActivity": [
+    {
+      "date": "2026-05-15",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "William Goodall",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-15",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Restart",
+      "customer": "Roderick Alexander",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-15",
+      "csr": "Bev",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "customer": "Angela Vranich",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-15",
+      "csr": "Norma",
+      "type": "Sale",
+      "category": "Restart",
+      "customer": "Robyn Sayles",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Norma",
+      "type": "Cancel",
+      "category": "Bundle - HPD/Barrier",
+      "customer": "Catherine Oneill",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Natazha Armas",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Noseeum",
+      "customer": "Eric Henrickson",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Norma",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "customer": "Ashar Aziz",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Sirley Ibarra",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Jon Paul Schmidt",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Bev",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "customer": "Michelle Gross",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-14",
+      "csr": "Lucy",
+      "type": "Cancel",
+      "category": "Moved",
+      "customer": "Enrique Terran",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Norma",
+      "type": "Cancel",
+      "category": "Financial",
+      "customer": "Miguel Villanueva",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Norma",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Steven Vivar",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Norma",
+      "type": "Sale",
+      "category": "Event Spray",
+      "customer": "Gabriela Boza",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Renee Mix",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Inzecto",
+      "customer": "Renee Mix",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Ernesto Viteri",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-13",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Event Spray",
+      "customer": "Hector Diaz",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Bev",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "customer": "Meredith McLaughlin",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Noseeum",
+      "customer": "Shawn Grimes",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Bev",
+      "type": "Sale",
+      "category": "Restart",
+      "customer": "Arturo Savinon",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Bev",
+      "type": "Sale",
+      "category": "Restart",
+      "customer": "Louis Perez",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Deb Gray",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Jose Ramos",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Event Spray",
+      "customer": "Victor Angelo",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Ionna Alvarez",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Perimeter Pest",
+      "customer": "Ionna Alvarez",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "customer": "Jose Ramos",
+      "competitor": null
+    },
+    {
+      "date": "2026-05-12",
+      "csr": "Lucy",
+      "type": "Sale",
+      "category": "Event Spray",
+      "customer": "Nicole Castano",
+      "competitor": null
+    }
+  ]
 }
