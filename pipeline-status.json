@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-05-17T09:30:00Z",
-  "generated_at": "2026-05-17T08:40:46Z",
+  "timestamp": "2026-05-18T09:30:00Z",
+  "generated_at": "2026-05-18T08:40:46Z",
   "status": "warn",
   "steps_total": 12,
   "steps_passed": 9,
   "steps_warned": 1,
   "steps_failed": 2,
-  "steps_downgraded": 0,
+  "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-05-17.log",
+  "log_file": "nightly-sync-2026-05-18.log",
   "steps": [
     {
       "name": "Sales Import",
-      "status": "ok",
-      "detail": ""
+      "status": "info",
+      "detail": "\u26a0\ufe0f FAILED: Daily sales import (downgraded \u2014 fallback succeeded)"
     },
     {
       "name": "Sales Import",
