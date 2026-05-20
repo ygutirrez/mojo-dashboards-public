@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-18T08:40:47.018Z",
+  "generated_at": "2026-05-19T08:40:36.835Z",
   "period": {
     "current_week": "May 18 - May 24",
     "previous_week": "May 11 - May 17",
-    "ytd_days": 138,
+    "ytd_days": 139,
     "year": 2026
   },
   "hero": {
@@ -16,9 +16,9 @@
     "revenue_ytd": {
       "value": 946368,
       "target": 5000000,
-      "projected": 2503075,
+      "projected": 2485067,
       "on_pace": false,
-      "pct_of_target": 50.1
+      "pct_of_target": 49.7
     },
     "net_customers_ytd": {
       "value": 36,
@@ -214,12 +214,12 @@
     }
   ],
   "tenure": {
-    "0-90 days": 163,
-    "91-180 days": 30,
+    "0-90 days": 162,
+    "91-180 days": 31,
     "6-12 months": 241,
     "1-2 years": 339,
-    "2-3 years": 221,
-    "3+ years": 1066
+    "2-3 years": 220,
+    "3+ years": 1067
   },
   "programs": {
     "Signature Program": 1270,
@@ -237,43 +237,43 @@
     {
       "name": "Damian Machin",
       "visits": 1368,
-      "revenue": 124192.24000000264,
+      "revenue": 124192.24000000261,
       "avg_per_visit": 90.78
     },
     {
       "name": "Stanley Prophete",
       "visits": 1285,
-      "revenue": 117493.6100000025,
+      "revenue": 117493.61000000252,
       "avg_per_visit": 91.43
     },
     {
       "name": "Joseph  Pagan",
       "visits": 738,
-      "revenue": 116672.9900000003,
+      "revenue": 116672.99000000031,
       "avg_per_visit": 158.09
     },
     {
       "name": "David Carbajal",
       "visits": 1165,
-      "revenue": 101812.8400000016,
+      "revenue": 101812.84000000161,
       "avg_per_visit": 87.39
     },
     {
       "name": "John  Sabin",
       "visits": 1114,
-      "revenue": 98889.80000000143,
+      "revenue": 98889.80000000146,
       "avg_per_visit": 88.77
     },
     {
       "name": "Marcus   Rubi",
       "visits": 1195,
-      "revenue": 94504.23000000117,
+      "revenue": 94504.23000000122,
       "avg_per_visit": 79.08
     },
     {
       "name": "Andrew Schamel",
       "visits": 1035,
-      "revenue": 87913.06000000065,
+      "revenue": 87913.06000000068,
       "avg_per_visit": 84.94
     },
     {
@@ -285,7 +285,7 @@
     {
       "name": "Jorge  Navarro",
       "visits": 590,
-      "revenue": 47579.98999999994,
+      "revenue": 47579.989999999954,
       "avg_per_visit": 80.64
     },
     {
@@ -385,6 +385,12 @@
     }
   ],
   "alerts": [
+    {
+      "severity": "warning",
+      "category": "revenue",
+      "message": "Revenue tracking at 49.7% of $5M target pace",
+      "metric": 49.7
+    },
     {
       "severity": "critical",
       "category": "retention",
