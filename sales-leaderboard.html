@@ -300,22 +300,34 @@
 
         async function load() {
             try {
-                const [salesRes, kpiRes] = await Promise.all([
+                const [salesRes, kpiRes, smRes] = await Promise.all([
                     fetch('sales-data.json?t=' + Date.now()),
-                    fetch('sales-kpi-data.json?t=' + Date.now())
+                    fetch('sales-kpi-data.json?t=' + Date.now()),
+                    fetch('serviceminder-bridge-data.json?t=' + Date.now()).catch(() => null)
                 ]);
                 const sales = await salesRes.json();
                 const kpi = await kpiRes.json();
+                const serviceMinder = smRes && smRes.ok ? await smRes.json() : null;
+                const smReady = serviceMinder?.meta?.write_existing_applied;
 
                 const csrs = sales.csrs || kpi.csrs || [];
-                const summary = sales.summary || kpi.summary || {};
+                const summary = smReady ? {
+                    ...(sales.summary || kpi.summary || {}),
+                    total_sales: serviceMinder.owners.sales.total_sales,
+                    total_cancels: serviceMinder.owners.sales.total_cancels,
+                    net: serviceMinder.owners.sales.net,
+                    total_revenue: serviceMinder.owners.revenue.ytd_invoiced
+                } : (sales.summary || kpi.summary || {});
                 const recent = sales.recent_activity || [];
                 const upsells = sales.tech_upsells || [];
-                const pace = kpi.revenue_pace || {};
+                const pace = smReady ? {
+                    ...(kpi.revenue_pace || {}),
+                    ytd_revenue: serviceMinder.owners.revenue.ytd_invoiced
+                } : (kpi.revenue_pace || {});
 
                 // Date badge
                 document.getElementById('dateBadge').textContent =
-                    sales.period || kpi.period || new Date().toLocaleDateString();
+                    smReady ? 'ServiceMinder YTD • CSR from Office Tracking' : (sales.period || kpi.period || new Date().toLocaleDateString());
 
                 // Summary bar
                 const summaryBar = document.getElementById('summaryBar');

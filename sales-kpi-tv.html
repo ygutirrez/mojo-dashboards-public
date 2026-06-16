@@ -825,8 +825,15 @@
 
     async function loadDashboard() {
         try {
-            const res = await fetch(DATA_URL + '?t=' + Date.now());
+            const [res, salesRes, smRes] = await Promise.all([
+                fetch(DATA_URL + '?t=' + Date.now()),
+                fetch('sales-data.json?t=' + Date.now()).catch(() => null),
+                fetch('serviceminder-bridge-data.json?t=' + Date.now()).catch(() => null)
+            ]);
             const data = await res.json();
+            const salesData = salesRes && salesRes.ok ? await salesRes.json() : null;
+            const serviceMinder = smRes && smRes.ok ? await smRes.json() : null;
+            applyServiceMinderHeadlines(data, salesData, serviceMinder);
             renderDashboard(data);
             document.getElementById('loadingScreen').style.display = 'none';
             document.getElementById('dashboard').style.opacity = '1';
@@ -840,6 +847,52 @@
                 </div>`;
             setTimeout(loadDashboard, 30000);
         }
+    }
+
+    function applyServiceMinderHeadlines(data, salesData, serviceMinder) {
+        if (salesData?.csrs) data.csrs = salesData.csrs;
+        if (!serviceMinder?.meta?.write_existing_applied) return;
+
+        const smSales = serviceMinder.owners.sales || {};
+        const smRevenue = serviceMinder.owners.revenue || {};
+        const smSalesKpi = serviceMinder.salesKpi || {};
+        const invoices = (smSalesKpi.monthly || []).reduce((sum, row) => sum + (row.invoices || 0), 0);
+        const now = new Date(serviceMinder.meta.generated_at || Date.now());
+        const daysElapsed = Math.max(1, Math.ceil((now - new Date(now.getFullYear(), 0, 1)) / 86400000));
+        const projectedAnnual = Math.round((smRevenue.ytd_invoiced || 0) / daysElapsed * 365);
+
+        data.updated_at = serviceMinder.meta.generated_at;
+        data.period = 'ServiceMinder YTD • CSR from Office Tracking';
+        data.summary = {
+            ...(data.summary || {}),
+            total_sales: smSales.total_sales || 0,
+            total_cancels: smSales.total_cancels || 0,
+            total_revenue: smRevenue.ytd_invoiced || 0,
+            total_invoices: invoices,
+            net: smSales.net || 0,
+            days_tracked: daysElapsed,
+            revenue_per_day: Math.round((smRevenue.ytd_invoiced || 0) / daysElapsed)
+        };
+        data.cancels = {
+            ...(data.cancels || {}),
+            unique_accounts: smSales.total_cancels || 0,
+            total_events: smSales.total_cancels || 0,
+            by_reason: Object.entries(smSales.cancel_reasons || {}).map(([name, count]) => ({
+                name,
+                count,
+                pct: Math.round(count / Math.max(smSales.total_cancels || 1, 1) * 100)
+            }))
+        };
+        data.revenue_pace = {
+            ...(data.revenue_pace || {}),
+            ytd_revenue: smRevenue.ytd_invoiced || 0,
+            days_elapsed: daysElapsed,
+            days_total: 365,
+            projected_annual: projectedAnnual,
+            target_annual: data.revenue_pace?.target_annual || 5000000,
+            on_pace: projectedAnnual >= (data.revenue_pace?.target_annual || 5000000),
+            pct_of_target: Number((projectedAnnual / (data.revenue_pace?.target_annual || 5000000) * 100).toFixed(1))
+        };
     }
 
     function renderDashboard(data) {
