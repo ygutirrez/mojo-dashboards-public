@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: June 16, 2026 @ 3:26 pm</div>
+        <div class="updated">Last updated: June 16, 2026 @ 3:36 pm</div>
         <div class="period">📅 Jan 1 - Jun 16, 2026 (YTD)</div>
-        <div class="updated">ServiceMinder revenue/proposals. CSR leaderboard remains Office Tracking.</div>
+        <div class="updated">Office tally sales/cancels. ServiceMinder invoice revenue.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>1,297 ServiceMinder sales/proposals completed or invoiced</strong> YTD with <strong>$1,139,320</strong> invoiced revenue. Cancellation and CSR attribution remain on the Office Tracking/legacy path until those ServiceMinder fields are confirmed.</p>
+        <p><strong>301 sales and 183 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$1,139,320</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -119,22 +119,22 @@
     <div class="metrics-grid">
         <div class="metric-card positive">
             <div class="label">Total Sales</div>
-            <div class="value">1,297</div>
-            <div class="subtext">SM invoiced/complete proposals</div>
+            <div class="value">301</div>
+            <div class="subtext">Office tally YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Cancel Events</div>
-            <div class="value">8</div>
+            <div class="value">183</div>
             <div class="subtext">YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Accounts Cancelled</div>
-            <div class="value">8</div>
+            <div class="value">183</div>
             <div class="subtext">Unique customers lost</div>
         </div>
         <div class="metric-card positive">
             <div class="label">Net Change</div>
-            <div class="value">+1289</div>
+            <div class="value">+118</div>
             <div class="subtext">Customer base growing</div>
         </div>
         <div class="metric-card neutral">
@@ -151,14 +151,64 @@
 
     <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
         <div class="metric-card warning">
-            <div class="label">Moving</div>
-            <div class="value">4</div>
-            <div class="subtext">50% of cancellations</div>
+            <div class="label">Paused/WP</div>
+            <div class="value">49</div>
+            <div class="subtext">27% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Moved</div>
+            <div class="value">46</div>
+            <div class="subtext">25% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">One Time</div>
+            <div class="value">17</div>
+            <div class="subtext">9% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">Financial</div>
-            <div class="value">4</div>
-            <div class="subtext">50% of cancellations</div>
+            <div class="value">16</div>
+            <div class="subtext">9% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Not Interested</div>
+            <div class="value">16</div>
+            <div class="subtext">9% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Unhappy</div>
+            <div class="value">12</div>
+            <div class="subtext">7% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Bad Debt</div>
+            <div class="value">11</div>
+            <div class="subtext">6% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Barrier Spray</div>
+            <div class="value">6</div>
+            <div class="subtext">3% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Went w/Competitor</div>
+            <div class="value">5</div>
+            <div class="subtext">3% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Perimeter Pest</div>
+            <div class="value">2</div>
+            <div class="subtext">1% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Noseeum</div>
+            <div class="value">2</div>
+            <div class="subtext">1% of cancellations</div>
+        </div>
+        <div class="metric-card warning">
+            <div class="label">Bundle - HPD/Barrier</div>
+            <div class="value">1</div>
+            <div class="subtext">1% of cancellations</div>
         </div>
     </div>
 
@@ -229,10 +279,10 @@
         new Chart(document.getElementById('cancelReasonsChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Moving","Financial"],
+                labels: ["Paused/WP","Moved","One Time","Financial","Not Interested","Unhappy","Bad Debt","Barrier Spray","Went w/Competitor","Perimeter Pest","Noseeum","Bundle - HPD/Barrier"],
                 datasets: [{
-                    data: [4,4],
-                    backgroundColor: ["#ff6b6b","#ffd700"],
+                    data: [49,46,17,16,16,12,11,6,5,2,2,1],
+                    backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
                     borderWidth: 0
                 }]
             },
@@ -242,10 +292,10 @@
         new Chart(document.getElementById('servicesSoldChart'), {
             type: 'bar',
             data: {
-                labels: ["Mojo Essential","Synthetic Barrier Spray - 2 week","Misting System Recurring Service Bi-Monthly","HPD - 42 Days","Gnat/Midge/No-seeums Service - 2 weeks","Synthetic Barrier Spray - 4 week","Synthetic Signature Single Svc 3","All-Natural Barrier Spray"],
+                labels: ["Barrier Spray","Restart","Event Spray","Noseeum","Misting System","Bundle - HPD/Barrier","One Time","HPD  (Indoor)"],
                 datasets: [{
                     label: 'Sales',
-                    data: [675,398,71,52,38,36,22,17],
+                    data: [102,82,41,16,14,12,7,5],
                     backgroundColor: '#00ff88',
                     borderRadius: 4
                 }]

@@ -853,35 +853,31 @@
         if (salesData?.csrs) data.csrs = salesData.csrs;
         if (!serviceMinder?.meta?.write_existing_applied) return;
 
-        const smSales = serviceMinder.owners.sales || {};
         const smRevenue = serviceMinder.owners.revenue || {};
         const smSalesKpi = serviceMinder.salesKpi || {};
+        const officeSummary = salesData?.summary || data.summary || {};
         const invoices = (smSalesKpi.monthly || []).reduce((sum, row) => sum + (row.invoices || 0), 0);
         const now = new Date(serviceMinder.meta.generated_at || Date.now());
         const daysElapsed = Math.max(1, Math.ceil((now - new Date(now.getFullYear(), 0, 1)) / 86400000));
         const projectedAnnual = Math.round((smRevenue.ytd_invoiced || 0) / daysElapsed * 365);
 
-        data.updated_at = serviceMinder.meta.generated_at;
-        data.period = 'ServiceMinder YTD • CSR from Office Tracking';
+        data.updated_at = salesData?.updated_at || data.updated_at;
+        data.period = 'Office tally sales/cancels • SM invoice revenue';
         data.summary = {
             ...(data.summary || {}),
-            total_sales: smSales.total_sales || 0,
-            total_cancels: smSales.total_cancels || 0,
+            total_sales: officeSummary.total_sales || 0,
+            total_cancels: officeSummary.total_cancels || 0,
             total_revenue: smRevenue.ytd_invoiced || 0,
             total_invoices: invoices,
-            net: smSales.net || 0,
-            days_tracked: daysElapsed,
+            net: officeSummary.net || 0,
+            days_tracked: officeSummary.days_tracked || daysElapsed,
             revenue_per_day: Math.round((smRevenue.ytd_invoiced || 0) / daysElapsed)
         };
         data.cancels = {
             ...(data.cancels || {}),
-            unique_accounts: smSales.total_cancels || 0,
-            total_events: smSales.total_cancels || 0,
-            by_reason: Object.entries(smSales.cancel_reasons || {}).map(([name, count]) => ({
-                name,
-                count,
-                pct: Math.round(count / Math.max(smSales.total_cancels || 1, 1) * 100)
-            }))
+            unique_accounts: officeSummary.total_cancels || 0,
+            total_events: officeSummary.total_cancels || 0,
+            by_reason: salesData?.cancel_reasons || data.cancels?.by_reason || []
         };
         data.revenue_pace = {
             ...(data.revenue_pace || {}),
