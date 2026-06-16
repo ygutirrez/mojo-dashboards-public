@@ -82,13 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: May 21, 2026 @ 2:19 pm</div>
-        <div class="period">📅 Jan 1 - May 21, 2026 (YTD)</div>
+        <div class="updated">Last updated: June 16, 2026 @ 3:26 pm</div>
+        <div class="period">📅 Jan 1 - Jun 16, 2026 (YTD)</div>
+        <div class="updated">ServiceMinder revenue/proposals. CSR leaderboard remains Office Tracking.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>155 unique accounts cancelled</strong> (509 events). Top reason: Moved (160). 133 cancel events are potentially recoverable (seasonal/financial/change of program) as mosquito season ramps up.</p>
+        <p><strong>1,297 ServiceMinder sales/proposals completed or invoiced</strong> YTD with <strong>$1,139,320</strong> invoiced revenue. Cancellation and CSR attribution remain on the Office Tracking/legacy path until those ServiceMinder fields are confirmed.</p>
     </div>
 
     <div class="leaderboard">
@@ -118,91 +119,46 @@
     <div class="metrics-grid">
         <div class="metric-card positive">
             <div class="label">Total Sales</div>
-            <div class="value">307</div>
-            <div class="subtext">$306,072 value</div>
+            <div class="value">1,297</div>
+            <div class="subtext">SM invoiced/complete proposals</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Cancel Events</div>
-            <div class="value">509</div>
+            <div class="value">8</div>
             <div class="subtext">YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Accounts Cancelled</div>
-            <div class="value">155</div>
+            <div class="value">8</div>
             <div class="subtext">Unique customers lost</div>
         </div>
         <div class="metric-card positive">
             <div class="label">Net Change</div>
-            <div class="value">+152</div>
+            <div class="value">+1289</div>
             <div class="subtext">Customer base growing</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Total Revenue</div>
-            <div class="value">$946k</div>
-            <div class="subtext">9863 invoices YTD</div>
+            <div class="value">$1139k</div>
+            <div class="subtext">12,323 invoices YTD</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
-            <div class="value">141</div>
-            <div class="subtext">Jan 1 - May 21</div>
+            <div class="value">167</div>
+            <div class="subtext">Jan 1 - Jun 16</div>
         </div>
     </div>
 
     <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
         <div class="metric-card warning">
-            <div class="label">Moved</div>
-            <div class="value">160</div>
-            <div class="subtext">31% of cancellations</div>
+            <div class="label">Moving</div>
+            <div class="value">4</div>
+            <div class="subtext">50% of cancellations</div>
         </div>
         <div class="metric-card warning">
-            <div class="label">Not Interested at this time</div>
-            <div class="value">61</div>
-            <div class="subtext">12% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Financial Reasons</div>
-            <div class="value">59</div>
-            <div class="subtext">12% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Unhappy w Service</div>
-            <div class="value">53</div>
-            <div class="subtext">10% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Bad Debt</div>
-            <div class="value">53</div>
-            <div class="subtext">10% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Other - Review Note</div>
-            <div class="value">47</div>
-            <div class="subtext">9% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Went w Competition</div>
-            <div class="value">29</div>
-            <div class="subtext">6% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Customer only wanted one spray</div>
-            <div class="value">17</div>
-            <div class="subtext">3% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Unknown</div>
-            <div class="value">16</div>
-            <div class="subtext">3% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">Change of Program</div>
-            <div class="value">13</div>
-            <div class="subtext">3% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="label">One Time to On Going Customer</div>
-            <div class="value">1</div>
-            <div class="subtext">0% of cancellations</div>
+            <div class="label">Financial</div>
+            <div class="value">4</div>
+            <div class="subtext">50% of cancellations</div>
         </div>
     </div>
 
@@ -260,9 +216,9 @@
         new Chart(document.getElementById('leadSourceChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Online","MoJo Customer","Referral","Yard Sign","Mosquito Joe Vehicle","Printed Material","Online Search","Advertising","Local Branding","Print Material","Mass Media","Direct Mail Postcard"],
+                labels: ["Online","Referral","MoJo Customer","Yard Sign","Direct Mail Postcard","Mosquito Joe Vehicle","Other","Advertising","Printed Material","Mail Advertising","Existing Customer","DMP","Online Search","Accelerated","Neighborly","Local Branding","Competitor","Email","Event/Sponsorship","Print Material","Mass Media"],
                 datasets: [{
-                    data: [133,73,48,19,10,7,7,4,2,2,1,1],
+                    data: [8055,7328,3817,2636,2574,1930,801,677,350,274,223,121,96,55,53,42,40,36,36,29,13],
                     backgroundColor: ["#00ff88","#00d9ff","#ffd700","#ff9f43","#c792ea","#ff78c5","#82aaff","#ff6b6b"],
                     borderWidth: 0
                 }]
@@ -273,10 +229,10 @@
         new Chart(document.getElementById('cancelReasonsChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Moved","Not Interested at this time","Financial Reasons","Unhappy w Service","Bad Debt","Other - Review Note","Went w Competition","Customer only wanted one spray","Unknown","Change of Program","One Time to On Going Customer"],
+                labels: ["Moving","Financial"],
                 datasets: [{
-                    data: [160,61,59,53,53,47,29,17,16,13,1],
-                    backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
+                    data: [4,4],
+                    backgroundColor: ["#ff6b6b","#ffd700"],
                     borderWidth: 0
                 }]
             },
@@ -286,10 +242,10 @@
         new Chart(document.getElementById('servicesSoldChart'), {
             type: 'bar',
             data: {
-                labels: ["Signature Program","Re-Spray","Residential - One Time Services","Home Pest Defense","Misting Systems","Misting System Service","Synthetic Barrier Spray - 2 week","Other Insects / Specialty Services"],
+                labels: ["Mojo Essential","Synthetic Barrier Spray - 2 week","Misting System Recurring Service Bi-Monthly","HPD - 42 Days","Gnat/Midge/No-seeums Service - 2 weeks","Synthetic Barrier Spray - 4 week","Synthetic Signature Single Svc 3","All-Natural Barrier Spray"],
                 datasets: [{
                     label: 'Sales',
-                    data: [113,31,26,19,18,12,10,9],
+                    data: [675,398,71,52,38,36,22,17],
                     backgroundColor: '#00ff88',
                     borderRadius: 4
                 }]
