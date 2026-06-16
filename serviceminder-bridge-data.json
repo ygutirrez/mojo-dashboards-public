@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "generated_at": "2026-06-16T19:17:18.423Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-06-16T18:54:43.333Z",
+      "kinds_ok": 1,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 17836,
+      "contacts": 13509,
+      "invoices": 12436,
+      "proposals": 1387
+    },
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": "Jorge Navarro",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive_empty_route",
+        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+      }
+    ],
+    "write_existing_applied": true
+  },
+  "owners": {
+    "revenue": {
+      "ytd_invoiced": 1139320,
+      "avg_per_visit": 74,
+      "mtd": 122352,
+      "mtd_jobs": 1435
+    },
+    "operations": {
+      "total_jobs": 15476,
+      "jobs_per_tech_day": 0,
+      "revenue_per_tech_day": 0,
+      "first_time_success": null,
+      "callback_rate": null,
+      "resprays": 1523,
+      "active_techs": 10,
+      "working_days_ytd": null
+    },
+    "sales": {
+      "total_sales": 1297,
+      "total_cancels": 8,
+      "net": 1289,
+      "cancel_reasons": {
+        "Moving": 4,
+        "Financial": 4
+      },
+      "sale_categories": {
+        "Mojo Essential": 675,
+        "Synthetic Barrier Spray - 2 week": 398,
+        "Misting System Recurring Service Bi-Monthly": 71,
+        "HPD - 42 Days": 52,
+        "Gnat/Midge/No-seeums Service - 2 weeks": 38,
+        "Synthetic Barrier Spray - 4 week": 36,
+        "Synthetic Signature Single Svc 3": 22,
+        "All-Natural Barrier Spray": 17,
+        "InZecto Trap Service": 12,
+        "Misting system - 4 Weeks": 12,
+        "In2Care Service - 4 Weeks Service": 10,
+        "Misting system - 6 Weeks": 6,
+        "Inzecto Trap Replacement": 5,
+        "Synthetic Signature Single Svc 2": 4,
+        "Flea & Tick Treatment": 4,
+        "Flea Service": 3,
+        "Synthetic + In2Care": 3,
+        "Mojo Essential - Eco Friendly": 3,
+        "In2Care Service": 3,
+        "One-Time Spray": 2,
+        "LIV Installation": 2,
+        "Gnats/Midges/No-seeums - 3 week": 2,
+        "Fly Management Service": 2,
+        "Synthetic Signature Single Svc 1": 1,
+        "Special Event Spray": 1,
+        "RT Service Monthly": 1,
+        "HPD - 56 Days": 1,
+        "Misting System Service": 1
+      }
+    }
+  },
+  "ops": {
+    "summary": {
+      "total_wo_completed": 15476,
+      "total_wo_revenue": 1139320
+    },
+    "employees": [
+      {
+        "name": "Joe Pagan",
+        "jobs": 169,
+        "revenue": 34061.67,
+        "avgRevenue": 201.55,
+        "route_label": "Misting Route",
+        "technician": "Joe Pagan",
+        "technician_status": "active",
+        "mapping_source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      {
+        "name": "Damian Machin",
+        "jobs": 114,
+        "revenue": 10041.14,
+        "avgRevenue": 88.08,
+        "route_label": "Route 11",
+        "technician": "Damian Machin",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "David Carbajal",
+        "jobs": 97,
+        "revenue": 8029.19,
+        "avgRevenue": 82.78,
+        "route_label": "Route 12",
+        "technician": "David Carbajal",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Jordan Meddock",
+        "jobs": 92,
+        "revenue": 7034.21,
+        "avgRevenue": 76.46,
+        "route_label": "Route 10",
+        "technician": "Jordan Meddock",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "jobs": 91,
+        "revenue": 7768.81,
+        "avgRevenue": 85.37,
+        "route_label": "Route 8",
+        "technician": "Jeffrey Baptiste",
+        "technician_status": "last_day_2026-06-20",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Marcus Rubi",
+        "jobs": 90,
+        "revenue": 6369.48,
+        "avgRevenue": 70.77,
+        "route_label": "Route 6",
+        "technician": "Marcus Rubi",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Stanley Prophete",
+        "jobs": 86,
+        "revenue": 7540.57,
+        "avgRevenue": 87.68,
+        "route_label": "Route 5",
+        "technician": "Stanley Prophete",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Curtis Blount",
+        "jobs": 78,
+        "revenue": 6664.97,
+        "avgRevenue": 85.45,
+        "route_label": "Route 7",
+        "technician": "Curtis Blount",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Andrew Schamel",
+        "jobs": 71,
+        "revenue": 6395.96,
+        "avgRevenue": 90.08,
+        "route_label": "Route 4",
+        "technician": "Andrew Schamel",
+        "technician_status": "inactive_empty_route",
+        "mapping_source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+      },
+      {
+        "name": "Jorge Navarro",
+        "jobs": 47,
+        "revenue": 3824.29,
+        "avgRevenue": 81.37,
+        "route_label": "Route 2",
+        "technician": "Jorge Navarro",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Travis Johnson",
+        "jobs": 42,
+        "revenue": 3304.77,
+        "avgRevenue": 78.69,
+        "route_label": "Route 1",
+        "technician": "Travis Johnson",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16"
+      },
+      {
+        "name": "Bump",
+        "jobs": 21,
+        "revenue": 2523.77,
+        "avgRevenue": 120.18,
+        "route_label": "Bump",
+        "technician": "Bump",
+        "technician_status": "unused",
+        "mapping_source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    ],
+    "appointment_statuses": {
+      "Queued": 14478,
+      "Scheduled": 980,
+      "Started": 17,
+      "Completed": 1
+    },
+    "service_mix": {
+      "Mojo Essential": 7402,
+      "Synthetic Barrier Spray - 2 week": 4478,
+      "Misting System Recurring Service Bi-Monthly": 1070,
+      "HPD - 42 Days": 709,
+      "Gnat/Midge/No-seeums Service - 2 weeks": 370,
+      "Synthetic Barrier Spray - 4 week": 330,
+      "All-Natural Barrier Spray": 184,
+      "Misting system - 4 Weeks": 124,
+      "Accelerated - Synthetic Signature Service": 124,
+      "In2Care Service - 4 Weeks Service": 107,
+      "InZecto Trap Service": 102,
+      "Misting system - 6 Weeks": 75,
+      "Inzecto Trap Replacement": 65,
+      "Synthetic Signature Service": 33,
+      "Flea Service": 30,
+      "In2Care Service": 28,
+      "Mojo Essential - Eco Friendly": 28,
+      "Synthetic + In2Care": 28,
+      "Flea & Tick Treatment": 23,
+      "Synthetic Signature Single Svc 3": 22,
+      "Special Event Service": 22,
+      "Fly Management Service": 20,
+      "Property Assessment": 18,
+      "HPD - Quarterly": 15,
+      "Gnats/Midges/No-seeums - 3 week": 12,
+      "RT Service Monthly": 9,
+      "Synthetic Signature Single Svc 2": 6,
+      "HPD - 56 Days": 6,
+      "Re-Spray": 6,
+      "Misting System Equipment": 6,
+      "Synthetic Signature Single Svc 1": 4,
+      "Misting System Installation": 4,
+      "Quarterly Tick & Flea Treatment": 3,
+      "Misting System Service": 3,
+      "One-Time Spray": 2,
+      "Special Event Spray": 2,
+      "LIV Installation": 2,
+      "Misting System Repair Service": 2,
+      "HPD - One Time Treatment": 1,
+      "Misting System Refill": 1
+    }
+  },
+  "tech": {
+    "summary": {
+      "total_jobs": 15476,
+      "total_techs": 10,
+      "resprays": 1523,
+      "total_revenue": 1139320
+    },
+    "employees": [
+      {
+        "name": "Joe Pagan",
+        "route_label": "Misting Route",
+        "technician_status": "active",
+        "initials": "JP",
+        "jobs": 169,
+        "rank": 1,
+        "revenue": 34062,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Damian Machin",
+        "route_label": "Route 11",
+        "technician_status": "active",
+        "initials": "DM",
+        "jobs": 114,
+        "rank": 2,
+        "revenue": 10041,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "David Carbajal",
+        "route_label": "Route 12",
+        "technician_status": "active",
+        "initials": "DC",
+        "jobs": 97,
+        "rank": 3,
+        "revenue": 8029,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Jordan Meddock",
+        "route_label": "Route 10",
+        "technician_status": "active",
+        "initials": "JM",
+        "jobs": 92,
+        "rank": 4,
+        "revenue": 7034,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "route_label": "Route 8",
+        "technician_status": "last_day_2026-06-20",
+        "initials": "JB",
+        "jobs": 91,
+        "rank": 5,
+        "revenue": 7769,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Marcus Rubi",
+        "route_label": "Route 6",
+        "technician_status": "active",
+        "initials": "MR",
+        "jobs": 90,
+        "rank": 6,
+        "revenue": 6369,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Stanley Prophete",
+        "route_label": "Route 5",
+        "technician_status": "active",
+        "initials": "SP",
+        "jobs": 86,
+        "rank": 7,
+        "revenue": 7541,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Curtis Blount",
+        "route_label": "Route 7",
+        "technician_status": "active",
+        "initials": "CB",
+        "jobs": 78,
+        "rank": 8,
+        "revenue": 6665,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Andrew Schamel",
+        "route_label": "Route 4",
+        "technician_status": "inactive_empty_route",
+        "initials": "AS",
+        "jobs": 71,
+        "rank": 9,
+        "revenue": 6396,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Jorge Navarro",
+        "route_label": "Route 2",
+        "technician_status": "active",
+        "initials": "JN",
+        "jobs": 47,
+        "rank": 10,
+        "revenue": 3824,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Travis Johnson",
+        "route_label": "Route 1",
+        "technician_status": "active",
+        "initials": "TJ",
+        "jobs": 42,
+        "rank": 11,
+        "revenue": 3305,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Bump",
+        "route_label": "Bump",
+        "technician_status": "unused",
+        "initials": "B",
+        "jobs": 21,
+        "rank": 12,
+        "revenue": 2524,
+        "upsells": 0,
+        "resprays": 0
+      }
+    ]
+  },
+  "salesKpi": {
+    "revenue": 1139320,
+    "proposals": 1387,
+    "invoiced_proposals": 1227,
+    "complete_proposals": 70,
+    "sources": {
+      "Online": 8055,
+      "Referral": 7328,
+      "MoJo Customer": 3817,
+      "Yard Sign": 2636,
+      "Direct Mail Postcard": 2574,
+      "Mosquito Joe Vehicle": 1930,
+      "Other": 801,
+      "Advertising": 677,
+      "Printed Material": 350,
+      "Mail Advertising": 274,
+      "Existing Customer": 223,
+      "DMP": 121,
+      "Online Search": 96,
+      "Accelerated": 55,
+      "Neighborly": 53,
+      "Local Branding": 42,
+      "Competitor": 40,
+      "Email": 36,
+      "Event/Sponsorship": 36,
+      "Print Material": 29,
+      "Mass Media": 13
+    },
+    "monthly": [
+      {
+        "month": "2026-01",
+        "invoiceRevenue": 192580.32,
+        "invoices": 2026,
+        "appointments": 0,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-02",
+        "invoiceRevenue": 192261.34,
+        "invoices": 1972,
+        "appointments": 2,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-03",
+        "invoiceRevenue": 203570.09,
+        "invoices": 2198,
+        "appointments": 2,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-04",
+        "invoiceRevenue": 220122.13,
+        "invoices": 2416,
+        "appointments": 3,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-05",
+        "invoiceRevenue": 208433.87,
+        "invoices": 2276,
+        "appointments": 490,
+        "proposals": 1387,
+        "cancels": 0
+      },
+      {
+        "month": "2026-06",
+        "invoiceRevenue": 122352.22,
+        "invoices": 1435,
+        "appointments": 3009,
+        "proposals": 0,
+        "cancels": 2
+      },
+      {
+        "month": "2026-07",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 5097,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-08",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 3892,
+        "proposals": 0,
+        "cancels": 2
+      },
+      {
+        "month": "2026-09",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 2209,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-10",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 397,
+        "proposals": 0,
+        "cancels": 2
+      },
+      {
+        "month": "2026-11",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 218,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-12",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 157,
+        "proposals": 0,
+        "cancels": 2
+      }
+    ]
+  },
+  "warnings": [
+    "Chemical/material usage is not available from the current ServiceMinder Org downloads.",
+    "CSR attribution and tech upsells remain on the Office Tracking/CSV path until ServiceMinder fields are confirmed."
+  ]
+}

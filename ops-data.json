@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-13T13:37:01.643Z",
+  "updated_at": "2026-06-16T19:17:18.423Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -11,8 +11,8 @@
     "vehicles_with_codes": 9,
     "blowers_active": 13,
     "drivers_need_coaching": 0,
-    "total_wo_completed": 9667,
-    "total_wo_revenue": 892916
+    "total_wo_completed": 15476,
+    "total_wo_revenue": 1139320
   },
   "alerts": [
     {
@@ -593,64 +593,221 @@
   "avgRevenuePerWO": 93.35,
   "employees": [
     {
+      "name": "Joe Pagan",
+      "jobs": 169,
+      "revenue": 34061.67,
+      "avgRevenue": 201.55,
+      "route_label": "Misting Route",
+      "technician": "Joe Pagan",
+      "technician_status": "active",
+      "mapping_source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+    },
+    {
       "name": "Damian Machin",
-      "jobs": 0,
-      "revenue": 58791.19999999974,
-      "avgRevenue": 0
+      "jobs": 114,
+      "revenue": 10041.14,
+      "avgRevenue": 88.08,
+      "route_label": "Route 11",
+      "technician": "Damian Machin",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
     },
     {
       "name": "David Carbajal",
-      "jobs": 0,
-      "revenue": 50283.559999999874,
-      "avgRevenue": 0
+      "jobs": 97,
+      "revenue": 8029.19,
+      "avgRevenue": 82.78,
+      "route_label": "Route 12",
+      "technician": "David Carbajal",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
     },
     {
-      "name": "Stanley Prophete",
-      "jobs": 0,
-      "revenue": 53068.02999999983,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Marcus   Rubi",
-      "jobs": 0,
-      "revenue": 44256.64000000002,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Andrew Schamel",
-      "jobs": 0,
-      "revenue": 44460.44000000002,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Joseph  Pagan",
-      "jobs": 0,
-      "revenue": 58473.81000000005,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Jorge  Navarro",
-      "jobs": 0,
-      "revenue": 21560.450000000063,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Jeovany  Osorio",
-      "jobs": 0,
-      "revenue": 18406.399999999998,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Travis Johnson",
-      "jobs": 0,
-      "revenue": 13317.689999999975,
-      "avgRevenue": 0
+      "name": "Jordan Meddock",
+      "jobs": 92,
+      "revenue": 7034.21,
+      "avgRevenue": 76.46,
+      "route_label": "Route 10",
+      "technician": "Jordan Meddock",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
     },
     {
       "name": "Jeffrey Baptiste",
-      "jobs": 0,
-      "revenue": 5681.25999999999,
-      "avgRevenue": 0
+      "jobs": 91,
+      "revenue": 7768.81,
+      "avgRevenue": 85.37,
+      "route_label": "Route 8",
+      "technician": "Jeffrey Baptiste",
+      "technician_status": "last_day_2026-06-20",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Marcus Rubi",
+      "jobs": 90,
+      "revenue": 6369.48,
+      "avgRevenue": 70.77,
+      "route_label": "Route 6",
+      "technician": "Marcus Rubi",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Stanley Prophete",
+      "jobs": 86,
+      "revenue": 7540.57,
+      "avgRevenue": 87.68,
+      "route_label": "Route 5",
+      "technician": "Stanley Prophete",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Curtis Blount",
+      "jobs": 78,
+      "revenue": 6664.97,
+      "avgRevenue": 85.45,
+      "route_label": "Route 7",
+      "technician": "Curtis Blount",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Andrew Schamel",
+      "jobs": 71,
+      "revenue": 6395.96,
+      "avgRevenue": 90.08,
+      "route_label": "Route 4",
+      "technician": "Andrew Schamel",
+      "technician_status": "inactive_empty_route",
+      "mapping_source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+    },
+    {
+      "name": "Jorge Navarro",
+      "jobs": 47,
+      "revenue": 3824.29,
+      "avgRevenue": 81.37,
+      "route_label": "Route 2",
+      "technician": "Jorge Navarro",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Travis Johnson",
+      "jobs": 42,
+      "revenue": 3304.77,
+      "avgRevenue": 78.69,
+      "route_label": "Route 1",
+      "technician": "Travis Johnson",
+      "technician_status": "active",
+      "mapping_source": "Yoel route screenshot 2026-06-16"
+    },
+    {
+      "name": "Bump",
+      "jobs": 21,
+      "revenue": 2523.77,
+      "avgRevenue": 120.18,
+      "route_label": "Bump",
+      "technician": "Bump",
+      "technician_status": "unused",
+      "mapping_source": "Yoel note 2026-06-16: Bump is not used"
     }
-  ]
+  ],
+  "serviceminder": {
+    "generated_at": "2026-06-16T19:17:18.423Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-06-16T18:54:43.333Z",
+      "kinds_ok": 1,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 17836,
+      "contacts": 13509,
+      "invoices": 12436,
+      "proposals": 1387
+    },
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": "Jorge Navarro",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive_empty_route",
+        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+      }
+    ],
+    "write_existing_applied": true
+  }
 }

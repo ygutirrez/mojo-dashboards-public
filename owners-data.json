@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-13T13:37:01.643Z",
-  "generated_date": "May 13, 2026, 9:37 AM",
+  "generated_at": "2026-06-16T19:17:18.423Z",
+  "generated_date": "June 16, 2026",
   "sales": {
     "csv_date": "2026-05-13",
     "total_sales": 293,
@@ -77,19 +77,155 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 916981,
-    "avg_per_visit": 96,
-    "mtd": 87359,
-    "mtd_jobs": 951
+    "ytd_invoiced": 1139320,
+    "avg_per_visit": 74,
+    "mtd": 122352,
+    "mtd_jobs": 1435
   },
   "operations": {
-    "total_jobs": 4504,
-    "jobs_per_tech_day": 8.5,
-    "revenue_per_tech_day": 793,
-    "first_time_success": 99.8,
-    "callback_rate": 0.2,
-    "resprays": 9,
+    "total_jobs": 15476,
+    "jobs_per_tech_day": 0,
+    "revenue_per_tech_day": 0,
+    "first_time_success": null,
+    "callback_rate": null,
+    "resprays": 1523,
     "active_techs": 10,
-    "working_days_ytd": 53
+    "working_days_ytd": null
+  },
+  "serviceminder": {
+    "generated_at": "2026-06-16T19:17:18.423Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-06-16T18:54:43.333Z",
+      "kinds_ok": 1,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 17836,
+      "contacts": 13509,
+      "invoices": 12436,
+      "proposals": 1387
+    },
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": "Jorge Navarro",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive_empty_route",
+        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+      }
+    ],
+    "write_existing_applied": true
+  },
+  "serviceminder_sales_preview": {
+    "total_sales": 1297,
+    "total_cancels": 8,
+    "net": 1289,
+    "cancel_reasons": {
+      "Moving": 4,
+      "Financial": 4
+    },
+    "sale_categories": {
+      "Mojo Essential": 675,
+      "Synthetic Barrier Spray - 2 week": 398,
+      "Misting System Recurring Service Bi-Monthly": 71,
+      "HPD - 42 Days": 52,
+      "Gnat/Midge/No-seeums Service - 2 weeks": 38,
+      "Synthetic Barrier Spray - 4 week": 36,
+      "Synthetic Signature Single Svc 3": 22,
+      "All-Natural Barrier Spray": 17,
+      "InZecto Trap Service": 12,
+      "Misting system - 4 Weeks": 12,
+      "In2Care Service - 4 Weeks Service": 10,
+      "Misting system - 6 Weeks": 6,
+      "Inzecto Trap Replacement": 5,
+      "Synthetic Signature Single Svc 2": 4,
+      "Flea & Tick Treatment": 4,
+      "Flea Service": 3,
+      "Synthetic + In2Care": 3,
+      "Mojo Essential - Eco Friendly": 3,
+      "In2Care Service": 3,
+      "One-Time Spray": 2,
+      "LIV Installation": 2,
+      "Gnats/Midges/No-seeums - 3 week": 2,
+      "Fly Management Service": 2,
+      "Synthetic Signature Single Svc 1": 1,
+      "Special Event Spray": 1,
+      "RT Service Monthly": 1,
+      "HPD - 56 Days": 1,
+      "Misting System Service": 1
+    }
   }
 }
