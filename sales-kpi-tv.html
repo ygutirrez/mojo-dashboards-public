@@ -153,7 +153,7 @@
         .content > *, .metrics-row > *, .center-col, .right-col { min-width: 0; }
 
         /* ===== TOP METRICS ROW ===== */
-        .metrics-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 0.75vw, 14px); }
+        .metrics-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 0.75vw, 14px); }
         .metric-card {
             padding: clamp(12px, 0.95vw, 18px) clamp(10px, 0.85vw, 16px) clamp(10px, 0.75vw, 14px);
             text-align: center;
@@ -173,6 +173,7 @@
         .metric-card.net-neg::before { background: linear-gradient(90deg, var(--cancel-red), #ff6b6b); }
         .metric-card.pace::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
         .metric-card.neutral::before { background: linear-gradient(90deg, var(--gold), #ffaa00); }
+        .metric-card.phone::before { background: linear-gradient(90deg, #06b6d4, var(--blue)); }
         
         .metric-label { font-size: clamp(9px, 0.58vw, 11px); color: var(--text-muted); text-transform: uppercase; letter-spacing: clamp(1px, 0.1vw, 2px); font-weight: 700; margin-bottom: 6px; }
         .metric-value {
@@ -187,6 +188,7 @@
         .metric-card.net-neg .metric-value { color: var(--cancel-red); text-shadow: 0 0 40px rgba(255,71,87,0.5); animation: redPulse 1.5s ease-in-out infinite; }
         .metric-card.pace .metric-value { color: var(--blue); text-shadow: 0 0 30px rgba(59,130,246,0.3); }
         .metric-card.neutral .metric-value { color: var(--gold); text-shadow: 0 0 30px rgba(255,215,0,0.3); }
+        .metric-card.phone .metric-value { color: #06b6d4; text-shadow: 0 0 30px rgba(6,182,212,0.35); }
         
         @keyframes greenGlow { 0%,100% { text-shadow: 0 0 30px rgba(0,255,136,0.4); } 50% { text-shadow: 0 0 60px rgba(0,255,136,0.7), 0 0 100px rgba(0,255,136,0.3); } }
         @keyframes redPulse { 0%,100% { text-shadow: 0 0 30px rgba(255,71,87,0.4); } 50% { text-shadow: 0 0 60px rgba(255,71,87,0.7); transform: scale(1.02); } }
@@ -503,6 +505,81 @@
             box-shadow: 0 0 8px rgba(255,255,255,0.5);
         }
         .pace-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); }
+
+        /* Phone Performance */
+        .phone-card {
+            padding: 16px 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #06b6d4, var(--blue));
+        }
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .phone-stat {
+            min-height: 68px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 10px 12px;
+        }
+        .phone-stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(20px, 1.6vw, 28px);
+            font-weight: 800;
+            color: #06b6d4;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+        .phone-stat-label {
+            margin-top: 4px;
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .phone-leader-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .phone-leader-name {
+            font-weight: 800;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .phone-leader-label {
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .phone-leader-value {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+        .phone-empty {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
 
         /* Cancel Reasons */
         .cancel-card {
@@ -825,15 +902,18 @@
 
     async function loadDashboard() {
         try {
-            const [res, salesRes, smRes] = await Promise.all([
+            const [res, salesRes, smRes, nextivaRes] = await Promise.all([
                 fetch(DATA_URL + '?t=' + Date.now()),
                 fetch('sales-data.json?t=' + Date.now()).catch(() => null),
-                fetch('serviceminder-bridge-data.json?t=' + Date.now()).catch(() => null)
+                fetch('serviceminder-bridge-data.json?t=' + Date.now()).catch(() => null),
+                fetch('nextiva-data.json?t=' + Date.now()).catch(() => null)
             ]);
             const data = await res.json();
             const salesData = salesRes && salesRes.ok ? await salesRes.json() : null;
             const serviceMinder = smRes && smRes.ok ? await smRes.json() : null;
+            const nextiva = nextivaRes && nextivaRes.ok ? await nextivaRes.json() : null;
             applyServiceMinderHeadlines(data, salesData, serviceMinder);
+            data.nextiva = nextiva;
             renderDashboard(data);
             document.getElementById('loadingScreen').style.display = 'none';
             document.getElementById('dashboard').style.opacity = '1';
@@ -897,6 +977,7 @@
         const cancelReasons = (data.cancels && data.cancels.by_reason) || [];
         const revPace = data.revenue_pace || {};
         const weeklyTrend = data.weekly_trend || [];
+        const nextiva = data.nextiva || null;
 
         // Calculate weekly sales from trend (last entry minus previous)
         let weeklySales = {};
@@ -944,6 +1025,15 @@
         const projectedStr = revPace.projected_annual ? '$' + (revPace.projected_annual / 1000000).toFixed(1) + 'M' : '—';
         const targetStr = revPace.target_annual ? '$' + (revPace.target_annual / 1000000).toFixed(0) + 'M' : '—';
         const ytdStr = revPace.ytd_revenue ? '$' + Math.round(revPace.ytd_revenue / 1000).toLocaleString() + 'K' : '—';
+        const phoneReady = nextiva && nextiva.status === 'ready';
+        const phoneSummary = nextiva?.summary || {};
+        const phoneLeaders = nextiva?.leaders || {};
+        const fmtSeconds = seconds => {
+            if (seconds == null || Number.isNaN(Number(seconds))) return '—';
+            const n = Math.round(Number(seconds));
+            if (n < 60) return n + 's';
+            return Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0');
+        };
 
         // Top 5 cancel reasons
         const topReasons = cancelReasons.slice(0, 5);
@@ -994,6 +1084,11 @@
                     <div class="metric-label">⏳ Days Left</div>
                     <div class="metric-value">${daysLeft}</div>
                     <div class="metric-sub">This Month</div>
+                </div>
+                <div class="glass metric-card phone fade-in-up" style="animation-delay:0.32s">
+                    <div class="metric-label">☎️ Answer Rate</div>
+                    <div class="metric-value">${phoneReady ? phoneSummary.answer_rate.toFixed(0) + '%' : '—'}</div>
+                    <div class="metric-sub">${phoneReady ? (phoneSummary.missed_calls || 0) + ' missed today' : 'Nextiva feed pending'}</div>
                 </div>
             </div>
 
@@ -1100,6 +1195,47 @@
 
             <!-- RIGHT -->
             <div class="right-col">
+                <!-- Phone Performance -->
+                <div class="glass phone-card fade-in-up" style="animation-delay:0.53s">
+                    <div class="section-title"><span class="emoji">☎️</span> PHONE SPEED</div>
+                    ${phoneReady ? `
+                    <div class="phone-grid">
+                        <div class="phone-stat">
+                            <div class="phone-stat-value">${phoneSummary.inbound_calls || 0}</div>
+                            <div class="phone-stat-label">Inbound Calls</div>
+                        </div>
+                        <div class="phone-stat">
+                            <div class="phone-stat-value">${phoneSummary.missed_calls || 0}</div>
+                            <div class="phone-stat-label">Missed Calls</div>
+                        </div>
+                        <div class="phone-stat">
+                            <div class="phone-stat-value">${fmtSeconds(phoneSummary.avg_answer_seconds)}</div>
+                            <div class="phone-stat-label">Avg Answer</div>
+                        </div>
+                        <div class="phone-stat">
+                            <div class="phone-stat-value">${phoneSummary.busiest_hour || '—'}</div>
+                            <div class="phone-stat-label">Busiest Hour</div>
+                        </div>
+                    </div>
+                    <div class="phone-leader-row">
+                        <div>
+                            <div class="phone-leader-name">${phoneLeaders.most_answered?.name || '—'}</div>
+                            <div class="phone-leader-label">Most Pickups</div>
+                        </div>
+                        <div class="phone-leader-value">${phoneLeaders.most_answered?.answered ?? '—'}</div>
+                    </div>
+                    <div class="phone-leader-row">
+                        <div>
+                            <div class="phone-leader-name">${phoneLeaders.fastest_answer?.name || '—'}</div>
+                            <div class="phone-leader-label">Fastest Avg Answer</div>
+                        </div>
+                        <div class="phone-leader-value">${fmtSeconds(phoneLeaders.fastest_answer?.avg_answer_seconds)}</div>
+                    </div>` : `
+                    <div class="phone-empty">
+                        Waiting on the first scheduled Nextiva analytics export. Once the CSV lands, this panel will show traffic, missed calls, pickups, and answer speed.
+                    </div>`}
+                </div>
+
                 <!-- Badges -->
                 <div class="glass badges-card fade-in-up" style="animation-delay:0.55s">
                     <div class="section-title"><span class="emoji">🎖️</span> ACHIEVEMENTS</div>
