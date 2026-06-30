@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-06-30T19:33:21.776Z",
+  "updated_at": "2026-06-30T21:52:50.862Z",
   "csv_date": "2026-06-30",
   "period": "Jan 1 - Jun 30, 2026 (YTD)",
   "summary": {
     "total_sales": 431,
-    "total_cancels": 236,
-    "net": 195,
+    "total_cancels": 237,
+    "net": 194,
     "paused_wp": 58,
-    "paused_pct": 25,
+    "paused_pct": 24,
     "days_tracked": 181
   },
   "csrs": [
     {
       "name": "Lucy",
       "sales": 246,
-      "cancels": 68
+      "cancels": 69
     },
     {
       "name": "Norma",
@@ -31,7 +31,7 @@
     {
       "name": "Paused/WP",
       "count": 58,
-      "pct": 25
+      "pct": 24
     },
     {
       "name": "Moved",
@@ -40,8 +40,8 @@
     },
     {
       "name": "Not Interested",
-      "count": 27,
-      "pct": 11
+      "count": 28,
+      "pct": 12
     },
     {
       "name": "Financial",
@@ -182,6 +182,13 @@
     {
       "date": "2026-06-30",
       "dateFmt": "Jun 30",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-06-30",
+      "dateFmt": "Jun 30",
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Norma"
@@ -240,13 +247,6 @@
       "dateFmt": "Jun 29",
       "type": "Sale",
       "category": "Barrier Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-06-29",
-      "dateFmt": "Jun 29",
-      "type": "Sale",
-      "category": "Restart",
       "csr": "Norma"
     }
   ],
