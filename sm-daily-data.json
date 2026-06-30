@@ -1,0 +1,1161 @@
+{
+  "meta": {
+    "generated_at": "2026-06-30T14:48:20.686Z",
+    "report_date": "2026-06-30",
+    "timezone": "America/New_York",
+    "source": "ServiceMinder direct API",
+    "privacy": "Aggregated only; customer contact fields are not exported.",
+    "windows": {
+      "yesterday": "2026-06-29",
+      "today": "2026-06-30",
+      "next7_from": "2026-06-30",
+      "next7_through": "2026-07-06",
+      "month_start": "2026-06-01"
+    }
+  },
+  "executive": {
+    "yesterday": {
+      "completed_jobs": 122,
+      "appointment_value": 11176.14,
+      "completed_value": 10218.22,
+      "cancels": 8,
+      "actual_hours": 38.7
+    },
+    "today": {
+      "scheduled_jobs": 117,
+      "completed_jobs": 38,
+      "cancels": 5,
+      "scheduled_value": 10182.48,
+      "appointment_value": 14065.9
+    },
+    "next7": {
+      "appointments": 538,
+      "scheduled_jobs": 472,
+      "scheduled_value": 41453.01,
+      "cancels": 23
+    },
+    "mtd": {
+      "invoiced": 221027.48,
+      "payments_collected": 216640.53,
+      "invoice_count": 2559,
+      "payment_count": 2614
+    },
+    "alerts": [
+      "23 cancels already visible in the next 7 days."
+    ]
+  },
+  "dashboards": {
+    "operations": {
+      "yesterday": {
+        "total": 131,
+        "returned": 131,
+        "completed": 122,
+        "scheduled": 0,
+        "canceled": 8,
+        "appointmentValue": 11176.14,
+        "completedValue": 10218.22,
+        "scheduledValue": 0,
+        "actualHours": 38.7,
+        "driveHours": 0,
+        "avgValue": 85.31,
+        "reworks": 2,
+        "byStatus": [
+          {
+            "name": "Completed",
+            "value": 122
+          },
+          {
+            "name": "Canceled",
+            "value": 8
+          },
+          {
+            "name": "Other",
+            "value": 1
+          }
+        ],
+        "byTech": [
+          {
+            "name": "Route 12",
+            "value": 22
+          },
+          {
+            "name": "Route 11",
+            "value": 21
+          },
+          {
+            "name": "Route 5",
+            "value": 20
+          },
+          {
+            "name": "Route 7",
+            "value": 19
+          },
+          {
+            "name": "Route 6",
+            "value": 18
+          },
+          {
+            "name": "Route 1",
+            "value": 13
+          },
+          {
+            "name": "Route 2",
+            "value": 13
+          },
+          {
+            "name": "Agent Unknown",
+            "value": 4
+          },
+          {
+            "name": "Misting Route",
+            "value": 1
+          }
+        ],
+        "byService": [
+          {
+            "name": "Mojo Essential",
+            "value": 57
+          },
+          {
+            "name": "Synthetic Barrier Spray - 2 week",
+            "value": 46
+          },
+          {
+            "name": "Accelerated - Synthetic Signature Service",
+            "value": 7
+          },
+          {
+            "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+            "value": 5
+          },
+          {
+            "name": "Synthetic Barrier Spray - 4 week",
+            "value": 5
+          },
+          {
+            "name": "Gnats/Midges/No-see-ums",
+            "value": 2
+          },
+          {
+            "name": "Re-Spray",
+            "value": 2
+          },
+          {
+            "name": "All-Natural Barrier Spray",
+            "value": 1
+          },
+          {
+            "name": "HPD - 42 Days",
+            "value": 1
+          },
+          {
+            "name": "In2Care Service - 4 Weeks Service",
+            "value": 1
+          },
+          {
+            "name": "Misting system - 4 Weeks",
+            "value": 1
+          },
+          {
+            "name": "Misting System Installation",
+            "value": 1
+          },
+          {
+            "name": "One-time Service",
+            "value": 1
+          },
+          {
+            "name": "Special Event Service",
+            "value": 1
+          }
+        ],
+        "byCancelReason": [
+          {
+            "name": "Reason 5412",
+            "value": 3
+          },
+          {
+            "name": "Reason 5413",
+            "value": 1
+          },
+          {
+            "name": "Reason 5414",
+            "value": 1
+          },
+          {
+            "name": "Reason 5417",
+            "value": 1
+          },
+          {
+            "name": "Reason 6091",
+            "value": 1
+          },
+          {
+            "name": "Reason 6179",
+            "value": 1
+          }
+        ],
+        "materials": [
+          {
+            "name": "Bifen I/T Insecticide/Termiticide",
+            "quantity": 188.1,
+            "uses": 96,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10",
+            "quantity": 135.5,
+            "uses": 58,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10 8ml/g",
+            "quantity": 54,
+            "uses": 25,
+            "unit": "Each"
+          },
+          {
+            "name": "Aquabac 200g",
+            "quantity": 30,
+            "uses": 4,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Migrate Discount Sequence",
+            "quantity": 10,
+            "uses": 10,
+            "unit": ""
+          },
+          {
+            "name": "Discount",
+            "quantity": 7,
+            "uses": 7,
+            "unit": ""
+          },
+          {
+            "name": "Pivot 10 5.5ml/g",
+            "quantity": 6.5,
+            "uses": 3,
+            "unit": "Ounce"
+          },
+          {
+            "name": "In2Mix Bait Sachets",
+            "quantity": 6,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Synthetic Signature Single Svc 3",
+            "quantity": 3,
+            "uses": 3,
+            "unit": "SF"
+          },
+          {
+            "name": "Synthetic Signature Single Svc 2",
+            "quantity": 3,
+            "uses": 3,
+            "unit": "SF"
+          },
+          {
+            "name": "Altosid Pro-G Granular",
+            "quantity": 3,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Natular DT",
+            "quantity": 2,
+            "uses": 1,
+            "unit": "Each"
+          },
+          {
+            "name": "InTice 10",
+            "quantity": 1.5,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Web Out",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Referral Credit",
+            "quantity": 1,
+            "uses": 1,
+            "unit": ""
+          }
+        ],
+        "daily": [
+          {
+            "date": "2026-06-29",
+            "appointments": 131,
+            "completed": 122,
+            "scheduled": 0,
+            "canceled": 8,
+            "value": 11176.14
+          }
+        ]
+      },
+      "today": {
+        "total": 161,
+        "returned": 161,
+        "completed": 38,
+        "scheduled": 117,
+        "canceled": 5,
+        "appointmentValue": 14065.9,
+        "completedValue": 3116.45,
+        "scheduledValue": 10182.48,
+        "actualHours": 6.6,
+        "driveHours": 0,
+        "avgValue": 87.37,
+        "reworks": 0,
+        "byStatus": [
+          {
+            "name": "Scheduled",
+            "value": 117
+          },
+          {
+            "name": "Completed",
+            "value": 38
+          },
+          {
+            "name": "Canceled",
+            "value": 5
+          },
+          {
+            "name": "Other",
+            "value": 1
+          }
+        ],
+        "byTech": [
+          {
+            "name": "Route 5",
+            "value": 22
+          },
+          {
+            "name": "Route 12",
+            "value": 21
+          },
+          {
+            "name": "Route 7",
+            "value": 20
+          },
+          {
+            "name": "Route 1",
+            "value": 19
+          },
+          {
+            "name": "Route 6",
+            "value": 18
+          },
+          {
+            "name": "Bump",
+            "value": 16
+          },
+          {
+            "name": "Route 11",
+            "value": 16
+          },
+          {
+            "name": "Route 2",
+            "value": 15
+          },
+          {
+            "name": "Misting Route",
+            "value": 11
+          },
+          {
+            "name": "Agent Unknown",
+            "value": 3
+          }
+        ],
+        "byService": [
+          {
+            "name": "Mojo Essential",
+            "value": 66
+          },
+          {
+            "name": "Synthetic Barrier Spray - 2 week",
+            "value": 56
+          },
+          {
+            "name": "Accelerated - Synthetic Signature Service",
+            "value": 11
+          },
+          {
+            "name": "Misting System Recurring Service Bi-Monthly",
+            "value": 7
+          },
+          {
+            "name": "HPD - 42 Days",
+            "value": 4
+          },
+          {
+            "name": "All-Natural Barrier Spray",
+            "value": 3
+          },
+          {
+            "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+            "value": 3
+          },
+          {
+            "name": "Synthetic Barrier Spray - 4 week",
+            "value": 3
+          },
+          {
+            "name": "In2Care Service - 4 Weeks Service",
+            "value": 2
+          },
+          {
+            "name": "Misting system - 4 Weeks",
+            "value": 2
+          },
+          {
+            "name": "Misting system - 6 Weeks",
+            "value": 2
+          },
+          {
+            "name": "InZecto Trap Service",
+            "value": 1
+          },
+          {
+            "name": "Synthetic Signature Service",
+            "value": 1
+          }
+        ],
+        "byCancelReason": [
+          {
+            "name": "Reason 6091",
+            "value": 3
+          },
+          {
+            "name": "Reason 5413",
+            "value": 1
+          },
+          {
+            "name": "Reason 5416",
+            "value": 1
+          }
+        ],
+        "materials": [
+          {
+            "name": "Bifen I/T Insecticide/Termiticide",
+            "quantity": 55.5,
+            "uses": 42,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10",
+            "quantity": 36.5,
+            "uses": 26,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10 8ml/g",
+            "quantity": 33,
+            "uses": 5,
+            "unit": "Each"
+          },
+          {
+            "name": "Discount",
+            "quantity": 12,
+            "uses": 12,
+            "unit": ""
+          },
+          {
+            "name": "Migrate Discount Sequence",
+            "quantity": 8,
+            "uses": 8,
+            "unit": ""
+          },
+          {
+            "name": "Synthetic Signature Single Svc 2",
+            "quantity": 7,
+            "uses": 7,
+            "unit": "SF"
+          },
+          {
+            "name": "Synthetic Signature Single Svc 3",
+            "quantity": 3,
+            "uses": 3,
+            "unit": "SF"
+          },
+          {
+            "name": "Aquabac 200g",
+            "quantity": 2.3,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "EcoVia WD",
+            "quantity": 2,
+            "uses": 2,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Migrate Discount",
+            "quantity": 2,
+            "uses": 2,
+            "unit": ""
+          },
+          {
+            "name": "Pivot 10 5.5ml/g",
+            "quantity": 2,
+            "uses": 2,
+            "unit": "Ounce"
+          },
+          {
+            "name": "Natular DT",
+            "quantity": 1.5,
+            "uses": 1,
+            "unit": "Each"
+          },
+          {
+            "name": "InTice 10",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Aqua Kontrol 30 -30",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Advion Ant Gel",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gram"
+          }
+        ],
+        "daily": [
+          {
+            "date": "2026-06-30",
+            "appointments": 161,
+            "completed": 38,
+            "scheduled": 117,
+            "canceled": 5,
+            "value": 14065.9
+          }
+        ]
+      },
+      "next7": {
+        "total": 538,
+        "returned": 538,
+        "completed": 38,
+        "scheduled": 472,
+        "canceled": 23,
+        "appointmentValue": 47302.23,
+        "completedValue": 3116.45,
+        "scheduledValue": 41453.01,
+        "actualHours": 6.6,
+        "driveHours": 0,
+        "avgValue": 87.92,
+        "reworks": 0,
+        "byStatus": [
+          {
+            "name": "Scheduled",
+            "value": 472
+          },
+          {
+            "name": "Completed",
+            "value": 38
+          },
+          {
+            "name": "Canceled",
+            "value": 23
+          },
+          {
+            "name": "Other",
+            "value": 5
+          }
+        ],
+        "byTech": [
+          {
+            "name": "Route 12",
+            "value": 76
+          },
+          {
+            "name": "Route 7",
+            "value": 74
+          },
+          {
+            "name": "Route 11",
+            "value": 66
+          },
+          {
+            "name": "Route 6",
+            "value": 66
+          },
+          {
+            "name": "Bump",
+            "value": 56
+          },
+          {
+            "name": "Misting Route",
+            "value": 55
+          },
+          {
+            "name": "Route 2",
+            "value": 55
+          },
+          {
+            "name": "Route 1",
+            "value": 48
+          },
+          {
+            "name": "Route 5",
+            "value": 22
+          },
+          {
+            "name": "Agent Unknown",
+            "value": 19
+          },
+          {
+            "name": "Route 4",
+            "value": 1
+          }
+        ],
+        "byService": [
+          {
+            "name": "Mojo Essential",
+            "value": 234
+          },
+          {
+            "name": "Synthetic Barrier Spray - 2 week",
+            "value": 187
+          },
+          {
+            "name": "Accelerated - Synthetic Signature Service",
+            "value": 26
+          },
+          {
+            "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+            "value": 24
+          },
+          {
+            "name": "HPD - 42 Days",
+            "value": 10
+          },
+          {
+            "name": "Misting System Recurring Service Bi-Monthly",
+            "value": 9
+          },
+          {
+            "name": "Synthetic Barrier Spray - 4 week",
+            "value": 9
+          },
+          {
+            "name": "All-Natural Barrier Spray",
+            "value": 8
+          },
+          {
+            "name": "Property Assessment",
+            "value": 6
+          },
+          {
+            "name": "Misting system - 6 Weeks",
+            "value": 5
+          },
+          {
+            "name": "In2Care Service - 4 Weeks Service",
+            "value": 3
+          },
+          {
+            "name": "Misting system - 4 Weeks",
+            "value": 3
+          },
+          {
+            "name": "One-time Service",
+            "value": 3
+          },
+          {
+            "name": "InZecto Trap Service",
+            "value": 2
+          },
+          {
+            "name": "Special Event Service",
+            "value": 2
+          },
+          {
+            "name": "Synthetic + In2Care",
+            "value": 2
+          },
+          {
+            "name": "Synthetic Signature Service",
+            "value": 2
+          },
+          {
+            "name": "Flea Service",
+            "value": 1
+          },
+          {
+            "name": "Fly Management Service",
+            "value": 1
+          },
+          {
+            "name": "Gnats/Midges/No-seeums - 3 week",
+            "value": 1
+          }
+        ],
+        "byCancelReason": [
+          {
+            "name": "Reason 5413",
+            "value": 7
+          },
+          {
+            "name": "Reason 6091",
+            "value": 6
+          },
+          {
+            "name": "Reason 5416",
+            "value": 5
+          },
+          {
+            "name": "Reason 5412",
+            "value": 3
+          },
+          {
+            "name": "Reason 5414",
+            "value": 1
+          },
+          {
+            "name": "Reason 5415",
+            "value": 1
+          }
+        ],
+        "materials": [
+          {
+            "name": "Bifen I/T Insecticide/Termiticide",
+            "quantity": 79.5,
+            "uses": 66,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10",
+            "quantity": 36.5,
+            "uses": 26,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Pivot 10 8ml/g",
+            "quantity": 33,
+            "uses": 5,
+            "unit": "Each"
+          },
+          {
+            "name": "Discount",
+            "quantity": 31,
+            "uses": 31,
+            "unit": ""
+          },
+          {
+            "name": "Migrate Discount Sequence",
+            "quantity": 25,
+            "uses": 25,
+            "unit": ""
+          },
+          {
+            "name": "Synthetic Signature Single Svc 3",
+            "quantity": 14,
+            "uses": 14,
+            "unit": "SF"
+          },
+          {
+            "name": "Synthetic Signature Single Svc 2",
+            "quantity": 9,
+            "uses": 9,
+            "unit": "SF"
+          },
+          {
+            "name": "EcoVia WD",
+            "quantity": 3,
+            "uses": 3,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Migrate Discount",
+            "quantity": 3,
+            "uses": 3,
+            "unit": ""
+          },
+          {
+            "name": "Aquabac 200g",
+            "quantity": 2.3,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Advion Ant Gel",
+            "quantity": 2,
+            "uses": 2,
+            "unit": "Gram"
+          },
+          {
+            "name": "Pivot 10 5.5ml/g",
+            "quantity": 2,
+            "uses": 2,
+            "unit": "Ounce"
+          },
+          {
+            "name": "Natular DT",
+            "quantity": 1.5,
+            "uses": 1,
+            "unit": "Each"
+          },
+          {
+            "name": "InTice 10",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Aqua Kontrol 30 -30",
+            "quantity": 1,
+            "uses": 1,
+            "unit": "Gallon"
+          },
+          {
+            "name": "Flea & Tick Treatment",
+            "quantity": 0,
+            "uses": 1,
+            "unit": ""
+          }
+        ],
+        "daily": [
+          {
+            "date": "2026-06-30",
+            "appointments": 161,
+            "completed": 38,
+            "scheduled": 117,
+            "canceled": 5,
+            "value": 14065.9
+          },
+          {
+            "date": "2026-07-01",
+            "appointments": 123,
+            "completed": 0,
+            "scheduled": 119,
+            "canceled": 3,
+            "value": 12201.8
+          },
+          {
+            "date": "2026-07-02",
+            "appointments": 147,
+            "completed": 0,
+            "scheduled": 138,
+            "canceled": 9,
+            "value": 12264.74
+          },
+          {
+            "date": "2026-07-03",
+            "appointments": 104,
+            "completed": 0,
+            "scheduled": 98,
+            "canceled": 6,
+            "value": 8373.81
+          },
+          {
+            "date": "2026-07-05",
+            "appointments": 3,
+            "completed": 0,
+            "scheduled": 0,
+            "canceled": 0,
+            "value": 395.98
+          }
+        ]
+      }
+    },
+    "finance": {
+      "month_to_date": {
+        "invoices": {
+          "totalRecords": 2559,
+          "returned": 2559,
+          "invoiced": 221027.48,
+          "balanceDue": -12779.97,
+          "avgInvoice": 86.37,
+          "byStatus": [
+            {
+              "name": "2",
+              "value": 2490
+            },
+            {
+              "name": "3",
+              "value": 69
+            }
+          ],
+          "byType": [
+            {
+              "name": "Unknown",
+              "value": 2529
+            },
+            {
+              "name": "3",
+              "value": 24
+            },
+            {
+              "name": "2",
+              "value": 6
+            }
+          ],
+          "errors": []
+        },
+        "payments": {
+          "totalRecords": 2614,
+          "returned": 2614,
+          "collected": 216640.53,
+          "avgPayment": 82.88,
+          "byMethod": [
+            {
+              "name": "Card on File",
+              "value": 1182
+            },
+            {
+              "name": "Credit Card",
+              "value": 1095
+            },
+            {
+              "name": "Credit Memo",
+              "value": 194
+            },
+            {
+              "name": "Write Off",
+              "value": 48
+            },
+            {
+              "name": "eCheck",
+              "value": 47
+            },
+            {
+              "name": "eCheck on File",
+              "value": 17
+            },
+            {
+              "name": "Check",
+              "value": 15
+            },
+            {
+              "name": "Managed Card on File",
+              "value": 13
+            },
+            {
+              "name": "Third Party",
+              "value": 2
+            },
+            {
+              "name": "SS CC Manual",
+              "value": 1
+            }
+          ],
+          "errors": []
+        }
+      }
+    },
+    "sales_marketing": {
+      "channels_available": 28,
+      "channel_endpoint_status": "available",
+      "service_mix_today": [
+        {
+          "name": "Mojo Essential",
+          "value": 66
+        },
+        {
+          "name": "Synthetic Barrier Spray - 2 week",
+          "value": 56
+        },
+        {
+          "name": "Accelerated - Synthetic Signature Service",
+          "value": 11
+        },
+        {
+          "name": "Misting System Recurring Service Bi-Monthly",
+          "value": 7
+        },
+        {
+          "name": "HPD - 42 Days",
+          "value": 4
+        },
+        {
+          "name": "All-Natural Barrier Spray",
+          "value": 3
+        },
+        {
+          "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+          "value": 3
+        },
+        {
+          "name": "Synthetic Barrier Spray - 4 week",
+          "value": 3
+        },
+        {
+          "name": "In2Care Service - 4 Weeks Service",
+          "value": 2
+        },
+        {
+          "name": "Misting system - 4 Weeks",
+          "value": 2
+        },
+        {
+          "name": "Misting system - 6 Weeks",
+          "value": 2
+        },
+        {
+          "name": "InZecto Trap Service",
+          "value": 1
+        },
+        {
+          "name": "Synthetic Signature Service",
+          "value": 1
+        }
+      ],
+      "service_mix_next7": [
+        {
+          "name": "Mojo Essential",
+          "value": 234
+        },
+        {
+          "name": "Synthetic Barrier Spray - 2 week",
+          "value": 187
+        },
+        {
+          "name": "Accelerated - Synthetic Signature Service",
+          "value": 26
+        },
+        {
+          "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+          "value": 24
+        },
+        {
+          "name": "HPD - 42 Days",
+          "value": 10
+        },
+        {
+          "name": "Misting System Recurring Service Bi-Monthly",
+          "value": 9
+        },
+        {
+          "name": "Synthetic Barrier Spray - 4 week",
+          "value": 9
+        },
+        {
+          "name": "All-Natural Barrier Spray",
+          "value": 8
+        },
+        {
+          "name": "Property Assessment",
+          "value": 6
+        },
+        {
+          "name": "Misting system - 6 Weeks",
+          "value": 5
+        },
+        {
+          "name": "In2Care Service - 4 Weeks Service",
+          "value": 3
+        },
+        {
+          "name": "Misting system - 4 Weeks",
+          "value": 3
+        },
+        {
+          "name": "One-time Service",
+          "value": 3
+        },
+        {
+          "name": "InZecto Trap Service",
+          "value": 2
+        },
+        {
+          "name": "Special Event Service",
+          "value": 2
+        },
+        {
+          "name": "Synthetic + In2Care",
+          "value": 2
+        },
+        {
+          "name": "Synthetic Signature Service",
+          "value": 2
+        },
+        {
+          "name": "Flea Service",
+          "value": 1
+        },
+        {
+          "name": "Fly Management Service",
+          "value": 1
+        },
+        {
+          "name": "Gnats/Midges/No-seeums - 3 week",
+          "value": 1
+        }
+      ],
+      "cancel_reasons_today": [
+        {
+          "name": "Reason 6091",
+          "value": 3
+        },
+        {
+          "name": "Reason 5413",
+          "value": 1
+        },
+        {
+          "name": "Reason 5416",
+          "value": 1
+        }
+      ],
+      "cancel_reasons_next7": [
+        {
+          "name": "Reason 5413",
+          "value": 7
+        },
+        {
+          "name": "Reason 6091",
+          "value": 6
+        },
+        {
+          "name": "Reason 5416",
+          "value": 5
+        },
+        {
+          "name": "Reason 5412",
+          "value": 3
+        },
+        {
+          "name": "Reason 5414",
+          "value": 1
+        },
+        {
+          "name": "Reason 5415",
+          "value": 1
+        }
+      ]
+    },
+    "data_quality": {
+      "appointment_pages": {
+        "yesterday": {
+          "expected": 131,
+          "returned": 131,
+          "errors": []
+        },
+        "today": {
+          "expected": 161,
+          "returned": 161,
+          "errors": []
+        },
+        "next7": {
+          "expected": 538,
+          "returned": 538,
+          "errors": []
+        }
+      },
+      "invoice_errors": [],
+      "payment_errors": [],
+      "custom_fields_available": 254,
+      "custom_fields_status": "available"
+    }
+  }
+}

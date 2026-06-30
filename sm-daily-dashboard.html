@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
+    <title>MoJo ServiceMinder Daily Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #131720;
+            --panel-2: #171d27;
+            --border: #263041;
+            --text: #edf2f7;
+            --muted: #8b98a9;
+            --blue: #38bdf8;
+            --green: #34d399;
+            --yellow: #fbbf24;
+            --red: #fb7185;
+            --violet: #a78bfa;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            padding: 18px;
+        }
+        a { color: inherit; }
+        .shell { max-width: 1420px; margin: 0 auto; }
+        .topbar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .eyebrow {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 6px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            line-height: 1.1;
+            letter-spacing: 0;
+        }
+        .meta {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 6px;
+        }
+        .back {
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .back:hover { color: var(--text); border-color: var(--blue); }
+        .tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0 16px;
+        }
+        .tab {
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--muted);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        .tab.active {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: rgba(56, 189, 248, .1);
+        }
+        .section { display: none; }
+        .section.active { display: block; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+        }
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            min-width: 0;
+        }
+        .span-3 { grid-column: span 3; }
+        .span-4 { grid-column: span 4; }
+        .span-5 { grid-column: span 5; }
+        .span-6 { grid-column: span 6; }
+        .span-7 { grid-column: span 7; }
+        .span-8 { grid-column: span 8; }
+        .span-12 { grid-column: span 12; }
+        .kpi {
+            min-height: 112px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .label {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        .value {
+            font-size: 30px;
+            font-weight: 800;
+            margin-top: 8px;
+            letter-spacing: 0;
+        }
+        .sub {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.35;
+            margin-top: 6px;
+        }
+        .green { color: var(--green); }
+        .blue { color: var(--blue); }
+        .yellow { color: var(--yellow); }
+        .red { color: var(--red); }
+        .violet { color: var(--violet); }
+        h2 {
+            margin: 0 0 12px;
+            font-size: 15px;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+        .list {
+            display: grid;
+            gap: 8px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            font-size: 13px;
+        }
+        .row:last-child { border-bottom: 0; }
+        .row strong { font-weight: 700; overflow-wrap: anywhere; }
+        .row span:last-child { color: var(--text); font-weight: 800; white-space: nowrap; }
+        .alerts {
+            display: grid;
+            gap: 8px;
+        }
+        .alert {
+            border-left: 3px solid var(--yellow);
+            background: rgba(251, 191, 36, .08);
+            border-radius: 6px;
+            padding: 10px 12px;
+            color: #ffe9a8;
+            font-size: 13px;
+            line-height: 1.35;
+        }
+        canvas { max-height: 320px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th {
+            text-align: left;
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        td {
+            padding: 9px 10px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        tr:last-child td { border-bottom: 0; }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 8px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        @media (max-width: 900px) {
+            body { padding: 12px; }
+            .topbar { align-items: flex-start; flex-direction: column; }
+            .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: span 12; }
+            .value { font-size: 26px; }
+        }
+        @media (max-width: 600px) {
+            #mojo-nav-trigger { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="topbar">
+            <div>
+                <div class="eyebrow">ServiceMinder Direct API</div>
+                <h1>Daily Owner Report</h1>
+                <div class="meta" id="meta">Loading ServiceMinder data...</div>
+            </div>
+            <a class="back" href="hub.html">Back to hub</a>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="brief">Daily Brief</button>
+            <button class="tab" data-tab="ops">Ops Dashboard</button>
+            <button class="tab" data-tab="finance">Finance Dashboard</button>
+            <button class="tab" data-tab="sales">Sales & Marketing</button>
+            <button class="tab" data-tab="quality">Data Quality</button>
+        </div>
+
+        <section class="section active" id="brief"></section>
+        <section class="section" id="ops"></section>
+        <section class="section" id="finance"></section>
+        <section class="section" id="sales"></section>
+        <section class="section" id="quality"></section>
+    </div>
+
+    <script>
+    const COLORS = ['#38bdf8', '#34d399', '#fbbf24', '#fb7185', '#a78bfa', '#22d3ee', '#f472b6', '#84cc16'];
+    const charts = [];
+    const $ = id => document.getElementById(id);
+    const money = n => '$' + Number(n || 0).toLocaleString(undefined, { maximumFractionDigits: 0 });
+    const preciseMoney = n => '$' + Number(n || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const num = n => Number(n || 0).toLocaleString();
+
+    document.querySelectorAll('.tab').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            button.classList.add('active');
+            $(button.dataset.tab).classList.add('active');
+        });
+    });
+
+    function destroyCharts() {
+        while (charts.length) charts.pop().destroy();
+    }
+
+    function kpi(label, value, sub = '', color = 'blue') {
+        return `<div class="panel kpi span-3">
+            <div>
+                <div class="label">${label}</div>
+                <div class="value ${color}">${value}</div>
+            </div>
+            <div class="sub">${sub}</div>
+        </div>`;
+    }
+
+    function panel(title, content, span = 6) {
+        return `<div class="panel span-${span}"><h2>${title}</h2>${content}</div>`;
+    }
+
+    function rows(items, empty = 'No data returned') {
+        if (!items || !items.length) return `<div class="sub">${empty}</div>`;
+        return `<div class="list">${items.map(item => `<div class="row"><strong>${item.name}</strong><span>${num(item.value)}</span></div>`).join('')}</div>`;
+    }
+
+    function table(headers, rowsData) {
+        if (!rowsData || !rowsData.length) return '<div class="sub">No rows returned</div>';
+        return `<table><thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rowsData.join('')}</tbody></table>`;
+    }
+
+    function barChart(canvasId, labels, values, title, color = '#38bdf8') {
+        const ctx = $(canvasId);
+        if (!ctx) return;
+        charts.push(new Chart(ctx, {
+            type: 'bar',
+            data: { labels, datasets: [{ data: values, backgroundColor: color + '88', borderColor: color, borderWidth: 1 }] },
+            options: {
+                responsive: true,
+                plugins: { title: { display: true, text: title, color: '#edf2f7' }, legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: '#8b98a9' }, grid: { color: 'rgba(255,255,255,.04)' } },
+                    y: { ticks: { color: '#8b98a9' }, grid: { color: 'rgba(255,255,255,.06)' } }
+                }
+            }
+        }));
+    }
+
+    function doughnutChart(canvasId, items, title) {
+        const ctx = $(canvasId);
+        if (!ctx || !items || !items.length) return;
+        charts.push(new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: items.map(i => i.name),
+                datasets: [{ data: items.map(i => i.value), backgroundColor: COLORS }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: { display: true, text: title, color: '#edf2f7' },
+                    legend: { position: 'right', labels: { color: '#8b98a9', boxWidth: 10 } }
+                }
+            }
+        }));
+    }
+
+    function render(data) {
+        destroyCharts();
+        const e = data.executive;
+        const ops = data.dashboards.operations;
+        const finance = data.dashboards.finance.month_to_date;
+        const sales = data.dashboards.sales_marketing;
+        const quality = data.dashboards.data_quality;
+        const generated = new Date(data.meta.generated_at);
+
+        $('meta').innerHTML = `Report date ${data.meta.report_date} • Updated ${generated.toLocaleString()} • ${data.meta.privacy}`;
+
+        $('brief').innerHTML = `<div class="grid">
+            ${kpi('Yesterday completed', num(e.yesterday.completed_jobs), `${money(e.yesterday.appointment_value)} appointment value`, 'green')}
+            ${kpi('Today scheduled', num(e.today.scheduled_jobs), `${num(e.today.completed_jobs)} already completed`, 'blue')}
+            ${kpi('Next 7 days', num(e.next7.appointments), `${money(e.next7.scheduled_value)} scheduled value`, 'violet')}
+            ${kpi('MTD collected', money(e.mtd.payments_collected), `${money(e.mtd.invoiced)} invoiced`, 'yellow')}
+            ${panel('Alerts', `<div class="alerts">${e.alerts.map(a => `<div class="alert">${a}</div>`).join('')}</div>`, 6)}
+            ${panel('Today Status Mix', '<canvas id="todayStatus"></canvas>', 6)}
+            ${panel('Top Services Today', rows(sales.service_mix_today.slice(0, 8)), 6)}
+            ${panel('Next 7 Schedule by Route', rows(ops.next7.byTech.slice(0, 10)), 6)}
+        </div>`;
+        doughnutChart('todayStatus', ops.today.byStatus, 'Today appointment status');
+
+        $('ops').innerHTML = `<div class="grid">
+            ${kpi('Yesterday value', money(ops.yesterday.appointmentValue), `${num(ops.yesterday.completed)} completed jobs`, 'green')}
+            ${kpi('Today value', money(ops.today.appointmentValue), `${num(ops.today.canceled)} canceled`, ops.today.canceled ? 'red' : 'blue')}
+            ${kpi('Actual hours yesterday', num(ops.yesterday.actualHours), `${num(ops.yesterday.reworks)} reworks flagged`, 'yellow')}
+            ${kpi('Next 7 scheduled value', money(ops.next7.scheduledValue), `${num(ops.next7.scheduled)} scheduled jobs`, 'violet')}
+            ${panel('Today by Route', '<canvas id="todayRoutes"></canvas>', 6)}
+            ${panel('Next 7 by Service', '<canvas id="nextServices"></canvas>', 6)}
+            ${panel('Materials Seen Yesterday', table(['Material', 'Qty', 'Uses'], ops.yesterday.materials.slice(0, 12).map(m => `<tr><td>${m.name}</td><td>${num(m.quantity)} ${m.unit || ''}</td><td>${num(m.uses)}</td></tr>`)), 7)}
+            ${panel('Cancel Reasons Next 7', rows(ops.next7.byCancelReason), 5)}
+        </div>`;
+        barChart('todayRoutes', ops.today.byTech.slice(0, 12).map(i => i.name), ops.today.byTech.slice(0, 12).map(i => i.value), 'Today appointments by route');
+        doughnutChart('nextServices', ops.next7.byService.slice(0, 8), 'Next 7 service mix');
+
+        $('finance').innerHTML = `<div class="grid">
+            ${kpi('MTD invoiced', money(finance.invoices.invoiced), `${num(finance.invoices.totalRecords)} invoices`, 'green')}
+            ${kpi('MTD collected', money(finance.payments.collected), `${num(finance.payments.totalRecords)} payments`, 'blue')}
+            ${kpi('Avg invoice', preciseMoney(finance.invoices.avgInvoice), 'Direct invoice query', 'yellow')}
+            ${kpi('Avg payment', preciseMoney(finance.payments.avgPayment), 'Direct payment query', 'violet')}
+            ${panel('Payment Methods', rows(finance.payments.byMethod), 6)}
+            ${panel('Invoice Status', rows(finance.invoices.byStatus), 6)}
+            ${panel('Finance Query Notes', `<div class="sub">Invoice errors: ${finance.invoices.errors.length ? finance.invoices.errors.join('; ') : 'none'}<br>Payment errors: ${finance.payments.errors.length ? finance.payments.errors.join('; ') : 'none'}</div>`, 12)}
+        </div>`;
+
+        $('sales').innerHTML = `<div class="grid">
+            ${kpi('Channels endpoint', sales.channel_endpoint_status, `${sales.channels_available ?? 'Unknown'} channels available`, sales.channel_endpoint_status === 'available' ? 'green' : 'red')}
+            ${kpi('Today services', num(sales.service_mix_today.length), 'Service categories represented', 'blue')}
+            ${kpi('Next 7 services', num(sales.service_mix_next7.length), 'Upcoming service mix', 'violet')}
+            ${kpi('Next 7 cancels', num(ops.next7.canceled), 'Cancel reasons below', ops.next7.canceled ? 'red' : 'green')}
+            ${panel('Service Mix Today', '<canvas id="salesTodayServices"></canvas>', 6)}
+            ${panel('Service Mix Next 7', '<canvas id="salesNextServices"></canvas>', 6)}
+            ${panel('Cancel Reasons Today', rows(sales.cancel_reasons_today), 6)}
+            ${panel('Cancel Reasons Next 7', rows(sales.cancel_reasons_next7), 6)}
+        </div>`;
+        doughnutChart('salesTodayServices', sales.service_mix_today.slice(0, 8), 'Today service mix');
+        doughnutChart('salesNextServices', sales.service_mix_next7.slice(0, 8), 'Next 7 service mix');
+
+        $('quality').innerHTML = `<div class="grid">
+            ${kpi('Custom fields', quality.custom_fields_available ?? 'Unknown', quality.custom_fields_status, quality.custom_fields_status === 'available' ? 'green' : 'red')}
+            ${kpi('Yesterday rows', `${quality.appointment_pages.yesterday.returned}/${quality.appointment_pages.yesterday.expected}`, 'Appointment query', 'blue')}
+            ${kpi('Today rows', `${quality.appointment_pages.today.returned}/${quality.appointment_pages.today.expected}`, 'Appointment query', 'blue')}
+            ${kpi('Next 7 rows', `${quality.appointment_pages.next7.returned}/${quality.appointment_pages.next7.expected}`, 'Appointment query', quality.appointment_pages.next7.returned === quality.appointment_pages.next7.expected ? 'green' : 'yellow')}
+            ${panel('Endpoint Health', table(['Feed', 'Expected', 'Returned', 'Errors'], [
+                `<tr><td>Yesterday appointments</td><td>${quality.appointment_pages.yesterday.expected}</td><td>${quality.appointment_pages.yesterday.returned}</td><td>${quality.appointment_pages.yesterday.errors.join('; ') || 'none'}</td></tr>`,
+                `<tr><td>Today appointments</td><td>${quality.appointment_pages.today.expected}</td><td>${quality.appointment_pages.today.returned}</td><td>${quality.appointment_pages.today.errors.join('; ') || 'none'}</td></tr>`,
+                `<tr><td>Next 7 appointments</td><td>${quality.appointment_pages.next7.expected}</td><td>${quality.appointment_pages.next7.returned}</td><td>${quality.appointment_pages.next7.errors.join('; ') || 'none'}</td></tr>`,
+                `<tr><td>Invoices MTD</td><td colspan="2"><span class="status-pill">${finance.invoices.returned} rows</span></td><td>${quality.invoice_errors.join('; ') || 'none'}</td></tr>`,
+                `<tr><td>Payments MTD</td><td colspan="2"><span class="status-pill">${finance.payments.returned} rows</span></td><td>${quality.payment_errors.join('; ') || 'none'}</td></tr>`
+            ]), 12)}
+        </div>`;
+    }
+
+    async function load() {
+        try {
+            const response = await fetch('sm-daily-data.json?t=' + Date.now());
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            render(await response.json());
+        } catch (error) {
+            $('meta').textContent = `Could not load sm-daily-data.json: ${error.message}`;
+        }
+    }
+
+    load();
+    setInterval(load, 300000);
+    </script>
+    <script src="navigator.js"></script>
+</body>
+</html>
