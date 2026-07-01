@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-01T17:00:21.743Z",
+  "updated_at": "2026-07-01T18:00:20.611Z",
   "csv_date": "2026-07-01",
   "period": "Jan 1 - Jul 1, 2026 (YTD)",
   "summary": {
     "total_sales": 433,
-    "total_cancels": 237,
-    "net": 196,
+    "total_cancels": 238,
+    "net": 195,
     "paused_wp": 58,
     "paused_pct": 24,
     "days_tracked": 182
@@ -19,7 +19,7 @@
     {
       "name": "Norma",
       "sales": 141,
-      "cancels": 91
+      "cancels": 92
     },
     {
       "name": "Bev",
@@ -70,7 +70,7 @@
     },
     {
       "name": "Went w/Competitor",
-      "count": 6,
+      "count": 7,
       "pct": 3
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-07-01",
       "dateFmt": "Jul 1",
+      "type": "Cancel",
+      "category": "Went w/Competitor",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-07-01",
+      "dateFmt": "Jul 1",
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
@@ -241,13 +248,6 @@
       "type": "Cancel",
       "category": "Unhappy",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-06-30",
-      "dateFmt": "Jun 30",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
