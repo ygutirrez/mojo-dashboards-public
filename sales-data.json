@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-07-01T18:00:20.611Z",
+  "updated_at": "2026-07-01T19:00:20.997Z",
   "csv_date": "2026-07-01",
   "period": "Jan 1 - Jul 1, 2026 (YTD)",
   "summary": {
-    "total_sales": 433,
-    "total_cancels": 238,
+    "total_sales": 434,
+    "total_cancels": 239,
     "net": 195,
     "paused_wp": 58,
     "paused_pct": 24,
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 248,
-      "cancels": 69
+      "cancels": 70
     },
     {
       "name": "Norma",
@@ -23,7 +23,7 @@
     },
     {
       "name": "Bev",
-      "sales": 44,
+      "sales": 45,
       "cancels": 77
     }
   ],
@@ -70,7 +70,7 @@
     },
     {
       "name": "Went w/Competitor",
-      "count": 7,
+      "count": 8,
       "pct": 3
     },
     {
@@ -111,7 +111,7 @@
     },
     {
       "name": "Restart",
-      "count": 113
+      "count": 114
     },
     {
       "name": "Event Spray",
@@ -182,6 +182,20 @@
     {
       "date": "2026-07-01",
       "dateFmt": "Jul 1",
+      "type": "Sale",
+      "category": "Restart",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-07-01",
+      "dateFmt": "Jul 1",
+      "type": "Cancel",
+      "category": "Went w/Competitor",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-01",
+      "dateFmt": "Jul 1",
       "type": "Cancel",
       "category": "Went w/Competitor",
       "csr": "Norma"
@@ -234,20 +248,6 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-06-30",
-      "dateFmt": "Jun 30",
-      "type": "Cancel",
-      "category": "Unhappy",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-06-30",
-      "dateFmt": "Jun 30",
-      "type": "Cancel",
-      "category": "Unhappy",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
