@@ -933,7 +933,7 @@
         if (salesData?.csrs) data.csrs = salesData.csrs;
         if (!serviceMinder?.meta?.write_existing_applied) return;
 
-        const smRevenue = serviceMinder.owners.revenue || {};
+        const smRevenue = serviceMinder.owners?.revenue || {};
         const smSalesKpi = serviceMinder.salesKpi || {};
         const officeSummary = salesData?.summary || data.summary || {};
         const invoices = (smSalesKpi.monthly || []).reduce((sum, row) => sum + (row.invoices || 0), 0);

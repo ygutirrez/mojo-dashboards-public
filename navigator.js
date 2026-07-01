@@ -33,7 +33,6 @@
         { name: 'Fleet Dashboard', url: 'fleet-dashboard.html', icon: '🚛', category: 'Operations', keywords: 'vehicle safety mileage driver speeding' },
         { name: 'Chemical Usage', url: 'chemical-dashboard.html', icon: '🧪', category: 'Operations', keywords: 'chemical inventory usage cost treatment reorder' },
         { name: 'CSR Performance', url: 'csr-performance.html', icon: '📊', category: 'Operations', keywords: 'csr win rate sales team individual analytics norma lucy bev' },
-        { name: 'ServiceMinder Daily Report', url: 'sm-daily-dashboard.html', icon: '📋', category: 'Operations', keywords: 'serviceminder daily owner report direct api appointments invoices payments route service mix' },
         { name: 'ServiceMinder KPIs', url: 'sm-kpi-dashboard.html', icon: '🔧', category: 'Operations', keywords: 'serviceminder production tech productivity weekly' },
 
         // Retention & Cancels
