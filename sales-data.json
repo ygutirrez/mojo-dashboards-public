@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-02T18:00:21.907Z",
+  "updated_at": "2026-07-02T19:00:19.928Z",
   "csv_date": "2026-07-02",
   "period": "Jan 1 - Jul 2, 2026 (YTD)",
   "summary": {
     "total_sales": 436,
-    "total_cancels": 241,
-    "net": 195,
+    "total_cancels": 242,
+    "net": 194,
     "paused_wp": 58,
     "paused_pct": 24,
     "days_tracked": 183
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 249,
-      "cancels": 70
+      "cancels": 71
     },
     {
       "name": "Norma",
@@ -35,7 +35,7 @@
     },
     {
       "name": "Moved",
-      "count": 53,
+      "count": 54,
       "pct": 22
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-07-02",
       "dateFmt": "Jul 2",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-02",
+      "dateFmt": "Jul 2",
+      "type": "Cancel",
       "category": "Unhappy",
       "csr": "Norma"
     },
@@ -240,13 +247,6 @@
       "dateFmt": "Jul 1",
       "type": "Sale",
       "category": "Event Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-06-30",
-      "dateFmt": "Jun 30",
-      "type": "Cancel",
-      "category": "Not Interested",
       "csr": "Lucy"
     }
   ],
