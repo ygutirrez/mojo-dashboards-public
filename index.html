@@ -269,7 +269,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 12px;
-            margin-bottom: 48px;
+            margin-bottom: 10px;
             padding: 24px;
             background: linear-gradient(145deg, #1a1a2e, #16213e);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -297,19 +297,159 @@
             margin-top: 4px;
         }
 
+        .quick-stats-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
+            margin-bottom: 38px;
+            color: #6b7280;
+            font-size: 0.78rem;
+        }
+
+        .quick-stats-meta strong {
+            color: #d1d5db;
+            font-weight: 600;
+        }
+
+        .quick-stats-meta .fresh { color: #34d399; }
+        .quick-stats-meta .stale { color: #fbbf24; }
+        .quick-stats-meta .old { color: #ef4444; }
+
         @media (max-width: 768px) {
             .quick-stats {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 16px;
-                margin-bottom: 28px;
+                margin-bottom: 10px;
             }
             .stat-value { font-size: 1.4rem; }
             .stat-label { font-size: 0.65rem; }
+            .quick-stats-meta { margin-bottom: 28px; font-size: 0.72rem; }
         }
 
         @media (max-width: 480px) {
             .quick-stats { grid-template-columns: repeat(2, 1fr); padding: 12px; }
             .stat-value { font-size: 1.2rem; }
+        }
+        /* ─── Search Bar ─── */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #4b5563;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4b5563;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #6b7280;
+            font-size: 0.7rem;
+            font-family: monospace;
+            pointer-events: none;
+        }
+
+        .search-results-count {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-top: -20px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .card.hidden-by-search {
+            display: none !important;
+        }
+
+        .section-hidden {
+            display: none !important;
+        }
+
+        /* ─── Favorites ─── */
+        .fav-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease;
+            z-index: 10;
+            color: #6b7280;
+        }
+
+        .card:hover .fav-btn,
+        .fav-btn.is-fav {
+            opacity: 1;
+        }
+
+        .fav-btn.is-fav {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.12);
+        }
+
+        .fav-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .favorites-section {
+            display: none;
+        }
+
+        .favorites-section.has-favs {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .search-container { margin-bottom: 20px; }
+            .search-input { padding: 12px 16px 12px 42px; font-size: 0.9rem; }
+            .search-shortcut { display: none; }
+            .fav-btn { opacity: 0.6; }
         }
     </style>
 </head>
@@ -350,13 +490,44 @@
             </div>
             <div class="stat-item">
                 <div class="stat-value" id="qsPace">—</div>
-                <div class="stat-label">$5M Pace</div>
+                <div class="stat-label">$5M Progress</div>
             </div>
+        </div>
+        <div class="quick-stats-meta" id="quickStatsMeta">
+            <span>Data refreshed: <strong id="qsUpdatedAt">checking...</strong></span>
+            <span>Sales file: <strong id="qsSalesDate">—</strong></span>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="hubSearch" placeholder="Search dashboards... (sales, operations, fleet...)" autocomplete="off">
+            <span class="search-shortcut">/</span>
+        </div>
+        <div class="search-results-count" id="searchResultsCount"></div>
+
+        <!-- FAVORITES -->
+        <div class="favorites-section" id="favoritesSection">
+            <div class="section-label">⭐ Favorites</div>
+            <div class="grid" id="favoritesGrid"></div>
         </div>
 
         <!-- BUSINESS PERFORMANCE -->
         <div class="section-label">📊 Business Performance</div>
         <div class="grid">
+
+            <a href="goal-tracker.html" class="card" style="--accent: #ffd700; --accent-bg: rgba(255, 215, 0, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🎯</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>$5M Goal Tracker</h3>
+                <p>Revenue pace vs target, milestones with estimated dates, what-if scenarios, and FY2025 comparison.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Invoices</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
 
             <a href="morning-brief.html" class="card" style="--accent: #f59e0b; --accent-bg: rgba(245, 158, 11, 0.15);">
                 <div class="card-top">
@@ -364,10 +535,10 @@
                     <span class="card-badge live">Live</span>
                 </div>
                 <h3>Morning Brief</h3>
-                <p>Mobile-first morning briefing: revenue pace, active alerts, ops snapshot, and pipeline health — everything you need in 30 seconds.</p>
+                <p>Mobile-first CEO daily view — today's numbers, alerts, and action items in under 30 seconds.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> All Feeds</div>
-                    <div class="card-metric"><strong>Optimized:</strong> Mobile</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
                 </div>
             </a>
 
@@ -511,9 +682,9 @@
                     <span class="card-badge live">Live</span>
                 </div>
                 <h3>Sales Reconciliation</h3>
-                <p>Compares CSR-tracked data vs. ServSuite system data. Surfaces discrepancies, revenue gaps, and actionable insights.</p>
+                <p>Cross-reference sales vs invoices vs payments. Find discrepancies and missing revenue.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> Office Tracking CSV + ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + QuickBooks</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily</div>
                 </div>
             </a>
@@ -531,11 +702,63 @@
                 </div>
             </a>
 
+            <a href="scorecard.html" class="card" style="--accent: #00b4d8; --accent-bg: rgba(0, 180, 216, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📊</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Weekly Scorecard</h3>
+                <p>Week-over-week business comparison with trend indicators, cancel reason analysis, tech leaderboard, and active alerts.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All KPI Data</div>
+                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                </div>
+            </a>
+
+            <a href="growth-tracker.html" class="card" style="--accent: #ef4444; --accent-bg: rgba(239, 68, 68, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">📈</div>
+                    <span class="card-badge" style="background:rgba(239,68,68,0.2);color:#ef4444;">Critical</span>
+                </div>
+                <h3>Growth Tracker → 4,000</h3>
+                <p>Customer growth trajectory, net change analysis, cancel crisis breakdown, cohort survival, and "What Would It Take" scenario calculator.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Retention + Sales KPI</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
+            <a href="geo-intelligence.html" class="card" style="--accent: #f59e0b; --accent-bg: rgba(245, 158, 11, 0.15);">
+                <div class="card-top">
+                    <div class="card-icon">🗺️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Geographic Intelligence</h3>
+                <p>Cancel density heatmap by zip code, risk zone analysis, North vs South comparison, and strategic expansion/retention recommendations.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> Cancel Analysis</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
+
         </div>
 
         <!-- OPERATIONS -->
         <div class="section-label">🔧 Operations</div>
         <div class="grid">
+
+            <a href="capacity-planner.html" class="card" style="--accent: #06b6d4; --accent-bg: rgba(6, 182, 212, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🏗️</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Staffing & Capacity</h3>
+                <p>Tech utilization, hiring roadmap, seasonal demand model, cost-per-hire, and customer growth projections for $5M.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> ServSuite + Fleet</div>
+                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                </div>
+            </a>
 
             <a href="operations-dashboard.html" class="card" style="--accent: #f97316; --accent-bg: rgba(249, 115, 22, 0.12);">
                 <div class="card-top">
@@ -734,19 +957,6 @@
                 </div>
             </a>
 
-            <a href="sm-daily-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
-                <div class="card-top">
-                    <div class="card-icon">📋</div>
-                    <span class="card-badge live">Live</span>
-                </div>
-                <h3>ServiceMinder Daily Report</h3>
-                <p>Daily owner brief with direct API appointment, route, service mix, invoice, payment, and data-quality snapshots.</p>
-                <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServiceMinder API</div>
-                    <div class="card-metric"><strong>Updates:</strong> On demand / scheduled</div>
-                </div>
-            </a>
-
         </div>
 
         <!-- MARKETING & SOCIAL -->
@@ -823,16 +1033,29 @@
                 </div>
             </a>
 
+            <a href="freshness-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">🔬</div>
+                    <span class="card-badge live">Live</span>
+                </div>
+                <h3>Data Freshness Monitor</h3>
+                <p>File-level freshness tracking, pipeline run history, dashboard dependency map, and weighted health scoring.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> All Data Files</div>
+                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 5 min</div>
+                </div>
+            </a>
+
             <a href="alerts-dashboard.html" class="card" style="--accent: #ff4444; --accent-bg: rgba(255, 68, 68, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🚨</div>
                     <span class="card-badge live">Live</span>
                 </div>
                 <h3>Alerts & Notifications</h3>
-                <p>Consolidated view of all anomalies, KPI alerts, pipeline failures, and fleet issues. Filterable by severity and category.</p>
+                <p>Consolidated alert center. Data anomalies, stale feeds, metric thresholds, and pipeline failures in one view.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> All Monitors</div>
-                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 60s</div>
+                    <div class="card-metric"><strong>Source:</strong> Anomaly Detector + Health Checks</div>
+                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
                 </div>
             </a>
 
@@ -846,6 +1069,19 @@
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> Pipeline Scripts</div>
                     <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                </div>
+            </a>
+
+            <a href="pipeline-dashboard.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+                <div class="card-top">
+                    <div class="card-icon">⚡</div>
+                    <span class="card-badge" style="background:rgba(167,139,250,0.2);color:#a78bfa;">New</span>
+                </div>
+                <h3>Pipeline Runs</h3>
+                <p>Per-step execution timing, pass/fail status, timeout tracking, and 30-day run history. Powered by the v2 orchestrator.</p>
+                <div class="card-metrics">
+                    <div class="card-metric"><strong>Source:</strong> pipeline-orchestrator.js</div>
+                    <div class="card-metric"><strong>Updates:</strong> After each run</div>
                 </div>
             </a>
 
@@ -946,56 +1182,278 @@
                 .catch(() => {})
         );
 
-        Promise.all(fetches).then(renderTimestamps);
+        Promise.all(fetches).then(() => {
+            renderTimestamps();
+            renderQuickStatsMeta();
+        });
 
-        // Populate quick stats from live data
-        // Primary source: sales-kpi-data.json (has revenue + accurate sales count from ServSuite)
-        fetch('sales-kpi-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const s = d.summary || {};
-            // Sales count from ServSuite (most accurate)
-            if (s.total_sales) document.getElementById('qsSales').textContent = s.total_sales;
-            // Revenue from ServSuite invoices
-            if (s.total_revenue) {
-                document.getElementById('qsRevenue').textContent = '$' + Math.round(s.total_revenue / 1000) + 'K';
+        function number(value) {
+            const parsed = Number(value);
+            return Number.isFinite(parsed) ? parsed : null;
+        }
+
+        function formatCurrency(value) {
+            const n = number(value);
+            if (n === null) return '—';
+            if (n >= 1000000) return '$' + (n / 1000000).toFixed(n >= 10000000 ? 0 : 1) + 'M';
+            if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+            return '$' + Math.round(n).toLocaleString();
+        }
+
+        function fetchJson(file) {
+            return fetch(file + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null);
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        function setFreshnessClass(el, date) {
+            if (!el || !date) return;
+            const diffHrs = Math.floor((new Date() - new Date(date)) / 3600000);
+            el.className = diffHrs < 26 ? 'fresh' : (diffHrs < 96 ? 'stale' : 'old');
+        }
+
+        function renderQuickStatsMeta() {
+            const timestamps = Object.values(dataPullDates)
+                .filter(Boolean)
+                .map(d => new Date(d))
+                .filter(d => !Number.isNaN(d.getTime()))
+                .sort((a, b) => b - a);
+
+            const updatedEl = document.getElementById('qsUpdatedAt');
+            if (!updatedEl) return;
+            if (timestamps.length === 0) {
+                updatedEl.textContent = 'unknown';
+                updatedEl.className = 'old';
+                return;
             }
-            // Net from ServSuite
-            const net = s.net;
-            if (net !== undefined && net !== null) {
+
+            updatedEl.textContent = timestamps[0].toLocaleString('en-US', {
+                month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+            });
+            setFreshnessClass(updatedEl, timestamps[0]);
+        }
+
+        // Populate quick stats from live data. Prefer the newest operational feeds,
+        // then fall back to older owner/financial files only when needed.
+        Promise.all([
+            fetchJson('sales-data.json'),
+            fetchJson('serviceminder-bridge-data.json'),
+            fetchJson('owners-data.json'),
+            fetchJson('tech-data.json'),
+            fetchJson('ops-data.json')
+        ]).then(([sales, smBridge, owners, tech, ops]) => {
+            const salesSummary = sales?.summary || {};
+            const bridgeOwners = smBridge?.owners || {};
+            const ownerRevenue = owners?.revenue || {};
+            const ownerOps = owners?.operations || {};
+            const techSummary = tech?.summary || {};
+            const opsSummary = ops?.summary || {};
+
+            const totalSales = number(salesSummary.total_sales) ?? number(owners?.sales?.total_sales);
+            if (totalSales !== null) setText('qsSales', totalSales.toLocaleString());
+
+            const net = number(salesSummary.net) ?? number(owners?.sales?.net);
+            if (net !== null) {
                 const netEl = document.getElementById('qsNet');
-                netEl.textContent = (net > 0 ? '+' : '') + net;
+                netEl.textContent = (net > 0 ? '+' : '') + net.toLocaleString();
                 netEl.style.color = net >= 0 ? '#34d399' : '#ef4444';
             }
-        }).catch(() => {});
 
-        // Fallback: sales-data.json (Office Tracking sheet — CSR-level detail)
-        fetch('sales-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const s = d.summary || {};
-            // Only fill if sales-kpi didn't populate
-            const salesEl = document.getElementById('qsSales');
-            if (salesEl.textContent === '—') salesEl.textContent = s.total_sales || '—';
-            const netEl = document.getElementById('qsNet');
-            if (netEl.textContent === '—') {
-                const net = s.net;
-                netEl.textContent = (net > 0 ? '+' : '') + net;
-                netEl.style.color = net >= 0 ? '#34d399' : '#ef4444';
-            }
-        }).catch(() => {});
-
-        fetch('tech-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const s = d.summary || {};
-            document.getElementById('qsJobs').textContent = (s.total_jobs || 0).toLocaleString();
-            document.getElementById('qsTechs').textContent = s.total_techs || '—';
-        }).catch(() => {});
-
-        fetch('financial-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const p = d.projections;
-            if (p && p.target) {
+            const revenue =
+                number(bridgeOwners.revenue?.ytd_invoiced) ??
+                number(ownerRevenue.ytd_invoiced) ??
+                number(opsSummary.total_wo_revenue) ??
+                number(techSummary.total_revenue);
+            if (revenue !== null) {
+                setText('qsRevenue', formatCurrency(revenue));
+                const progress = Math.round((revenue / 5000000) * 100);
                 const paceEl = document.getElementById('qsPace');
-                const pct = p.target.pacePercent;
-                paceEl.textContent = pct + '%';
-                paceEl.style.color = p.target.onPace ? '#34d399' : (pct >= 80 ? '#fbbf24' : '#ef4444');
+                paceEl.textContent = progress + '%';
+                paceEl.style.color = progress >= 75 ? '#34d399' : (progress >= 40 ? '#fbbf24' : '#ef4444');
+            }
+
+            const jobs =
+                number(bridgeOwners.operations?.total_jobs) ??
+                number(ownerOps.total_jobs) ??
+                number(opsSummary.total_wo_completed) ??
+                number(techSummary.total_jobs);
+            if (jobs !== null) setText('qsJobs', jobs.toLocaleString());
+
+            const activeTechs =
+                number(bridgeOwners.operations?.active_techs) ??
+                number(ownerOps.active_techs) ??
+                number(techSummary.total_techs);
+            if (activeTechs !== null) setText('qsTechs', activeTechs.toLocaleString());
+
+            if (sales?.csv_date) setText('qsSalesDate', sales.csv_date);
+            const freshest = sales?.updated_at || smBridge?.meta?.generated_at || owners?.generated_at || tech?.updated_at || ops?.updated_at;
+            if (freshest) {
+                const updatedEl = document.getElementById('qsUpdatedAt');
+                updatedEl.textContent = new Date(freshest).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+                });
+                setFreshnessClass(updatedEl, freshest);
             }
         }).catch(() => {});
+    </script>
+    <script>
+    // ─── Hub Search ───────────────────────────────────────────────
+    (function() {
+        const searchInput = document.getElementById('hubSearch');
+        const resultsCount = document.getElementById('searchResultsCount');
+        const allCards = Array.from(document.querySelectorAll('.grid .card:not(#favoritesGrid .card)'));
+        const sections = document.querySelectorAll('.section-label');
+        const grids = document.querySelectorAll('.grid:not(#favoritesGrid)');
+
+        // Build search index
+        const cardData = allCards.map(card => ({
+            el: card,
+            text: (card.textContent || '').toLowerCase(),
+            href: card.getAttribute('href') || '',
+            title: (card.querySelector('h3') || {}).textContent || '',
+        }));
+
+        function doSearch(query) {
+            const q = query.trim().toLowerCase();
+            
+            if (!q) {
+                // Reset: show all
+                allCards.forEach(c => c.classList.remove('hidden-by-search'));
+                sections.forEach(s => s.classList.remove('section-hidden'));
+                grids.forEach(g => g.classList.remove('section-hidden'));
+                resultsCount.style.display = 'none';
+                return;
+            }
+
+            // Fuzzy match: split terms, all must match
+            const terms = q.split(/\s+/).filter(Boolean);
+            let visible = 0;
+
+            cardData.forEach(d => {
+                const matches = terms.every(t => d.text.includes(t) || d.href.includes(t));
+                d.el.classList.toggle('hidden-by-search', !matches);
+                if (matches) visible++;
+            });
+
+            // Hide sections where ALL cards are hidden
+            sections.forEach((sectionLabel, i) => {
+                const grid = sectionLabel.nextElementSibling;
+                if (grid && grid.classList.contains('grid')) {
+                    const visibleCards = grid.querySelectorAll('.card:not(.hidden-by-search)');
+                    const hide = visibleCards.length === 0;
+                    sectionLabel.classList.toggle('section-hidden', hide);
+                    grid.classList.toggle('section-hidden', hide);
+                }
+            });
+
+            resultsCount.textContent = `${visible} dashboard${visible !== 1 ? 's' : ''} found`;
+            resultsCount.style.display = 'block';
+        }
+
+        searchInput.addEventListener('input', () => doSearch(searchInput.value));
+
+        // Keyboard shortcut: / to focus search, Escape to clear
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                doSearch('');
+                searchInput.blur();
+            }
+        });
+    })();
+
+    // ─── Favorites ────────────────────────────────────────────────
+    (function() {
+        const STORAGE_KEY = 'mojo-hub-favorites';
+        const favSection = document.getElementById('favoritesSection');
+        const favGrid = document.getElementById('favoritesGrid');
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            } catch { return []; }
+        }
+
+        function saveFavorites(favs) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+        }
+
+        function toggleFavorite(href) {
+            let favs = getFavorites();
+            const idx = favs.indexOf(href);
+            if (idx >= 0) favs.splice(idx, 1);
+            else favs.push(href);
+            saveFavorites(favs);
+            renderFavorites();
+            updateFavButtons();
+        }
+
+        function renderFavorites() {
+            const favs = getFavorites();
+            favGrid.innerHTML = '';
+            
+            if (favs.length === 0) {
+                favSection.classList.remove('has-favs');
+                return;
+            }
+
+            favSection.classList.add('has-favs');
+
+            // Clone matching cards into favorites grid
+            favs.forEach(href => {
+                const original = document.querySelector(`.grid:not(#favoritesGrid) .card[href="${href}"]`);
+                if (original) {
+                    const clone = original.cloneNode(true);
+                    // Remove fav button from clone (we'll add a new one)
+                    const existingBtn = clone.querySelector('.fav-btn');
+                    if (existingBtn) existingBtn.remove();
+                    
+                    // Add unfavorite button
+                    const btn = document.createElement('button');
+                    btn.className = 'fav-btn is-fav';
+                    btn.innerHTML = '⭐';
+                    btn.title = 'Remove from favorites';
+                    btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(href); };
+                    clone.style.position = 'relative';
+                    clone.appendChild(btn);
+                    
+                    favGrid.appendChild(clone);
+                }
+            });
+        }
+
+        function updateFavButtons() {
+            const favs = getFavorites();
+            document.querySelectorAll('.grid:not(#favoritesGrid) .card').forEach(card => {
+                const href = card.getAttribute('href');
+                let btn = card.querySelector('.fav-btn');
+                
+                if (!btn) {
+                    btn = document.createElement('button');
+                    btn.className = 'fav-btn';
+                    card.style.position = 'relative';
+                    card.appendChild(btn);
+                }
+
+                const isFav = favs.includes(href);
+                btn.className = 'fav-btn' + (isFav ? ' is-fav' : '');
+                btn.innerHTML = isFav ? '⭐' : '☆';
+                btn.title = isFav ? 'Remove from favorites' : 'Add to favorites';
+                btn.onclick = (e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(href); };
+            });
+        }
+
+        // Init
+        updateFavButtons();
+        renderFavorites();
+    })();
     </script>
     <script src="navigator.js"></script>
 </body>

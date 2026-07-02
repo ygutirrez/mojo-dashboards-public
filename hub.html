@@ -269,7 +269,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 12px;
-            margin-bottom: 48px;
+            margin-bottom: 10px;
             padding: 24px;
             background: linear-gradient(145deg, #1a1a2e, #16213e);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -297,14 +297,34 @@
             margin-top: 4px;
         }
 
+        .quick-stats-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
+            margin-bottom: 38px;
+            color: #6b7280;
+            font-size: 0.78rem;
+        }
+
+        .quick-stats-meta strong {
+            color: #d1d5db;
+            font-weight: 600;
+        }
+
+        .quick-stats-meta .fresh { color: #34d399; }
+        .quick-stats-meta .stale { color: #fbbf24; }
+        .quick-stats-meta .old { color: #ef4444; }
+
         @media (max-width: 768px) {
             .quick-stats {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 16px;
-                margin-bottom: 28px;
+                margin-bottom: 10px;
             }
             .stat-value { font-size: 1.4rem; }
             .stat-label { font-size: 0.65rem; }
+            .quick-stats-meta { margin-bottom: 28px; font-size: 0.72rem; }
         }
 
         @media (max-width: 480px) {
@@ -470,8 +490,12 @@
             </div>
             <div class="stat-item">
                 <div class="stat-value" id="qsPace">—</div>
-                <div class="stat-label">$5M Pace</div>
+                <div class="stat-label">$5M Progress</div>
             </div>
+        </div>
+        <div class="quick-stats-meta" id="quickStatsMeta">
+            <span>Data refreshed: <strong id="qsUpdatedAt">checking...</strong></span>
+            <span>Sales file: <strong id="qsSalesDate">—</strong></span>
         </div>
 
         <!-- SEARCH -->
@@ -933,19 +957,6 @@
                 </div>
             </a>
 
-            <a href="sm-daily-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
-                <div class="card-top">
-                    <div class="card-icon">📋</div>
-                    <span class="card-badge live">Live</span>
-                </div>
-                <h3>ServiceMinder Daily Report</h3>
-                <p>Daily owner brief with direct API appointment, route, service mix, invoice, payment, and data-quality snapshots.</p>
-                <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServiceMinder API</div>
-                    <div class="card-metric"><strong>Updates:</strong> On demand / scheduled</div>
-                </div>
-            </a>
-
         </div>
 
         <!-- MARKETING & SOCIAL -->
@@ -1171,40 +1182,120 @@
                 .catch(() => {})
         );
 
-        Promise.all(fetches).then(renderTimestamps);
+        Promise.all(fetches).then(() => {
+            renderTimestamps();
+            renderQuickStatsMeta();
+        });
 
-        // Populate quick stats from live data
-        fetch('sales-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const s = d.summary || {};
-            document.getElementById('qsSales').textContent = s.total_sales || '—';
-            const net = s.net;
-            const netEl = document.getElementById('qsNet');
-            netEl.textContent = (net > 0 ? '+' : '') + net;
-            netEl.style.color = net >= 0 ? '#34d399' : '#ef4444';
-        }).catch(() => {});
+        function number(value) {
+            const parsed = Number(value);
+            return Number.isFinite(parsed) ? parsed : null;
+        }
 
-        fetch('owners-data.json' + cacheBust).then(r => r.json()).then(d => {
-            // Revenue from ops or invoices
-            const rev = d.sales?.total_revenue || d.revenue?.total;
-            if (rev) document.getElementById('qsRevenue').textContent = '$' + Math.round(rev / 1000) + 'K';
-        }).catch(() => {});
+        function formatCurrency(value) {
+            const n = number(value);
+            if (n === null) return '—';
+            if (n >= 1000000) return '$' + (n / 1000000).toFixed(n >= 10000000 ? 0 : 1) + 'M';
+            if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+            return '$' + Math.round(n).toLocaleString();
+        }
 
-        fetch('tech-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const s = d.summary || {};
-            document.getElementById('qsJobs').textContent = (s.total_jobs || 0).toLocaleString();
-            document.getElementById('qsTechs').textContent = s.total_techs || '—';
-            if (s.total_revenue) {
-                document.getElementById('qsRevenue').textContent = '$' + Math.round(s.total_revenue / 1000) + 'K';
+        function fetchJson(file) {
+            return fetch(file + cacheBust).then(r => r.ok ? r.json() : null).catch(() => null);
+        }
+
+        function setText(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value;
+        }
+
+        function setFreshnessClass(el, date) {
+            if (!el || !date) return;
+            const diffHrs = Math.floor((new Date() - new Date(date)) / 3600000);
+            el.className = diffHrs < 26 ? 'fresh' : (diffHrs < 96 ? 'stale' : 'old');
+        }
+
+        function renderQuickStatsMeta() {
+            const timestamps = Object.values(dataPullDates)
+                .filter(Boolean)
+                .map(d => new Date(d))
+                .filter(d => !Number.isNaN(d.getTime()))
+                .sort((a, b) => b - a);
+
+            const updatedEl = document.getElementById('qsUpdatedAt');
+            if (!updatedEl) return;
+            if (timestamps.length === 0) {
+                updatedEl.textContent = 'unknown';
+                updatedEl.className = 'old';
+                return;
             }
-        }).catch(() => {});
 
-        fetch('financial-data.json' + cacheBust).then(r => r.json()).then(d => {
-            const p = d.projections;
-            if (p && p.target) {
+            updatedEl.textContent = timestamps[0].toLocaleString('en-US', {
+                month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+            });
+            setFreshnessClass(updatedEl, timestamps[0]);
+        }
+
+        // Populate quick stats from live data. Prefer the newest operational feeds,
+        // then fall back to older owner/financial files only when needed.
+        Promise.all([
+            fetchJson('sales-data.json'),
+            fetchJson('serviceminder-bridge-data.json'),
+            fetchJson('owners-data.json'),
+            fetchJson('tech-data.json'),
+            fetchJson('ops-data.json')
+        ]).then(([sales, smBridge, owners, tech, ops]) => {
+            const salesSummary = sales?.summary || {};
+            const bridgeOwners = smBridge?.owners || {};
+            const ownerRevenue = owners?.revenue || {};
+            const ownerOps = owners?.operations || {};
+            const techSummary = tech?.summary || {};
+            const opsSummary = ops?.summary || {};
+
+            const totalSales = number(salesSummary.total_sales) ?? number(owners?.sales?.total_sales);
+            if (totalSales !== null) setText('qsSales', totalSales.toLocaleString());
+
+            const net = number(salesSummary.net) ?? number(owners?.sales?.net);
+            if (net !== null) {
+                const netEl = document.getElementById('qsNet');
+                netEl.textContent = (net > 0 ? '+' : '') + net.toLocaleString();
+                netEl.style.color = net >= 0 ? '#34d399' : '#ef4444';
+            }
+
+            const revenue =
+                number(bridgeOwners.revenue?.ytd_invoiced) ??
+                number(ownerRevenue.ytd_invoiced) ??
+                number(opsSummary.total_wo_revenue) ??
+                number(techSummary.total_revenue);
+            if (revenue !== null) {
+                setText('qsRevenue', formatCurrency(revenue));
+                const progress = Math.round((revenue / 5000000) * 100);
                 const paceEl = document.getElementById('qsPace');
-                const pct = p.target.pacePercent;
-                paceEl.textContent = pct + '%';
-                paceEl.style.color = p.target.onPace ? '#34d399' : (pct >= 80 ? '#fbbf24' : '#ef4444');
+                paceEl.textContent = progress + '%';
+                paceEl.style.color = progress >= 75 ? '#34d399' : (progress >= 40 ? '#fbbf24' : '#ef4444');
+            }
+
+            const jobs =
+                number(bridgeOwners.operations?.total_jobs) ??
+                number(ownerOps.total_jobs) ??
+                number(opsSummary.total_wo_completed) ??
+                number(techSummary.total_jobs);
+            if (jobs !== null) setText('qsJobs', jobs.toLocaleString());
+
+            const activeTechs =
+                number(bridgeOwners.operations?.active_techs) ??
+                number(ownerOps.active_techs) ??
+                number(techSummary.total_techs);
+            if (activeTechs !== null) setText('qsTechs', activeTechs.toLocaleString());
+
+            if (sales?.csv_date) setText('qsSalesDate', sales.csv_date);
+            const freshest = sales?.updated_at || smBridge?.meta?.generated_at || owners?.generated_at || tech?.updated_at || ops?.updated_at;
+            if (freshest) {
+                const updatedEl = document.getElementById('qsUpdatedAt');
+                updatedEl.textContent = new Date(freshest).toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+                });
+                setFreshnessClass(updatedEl, freshest);
             }
         }).catch(() => {});
     </script>
