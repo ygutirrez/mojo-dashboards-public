@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-05-21T08:41:06.673Z",
+    "generated": "2026-07-03T09:10:46.334Z",
     "version": 2,
     "sources": [
       "Management Totals by Month.xlsx",
@@ -18,9 +18,9 @@
       "netCustomerChange": 116,
       "estimates": 385,
       "estimateConversion": 70.9,
-      "dailyProductionRate": 6568.34,
-      "annualPace": 2397445,
-      "daysElapsed": 140
+      "dailyProductionRate": 5024.96,
+      "annualPace": 1834111,
+      "daysElapsed": 183
     },
     "techCount": 14,
     "topTech": {
@@ -99,31 +99,57 @@
       "cancelsDollars": 3009.64,
       "cancelsAccounts": 11,
       "revenuePerStop": 90.99053042121685
+    },
+    {
+      "period": "June - 2026",
+      "production": 0,
+      "stops": 0,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 0,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 0
+    },
+    {
+      "period": "July - 2026",
+      "production": 0,
+      "stops": 0,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 0,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 0
     }
   ],
   "monthlyComparison": {
     "current": {
-      "period": "May - 2026",
-      "production": 116649.86,
-      "stops": 1282,
-      "sales": 58,
-      "cancels": 11,
-      "daysElapsed": 21,
-      "dailyPace": 5554.76
+      "period": "July - 2026",
+      "production": 0,
+      "stops": 0,
+      "sales": 0,
+      "cancels": 0,
+      "daysElapsed": 3,
+      "dailyPace": 0
     },
     "previous": {
-      "period": "April - 2026",
-      "production": 221871.67,
-      "stops": 2461,
-      "sales": 113,
-      "cancels": 38,
+      "period": "June - 2026",
+      "production": 0,
+      "stops": 0,
+      "sales": 0,
+      "cancels": 0,
       "daysElapsed": 30,
-      "dailyPace": 7395.72
+      "dailyPace": 0
     },
     "changes": {
-      "productionPace": -25,
-      "stopsPerDay": -21,
-      "revPerStop": 0.84
+      "productionPace": 0,
+      "stopsPerDay": 0,
+      "revPerStop": 0
     }
   },
   "technicians": [
@@ -674,12 +700,12 @@
     }
   ],
   "seasonScore": {
-    "score": 55,
+    "score": 40,
     "factors": [
       "✅ 13 active techs",
-      "⚠️ Sales flat/down (113 → 58)",
-      "✅ Cancels ↓ (38 → 11)",
-      "❌ Well below $5M ($2397k pace)"
+      "⚠️ Sales flat/down (0 → 0)",
+      "⚠️ Cancels ↑ (0 → 0)",
+      "❌ Well below $5M ($1834k pace)"
     ]
   },
   "salesBreakdown": {
