@@ -1,27 +1,147 @@
 {
-  "generated_at": "2026-05-14T15:00:39.565Z",
+  "generated_at": "2026-06-24T15:53:47.538Z",
   "health": {
-    "score": 91,
-    "pipelineStatus": "degraded",
-    "totalDataFiles": 41,
-    "fresh": 38,
-    "stale": 3,
+    "score": 0,
+    "pipelineStatus": "unknown",
+    "totalDataFiles": 44,
+    "fresh": 9,
+    "stale": 35,
     "missing": 0,
-    "criticalStale": 0,
+    "criticalStale": 8,
     "criticalMissing": 0,
     "totalDashboards": 45,
-    "dashboardsHealthy": 44,
-    "dashboardsAffected": 1
+    "dashboardsHealthy": 21,
+    "dashboardsAffected": 24
   },
   "dataFiles": [
     {
-      "name": "owners-data.json",
+      "name": "alerts-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 2,
-      "lastModified": "2026-05-13T13:37:04.648Z",
-      "ageHours": 25.4,
-      "dataTimestamp": "2026-05-13T13:37:01.643Z",
+      "sizeKB": 6.8,
+      "lastModified": "2026-05-13T15:01:05.824Z",
+      "ageHours": 1008.9,
+      "dataTimestamp": "2026-05-13T15:01:05.823Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Derived (all sources)",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "reconciliation-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 11,
+      "lastModified": "2026-05-13T15:01:06.114Z",
+      "ageHours": 1008.9,
+      "dataTimestamp": "2026-05-13T15:01:06.113Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite + Sales CSV",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "goal-tracker-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 4.5,
+      "lastModified": "2026-05-13T15:58:44.767Z",
+      "ageHours": 1007.9,
+      "dataTimestamp": "2026-05-13T15:58:44.741Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "cancel-analysis.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 7,
+      "lastModified": "2026-05-21T08:41:01.373Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:01.368636+00:00",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "financial-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 6,
+      "lastModified": "2026-05-21T08:40:25.043Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:40:25.040Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "profitability-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 7.7,
+      "lastModified": "2026-05-21T08:41:20.106Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:20.083Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "data/cancel-analysis.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 7,
+      "lastModified": "2026-05-21T08:41:01.370Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:01.368636+00:00",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "sales-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 4.6,
+      "lastModified": "2026-05-21T18:19:15.905Z",
+      "ageHours": 813.6,
+      "dataTimestamp": "2026-05-21T18:19:15.880Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Sales CSV (email/SharePoint)",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "dashboard-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 77.3,
+      "lastModified": "2026-06-24T15:53:30.010Z",
+      "ageHours": 0,
+      "dataTimestamp": "2026-05-21T08:41:08.161Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -33,10 +153,10 @@
       "name": "ops-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 16.5,
-      "lastModified": "2026-05-13T13:54:33.567Z",
-      "ageHours": 25.1,
-      "dataTimestamp": "2026-05-13T13:37:01.643Z",
+      "sizeKB": 21.5,
+      "lastModified": "2026-06-24T15:53:30.005Z",
+      "ageHours": 0,
+      "dataTimestamp": "2026-06-24T15:53:29.936Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -45,88 +165,13 @@
       "status": "fresh"
     },
     {
-      "name": "alerts-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 6.8,
-      "lastModified": "2026-05-13T15:01:05.824Z",
-      "ageHours": 24,
-      "dataTimestamp": "2026-05-13T15:01:05.823Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Derived (all sources)",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "reconciliation-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 11,
-      "lastModified": "2026-05-13T15:01:06.114Z",
-      "ageHours": 24,
-      "dataTimestamp": "2026-05-13T15:01:06.113Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite + Sales CSV",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "goal-tracker-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 4.5,
-      "lastModified": "2026-05-13T15:58:44.767Z",
-      "ageHours": 23,
-      "dataTimestamp": "2026-05-13T15:58:44.741Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "cancel-analysis.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 7,
-      "lastModified": "2026-05-14T08:40:32.401Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:32.399278+00:00",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "financial-data.json",
+      "name": "owners-data.json",
       "location": "root",
       "exists": true,
       "sizeKB": 6,
-      "lastModified": "2026-05-14T08:40:04.317Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:04.314Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "profitability-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 7.7,
-      "lastModified": "2026-05-14T08:40:46.506Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46.484Z",
+      "lastModified": "2026-06-24T15:53:30.005Z",
+      "ageHours": 0,
+      "dataTimestamp": "2026-06-24T15:53:29.936Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -138,10 +183,10 @@
       "name": "sales-kpi-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 5.6,
-      "lastModified": "2026-05-14T08:40:36.894Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:36.431Z",
+      "sizeKB": 11.6,
+      "lastModified": "2026-06-24T15:53:30.008Z",
+      "ageHours": 0,
+      "dataTimestamp": "2026-06-24T15:53:29.936Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Sales CSV",
@@ -153,10 +198,10 @@
       "name": "tech-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 6.2,
-      "lastModified": "2026-05-14T08:40:30.432Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:30.410Z",
+      "sizeKB": 16.2,
+      "lastModified": "2026-06-24T15:53:30.007Z",
+      "ageHours": 0,
+      "dataTimestamp": "2026-06-24T15:53:29.936Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Zubie",
@@ -165,58 +210,13 @@
       "status": "fresh"
     },
     {
-      "name": "data/cancel-analysis.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 7,
-      "lastModified": "2026-05-14T08:40:32.400Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:32.399278+00:00",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "dashboard-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 63.8,
-      "lastModified": "2026-05-14T15:00:33.265Z",
-      "ageHours": 0,
-      "dataTimestamp": "2026-05-14T15:00:33.260Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "sales-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 4.5,
-      "lastModified": "2026-05-14T14:59:56.221Z",
-      "ageHours": 0,
-      "dataTimestamp": "2026-05-14T14:59:56.194Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Sales CSV (email/SharePoint)",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
       "name": "data/sales-kpi-data.json",
       "location": "data/",
       "exists": true,
-      "sizeKB": 5.6,
-      "lastModified": "2026-05-14T14:59:56.045Z",
+      "sizeKB": 11.6,
+      "lastModified": "2026-06-24T15:53:30.008Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-05-14T14:59:55.547Z",
+      "dataTimestamp": "2026-06-24T15:53:29.936Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Sales CSV",
@@ -225,13 +225,13 @@
       "status": "fresh"
     },
     {
-      "name": "data/dashboard-manifest.json",
+      "name": "data/retention-kpi.json",
       "location": "data/",
       "exists": true,
-      "sizeKB": 43.8,
-      "lastModified": "2026-04-22T20:02:52.673Z",
-      "ageHours": 523,
-      "dataTimestamp": "2026-04-01T03:07:24.560Z",
+      "sizeKB": 1.5,
+      "lastModified": "2026-04-22T20:02:52.729Z",
+      "ageHours": 1507.8,
+      "dataTimestamp": "2026-03-15T15:03:32.572Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -240,13 +240,358 @@
       "status": "stale"
     },
     {
-      "name": "data/retention-kpi.json",
+      "name": "capacity-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 8.2,
+      "lastModified": "2026-05-13T13:54:33.559Z",
+      "ageHours": 1010,
+      "dataTimestamp": "2026-03-28T03:10:31.769Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "chemical-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 20.4,
+      "lastModified": "2026-05-21T08:40:45.845Z",
+      "ageHours": 823.2,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "clv-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 8.6,
+      "lastModified": "2026-05-21T08:40:30.259Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:40:30.235Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "csr-performance-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 2.1,
+      "lastModified": "2026-05-21T08:40:25.896Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:40:25.894Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "fleet-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 11.6,
+      "lastModified": "2026-05-21T08:41:01.691Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:01.688Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite + Zubie",
+      "critical": false,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "marketing-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 14,
+      "lastModified": "2026-05-21T08:41:08.466Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:08.463Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Google Ads + ServSuite",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "pipeline-status.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 1.6,
+      "lastModified": "2026-05-21T08:41:19.941Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:19Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Pipeline (derived)",
+      "critical": false,
+      "maxAgeHours": 36,
+      "status": "stale"
+    },
+    {
+      "name": "retention-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 1.4,
+      "lastModified": "2026-05-21T08:41:00.316Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:00Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "sm-kpi-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 15.2,
+      "lastModified": "2026-05-21T08:41:06.674Z",
+      "ageHours": 823.2,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "ServiceMinder",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/activity-log.json",
       "location": "data/",
       "exists": true,
-      "sizeKB": 1.5,
-      "lastModified": "2026-04-22T20:02:52.729Z",
-      "ageHours": 523,
-      "dataTimestamp": "2026-03-15T15:03:32.572Z",
+      "sizeKB": 5.5,
+      "lastModified": "2026-05-21T08:41:21.790Z",
+      "ageHours": 823.2,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/geo-intelligence-data.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 10.6,
+      "lastModified": "2026-05-21T08:41:20.418Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:20.416Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/growth-tracker-data.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 18.5,
+      "lastModified": "2026-05-21T08:41:20.278Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:20.276Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/retention-data.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 1.4,
+      "lastModified": "2026-05-21T08:41:00.315Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:00Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/scorecard-data.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 8.4,
+      "lastModified": "2026-05-21T08:41:20.568Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:20.565Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/sync-report.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 13.9,
+      "lastModified": "2026-05-21T08:41:20.926Z",
+      "ageHours": 823.2,
+      "dataTimestamp": "2026-05-21T08:41:20.703Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/weekly-snapshots.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 8.3,
+      "lastModified": "2026-05-21T08:40:30.447Z",
+      "ageHours": 823.2,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/sales-kpi-history.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 2.5,
+      "lastModified": "2026-05-21T18:19:15.286Z",
+      "ageHours": 813.6,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/processed-cancels.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 0.9,
+      "lastModified": "2026-06-16T19:36:42.624Z",
+      "ageHours": 188.3,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/processed-invoices.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 0.1,
+      "lastModified": "2026-06-16T19:36:42.625Z",
+      "ageHours": 188.3,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/processed-sales.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 1.9,
+      "lastModified": "2026-06-16T19:36:42.624Z",
+      "ageHours": 188.3,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "data/processed-techs.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 2.3,
+      "lastModified": "2026-06-16T19:36:42.624Z",
+      "ageHours": 188.3,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "nextiva-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 0.5,
+      "lastModified": "2026-06-17T13:48:46.699Z",
+      "ageHours": 170.1,
+      "dataTimestamp": "2026-06-17T13:55:00.000Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "serviceminder-dashboard-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 33.9,
+      "lastModified": "2026-06-18T13:42:55.870Z",
+      "ageHours": 146.2,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
+    },
+    {
+      "name": "freshness-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 27.6,
+      "lastModified": "2026-06-22T15:12:51.800Z",
+      "ageHours": 48.7,
+      "dataTimestamp": "2026-06-22T15:12:51.772Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -258,55 +603,55 @@
       "name": "youtube-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 2.1,
-      "lastModified": "2026-05-04T10:02:30.886Z",
-      "ageHours": 245,
+      "sizeKB": 2,
+      "lastModified": "2026-06-22T15:12:37.443Z",
+      "ageHours": 48.7,
       "dataTimestamp": null,
       "recordCount": null,
       "valid": true,
       "source": "Manual / API",
       "critical": false,
       "maxAgeHours": 168,
-      "status": "stale"
-    },
-    {
-      "name": "capacity-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 8.2,
-      "lastModified": "2026-05-13T13:54:33.559Z",
-      "ageHours": 25.1,
-      "dataTimestamp": "2026-03-28T03:10:31.769Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 48,
       "status": "fresh"
     },
     {
-      "name": "freshness-data.json",
-      "location": "root",
+      "name": "data/dashboard-manifest.json",
+      "location": "data/",
       "exists": true,
-      "sizeKB": 29.6,
-      "lastModified": "2026-05-13T15:01:06.253Z",
-      "ageHours": 24,
-      "dataTimestamp": "2026-05-13T15:01:06.240Z",
+      "sizeKB": 65.3,
+      "lastModified": "2026-06-22T15:12:51.961Z",
+      "ageHours": 48.7,
+      "dataTimestamp": "2026-06-22T15:12:51.918Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
       "critical": false,
       "maxAgeHours": 48,
-      "status": "fresh"
+      "status": "stale"
+    },
+    {
+      "name": "data/marketing-dashboard-data.json",
+      "location": "data/",
+      "exists": true,
+      "sizeKB": 11.4,
+      "lastModified": "2026-06-22T15:12:51.654Z",
+      "ageHours": 48.7,
+      "dataTimestamp": "2026-06-22T15:12:51.652Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Unknown",
+      "critical": false,
+      "maxAgeHours": 48,
+      "status": "stale"
     },
     {
       "name": "anomaly-report.json",
       "location": "root",
       "exists": true,
       "sizeKB": 1.6,
-      "lastModified": "2026-05-14T08:40:46.262Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46.262Z",
+      "lastModified": "2026-06-24T15:50:23.147Z",
+      "ageHours": 0.1,
+      "dataTimestamp": "2026-06-24T15:50:23.146Z",
       "recordCount": null,
       "valid": true,
       "source": "Anomaly Detector",
@@ -315,311 +660,11 @@
       "status": "fresh"
     },
     {
-      "name": "chemical-data.json",
+      "name": "serviceminder-bridge-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 20.4,
-      "lastModified": "2026-05-14T08:40:20.187Z",
-      "ageHours": 6.3,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "clv-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 8.6,
-      "lastModified": "2026-05-14T08:40:08.923Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:08.900Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "csr-performance-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 2.1,
-      "lastModified": "2026-05-14T08:40:05.128Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:05.126Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "fleet-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 11.6,
-      "lastModified": "2026-05-14T08:40:32.588Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:32.586Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite + Zubie",
-      "critical": false,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "pipeline-status.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 1.6,
-      "lastModified": "2026-05-14T08:40:46.342Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Pipeline (derived)",
-      "critical": false,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "retention-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 1.4,
-      "lastModified": "2026-05-14T08:40:31.804Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:31Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "sm-kpi-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 15.2,
-      "lastModified": "2026-05-14T08:40:36.239Z",
-      "ageHours": 6.3,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "ServiceMinder",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/activity-log.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 3,
-      "lastModified": "2026-05-14T08:40:48.208Z",
-      "ageHours": 6.3,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/geo-intelligence-data.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 10.6,
-      "lastModified": "2026-05-14T08:40:46.795Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46.793Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/growth-tracker-data.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 18.5,
-      "lastModified": "2026-05-14T08:40:46.663Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46.662Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/retention-data.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 1.4,
-      "lastModified": "2026-05-14T08:40:31.803Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:31Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/scorecard-data.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 8.2,
-      "lastModified": "2026-05-14T08:40:46.934Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:46.931Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/sync-report.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 13.8,
-      "lastModified": "2026-05-14T08:40:47.405Z",
-      "ageHours": 6.3,
-      "dataTimestamp": "2026-05-14T08:40:47.065Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/weekly-snapshots.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 7.1,
-      "lastModified": "2026-05-14T08:40:09.089Z",
-      "ageHours": 6.3,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "marketing-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 6.1,
-      "lastModified": "2026-05-14T15:00:39.294Z",
-      "ageHours": 0,
-      "dataTimestamp": "2026-05-14T15:00:39.292Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Google Ads + ServSuite",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/marketing-dashboard-data.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 7.4,
-      "lastModified": "2026-05-14T15:00:39.435Z",
-      "ageHours": 0,
-      "dataTimestamp": "2026-05-14T15:00:39.432Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/processed-cancels.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 0.9,
-      "lastModified": "2026-05-14T14:59:55.364Z",
-      "ageHours": 0,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/processed-invoices.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 0.1,
-      "lastModified": "2026-05-14T14:59:55.364Z",
-      "ageHours": 0,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/processed-sales.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 1.9,
-      "lastModified": "2026-05-14T14:59:55.364Z",
-      "ageHours": 0,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/processed-techs.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 2.3,
-      "lastModified": "2026-05-14T14:59:55.364Z",
-      "ageHours": 0,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "Unknown",
-      "critical": false,
-      "maxAgeHours": 48,
-      "status": "fresh"
-    },
-    {
-      "name": "data/sales-kpi-history.json",
-      "location": "data/",
-      "exists": true,
-      "sizeKB": 2.5,
-      "lastModified": "2026-05-14T14:59:55.573Z",
+      "sizeKB": 16.2,
+      "lastModified": "2026-06-24T15:53:29.993Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -632,100 +677,317 @@
   ],
   "dashboards": [
     {
-      "name": "social-media-dashboard.html",
+      "name": "activity-log.html",
       "dependencies": [
         {
-          "file": "youtube-data.json",
+          "file": "data/activity-log.json",
           "status": "stale",
-          "ageHours": 245
+          "ageHours": 823.2
         }
       ],
       "depCount": 1,
       "status": "stale"
     },
     {
-      "name": "activity-log.html",
-      "dependencies": [
-        {
-          "file": "data/activity-log.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
       "name": "alerts-dashboard.html",
       "dependencies": [
         {
           "file": "alerts-data.json",
-          "status": "fresh",
-          "ageHours": 24
+          "status": "stale",
+          "ageHours": 1008.9
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
     },
     {
       "name": "cancel-analysis.html",
       "dependencies": [
         {
           "file": "cancel-analysis.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "status": "stale",
+          "ageHours": 823.2
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
     },
     {
       "name": "capacity-planner.html",
       "dependencies": [
         {
           "file": "capacity-data.json",
-          "status": "fresh",
-          "ageHours": 25.1
+          "status": "stale",
+          "ageHours": 1010
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
     },
     {
       "name": "chemical-dashboard.html",
       "dependencies": [
         {
           "file": "chemical-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "status": "stale",
+          "ageHours": 823.2
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
     },
     {
       "name": "clv-dashboard.html",
       "dependencies": [
         {
           "file": "clv-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "status": "stale",
+          "ageHours": 823.2
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
     },
     {
       "name": "csr-performance.html",
       "dependencies": [
         {
           "file": "csr-performance-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "status": "stale",
+          "ageHours": 823.2
         }
       ],
       "depCount": 1,
-      "status": "fresh"
+      "status": "stale"
+    },
+    {
+      "name": "data-quality.html",
+      "dependencies": [
+        {
+          "file": "data/sync-report.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "financial-dashboard.html",
+      "dependencies": [
+        {
+          "file": "financial-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "fleet-dashboard.html",
+      "dependencies": [
+        {
+          "file": "fleet-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "goal-tracker.html",
+      "dependencies": [
+        {
+          "file": "goal-tracker-data.json",
+          "status": "stale",
+          "ageHours": 1007.9
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "marketing-dashboard.html",
+      "dependencies": [
+        {
+          "file": "marketing-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        },
+        {
+          "file": "data/marketing-dashboard-data.json",
+          "status": "stale",
+          "ageHours": 48.7
+        }
+      ],
+      "depCount": 2,
+      "status": "stale"
+    },
+    {
+      "name": "morning-brief.html",
+      "dependencies": [
+        {
+          "file": "sales-data.json",
+          "status": "stale",
+          "ageHours": 813.6
+        },
+        {
+          "file": "dashboard-data.json",
+          "status": "fresh",
+          "ageHours": 0
+        }
+      ],
+      "depCount": 2,
+      "status": "stale"
+    },
+    {
+      "name": "pipeline-monitor.html",
+      "dependencies": [
+        {
+          "file": "pipeline-status.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "profitability-dashboard.html",
+      "dependencies": [
+        {
+          "file": "profitability-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "reconciliation-dashboard.html",
+      "dependencies": [
+        {
+          "file": "reconciliation-data.json",
+          "status": "stale",
+          "ageHours": 1008.9
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "retention-dashboard.html",
+      "dependencies": [
+        {
+          "file": "retention-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "retention-intelligence.html",
+      "dependencies": [
+        {
+          "file": "retention-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        },
+        {
+          "file": "clv-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 2,
+      "status": "stale"
+    },
+    {
+      "name": "sales-kpi-dashboard.html",
+      "dependencies": [
+        {
+          "file": "sales-kpi-data.json",
+          "status": "fresh",
+          "ageHours": 0
+        },
+        {
+          "file": "data/sales-kpi-data.json",
+          "status": "fresh",
+          "ageHours": 0
+        },
+        {
+          "file": "data/sales-kpi-history.json",
+          "status": "stale",
+          "ageHours": 813.6
+        }
+      ],
+      "depCount": 3,
+      "status": "stale"
+    },
+    {
+      "name": "sales-leaderboard.html",
+      "dependencies": [
+        {
+          "file": "sales-data.json",
+          "status": "stale",
+          "ageHours": 813.6
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "sales-tv.html",
+      "dependencies": [
+        {
+          "file": "sales-data.json",
+          "status": "stale",
+          "ageHours": 813.6
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "season-readiness.html",
+      "dependencies": [
+        {
+          "file": "sm-kpi-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "sm-kpi-dashboard.html",
+      "dependencies": [
+        {
+          "file": "sm-kpi-data.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
+    },
+    {
+      "name": "weekly-trends.html",
+      "dependencies": [
+        {
+          "file": "data/weekly-snapshots.json",
+          "status": "stale",
+          "ageHours": 823.2
+        }
+      ],
+      "depCount": 1,
+      "status": "stale"
     },
     {
       "name": "dashboard.html",
@@ -734,18 +996,6 @@
           "file": "dashboard-data.json",
           "status": "fresh",
           "ageHours": 0
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "data-quality.html",
-      "dependencies": [
-        {
-          "file": "data/sync-report.json",
-          "status": "fresh",
-          "ageHours": 6.3
         }
       ],
       "depCount": 1,
@@ -762,76 +1012,6 @@
         {
           "file": "sales-kpi-data.json",
           "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 2,
-      "status": "fresh"
-    },
-    {
-      "name": "financial-dashboard.html",
-      "dependencies": [
-        {
-          "file": "financial-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "fleet-dashboard.html",
-      "dependencies": [
-        {
-          "file": "fleet-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "goal-tracker.html",
-      "dependencies": [
-        {
-          "file": "goal-tracker-data.json",
-          "status": "fresh",
-          "ageHours": 23
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "marketing-dashboard.html",
-      "dependencies": [
-        {
-          "file": "marketing-data.json",
-          "status": "fresh",
-          "ageHours": 0
-        },
-        {
-          "file": "data/marketing-dashboard-data.json",
-          "status": "fresh",
-          "ageHours": 0
-        }
-      ],
-      "depCount": 2,
-      "status": "fresh"
-    },
-    {
-      "name": "morning-brief.html",
-      "dependencies": [
-        {
-          "file": "sales-data.json",
-          "status": "fresh",
-          "ageHours": 0
-        },
-        {
-          "file": "dashboard-data.json",
-          "status": "fresh",
           "ageHours": 0
         }
       ],
@@ -844,7 +1024,7 @@
         {
           "file": "ops-data.json",
           "status": "fresh",
-          "ageHours": 25.1
+          "ageHours": 0
         }
       ],
       "depCount": 1,
@@ -856,7 +1036,7 @@
         {
           "file": "ops-data.json",
           "status": "fresh",
-          "ageHours": 25.1
+          "ageHours": 0
         }
       ],
       "depCount": 1,
@@ -868,75 +1048,10 @@
         {
           "file": "owners-data.json",
           "status": "fresh",
-          "ageHours": 25.4
+          "ageHours": 0
         }
       ],
       "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "pipeline-monitor.html",
-      "dependencies": [
-        {
-          "file": "pipeline-status.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "profitability-dashboard.html",
-      "dependencies": [
-        {
-          "file": "profitability-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "reconciliation-dashboard.html",
-      "dependencies": [
-        {
-          "file": "reconciliation-data.json",
-          "status": "fresh",
-          "ageHours": 24
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "retention-dashboard.html",
-      "dependencies": [
-        {
-          "file": "retention-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "retention-intelligence.html",
-      "dependencies": [
-        {
-          "file": "retention-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        },
-        {
-          "file": "clv-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 2,
       "status": "fresh"
     },
     {
@@ -952,45 +1067,11 @@
       "status": "fresh"
     },
     {
-      "name": "sales-kpi-dashboard.html",
-      "dependencies": [
-        {
-          "file": "sales-kpi-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        },
-        {
-          "file": "data/sales-kpi-data.json",
-          "status": "fresh",
-          "ageHours": 0
-        },
-        {
-          "file": "data/sales-kpi-history.json",
-          "status": "fresh",
-          "ageHours": 0
-        }
-      ],
-      "depCount": 3,
-      "status": "fresh"
-    },
-    {
       "name": "sales-kpi-tv.html",
       "dependencies": [
         {
           "file": "sales-kpi-data.json",
           "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "sales-leaderboard.html",
-      "dependencies": [
-        {
-          "file": "sales-data.json",
-          "status": "fresh",
           "ageHours": 0
         }
       ],
@@ -998,36 +1079,12 @@
       "status": "fresh"
     },
     {
-      "name": "sales-tv.html",
+      "name": "social-media-dashboard.html",
       "dependencies": [
         {
-          "file": "sales-data.json",
+          "file": "youtube-data.json",
           "status": "fresh",
-          "ageHours": 0
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "season-readiness.html",
-      "dependencies": [
-        {
-          "file": "sm-kpi-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "sm-kpi-dashboard.html",
-      "dependencies": [
-        {
-          "file": "sm-kpi-data.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "ageHours": 48.7
         }
       ],
       "depCount": 1,
@@ -1039,7 +1096,7 @@
         {
           "file": "tech-data.json",
           "status": "fresh",
-          "ageHours": 6.3
+          "ageHours": 0
         }
       ],
       "depCount": 1,
@@ -1051,19 +1108,7 @@
         {
           "file": "tech-data.json",
           "status": "fresh",
-          "ageHours": 6.3
-        }
-      ],
-      "depCount": 1,
-      "status": "fresh"
-    },
-    {
-      "name": "weekly-trends.html",
-      "dependencies": [
-        {
-          "file": "data/weekly-snapshots.json",
-          "status": "fresh",
-          "ageHours": 6.3
+          "ageHours": 0
         }
       ],
       "depCount": 1,
@@ -1137,145 +1182,7 @@
     }
   ],
   "pipeline": {
-    "lastRun": {
-      "date": "2026-05-14",
-      "logFile": "logs/nightly-sync-2026-05-14.log",
-      "lineCount": 674,
-      "startTime": "Thu May 14 04:30:22 EDT 2026",
-      "completed": true,
-      "allStepsOK": false,
-      "stepFailures": 4,
-      "failedSteps": [
-        "Daily sales import",
-        "owners-data.json update",
-        "ops-data.json update",
-        "review data update",
-        "GitHub Pages push"
-      ],
-      "steps": {
-        "step_0": "ran",
-        "step_0b": "ran",
-        "step_0c": "ran",
-        "step_1": "ran",
-        "step_2": "ran",
-        "step_3": "ran",
-        "step_4": "ran",
-        "step_4b": "ran",
-        "step_5": "ran",
-        "step_6": "ran",
-        "step_6b": "ran",
-        "step_7": "ran",
-        "step_8": "ran"
-      },
-      "servsuitReports": {
-        "total": 20,
-        "exported": 18,
-        "skipped": 2
-      }
-    },
-    "history": [
-      {
-        "date": "2026-05-14",
-        "logFile": "logs/nightly-sync-2026-05-14.log",
-        "lineCount": 674,
-        "startTime": "Thu May 14 04:30:22 EDT 2026",
-        "completed": true,
-        "allStepsOK": false,
-        "stepFailures": 4,
-        "failedSteps": [
-          "Daily sales import",
-          "owners-data.json update",
-          "ops-data.json update",
-          "review data update",
-          "GitHub Pages push"
-        ],
-        "steps": {
-          "step_0": "ran",
-          "step_0b": "ran",
-          "step_0c": "ran",
-          "step_1": "ran",
-          "step_2": "ran",
-          "step_3": "ran",
-          "step_4": "ran",
-          "step_4b": "ran",
-          "step_5": "ran",
-          "step_6": "ran",
-          "step_6b": "ran",
-          "step_7": "ran",
-          "step_8": "ran"
-        },
-        "servsuitReports": {
-          "total": 20,
-          "exported": 18,
-          "skipped": 2
-        }
-      },
-      {
-        "date": "2026-05-13",
-        "logFile": "logs/nightly-sync-2026-05-13.log",
-        "lineCount": 708,
-        "startTime": "Wed May 13 09:17:48 EDT 2026",
-        "completed": true,
-        "allStepsOK": false,
-        "stepFailures": 4,
-        "failedSteps": [
-          "Daily sales import",
-          "owners-data.json update",
-          "ops-data.json update",
-          "review data update",
-          "GitHub Pages push"
-        ],
-        "steps": {
-          "step_0": "ran",
-          "step_0b": "ran",
-          "step_0c": "ran",
-          "step_1": "ran",
-          "step_2": "ran",
-          "step_3": "ran",
-          "step_4": "ran",
-          "step_4b": "ran",
-          "step_5": "ran",
-          "step_6": "ran",
-          "step_6b": "ran",
-          "step_7": "ran",
-          "step_8": "ran"
-        },
-        "servsuitReports": {
-          "total": 20,
-          "exported": 17,
-          "skipped": 2
-        }
-      },
-      {
-        "date": "2026-05-08",
-        "logFile": "logs/nightly-sync-2026-05-08.log",
-        "lineCount": 487,
-        "startTime": "Fri May  8 04:30:10 EDT 2026",
-        "completed": true,
-        "allStepsOK": true,
-        "stepFailures": 0,
-        "failedSteps": [],
-        "steps": {
-          "step_0": "ran",
-          "step_0b": "ran",
-          "step_0c": "ran",
-          "step_1": "ran",
-          "step_2": "ran",
-          "step_3": "ran",
-          "step_4": "ran",
-          "step_4b": "ran",
-          "step_5": "ran",
-          "step_6": "ran",
-          "step_6b": "ran",
-          "step_7": "ran",
-          "step_8": "ran"
-        },
-        "servsuitReports": {
-          "total": 20,
-          "exported": 18,
-          "skipped": 2
-        }
-      }
-    ]
+    "lastRun": null,
+    "history": []
   }
 }
