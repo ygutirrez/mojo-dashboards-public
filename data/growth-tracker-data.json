@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-21T08:41:20.276Z",
-  "period": "Jan 1 - May 20, 2026 (YTD)",
+  "generated_at": "2026-07-03T09:11:26.847Z",
+  "period": "Jan 1 - Jul 2, 2026 (YTD)",
   "hero": {
     "activeCustomers": 2060,
     "customerGoal": 4000,
@@ -8,14 +8,14 @@
     "netChangeYTD": 36,
     "newCustomersYTD": 177,
     "cancelsYTD": 141,
-    "monthlySalesRate": 38.5,
-    "monthlyCancelRate": 30.7,
-    "monthlyNetRate": 7.8,
+    "monthlySalesRate": 29.4,
+    "monthlyCancelRate": 23.5,
+    "monthlyNetRate": 6,
     "cancelToSalesRatio": 0.5,
     "annualValueLost": 397096.92,
-    "daysElapsed": 140,
-    "monthsElapsed": 4.6,
-    "monthsRemaining": 7.4
+    "daysElapsed": 183,
+    "monthsElapsed": 6,
+    "monthsRemaining": 6
   },
   "trajectory": {
     "startOfYear": 2024,
@@ -37,12 +37,12 @@
       },
       {
         "month": "2026-04",
-        "count": 2108,
+        "count": 2099,
         "label": "Apr"
       },
       {
         "month": "2026-05",
-        "count": 2136,
+        "count": 2118,
         "label": "May"
       }
     ],
@@ -110,47 +110,37 @@
     ],
     "projected": [
       {
-        "month": "2026-05",
-        "count": 2068,
-        "label": "May"
-      },
-      {
-        "month": "2026-06",
-        "count": 2076,
-        "label": "Jun"
-      },
-      {
         "month": "2026-07",
-        "count": 2084,
+        "count": 2066,
         "label": "Jul"
       },
       {
         "month": "2026-08",
-        "count": 2092,
+        "count": 2072,
         "label": "Aug"
       },
       {
         "month": "2026-09",
-        "count": 2100,
+        "count": 2078,
         "label": "Sep"
       },
       {
         "month": "2026-10",
-        "count": 2108,
+        "count": 2084,
         "label": "Oct"
       },
       {
         "month": "2026-11",
-        "count": 2116,
+        "count": 2090,
         "label": "Nov"
       },
       {
         "month": "2026-12",
-        "count": 2124,
+        "count": 2096,
         "label": "Dec"
       }
     ],
-    "projectedYearEnd": 2118
+    "projectedYearEnd": 2096
   },
   "monthlyWaterfall": [
     {
@@ -176,16 +166,16 @@
     },
     {
       "month": "2026-04",
-      "sales": 38,
+      "sales": 29,
       "cancels": 36,
-      "net": 2,
+      "net": -7,
       "valueLost": 93638.32
     },
     {
       "month": "2026-05",
-      "sales": 38,
+      "sales": 29,
       "cancels": 10,
-      "net": 28,
+      "net": 19,
       "valueLost": 29336.26
     }
   ],
@@ -395,43 +385,43 @@
     "distribution": [
       {
         "bucket": "0-90 days",
-        "count": 162,
-        "pct": 7.9
+        "count": 116,
+        "pct": 5.6
       },
       {
         "bucket": "91-180 days",
-        "count": 31,
-        "pct": 1.5
+        "count": 61,
+        "pct": 3
       },
       {
         "bucket": "6-12 months",
-        "count": 228,
-        "pct": 11.1
+        "count": 163,
+        "pct": 7.9
       },
       {
         "bucket": "1-2 years",
-        "count": 351,
-        "pct": 17
+        "count": 358,
+        "pct": 17.4
       },
       {
         "bucket": "2-3 years",
-        "count": 221,
-        "pct": 10.7
+        "count": 232,
+        "pct": 11.3
       },
       {
         "bucket": "3+ years",
-        "count": 1067,
-        "pct": 51.8
+        "count": 1130,
+        "pct": 54.9
       }
     ],
     "lifetimeStats": {
-      "median_days": 1123,
-      "avg_days": 1397,
-      "min_days": 6,
-      "max_days": 4102,
-      "pct_over_1yr": 79.6,
-      "pct_over_2yr": 62.5,
-      "pct_over_3yr": 51.8
+      "median_days": 1166,
+      "avg_days": 1440,
+      "min_days": 49,
+      "max_days": 4145,
+      "pct_over_1yr": 83.5,
+      "pct_over_2yr": 66.1,
+      "pct_over_3yr": 54.9
     },
     "cancelLifetime": [
       {
@@ -467,199 +457,199 @@
         "count": 125
       }
     ],
-    "loyalBaseCount": 1067,
-    "loyalBasePct": 52
+    "loyalBaseCount": 1130,
+    "loyalBasePct": 55
   },
   "whatWouldItTake": {
     "currentPace": {
-      "monthlyNet": 7.8,
-      "annualNet": 94,
-      "projectedYearEnd": 2118,
+      "monthlyNet": 6,
+      "annualNet": 72,
+      "projectedYearEnd": 2096,
       "verdict": "off_track"
     },
     "toReachGoal": {
       "netNeededTotal": 1940,
-      "netNeededPerMonth": 263,
-      "grossSalesNeededPerMonth": 294,
-      "currentMonthlySales": 38.5,
-      "salesMultiplierNeeded": 7.6
+      "netNeededPerMonth": 324,
+      "grossSalesNeededPerMonth": 348,
+      "currentMonthlySales": 29.4,
+      "salesMultiplierNeeded": 11.8
     },
     "scenarios": [
       {
         "cancelReduction": 50,
         "salesMultiplier": 5,
-        "monthlySales": 192.4,
-        "monthlyCancels": 15.3,
-        "monthlyNet": 177.1,
-        "monthsToGoal": 11,
-        "projectedDate": "2027-04-21",
+        "monthlySales": 147.2,
+        "monthlyCancels": 11.7,
+        "monthlyNet": 135.5,
+        "monthsToGoal": 14.3,
+        "projectedDate": "2027-10-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 3371
+        "yearEndCustomers": 2871
       },
       {
         "cancelReduction": 30,
         "salesMultiplier": 5,
-        "monthlySales": 192.4,
-        "monthlyCancels": 21.5,
-        "monthlyNet": 171,
-        "monthsToGoal": 11.3,
-        "projectedDate": "2027-05-21",
+        "monthlySales": 147.2,
+        "monthlyCancels": 16.4,
+        "monthlyNet": 130.8,
+        "monthsToGoal": 14.8,
+        "projectedDate": "2027-10-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 3325
+        "yearEndCustomers": 2843
       },
       {
         "cancelReduction": 20,
         "salesMultiplier": 5,
-        "monthlySales": 192.4,
-        "monthlyCancels": 24.5,
-        "monthlyNet": 167.9,
-        "monthsToGoal": 11.6,
-        "projectedDate": "2027-05-21",
+        "monthlySales": 147.2,
+        "monthlyCancels": 18.8,
+        "monthlyNet": 128.4,
+        "monthsToGoal": 15.1,
+        "projectedDate": "2027-11-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 3303
+        "yearEndCustomers": 2829
       },
       {
         "cancelReduction": 0,
         "salesMultiplier": 5,
-        "monthlySales": 192.4,
-        "monthlyCancels": 30.7,
-        "monthlyNet": 161.8,
-        "monthsToGoal": 12,
-        "projectedDate": "2027-05-21",
-        "reachByYearEnd": false,
-        "yearEndCustomers": 3257
-      },
-      {
-        "cancelReduction": 50,
-        "salesMultiplier": 3,
-        "monthlySales": 115.5,
-        "monthlyCancels": 15.3,
-        "monthlyNet": 100.1,
-        "monthsToGoal": 19.4,
-        "projectedDate": "2028-01-21",
+        "monthlySales": 147.2,
+        "monthlyCancels": 23.5,
+        "monthlyNet": 123.8,
+        "monthsToGoal": 15.7,
+        "projectedDate": "2027-11-03",
         "reachByYearEnd": false,
         "yearEndCustomers": 2801
       },
       {
+        "cancelReduction": 50,
+        "salesMultiplier": 3,
+        "monthlySales": 88.3,
+        "monthlyCancels": 11.7,
+        "monthlyNet": 76.6,
+        "monthsToGoal": 25.3,
+        "projectedDate": "2028-09-03",
+        "reachByYearEnd": false,
+        "yearEndCustomers": 2519
+      },
+      {
         "cancelReduction": 30,
         "salesMultiplier": 3,
-        "monthlySales": 115.5,
-        "monthlyCancels": 21.5,
-        "monthlyNet": 94,
-        "monthsToGoal": 20.6,
-        "projectedDate": "2028-02-21",
+        "monthlySales": 88.3,
+        "monthlyCancels": 16.4,
+        "monthlyNet": 71.9,
+        "monthsToGoal": 27,
+        "projectedDate": "2028-10-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2756
+        "yearEndCustomers": 2491
       },
       {
         "cancelReduction": 20,
         "salesMultiplier": 3,
-        "monthlySales": 115.5,
-        "monthlyCancels": 24.5,
-        "monthlyNet": 90.9,
-        "monthsToGoal": 21.3,
-        "projectedDate": "2028-03-21",
+        "monthlySales": 88.3,
+        "monthlyCancels": 18.8,
+        "monthlyNet": 69.6,
+        "monthsToGoal": 27.9,
+        "projectedDate": "2028-11-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2733
+        "yearEndCustomers": 2477
       },
       {
         "cancelReduction": 0,
         "salesMultiplier": 3,
-        "monthlySales": 115.5,
-        "monthlyCancels": 30.7,
-        "monthlyNet": 84.8,
-        "monthsToGoal": 22.9,
-        "projectedDate": "2028-04-21",
-        "reachByYearEnd": false,
-        "yearEndCustomers": 2688
-      },
-      {
-        "cancelReduction": 50,
-        "salesMultiplier": 2,
-        "monthlySales": 77,
-        "monthlyCancels": 15.3,
-        "monthlyNet": 61.6,
-        "monthsToGoal": 31.5,
-        "projectedDate": "2029-01-21",
-        "reachByYearEnd": false,
-        "yearEndCustomers": 2516
-      },
-      {
-        "cancelReduction": 30,
-        "salesMultiplier": 2,
-        "monthlySales": 77,
-        "monthlyCancels": 21.5,
-        "monthlyNet": 55.5,
-        "monthsToGoal": 34.9,
-        "projectedDate": "2029-04-21",
-        "reachByYearEnd": false,
-        "yearEndCustomers": 2471
-      },
-      {
-        "cancelReduction": 20,
-        "salesMultiplier": 2,
-        "monthlySales": 77,
-        "monthlyCancels": 24.5,
-        "monthlyNet": 52.4,
-        "monthsToGoal": 37,
-        "projectedDate": "2029-06-21",
+        "monthlySales": 88.3,
+        "monthlyCancels": 23.5,
+        "monthlyNet": 64.9,
+        "monthsToGoal": 29.9,
+        "projectedDate": "2029-01-03",
         "reachByYearEnd": false,
         "yearEndCustomers": 2448
       },
       {
+        "cancelReduction": 50,
+        "salesMultiplier": 2,
+        "monthlySales": 58.9,
+        "monthlyCancels": 11.7,
+        "monthlyNet": 47.2,
+        "monthsToGoal": 41.1,
+        "projectedDate": "2030-01-03",
+        "reachByYearEnd": false,
+        "yearEndCustomers": 2342
+      },
+      {
+        "cancelReduction": 30,
+        "salesMultiplier": 2,
+        "monthlySales": 58.9,
+        "monthlyCancels": 16.4,
+        "monthlyNet": 42.5,
+        "monthsToGoal": 45.7,
+        "projectedDate": "2030-05-03",
+        "reachByYearEnd": false,
+        "yearEndCustomers": 2314
+      },
+      {
+        "cancelReduction": 20,
+        "salesMultiplier": 2,
+        "monthlySales": 58.9,
+        "monthlyCancels": 18.8,
+        "monthlyNet": 40.1,
+        "monthsToGoal": 48.4,
+        "projectedDate": "2030-08-03",
+        "reachByYearEnd": false,
+        "yearEndCustomers": 2300
+      },
+      {
         "cancelReduction": 0,
         "salesMultiplier": 2,
-        "monthlySales": 77,
-        "monthlyCancels": 30.7,
-        "monthlyNet": 46.3,
-        "monthsToGoal": 41.9,
-        "projectedDate": "2029-11-21",
+        "monthlySales": 58.9,
+        "monthlyCancels": 23.5,
+        "monthlyNet": 35.4,
+        "monthsToGoal": 54.8,
+        "projectedDate": "2031-02-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2403
+        "yearEndCustomers": 2272
       },
       {
         "cancelReduction": 50,
         "salesMultiplier": 1,
-        "monthlySales": 38.5,
-        "monthlyCancels": 15.3,
-        "monthlyNet": 23.2,
-        "monthsToGoal": 83.8,
-        "projectedDate": "2033-05-21",
+        "monthlySales": 29.4,
+        "monthlyCancels": 11.7,
+        "monthlyNet": 17.7,
+        "monthsToGoal": 109.5,
+        "projectedDate": "2035-09-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2231
+        "yearEndCustomers": 2166
       },
       {
         "cancelReduction": 30,
         "salesMultiplier": 1,
-        "monthlySales": 38.5,
-        "monthlyCancels": 21.5,
-        "monthlyNet": 17,
-        "monthsToGoal": 114,
-        "projectedDate": "2035-11-21",
+        "monthlySales": 29.4,
+        "monthlyCancels": 16.4,
+        "monthlyNet": 13,
+        "monthsToGoal": 149,
+        "projectedDate": "2038-12-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2186
+        "yearEndCustomers": 2138
       },
       {
         "cancelReduction": 20,
         "salesMultiplier": 1,
-        "monthlySales": 38.5,
-        "monthlyCancels": 24.5,
-        "monthlyNet": 14,
-        "monthsToGoal": 139,
-        "projectedDate": "2037-12-21",
+        "monthlySales": 29.4,
+        "monthlyCancels": 18.8,
+        "monthlyNet": 10.7,
+        "monthsToGoal": 181.7,
+        "projectedDate": "2041-09-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2163
+        "yearEndCustomers": 2124
       },
       {
         "cancelReduction": 0,
         "salesMultiplier": 1,
-        "monthlySales": 38.5,
-        "monthlyCancels": 30.7,
-        "monthlyNet": 7.8,
-        "monthsToGoal": 247.8,
-        "projectedDate": "2047-01-21",
+        "monthlySales": 29.4,
+        "monthlyCancels": 23.5,
+        "monthlyNet": 6,
+        "monthsToGoal": 324,
+        "projectedDate": "2053-07-03",
         "reachByYearEnd": false,
-        "yearEndCustomers": 2118
+        "yearEndCustomers": 2096
       }
     ]
   },
@@ -667,13 +657,6 @@
     "score": 0,
     "trend": "flat",
     "weeklySnapshots": [
-      {
-        "week": "Mar 15",
-        "cumulativeSales": 82,
-        "cumulativeCancels": 307,
-        "net": -11,
-        "revenue": 541694
-      },
       {
         "week": "Mar 22",
         "cumulativeSales": 82,
@@ -750,6 +733,13 @@
         "cumulativeCancels": 509,
         "net": 152,
         "revenue": 946368
+      },
+      {
+        "week": "Jun 28",
+        "cumulativeSales": 307,
+        "cumulativeCancels": 509,
+        "net": 152,
+        "revenue": 946368
       }
     ]
   },
@@ -758,7 +748,7 @@
       "priority": "critical",
       "icon": "🚨",
       "title": "Focus retention on 0-180 day cohort",
-      "detail": "193 customers in first 6 months — highest churn risk period. Implement 30/60/90 day check-in calls.",
+      "detail": "177 customers in first 6 months — highest churn risk period. Implement 30/60/90 day check-in calls.",
       "impact": "Reducing early churn by 25% saves ~$15K annually"
     },
     {
@@ -778,9 +768,9 @@
     {
       "priority": "medium",
       "icon": "🛡️",
-      "title": "Protect loyal base: 1067 customers (52%) are 3+ years",
+      "title": "Protect loyal base: 1130 customers (55%) are 3+ years",
       "detail": "This is your foundation. Implement loyalty recognition program. These customers are also your best referral source.",
-      "impact": "1067 customers × ~$2,460 avg value = $2,624,820 annual revenue anchor"
+      "impact": "1130 customers × ~$2,460 avg value = $2,779,800 annual revenue anchor"
     },
     {
       "priority": "high",

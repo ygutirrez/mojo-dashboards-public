@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-21T09:30:00Z",
-  "generated_at": "2026-05-21T08:41:19Z",
+  "timestamp": "2026-07-03T09:30:00Z",
+  "generated_at": "2026-07-03T09:11:26Z",
   "status": "warn",
   "steps_total": 12,
   "steps_passed": 9,
-  "steps_warned": 1,
-  "steps_failed": 2,
+  "steps_warned": 2,
+  "steps_failed": 1,
   "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-05-21.log",
+  "log_file": "nightly-sync-2026-07-03.log",
   "steps": [
     {
       "name": "Sales Import",
@@ -43,7 +43,7 @@
     {
       "name": "Update Data Files",
       "status": "error",
-      "detail": "Error: ENOENT: no such file or directory, open '/tmp/mojo-dashboards/owners-data.json'"
+      "detail": "Error: Command failed: gog sheets get 1Ap7FsLnizKDfq8YyhTn-k8QSb9V87FkX3eT97wEEXZo \"Sheet1!A1:D1000\" --json --account mojoeagent@gmail.com"
     },
     {
       "name": "Sync Back to Project",
@@ -52,8 +52,8 @@
     },
     {
       "name": "Deploy to GH Pages",
-      "status": "error",
-      "detail": "error: unknown option `cached'"
+      "status": "warn",
+      "detail": "[gh-pages ec65508] \ud83d\udcca Dashboard update 2026-07-03 05:10 (1 steps had warnings)"
     },
     {
       "name": "Health Check",
