@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-07-03T09:30:00Z",
-  "generated_at": "2026-07-03T09:11:26Z",
+  "timestamp": "2026-07-04T09:30:00Z",
+  "generated_at": "2026-07-04T09:10:53Z",
   "status": "warn",
   "steps_total": 12,
   "steps_passed": 9,
   "steps_warned": 2,
   "steps_failed": 1,
-  "steps_downgraded": 1,
+  "steps_downgraded": 0,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-07-03.log",
+  "log_file": "nightly-sync-2026-07-04.log",
   "steps": [
     {
       "name": "Sales Import",
-      "status": "info",
-      "detail": "\u26a0\ufe0f FAILED: Daily sales import (downgraded \u2014 fallback succeeded)"
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Sales Import",
@@ -53,7 +53,7 @@
     {
       "name": "Deploy to GH Pages",
       "status": "warn",
-      "detail": "[gh-pages ec65508] \ud83d\udcca Dashboard update 2026-07-03 05:10 (1 steps had warnings)"
+      "detail": "[gh-pages b748d16] \ud83d\udcca Dashboard update 2026-07-04 05:10 (1 steps had warnings)"
     },
     {
       "name": "Health Check",
