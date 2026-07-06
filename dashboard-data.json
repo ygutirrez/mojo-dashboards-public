@@ -2468,5 +2468,230 @@
         "totalSpend": 0
       }
     }
+  },
+  "serviceminder": {
+    "generated_at": "2026-07-06T19:25:40.604Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-07-05T13:15:35.159Z",
+      "kinds_ok": 4,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 20315,
+      "contacts": 13602,
+      "invoices": 13985,
+      "proposals": 1539
+    },
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": "Jorge Navarro",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive_empty_route",
+        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "last_day_2026-06-20",
+        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+      }
+    ],
+    "write_existing_applied": true
+  },
+  "serviceminder_sales_kpi": {
+    "revenue": 1276592,
+    "proposals": 1539,
+    "invoiced_proposals": 1361,
+    "complete_proposals": 99,
+    "sources": {
+      "Online": 9201,
+      "Referral": 8296,
+      "MoJo Customer": 4352,
+      "Yard Sign": 2963,
+      "Direct Mail Postcard": 2892,
+      "Mosquito Joe Vehicle": 2173,
+      "Other": 898,
+      "Advertising": 757,
+      "Printed Material": 401,
+      "Mail Advertising": 322,
+      "Existing Customer": 255,
+      "DMP": 138,
+      "Online Search": 123,
+      "Accelerated": 62,
+      "Neighborly": 57,
+      "Local Branding": 50,
+      "Competitor": 43,
+      "Event/Sponsorship": 41,
+      "Print Material": 40,
+      "Email": 38,
+      "Mass Media": 14,
+      "Social": 11
+    },
+    "monthly": [
+      {
+        "month": "2026-01",
+        "invoiceRevenue": 192580.32,
+        "invoices": 2026,
+        "appointments": 0,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-02",
+        "invoiceRevenue": 192261.34,
+        "invoices": 1972,
+        "appointments": 2,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-03",
+        "invoiceRevenue": 203570.09,
+        "invoices": 2198,
+        "appointments": 2,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-04",
+        "invoiceRevenue": 220122.13,
+        "invoices": 2416,
+        "appointments": 3,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-05",
+        "invoiceRevenue": 208482.75,
+        "invoices": 2276,
+        "appointments": 490,
+        "proposals": 1539,
+        "cancels": 0
+      },
+      {
+        "month": "2026-06",
+        "invoiceRevenue": 231036.8,
+        "invoices": 2662,
+        "appointments": 3027,
+        "proposals": 0,
+        "cancels": 4
+      },
+      {
+        "month": "2026-07",
+        "invoiceRevenue": 28538.59,
+        "invoices": 318,
+        "appointments": 5300,
+        "proposals": 0,
+        "cancels": 4
+      },
+      {
+        "month": "2026-08",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 4247,
+        "proposals": 0,
+        "cancels": 4
+      },
+      {
+        "month": "2026-09",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 3000,
+        "proposals": 0,
+        "cancels": 3
+      },
+      {
+        "month": "2026-10",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 1129,
+        "proposals": 0,
+        "cancels": 4
+      },
+      {
+        "month": "2026-11",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 283,
+        "proposals": 0,
+        "cancels": 0
+      },
+      {
+        "month": "2026-12",
+        "invoiceRevenue": 0,
+        "invoices": 0,
+        "appointments": 237,
+        "proposals": 0,
+        "cancels": 4
+      }
+    ]
   }
 }
