@@ -2,10 +2,10 @@
   "updated_at": "2026-07-07T14:24:53.065Z",
   "period": "Jan 1 - Jul 7, 2026 (YTD)",
   "summary": {
-    "total_jobs": 17862,
+    "total_jobs": 9998,
     "total_techs": 8,
     "resprays": 114,
-    "first_time_success": "99.4%",
+    "first_time_success": "98.9%",
     "total_upsells": 6,
     "total_revenue": 1286400
   },
@@ -15,20 +15,9 @@
       "route_label": "Route 11",
       "technician_status": "active",
       "initials": "DM",
-      "jobs": 455,
+      "jobs": 1368,
       "rank": 1,
       "revenue": 39752,
-      "upsells": 0,
-      "resprays": 0
-    },
-    {
-      "name": "Curtis Blount",
-      "route_label": "Route 7",
-      "technician_status": "active",
-      "initials": "CB",
-      "jobs": 372,
-      "rank": 2,
-      "revenue": 31053,
       "upsells": 0,
       "resprays": 0
     },
@@ -37,8 +26,8 @@
       "route_label": "Route 5",
       "technician_status": "active",
       "initials": "SP",
-      "jobs": 349,
-      "rank": 3,
+      "jobs": 1285,
+      "rank": 2,
       "revenue": 30521,
       "upsells": 0,
       "resprays": 0
@@ -48,8 +37,8 @@
       "route_label": "Route 6",
       "technician_status": "active",
       "initials": "MR",
-      "jobs": 348,
-      "rank": 4,
+      "jobs": 1195,
+      "rank": 3,
       "revenue": 26163,
       "upsells": 0,
       "resprays": 0
@@ -59,8 +48,8 @@
       "route_label": "Route 12",
       "technician_status": "active",
       "initials": "DC",
-      "jobs": 333,
-      "rank": 5,
+      "jobs": 1165,
+      "rank": 4,
       "revenue": 28340,
       "upsells": 0,
       "resprays": 0
@@ -70,8 +59,8 @@
       "route_label": "Misting Route",
       "technician_status": "active",
       "initials": "JP",
-      "jobs": 296,
-      "rank": 6,
+      "jobs": 738,
+      "rank": 5,
       "revenue": 55393,
       "upsells": 0,
       "resprays": 0
@@ -81,8 +70,8 @@
       "route_label": "Route 2",
       "technician_status": "active",
       "initials": "JN",
-      "jobs": 282,
-      "rank": 7,
+      "jobs": 590,
+      "rank": 6,
       "revenue": 22740,
       "upsells": 0,
       "resprays": 0
@@ -92,9 +81,20 @@
       "route_label": "Route 1",
       "technician_status": "active",
       "initials": "TJ",
-      "jobs": 224,
-      "rank": 8,
+      "jobs": 265,
+      "rank": 7,
       "revenue": 19255,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
+      "name": "Curtis Blount",
+      "route_label": "Route 7",
+      "technician_status": "active",
+      "initials": "CB",
+      "jobs": 237,
+      "rank": 8,
+      "revenue": 31053,
       "upsells": 0,
       "resprays": 0
     }
@@ -528,9 +528,9 @@
       "stat": "Only 56 re-sprays out of 7027!"
     }
   ],
-  "generated_at": "2026-07-07T14:35:00.894Z",
+  "generated_at": "2026-07-07T14:41:02.454Z",
   "serviceminder": {
-    "generated_at": "2026-07-07T14:35:00.894Z",
+    "generated_at": "2026-07-07T14:41:02.454Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -544,6 +544,7 @@
       "invoices": 14083,
       "proposals": 1550
     },
+    "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
       "Missing Route": {
         "technician": "Joe Pagan",

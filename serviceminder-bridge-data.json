@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-07T14:35:00.894Z",
+    "generated_at": "2026-07-07T14:41:02.454Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -14,6 +14,7 @@
       "invoices": 14083,
       "proposals": 1550
     },
+    "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
       "Missing Route": {
         "technician": "Joe Pagan",
@@ -117,11 +118,11 @@
       "mtd_jobs": 416
     },
     "operations": {
-      "total_jobs": 17862,
+      "total_jobs": 9998,
       "jobs_per_tech_day": 0,
       "revenue_per_tech_day": 0,
-      "first_time_success": 99.4,
-      "callback_rate": 0.6,
+      "first_time_success": 98.9,
+      "callback_rate": 1.1,
       "resprays": 114,
       "active_techs": 8,
       "working_days_ytd": null
@@ -170,89 +171,97 @@
   },
   "ops": {
     "summary": {
-      "total_wo_completed": 17862,
+      "total_wo_completed": 9998,
       "total_wo_revenue": 1286400
     },
     "employees": [
       {
         "name": "Damian Machin",
-        "jobs": 455,
+        "jobs": 1368,
         "revenue": 39752.37,
         "avgRevenue": 87.37,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
-      },
-      {
-        "name": "Curtis Blount",
-        "jobs": 372,
-        "revenue": 31052.61,
-        "avgRevenue": 83.47,
-        "route_label": "Route 7",
-        "technician": "Curtis Blount",
-        "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 124192.24000000262
       },
       {
         "name": "Stanley Prophete",
-        "jobs": 349,
+        "jobs": 1285,
         "revenue": 30520.71,
         "avgRevenue": 87.45,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 117493.61000000234
       },
       {
         "name": "Marcus Rubi",
-        "jobs": 348,
+        "jobs": 1195,
         "revenue": 26163.02,
         "avgRevenue": 75.18,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 94504.23000000126
       },
       {
         "name": "David Carbajal",
-        "jobs": 333,
+        "jobs": 1165,
         "revenue": 28339.82,
         "avgRevenue": 85.1,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 101812.84000000163
       },
       {
         "name": "Joe Pagan",
-        "jobs": 296,
+        "jobs": 738,
         "revenue": 55393.43,
         "avgRevenue": 187.14,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
-        "mapping_source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+        "mapping_source": "Mapped from screenshot label \"Missing Route\" 2026-06-16",
+        "legacy_revenue": 116672.99000000063
       },
       {
         "name": "Jorge Navarro",
-        "jobs": 282,
+        "jobs": 590,
         "revenue": 22740.23,
         "avgRevenue": 80.64,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 47579.98999999991
       },
       {
         "name": "Travis Johnson",
-        "jobs": 224,
+        "jobs": 265,
         "revenue": 19255.06,
         "avgRevenue": 85.96,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 24543.620000000086
+      },
+      {
+        "name": "Curtis Blount",
+        "jobs": 237,
+        "revenue": 31052.61,
+        "avgRevenue": 83.47,
+        "route_label": "Route 7",
+        "technician": "Curtis Blount",
+        "technician_status": "active",
+        "mapping_source": "Yoel route screenshot 2026-06-16",
+        "legacy_revenue": 19729.190000000024
       }
     ],
     "appointment_statuses": {
@@ -310,10 +319,10 @@
   },
   "tech": {
     "summary": {
-      "total_jobs": 17862,
+      "total_jobs": 9998,
       "total_techs": 8,
       "resprays": 114,
-      "first_time_success": "99.4%",
+      "first_time_success": "98.9%",
       "total_revenue": 1286400
     },
     "employees": [
@@ -322,20 +331,9 @@
         "route_label": "Route 11",
         "technician_status": "active",
         "initials": "DM",
-        "jobs": 455,
+        "jobs": 1368,
         "rank": 1,
         "revenue": 39752,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
-        "name": "Curtis Blount",
-        "route_label": "Route 7",
-        "technician_status": "active",
-        "initials": "CB",
-        "jobs": 372,
-        "rank": 2,
-        "revenue": 31053,
         "upsells": 0,
         "resprays": 0
       },
@@ -344,8 +342,8 @@
         "route_label": "Route 5",
         "technician_status": "active",
         "initials": "SP",
-        "jobs": 349,
-        "rank": 3,
+        "jobs": 1285,
+        "rank": 2,
         "revenue": 30521,
         "upsells": 0,
         "resprays": 0
@@ -355,8 +353,8 @@
         "route_label": "Route 6",
         "technician_status": "active",
         "initials": "MR",
-        "jobs": 348,
-        "rank": 4,
+        "jobs": 1195,
+        "rank": 3,
         "revenue": 26163,
         "upsells": 0,
         "resprays": 0
@@ -366,8 +364,8 @@
         "route_label": "Route 12",
         "technician_status": "active",
         "initials": "DC",
-        "jobs": 333,
-        "rank": 5,
+        "jobs": 1165,
+        "rank": 4,
         "revenue": 28340,
         "upsells": 0,
         "resprays": 0
@@ -377,8 +375,8 @@
         "route_label": "Misting Route",
         "technician_status": "active",
         "initials": "JP",
-        "jobs": 296,
-        "rank": 6,
+        "jobs": 738,
+        "rank": 5,
         "revenue": 55393,
         "upsells": 0,
         "resprays": 0
@@ -388,8 +386,8 @@
         "route_label": "Route 2",
         "technician_status": "active",
         "initials": "JN",
-        "jobs": 282,
-        "rank": 7,
+        "jobs": 590,
+        "rank": 6,
         "revenue": 22740,
         "upsells": 0,
         "resprays": 0
@@ -399,9 +397,20 @@
         "route_label": "Route 1",
         "technician_status": "active",
         "initials": "TJ",
-        "jobs": 224,
-        "rank": 8,
+        "jobs": 265,
+        "rank": 7,
         "revenue": 19255,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Curtis Blount",
+        "route_label": "Route 7",
+        "technician_status": "active",
+        "initials": "CB",
+        "jobs": 237,
+        "rank": 8,
+        "revenue": 31053,
         "upsells": 0,
         "resprays": 0
       }
