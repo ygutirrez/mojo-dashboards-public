@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T14:45:04.319Z",
+  "updated_at": "2026-07-07T14:46:14.708Z",
   "period": "Jan 1 - Jul 7, 2026 (YTD)",
   "summary": {
     "total_jobs": 9998,
@@ -253,45 +253,12 @@
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "count": 6.2,
+      "count": 9,
       "target": 10,
       "color": "#00d9ff",
-      "note": "OWED 6 payouts ($3000)",
-      "totalCredits": 66.17,
-      "totalPayouts": 0,
-      "payoutsOwed": 6
-    },
-    {
-      "name": "Marcus Rubi",
-      "initials": "MR",
-      "count": 1.5,
-      "target": 10,
-      "color": "#ff4444",
-      "note": "OWED 6 payouts ($3000)",
-      "totalCredits": 61.5,
-      "totalPayouts": 0,
-      "payoutsOwed": 6
-    },
-    {
-      "name": "Travis Johnson",
-      "initials": "TJ",
-      "count": 8.5,
-      "target": 10,
-      "color": "#ff6b35",
-      "note": "OWED 2 payouts ($1000)",
-      "totalCredits": 28.5,
-      "totalPayouts": 0,
-      "payoutsOwed": 2
-    },
-    {
-      "name": "Damian Machin",
-      "initials": "DM",
-      "count": 3.5,
-      "target": 10,
-      "color": "#ffd700",
       "note": "OWED 1 payout ($500)",
-      "totalCredits": 13.5,
-      "totalPayouts": 0,
+      "totalCredits": 66.17,
+      "totalPayouts": 5,
       "payoutsOwed": 1
     },
     {
@@ -306,6 +273,28 @@
       "payoutsOwed": 1
     },
     {
+      "name": "Marcus Rubi",
+      "initials": "MR",
+      "count": 6,
+      "target": 10,
+      "color": "#ff4444",
+      "note": "",
+      "totalCredits": 61.5,
+      "totalPayouts": 3,
+      "payoutsOwed": 0
+    },
+    {
+      "name": "Damian Machin",
+      "initials": "DM",
+      "count": 3,
+      "target": 10,
+      "color": "#ffd700",
+      "note": "",
+      "totalCredits": 13.5,
+      "totalPayouts": 1,
+      "payoutsOwed": 0
+    },
+    {
       "name": "David Carbajal",
       "initials": "DC",
       "count": 1.67,
@@ -314,6 +303,17 @@
       "note": "",
       "totalCredits": 1.67,
       "totalPayouts": 0,
+      "payoutsOwed": 0
+    },
+    {
+      "name": "Travis Johnson",
+      "initials": "TJ",
+      "count": 1,
+      "target": 10,
+      "color": "#ff6b35",
+      "note": "",
+      "totalCredits": 28.5,
+      "totalPayouts": 1,
       "payoutsOwed": 0
     },
     {
@@ -340,12 +340,12 @@
     }
   ],
   "review_stats": {
-    "total_reviews": 0,
-    "tech_mentions": 0,
-    "mention_rate": "0%",
+    "total_reviews": 65,
+    "tech_mentions": 23,
+    "mention_rate": "35.4%",
     "updated_reviews_excluded": 6,
     "source": "Google Reviews bonus sheet CSV",
-    "updated_at": "2026-07-07T14:45:04.319Z"
+    "updated_at": "2026-07-07T14:46:14.707Z"
   },
   "featured_review": {
     "stars": 5,
@@ -354,8 +354,40 @@
     "tech": "Damian",
     "date": "2026-06-11"
   },
-  "payouts_2025": [],
-  "payouts_2026": [],
+  "payouts_2025": [
+    {
+      "name": "Joseph Pagan",
+      "amount": 1500,
+      "reviews": 66.17,
+      "cashed": 30
+    },
+    {
+      "name": "John",
+      "amount": 1000,
+      "reviews": 76,
+      "cashed": 20
+    },
+    {
+      "name": "Andrew",
+      "amount": 500,
+      "reviews": 18,
+      "cashed": 10
+    }
+  ],
+  "payouts_2026": [
+    {
+      "name": "Travis Johnson",
+      "amount": 500,
+      "reviews": 28.5,
+      "cashed": 10
+    },
+    {
+      "name": "Damian Machin",
+      "amount": 500,
+      "reviews": 13.5,
+      "cashed": 10
+    }
+  ],
   "wall_of_fame": [
     {
       "reviewer": "Camila Castano",
@@ -494,9 +526,9 @@
       "stat": "Only 56 re-sprays out of 7027!"
     }
   ],
-  "generated_at": "2026-07-07T14:45:05.217Z",
+  "generated_at": "2026-07-07T14:46:28.236Z",
   "serviceminder": {
-    "generated_at": "2026-07-07T14:45:05.217Z",
+    "generated_at": "2026-07-07T14:46:28.236Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
