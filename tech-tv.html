@@ -22,15 +22,15 @@
         .live-dot { display: inline-block; width: 8px; height: 8px; background: #3fb950; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 
-        .kpi-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; flex-shrink: 0; }
-        .kpi { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; text-align: center; }
-        .kpi .val { font-size: 2.4rem; font-weight: 700; line-height: 1.1; }
+        .kpi-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; flex-shrink: 0; }
+        .kpi { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; text-align: center; }
+        .kpi .val { font-size: 2.25rem; font-weight: 700; line-height: 1.05; }
         .kpi .lbl { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
         .g { color: #3fb950; } .y { color: #d29922; } .b { color: #58a6ff; } .gold { color: #ffd700; }
 
-        .main { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1; min-height: 0; grid-template-rows: 1fr; }
-        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; overflow: hidden; }
-        .card h2 { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; flex-shrink: 0; }
+        .main { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; flex: 1; min-height: 0; grid-template-rows: 1fr; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+        .card h2 { font-size: 0.72rem; color: #8b949e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; flex-shrink: 0; }
         .card-body { flex: 1; overflow: hidden; }
 
         .podium-wrap { display: flex; justify-content: center; align-items: flex-end; gap: 12px; height: 100%; padding-bottom: 10px; padding-top: 20px; }
@@ -65,9 +65,9 @@
         .racer-fill { height: 100%; border-radius: 4px; }
         .racer-count { font-size: 0.7rem; color: #8b949e; flex-shrink: 0; width: 70px; text-align: right; }
 
-        .ach { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .ach { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
         .ach:last-child { border-bottom: none; }
-        .ach-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .ach-icon { font-size: 1.3rem; flex-shrink: 0; }
         .ach-title { font-size: 0.7rem; color: #ffd700; font-weight: 700; }
         .ach-name { font-size: 0.78rem; }
         .ach-stat { font-size: 0.65rem; color: #8b949e; }
@@ -158,10 +158,10 @@
         const rbt = Array.isArray(rbtRaw) ? rbtRaw : Object.entries(rbtRaw).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
         let resprayHTML = rbt.length > 0 ? rbt.map((r, i) => {
             const barPct = Math.round(r.count / (rbt[0]?.count || 1) * 100);
-            return `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+            return `<div style="display:flex;align-items:center;gap:7px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.12;">
                 <span style="color:#f85149;font-size:0.8rem;width:18px;text-align:center;">${r.count}</span>
-                <div style="flex:1;"><div style="font-size:0.78rem;font-weight:600;">${r.name}</div>
-                <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin-top:2px;"><div style="height:100%;width:${barPct}%;background:linear-gradient(90deg,#f85149,#f8514988);border-radius:2px;"></div></div></div></div>`;
+                <div style="flex:1;"><div style="font-size:0.72rem;font-weight:600;">${r.name}</div>
+                <div style="height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-top:2px;"><div style="height:100%;width:${barPct}%;background:linear-gradient(90deg,#f85149,#f8514988);border-radius:2px;"></div></div></div></div>`;
         }).join('') : '<div style="color:#3fb950;font-size:0.85rem;text-align:center;padding:12px;">✨ No re-sprays!</div>';
 
         // Days out (YTD)
@@ -180,7 +180,7 @@
         daysRows.sort((a,b) => (b.y2026||0) - (a.y2026||0) || (b.y2025||0) - (a.y2025||0));
         const maxOut = Math.max(...daysRows.map(r => r.y2026||0), 1);
         let daysOutHTML = daysRows.length ? `
-            <div style="display:grid;grid-template-columns:1fr 60px 60px;font-size:0.65rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">
+            <div style="display:grid;grid-template-columns:1fr 46px 46px;font-size:0.6rem;color:#8b949e;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;line-height:1.1;">
                 <span>Tech</span><span style="text-align:right;">2025</span><span style="text-align:right;">2026</span>
             </div>
             ${daysRows.map(r => {
@@ -188,9 +188,9 @@
                 const pct = Math.min(1, val / maxOut);
                 const hue = Math.round((1 - pct) * 120); // 0=red,120=green
                 const color = `hsl(${hue}, 70%, 50%)`;
-                return `<div style="position:relative;display:grid;grid-template-columns:1fr 60px 60px;align-items:center;padding:4px 6px;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
+                return `<div style="position:relative;display:grid;grid-template-columns:1fr 46px 46px;align-items:center;padding:2px 6px;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;line-height:1.15;">
                     <div style="position:absolute;left:0;top:0;bottom:0;width:${Math.round(pct*100)}%;background:linear-gradient(90deg, rgba(248,81,73,0.25), rgba(63,185,80,0.10));opacity:0.6;"></div>
-                    <span style="position:relative;font-size:0.78rem;font-weight:600;">${r.name}</span>
+                    <span style="position:relative;font-size:0.72rem;font-weight:600;">${r.name}</span>
                     <span style="position:relative;text-align:right;">${r.y2025 ?? 0}</span>
                     <span style="position:relative;text-align:right;color:${color};font-weight:700;">${r.y2026 ?? 0}</span>
                 </div>`;
@@ -323,22 +323,22 @@
 
         let html = `
         <!-- LEFT: Podium + Achievements -->
-        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow:hidden;">
             <div class="card" style="flex:0 0 auto;">
                 <h2>🥇 Most Jobs</h2>
                 <div class="card-body" style="overflow:visible;"><div class="podium-wrap">${podiumHTML}</div></div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;">
-                <div class="card">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0;overflow:hidden;">
+                <div class="card" style="min-height:0;">
                     <h2>🎖️ Achievements</h2>
                     <div class="card-body">${achHTML}</div>
                 </div>
-                <div style="display:flex;flex-direction:column;gap:14px;flex:1;">
-                    <div class="card">
+                <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;overflow:hidden;">
+                    <div class="card" style="flex:1;min-height:0;">
                         <h2>🔄 Re-Spray Accountability</h2>
                         <div class="card-body">${resprayHTML}</div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="flex:1;min-height:0;">
                         <h2>🏖️ Days Out (YTD)</h2>
                         <div class="card-body">${daysOutHTML}</div>
                     </div>
@@ -347,8 +347,8 @@
         </div>
 
         <!-- CENTER: Rankings + Stop Times side by side, Fleet below -->
-        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:0 1 auto;min-height:0;max-height:55%;">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:0 1 auto;min-height:0;max-height:55%;">
                 <div class="card" style="overflow:hidden;">
                     <h2>📊 Full Rankings</h2>
                     <div class="card-body" style="overflow-y:auto;">${rankHTML}</div>
@@ -366,7 +366,7 @@
         </div>
 
         <!-- RIGHT: Review Race + Review + Stats -->
-        <div style="display:flex;flex-direction:column;gap:14px;min-height:0;overflow:hidden;">
+        <div style="display:flex;flex-direction:column;gap:12px;min-height:0;overflow:hidden;">
             <div class="card" style="flex:1;overflow:hidden;min-height:0;">
                 <h2>⭐ Review Race — $50 Bonus</h2>
                 <div class="card-body" style="overflow-y:auto;">
@@ -374,10 +374,8 @@
                         <span style="background:linear-gradient(90deg,#ffd700,#ff6b35);color:#000;padding:4px 14px;border-radius:12px;font-weight:bold;font-size:0.8rem;">💰 $500 / 10 REVIEWS</span>
                     </div>
                     ${raceHTML}
-                    <div style="margin-top:10px;padding:8px;background:rgba(255,215,0,0.06);border-radius:8px;text-align:center;border:1px dashed rgba(255,215,0,0.2);">
-                        <div style="font-size:0.75rem;color:#ffd700;">💡 PRO TIP</div>
-                        <div style="font-size:0.7rem;color:#ccc;margin-top:4px;">"Hi, I'm <strong>[YOUR NAME]</strong>! Mention me by name in your Google review!"</div>
-                        <div style="font-size:0.65rem;color:#3fb950;margin-top:4px;">= $50 per mention → $500 every 10!</div>
+                    <div style="margin-top:8px;padding:6px 8px;background:rgba(255,215,0,0.06);border-radius:8px;text-align:center;border:1px dashed rgba(255,215,0,0.2);font-size:0.68rem;color:#ccc;">
+                        <span style="color:#ffd700;font-weight:700;">💡 Tip:</span> Ask customers to mention your name = <span style="color:#3fb950;font-weight:700;">$50 credit</span>
                     </div>
                     <div style="margin-top:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
                         ${payouts2026HTML}
@@ -385,12 +383,12 @@
                     </div>
                 </div>
             </div>
-            <div class="card" style="flex:0 0 160px;">
+            <div class="card" style="flex:0 0 200px;">
                 <h2>⭐ Review of the Week</h2>
                 <div class="card-body">
-                    <div style="padding:12px;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.03));border-radius:10px;border-left:3px solid #ffd700;">
-                        <div style="font-size:1.1rem;margin-bottom:6px;">${stars}</div>
-                        <div style="font-style:italic;color:#ccc;font-size:0.85rem;line-height:1.4;">"${fr.text}"</div>
+                    <div style="padding:10px;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.03));border-radius:10px;border-left:3px solid #ffd700;">
+                        <div style="font-size:1rem;margin-bottom:4px;">${stars}</div>
+                        <div style="font-style:italic;color:#ccc;font-size:0.78rem;line-height:1.25;">"${fr.text}"</div>
                         <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;">
                             <span style="color:#8b949e;font-size:0.75rem;">— ${fr.author}</span>
                             <span style="background:#ffd700;color:#000;padding:2px 10px;border-radius:12px;font-weight:bold;font-size:0.7rem;">🏆 ${fr.tech.toUpperCase()}</span>
