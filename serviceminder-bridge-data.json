@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-07T13:58:02.747Z",
+    "generated_at": "2026-07-07T14:20:09.790Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -107,9 +107,9 @@
       "total_jobs": 17862,
       "jobs_per_tech_day": 0,
       "revenue_per_tech_day": 0,
-      "first_time_success": null,
-      "callback_rate": null,
-      "resprays": 1880,
+      "first_time_success": 99.9,
+      "callback_rate": 0.1,
+      "resprays": 19,
       "active_techs": 10,
       "working_days_ytd": null
     },
@@ -339,7 +339,8 @@
     "summary": {
       "total_jobs": 17862,
       "total_techs": 10,
-      "resprays": 1880,
+      "resprays": 19,
+      "first_time_success": "99.9%",
       "total_revenue": 1286400
     },
     "employees": [
