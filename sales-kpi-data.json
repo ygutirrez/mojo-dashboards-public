@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T14:20:09.790Z",
+  "updated_at": "2026-07-07T14:24:54.919Z",
   "period": "Jan 1 - Jul 7, 2026 (YTD)",
   "summary": {
     "total_sales": 307,
@@ -272,7 +272,7 @@
     "pct_of_target": 50
   },
   "serviceminder": {
-    "generated_at": "2026-07-07T14:20:09.790Z",
+    "generated_at": "2026-07-07T14:24:54.919Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -309,8 +309,8 @@
       },
       "Route 4": {
         "technician": "Andrew Schamel",
-        "status": "inactive_empty_route",
-        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
         "technician": "Stanley Prophete",
@@ -329,13 +329,13 @@
       },
       "Route 8": {
         "technician": "Jeffrey Baptiste",
-        "status": "last_day_2026-06-20",
-        "source": "Yoel route screenshot 2026-06-16"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 10": {
         "technician": "Jordan Meddock",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 11": {
         "technician": "Damian Machin",
@@ -358,12 +358,17 @@
       {
         "name": "Andrew Schamel",
         "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       },
       {
         "name": "Jeffrey Baptiste",
-        "status": "last_day_2026-06-20",
-        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jordan Meddock",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       }
     ],
     "write_existing_applied": true
@@ -499,6 +504,6 @@
   "data_source_notes": {
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-07-07T14:20:09.790Z"
+    "serviceminder_cutover_at": "2026-07-07T14:24:54.919Z"
   }
 }

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-07T14:20:09.790Z",
+    "generated_at": "2026-07-07T14:24:54.919Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -37,8 +37,8 @@
       },
       "Route 4": {
         "technician": "Andrew Schamel",
-        "status": "inactive_empty_route",
-        "source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
         "technician": "Stanley Prophete",
@@ -57,13 +57,13 @@
       },
       "Route 8": {
         "technician": "Jeffrey Baptiste",
-        "status": "last_day_2026-06-20",
-        "source": "Yoel route screenshot 2026-06-16"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 10": {
         "technician": "Jordan Meddock",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 11": {
         "technician": "Damian Machin",
@@ -86,12 +86,17 @@
       {
         "name": "Andrew Schamel",
         "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-06-16 per Yoel."
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       },
       {
         "name": "Jeffrey Baptiste",
-        "status": "last_day_2026-06-20",
-        "note": "Last day is Saturday, 2026-06-20 per Yoel."
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jordan Meddock",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       }
     ],
     "write_existing_applied": true
@@ -110,7 +115,7 @@
       "first_time_success": 99.9,
       "callback_rate": 0.1,
       "resprays": 19,
-      "active_techs": 10,
+      "active_techs": 8,
       "working_days_ytd": null
     },
     "sales": {
@@ -240,46 +245,6 @@
         "technician": "Travis Johnson",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16"
-      },
-      {
-        "name": "Bump",
-        "jobs": 170,
-        "revenue": 14428.4,
-        "avgRevenue": 84.87,
-        "route_label": "Bump",
-        "technician": "Bump",
-        "technician_status": "unused",
-        "mapping_source": "Yoel note 2026-06-16: Bump is not used"
-      },
-      {
-        "name": "Jeffrey Baptiste",
-        "jobs": 121,
-        "revenue": 10432.6,
-        "avgRevenue": 86.22,
-        "route_label": "Route 8",
-        "technician": "Jeffrey Baptiste",
-        "technician_status": "last_day_2026-06-20",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
-      },
-      {
-        "name": "Jordan Meddock",
-        "jobs": 103,
-        "revenue": 7487.11,
-        "avgRevenue": 72.69,
-        "route_label": "Route 10",
-        "technician": "Jordan Meddock",
-        "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16"
-      },
-      {
-        "name": "Andrew Schamel",
-        "jobs": 79,
-        "revenue": 7016.27,
-        "avgRevenue": 88.81,
-        "route_label": "Route 4",
-        "technician": "Andrew Schamel",
-        "technician_status": "inactive_empty_route",
-        "mapping_source": "Yoel note 2026-06-16: route 4 is currently empty and was Andrew"
       }
     ],
     "appointment_statuses": {
@@ -338,7 +303,7 @@
   "tech": {
     "summary": {
       "total_jobs": 17862,
-      "total_techs": 10,
+      "total_techs": 8,
       "resprays": 19,
       "first_time_success": "99.9%",
       "total_revenue": 1286400
@@ -429,50 +394,6 @@
         "jobs": 224,
         "rank": 8,
         "revenue": 19255,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
-        "name": "Bump",
-        "route_label": "Bump",
-        "technician_status": "unused",
-        "initials": "B",
-        "jobs": 170,
-        "rank": 9,
-        "revenue": 14428,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
-        "name": "Jeffrey Baptiste",
-        "route_label": "Route 8",
-        "technician_status": "last_day_2026-06-20",
-        "initials": "JB",
-        "jobs": 121,
-        "rank": 10,
-        "revenue": 10433,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
-        "name": "Jordan Meddock",
-        "route_label": "Route 10",
-        "technician_status": "active",
-        "initials": "JM",
-        "jobs": 103,
-        "rank": 11,
-        "revenue": 7487,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
-        "name": "Andrew Schamel",
-        "route_label": "Route 4",
-        "technician_status": "inactive_empty_route",
-        "initials": "AS",
-        "jobs": 79,
-        "rank": 12,
-        "revenue": 7016,
         "upsells": 0,
         "resprays": 0
       }
