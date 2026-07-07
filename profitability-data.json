@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-07-06T18:34:32.869Z",
-  "period": "Jan 1 - Jul 6, 2026 (YTD)",
+  "generated_at": "2026-07-07T09:11:11.787Z",
+  "period": "Jan 1 - Jul 7, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 8884,
-    "total_revenue": 823413,
-    "avg_revenue_per_stop": 92.68,
+    "total_stops": 17720,
+    "total_revenue": 1276592,
+    "avg_revenue_per_stop": 72.04,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
-    "estimated_gross_profit_per_stop": 71.48,
-    "estimated_gross_margin": 77.1,
-    "active_techs": 13
+    "estimated_gross_profit_per_stop": 50.84,
+    "estimated_gross_margin": 70.6,
+    "active_techs": 12
   },
   "cost_breakdown_per_stop": {
-    "revenue": 92.68,
+    "revenue": 72.04,
     "chemical": 3.2,
     "labor_estimate": 12,
     "fuel_estimate": 4,
     "vehicle_estimate": 2,
     "total_direct": 21.2,
-    "gross_profit": 71.48,
+    "gross_profit": 50.84,
     "note": "Labor, fuel, and vehicle costs are estimates based on industry averages. Chemical cost is actual."
   },
   "financial_benchmarks": {
@@ -29,310 +29,284 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 1607196,
+    "current_annual_run_rate": 2478490,
     "target": 5000000,
-    "gap": 3392804,
-    "additional_stops_needed": 36606,
-    "additional_daily_stops_needed": 147,
-    "current_daily_avg": 47.5,
-    "required_daily_avg": 194.5,
-    "capacity_increase_pct": 309.4
+    "gap": 2521510,
+    "additional_stops_needed": 35001,
+    "additional_daily_stops_needed": 141,
+    "current_daily_avg": 94.3,
+    "required_daily_avg": 235.3,
+    "capacity_increase_pct": 149.6
   },
   "tech_profitability": [
     {
-      "name": "Joseph Pagan",
+      "name": "Joe Pagan",
       "initials": "JP",
-      "jobs": 738,
-      "revenue": 116673,
-      "avgRevenuePerStop": 158.09,
+      "jobs": 283,
+      "revenue": 51639,
+      "avgRevenuePerStop": 182.47,
       "costs": {
-        "chemical": 2361.6,
-        "labor": 8856,
-        "fuel": 2952,
-        "vehicle": 1476,
-        "total": 15645.6
+        "chemical": 905.6,
+        "labor": 3396,
+        "fuel": 1132,
+        "vehicle": 566,
+        "total": 5999.6
       },
-      "grossProfit": 101027.4,
-      "margin": 86.6,
-      "resprays": 1,
-      "resprayRate": 0.14,
-      "efficiencyRating": 96,
+      "grossProfit": 45639.4,
+      "margin": 88.4,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 74,
       "rank": 1
     },
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 1368,
-      "revenue": 124192,
-      "avgRevenuePerStop": 90.78,
+      "jobs": 452,
+      "revenue": 39612,
+      "avgRevenuePerStop": 87.64,
       "costs": {
-        "chemical": 4377.6,
-        "labor": 16416,
-        "fuel": 5472,
-        "vehicle": 2736,
-        "total": 29001.6
+        "chemical": 1446.4,
+        "labor": 5424,
+        "fuel": 1808,
+        "vehicle": 904,
+        "total": 9582.4
       },
-      "grossProfit": 95190.4,
-      "margin": 76.6,
-      "resprays": 11,
-      "resprayRate": 0.8,
-      "efficiencyRating": 95,
+      "grossProfit": 30029.6,
+      "margin": 75.8,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 81,
       "rank": 2
-    },
-    {
-      "name": "Stanley Prophete",
-      "initials": "SP",
-      "jobs": 1285,
-      "revenue": 117494,
-      "avgRevenuePerStop": 91.44,
-      "costs": {
-        "chemical": 4112,
-        "labor": 15420,
-        "fuel": 5140,
-        "vehicle": 2570,
-        "total": 27242
-      },
-      "grossProfit": 90252,
-      "margin": 76.8,
-      "resprays": 6,
-      "resprayRate": 0.47,
-      "efficiencyRating": 97,
-      "rank": 3
-    },
-    {
-      "name": "David Carbajal",
-      "initials": "DC",
-      "jobs": 1165,
-      "revenue": 101813,
-      "avgRevenuePerStop": 87.39,
-      "costs": {
-        "chemical": 3728,
-        "labor": 13980,
-        "fuel": 4660,
-        "vehicle": 2330,
-        "total": 24698
-      },
-      "grossProfit": 77115,
-      "margin": 75.7,
-      "resprays": 7,
-      "resprayRate": 0.6,
-      "efficiencyRating": 95,
-      "rank": 4
-    },
-    {
-      "name": "Marcus Rubi",
-      "initials": "MR",
-      "jobs": 1195,
-      "revenue": 94504,
-      "avgRevenuePerStop": 79.08,
-      "costs": {
-        "chemical": 3824,
-        "labor": 14340,
-        "fuel": 4780,
-        "vehicle": 2390,
-        "total": 25334
-      },
-      "grossProfit": 69170,
-      "margin": 73.2,
-      "resprays": 7,
-      "resprayRate": 0.59,
-      "efficiencyRating": 94,
-      "rank": 5
-    },
-    {
-      "name": "Andrew Schamel",
-      "initials": "AS",
-      "jobs": 1035,
-      "revenue": 87913,
-      "avgRevenuePerStop": 84.94,
-      "costs": {
-        "chemical": 3312,
-        "labor": 12420,
-        "fuel": 4140,
-        "vehicle": 2070,
-        "total": 21942
-      },
-      "grossProfit": 65971,
-      "margin": 75,
-      "resprays": 5,
-      "resprayRate": 0.48,
-      "efficiencyRating": 96,
-      "rank": 6
-    },
-    {
-      "name": "Jeffrey Baptiste",
-      "initials": "JB",
-      "jobs": 737,
-      "revenue": 63942,
-      "avgRevenuePerStop": 86.76,
-      "costs": {
-        "chemical": 2358.4,
-        "labor": 8844,
-        "fuel": 2948,
-        "vehicle": 1474,
-        "total": 15624.4
-      },
-      "grossProfit": 48317.6,
-      "margin": 75.6,
-      "resprays": 8,
-      "resprayRate": 1.09,
-      "efficiencyRating": 90,
-      "rank": 7
-    },
-    {
-      "name": "Jorge Navarro",
-      "initials": "JN",
-      "jobs": 590,
-      "revenue": 47580,
-      "avgRevenuePerStop": 80.64,
-      "costs": {
-        "chemical": 1888,
-        "labor": 7080,
-        "fuel": 2360,
-        "vehicle": 1180,
-        "total": 12508
-      },
-      "grossProfit": 35072,
-      "margin": 73.7,
-      "resprays": 2,
-      "resprayRate": 0.34,
-      "efficiencyRating": 85,
-      "rank": 8
-    },
-    {
-      "name": "Travis Johnson",
-      "initials": "TJ",
-      "jobs": 265,
-      "revenue": 24544,
-      "avgRevenuePerStop": 92.62,
-      "costs": {
-        "chemical": 848,
-        "labor": 3180,
-        "fuel": 1060,
-        "vehicle": 530,
-        "total": 5618
-      },
-      "grossProfit": 18926,
-      "margin": 77.1,
-      "resprays": 1,
-      "resprayRate": 0.38,
-      "efficiencyRating": 70,
-      "rank": 9
     },
     {
       "name": "Curtis Blount",
       "initials": "CB",
-      "jobs": 237,
-      "revenue": 19729,
-      "avgRevenuePerStop": 83.24,
+      "jobs": 370,
+      "revenue": 30827,
+      "avgRevenuePerStop": 83.32,
       "costs": {
-        "chemical": 758.4,
-        "labor": 2844,
-        "fuel": 948,
-        "vehicle": 474,
-        "total": 5024.4
+        "chemical": 1184,
+        "labor": 4440,
+        "fuel": 1480,
+        "vehicle": 740,
+        "total": 7844
       },
-      "grossProfit": 14704.6,
-      "margin": 74.5,
-      "resprays": 3,
-      "resprayRate": 1.27,
+      "grossProfit": 22983,
+      "margin": 74.6,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 76,
+      "rank": 3
+    },
+    {
+      "name": "Stanley Prophete",
+      "initials": "SP",
+      "jobs": 338,
+      "revenue": 29788,
+      "avgRevenuePerStop": 88.13,
+      "costs": {
+        "chemical": 1081.6,
+        "labor": 4056,
+        "fuel": 1352,
+        "vehicle": 676,
+        "total": 7165.6
+      },
+      "grossProfit": 22622.4,
+      "margin": 75.9,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 75,
+      "rank": 4
+    },
+    {
+      "name": "David Carbajal",
+      "initials": "DC",
+      "jobs": 327,
+      "revenue": 27738,
+      "avgRevenuePerStop": 84.83,
+      "costs": {
+        "chemical": 1046.4,
+        "labor": 3924,
+        "fuel": 1308,
+        "vehicle": 654,
+        "total": 6932.4
+      },
+      "grossProfit": 20805.6,
+      "margin": 75,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 74,
+      "rank": 5
+    },
+    {
+      "name": "Marcus Rubi",
+      "initials": "MR",
+      "jobs": 351,
+      "revenue": 26441,
+      "avgRevenuePerStop": 75.33,
+      "costs": {
+        "chemical": 1123.2,
+        "labor": 4212,
+        "fuel": 1404,
+        "vehicle": 702,
+        "total": 7441.2
+      },
+      "grossProfit": 18999.8,
+      "margin": 71.9,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 73,
+      "rank": 6
+    },
+    {
+      "name": "Jorge Navarro",
+      "initials": "JN",
+      "jobs": 282,
+      "revenue": 22749,
+      "avgRevenuePerStop": 80.67,
+      "costs": {
+        "chemical": 902.4,
+        "labor": 3384,
+        "fuel": 1128,
+        "vehicle": 564,
+        "total": 5978.4
+      },
+      "grossProfit": 16770.6,
+      "margin": 73.7,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 71,
+      "rank": 7
+    },
+    {
+      "name": "Travis Johnson",
+      "initials": "TJ",
+      "jobs": 221,
+      "revenue": 19021,
+      "avgRevenuePerStop": 86.07,
+      "costs": {
+        "chemical": 707.2,
+        "labor": 2652,
+        "fuel": 884,
+        "vehicle": 442,
+        "total": 4685.2
+      },
+      "grossProfit": 14335.8,
+      "margin": 75.4,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 69,
+      "rank": 8
+    },
+    {
+      "name": "Bump",
+      "initials": "B",
+      "jobs": 162,
+      "revenue": 13846,
+      "avgRevenuePerStop": 85.47,
+      "costs": {
+        "chemical": 518.4,
+        "labor": 1944,
+        "fuel": 648,
+        "vehicle": 324,
+        "total": 3434.4
+      },
+      "grossProfit": 10411.6,
+      "margin": 75.2,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 66,
+      "rank": 9
+    },
+    {
+      "name": "Jeffrey Baptiste",
+      "initials": "JB",
+      "jobs": 121,
+      "revenue": 10433,
+      "avgRevenuePerStop": 86.22,
+      "costs": {
+        "chemical": 387.2,
+        "labor": 1452,
+        "fuel": 484,
+        "vehicle": 242,
+        "total": 2565.2
+      },
+      "grossProfit": 7867.8,
+      "margin": 75.4,
+      "resprays": 0,
+      "resprayRate": 0,
       "efficiencyRating": 64,
       "rank": 10
     },
     {
-      "name": "Jeovany Osorio",
-      "initials": "JO",
-      "jobs": 183,
-      "revenue": 18406,
-      "avgRevenuePerStop": 100.58,
+      "name": "Andrew Schamel",
+      "initials": "AS",
+      "jobs": 82,
+      "revenue": 7234,
+      "avgRevenuePerStop": 88.22,
       "costs": {
-        "chemical": 585.6,
-        "labor": 2196,
-        "fuel": 732,
-        "vehicle": 366,
-        "total": 3879.6
+        "chemical": 262.4,
+        "labor": 984,
+        "fuel": 328,
+        "vehicle": 164,
+        "total": 1738.4
       },
-      "grossProfit": 14526.4,
-      "margin": 78.9,
-      "resprays": 1,
-      "resprayRate": 0.55,
-      "efficiencyRating": 66,
+      "grossProfit": 5495.6,
+      "margin": 76,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 62,
       "rank": 11
     },
     {
       "name": "Jordan Meddock",
       "initials": "JM",
-      "jobs": 85,
-      "revenue": 6547,
-      "avgRevenuePerStop": 77.02,
+      "jobs": 103,
+      "revenue": 7487,
+      "avgRevenuePerStop": 72.69,
       "costs": {
-        "chemical": 272,
-        "labor": 1020,
-        "fuel": 340,
-        "vehicle": 170,
-        "total": 1802
+        "chemical": 329.6,
+        "labor": 1236,
+        "fuel": 412,
+        "vehicle": 206,
+        "total": 2183.6
       },
-      "grossProfit": 4745,
-      "margin": 72.5,
+      "grossProfit": 5303.4,
+      "margin": 70.8,
       "resprays": 0,
       "resprayRate": 0,
-      "efficiencyRating": 60,
+      "efficiencyRating": 61,
       "rank": 12
-    },
-    {
-      "name": "Omar Sanchez",
-      "initials": "OS",
-      "jobs": 1,
-      "revenue": 76,
-      "avgRevenuePerStop": 76,
-      "costs": {
-        "chemical": 3.2,
-        "labor": 12,
-        "fuel": 4,
-        "vehicle": 2,
-        "total": 21.2
-      },
-      "grossProfit": 54.8,
-      "margin": 72.1,
-      "resprays": 0,
-      "resprayRate": 0,
-      "efficiencyRating": 56,
-      "rank": 13
     }
   ],
   "top_performers": [
     {
-      "name": "Joseph Pagan",
-      "grossProfit": 101027.4,
-      "margin": 86.6,
-      "jobs": 738
+      "name": "Joe Pagan",
+      "grossProfit": 45639.4,
+      "margin": 88.4,
+      "jobs": 283
     },
     {
       "name": "Damian Machin",
-      "grossProfit": 95190.4,
-      "margin": 76.6,
-      "jobs": 1368
+      "grossProfit": 30029.6,
+      "margin": 75.8,
+      "jobs": 452
     },
     {
-      "name": "Stanley Prophete",
-      "grossProfit": 90252,
-      "margin": 76.8,
-      "jobs": 1285
+      "name": "Curtis Blount",
+      "grossProfit": 22983,
+      "margin": 74.6,
+      "jobs": 370
     }
   ],
   "improvement_opportunities": [
     {
-      "type": "capacity",
-      "impact": "medium",
-      "title": "High-volume tech distribution",
-      "description": "7 tech(s) with 700+ stops: Joseph Pagan (738), Damian Machin (1368), Stanley Prophete (1285), David Carbajal (1165), Marcus Rubi (1195), Andrew Schamel (1035), Jeffrey Baptiste (737). Consider route optimization or adding techs to reduce burnout."
-    },
-    {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 8884 total stops, even a 5% upsell rate at $75 avg would add $33,315 in revenue.",
-      "potential_value": 33315
+      "description": "At 3092 total stops, even a 5% upsell rate at $75 avg would add $11,595 in revenue.",
+      "potential_value": 11595
     }
   ]
 }

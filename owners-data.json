@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T09:11:01.757Z",
+  "generated_at": "2026-07-07T13:58:02.747Z",
   "generated_date": "July 7, 2026",
   "sales": {
     "csv_date": "2026-05-13",
@@ -77,35 +77,35 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1276592,
+    "ytd_invoiced": 1286400,
     "avg_per_visit": 72,
-    "mtd": 28539,
-    "mtd_jobs": 318
+    "mtd": 38346,
+    "mtd_jobs": 416
   },
   "operations": {
-    "total_jobs": 17720,
+    "total_jobs": 17862,
     "jobs_per_tech_day": 0,
     "revenue_per_tech_day": 0,
     "first_time_success": null,
     "callback_rate": null,
-    "resprays": 1843,
+    "resprays": 1880,
     "active_techs": 10,
     "working_days_ytd": null
   },
   "serviceminder": {
-    "generated_at": "2026-07-07T09:11:01.757Z",
+    "generated_at": "2026-07-07T13:58:02.747Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-05T13:15:35.159Z",
+      "generated_at": "2026-07-07T13:15:45.661Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 20315,
-      "contacts": 13602,
-      "invoices": 13985,
-      "proposals": 1539
+      "appointments": 20470,
+      "contacts": 13616,
+      "invoices": 14083,
+      "proposals": 1550
     },
     "route_tech_mapping": {
       "Missing Route": {
@@ -190,9 +190,9 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1460,
+    "total_sales": 1469,
     "total_cancels": 23,
-    "net": 1437,
+    "net": 1446,
     "cancel_reasons": {
       "No Longer Needed": 10,
       "Moving": 9,
@@ -200,8 +200,8 @@
     },
     "sale_categories": {
       "Mojo Essential": 736,
-      "Synthetic Barrier Spray - 2 week": 437,
-      "Misting System Recurring Service Bi-Monthly": 88,
+      "Synthetic Barrier Spray - 2 week": 439,
+      "Misting System Recurring Service Bi-Monthly": 96,
       "HPD - 42 Days": 68,
       "Synthetic Barrier Spray - 4 week": 40,
       "Gnat/Midge/No-seeums Service - 2 weeks": 38,
@@ -226,7 +226,8 @@
       "Special Event Spray": 1,
       "RT Service Monthly": 1,
       "HPD - 56 Days": 1,
-      "Misting System Service": 1
+      "Misting System Service": 1,
+      "HPD - Quarterly": 1
     }
   }
 }
