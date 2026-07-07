@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T14:24:54.919Z",
+  "updated_at": "2026-07-07T14:35:00.894Z",
   "period": "Jan 1 - Jul 7, 2026 (YTD)",
   "summary": {
     "total_sales": 307,
@@ -272,12 +272,12 @@
     "pct_of_target": 50
   },
   "serviceminder": {
-    "generated_at": "2026-07-07T14:24:54.919Z",
+    "generated_at": "2026-07-07T14:35:00.894Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-07T13:15:45.661Z",
-      "kinds_ok": 4,
+      "generated_at": "2026-07-07T14:31:43.473Z",
+      "kinds_ok": 1,
       "kinds_failed": 0
     },
     "normalized_counts": {
@@ -371,6 +371,14 @@
         "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       }
     ],
+    "overrides_applied": {
+      "tech_resprays": {
+        "value": 114,
+        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
+        "updated_at": "2026-07-07T14:35:00Z",
+        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+      }
+    },
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
@@ -504,6 +512,6 @@
   "data_source_notes": {
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-07-07T14:24:54.919Z"
+    "serviceminder_cutover_at": "2026-07-07T14:35:00.894Z"
   }
 }

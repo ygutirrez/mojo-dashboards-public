@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generated_at": "2026-07-07T14:24:54.919Z",
+    "generated_at": "2026-07-07T14:35:00.894Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-07T13:15:45.661Z",
-      "kinds_ok": 4,
+      "generated_at": "2026-07-07T14:31:43.473Z",
+      "kinds_ok": 1,
       "kinds_failed": 0
     },
     "normalized_counts": {
@@ -99,6 +99,14 @@
         "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
       }
     ],
+    "overrides_applied": {
+      "tech_resprays": {
+        "value": 114,
+        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
+        "updated_at": "2026-07-07T14:35:00Z",
+        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+      }
+    },
     "write_existing_applied": true
   },
   "owners": {
@@ -112,9 +120,9 @@
       "total_jobs": 17862,
       "jobs_per_tech_day": 0,
       "revenue_per_tech_day": 0,
-      "first_time_success": 99.9,
-      "callback_rate": 0.1,
-      "resprays": 19,
+      "first_time_success": 99.4,
+      "callback_rate": 0.6,
+      "resprays": 114,
       "active_techs": 8,
       "working_days_ytd": null
     },
@@ -304,8 +312,8 @@
     "summary": {
       "total_jobs": 17862,
       "total_techs": 8,
-      "resprays": 19,
-      "first_time_success": "99.9%",
+      "resprays": 114,
+      "first_time_success": "99.4%",
       "total_revenue": 1286400
     },
     "employees": [
