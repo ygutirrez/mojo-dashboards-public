@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-08T14:00:21.706Z",
+  "updated_at": "2026-07-08T15:00:21.967Z",
   "csv_date": "2026-07-08",
   "period": "Jan 1 - Jul 8, 2026 (YTD)",
   "summary": {
     "total_sales": 450,
-    "total_cancels": 251,
-    "net": 199,
-    "paused_wp": 59,
+    "total_cancels": 252,
+    "net": 198,
+    "paused_wp": 60,
     "paused_pct": 24,
     "days_tracked": 189
   },
@@ -19,7 +19,7 @@
     {
       "name": "Norma",
       "sales": 148,
-      "cancels": 96
+      "cancels": 97
     },
     {
       "name": "Bev",
@@ -30,7 +30,7 @@
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 59,
+      "count": 60,
       "pct": 24
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-07-08",
       "dateFmt": "Jul 8",
       "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-07-08",
+      "dateFmt": "Jul 8",
+      "type": "Cancel",
       "category": "Went w/Competitor",
       "csr": "Norma"
     },
@@ -241,18 +248,11 @@
       "type": "Cancel",
       "category": "Unhappy",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-07-06",
-      "dateFmt": "Jul 6",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 59
+    "count": 60
   },
   "tech_upsells": [
     {
