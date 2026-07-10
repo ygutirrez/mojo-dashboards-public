@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-07-10T09:10:17.959Z",
-  "generated_date": "Jul 10, 2026, 5:10 AM",
+  "generated_at": "2026-07-10T09:10:57.091Z",
+  "generated_date": "July 10, 2026",
   "sales": {
-    "csv_date": "2026-07-10",
-    "total_sales": 307,
-    "total_cancels": 509,
+    "csv_date": "2026-05-13",
+    "total_sales": 293,
+    "total_cancels": 495,
     "net": -202,
-    "paused": 133,
+    "paused": 132,
     "cancel_reasons": {
-      "Not Interested": 61,
-      "Moved": 160,
+      "Not Interested": 60,
+      "Moved": 151,
       "Financial": 59,
       "Bad Debt": 53,
-      "Unhappy": 53,
+      "Unhappy": 49,
       "One Spray Only": 17,
       "Other": 47,
       "Program Change": 13,
       "Unknown": 16
     },
     "sale_categories": {
-      "Barrier Spray": 31,
-      "Signature Program": 130,
-      "Misting System": 36,
+      "Barrier Spray": 29,
+      "Signature Program": 122,
+      "Misting System": 35,
       "Noseeum": 4,
       "One Time": 29,
-      "Re-Spray": 31,
-      "Other": 23,
+      "Re-Spray": 30,
+      "Other": 21,
       "Fleas/Ticks": 4,
       "HPD (Indoor)": 19
     },
@@ -77,10 +77,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 946368,
-    "avg_per_visit": 96,
-    "mtd": 0,
-    "mtd_jobs": 0
+    "ytd_invoiced": 1306630,
+    "avg_per_visit": 72,
+    "mtd": 58675,
+    "mtd_jobs": 642
   },
   "operations": {
     "total_jobs": 9998,
@@ -93,19 +93,19 @@
     "working_days_ytd": null
   },
   "serviceminder": {
-    "generated_at": "2026-07-09T09:10:57.439Z",
+    "generated_at": "2026-07-10T09:10:57.091Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-08T13:16:17.607Z",
+      "generated_at": "2026-07-09T13:16:16.501Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 20646,
-      "contacts": 13625,
-      "invoices": 14247,
-      "proposals": 1554
+      "appointments": 20739,
+      "contacts": 13632,
+      "invoices": 14377,
+      "proposals": 1562
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -204,9 +204,9 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1473,
+    "total_sales": 1481,
     "total_cancels": 23,
-    "net": 1450,
+    "net": 1458,
     "cancel_reasons": {
       "No Longer Needed": 10,
       "Moving": 9,
@@ -215,7 +215,7 @@
     "sale_categories": {
       "Mojo Essential": 737,
       "Synthetic Barrier Spray - 2 week": 439,
-      "Misting System Recurring Service Bi-Monthly": 97,
+      "Misting System Recurring Service Bi-Monthly": 104,
       "HPD - 42 Days": 70,
       "Synthetic Barrier Spray - 4 week": 40,
       "Gnat/Midge/No-seeums Service - 2 weeks": 38,
@@ -237,11 +237,11 @@
       "Synthetic Signature Single Svc 1": 2,
       "Gnats/Midges/No-seeums - 3 week": 2,
       "Fly Management Service": 2,
+      "HPD - Quarterly": 2,
       "Special Event Spray": 1,
       "RT Service Monthly": 1,
       "HPD - 56 Days": 1,
-      "Misting System Service": 1,
-      "HPD - Quarterly": 1
+      "Misting System Service": 1
     }
   }
 }
