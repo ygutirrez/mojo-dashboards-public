@@ -1,100 +1,102 @@
 {
-  "updated_at": "2026-07-09T09:10:56.548Z",
-  "period": "Jan 1 - Jul 9, 2026 (YTD)",
+  "updated_at": "2026-07-10T09:10:22.899Z",
+  "period": "Jan 1 - Jul 10, 2026 (YTD)",
   "summary": {
-    "total_jobs": 9998,
-    "total_techs": 8,
-    "resprays": 114,
-    "first_time_success": "98.9%",
-    "total_upsells": 6,
-    "total_revenue": 1293859
+    "total_jobs": 7027,
+    "total_techs": 10,
+    "resprays": 56,
+    "first_time_success": "99.2%",
+    "total_upsells": 7,
+    "total_revenue": 665011
   },
   "employees": [
     {
       "name": "Damian Machin",
-      "route_label": "Route 11",
-      "technician_status": "active",
       "initials": "DM",
       "jobs": 1368,
       "rank": 1,
-      "revenue": 42437,
+      "revenue": 124192,
       "upsells": 0,
-      "resprays": 0
+      "resprays": 11
     },
     {
       "name": "Stanley Prophete",
-      "route_label": "Route 5",
-      "technician_status": "active",
       "initials": "SP",
       "jobs": 1285,
       "rank": 2,
-      "revenue": 32038,
+      "revenue": 117494,
       "upsells": 0,
-      "resprays": 0
+      "resprays": 6
     },
     {
       "name": "Marcus Rubi",
-      "route_label": "Route 6",
-      "technician_status": "active",
       "initials": "MR",
       "jobs": 1195,
       "rank": 3,
-      "revenue": 28787,
+      "revenue": 94504,
       "upsells": 0,
-      "resprays": 0
+      "resprays": 7
     },
     {
       "name": "David Carbajal",
-      "route_label": "Route 12",
-      "technician_status": "active",
       "initials": "DC",
       "jobs": 1165,
       "rank": 4,
-      "revenue": 28086,
-      "upsells": 0,
-      "resprays": 0
+      "revenue": 101813,
+      "upsells": 4,
+      "resprays": 7
     },
     {
-      "name": "Joe Pagan",
-      "route_label": "Misting Route",
-      "technician_status": "active",
+      "name": "Joseph Pagan",
       "initials": "JP",
       "jobs": 738,
       "rank": 5,
-      "revenue": 58363,
-      "upsells": 0,
-      "resprays": 0
+      "revenue": 116673,
+      "upsells": 1,
+      "resprays": 1
     },
     {
       "name": "Jorge Navarro",
-      "route_label": "Route 2",
-      "technician_status": "active",
       "initials": "JN",
       "jobs": 590,
       "rank": 6,
-      "revenue": 23482,
-      "upsells": 0,
-      "resprays": 0
+      "revenue": 47580,
+      "upsells": 2,
+      "resprays": 2
     },
     {
       "name": "Travis Johnson",
-      "route_label": "Route 1",
-      "technician_status": "active",
       "initials": "TJ",
       "jobs": 265,
       "rank": 7,
-      "revenue": 21590,
+      "revenue": 24544,
       "upsells": 0,
-      "resprays": 0
+      "resprays": 1
     },
     {
       "name": "Curtis Blount",
-      "route_label": "Route 7",
-      "technician_status": "active",
       "initials": "CB",
       "jobs": 237,
       "rank": 8,
-      "revenue": 33201,
+      "revenue": 19729,
+      "upsells": 0,
+      "resprays": 3
+    },
+    {
+      "name": "Jeovany Osorio",
+      "initials": "JO",
+      "jobs": 183,
+      "rank": 9,
+      "revenue": 18406,
+      "upsells": 0,
+      "resprays": 1
+    },
+    {
+      "name": "Omar Sanchez",
+      "initials": "OS",
+      "jobs": 1,
+      "rank": 10,
+      "revenue": 76,
       "upsells": 0,
       "resprays": 0
     }
@@ -102,7 +104,7 @@
   "tech_upsells": [
     {
       "name": "David",
-      "count": 3
+      "count": 4
     },
     {
       "name": "Jorge",
@@ -521,117 +523,5 @@
       "name": "Entire Team",
       "stat": "Only 56 re-sprays out of 7027!"
     }
-  ],
-  "generated_at": "2026-07-09T09:10:57.439Z",
-  "serviceminder": {
-    "generated_at": "2026-07-09T09:10:57.439Z",
-    "source": "ServiceMinder Org Download API",
-    "sync_health": {
-      "status": "ok",
-      "generated_at": "2026-07-08T13:16:17.607Z",
-      "kinds_ok": 4,
-      "kinds_failed": 0
-    },
-    "normalized_counts": {
-      "appointments": 20646,
-      "contacts": 13625,
-      "invoices": 14247,
-      "proposals": 1554
-    },
-    "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
-    "route_tech_mapping": {
-      "Missing Route": {
-        "technician": "Joe Pagan",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Misting Route": {
-        "technician": "Joe Pagan",
-        "status": "active",
-        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
-      },
-      "Route 1": {
-        "technician": "Travis Johnson",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 2": {
-        "technician": "Jorge Navarro",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 4": {
-        "technician": "Andrew Schamel",
-        "status": "inactive",
-        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
-      },
-      "Route 5": {
-        "technician": "Stanley Prophete",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 6": {
-        "technician": "Marcus Rubi",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 7": {
-        "technician": "Curtis Blount",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 8": {
-        "technician": "Jeffrey Baptiste",
-        "status": "inactive",
-        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
-      },
-      "Route 10": {
-        "technician": "Jordan Meddock",
-        "status": "inactive",
-        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
-      },
-      "Route 11": {
-        "technician": "Damian Machin",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 12": {
-        "technician": "David Carbajal",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Bump": {
-        "technician": "Bump",
-        "status": "unused",
-        "source": "Yoel note 2026-06-16: Bump is not used"
-      }
-    },
-    "unmapped_route_labels": [],
-    "personnel_notes": [
-      {
-        "name": "Andrew Schamel",
-        "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
-      },
-      {
-        "name": "Jeffrey Baptiste",
-        "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
-      },
-      {
-        "name": "Jordan Meddock",
-        "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
-      }
-    ],
-    "overrides_applied": {
-      "tech_resprays": {
-        "value": 114,
-        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
-        "updated_at": "2026-07-07T14:35:00Z",
-        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
-      }
-    },
-    "write_existing_applied": true
-  }
+  ]
 }
