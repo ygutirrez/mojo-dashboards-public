@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-11T09:10:39.214Z",
+  "updated_at": "2026-07-11T09:11:15.535Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -12,7 +12,7 @@
     "blowers_active": 13,
     "drivers_need_coaching": 0,
     "total_wo_completed": 9998,
-    "total_wo_revenue": 922303
+    "total_wo_revenue": 1319238
   },
   "alerts": [
     {
@@ -595,24 +595,24 @@
     {
       "name": "Damian Machin",
       "jobs": 1368,
-      "revenue": 42224.66,
-      "avgRevenue": 88.15,
+      "revenue": 42591.11,
+      "avgRevenue": 88.18,
       "route_label": "Route 11",
       "technician": "Damian Machin",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 124192.24000000264
+      "legacy_revenue": 124192.24000000262
     },
     {
       "name": "Stanley Prophete",
       "jobs": 1285,
-      "revenue": 32117.08,
-      "avgRevenue": 86.8,
+      "revenue": 32051.09,
+      "avgRevenue": 86.86,
       "route_label": "Route 5",
       "technician": "Stanley Prophete",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 117493.61000000243
+      "legacy_revenue": 117493.61000000242
     },
     {
       "name": "Marcus Rubi",
@@ -623,13 +623,13 @@
       "technician": "Marcus Rubi",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 94504.23000000125
+      "legacy_revenue": 94504.23000000126
     },
     {
       "name": "David Carbajal",
       "jobs": 1165,
-      "revenue": 26376.88,
-      "avgRevenue": 83.74,
+      "revenue": 26486.86,
+      "avgRevenue": 83.55,
       "route_label": "Route 12",
       "technician": "David Carbajal",
       "technician_status": "active",
@@ -656,7 +656,7 @@
       "technician": "Jorge Navarro",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 47579.98999999992
+      "legacy_revenue": 47579.98999999991
     },
     {
       "name": "Travis Johnson",
@@ -678,23 +678,23 @@
       "technician": "Curtis Blount",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 19729.190000000024
+      "legacy_revenue": 19729.190000000028
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-07-10T09:10:57.091Z",
+    "generated_at": "2026-07-11T09:11:15.535Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
-      "status": "ok",
-      "generated_at": "2026-07-09T13:16:16.501Z",
-      "kinds_ok": 4,
-      "kinds_failed": 0
+      "status": "degraded",
+      "generated_at": "2026-07-10T13:15:55.166Z",
+      "kinds_ok": 3,
+      "kinds_failed": 1
     },
     "normalized_counts": {
-      "appointments": 20739,
-      "contacts": 13632,
-      "invoices": 14377,
-      "proposals": 1562
+      "appointments": 20795,
+      "contacts": 13640,
+      "invoices": 14618,
+      "proposals": 1574
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
