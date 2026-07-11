@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-07-10T12:05:57.198Z",
+    "generated_at": "2026-07-11T09:10:54.388Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
-      "status": "ok",
-      "generated_at": "2026-07-10T12:05:56.270Z",
-      "kinds_ok": 4,
-      "kinds_failed": 0
+      "status": "degraded",
+      "generated_at": "2026-07-10T13:15:55.166Z",
+      "kinds_ok": 3,
+      "kinds_failed": 1
     },
     "normalized_counts": {
       "appointments": 20795,
       "contacts": 13640,
-      "invoices": 14611,
+      "invoices": 14618,
       "proposals": 1574
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -112,10 +112,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1318358,
+      "ytd_invoiced": 1319238,
       "avg_per_visit": 73,
-      "mtd": 70404,
-      "mtd_jobs": 782
+      "mtd": 71283,
+      "mtd_jobs": 789
     },
     "operations": {
       "total_jobs": 9998,
@@ -172,7 +172,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1318358
+      "total_wo_revenue": 1319238
     },
     "employees": [
       {
@@ -184,7 +184,7 @@
         "technician": "Damian Machin",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 124192.24000000264
+        "legacy_revenue": 124192.24000000262
       },
       {
         "name": "Stanley Prophete",
@@ -195,7 +195,7 @@
         "technician": "Stanley Prophete",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 117493.61000000243
+        "legacy_revenue": 117493.61000000242
       },
       {
         "name": "Marcus Rubi",
@@ -206,7 +206,7 @@
         "technician": "Marcus Rubi",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 94504.23000000125
+        "legacy_revenue": 94504.23000000126
       },
       {
         "name": "David Carbajal",
@@ -239,7 +239,7 @@
         "technician": "Jorge Navarro",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 47579.98999999992
+        "legacy_revenue": 47579.98999999991
       },
       {
         "name": "Travis Johnson",
@@ -261,7 +261,7 @@
         "technician": "Curtis Blount",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 19729.190000000024
+        "legacy_revenue": 19729.190000000028
       }
     ],
     "appointment_statuses": {
@@ -324,7 +324,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1318358
+      "total_revenue": 1319238
     },
     "employees": [
       {
@@ -418,17 +418,17 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1318358,
+    "revenue": 1319238,
     "proposals": 1574,
     "invoiced_proposals": 1379,
     "complete_proposals": 115,
     "sources": {
-      "Online": 9517,
-      "Referral": 8507,
+      "Online": 9521,
+      "Referral": 8508,
       "MoJo Customer": 4459,
       "Yard Sign": 3026,
       "Direct Mail Postcard": 2937,
-      "Mosquito Joe Vehicle": 2225,
+      "Mosquito Joe Vehicle": 2227,
       "Other": 974,
       "Advertising": 771,
       "Printed Material": 412,
@@ -497,8 +497,8 @@
       },
       {
         "month": "2026-07",
-        "invoiceRevenue": 70403.82,
-        "invoices": 782,
+        "invoiceRevenue": 71283.29,
+        "invoices": 789,
         "appointments": 5352,
         "proposals": 0,
         "cancels": 4
