@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-07-13T09:12:14.119Z",
+    "generated_at": "2026-07-13T12:05:46.584Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-12T13:15:37.642Z",
+      "generated_at": "2026-07-13T12:05:45.646Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 20869,
-      "contacts": 13655,
+      "appointments": 20874,
+      "contacts": 13658,
       "invoices": 14724,
       "proposals": 1580
     },
@@ -82,7 +82,9 @@
         "source": "Yoel note 2026-06-16: Bump is not used"
       }
     },
-    "unmapped_route_labels": [],
+    "unmapped_route_labels": [
+      "Lenny Pierre"
+    ],
     "personnel_notes": [
       {
         "name": "Andrew Schamel",
@@ -233,8 +235,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 23203.92,
-        "avgRevenue": 81.13,
+        "revenue": 21922.12,
+        "avgRevenue": 80.01,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -255,8 +257,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 32422.3,
-        "avgRevenue": 82.71,
+        "revenue": 32362.31,
+        "avgRevenue": 82.77,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -265,13 +267,13 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 14940,
-      "Scheduled": 3229,
-      "Started": 53,
+      "Queued": 14946,
+      "Scheduled": 3227,
+      "Started": 54,
       "Completed": 2
     },
     "service_mix": {
-      "Mojo Essential": 8452,
+      "Mojo Essential": 8456,
       "Synthetic Barrier Spray - 2 week": 5396,
       "Misting System Recurring Service Bi-Monthly": 1286,
       "HPD - 42 Days": 752,
@@ -300,9 +302,9 @@
       "Gnats/Midges/No-seeums - 3 week": 13,
       "RT Service Monthly": 10,
       "Misting System Equipment": 7,
+      "Misting System Repair Service": 7,
       "Synthetic Signature Single Svc 2": 6,
       "HPD - 56 Days": 6,
-      "Misting System Repair Service": 6,
       "Gnats/Midges/No-see-ums": 6,
       "Synthetic Signature Single Svc 1": 4,
       "Misting System Installation": 4,
@@ -389,7 +391,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 23204,
+        "revenue": 21922,
         "upsells": 0,
         "resprays": 0
       },
@@ -411,7 +413,7 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 32422,
+        "revenue": 32362,
         "upsells": 0,
         "resprays": 0
       }
@@ -423,8 +425,8 @@
     "invoiced_proposals": 1386,
     "complete_proposals": 116,
     "sources": {
-      "Online": 9602,
-      "Referral": 8535,
+      "Online": 9603,
+      "Referral": 8539,
       "MoJo Customer": 4488,
       "Yard Sign": 3038,
       "Direct Mail Postcard": 2949,
@@ -499,7 +501,7 @@
         "month": "2026-07",
         "invoiceRevenue": 80236.5,
         "invoices": 895,
-        "appointments": 5360,
+        "appointments": 5361,
         "proposals": 0,
         "cancels": 4
       },
@@ -507,7 +509,7 @@
         "month": "2026-08",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4371,
+        "appointments": 4372,
         "proposals": 0,
         "cancels": 4
       },
@@ -515,7 +517,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3173,
+        "appointments": 3174,
         "proposals": 0,
         "cancels": 4
       },
@@ -523,7 +525,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1234,
+        "appointments": 1235,
         "proposals": 0,
         "cancels": 4
       },
@@ -531,7 +533,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 304,
+        "appointments": 305,
         "proposals": 0,
         "cancels": 0
       },
@@ -546,6 +548,7 @@
     ]
   },
   "warnings": [
+    "Unmapped ServiceMinder route labels remain: Lenny Pierre.",
     "Chemical/material usage is not available from the current ServiceMinder Org downloads.",
     "CSR attribution and tech upsells remain on the Office Tracking/CSV path until ServiceMinder fields are confirmed."
   ]
