@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-07-12T09:11:40.070Z",
-  "period": "Jan 1 - Jul 12, 2026 (YTD)",
+  "updated_at": "2026-07-13T09:10:48.959Z",
+  "period": "Jan 1 - Jul 13, 2026 (YTD)",
   "summary": {
     "total_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 1327536,
-    "total_invoices": 14438,
+    "total_revenue": 1328191,
+    "total_invoices": 14445,
     "total_discounts": 15611,
     "net": 152,
-    "days_tracked": 193,
+    "days_tracked": 194,
     "sales_per_day": 1.6,
-    "revenue_per_day": 6878
+    "revenue_per_day": 6846
   },
   "sales": {
     "by_source": {
@@ -264,27 +264,27 @@
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 1327536,
-    "days_elapsed": 193,
+    "ytd_revenue": 1328191,
+    "days_elapsed": 194,
     "days_total": 365,
-    "projected_annual": 2510625,
+    "projected_annual": 2498916,
     "on_pace": false,
-    "pct_of_target": 50.2
+    "pct_of_target": 50
   },
   "serviceminder": {
-    "generated_at": "2026-07-12T09:11:40.070Z",
+    "generated_at": "2026-07-13T09:10:48.959Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-11T13:15:43.444Z",
+      "generated_at": "2026-07-12T13:15:37.642Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 20869,
-      "contacts": 13650,
-      "invoices": 14717,
-      "proposals": 1578
+      "contacts": 13655,
+      "invoices": 14724,
+      "proposals": 1580
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -383,19 +383,19 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 1327536,
-    "proposals": 1578,
-    "invoiced_proposals": 1384,
+    "revenue": 1328191,
+    "proposals": 1580,
+    "invoiced_proposals": 1386,
     "complete_proposals": 116,
     "sources": {
-      "Online": 9601,
-      "Referral": 8532,
-      "MoJo Customer": 4486,
-      "Yard Sign": 3036,
+      "Online": 9602,
+      "Referral": 8535,
+      "MoJo Customer": 4488,
+      "Yard Sign": 3038,
       "Direct Mail Postcard": 2949,
       "Mosquito Joe Vehicle": 2231,
       "Other": 975,
-      "Advertising": 776,
+      "Advertising": 777,
       "Printed Material": 413,
       "Mail Advertising": 333,
       "Existing Customer": 262,
@@ -449,7 +449,7 @@
         "invoiceRevenue": 208482.75,
         "invoices": 2276,
         "appointments": 490,
-        "proposals": 1578,
+        "proposals": 1580,
         "cancels": 0
       },
       {
@@ -462,8 +462,8 @@
       },
       {
         "month": "2026-07",
-        "invoiceRevenue": 79581.93,
-        "invoices": 888,
+        "invoiceRevenue": 80236.5,
+        "invoices": 895,
         "appointments": 5360,
         "proposals": 0,
         "cancels": 4
@@ -513,6 +513,6 @@
   "data_source_notes": {
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-07-12T09:11:40.070Z"
+    "serviceminder_cutover_at": "2026-07-13T09:10:48.959Z"
   }
 }
