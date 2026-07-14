@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-14T18:00:21.254Z",
+  "updated_at": "2026-07-14T19:00:24.726Z",
   "csv_date": "2026-07-14",
   "period": "Jan 1 - Jul 14, 2026 (YTD)",
   "summary": {
     "total_sales": 463,
-    "total_cancels": 256,
-    "net": 207,
+    "total_cancels": 258,
+    "net": 205,
     "paused_wp": 60,
     "paused_pct": 23,
     "days_tracked": 195
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 262,
-      "cancels": 79
+      "cancels": 81
     },
     {
       "name": "Norma",
@@ -35,7 +35,7 @@
     },
     {
       "name": "Moved",
-      "count": 56,
+      "count": 57,
       "pct": 22
     },
     {
@@ -46,7 +46,7 @@
     {
       "name": "Financial",
       "count": 27,
-      "pct": 11
+      "pct": 10
     },
     {
       "name": "Unhappy",
@@ -64,12 +64,12 @@
       "pct": 5
     },
     {
-      "name": "Bad Debt",
-      "count": 11,
-      "pct": 4
+      "name": "Went w/Competitor",
+      "count": 12,
+      "pct": 5
     },
     {
-      "name": "Went w/Competitor",
+      "name": "Bad Debt",
       "count": 11,
       "pct": 4
     },
@@ -183,6 +183,20 @@
       "date": "2026-07-14",
       "dateFmt": "Jul 14",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-14",
+      "dateFmt": "Jul 14",
+      "type": "Cancel",
+      "category": "Went w/Competitor",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-14",
+      "dateFmt": "Jul 14",
+      "type": "Cancel",
       "category": "Financial",
       "csr": "Lucy"
     },
@@ -234,20 +248,6 @@
       "type": "Sale",
       "category": "Misting System",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-07-13",
-      "dateFmt": "Jul 13",
-      "type": "Cancel",
-      "category": "Unhappy",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-07-10",
-      "dateFmt": "Jul 10",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
