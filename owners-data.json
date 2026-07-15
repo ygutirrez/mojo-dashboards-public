@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-14T09:11:02.852Z",
-  "generated_date": "July 14, 2026",
+  "generated_at": "2026-07-15T09:10:49.870Z",
+  "generated_date": "July 15, 2026",
   "sales": {
     "csv_date": "2026-05-13",
     "total_sales": 293,
@@ -68,7 +68,7 @@
     ],
     "data_date": "2026-01-28"
   },
-  "ops_updated_at": "2026-07-14T09:10:25.016Z",
+  "ops_updated_at": "2026-07-15T09:10:14.018Z",
   "fleet": {
     "total_vehicles": 16,
     "total_miles_7d": 2250,
@@ -77,10 +77,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1328887,
+    "ytd_invoiced": 1339713,
     "avg_per_visit": 73,
-    "mtd": 80933,
-    "mtd_jobs": 903
+    "mtd": 91759,
+    "mtd_jobs": 1028
   },
   "operations": {
     "total_jobs": 9998,
@@ -93,19 +93,19 @@
     "working_days_ytd": null
   },
   "serviceminder": {
-    "generated_at": "2026-07-14T09:11:02.852Z",
+    "generated_at": "2026-07-15T09:10:49.870Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-13T13:15:58.531Z",
+      "generated_at": "2026-07-14T13:15:53.687Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 20887,
-      "contacts": 13659,
-      "invoices": 14732,
-      "proposals": 1580
+      "appointments": 20955,
+      "contacts": 13666,
+      "invoices": 14992,
+      "proposals": 1581
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -176,6 +176,7 @@
       }
     },
     "unmapped_route_labels": [
+      "Route 9",
       "Lenny Pierre"
     ],
     "personnel_notes": [
@@ -206,12 +207,13 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1502,
-    "total_cancels": 24,
-    "net": 1478,
+    "total_sales": 1503,
+    "total_cancels": 29,
+    "net": 1474,
     "cancel_reasons": {
       "No Longer Needed": 10,
       "Moving": 10,
+      "Found Different Company": 5,
       "Financial": 4
     },
     "sale_categories": {
@@ -227,7 +229,7 @@
       "InZecto Trap Service": 12,
       "In2Care Service - 4 Weeks Service": 11,
       "Misting system - 6 Weeks": 10,
-      "Inzecto Trap Replacement": 8,
+      "Inzecto Trap Replacement": 9,
       "Synthetic Signature Single Svc 2": 5,
       "Flea & Tick Treatment": 4,
       "Flea Service": 3,
