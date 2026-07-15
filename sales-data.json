@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-15T15:00:22.901Z",
+  "updated_at": "2026-07-15T16:00:22.078Z",
   "csv_date": "2026-07-15",
   "period": "Jan 1 - Jul 15, 2026 (YTD)",
   "summary": {
-    "total_sales": 463,
-    "total_cancels": 259,
-    "net": 204,
+    "total_sales": 466,
+    "total_cancels": 260,
+    "net": 206,
     "paused_wp": 60,
     "paused_pct": 23,
     "days_tracked": 196
@@ -13,12 +13,12 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 262,
-      "cancels": 81
+      "sales": 264,
+      "cancels": 82
     },
     {
       "name": "Norma",
-      "sales": 155,
+      "sales": 156,
       "cancels": 97
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "name": "Moved",
-      "count": 57,
+      "count": 58,
       "pct": 22
     },
     {
@@ -107,11 +107,11 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 171
+      "count": 172
     },
     {
       "name": "Restart",
-      "count": 119
+      "count": 120
     },
     {
       "name": "Event Spray",
@@ -131,7 +131,7 @@
     },
     {
       "name": "Perimeter Pest",
-      "count": 12
+      "count": 13
     },
     {
       "name": "One Time",
@@ -183,6 +183,34 @@
       "date": "2026-07-15",
       "dateFmt": "Jul 15",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-15",
+      "dateFmt": "Jul 15",
+      "type": "Sale",
+      "category": "Perimeter Pest",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-15",
+      "dateFmt": "Jul 15",
+      "type": "Sale",
+      "category": "Restart",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-15",
+      "dateFmt": "Jul 15",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-07-15",
+      "dateFmt": "Jul 15",
+      "type": "Cancel",
       "category": "Unhappy",
       "csr": "Bev"
     },
@@ -219,34 +247,6 @@
       "dateFmt": "Jul 13",
       "type": "Sale",
       "category": "Event Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-07-13",
-      "dateFmt": "Jul 13",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-07-13",
-      "dateFmt": "Jul 13",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-07-13",
-      "dateFmt": "Jul 13",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-07-13",
-      "dateFmt": "Jul 13",
-      "type": "Sale",
-      "category": "Restart",
       "csr": "Norma"
     }
   ],
