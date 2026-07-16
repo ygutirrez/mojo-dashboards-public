@@ -1,18 +1,18 @@
 {
   "meta": {
-    "generated_at": "2026-07-16T09:11:10.652Z",
+    "generated_at": "2026-07-16T12:06:12.432Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-15T13:16:11.505Z",
+      "generated_at": "2026-07-16T12:06:11.416Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 21291,
-      "contacts": 13676,
-      "invoices": 15124,
-      "proposals": 1583
+      "appointments": 21582,
+      "contacts": 13682,
+      "invoices": 15247,
+      "proposals": 1586
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1350271,
+      "ytd_invoiced": 1362814,
       "avg_per_visit": 72,
-      "mtd": 102317,
-      "mtd_jobs": 1160
+      "mtd": 114859,
+      "mtd_jobs": 1283
     },
     "operations": {
       "total_jobs": 9998,
@@ -131,19 +131,19 @@
       "working_days_ytd": null
     },
     "sales": {
-      "total_sales": 1503,
-      "total_cancels": 29,
-      "net": 1474,
+      "total_sales": 1507,
+      "total_cancels": 30,
+      "net": 1477,
       "cancel_reasons": {
+        "Moving": 11,
         "No Longer Needed": 10,
-        "Moving": 10,
         "Found Different Company": 5,
         "Financial": 4
       },
       "sale_categories": {
         "Mojo Essential": 742,
         "Synthetic Barrier Spray - 2 week": 442,
-        "Misting System Recurring Service Bi-Monthly": 114,
+        "Misting System Recurring Service Bi-Monthly": 116,
         "HPD - 42 Days": 71,
         "Synthetic Barrier Spray - 4 week": 40,
         "Gnat/Midge/No-seeums Service - 2 weeks": 38,
@@ -160,12 +160,12 @@
         "Synthetic + In2Care": 3,
         "Mojo Essential - Eco Friendly": 3,
         "In2Care Service": 3,
+        "HPD - Quarterly": 3,
         "One-Time Spray": 2,
         "LIV Installation": 2,
         "Synthetic Signature Single Svc 1": 2,
         "Gnats/Midges/No-seeums - 3 week": 2,
         "Fly Management Service": 2,
-        "HPD - Quarterly": 2,
         "Special Event Spray": 1,
         "RT Service Monthly": 1,
         "HPD - 56 Days": 1,
@@ -176,14 +176,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1350271
+      "total_wo_revenue": 1362814
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 46036.92,
-        "avgRevenue": 87.36,
+        "revenue": 48275.78,
+        "avgRevenue": 87.14,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -193,8 +193,8 @@
       {
         "name": "Stanley Prophete",
         "jobs": 1285,
-        "revenue": 36532.93,
-        "avgRevenue": 87.4,
+        "revenue": 38856.27,
+        "avgRevenue": 86.73,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
@@ -204,8 +204,8 @@
       {
         "name": "Marcus Rubi",
         "jobs": 1195,
-        "revenue": 32177.54,
-        "avgRevenue": 75.18,
+        "revenue": 34917.98,
+        "avgRevenue": 74.93,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
         "technician_status": "active",
@@ -215,8 +215,8 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 30077.69,
-        "avgRevenue": 84.49,
+        "revenue": 32601.54,
+        "avgRevenue": 83.81,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
@@ -226,8 +226,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 59743.43,
-        "avgRevenue": 183.26,
+        "revenue": 60953.38,
+        "avgRevenue": 181.95,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -237,8 +237,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 18575.09,
-        "avgRevenue": 79.38,
+        "revenue": 19401.03,
+        "avgRevenue": 80.84,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -248,8 +248,8 @@
       {
         "name": "Travis Johnson",
         "jobs": 265,
-        "revenue": 19233.65,
-        "avgRevenue": 85.48,
+        "revenue": 19417.64,
+        "avgRevenue": 85.92,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
@@ -259,8 +259,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 34801.52,
-        "avgRevenue": 83.66,
+        "revenue": 35480.82,
+        "avgRevenue": 82.9,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -269,49 +269,49 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 14975,
-      "Scheduled": 3583,
-      "Started": 69,
+      "Queued": 14996,
+      "Scheduled": 3831,
+      "Started": 70,
       "Completed": 3
     },
     "service_mix": {
-      "Mojo Essential": 8627,
-      "Synthetic Barrier Spray - 2 week": 5562,
-      "Misting System Recurring Service Bi-Monthly": 1292,
-      "HPD - 42 Days": 752,
-      "Gnat/Midge/No-seeums Service - 2 weeks": 483,
-      "Synthetic Barrier Spray - 4 week": 368,
-      "Accelerated - Synthetic Signature Service": 271,
-      "All-Natural Barrier Spray": 229,
-      "Misting system - 4 Weeks": 141,
-      "InZecto Trap Service": 120,
-      "In2Care Service - 4 Weeks Service": 116,
+      "Mojo Essential": 8723,
+      "Synthetic Barrier Spray - 2 week": 5668,
+      "Misting System Recurring Service Bi-Monthly": 1297,
+      "HPD - 42 Days": 755,
+      "Gnat/Midge/No-seeums Service - 2 weeks": 494,
+      "Synthetic Barrier Spray - 4 week": 379,
+      "Accelerated - Synthetic Signature Service": 281,
+      "All-Natural Barrier Spray": 235,
+      "Misting system - 4 Weeks": 151,
+      "InZecto Trap Service": 122,
+      "In2Care Service - 4 Weeks Service": 117,
       "Misting system - 6 Weeks": 93,
       "Inzecto Trap Replacement": 92,
       "Synthetic Signature Service": 49,
-      "Property Assessment": 46,
+      "Property Assessment": 47,
       "Special Event Service": 42,
       "Mojo Essential - Eco Friendly": 36,
+      "Flea & Tick Treatment": 34,
       "Flea Service": 33,
       "Synthetic + In2Care": 32,
       "In2Care Service": 31,
-      "Flea & Tick Treatment": 30,
-      "Re-Spray": 23,
+      "Re-Spray": 24,
       "Synthetic Signature Single Svc 3": 22,
       "Fly Management Service": 21,
       "HPD - Quarterly": 15,
       "One-time Service": 15,
       "Gnats/Midges/No-seeums - 3 week": 14,
       "RT Service Monthly": 10,
+      "Misting System Repair Service": 8,
       "Misting System Equipment": 7,
-      "Misting System Repair Service": 7,
       "Synthetic Signature Single Svc 2": 6,
       "HPD - 56 Days": 6,
       "Gnats/Midges/No-see-ums": 6,
+      "HPD - One Time Treatment": 5,
       "Misting System Installation": 5,
       "Synthetic Signature Single Svc 1": 4,
       "Quarterly Tick & Flea Treatment": 3,
-      "HPD - One Time Treatment": 3,
       "Synthetic Barrier Spray - 6 week": 3,
       "Misting System Service": 3,
       "Inzecto Installation": 3,
@@ -328,7 +328,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1350271
+      "total_revenue": 1362814
     },
     "employees": [
       {
@@ -338,7 +338,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 46037,
+        "revenue": 48276,
         "upsells": 0,
         "resprays": 0
       },
@@ -349,7 +349,7 @@
         "initials": "SP",
         "jobs": 1285,
         "rank": 2,
-        "revenue": 36533,
+        "revenue": 38856,
         "upsells": 0,
         "resprays": 0
       },
@@ -360,7 +360,7 @@
         "initials": "MR",
         "jobs": 1195,
         "rank": 3,
-        "revenue": 32178,
+        "revenue": 34918,
         "upsells": 0,
         "resprays": 0
       },
@@ -371,7 +371,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 4,
-        "revenue": 30078,
+        "revenue": 32602,
         "upsells": 0,
         "resprays": 0
       },
@@ -382,7 +382,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 59743,
+        "revenue": 60953,
         "upsells": 0,
         "resprays": 0
       },
@@ -393,7 +393,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 18575,
+        "revenue": 19401,
         "upsells": 0,
         "resprays": 0
       },
@@ -404,7 +404,7 @@
         "initials": "TJ",
         "jobs": 265,
         "rank": 7,
-        "revenue": 19234,
+        "revenue": 19418,
         "upsells": 0,
         "resprays": 0
       },
@@ -415,34 +415,34 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 34802,
+        "revenue": 35481,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1350271,
-    "proposals": 1583,
+    "revenue": 1362814,
+    "proposals": 1586,
     "invoiced_proposals": 1385,
-    "complete_proposals": 118,
+    "complete_proposals": 122,
     "sources": {
-      "Online": 9819,
-      "Referral": 8713,
-      "MoJo Customer": 4563,
-      "Yard Sign": 3089,
-      "Direct Mail Postcard": 3009,
-      "Mosquito Joe Vehicle": 2271,
-      "Other": 986,
-      "Advertising": 798,
-      "Printed Material": 414,
-      "Mail Advertising": 337,
-      "Existing Customer": 267,
-      "Online Search": 143,
-      "DMP": 140,
+      "Online": 9924,
+      "Referral": 8800,
+      "MoJo Customer": 4625,
+      "Yard Sign": 3138,
+      "Direct Mail Postcard": 3040,
+      "Mosquito Joe Vehicle": 2292,
+      "Other": 1006,
+      "Advertising": 805,
+      "Printed Material": 417,
+      "Mail Advertising": 341,
+      "Existing Customer": 270,
+      "Online Search": 145,
+      "DMP": 141,
       "Accelerated": 64,
       "Neighborly": 59,
-      "Local Branding": 52,
+      "Local Branding": 53,
       "Competitor": 44,
       "Event/Sponsorship": 43,
       "Print Material": 42,
@@ -488,7 +488,7 @@
         "invoiceRevenue": 208482.75,
         "invoices": 2276,
         "appointments": 490,
-        "proposals": 1583,
+        "proposals": 1586,
         "cancels": 0
       },
       {
@@ -501,9 +501,9 @@
       },
       {
         "month": "2026-07",
-        "invoiceRevenue": 102316.77,
-        "invoices": 1160,
-        "appointments": 5390,
+        "invoiceRevenue": 114859.39,
+        "invoices": 1283,
+        "appointments": 5404,
         "proposals": 0,
         "cancels": 5
       },
@@ -511,7 +511,7 @@
         "month": "2026-08",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4410,
+        "appointments": 4423,
         "proposals": 0,
         "cancels": 6
       },
@@ -519,7 +519,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3343,
+        "appointments": 3366,
         "proposals": 0,
         "cancels": 6
       },
@@ -527,15 +527,15 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1246,
+        "appointments": 1357,
         "proposals": 0,
-        "cancels": 4
+        "cancels": 5
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 448,
+        "appointments": 544,
         "proposals": 0,
         "cancels": 0
       },
@@ -543,7 +543,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 270,
+        "appointments": 283,
         "proposals": 0,
         "cancels": 4
       }
