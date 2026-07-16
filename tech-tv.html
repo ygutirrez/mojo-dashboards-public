@@ -293,33 +293,19 @@
             return `<div class="fleet-row ${cls}"><span>${medal}</span><span><strong>${f.name}</strong></span><span style="font-size:0.65rem;color:${idleColor}">${idleH}h idle</span><span style="color:${scoreColor};font-weight:bold;">${f.score} pts${warn}</span></div>`;
         }).join('');
 
-        // Review race
-        let raceHTML = d.review_race.map(r => {
-            const pct = Math.round(r.count / r.target * 100);
-            const note = r.note ? ` <span style="color:${r.color};font-size:0.65rem;">🔥 ${r.note}</span>` : '';
-            return `<div class="racer">
-                <div class="racer-ava" style="background:linear-gradient(135deg,${r.color},${r.color}88);color:#fff;">${r.initials}</div>
-                <div class="racer-info">
-                    <div class="racer-name">${r.name}${note}</div>
-                    <div class="racer-bar"><div class="racer-fill" style="width:${pct}%;background:linear-gradient(90deg,${r.color},${r.color}88);"></div></div>
+        const reviewRaceUnderConstruction = `
+            <div style="height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:rgba(255,215,0,0.06);border:1px dashed rgba(255,215,0,0.25);border-radius:10px;">
+                <div>
+                    <div style="font-size:1.6rem;margin-bottom:8px;">🚧</div>
+                    <div style="font-size:1.1rem;font-weight:700;color:#ffd700;text-transform:uppercase;letter-spacing:1px;">Under Construction</div>
+                    <div style="font-size:0.78rem;color:#8b949e;margin-top:8px;line-height:1.35;">Review race data is being verified and will be back once it is corrected.</div>
                 </div>
-                <div class="racer-count">${r.count}/${r.target} <span style="color:#555;font-size:0.6rem;">(${Math.round(r.totalCredits || 0)})</span></div>
-            </div>`;
-        }).join('');
+            </div>
+        `;
 
         // Featured review
         const fr = d.featured_review;
         const stars = '⭐'.repeat(fr.stars);
-
-        // Payouts
-        function buildPayoutLine(payouts, year) {
-            if (!payouts || !payouts.length) return '';
-            const total = payouts.reduce((s, p) => s + p.amount, 0);
-            const items = payouts.map((p, i) => `${medals[i] || '🏅'} ${p.name.split(' ')[0]} — $${p.amount.toLocaleString()}`).join(' · ');
-            return `<div style="font-size:0.65rem;color:#8b949e;text-transform:uppercase;margin-bottom:4px;">${year} Payouts — <span style="color:#3fb950;">$${total.toLocaleString()} Total</span></div><div style="font-size:0.7rem;color:#ccc;margin-bottom:6px;">${items}</div>`;
-        }
-        const payouts2026HTML = buildPayoutLine(d.payouts_2026, '2026');
-        const payouts2025HTML = buildPayoutLine(d.payouts_2025, '2025');
 
         let html = `
         <!-- LEFT: Podium + Achievements -->
@@ -370,17 +356,7 @@
             <div class="card" style="flex:1;overflow:hidden;min-height:0;">
                 <h2>⭐ Review Race — $50 Bonus</h2>
                 <div class="card-body" style="overflow-y:auto;">
-                    <div style="text-align:center;margin-bottom:10px;">
-                        <span style="background:linear-gradient(90deg,#ffd700,#ff6b35);color:#000;padding:4px 14px;border-radius:12px;font-weight:bold;font-size:0.8rem;">💰 $500 / 10 REVIEWS</span>
-                    </div>
-                    ${raceHTML}
-                    <div style="margin-top:8px;padding:6px 8px;background:rgba(255,215,0,0.06);border-radius:8px;text-align:center;border:1px dashed rgba(255,215,0,0.2);font-size:0.68rem;color:#ccc;">
-                        <span style="color:#ffd700;font-weight:700;">💡 Tip:</span> Ask customers to mention your name = <span style="color:#3fb950;font-weight:700;">$50 credit</span>
-                    </div>
-                    <div style="margin-top:10px;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;">
-                        ${payouts2026HTML}
-                        ${payouts2025HTML}
-                    </div>
+                    ${reviewRaceUnderConstruction}
                 </div>
             </div>
             <div class="card" style="flex:0 0 200px;">
