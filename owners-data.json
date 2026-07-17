@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-16T09:11:10.652Z",
-  "generated_date": "July 16, 2026",
+  "generated_at": "2026-07-17T09:11:03.097Z",
+  "generated_date": "July 17, 2026",
   "sales": {
     "csv_date": "2026-05-13",
     "total_sales": 293,
@@ -68,7 +68,7 @@
     ],
     "data_date": "2026-01-28"
   },
-  "ops_updated_at": "2026-07-16T09:10:34.338Z",
+  "ops_updated_at": "2026-07-17T09:10:26.647Z",
   "fleet": {
     "total_vehicles": 16,
     "total_miles_7d": 2250,
@@ -77,10 +77,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1350271,
+    "ytd_invoiced": 1363798,
     "avg_per_visit": 72,
-    "mtd": 102317,
-    "mtd_jobs": 1160
+    "mtd": 115843,
+    "mtd_jobs": 1297
   },
   "operations": {
     "total_jobs": 9998,
@@ -93,19 +93,19 @@
     "working_days_ytd": null
   },
   "serviceminder": {
-    "generated_at": "2026-07-16T09:11:10.652Z",
+    "generated_at": "2026-07-17T09:11:03.097Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-15T13:16:11.505Z",
+      "generated_at": "2026-07-16T13:16:21.736Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 21291,
-      "contacts": 13676,
-      "invoices": 15124,
-      "proposals": 1583
+      "appointments": 21691,
+      "contacts": 13682,
+      "invoices": 15261,
+      "proposals": 1586
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -207,19 +207,19 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1503,
-    "total_cancels": 29,
-    "net": 1474,
+    "total_sales": 1507,
+    "total_cancels": 31,
+    "net": 1476,
     "cancel_reasons": {
+      "Moving": 11,
       "No Longer Needed": 10,
-      "Moving": 10,
-      "Found Different Company": 5,
+      "Found Different Company": 6,
       "Financial": 4
     },
     "sale_categories": {
       "Mojo Essential": 742,
       "Synthetic Barrier Spray - 2 week": 442,
-      "Misting System Recurring Service Bi-Monthly": 114,
+      "Misting System Recurring Service Bi-Monthly": 116,
       "HPD - 42 Days": 71,
       "Synthetic Barrier Spray - 4 week": 40,
       "Gnat/Midge/No-seeums Service - 2 weeks": 38,
@@ -236,12 +236,12 @@
       "Synthetic + In2Care": 3,
       "Mojo Essential - Eco Friendly": 3,
       "In2Care Service": 3,
+      "HPD - Quarterly": 3,
       "One-Time Spray": 2,
       "LIV Installation": 2,
       "Synthetic Signature Single Svc 1": 2,
       "Gnats/Midges/No-seeums - 3 week": 2,
       "Fly Management Service": 2,
-      "HPD - Quarterly": 2,
       "Special Event Spray": 1,
       "RT Service Monthly": 1,
       "HPD - 56 Days": 1,
