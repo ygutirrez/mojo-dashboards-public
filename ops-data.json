@@ -1,25 +1,23 @@
 {
-  "updated_at": "2026-05-08T16:32:35.511Z",
+  "updated_at": "2026-07-19T09:32:17.639Z",
   "period": {
-    "from": "2026-02-25T10:30:09.538Z",
-    "to": "2026-03-04T10:30:09.537Z"
+    "from": "2026-07-12T09:32:00.231Z",
+    "to": "2026-07-19T09:32:00.230Z"
   },
   "summary": {
     "total_vehicles": 16,
-    "total_miles": 2250,
-    "avg_safety_score": 94,
-    "vehicles_with_codes": 9,
-    "blowers_active": 13,
-    "drivers_need_coaching": 0,
-    "total_wo_completed": 9375,
-    "total_wo_revenue": 866115
+    "total_miles": 3050,
+    "avg_safety_score": 95,
+    "vehicles_with_codes": 11,
+    "blowers_active": 0,
+    "drivers_need_coaching": 0
   },
   "alerts": [
     {
       "type": "vehicle",
       "severity": "critical",
-      "title": "Truck 4 - 11 codes",
-      "detail": "Engine Oil Pressure Sensor/Switch Low"
+      "title": "Truck 4 - 12 codes",
+      "detail": "Intake Air Temperature Sensor 1 Circuit High"
     },
     {
       "type": "vehicle",
@@ -30,190 +28,166 @@
     {
       "type": "vehicle",
       "severity": "critical",
-      "title": "Truck 7 - 7 codes",
-      "detail": "Evaporative Emission System Leak Detected (small leak)"
+      "title": "Truck 7 - 9 codes",
+      "detail": "This is a manufacturer-specific code. Contact your car dealer for more information on this code."
     }
   ],
   "tech_performance": [
     {
-      "nickname": "Truck 4",
-      "driver": null,
-      "trip_count": 31,
-      "total_miles": 128,
-      "total_drive_time_min": 526.0166666666667,
-      "idle_time_min": 48.083333333333336,
+      "nickname": "Truck 7",
+      "driver": "Guillermo Rodriguez",
+      "trip_count": 96,
+      "total_miles": 349,
+      "total_drive_time_min": 1188.8666666666663,
+      "idle_time_min": 19.5,
       "hard_brakes": 0,
       "rapid_accels": 0,
-      "speeding_events": 540,
+      "speeding_events": 1580,
       "safety_score": 100,
       "status": "good"
     },
     {
-      "nickname": "Truck 10",
-      "driver": "Stanley Prophete",
-      "trip_count": 56,
-      "total_miles": 86,
-      "total_drive_time_min": 399.15,
-      "idle_time_min": 28.666666666666668,
+      "nickname": "Truck 17",
+      "driver": "Curtis Blount",
+      "trip_count": 96,
+      "total_miles": 219,
+      "total_drive_time_min": 1078.3166666666673,
+      "idle_time_min": 43.03333333333333,
       "hard_brakes": 0,
       "rapid_accels": 0,
-      "speeding_events": 520,
-      "safety_score": 100,
-      "status": "good",
-      "wo_completed": 1204,
-      "wo_revenue": 110448,
-      "wo_production": 109869
-    },
-    {
-      "nickname": "Best Pest 2",
-      "driver": "Luis Zamora",
-      "trip_count": 48,
-      "total_miles": 349,
-      "total_drive_time_min": 6747.149950000003,
-      "idle_time_min": 135.1,
-      "hard_brakes": 0,
-      "rapid_accels": 0,
-      "speeding_events": 346,
+      "speeding_events": 400,
       "safety_score": 100,
       "status": "good"
     },
     {
       "nickname": "Truck 9",
       "driver": "Damian Machin",
-      "trip_count": 81,
-      "total_miles": 233,
-      "total_drive_time_min": 898.7333333333332,
-      "idle_time_min": 25.9,
+      "trip_count": 100,
+      "total_miles": 262,
+      "total_drive_time_min": 847.6666666666665,
+      "idle_time_min": 26.733333333333334,
       "hard_brakes": 1,
       "rapid_accels": 1,
-      "speeding_events": 1332,
-      "safety_score": 98,
-      "status": "good",
-      "wo_completed": 1274,
-      "wo_revenue": 116058,
-      "wo_production": 116058
-    },
-    {
-      "nickname": "Truck 3",
-      "driver": null,
-      "trip_count": 22,
-      "total_miles": 18,
-      "total_drive_time_min": 162.3499833333333,
-      "idle_time_min": 31.016666666666666,
-      "hard_brakes": 1,
-      "rapid_accels": 0,
-      "speeding_events": 32,
+      "speeding_events": 1618,
       "safety_score": 98,
       "status": "good"
     },
     {
-      "nickname": "Truck 7",
-      "driver": null,
-      "trip_count": 56,
-      "total_miles": 372,
-      "total_drive_time_min": 1089.6666666666667,
-      "idle_time_min": 0,
+      "nickname": "Truck 8",
+      "driver": "Joe Pagan",
+      "trip_count": 52,
+      "total_miles": 386,
+      "total_drive_time_min": 1231.3166500000002,
+      "idle_time_min": 100.3,
+      "hard_brakes": 1,
+      "rapid_accels": 1,
+      "speeding_events": 552,
+      "safety_score": 98,
+      "status": "good"
+    },
+    {
+      "nickname": "Best Pest 2",
+      "driver": "Luis Zamora",
+      "trip_count": 74,
+      "total_miles": 555,
+      "total_drive_time_min": 1808.0499999999995,
+      "idle_time_min": 218,
       "hard_brakes": 1,
       "rapid_accels": 0,
-      "speeding_events": 1080,
+      "speeding_events": 2198,
       "safety_score": 98,
       "status": "good"
     },
     {
       "nickname": "Truck 15",
       "driver": "Travis Johnson",
-      "trip_count": 21,
-      "total_miles": 158,
-      "total_drive_time_min": 760.7500000000002,
-      "idle_time_min": 183.86666666666667,
+      "trip_count": 57,
+      "total_miles": 243,
+      "total_drive_time_min": 982.316666666667,
+      "idle_time_min": 163.1,
       "hard_brakes": 1,
-      "rapid_accels": 1,
-      "speeding_events": 232,
+      "rapid_accels": 0,
+      "speeding_events": 848,
       "safety_score": 98,
-      "status": "good",
-      "wo_completed": 251,
-      "wo_revenue": 23136,
-      "wo_production": 22597
+      "status": "good"
     },
     {
-      "nickname": "Truck 17",
-      "driver": "Andrew Schamel",
-      "trip_count": 84,
-      "total_miles": 192,
-      "total_drive_time_min": 1218.7666666666662,
-      "idle_time_min": 267.3,
+      "nickname": "Truck 10",
+      "driver": "Stanley Prophete",
+      "trip_count": 59,
+      "total_miles": 118,
+      "total_drive_time_min": 532.8499833333334,
+      "idle_time_min": 87.6,
       "hard_brakes": 2,
-      "rapid_accels": 5,
-      "speeding_events": 185,
-      "safety_score": 94,
-      "status": "good",
-      "wo_completed": 963,
-      "wo_revenue": 81717,
-      "wo_production": 81717
+      "rapid_accels": 0,
+      "speeding_events": 838,
+      "safety_score": 96,
+      "status": "good"
     },
     {
       "nickname": "Truck 16",
       "driver": "David Carbajal",
-      "trip_count": 77,
-      "total_miles": 208,
-      "total_drive_time_min": 826.9166666666669,
-      "idle_time_min": 21.5,
+      "trip_count": 66,
+      "total_miles": 148,
+      "total_drive_time_min": 778.8666666666668,
+      "idle_time_min": 37.46666666666667,
       "hard_brakes": 3,
-      "rapid_accels": 4,
-      "speeding_events": 696,
-      "safety_score": 92,
-      "status": "good",
-      "wo_completed": 1088,
-      "wo_revenue": 94672,
-      "wo_production": 94672
-    },
-    {
-      "nickname": "Truck 13",
-      "driver": "Marcus Rubi",
-      "trip_count": 48,
-      "total_miles": 120,
-      "total_drive_time_min": 550.0333333333334,
-      "idle_time_min": 47.46666666666667,
-      "hard_brakes": 5,
-      "rapid_accels": 5,
-      "speeding_events": 723,
-      "safety_score": 88,
-      "status": "good",
-      "wo_completed": 1118,
-      "wo_revenue": 88518,
-      "wo_production": 88518
+      "rapid_accels": 1,
+      "speeding_events": 466,
+      "safety_score": 94,
+      "status": "good"
     },
     {
       "nickname": "Truck 14",
       "driver": "Jorge Navarro",
-      "trip_count": 55,
-      "total_miles": 153,
-      "total_drive_time_min": 1047.6333333333334,
-      "idle_time_min": 92.43333333333334,
-      "hard_brakes": 5,
-      "rapid_accels": 4,
-      "speeding_events": 445,
-      "safety_score": 88,
-      "status": "good",
-      "wo_completed": 559,
-      "wo_revenue": 45301,
-      "wo_production": 45301
+      "trip_count": 56,
+      "total_miles": 97,
+      "total_drive_time_min": 804.9166666666666,
+      "idle_time_min": 40.06666666666667,
+      "hard_brakes": 3,
+      "rapid_accels": 6,
+      "speeding_events": 347,
+      "safety_score": 91,
+      "status": "good"
     },
     {
       "nickname": "Truck 12",
-      "driver": "John Sabin",
-      "trip_count": 64,
-      "total_miles": 231,
-      "total_drive_time_min": 813.1166666666667,
-      "idle_time_min": 41.45,
-      "hard_brakes": 4,
-      "rapid_accels": 28,
-      "speeding_events": 1677,
-      "safety_score": 78,
-      "status": "monitor",
-      "wo_completed": 1114,
-      "wo_revenue": 98890,
-      "wo_production": 97273
+      "driver": "Wilbeni Pierre",
+      "trip_count": 67,
+      "total_miles": 242,
+      "total_drive_time_min": 784.1333333333336,
+      "idle_time_min": 0,
+      "hard_brakes": 5,
+      "rapid_accels": 1,
+      "speeding_events": 2135,
+      "safety_score": 90,
+      "status": "good"
+    },
+    {
+      "nickname": "Truck 4",
+      "driver": "Lenny Pierre",
+      "trip_count": 87,
+      "total_miles": 180,
+      "total_drive_time_min": 770.0833333333333,
+      "idle_time_min": 24.533333333333335,
+      "hard_brakes": 6,
+      "rapid_accels": 1,
+      "speeding_events": 279,
+      "safety_score": 88,
+      "status": "good"
+    },
+    {
+      "nickname": "Truck 13",
+      "driver": "Marcus Rubi",
+      "trip_count": 88,
+      "total_miles": 251,
+      "total_drive_time_min": 963.3333333333336,
+      "idle_time_min": 0,
+      "hard_brakes": 6,
+      "rapid_accels": 1,
+      "speeding_events": 1501,
+      "safety_score": 88,
+      "status": "good"
     }
   ],
   "vehicles": [
@@ -221,9 +195,9 @@
       "nickname": "Truck 3",
       "driver": null,
       "make_model": "2016 Ram ProMaster City Cargo",
-      "fuel_level": 92,
-      "battery_volts": "12.7",
-      "odometer": 29925,
+      "fuel_level": 80,
+      "battery_volts": "11.7",
+      "odometer": 31920,
       "trouble_code_count": 13,
       "top_codes": [
         {
@@ -249,13 +223,19 @@
     },
     {
       "nickname": "Truck 4",
-      "driver": null,
+      "driver": "Lenny P.",
       "make_model": "2016 Ram ProMaster City Cargo",
-      "fuel_level": 34,
+      "fuel_level": 55,
       "battery_volts": "12.6",
-      "odometer": 35556,
-      "trouble_code_count": 11,
+      "odometer": 36582,
+      "trouble_code_count": 12,
       "top_codes": [
+        {
+          "code": "P0113",
+          "description": "Intake Air Temperature Sensor 1 Circuit High",
+          "severity": "low",
+          "fix": "Check intake air temp sensor, clean MAF"
+        },
         {
           "code": "P0522",
           "description": "Engine Oil Pressure Sensor/Switch Low",
@@ -267,42 +247,36 @@
           "description": "Engine Oil Pressure Sensor/Switch Circuit",
           "severity": "high",
           "fix": "Check oil level, oil pressure sensor, or oil pump"
-        },
-        {
-          "code": "P0481",
-          "description": "Fan 2 Control Circuit",
-          "severity": "medium",
-          "fix": "Check cooling fan relay/wiring"
         }
       ],
       "status": "service"
     },
     {
       "nickname": "Truck 7",
-      "driver": null,
+      "driver": "Guillermo R.",
       "make_model": "2015 Ford Transit Connect Cargo",
-      "fuel_level": 77,
-      "battery_volts": "12.0",
-      "odometer": 21758,
-      "trouble_code_count": 7,
+      "fuel_level": 8,
+      "battery_volts": "12.4",
+      "odometer": 24068,
+      "trouble_code_count": 9,
       "top_codes": [
+        {
+          "code": "P1450",
+          "description": "This is a manufacturer-specific code. Contact your",
+          "severity": "low",
+          "fix": "EVAP system issue - check canister, vent valve"
+        },
+        {
+          "code": "P2196",
+          "description": "O2 Sensor Signal Stuck Rich",
+          "severity": "medium",
+          "fix": "Running rich - check O2 sensors, fuel pressure"
+        },
         {
           "code": "P0442",
           "description": "Evaporative Emission System Leak Detected (small l",
           "severity": "low",
           "fix": "Check gas cap seal, inspect EVAP hoses"
-        },
-        {
-          "code": "P0299",
-          "description": "Turbocharger/Supercharger \"A\" Underboost Condition",
-          "severity": "medium",
-          "fix": "Check turbo wastegate, boost pressure sensor"
-        },
-        {
-          "code": "P0456",
-          "description": "Evaporative Emission System Leak Detected (very sm",
-          "severity": "low",
-          "fix": "Check gas cap, small EVAP leak"
         }
       ],
       "status": "service"
@@ -311,9 +285,9 @@
       "nickname": "Truck 2",
       "driver": null,
       "make_model": "2015 Ford Transit Connect Cargo",
-      "fuel_level": 34,
-      "battery_volts": "12.6",
-      "odometer": 27784,
+      "fuel_level": 28,
+      "battery_volts": "12.0",
+      "odometer": 27788,
       "trouble_code_count": 5,
       "top_codes": [
         {
@@ -341,9 +315,9 @@
       "nickname": "Truck 8",
       "driver": "Joe P.",
       "make_model": "2016 Ford Transit Connect Cargo",
-      "fuel_level": 26,
-      "battery_volts": "11.9",
-      "odometer": 53997,
+      "fuel_level": 73,
+      "battery_volts": "12.5",
+      "odometer": 61977,
       "trouble_code_count": 3,
       "top_codes": [
         {
@@ -368,12 +342,42 @@
       "status": "monitor"
     },
     {
+      "nickname": "Truck 10",
+      "driver": "Stanley P.",
+      "make_model": "2019 Ram Ram Pickup 1500 Classic",
+      "fuel_level": 41,
+      "battery_volts": "12.4",
+      "odometer": 51276,
+      "trouble_code_count": 3,
+      "top_codes": [
+        {
+          "code": "U0100",
+          "description": "Lost Communication With ECM/PCM A",
+          "severity": "unknown",
+          "fix": "Consult mechanic"
+        },
+        {
+          "code": "U1267",
+          "description": "This is a manufacturer-specific code. Contact your",
+          "severity": "unknown",
+          "fix": "Consult mechanic"
+        },
+        {
+          "code": "P1DF3",
+          "description": "This is a manufacturer-specific code. Contact your",
+          "severity": "unknown",
+          "fix": "Consult mechanic"
+        }
+      ],
+      "status": "monitor"
+    },
+    {
       "nickname": "Truck 1",
       "driver": null,
       "make_model": "2015 Ford Transit Connect Cargo",
-      "fuel_level": 26,
-      "battery_volts": "11.9",
-      "odometer": 47419,
+      "fuel_level": 25,
+      "battery_volts": "12.3",
+      "odometer": 48536,
       "trouble_code_count": 3,
       "top_codes": [
         {
@@ -401,9 +405,9 @@
       "nickname": "Truck 5",
       "driver": null,
       "make_model": "2017 Ford Transit Connect Cargo",
-      "fuel_level": 60,
-      "battery_volts": "12.4",
-      "odometer": 45744,
+      "fuel_level": 65,
+      "battery_volts": "11.9",
+      "odometer": 45845,
       "trouble_code_count": 2,
       "top_codes": [
         {
@@ -422,23 +426,23 @@
       "status": "monitor"
     },
     {
-      "nickname": "Truck 10",
-      "driver": "Stanley P.",
-      "make_model": "2019 Ram Ram Pickup 1500 Classic",
-      "fuel_level": 49,
-      "battery_volts": "12.3",
-      "odometer": 46312,
+      "nickname": "Truck 12",
+      "driver": "Wilbeni P.",
+      "make_model": "2022 Ford Maverick",
+      "fuel_level": 76,
+      "battery_volts": "12.5",
+      "odometer": 45338,
       "trouble_code_count": 2,
       "top_codes": [
         {
-          "code": "U1267",
-          "description": "This is a manufacturer-specific code. Contact your",
+          "code": "P0071",
+          "description": "Ambient Air Temperature Sensor Range/Performance",
           "severity": "unknown",
           "fix": "Consult mechanic"
         },
         {
-          "code": "P1DF3",
-          "description": "This is a manufacturer-specific code. Contact your",
+          "code": "P0072",
+          "description": "Ambient Air Temperature Sensor Circuit Low",
           "severity": "unknown",
           "fix": "Consult mechanic"
         }
@@ -449,9 +453,9 @@
       "nickname": "Truck 9",
       "driver": "Damian M.",
       "make_model": "2019 Ram Ram Pickup 1500 Classic",
-      "fuel_level": 94,
-      "battery_volts": "12.5",
-      "odometer": 25412,
+      "fuel_level": 96,
+      "battery_volts": "12.6",
+      "odometer": 29630,
       "trouble_code_count": 1,
       "top_codes": [
         {
@@ -464,34 +468,30 @@
       "status": "monitor"
     },
     {
-      "nickname": "Truck 12",
-      "driver": "John S.",
-      "make_model": "2022 Ford Maverick",
-      "fuel_level": 71,
-      "battery_volts": "12.5",
-      "odometer": 39012,
-      "trouble_code_count": 0,
-      "top_codes": [],
-      "status": "good"
+      "nickname": "Truck 13",
+      "driver": "Marcus R.",
+      "make_model": "2024 Ford Maverick",
+      "fuel_level": 70,
+      "battery_volts": "12.3",
+      "odometer": 26250,
+      "trouble_code_count": 1,
+      "top_codes": [
+        {
+          "code": "P0402",
+          "description": "Exhaust Gas Recirculation Flow Excessive Detected",
+          "severity": "unknown",
+          "fix": "Consult mechanic"
+        }
+      ],
+      "status": "monitor"
     },
     {
       "nickname": "Best Pest 2",
       "driver": "Luis Z.",
       "make_model": "2023 Ford Maverick",
-      "fuel_level": 93,
+      "fuel_level": 30,
       "battery_volts": "12.6",
-      "odometer": 37413,
-      "trouble_code_count": 0,
-      "top_codes": [],
-      "status": "good"
-    },
-    {
-      "nickname": "Truck 13",
-      "driver": "Marcus R.",
-      "make_model": "2024 Ford Maverick",
-      "fuel_level": 98,
-      "battery_volts": "12.2",
-      "odometer": 22019,
+      "odometer": 49314,
       "trouble_code_count": 0,
       "top_codes": [],
       "status": "good"
@@ -501,8 +501,8 @@
       "driver": "Jorge N.",
       "make_model": "2025 Ford Maverick",
       "fuel_level": null,
-      "battery_volts": "12.6",
-      "odometer": 3806,
+      "battery_volts": "12.5",
+      "odometer": 6675,
       "trouble_code_count": 0,
       "top_codes": [],
       "status": "good"
@@ -511,20 +511,20 @@
       "nickname": "Truck 15",
       "driver": "Travis J.",
       "make_model": "2025 Ford Maverick",
-      "fuel_level": 36,
-      "battery_volts": "12.8",
-      "odometer": 7091,
+      "fuel_level": 79,
+      "battery_volts": "12.7",
+      "odometer": 10995,
       "trouble_code_count": 0,
       "top_codes": [],
       "status": "good"
     },
     {
       "nickname": "Truck 17",
-      "driver": "Andrew S.",
+      "driver": "Curtis B.",
       "make_model": "2026 Ford Maverick",
-      "fuel_level": 58,
-      "battery_volts": "12.6",
-      "odometer": 1057,
+      "fuel_level": 28,
+      "battery_volts": "12.7",
+      "odometer": 4840,
       "trouble_code_count": 0,
       "top_codes": [],
       "status": "good"
@@ -533,163 +533,13 @@
       "nickname": "Truck 16",
       "driver": "David C.",
       "make_model": "2026 Ford Maverick",
-      "fuel_level": 74,
+      "fuel_level": 85,
       "battery_volts": "12.7",
-      "odometer": 977,
+      "odometer": 4916,
       "trouble_code_count": 0,
       "top_codes": [],
       "status": "good"
     }
   ],
-  "blowers": [
-    {
-      "tech": "Stanley",
-      "model": "Stihl 430",
-      "lastScan": "2/9/2026",
-      "issue": null
-    },
-    {
-      "tech": "John",
-      "model": "Solo 451",
-      "lastScan": "2/5/2026",
-      "issue": "Serial number is disappear can't find it"
-    },
-    {
-      "tech": "Andrew",
-      "model": "Solo 451",
-      "lastScan": "1/14/2026",
-      "issue": null
-    },
-    {
-      "tech": "David",
-      "model": "Stihl SR200",
-      "lastScan": "2/13/2026",
-      "issue": null
-    },
-    {
-      "tech": "Marcus R.",
-      "model": "Stihl SR200",
-      "lastScan": "2/5/2026",
-      "issue": null
-    },
-    {
-      "tech": "Damian",
-      "model": "Stihl SR200",
-      "lastScan": "2/9/2026",
-      "issue": null
-    },
-    {
-      "tech": "Marcus R.",
-      "model": "Stihl SR200",
-      "lastScan": "2/5/2026",
-      "issue": null
-    },
-    {
-      "tech": "Andrew",
-      "model": "Stihl SR200",
-      "lastScan": "2/5/2026",
-      "issue": null
-    },
-    {
-      "tech": "Travis J.",
-      "model": "Stihl 430",
-      "lastScan": "2/13/2026",
-      "issue": null
-    },
-    {
-      "tech": "Stanley",
-      "model": "Stihl SR200",
-      "lastScan": "2/5/2026",
-      "issue": null
-    },
-    {
-      "tech": "Jeo",
-      "model": "Solo 451",
-      "lastScan": "1/14/2026",
-      "issue": null
-    },
-    {
-      "tech": "Damian",
-      "model": "Solo 451",
-      "lastScan": "1/22/2026",
-      "issue": null
-    },
-    {
-      "tech": "David",
-      "model": "Stihl SR200",
-      "lastScan": "2/13/2026",
-      "issue": "Serial number is not visible"
-    }
-  ],
-  "totalWOs": 4504,
-  "totalRevenue": 420442.57999999943,
-  "avgRevenuePerWO": 93.35,
-  "employees": [
-    {
-      "name": "Damian Machin",
-      "jobs": 0,
-      "revenue": 58791.19999999974,
-      "avgRevenue": 0
-    },
-    {
-      "name": "John  Sabin",
-      "jobs": 0,
-      "revenue": 52143.099999999824,
-      "avgRevenue": 0
-    },
-    {
-      "name": "David Carbajal",
-      "jobs": 0,
-      "revenue": 50283.559999999874,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Stanley Prophete",
-      "jobs": 0,
-      "revenue": 53068.02999999983,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Marcus   Rubi",
-      "jobs": 0,
-      "revenue": 44256.64000000002,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Andrew Schamel",
-      "jobs": 0,
-      "revenue": 44460.44000000002,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Joseph  Pagan",
-      "jobs": 0,
-      "revenue": 58473.81000000005,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Jorge  Navarro",
-      "jobs": 0,
-      "revenue": 21560.450000000063,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Jeovany  Osorio",
-      "jobs": 0,
-      "revenue": 18406.399999999998,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Travis Johnson",
-      "jobs": 0,
-      "revenue": 13317.689999999975,
-      "avgRevenue": 0
-    },
-    {
-      "name": "Jeffrey Baptiste",
-      "jobs": 0,
-      "revenue": 5681.25999999999,
-      "avgRevenue": 0
-    }
-  ]
+  "blowers": []
 }
