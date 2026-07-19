@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: July 17, 2026 @ 5:10 am</div>
-        <div class="period">📅 Jan 1 - Jul 17, 2026 (YTD)</div>
+        <div class="updated">Last updated: July 19, 2026 @ 4:41 am</div>
+        <div class="period">📅 Jan 1 - Jul 19, 2026 (YTD)</div>
         <div class="updated">Office tally sales/cancels. ServiceMinder invoice revenue.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>468 sales and 263 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$1,363,798</strong> invoiced revenue.</p>
+        <p><strong>471 sales and 264 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$1,382,248</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -98,19 +98,19 @@
             <div class="podium-spot second">
                 <div class="rank">🥈</div>
                 <div class="name">Norma</div>
-                <div class="sales-count">156</div>
+                <div class="sales-count">157</div>
                 <div class="sales-label">sales | 98 cancels</div>
             </div>
             <div class="podium-spot first">
                 <div class="rank">🥇</div>
                 <div class="name">Lucy</div>
-                <div class="sales-count">266</div>
-                <div class="sales-label">sales | 83 cancels</div>
+                <div class="sales-count">267</div>
+                <div class="sales-label">sales | 84 cancels</div>
             </div>
             <div class="podium-spot third">
                 <div class="rank">🥉</div>
                 <div class="name">Bev</div>
-                <div class="sales-count">46</div>
+                <div class="sales-count">47</div>
                 <div class="sales-label">sales | 82 cancels</div>
             </div>
         </div>
@@ -119,33 +119,33 @@
     <div class="metrics-grid">
         <div class="metric-card positive">
             <div class="label">Total Sales</div>
-            <div class="value">468</div>
+            <div class="value">471</div>
             <div class="subtext">Office tally YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Cancel Events</div>
-            <div class="value">263</div>
+            <div class="value">264</div>
             <div class="subtext">YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Accounts Cancelled</div>
-            <div class="value">263</div>
+            <div class="value">264</div>
             <div class="subtext">Unique customers lost</div>
         </div>
         <div class="metric-card positive">
             <div class="label">Net Change</div>
-            <div class="value">+205</div>
+            <div class="value">+207</div>
             <div class="subtext">Customer base growing</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Total Revenue</div>
-            <div class="value">$1364k</div>
-            <div class="subtext">14,847 invoices YTD</div>
+            <div class="value">$1382k</div>
+            <div class="subtext">15,054 invoices YTD</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
-            <div class="value">198</div>
-            <div class="subtext">Jan 1 - Jul 17</div>
+            <div class="value">200</div>
+            <div class="subtext">Jan 1 - Jul 19</div>
         </div>
     </div>
 
@@ -162,7 +162,7 @@
         </div>
         <div class="metric-card warning">
             <div class="label">Not Interested</div>
-            <div class="value">29</div>
+            <div class="value">30</div>
             <div class="subtext">11% of cancellations</div>
         </div>
         <div class="metric-card warning">
@@ -248,8 +248,8 @@
             <div class="csr-card">
                 <div class="name">Lucy</div>
                 <div class="stats">
-                    <span class="sales">📈 266 sales</span>
-                    <span>❌ 83 cancels</span>
+                    <span class="sales">📈 267 sales</span>
+                    <span>❌ 84 cancels</span>
                     <span>📊 Net: 183</span>
                 </div>
             </div>
@@ -257,18 +257,18 @@
             <div class="csr-card">
                 <div class="name">Norma</div>
                 <div class="stats">
-                    <span class="sales">📈 156 sales</span>
+                    <span class="sales">📈 157 sales</span>
                     <span>❌ 98 cancels</span>
-                    <span>📊 Net: 58</span>
+                    <span>📊 Net: 59</span>
                 </div>
             </div>
 
             <div class="csr-card">
                 <div class="name">Bev</div>
                 <div class="stats">
-                    <span class="sales">📈 46 sales</span>
+                    <span class="sales">📈 47 sales</span>
                     <span>❌ 82 cancels</span>
-                    <span>📊 Net: -36</span>
+                    <span>📊 Net: -35</span>
                 </div>
             </div>
         </div>
@@ -281,9 +281,9 @@
         new Chart(document.getElementById('leadSourceChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Online","Referral","MoJo Customer","Yard Sign","Direct Mail Postcard","Mosquito Joe Vehicle","Other","Advertising","Printed Material","Mail Advertising","Existing Customer","Online Search","DMP","Accelerated","Neighborly","Local Branding","Competitor","Event/Sponsorship","Print Material","Email","Mass Media","Social"],
+                labels: ["Online","Referral","MoJo Customer","Yard Sign","Direct Mail Postcard","Mosquito Joe Vehicle","Other","Advertising","Printed Material","Mail Advertising","Existing Customer","Online Search","DMP","Accelerated","Neighborly","Local Branding","Competitor","Event/Sponsorship","Print Material","Email","Mass Media","Social","Unknown"],
                 datasets: [{
-                    data: [9950,8834,4648,3144,3046,2296,1008,808,418,342,270,145,142,64,59,54,44,43,42,39,19,12],
+                    data: [10072,8943,4710,3186,3079,2315,1026,819,426,353,271,149,145,66,61,55,44,43,42,39,19,13,1],
                     backgroundColor: ["#00ff88","#00d9ff","#ffd700","#ff9f43","#c792ea","#ff78c5","#82aaff","#ff6b6b"],
                     borderWidth: 0
                 }]
@@ -296,7 +296,7 @@
             data: {
                 labels: ["Paused/WP","Moved","Not Interested","Financial","Unhappy","One Time","Barrier Spray","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor"],
                 datasets: [{
-                    data: [61,59,29,27,23,17,15,12,11,2,2,2,1,1,1],
+                    data: [61,59,30,27,23,17,15,12,11,2,2,2,1,1,1],
                     backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
                     borderWidth: 0
                 }]
@@ -310,7 +310,7 @@
                 labels: ["Barrier Spray","Restart","Event Spray","Noseeum","Misting System","Bundle - HPD/Barrier","Perimeter Pest","One Time"],
                 datasets: [{
                     label: 'Sales',
-                    data: [172,122,63,26,17,14,13,10],
+                    data: [173,123,64,26,17,14,13,10],
                     backgroundColor: '#00ff88',
                     borderRadius: 4
                 }]
