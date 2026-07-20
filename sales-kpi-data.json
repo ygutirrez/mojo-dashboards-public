@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T08:32:05.133Z",
+  "updated_at": "2026-07-20T08:32:38.050Z",
   "period": "Jan 1 - Jul 20, 2026 (YTD)",
   "summary": {
     "total_sales": 307,
@@ -267,6 +267,15 @@
       "net": 0,
       "cumulative_sales": 307,
       "cumulative_revenue": 946368
+    },
+    {
+      "week": "Jul 20",
+      "sales": 0,
+      "cancels": 0,
+      "revenue": 0,
+      "net": 0,
+      "cumulative_sales": 307,
+      "cumulative_revenue": 946368
     }
   ],
   "active_customers": 2060,
@@ -281,7 +290,7 @@
     "pct_of_target": 50.2
   },
   "serviceminder": {
-    "generated_at": "2026-07-20T08:32:05.133Z",
+    "generated_at": "2026-07-20T08:32:38.050Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -526,6 +535,6 @@
   "data_source_notes": {
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-07-20T08:32:05.133Z"
+    "serviceminder_cutover_at": "2026-07-20T08:32:38.050Z"
   }
 }
