@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-07-20T08:32:38.050Z",
-  "period": "Jan 1 - Jul 20, 2026 (YTD)",
+  "updated_at": "2026-07-21T08:46:53.277Z",
+  "period": "Jan 1 - Jul 21, 2026 (YTD)",
   "summary": {
     "total_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 1382689,
-    "total_invoices": 15058,
+    "total_revenue": 1382969,
+    "total_invoices": 15061,
     "total_discounts": 15611,
     "net": 152,
-    "days_tracked": 201,
-    "sales_per_day": 1.6,
-    "revenue_per_day": 6879
+    "days_tracked": 202,
+    "sales_per_day": 1.5,
+    "revenue_per_day": 6846
   },
   "sales": {
     "by_source": {
@@ -267,32 +267,41 @@
       "net": 0,
       "cumulative_sales": 307,
       "cumulative_revenue": 946368
+    },
+    {
+      "week": "Jul 20",
+      "sales": 0,
+      "cancels": 0,
+      "revenue": 0,
+      "net": 0,
+      "cumulative_sales": 307,
+      "cumulative_revenue": 946368
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 1382689,
-    "days_elapsed": 201,
+    "ytd_revenue": 1382969,
+    "days_elapsed": 202,
     "days_total": 365,
-    "projected_annual": 2510853,
+    "projected_annual": 2498929,
     "on_pace": false,
-    "pct_of_target": 50.2
+    "pct_of_target": 50
   },
   "serviceminder": {
-    "generated_at": "2026-07-20T08:32:38.050Z",
+    "generated_at": "2026-07-21T08:46:53.277Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-19T13:15:49.319Z",
+      "generated_at": "2026-07-20T13:15:44.693Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 21945,
-      "contacts": 13701,
-      "invoices": 15472,
+      "appointments": 21956,
+      "contacts": 13703,
+      "invoices": 15475,
       "proposals": 1594
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -395,16 +404,16 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 1382689,
+    "revenue": 1382969,
     "proposals": 1594,
     "invoiced_proposals": 1393,
     "complete_proposals": 123,
     "sources": {
-      "Online": 10074,
+      "Online": 10079,
       "Referral": 8943,
-      "MoJo Customer": 4711,
+      "MoJo Customer": 4713,
       "Yard Sign": 3186,
-      "Direct Mail Postcard": 3079,
+      "Direct Mail Postcard": 3081,
       "Mosquito Joe Vehicle": 2315,
       "Other": 1026,
       "Advertising": 819,
@@ -475,9 +484,9 @@
       },
       {
         "month": "2026-07",
-        "invoiceRevenue": 134735.06,
-        "invoices": 1508,
-        "appointments": 5424,
+        "invoiceRevenue": 135014.54,
+        "invoices": 1511,
+        "appointments": 5426,
         "proposals": 0,
         "cancels": 5
       },
@@ -485,7 +494,7 @@
         "month": "2026-08",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4457,
+        "appointments": 4456,
         "proposals": 0,
         "cancels": 6
       },
@@ -493,7 +502,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3419,
+        "appointments": 3421,
         "proposals": 0,
         "cancels": 6
       },
@@ -501,7 +510,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1488,
+        "appointments": 1489,
         "proposals": 0,
         "cancels": 6
       },
@@ -509,7 +518,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 618,
+        "appointments": 620,
         "proposals": 0,
         "cancels": 0
       },
@@ -526,6 +535,6 @@
   "data_source_notes": {
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-07-20T08:32:38.050Z"
+    "serviceminder_cutover_at": "2026-07-21T08:46:53.277Z"
   }
 }
