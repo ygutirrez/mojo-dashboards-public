@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-07-21T08:46:44.544Z",
-  "generated_date": "Jul 21, 2026, 4:46 AM",
+  "generated_at": "2026-07-21T08:47:15.576Z",
+  "generated_date": "July 21, 2026",
   "sales": {
-    "csv_date": "2026-07-21",
-    "total_sales": 307,
-    "total_cancels": 509,
+    "csv_date": "2026-05-13",
+    "total_sales": 293,
+    "total_cancels": 495,
     "net": -202,
-    "paused": 133,
+    "paused": 132,
     "cancel_reasons": {
-      "Not Interested": 61,
-      "Moved": 160,
+      "Not Interested": 60,
+      "Moved": 151,
       "Financial": 59,
       "Bad Debt": 53,
-      "Unhappy": 53,
+      "Unhappy": 49,
       "One Spray Only": 17,
       "Other": 47,
       "Program Change": 13,
       "Unknown": 16
     },
     "sale_categories": {
-      "Barrier Spray": 31,
-      "Signature Program": 130,
-      "Misting System": 36,
+      "Barrier Spray": 29,
+      "Signature Program": 122,
+      "Misting System": 35,
       "Noseeum": 4,
       "One Time": 29,
-      "Re-Spray": 31,
-      "Other": 23,
+      "Re-Spray": 30,
+      "Other": 21,
       "Fleas/Ticks": 4,
       "HPD (Indoor)": 19
     },
@@ -77,10 +77,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 946368,
-    "avg_per_visit": 96,
-    "mtd": 0,
-    "mtd_jobs": 0
+    "ytd_invoiced": 1382969,
+    "avg_per_visit": 72,
+    "mtd": 135015,
+    "mtd_jobs": 1511
   },
   "operations": {
     "total_jobs": 9998,
@@ -93,18 +93,18 @@
     "working_days_ytd": null
   },
   "serviceminder": {
-    "generated_at": "2026-07-20T08:32:38.050Z",
+    "generated_at": "2026-07-21T08:47:15.576Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-19T13:15:49.319Z",
+      "generated_at": "2026-07-20T13:15:44.693Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 21945,
-      "contacts": 13701,
-      "invoices": 15472,
+      "appointments": 21956,
+      "contacts": 13703,
+      "invoices": 15475,
       "proposals": 1594
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
