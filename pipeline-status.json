@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-07-21T09:30:00Z",
-  "generated_at": "2026-07-21T08:47:27Z",
+  "timestamp": "2026-07-22T09:30:00Z",
+  "generated_at": "2026-07-22T08:42:02Z",
   "status": "warn",
   "steps_total": 12,
-  "steps_passed": 8,
-  "steps_warned": 3,
-  "steps_failed": 1,
+  "steps_passed": 11,
+  "steps_warned": 1,
+  "steps_failed": 0,
   "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-07-21.log",
+  "log_file": "nightly-sync-2026-07-22.log",
   "steps": [
     {
       "name": "Sales Import",
       "status": "info",
-      "detail": "ERROR: openpyxl not installed. Run: pip3 install openpyxl (downgraded \u2014 fallback succeeded)"
+      "detail": "\u26a0\ufe0f FAILED: Daily sales import (downgraded \u2014 fallback succeeded)"
     },
     {
       "name": "Sales Import",
@@ -42,8 +42,8 @@
     },
     {
       "name": "Update Data Files",
-      "status": "error",
-      "detail": "ModuleNotFoundError: No module named 'openpyxl'"
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Sync Back to Project",
@@ -52,8 +52,8 @@
     },
     {
       "name": "Deploy to GH Pages",
-      "status": "warn",
-      "detail": "[gh-pages b8ed4bf] \ud83d\udcca Dashboard update 2026-07-21 04:46 (3 steps had warnings)"
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Health Check",
@@ -62,8 +62,8 @@
     },
     {
       "name": "Self-Healing Refresh",
-      "status": "warn",
-      "detail": "\u26a0\ufe0f refresh-stale-data.sh exited with warnings (non-fatal)"
+      "status": "ok",
+      "detail": ""
     },
     {
       "name": "Pipeline Status",
