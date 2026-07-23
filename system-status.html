@@ -14,54 +14,56 @@
             min-height: 100vh;
             padding: 24px;
         }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .header .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
-        .header .status-badge.healthy { background: rgba(34,197,94,0.2); color: #22c55e; }
-        .header .status-badge.degraded { background: rgba(245,158,11,0.2); color: #f59e0b; }
-        .header .status-badge.down { background: rgba(239,68,68,0.2); color: #ef4444; }
-        .header .meta { text-align: right; font-size: 0.8rem; color: #64748b; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
-        .card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        .card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
+        .back-link:hover { color: #93bbfc; }
+        .header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+        .status-badge.healthy { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .status-badge.degraded { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .status-badge.down { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .meta { text-align: right; font-size: 0.8rem; color: #94a3b8; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+        .card { background: #1e293b; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); }
         .card.full { grid-column: 1 / -1; }
-        .pipeline-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .pipeline-item:last-child { border-bottom: none; }
-        .pipeline-item .indicator { width: 10px; height: 10px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; }
-        .pipeline-item .indicator.ok { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.4); }
-        .pipeline-item .indicator.warn { background: #f59e0b; box-shadow: 0 0 6px rgba(245,158,11,0.4); }
-        .pipeline-item .indicator.err { background: #ef4444; box-shadow: 0 0 6px rgba(239,68,68,0.4); }
-        .pipeline-item .indicator.unknown { background: #64748b; }
-        .pipeline-item .info { flex: 1; }
-        .pipeline-item .name { font-weight: 500; font-size: 0.9rem; }
-        .pipeline-item .detail { font-size: 0.75rem; color: #64748b; margin-top: 2px; }
-        .pipeline-item .age { font-size: 0.8rem; color: #94a3b8; text-align: right; min-width: 80px; }
-        .pipeline-item .age.stale { color: #f59e0b; }
-        .pipeline-item .age.critical { color: #ef4444; }
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+        .card h2 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+        .mini-metric { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center; }
+        .mini-metric .val { font-size: 1.45rem; font-weight: 800; }
+        .mini-metric .lbl { font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; margin-top: 2px; }
+        .green { color: #22c55e; }
+        .yellow { color: #f59e0b; }
+        .red { color: #ef4444; }
+        .blue { color: #38bdf8; }
+        .feed-item { display: grid; grid-template-columns: 14px 1fr auto; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .feed-item:last-child { border-bottom: none; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; }
+        .dot.ok { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.45); }
+        .dot.warn { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.45); }
+        .dot.err { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.45); }
+        .dot.info { background: #38bdf8; box-shadow: 0 0 8px rgba(56,189,248,0.35); }
+        .feed-name { font-weight: 650; font-size: 0.92rem; }
+        .feed-detail { color: #94a3b8; font-size: 0.76rem; margin-top: 3px; line-height: 1.35; }
+        .age { font-size: 0.78rem; color: #cbd5e1; text-align: right; min-width: 78px; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
         .dashboard-link { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #e2e8f0; transition: background 0.2s; }
         .dashboard-link:hover { background: rgba(255,255,255,0.1); }
-        .dashboard-link .icon { font-size: 1.2rem; }
         .dashboard-link .label { font-size: 0.8rem; }
-        .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; margin-bottom: 16px; }
-        .mini-metric { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center; }
-        .mini-metric .val { font-size: 1.4rem; font-weight: 700; }
-        .mini-metric .lbl { font-size: 0.65rem; text-transform: uppercase; color: #64748b; margin-top: 2px; }
-        .mini-metric .val.green { color: #22c55e; }
-        .mini-metric .val.yellow { color: #f59e0b; }
-        .mini-metric .val.red { color: #ef4444; }
-        .mini-metric .val.blue { color: #38bdf8; }
-        .loading { text-align: center; padding: 40px; color: #64748b; }
-        .footer { text-align: center; padding: 20px; color: #475569; font-size: 0.7rem; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
-        .back-link:hover { color: #93bbfc; }
+        .note { color: #94a3b8; font-size: 0.82rem; line-height: 1.55; }
+        .loading { text-align: center; padding: 40px; color: #94a3b8; }
+        .footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.72rem; }
+        @media (max-width: 768px) {
+            body { padding: 16px; }
+            .grid { grid-template-columns: 1fr; }
+            .header { align-items: flex-start; flex-direction: column; }
+            .meta { text-align: left; }
+        }
     </style>
 </head>
 <body>
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
-        <h1>⚙️ System Status <span class="status-badge" id="overallStatus">Checking...</span></h1>
+        <h1>⚙️ System Status <span class="status-badge" id="overallStatus">Checking</span></h1>
         <div class="meta">
             <div id="lastCheck">Loading...</div>
             <div>Auto-refresh: 5 min</div>
@@ -69,215 +71,213 @@
     </div>
 
     <div class="grid" id="content">
-        <div class="loading" style="grid-column: 1/-1;">Checking system status...</div>
+        <div class="loading" style="grid-column: 1/-1;">Checking public dashboard health...</div>
     </div>
 
     <div class="footer">
-        MoJo System Status Dashboard — CTO Infrastructure Monitoring
+        MoJo System Status — live checks from GitHub Pages JSON files
     </div>
 
     <script>
-        const DATA_FILES = [
-            { name: 'Owners Data', file: 'owners-data.json', key: 'generated_at', critical: true },
-            { name: 'Sales KPI Data', file: 'sales-kpi-data.json', key: 'updated_at', critical: true },
-            { name: 'Sales Data (CSV)', file: 'sales-data.json', key: 'updated_at', critical: true },
-            { name: 'Financial Data', file: 'financial-data.json', key: 'updated_at', critical: false },
-            { name: 'Operations Data', file: 'ops-data.json', key: 'updated_at', critical: false },
-            { name: 'Tech Performance', file: 'tech-data.json', key: 'updated_at', critical: true },
-            { name: 'Retention KPIs', file: 'retention-data.json', key: 'generated_at', critical: false },
-            { name: 'Cancel Analysis', file: 'cancel-analysis.json', key: 'generated_at', critical: false },
-            { name: 'SM KPI Data', file: 'sm-kpi-data.json', key: 'generated', critical: false },
-            { name: 'Chemical Data', file: 'chemical-data.json', key: 'updated_at', critical: false },
-            { name: 'Marketing Data', file: 'marketing-data.json', key: 'updated_at', critical: false },
-            { name: 'YouTube/Social', file: 'youtube-data.json', key: 'updated_at', critical: false },
-            { name: 'Fleet Data', file: 'fleet-data.json', key: 'updated_at', critical: false }
+        const FEEDS = [
+            { name: 'ServiceMinder Bridge', file: 'serviceminder-bridge-data.json', paths: ['meta.generated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Operations / revenue bridge' },
+            { name: 'Office Tally Sales', file: 'sales-data.json', paths: ['updated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Sales and cancels' },
+            { name: 'Owners Data', file: 'owners-data.json', paths: ['generated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Executive dashboard' },
+            { name: 'Tech Data', file: 'tech-data.json', paths: ['updated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Tech / ops' },
+            { name: 'Operations Data', file: 'ops-data.json', paths: ['updated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Operations dashboard' },
+            { name: 'ServiceMinder KPIs', file: 'sm-kpi-data.json', paths: ['meta.generated', 'generated_at'], critical: true, warnHours: 36, failHours: 72, owner: 'Production KPIs' },
+            { name: 'Financial Data', file: 'financial-data.json', paths: ['updated_at'], critical: false, warnHours: 96, failHours: 240, owner: 'QuickBooks / finance' },
+            { name: 'Fleet Data', file: 'fleet-data.json', paths: ['updated_at'], critical: false, warnHours: 168, failHours: 336, owner: 'Zubie' },
+            { name: 'Cancel Analysis', file: 'cancel-analysis.json', paths: ['generated_at'], critical: false, warnHours: 72, failHours: 168, owner: 'Retention' },
+            { name: 'Retention Data', file: 'retention-data.json', paths: ['generated_at'], critical: false, warnHours: 72, failHours: 168, owner: 'Retention' },
+            { name: 'Chemical Data', file: 'chemical-data.json', paths: ['meta.generated', 'generated_at', 'updated_at'], critical: false, warnHours: 336, failHours: 720, owner: 'Materials' },
+            { name: 'Marketing Data', file: 'data/marketing-dashboard-data.json', fallbacks: ['marketing-dashboard-data.json'], paths: ['generated_at'], critical: false, warnHours: 336, failHours: 720, owner: 'Marketing' },
+            { name: 'YouTube Data', file: 'youtube-data.json', paths: ['lastUpdated', 'updated_at'], critical: false, warnHours: 336, failHours: 720, owner: 'Social / YouTube' },
+            { name: 'Pipeline Status', file: 'pipeline-status.json', paths: ['generated_at', 'timestamp'], critical: false, warnHours: 72, failHours: 168, owner: 'Automation' },
+            { name: 'Activity Log', file: 'data/activity-log.json', fallbacks: ['activity-log.json'], paths: ['events.0.timestamp'], critical: false, warnHours: 72, failHours: 168, owner: 'Automation' },
+            { name: 'Alerts Data', file: 'alerts-data.json', paths: ['generated_at'], critical: false, warnHours: 72, failHours: 168, owner: 'Alerts' },
         ];
 
-        const DASHBOARDS = [
-            { name: 'Command Center', url: 'index.html', icon: '🎛️' },
-            { name: 'Owners Dashboard', url: 'owners-dashboard.html', icon: '📊' },
-            { name: 'Sales KPI', url: 'sales-kpi-dashboard.html', icon: '💰' },
-            { name: 'Financial Performance', url: 'financial-dashboard.html', icon: '📒' },
-            { name: 'Sales TV', url: 'sales-kpi-tv.html', icon: '📺' },
-            { name: 'Tech Leaderboard', url: 'tech-dashboard.html', icon: '🏆' },
-            { name: 'Operations', url: 'operations-dashboard.html', icon: '⚙️' },
-            { name: 'Marketing', url: 'marketing-dashboard.html', icon: '📢' },
-            { name: 'Social Media', url: 'social-media-dashboard.html', icon: '📱' },
-            { name: 'Customer Retention', url: 'retention-dashboard.html', icon: '🛡️' },
-            { name: 'Cancel Analysis', url: 'cancel-analysis.html', icon: '📉' },
-            { name: 'SM KPI Dashboard', url: 'sm-kpi-dashboard.html', icon: '🔧' },
-            { name: 'Fleet Dashboard', url: 'fleet-dashboard.html', icon: '🚛' },
-            { name: 'Season Readiness', url: 'season-readiness.html', icon: '🌡️' },
-            { name: 'Mission Control', url: 'mission-control.html', icon: '🚀' },
-            { name: 'Pipeline Monitor', url: 'pipeline-monitor.html', icon: '🔬' }
+        const ACTIVE_DASHBOARDS = [
+            ['hub.html', 'Command Center', '🎛️'],
+            ['executive-brief.html', 'Executive Brief', '🎯'],
+            ['owners-dashboard.html', 'Owners Dashboard', '👑'],
+            ['sales-kpi-dashboard.html', 'Sales KPIs', '💰'],
+            ['sales-tv.html', 'Sales TV', '📺'],
+            ['sales-leaderboard.html', 'CSR Leaderboard', '🏆'],
+            ['csr-performance.html', 'CSR Performance', '📊'],
+            ['sm-kpi-dashboard.html', 'ServiceMinder KPIs', '🔧'],
+            ['operations-dashboard.html', 'Operations', '⚙️'],
+            ['tech-dashboard.html', 'Tech Dashboard', '🛠️'],
+            ['fleet-dashboard.html', 'Fleet Dashboard', '🚛'],
+            ['marketing-dashboard.html', 'Marketing', '🎯'],
+            ['system-status.html', 'System Status', '⚙️'],
         ];
 
-        function ageStr(hours) {
+        function getPath(obj, path) {
+            return path.split('.').reduce((value, key) => value && value[key], obj);
+        }
+
+        function getTimestamp(data, paths) {
+            for (const path of paths) {
+                const value = getPath(data, path);
+                if (value) return value;
+            }
+            return null;
+        }
+
+        function parseDate(value) {
+            if (!value) return null;
+            const raw = String(value);
+            const isoMatch = raw.match(/\d{4}-\d{2}-\d{2}(?:T[0-9:.+-]+Z?)?/);
+            const parsed = new Date(isoMatch ? isoMatch[0] : raw);
+            return Number.isNaN(parsed.getTime()) ? null : parsed;
+        }
+
+        function ageHours(date) {
+            return (Date.now() - date.getTime()) / 3600000;
+        }
+
+        function formatAge(hours) {
             if (hours < 1) return 'Just now';
             if (hours < 24) return Math.round(hours) + 'h ago';
-            const days = Math.round(hours / 24);
-            return days + 'd ago';
+            return Math.round(hours / 24) + 'd ago';
         }
 
-        function ageClass(hours, critical) {
-            if (hours < 0) return 'unknown';
-            if (hours <= 24) return 'ok';
-            if (hours <= 48) return critical ? 'warn' : 'ok';
-            return critical ? 'err' : 'warn';
+        function statusFor(feed, hours) {
+            if (hours > feed.failHours) return 'err';
+            if (hours > feed.warnHours) return 'warn';
+            return 'ok';
         }
 
-        async function checkDataFile(config) {
-            try {
-                const res = await fetch(config.file + '?t=' + Date.now());
-                if (!res.ok) return { ...config, status: 'missing', age: -1, detail: 'HTTP ' + res.status };
-                
-                const data = await res.json();
-                const ts = data[config.key] || (data.meta && data.meta[config.key]) || data.updated_at || data.generated_at || (data.meta && data.meta.generated) || data.date;
-                
-                if (!ts) return { ...config, status: 'no_timestamp', age: -1, detail: 'No timestamp field found' };
-                
-                const parsed = new Date(ts);
-                if (isNaN(parsed.getTime())) return { ...config, status: 'bad_timestamp', age: -1, detail: 'Invalid: ' + ts };
-                
-                const ageHours = (Date.now() - parsed.getTime()) / (1000 * 60 * 60);
-                const statusClass = ageClass(ageHours, config.critical);
-                
-                return { 
-                    ...config, 
-                    status: statusClass, 
-                    age: ageHours, 
-                    detail: parsed.toLocaleString(),
-                    size: JSON.stringify(data).length
-                };
-            } catch (e) {
-                return { ...config, status: 'err', age: -1, detail: e.message };
+        async function fetchFeed(feed) {
+            const candidates = [feed.file, ...(feed.fallbacks || [])];
+            let lastError = '';
+            for (const file of candidates) {
+                try {
+                    const response = await fetch(file + '?t=' + Date.now());
+                    if (!response.ok) {
+                        lastError = 'HTTP ' + response.status;
+                        continue;
+                    }
+                    const data = await response.json();
+                    const ts = getTimestamp(data, feed.paths);
+                    const parsed = parseDate(ts);
+                    if (!parsed) {
+                        return { ...feed, file, status: 'warn', age: null, timestamp: ts || '', detail: 'No usable timestamp' };
+                    }
+                    const hours = ageHours(parsed);
+                    return {
+                        ...feed,
+                        file,
+                        status: statusFor(feed, hours),
+                        age: hours,
+                        timestamp: parsed,
+                        detail: parsed.toLocaleString(),
+                        size: JSON.stringify(data).length,
+                    };
+                } catch (error) {
+                    lastError = error.message;
+                }
             }
+            return { ...feed, status: 'err', age: null, timestamp: null, detail: lastError || 'Unavailable' };
+        }
+
+        function sortFeeds(a, b) {
+            const order = { err: 0, warn: 1, ok: 2, info: 3 };
+            return order[a.status] - order[b.status] || Number(b.critical) - Number(a.critical) || a.name.localeCompare(b.name);
+        }
+
+        function feedMarkup(feed) {
+            const age = feed.age === null ? '—' : formatAge(feed.age);
+            const color = feed.status === 'ok' ? 'green' : feed.status === 'warn' ? 'yellow' : 'red';
+            const size = feed.size ? ' • ' + Math.round(feed.size / 1024) + 'KB' : '';
+            return `
+                <div class="feed-item">
+                    <div class="dot ${feed.status}"></div>
+                    <div>
+                        <div class="feed-name">${feed.name}${feed.critical ? ' ⚡' : ''}</div>
+                        <div class="feed-detail">${feed.file}${size} • ${feed.owner}</div>
+                        <div class="feed-detail">${feed.detail}</div>
+                    </div>
+                    <div class="age ${color}">${age}</div>
+                </div>
+            `;
         }
 
         async function loadStatus() {
-            const results = await Promise.all(DATA_FILES.map(checkDataFile));
-            
-            const errors = results.filter(r => r.status === 'err' || r.status === 'missing');
-            const warnings = results.filter(r => r.status === 'warn');
+            const results = await Promise.all(FEEDS.map(fetchFeed));
             const ok = results.filter(r => r.status === 'ok');
-            
-            // Overall status
+            const warnings = results.filter(r => r.status === 'warn');
+            const errors = results.filter(r => r.status === 'err');
+            const criticalErrors = errors.filter(r => r.critical);
+            const criticalWarnings = warnings.filter(r => r.critical);
+
             const badge = document.getElementById('overallStatus');
-            if (errors.length > 0) {
-                badge.textContent = `${errors.length} Error${errors.length > 1 ? 's' : ''}`;
+            if (criticalErrors.length) {
+                badge.textContent = `${criticalErrors.length} Critical`;
                 badge.className = 'status-badge down';
-            } else if (warnings.length > 0) {
-                badge.textContent = `${warnings.length} Warning${warnings.length > 1 ? 's' : ''}`;
+            } else if (errors.length || criticalWarnings.length) {
+                badge.textContent = `${errors.length + criticalWarnings.length} Attention`;
+                badge.className = 'status-badge degraded';
+            } else if (warnings.length) {
+                badge.textContent = `${warnings.length} Watch`;
                 badge.className = 'status-badge degraded';
             } else {
-                badge.textContent = 'All Systems Healthy';
+                badge.textContent = 'Healthy';
                 badge.className = 'status-badge healthy';
             }
 
             document.getElementById('lastCheck').textContent = 'Checked: ' + new Date().toLocaleTimeString();
 
-            let html = '';
+            const critical = results.filter(r => r.critical);
+            const freshest = results
+                .filter(r => r.timestamp instanceof Date)
+                .sort((a, b) => b.timestamp - a.timestamp)[0];
 
-            // Summary metrics
-            html += `
-            <div class="card full">
-                <div class="metrics-row">
-                    <div class="mini-metric">
-                        <div class="val green">${ok.length}</div>
-                        <div class="lbl">Healthy</div>
-                    </div>
-                    <div class="mini-metric">
-                        <div class="val yellow">${warnings.length}</div>
-                        <div class="lbl">Warnings</div>
-                    </div>
-                    <div class="mini-metric">
-                        <div class="val red">${errors.length}</div>
-                        <div class="lbl">Errors</div>
-                    </div>
-                    <div class="mini-metric">
-                        <div class="val blue">${DATA_FILES.length}</div>
-                        <div class="lbl">Data Feeds</div>
-                    </div>
-                    <div class="mini-metric">
-                        <div class="val blue">${DASHBOARDS.length}</div>
-                        <div class="lbl">Dashboards</div>
+            document.getElementById('content').innerHTML = `
+                <div class="card full">
+                    <div class="metrics-row">
+                        <div class="mini-metric"><div class="val green">${ok.length}</div><div class="lbl">Healthy Feeds</div></div>
+                        <div class="mini-metric"><div class="val yellow">${warnings.length}</div><div class="lbl">Watch</div></div>
+                        <div class="mini-metric"><div class="val red">${errors.length}</div><div class="lbl">Errors</div></div>
+                        <div class="mini-metric"><div class="val blue">${critical.length}</div><div class="lbl">Critical Feeds</div></div>
+                        <div class="mini-metric"><div class="val blue">${freshest ? formatAge(ageHours(freshest.timestamp)) : '—'}</div><div class="lbl">Freshest Update</div></div>
                     </div>
                 </div>
-            </div>`;
 
-            // Data Pipeline Status
-            html += `
-            <div class="card">
-                <h2>📡 Data Pipeline</h2>`;
+                <div class="card full">
+                    <h2>📡 Public Data Feeds</h2>
+                    ${results.slice().sort(sortFeeds).map(feedMarkup).join('')}
+                </div>
 
-            // Sort: errors first, then warnings, then ok
-            const sorted = [...results].sort((a, b) => {
-                const order = { err: 0, missing: 0, warn: 1, no_timestamp: 2, bad_timestamp: 2, ok: 3, unknown: 2 };
-                return (order[a.status] || 3) - (order[b.status] || 3);
-            });
-
-            sorted.forEach(r => {
-                const indicatorClass = r.status === 'ok' ? 'ok' : r.status === 'warn' ? 'warn' : r.status === 'err' || r.status === 'missing' ? 'err' : 'unknown';
-                const ageText = r.age >= 0 ? ageStr(r.age) : '—';
-                const ageTextClass = r.age < 0 ? '' : r.age > 48 ? 'critical' : r.age > 24 ? 'stale' : '';
-                const sizeText = r.size ? `${Math.round(r.size / 1024)}KB` : '';
-                
-                html += `
-                <div class="pipeline-item">
-                    <div class="indicator ${indicatorClass}"></div>
-                    <div class="info">
-                        <div class="name">${r.name} ${r.critical ? '⚡' : ''}</div>
-                        <div class="detail">${r.file} ${sizeText ? '• ' + sizeText : ''}</div>
-                    </div>
-                    <div class="age ${ageTextClass}">${ageText}</div>
-                </div>`;
-            });
-
-            html += `</div>`;
-
-            // Dashboards Grid
-            html += `
-            <div class="card">
-                <h2>🖥️ Dashboards</h2>
-                <div class="dashboard-grid">`;
-
-            DASHBOARDS.forEach(d => {
-                html += `
-                <a href="${d.url}" class="dashboard-link" target="_blank">
-                    <span class="icon">${d.icon}</span>
-                    <span class="label">${d.name}</span>
-                </a>`;
-            });
-
-            html += `</div>
-            </div>`;
-
-            // Nightly Sync Info
-            html += `
-            <div class="card full">
-                <h2>🔄 Nightly Sync Pipeline</h2>
-                <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.8;">
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-                        <span style="background: rgba(34,197,94,0.2); padding: 3px 8px; border-radius: 4px;">ServSuite Export</span>
-                        <span>→</span>
-                        <span style="background: rgba(56,189,248,0.2); padding: 3px 8px; border-radius: 4px;">XLSX → JSON</span>
-                        <span>→</span>
-                        <span style="background: rgba(245,158,11,0.2); padding: 3px 8px; border-radius: 4px;">Sales KPI Build</span>
-                        <span>→</span>
-                        <span style="background: rgba(168,85,247,0.2); padding: 3px 8px; border-radius: 4px;">Weekly Snapshot</span>
-                        <span>→</span>
-                        <span style="background: rgba(34,197,94,0.2); padding: 3px 8px; border-radius: 4px;">Deploy to GH Pages</span>
-                    </div>
-                    <div style="margin-top: 12px; font-size: 0.8rem;">
-                        <strong>Schedule:</strong> ServSuite export @ 4:30 AM ET • Sales import @ 7:30 AM ET • Google Ads @ 8:00 PM ET
-                    </div>
-                    <div style="margin-top: 4px; font-size: 0.8rem;">
-                        <strong>Source:</strong> nightly-sync.sh • daily-sales-import.py • google-ads-daily-export.js
+                <div class="card">
+                    <h2>🖥️ Active Public Dashboards</h2>
+                    <div class="dashboard-grid">
+                        ${ACTIVE_DASHBOARDS.map(([url, label, icon]) => `
+                            <a href="${url}" class="dashboard-link" target="_blank">
+                                <span>${icon}</span>
+                                <span class="label">${label}</span>
+                            </a>
+                        `).join('')}
                     </div>
                 </div>
-            </div>`;
 
-            document.getElementById('content').innerHTML = html;
+                <div class="card">
+                    <h2>🔄 Current Pipeline Shape</h2>
+                    <div class="note">
+                        Active public reporting now centers on ServiceMinder, the Office tally sheet, Zubie, QuickBooks snapshots, and marketing exports.
+                        Legacy ServSuite export pages are being kept in the hub archive until they are rebuilt or removed.
+                    </div>
+                    <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.78rem;">
+                        <span style="background: rgba(34,197,94,0.16); padding: 5px 9px; border-radius: 6px;">ServiceMinder</span>
+                        <span style="background: rgba(56,189,248,0.16); padding: 5px 9px; border-radius: 6px;">Office tally</span>
+                        <span style="background: rgba(245,158,11,0.16); padding: 5px 9px; border-radius: 6px;">Zubie</span>
+                        <span style="background: rgba(168,85,247,0.16); padding: 5px 9px; border-radius: 6px;">QuickBooks</span>
+                        <span style="background: rgba(236,72,153,0.16); padding: 5px 9px; border-radius: 6px;">Marketing exports</span>
+                    </div>
+                </div>
+            `;
         }
 
         loadStatus();

@@ -524,7 +524,7 @@
                 <h3>$5M Goal Tracker</h3>
                 <p>Revenue pace vs target, milestones with estimated dates, what-if scenarios, and FY2025 comparison.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + Invoices</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder + invoices</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily</div>
                 </div>
             </a>
@@ -563,9 +563,9 @@
                 <h3>Revenue Pace → $5M</h3>
                 <p>Daily run rate vs required pace, monthly actual + projected revenue with seasonal adjustments, weekly trend, and key financial metrics.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + QuickBooks</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder + QuickBooks</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily</div>
-                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="servsuite"></span></div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sm-kpi"></span></div>
                 </div>
             </a>
 
@@ -617,8 +617,8 @@
                 <h3>Owner's Dashboard</h3>
                 <p>High-level business overview. Revenue, customer counts, and key business health metrics at a glance.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
-                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="servsuite"></span></div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder + Office tally</div>
+                    <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="owners"></span></div>
                 </div>
             </a>
 
@@ -630,7 +630,7 @@
                 <h3>Sales & Retention KPIs</h3>
                 <p>Sales vs cancels, CSR performance breakdown, cancel reasons, net customer growth, and retention rate.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite → Power Automate</div>
+                    <div class="card-metric"><strong>Source:</strong> Office tally + ServiceMinder revenue</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily 7:30 AM</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sales"></span></div>
                 </div>
@@ -671,34 +671,34 @@
                 <h3>Route Profitability</h3>
                 <p>Per-stop economics, tech profitability rankings, cost waterfall, and $5M scaling analysis with improvement opportunities.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + Chemical + Fleet</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder + chemical + fleet</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily</div>
                 </div>
             </a>
 
-            <a href="reconciliation-dashboard.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.15);">
+            <a href="reconciliation-dashboard.html" class="card" data-archive="true" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.15);">
                 <div class="card-top">
                     <div class="card-icon">🔍</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Sales Reconciliation</h3>
-                <p>Cross-reference sales vs invoices vs payments. Find discrepancies and missing revenue.</p>
+                <p>Legacy reconciliation view. Needs rebuild around ServiceMinder + Office tally before it becomes active again.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + QuickBooks</div>
-                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                    <div class="card-metric"><strong>Source:</strong> Legacy ServSuite + QuickBooks</div>
+                    <div class="card-metric"><strong>Status:</strong> Rebuild needed</div>
                 </div>
             </a>
 
-            <a href="weekly-report.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.15);">
+            <a href="weekly-report.html" class="card" data-archive="true" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.15);">
                 <div class="card-top">
                     <div class="card-icon">🖨️</div>
-                    <span class="card-badge" style="background:rgba(139,92,246,0.2);color:#8b5cf6;">Print</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Weekly Report (PDF)</h3>
-                <p>Print-optimized weekly business report. Open and use File → Print → Save as PDF for a clean one-pager to share.</p>
+                <p>Old static print snapshot. Kept for reference until weekly reporting is rebuilt from current feeds.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Format:</strong> A4 Print / PDF</div>
-                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-metric"><strong>Status:</strong> Stale snapshot</div>
                 </div>
             </a>
 
@@ -747,16 +747,16 @@
         <div class="section-label">🔧 Operations</div>
         <div class="grid">
 
-            <a href="capacity-planner.html" class="card" style="--accent: #06b6d4; --accent-bg: rgba(6, 182, 212, 0.12);">
+            <a href="capacity-planner.html" class="card" data-archive="true" style="--accent: #06b6d4; --accent-bg: rgba(6, 182, 212, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🏗️</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Staffing & Capacity</h3>
-                <p>Tech utilization, hiring roadmap, seasonal demand model, cost-per-hire, and customer growth projections for $5M.</p>
+                <p>Legacy capacity model. Needs current ServiceMinder route and technician capacity data before active use.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + Fleet</div>
-                    <div class="card-metric"><strong>Updates:</strong> Daily</div>
+                    <div class="card-metric"><strong>Source:</strong> Legacy ops + fleet</div>
+                    <div class="card-metric"><strong>Status:</strong> Rebuild needed</div>
                 </div>
             </a>
 
@@ -768,7 +768,7 @@
                 <h3>Operations</h3>
                 <p>Daily ops overview. Work orders, route efficiency, scheduling, and operational health.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite + Zubie</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder + Zubie</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily 6 AM</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="ops"></span></div>
                 </div>
@@ -810,7 +810,7 @@
                 <h3>Chemical Usage</h3>
                 <p>Chemical inventory tracking, usage per route, cost per treatment, and reorder alerts.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder materials</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="chemical"></span></div>
                 </div>
             </a>
@@ -881,7 +881,7 @@
                 <h3>CSR Performance</h3>
                 <p>Individual CSR analytics: win rates, weekly trends, sale categories, cancel reasons. Deep dive into team performance.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> Sales CSV + ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> Office tally + ServiceMinder</div>
                     <div class="card-metric"><strong>Updates:</strong> Daily</div>
                 </div>
             </a>
@@ -913,7 +913,7 @@
                 <h3>Cancel Analysis</h3>
                 <p>Revenue impact of cancellations, controllable vs uncontrollable splits, lifetime analysis, win-back opportunities.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="cancel"></span></div>
                 </div>
             </a>
@@ -926,7 +926,7 @@
                 <h3>Retention Intelligence</h3>
                 <p>Win-back playbook, revenue impact vs $5M target, geographic hotspots, controllable loss analysis.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="cancel"></span></div>
                 </div>
             </a>
@@ -939,7 +939,7 @@
                 <h3>Retention Dashboard</h3>
                 <p>Customer retention rates, 90-day retention KPIs, program-level retention tracking.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="retention"></span></div>
                 </div>
             </a>
@@ -952,7 +952,7 @@
                 <h3>ServiceMinder KPIs</h3>
                 <p>Production metrics, tech productivity leaderboard, revenue pace, program breakdown, weekly trends.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> ServSuite</div>
+                    <div class="card-metric"><strong>Source:</strong> ServiceMinder</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="sm-kpi"></span></div>
                 </div>
             </a>
@@ -963,16 +963,16 @@
         <div class="section-label">📣 Marketing & Social</div>
         <div class="grid">
 
-            <a href="social-media-dashboard.html" class="card" style="--accent: #ec4899; --accent-bg: rgba(236, 72, 153, 0.12);">
+            <a href="social-media-dashboard.html" class="card" data-archive="true" style="--accent: #ec4899; --accent-bg: rgba(236, 72, 153, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">📱</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Social Media</h3>
-                <p>YouTube channel analytics, subscriber growth, video performance, and social media presence tracking.</p>
+                <p>Old social snapshot. Consolidate into Marketing Performance once social feeds are current.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> YouTube API</div>
-                    <div class="card-metric"><strong>Updates:</strong> Weekly</div>
+                    <div class="card-metric"><strong>Status:</strong> Stale snapshot</div>
                     <div class="card-data-date">📥 Data pull: <span class="data-ts" data-source="social"></span></div>
                 </div>
             </a>
@@ -1008,54 +1008,54 @@
                     <div class="card-metric"><strong>Updates:</strong> Real-time checks</div>
                 </div>
             </a>
-            <a href="pipeline-monitor.html" class="card" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.12);">
+            <a href="pipeline-monitor.html" class="card" data-archive="true" style="--accent: #8b5cf6; --accent-bg: rgba(139, 92, 246, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🔬</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Pipeline Monitor</h3>
-                <p>Real-time data freshness, nightly sync status, metric sanity checks, and dashboard availability.</p>
+                <p>Older pipeline monitor. Replaced by System Status for the public hub.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> All data pipelines</div>
-                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 5 min</div>
+                    <div class="card-metric"><strong>Status:</strong> Consolidated</div>
                 </div>
             </a>
-            <a href="data-quality.html" class="card" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
+            <a href="data-quality.html" class="card" data-archive="true" style="--accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🔍</div>
-                    <span class="card-badge" style="background:rgba(251,191,36,0.15);color:#fbbf24;">New</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Data Quality Scorecard</h3>
-                <p>Overall data quality score, per-source freshness monitoring, and reliability tracking.</p>
+                <p>Older data-quality view. Replaced by System Status for the public hub.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> All data feeds</div>
-                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 2 min</div>
+                    <div class="card-metric"><strong>Status:</strong> Consolidated</div>
                 </div>
             </a>
 
-            <a href="freshness-dashboard.html" class="card" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
+            <a href="freshness-dashboard.html" class="card" data-archive="true" style="--accent: #38bdf8; --accent-bg: rgba(56, 189, 248, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🔬</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Data Freshness Monitor</h3>
-                <p>File-level freshness tracking, pipeline run history, dashboard dependency map, and weighted health scoring.</p>
+                <p>Old freshness monitor with stale inputs. Replaced by System Status for the public hub.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> All Data Files</div>
-                    <div class="card-metric"><strong>Updates:</strong> Auto-refresh 5 min</div>
+                    <div class="card-metric"><strong>Status:</strong> Consolidated</div>
                 </div>
             </a>
 
-            <a href="alerts-dashboard.html" class="card" style="--accent: #ff4444; --accent-bg: rgba(255, 68, 68, 0.12);">
+            <a href="alerts-dashboard.html" class="card" data-archive="true" style="--accent: #ff4444; --accent-bg: rgba(255, 68, 68, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">🚨</div>
-                    <span class="card-badge live">Live</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Alerts & Notifications</h3>
-                <p>Consolidated alert center. Data anomalies, stale feeds, metric thresholds, and pipeline failures in one view.</p>
+                <p>Legacy alert center with stale alert data. Rebuild after health rules are finalized.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> Anomaly Detector + Health Checks</div>
-                    <div class="card-metric"><strong>Updates:</strong> Real-time</div>
+                    <div class="card-metric"><strong>Status:</strong> Rebuild needed</div>
                 </div>
             </a>
 
@@ -1072,16 +1072,16 @@
                 </div>
             </a>
 
-            <a href="pipeline-dashboard.html" class="card" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
+            <a href="pipeline-dashboard.html" class="card" data-archive="true" style="--accent: #a78bfa; --accent-bg: rgba(167, 139, 250, 0.12);">
                 <div class="card-top">
                     <div class="card-icon">⚡</div>
-                    <span class="card-badge" style="background:rgba(167,139,250,0.2);color:#a78bfa;">New</span>
+                    <span class="card-badge building">Archive</span>
                 </div>
                 <h3>Pipeline Runs</h3>
-                <p>Per-step execution timing, pass/fail status, timeout tracking, and 30-day run history. Powered by the v2 orchestrator.</p>
+                <p>Old per-step pipeline history. Kept for reference while System Status becomes the public source of truth.</p>
                 <div class="card-metrics">
                     <div class="card-metric"><strong>Source:</strong> pipeline-orchestrator.js</div>
-                    <div class="card-metric"><strong>Updates:</strong> After each run</div>
+                    <div class="card-metric"><strong>Status:</strong> Consolidated</div>
                 </div>
             </a>
 
@@ -1091,12 +1091,17 @@
                     <span class="card-badge live">Live</span>
                 </div>
                 <h3>Mission Control</h3>
-                <p>Yoel's command center. Consolidated view of priorities, tasks, key metrics, and action items across all systems.</p>
+                <p>Yoel's local command center. Public GitHub Pages version is local-only and does not call private machine endpoints.</p>
                 <div class="card-metrics">
-                    <div class="card-metric"><strong>Source:</strong> All Systems</div>
+                    <div class="card-metric"><strong>Source:</strong> Local browser storage</div>
+                    <div class="card-metric"><strong>Status:</strong> Local only</div>
                 </div>
             </a>
         </div>
+
+        <!-- ARCHIVE -->
+        <div class="section-label" id="archiveLabel">🗄️ Archive / Rebuild Queue</div>
+        <div class="grid" id="archiveGrid"></div>
 
         <div class="footer">
             <p>Built by <span>MoJoe</span> 🫡 — Powered by MoJo data, updated automatically</p>
@@ -1151,7 +1156,8 @@
 
         // Fetch timestamps from all live data files
         const dataFileMap = {
-            'ops-data.json': { keys: ['updated_at'], sources: ['ops', 'servsuite'] },
+            'ops-data.json': { keys: ['updated_at'], sources: ['ops'] },
+            'owners-data.json': { keys: ['generated_at'], sources: ['owners'] },
             'tech-data.json': { keys: ['updated_at'], sources: ['tech'] },
             'sales-data.json': { keys: ['updated_at'], sources: ['sales'] },
             'dashboard-data.json': { keys: ['generated_at', 'lastUpdated'], sources: ['main'] },
@@ -1298,6 +1304,15 @@
                 setFreshnessClass(updatedEl, freshest);
             }
         }).catch(() => {});
+
+        const archiveGrid = document.getElementById('archiveGrid');
+        const archiveLabel = document.getElementById('archiveLabel');
+        const archivedCards = Array.from(document.querySelectorAll('[data-archive="true"]'));
+        archivedCards.forEach(card => archiveGrid.appendChild(card));
+        if (archivedCards.length === 0) {
+            archiveLabel.style.display = 'none';
+            archiveGrid.style.display = 'none';
+        }
     </script>
     <script>
     // ─── Hub Search ───────────────────────────────────────────────
