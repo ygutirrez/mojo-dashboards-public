@@ -4356,11 +4356,13 @@ function escapeHtml(str) {
    ============================================================ */
 // Server discovery: try localhost first (same machine), then LAN IP (other devices on network)
 const MC_CANDIDATES = ['http://localhost:8899', 'http://192.168.68.70:8899'];
+const MC_PUBLIC_HOST = location.hostname.endsWith('github.io');
 let MC_SERVER = MC_CANDIDATES[0];
 window._mcServerOnline = false;
 
 /** Discover which server URL works */
 async function discoverServer() {
+  if (MC_PUBLIC_HOST) return false;
   for (const url of MC_CANDIDATES) {
     try {
       const resp = await fetch(`${url}/mc/status`, { signal: AbortSignal.timeout(2000) });
@@ -4386,9 +4388,9 @@ async function checkServerStatus() {
   } else {
     window._mcServerOnline = false;
     dot.classList.add('offline');
-    dot.title = 'Server offline — localStorage-only mode';
+    dot.title = MC_PUBLIC_HOST ? 'Local server disabled on public GitHub Pages' : 'Server offline — localStorage-only mode';
     serverDot.classList.add('offline');
-    serverLabel.textContent = 'Offline';
+    serverLabel.textContent = MC_PUBLIC_HOST ? 'Local only' : 'Offline';
   }
 }
 
@@ -4465,6 +4467,10 @@ async function mergeServerData() {
 async function initServerIntegration() {
   // 1. Check server status
   await checkServerStatus();
+  if (MC_PUBLIC_HOST) {
+    document.getElementById('headerWeather').style.display = 'none';
+    return;
+  }
   // 2. Merge any server backup data into missing localStorage keys
   await mergeServerData();
   // 3. Fetch weather

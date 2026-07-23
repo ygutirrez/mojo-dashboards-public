@@ -621,8 +621,7 @@
     async function loadDashboard() {
         let data;
         try {
-            const resp = await fetch('marketing-dashboard-data.json?t=' + Date.now());
-            data = await resp.json();
+            data = await fetchMarketingData();
         } catch (err) {
             console.error('Failed to load marketing data:', err);
             return;
@@ -636,15 +635,36 @@
         renderChannels(data.channels, data.overview);
         renderYouTube(data.youtube);
         renderSales(data.sales);
-        renderTrendsChart(data.historicalTrends);
-        renderAllTime(data.googleAds.topAllTime);
+        renderTrendsChart(data.historicalTrends || data.trends || []);
+        renderAllTime(data.googleAds.topAllTime || data.googleAds.activeCampaigns || []);
 
         // Update meta
-        document.getElementById('dataDate').textContent = 'Data: ' + new Date(data.data_source_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        document.getElementById('dataDate').textContent = 'Data: ' + formatSourceDate(data.data_source_date);
         document.getElementById('lastUpdate').textContent = new Date(data.generated_at).toLocaleDateString('en-US', {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
             hour: 'numeric', minute: '2-digit'
         });
+    }
+
+    async function fetchMarketingData() {
+        const cacheBust = '?t=' + Date.now();
+        const candidates = [
+            'data/marketing-dashboard-data.json',
+            'marketing-dashboard-data.json',
+            'docs/marketing-dashboard-data.json',
+        ];
+
+        let lastError;
+        for (const path of candidates) {
+            try {
+                const resp = await fetch(path + cacheBust);
+                if (!resp.ok) throw new Error(`${path} returned ${resp.status}`);
+                return await resp.json();
+            } catch (err) {
+                lastError = err;
+            }
+        }
+        throw lastError || new Error('Marketing dashboard data not found');
     }
 
     // ===== FORMATTERS =====
@@ -652,6 +672,14 @@
     function fmtMoney2(v) { return '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
     function fmtNum(v) { return Number(v).toLocaleString('en-US'); }
     function fmtPct(v) { return Number(v).toFixed(2) + '%'; }
+    function formatSourceDate(value) {
+        if (!value) return 'Unknown';
+        const raw = String(value);
+        const dateMatch = raw.match(/\d{4}-\d{2}-\d{2}/);
+        const parsed = new Date(dateMatch ? dateMatch[0] : raw);
+        if (Number.isNaN(parsed.getTime())) return raw;
+        return parsed.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
 
     // ===== KPIs =====
     function renderKPIs(o) {
@@ -824,6 +852,13 @@
     // ===== TRENDS CHART =====
     function renderTrendsChart(trends) {
         const ctx = document.getElementById('trendsChart').getContext('2d');
+        if (!Array.isArray(trends) || trends.length === 0) {
+            ctx.font = '14px Inter, sans-serif';
+            ctx.fillStyle = '#9ca3af';
+            ctx.textAlign = 'center';
+            ctx.fillText('Trend history unavailable for this data export', ctx.canvas.width / 2, 80);
+            return;
+        }
         new Chart(ctx, {
             type: 'bar',
             data: {

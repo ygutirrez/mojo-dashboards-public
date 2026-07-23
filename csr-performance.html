@@ -760,7 +760,7 @@
                             <div class="month-stats">
                                 <span style="color: var(--green);">✅ ${m.sales} sales</span>
                                 <span style="color: var(--red);">❌ ${m.cancels} cancels</span>
-                                <span style="color: ${m.net >= 0 ? 'var(--green)' : 'var(--red)}; font-weight: 700;">${m.net >= 0 ? '+' : ''}${m.net}</span>
+                                <span style="color: ${m.net >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight: 700;">${m.net >= 0 ? '+' : ''}${m.net}</span>
                             </div>
                             <div class="win-meter" style="margin-top: 8px;">
                                 <div class="win-meter-fill" style="width: ${(m.sales + m.cancels) > 0 ? ((m.sales/(m.sales+m.cancels))*100) : 0}%"></div>
@@ -788,7 +788,7 @@
                                     <div class="month-stats">
                                         <span style="color: var(--green);">${m.sales}S</span>
                                         <span style="color: var(--red);">${m.cancels}C</span>
-                                        <span style="color: ${m.net >= 0 ? 'var(--green)' : 'var(--red)};">${m.net >= 0 ? '+' : ''}${m.net}</span>
+                                        <span style="color: ${m.net >= 0 ? 'var(--green)' : 'var(--red)'};">${m.net >= 0 ? '+' : ''}${m.net}</span>
                                         <span style="color: var(--text-muted);">${m.winRate}%</span>
                                     </div>
                                 </div>
