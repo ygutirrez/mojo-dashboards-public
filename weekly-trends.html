@@ -353,7 +353,10 @@
             cancels: s => s?.cancels?.total_events || 0
         };
 
-        function cumulativeDelta(curr, old, fn) {
+        function periodValue(curr, old, periodKey, fn) {
+            if (curr?.period && typeof curr.period[periodKey] === 'number') {
+                return curr.period[periodKey];
+            }
             if (!old) return fn(curr);
             return Math.max(0, fn(curr) - fn(old));
         }
@@ -365,10 +368,10 @@
                 week: s.week,
                 weekLabel: s.weekLabel,
                 shortLabel: (s.weekLabel || s.week).split(' - ')[0],
-                sales: cumulativeDelta(s, p, getMetric.sales),
-                revenue: cumulativeDelta(s, p, getMetric.revenue),
-                visits: cumulativeDelta(s, p, getMetric.visits),
-                cancels: cumulativeDelta(s, p, getMetric.cancels),
+                sales: periodValue(s, p, 'sales', getMetric.sales),
+                revenue: periodValue(s, p, 'revenue', getMetric.revenue),
+                visits: periodValue(s, p, 'visits', getMetric.visits),
+                cancels: periodValue(s, p, 'cancels', getMetric.cancels),
                 avgInvoice: getMetric.avgInvoice(s)
             };
         });
