@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-07-23T09:30:00Z",
-  "generated_at": "2026-07-23T08:41:57Z",
+  "timestamp": "2026-07-24T09:30:00Z",
+  "generated_at": "2026-07-24T08:42:39Z",
   "status": "warn",
   "steps_total": 12,
-  "steps_passed": 11,
+  "steps_passed": 10,
   "steps_warned": 1,
-  "steps_failed": 0,
+  "steps_failed": 1,
   "steps_downgraded": 1,
   "duration_seconds": null,
-  "log_file": "nightly-sync-2026-07-23.log",
+  "log_file": "nightly-sync-2026-07-24.log",
   "steps": [
     {
       "name": "Sales Import",
@@ -52,8 +52,8 @@
     },
     {
       "name": "Deploy to GH Pages",
-      "status": "ok",
-      "detail": ""
+      "status": "error",
+      "detail": "error: unknown option `cached'"
     },
     {
       "name": "Health Check",
