@@ -242,6 +242,23 @@
         }
         .no-data .icon { font-size: 48px; margin-bottom: 12px; }
 
+        .notice {
+            background: rgba(234, 179, 8, 0.12);
+            border: 1px solid rgba(234, 179, 8, 0.35);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .notice strong { color: var(--yellow); }
+        .notice .muted {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
         .footer {
             text-align: center;
             padding: 16px;
@@ -291,13 +308,24 @@
     (async function() {
         const BASE = window.location.hostname.includes('github.io')
             ? '' : '';
-        const url = BASE + 'weekly-snapshots.json';
+        const urls = window.location.hostname.includes('github.io')
+            ? [BASE + 'weekly-snapshots.json', BASE + 'data/weekly-snapshots.json']
+            : [BASE + 'data/weekly-snapshots.json', BASE + 'weekly-snapshots.json'];
 
         let data;
         try {
-            const res = await fetch(url + '?t=' + Date.now());
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            data = await res.json();
+            let lastError;
+            for (const url of urls) {
+                try {
+                    const res = await fetch(url + '?t=' + Date.now());
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    data = await res.json();
+                    break;
+                } catch (e) {
+                    lastError = e;
+                }
+            }
+            if (!data) throw lastError || new Error('No snapshot data loaded');
         } catch (e) {
             document.getElementById('content').innerHTML =
                 '<div class="no-data"><div class="icon">📊</div>' +
@@ -316,6 +344,40 @@
 
         const latest = snapshots[snapshots.length - 1];
         const prev = snapshots.length > 1 ? snapshots[snapshots.length - 2] : null;
+
+        const getMetric = {
+            sales: s => s?.sales?.total || 0,
+            revenue: s => s?.revenue?.total || 0,
+            avgInvoice: s => s?.revenue?.avg_invoice || 0,
+            visits: s => s?.operations?.total_visits || 0,
+            cancels: s => s?.cancels?.total_events || 0
+        };
+
+        function cumulativeDelta(curr, old, fn) {
+            if (!old) return fn(curr);
+            return Math.max(0, fn(curr) - fn(old));
+        }
+
+        const weekly = snapshots.map((s, i) => {
+            const p = i > 0 ? snapshots[i - 1] : null;
+            return {
+                snapshot: s,
+                week: s.week,
+                weekLabel: s.weekLabel,
+                shortLabel: (s.weekLabel || s.week).split(' - ')[0],
+                sales: cumulativeDelta(s, p, getMetric.sales),
+                revenue: cumulativeDelta(s, p, getMetric.revenue),
+                visits: cumulativeDelta(s, p, getMetric.visits),
+                cancels: cumulativeDelta(s, p, getMetric.cancels),
+                avgInvoice: getMetric.avgInvoice(s)
+            };
+        });
+        const latestWeek = weekly[weekly.length - 1];
+        const prevWeek = weekly.length > 1 ? weekly[weekly.length - 2] : null;
+        const recentWeekly = weekly.slice(-3);
+        const recentFlat = recentWeekly.length >= 3 && recentWeekly.every(w =>
+            w.sales === 0 && w.revenue === 0 && w.visits === 0 && w.cancels === 0
+        );
 
         // Update header
         document.getElementById('weekRange').textContent =
@@ -348,41 +410,50 @@
             }).join('');
         }
 
+        let html = '';
+        if (recentFlat) {
+            html += `<div class="notice">
+                <strong>Source data warning:</strong> the last ${recentWeekly.length} snapshots have no movement in sales, revenue, visits, or cancels.
+                The source files feeding this dashboard appear stale, so current-week trends should not be treated as live operating numbers.
+                <div class="muted">Latest snapshot captured ${new Date(latest.captured_at).toLocaleString()} from cumulative source data.</div>
+            </div>`;
+        }
+
         // KPI metrics
         const metrics = [
             {
-                label: 'New Sales',
-                value: latest.sales.total,
-                prev: prev ? prev.sales.total : null,
+                label: 'New Sales This Period',
+                value: latestWeek.sales,
+                prev: prevWeek ? prevWeek.sales : null,
                 color: '#22c55e',
-                values: snapshots.map(s => s.sales.total)
+                values: weekly.map(w => w.sales)
             },
             {
-                label: 'Revenue YTD',
-                value: latest.revenue.total,
-                prev: prev ? prev.revenue.total : null,
+                label: 'Revenue Added',
+                value: latestWeek.revenue,
+                prev: prevWeek ? prevWeek.revenue : null,
                 color: '#3b82f6',
                 format: 'money',
-                values: snapshots.map(s => s.revenue.total)
+                values: weekly.map(w => w.revenue)
             },
             {
-                label: 'Avg Invoice',
-                value: latest.revenue.avg_invoice,
-                prev: prev ? prev.revenue.avg_invoice : null,
+                label: 'Avg Invoice YTD',
+                value: latestWeek.avgInvoice,
+                prev: prevWeek ? prevWeek.avgInvoice : null,
                 color: '#8b5cf6',
                 format: 'dollar',
-                values: snapshots.map(s => s.revenue.avg_invoice)
+                values: weekly.map(w => w.avgInvoice)
             },
             {
-                label: 'Tech Visits',
-                value: latest.operations.total_visits,
-                prev: prev ? prev.operations.total_visits : null,
+                label: 'Tech Visits Added',
+                value: latestWeek.visits,
+                prev: prevWeek ? prevWeek.visits : null,
                 color: '#f97316',
-                values: snapshots.map(s => s.operations.total_visits)
+                values: weekly.map(w => w.visits)
             }
         ];
 
-        let html = '<div class="kpi-row">';
+        html += '<div class="kpi-row">';
         for (const m of metrics) {
             const d = delta(m.value, m.prev);
             let displayVal = m.value;
@@ -393,7 +464,7 @@
             html += `<div class="kpi">
                 <div class="label">${m.label}</div>
                 <div class="value" style="color:${m.color}">${displayVal}</div>
-                ${m.prev !== null ? `<div class="delta ${d.cls}">${fmtPct(d)} vs prev week</div>` : '<div class="delta delta-flat">First week</div>'}
+                ${m.prev !== null ? `<div class="delta ${d.cls}">${fmtPct(d)} vs prev period</div>` : '<div class="delta delta-flat">First snapshot</div>'}
                 <div class="sparkline-row">${sparkBars(m.values, m.color)}</div>
             </div>`;
         }
@@ -403,23 +474,23 @@
         html += '<div class="chart-grid">';
 
         // Sales trend bar chart
-        html += '<div class="chart-card"><h2><span class="icon">💰</span> Sales by Week</h2>';
-        html += buildBarChart(snapshots, s => s.sales.total, '#22c55e');
+        html += '<div class="chart-card"><h2><span class="icon">💰</span> New Sales by Period</h2>';
+        html += buildBarChart(weekly, w => w.sales, '#22c55e');
         html += '</div>';
 
         // Revenue trend bar chart
-        html += '<div class="chart-card"><h2><span class="icon">📈</span> Revenue by Week</h2>';
-        html += buildBarChart(snapshots, s => s.revenue.total, '#3b82f6', true);
+        html += '<div class="chart-card"><h2><span class="icon">📈</span> Revenue Added by Period</h2>';
+        html += buildBarChart(weekly, w => w.revenue, '#3b82f6', true);
         html += '</div>';
 
         // Visits trend bar chart
-        html += '<div class="chart-card"><h2><span class="icon">🚐</span> Tech Visits by Week</h2>';
-        html += buildBarChart(snapshots, s => s.operations.total_visits, '#f97316');
+        html += '<div class="chart-card"><h2><span class="icon">🚐</span> Tech Visits Added by Period</h2>';
+        html += buildBarChart(weekly, w => w.visits, '#f97316');
         html += '</div>';
 
         // Cancel events bar chart
-        html += '<div class="chart-card"><h2><span class="icon">❌</span> Cancel Events by Week</h2>';
-        html += buildBarChart(snapshots, s => s.cancels.total_events, '#ef4444');
+        html += '<div class="chart-card"><h2><span class="icon">❌</span> Cancel Events Added by Period</h2>';
+        html += buildBarChart(weekly, w => w.cancels, '#ef4444');
         html += '</div>';
 
         html += '</div>'; // close chart-grid
@@ -429,25 +500,26 @@
         html += '<h2><span class="icon">📋</span> Weekly Comparison</h2>';
         html += '<div style="overflow-x:auto;">';
         html += '<table class="trend-table"><thead><tr>';
-        html += '<th>Week</th><th>Sales</th><th>Revenue</th><th>Avg Invoice</th><th>Visits</th><th>Cancels</th><th>Active Accts</th><th>Fleet</th>';
+        html += '<th>Week</th><th>New Sales</th><th>Revenue Added</th><th>Avg Invoice</th><th>Visits Added</th><th>Cancels Added</th><th>YTD Sales</th><th>YTD Revenue</th>';
         html += '</tr></thead><tbody>';
 
         // Show most recent on top
-        for (let i = snapshots.length - 1; i >= 0; i--) {
-            const s = snapshots[i];
-            const p = i > 0 ? snapshots[i - 1] : null;
-            const dSales = delta(s.sales.total, p?.sales?.total);
-            const dRev = delta(s.revenue.total, p?.revenue?.total);
+        for (let i = weekly.length - 1; i >= 0; i--) {
+            const w = weekly[i];
+            const s = w.snapshot;
+            const p = i > 0 ? weekly[i - 1] : null;
+            const dSales = delta(w.sales, p?.sales);
+            const dRev = delta(w.revenue, p?.revenue);
 
             html += `<tr>
                 <td><strong>${s.weekLabel}</strong><br><span style="color:var(--text-muted);font-size:11px">${s.week}</span></td>
-                <td>${s.sales.total} <span class="${dSales.cls}" style="font-size:12px">${p ? fmtPct(dSales) : ''}</span></td>
-                <td>${fmt(s.revenue.total)} <span class="${dRev.cls}" style="font-size:12px">${p ? fmtPct(dRev) : ''}</span></td>
+                <td>${w.sales} <span class="${dSales.cls}" style="font-size:12px">${p ? fmtPct(dSales) : ''}</span></td>
+                <td>${fmt(w.revenue)} <span class="${dRev.cls}" style="font-size:12px">${p ? fmtPct(dRev) : ''}</span></td>
                 <td>$${s.revenue.avg_invoice}</td>
-                <td>${s.operations.total_visits.toLocaleString()}</td>
-                <td>${s.cancels.total_events}</td>
-                <td>${s.operations?.active_accounts?.toLocaleString() || '—'}</td>
-                <td>${s.operations?.fleet_vehicles || '—'}</td>
+                <td>${w.visits.toLocaleString()}</td>
+                <td>${w.cancels}</td>
+                <td>${s.sales.total.toLocaleString()}</td>
+                <td>${fmt(s.revenue.total)}</td>
             </tr>`;
         }
         html += '</tbody></table></div>';
@@ -456,9 +528,9 @@
         // Sales Breakdown section
         html += '<div class="chart-grid">';
 
-        // Sales by type (latest week)
+        // Sales by type (cumulative source data)
         if (latest.sales.by_type) {
-            html += '<div class="chart-card"><h2><span class="icon">🎯</span> Sales by Type (Latest)</h2>';
+            html += '<div class="chart-card"><h2><span class="icon">🎯</span> Sales by Type (YTD)</h2>';
             const types = Object.entries(latest.sales.by_type).sort((a,b) => b[1] - a[1]);
             const maxType = Math.max(...types.map(t => t[1]), 1);
             html += '<div style="display:flex;flex-direction:column;gap:10px">';
@@ -476,9 +548,9 @@
             html += '</div></div>';
         }
 
-        // Top cancel reasons (latest week)
+        // Top cancel reasons (cumulative source data)
         if (latest.cancels.top_reason) {
-            html += '<div class="chart-card"><h2><span class="icon">🚪</span> Cancel Insights (Latest)</h2>';
+            html += '<div class="chart-card"><h2><span class="icon">🚪</span> Cancel Insights (YTD)</h2>';
             html += `<div style="padding:12px;background:rgba(239,68,68,0.1);border-radius:8px;margin-bottom:12px">
                 <div style="font-size:24px;font-weight:700;color:var(--red)">${latest.cancels.total_events}</div>
                 <div style="font-size:12px;color:var(--text-muted)">Total cancel events</div>
@@ -548,20 +620,20 @@
 
         document.getElementById('content').innerHTML = html;
 
-        function buildBarChart(snapshots, valueFn, color, isMoney) {
-            const values = snapshots.map(valueFn);
+        function buildBarChart(rows, valueFn, color, isMoney) {
+            const values = rows.map(valueFn);
             const max = Math.max(...values, 1);
             let chart = '<div class="bar-chart">';
-            for (let i = 0; i < snapshots.length; i++) {
+            for (let i = 0; i < rows.length; i++) {
                 const v = values[i];
                 const h = Math.max(4, (v / max) * 140);
-                const label = snapshots[i].weekLabel.split(' - ')[0];
+                const label = rows[i].shortLabel || rows[i].weekLabel.split(' - ')[0];
                 const displayVal = isMoney ? fmt(v) : v.toLocaleString();
-                const isLatest = i === snapshots.length - 1;
+                const isLatest = i === rows.length - 1;
                 const opacity = isLatest ? '1' : '0.65';
                 chart += `<div class="bar-group">
                     <div class="bar-value">${displayVal}</div>
-                    <div class="bar" style="height:${h}px;background:${color};opacity:${opacity}" title="${snapshots[i].weekLabel}: ${displayVal}"></div>
+                    <div class="bar" style="height:${h}px;background:${color};opacity:${opacity}" title="${rows[i].weekLabel}: ${displayVal}"></div>
                     <div class="bar-label">${label}</div>
                 </div>`;
             }
