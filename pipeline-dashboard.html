@@ -224,9 +224,41 @@
                d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
     }
 
+    function normalizePipelineStatus(data) {
+        if (!data) return null;
+        if (Array.isArray(data.steps) && data.steps.some(s => 'success' in s)) return data;
+
+        const steps = (data.steps || []).map(step => {
+            const status = String(step.status || '').toLowerCase();
+            const success = status === 'ok' || status === 'success';
+            const timedOut = status === 'timeout';
+            return {
+                name: step.name || 'Pipeline Step',
+                success,
+                exit_code: success ? 0 : 1,
+                duration_sec: 0,
+                retries: 0,
+                timed_out: timedOut,
+                critical: status === 'error',
+            };
+        });
+
+        return {
+            generated_at: data.generated_at || data.timestamp,
+            total_duration_sec: data.duration_seconds || 0,
+            steps_total: data.steps_total || steps.length,
+            steps_passed: data.steps_passed || steps.filter(s => s.success).length,
+            steps_failed: data.steps_failed || steps.filter(s => !s.success).length,
+            steps_timed_out: data.steps_timed_out || steps.filter(s => s.timed_out).length,
+            all_green: data.status === 'ok' || (data.steps_failed || 0) === 0,
+            steps,
+        };
+    }
+
     // Load current run
     fetch('pipeline-run.json' + cacheBust)
-        .then(r => r.ok ? r.json() : null)
+        .then(r => r.ok ? r.json() : fetch('pipeline-status.json' + cacheBust).then(sr => sr.ok ? sr.json() : null))
+        .then(normalizePipelineStatus)
         .then(data => {
             if (!data) return;
 
@@ -268,7 +300,15 @@
 
     // Load history
     fetch('data/pipeline-history.json' + cacheBust)
-        .then(r => r.ok ? r.json() : null)
+        .then(r => r.ok ? r.json() : fetch('pipeline-status.json' + cacheBust)
+            .then(sr => sr.ok ? sr.json() : null)
+            .then(status => status ? [{
+                date: status.generated_at || status.timestamp,
+                duration: status.duration_seconds || 0,
+                passed: status.steps_passed || 0,
+                failed: status.steps_failed || 0,
+                all_green: status.status === 'ok' || (status.steps_failed || 0) === 0,
+            }] : null))
         .then(history => {
             if (!history || history.length === 0) return;
             

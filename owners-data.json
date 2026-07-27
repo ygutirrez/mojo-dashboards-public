@@ -1,48 +1,64 @@
 {
-  "generated_at": "2026-07-24T08:43:34.725Z",
-  "generated_date": "July 24, 2026",
+  "generated_at": "2026-07-27T12:29:59.294Z",
+  "generated_date": "July 27, 2026",
   "sales": {
-    "csv_date": "2026-05-13",
-    "total_sales": 293,
-    "total_cancels": 495,
-    "net": -202,
-    "paused": 132,
+    "csv_date": "2026-07-23",
+    "total_sales": 475,
+    "total_cancels": 272,
+    "net": 203,
+    "paused": 62,
     "cancel_reasons": {
-      "Not Interested": 60,
-      "Moved": 151,
-      "Financial": 59,
-      "Bad Debt": 53,
-      "Unhappy": 49,
-      "One Spray Only": 17,
-      "Other": 47,
-      "Program Change": 13,
-      "Unknown": 16
+      "Paused/WP": 62,
+      "Moved": 59,
+      "Not Interested": 32,
+      "Financial": 28,
+      "Unhappy": 26,
+      "One Time": 17,
+      "Barrier Spray": 15,
+      "Went w/Competitor": 13,
+      "Bad Debt": 11,
+      "Perimeter Pest": 2,
+      "Noseeum": 2,
+      "Inzecto": 2,
+      "Bundle - HPD/Barrier": 1,
+      "Event Spray": 1,
+      "Went w/competitor": 1
     },
     "sale_categories": {
-      "Barrier Spray": 29,
-      "Signature Program": 122,
-      "Misting System": 35,
-      "Noseeum": 4,
-      "One Time": 29,
-      "Re-Spray": 30,
-      "Other": 21,
-      "Fleas/Ticks": 4,
-      "HPD (Indoor)": 19
+      "Barrier Spray": 172,
+      "Restart": 122,
+      "Event Spray": 69,
+      "Noseeum": 27,
+      "Misting System": 17,
+      "Perimeter Pest": 14,
+      "Bundle - HPD/Barrier": 14,
+      "One Time": 10,
+      "HPD  (Indoor)": 6,
+      "MS Takeover": 6,
+      "Fleas/Ticks": 5,
+      "Barrier Spray + Flea": 3,
+      "Thermacell": 3,
+      "Inzecto": 3,
+      "Mosquito/PP": 1,
+      "New": 1,
+      "Rodent Station": 1,
+      "Moved": 1
     },
     "team": {
       "Lucy": {
-        "sales": 12,
-        "cancels": 21
+        "sales": 271,
+        "cancels": 89
       },
       "Norma": {
-        "sales": 18,
-        "cancels": 42
+        "sales": 157,
+        "cancels": 98
       },
       "Bev": {
-        "sales": 10,
-        "cancels": 20
+        "sales": 47,
+        "cancels": 85
       }
-    }
+    },
+    "paused_pct": 23
   },
   "google_ads": {
     "total_spend": 1116.9,
@@ -77,35 +93,35 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1416253,
-    "avg_per_visit": 73,
-    "mtd": 168299,
-    "mtd_jobs": 1877
+    "ytd_invoiced": 1437025,
+    "avg_per_visit": 74,
+    "mtd": 189160,
+    "mtd_jobs": 2117
   },
   "operations": {
     "total_jobs": 9998,
-    "jobs_per_tech_day": 0,
-    "revenue_per_tech_day": 0,
+    "jobs_per_tech_day": 8.4,
+    "revenue_per_tech_day": 779,
     "first_time_success": 98.9,
     "callback_rate": 1.1,
     "resprays": 114,
     "active_techs": 8,
-    "working_days_ytd": null
+    "working_days_ytd": 148
   },
   "serviceminder": {
-    "generated_at": "2026-07-24T08:43:34.725Z",
+    "generated_at": "2026-07-27T12:29:59.294Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-07-23T13:16:32.377Z",
+      "generated_at": "2026-07-27T12:05:38.408Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 22154,
-      "contacts": 13728,
-      "invoices": 15841,
-      "proposals": 1597
+      "appointments": 22277,
+      "contacts": 13747,
+      "invoices": 16081,
+      "proposals": 1600
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -207,9 +223,9 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1519,
+    "total_sales": 1524,
     "total_cancels": 32,
-    "net": 1487,
+    "net": 1492,
     "cancel_reasons": {
       "Moving": 11,
       "No Longer Needed": 10,
@@ -219,13 +235,13 @@
     },
     "sale_categories": {
       "Mojo Essential": 743,
-      "Synthetic Barrier Spray - 2 week": 442,
-      "Misting System Recurring Service Bi-Monthly": 122,
+      "Synthetic Barrier Spray - 2 week": 443,
+      "Misting System Recurring Service Bi-Monthly": 123,
       "HPD - 42 Days": 71,
       "Synthetic Barrier Spray - 4 week": 43,
       "Gnat/Midge/No-seeums Service - 2 weeks": 38,
       "Synthetic Signature Single Svc 3": 23,
-      "All-Natural Barrier Spray": 20,
+      "All-Natural Barrier Spray": 21,
       "Misting system - 4 Weeks": 14,
       "InZecto Trap Service": 12,
       "In2Care Service - 4 Weeks Service": 12,
