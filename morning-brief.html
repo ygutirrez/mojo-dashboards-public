@@ -325,9 +325,18 @@
     }
 
     function fmt$(n) {
+        n = Number(n) || 0;
         if (n >= 1000000) return `$${(n/1000000).toFixed(1)}M`;
         if (n >= 1000) return `$${(n/1000).toFixed(0)}K`;
         return `$${n.toFixed(0)}`;
+    }
+
+    function num(...values) {
+        for (const value of values) {
+            const n = Number(value);
+            if (Number.isFinite(n) && n !== 0) return n;
+        }
+        return 0;
     }
 
     async function loadBrief() {
@@ -352,8 +361,12 @@
 
         // Revenue section
         if (salesKpi) {
-            const revenue = salesKpi.ytd_revenue || salesKpi.total_revenue || 0;
+            const summary = salesKpi.summary || {};
+            const revenue = num(summary.total_revenue, salesKpi.ytd_revenue, salesKpi.total_revenue, salesKpi.revenue_pace?.ytd_revenue);
             document.getElementById('ytdRevenue').textContent = fmt$(revenue);
+            document.getElementById('ytdRevenueNote').textContent = salesKpi.updated_at
+                ? `Updated ${new Date(salesKpi.updated_at).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+                : '';
             
             const target = 5000000;
             const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
@@ -368,18 +381,23 @@
             document.getElementById('paceBar').style.width = `${Math.min(100, revenue / target * 100)}%`;
             document.getElementById('paceBar').style.background = pacePercent >= 90 ? 'var(--green)' : pacePercent >= 70 ? 'var(--yellow)' : 'var(--red)';
             
-            const avgPerStop = salesKpi.avg_per_visit || salesKpi.revenue_per_stop || 0;
-            document.getElementById('revPerStop').textContent = `$${avgPerStop}`;
+            const totalStops = num(techData?.summary?.total_jobs, opsData?.summary?.total_wo_completed, summary.total_stops, salesKpi.total_stops, summary.total_invoices, salesKpi.total_invoices);
+            const avgPerStop = num(salesKpi.avg_per_visit, salesKpi.revenue_per_stop, totalStops ? revenue / totalStops : 0);
+            document.getElementById('revPerStop').textContent = `$${Math.round(avgPerStop)}`;
+            document.getElementById('revPerStopNote').textContent = totalStops ? `${totalStops.toLocaleString()} stops YTD` : '';
             
-            const totalStops = salesKpi.total_stops || salesKpi.total_invoices || 0;
             document.getElementById('totalStops').textContent = totalStops.toLocaleString();
 
             // Sales count
-            const sales = salesKpi.total_sales || salesKpi.ytd_sales || 0;
+            const sales = num(summary.total_sales, salesKpi.total_sales, salesKpi.ytd_sales, salesKpi.office_tally?.total_sales);
             document.getElementById('salesCount').textContent = sales;
+
+            const cancels = num(summary.total_cancels, salesKpi.total_cancels, salesKpi.office_tally?.total_cancels);
+            document.getElementById('cancelCount').textContent = cancels;
+            document.getElementById('cancelRatio').textContent = sales ? (cancels / sales).toFixed(2) + 'x' : '—';
         }
 
-        // Cancel data from anomaly/ops
+        // Cancel data from anomaly/ops; only override the direct KPI values if the anomaly has a parseable ratio.
         if (anomaly && anomaly.anomalies) {
             const cancelAnomaly = anomaly.anomalies.find(a => a.category === 'cancellations' && a.message.includes('ratio'));
             if (cancelAnomaly) {
@@ -392,11 +410,15 @@
         }
 
         // Active techs
-        if (techData && techData.technicians) {
-            const activeTechs = techData.technicians.filter(t => (t.visits || t.total_visits || 0) > 0).length;
+        if (techData && (techData.employees || techData.technicians || techData.summary)) {
+            const techs = techData.employees || techData.technicians || [];
+            const activeTechs = num(
+                techData.summary?.total_techs,
+                techs.filter(t => (t.jobs || t.visits || t.total_visits || 0) > 0).length
+            );
             document.getElementById('activeTechs').textContent = activeTechs;
-        } else if (opsData && opsData.technicians) {
-            document.getElementById('activeTechs').textContent = opsData.technicians.length;
+        } else if (opsData && (opsData.technicians || opsData.employees)) {
+            document.getElementById('activeTechs').textContent = (opsData.technicians || opsData.employees || []).length;
         }
 
         // Alerts section
