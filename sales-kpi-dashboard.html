@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: July 27, 2026 @ 8:30 am</div>
-        <div class="period">📅 Jan 1 - Jul 27, 2026 (YTD)</div>
-        <div class="updated">Office tally sales/cancels. ServiceMinder invoice revenue.</div>
+        <div class="updated">Last updated: July 29, 2026 @ 5:44 pm</div>
+        <div class="period">📅 Jan 1 - Jul 29, 2026 (YTD)</div>
+        <div class="updated">ServSuite exports + Office Tracking CSV.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>475 sales and 272 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$1,437,025</strong> invoiced revenue.</p>
+        <p><strong>475 sales and 272 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -98,20 +98,20 @@
             <div class="podium-spot second">
                 <div class="rank">🥈</div>
                 <div class="name">Norma</div>
-                <div class="sales-count">157</div>
-                <div class="sales-label">sales | 98 cancels</div>
+                <div class="sales-count">159</div>
+                <div class="sales-label">sales | 100 cancels</div>
             </div>
             <div class="podium-spot first">
                 <div class="rank">🥇</div>
                 <div class="name">Lucy</div>
-                <div class="sales-count">275</div>
-                <div class="sales-label">sales | 89 cancels</div>
+                <div class="sales-count">286</div>
+                <div class="sales-label">sales | 90 cancels</div>
             </div>
             <div class="podium-spot third">
                 <div class="rank">🥉</div>
                 <div class="name">Bev</div>
-                <div class="sales-count">47</div>
-                <div class="sales-label">sales | 85 cancels</div>
+                <div class="sales-count">48</div>
+                <div class="sales-label">sales | 91 cancels</div>
             </div>
         </div>
     </div>
@@ -139,13 +139,13 @@
         </div>
         <div class="metric-card neutral">
             <div class="label">Total Revenue</div>
-            <div class="value">$1437k</div>
-            <div class="subtext">15,667 invoices YTD</div>
+            <div class="value">$946k</div>
+            <div class="subtext">9,863 invoices YTD</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
-            <div class="value">208</div>
-            <div class="subtext">Jan 1 - Jul 27</div>
+            <div class="value">210</div>
+            <div class="subtext">Jan 1 - Jul 29</div>
         </div>
     </div>
 
@@ -248,17 +248,17 @@
             <div class="csr-card">
                 <div class="name">Lucy</div>
                 <div class="stats">
-                    <span class="sales">📈 275 sales</span>
-                    <span>❌ 89 cancels</span>
-                    <span>📊 Net: 186</span>
+                    <span class="sales">📈 286 sales</span>
+                    <span>❌ 90 cancels</span>
+                    <span>📊 Net: 196</span>
                 </div>
             </div>
 
             <div class="csr-card">
                 <div class="name">Norma</div>
                 <div class="stats">
-                    <span class="sales">📈 157 sales</span>
-                    <span>❌ 98 cancels</span>
+                    <span class="sales">📈 159 sales</span>
+                    <span>❌ 100 cancels</span>
                     <span>📊 Net: 59</span>
                 </div>
             </div>
@@ -266,9 +266,9 @@
             <div class="csr-card">
                 <div class="name">Bev</div>
                 <div class="stats">
-                    <span class="sales">📈 47 sales</span>
-                    <span>❌ 85 cancels</span>
-                    <span>📊 Net: -38</span>
+                    <span class="sales">📈 48 sales</span>
+                    <span>❌ 91 cancels</span>
+                    <span>📊 Net: -43</span>
                 </div>
             </div>
         </div>
@@ -281,9 +281,9 @@
         new Chart(document.getElementById('leadSourceChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Online","Referral","MoJo Customer","Yard Sign","Direct Mail Postcard","Mosquito Joe Vehicle","Other","Advertising","Printed Material","Mail Advertising","Existing Customer","Online Search","DMP","Accelerated","Neighborly","Local Branding","Competitor","Event/Sponsorship","Print Material","Email","Mass Media","Social","Unknown"],
+                labels: ["Online","MoJo Customer","Referral","Yard Sign","Mosquito Joe Vehicle","Printed Material","Online Search","Advertising","Local Branding","Print Material","Mass Media","Direct Mail Postcard"],
                 datasets: [{
-                    data: [10401,9144,4837,3253,3123,2364,1047,832,430,358,280,167,148,66,61,56,44,43,43,39,19,15,3],
+                    data: [133,73,48,19,10,7,7,4,2,2,1,1],
                     backgroundColor: ["#00ff88","#00d9ff","#ffd700","#ff9f43","#c792ea","#ff78c5","#82aaff","#ff6b6b"],
                     borderWidth: 0
                 }]

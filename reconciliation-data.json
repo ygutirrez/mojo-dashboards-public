@@ -1,32 +1,37 @@
 {
-  "generated_at": "2026-05-13T15:01:06.113Z",
+  "generated_at": "2026-07-29T21:44:48.024Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-05-13.csv",
-    "date": "2026-05-13",
-    "totalSales": 274,
-    "totalCancels": 167,
-    "net": 107,
-    "upsells": 6,
+    "file": "sales-data-2026-07-29.csv",
+    "date": "2026-07-29",
+    "totalSales": 489,
+    "totalCancels": 281,
+    "net": 208,
+    "upsells": 9,
     "csrs": [
       {
         "name": "Lucy",
-        "sales": 127,
-        "cancels": 36
+        "sales": 282,
+        "cancels": 90
       },
       {
         "name": "Norma",
-        "sales": 109,
-        "cancels": 75
+        "sales": 159,
+        "cancels": 100
       },
       {
         "name": "Bev",
-        "sales": 38,
-        "cancels": 56
+        "sales": 48,
+        "cancels": 91
       }
     ],
     "weekly": [
+      {
+        "week": "1026-04-03",
+        "sales": 0,
+        "cancels": 1
+      },
       {
         "week": "2026-01-05",
         "sales": 0,
@@ -119,105 +124,165 @@
       },
       {
         "week": "2026-05-11",
-        "sales": 24,
-        "cancels": 7
+        "sales": 33,
+        "cancels": 12
+      },
+      {
+        "week": "2026-05-18",
+        "sales": 18,
+        "cancels": 12
+      },
+      {
+        "week": "2026-05-25",
+        "sales": 25,
+        "cancels": 5
+      },
+      {
+        "week": "2026-06-01",
+        "sales": 26,
+        "cancels": 5
+      },
+      {
+        "week": "2026-06-08",
+        "sales": 23,
+        "cancels": 11
+      },
+      {
+        "week": "2026-06-15",
+        "sales": 33,
+        "cancels": 11
+      },
+      {
+        "week": "2026-06-22",
+        "sales": 14,
+        "cancels": 11
+      },
+      {
+        "week": "2026-06-29",
+        "sales": 15,
+        "cancels": 18
+      },
+      {
+        "week": "2026-07-06",
+        "sales": 15,
+        "cancels": 9
+      },
+      {
+        "week": "2026-07-13",
+        "sales": 15,
+        "cancels": 10
+      },
+      {
+        "week": "2026-07-20",
+        "sales": 13,
+        "cancels": 12
+      },
+      {
+        "week": "2026-07-27",
+        "sales": 9,
+        "cancels": 4
+      },
+      {
+        "week": "2926-07-22",
+        "sales": 0,
+        "cancels": 1
       }
     ]
   },
   "servSuiteSource": {
-    "date": "2026-05-13T14:53:39.976Z",
-    "totalSales": 294,
-    "totalSaleValue": 288048,
-    "totalRevenue": 916981,
-    "totalInvoices": 9539,
-    "totalCancelEvents": 495,
-    "uniqueCancels": 152,
-    "recoverableCancels": 132
+    "date": "2026-07-29T21:44:38.744Z",
+    "totalSales": 307,
+    "totalSaleValue": 306072,
+    "totalRevenue": 946368,
+    "totalInvoices": 9863,
+    "totalCancelEvents": 509,
+    "uniqueCancels": 155,
+    "recoverableCancels": 133
   },
   "reconciliation": {
     "discrepancies": [
       {
         "metric": "Sales Count",
-        "csv": 274,
-        "servSuite": 294,
-        "gap": 20,
-        "gapPct": 7,
-        "severity": "medium",
-        "explanation": "ServSuite shows 20 more sales than CSR tracking. CSRs may miss logging some sales, or ServSuite counts program upgrades as new sales."
+        "csv": 489,
+        "servSuite": 307,
+        "gap": -182,
+        "gapPct": -59,
+        "severity": "high",
+        "explanation": "CSRs logged 182 more sales than ServSuite. Could include pending activations or data entry timing differences."
       },
       {
         "metric": "Cancel Events",
-        "csv": 167,
-        "servSuite": 495,
-        "servSuiteUnique": 152,
-        "gap": 328,
+        "csv": 281,
+        "servSuite": 509,
+        "servSuiteUnique": 155,
+        "gap": 228,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (495 events, 152 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (167). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (281). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
         "csv": "Not tracked",
-        "servSuite": 916981,
+        "servSuite": 946368,
         "gap": null,
         "severity": "info",
-        "explanation": "Revenue is only tracked in ServSuite via invoices. $916,981 from 9,539 invoices. The Office Tracking CSV does not capture revenue amounts."
+        "explanation": "Revenue is only tracked in ServSuite via invoices. $946,368 from 9,863 invoices. The Office Tracking CSV does not capture revenue amounts."
       }
     ],
     "cancelReasonComparison": {
       "csv": [
         {
           "name": "Paused/WP",
-          "count": 46
+          "count": 62
         },
         {
           "name": "Moved",
-          "count": 43
-        },
-        {
-          "name": "Financial",
-          "count": 14
+          "count": 62
         },
         {
           "name": "Not Interested",
-          "count": 14
+          "count": 34
         },
         {
-          "name": "One Time",
-          "count": 14
-        },
-        {
-          "name": "Bad Debt",
-          "count": 11
+          "name": "Financial",
+          "count": 30
         },
         {
           "name": "Unhappy",
-          "count": 10
+          "count": 27
+        },
+        {
+          "name": "One Time",
+          "count": 17
         },
         {
           "name": "Barrier Spray",
-          "count": 6
+          "count": 15
+        },
+        {
+          "name": "Went w/Competitor",
+          "count": 14
         }
       ],
       "servSuite": [
         {
           "name": "Moved",
-          "count": 151
+          "count": 160
         },
         {
           "name": "Not Interested at this time",
-          "count": 60
+          "count": 61
         },
         {
           "name": "Financial Reasons",
           "count": 59
         },
         {
-          "name": "Bad Debt",
+          "name": "Unhappy w Service",
           "count": 53
         },
         {
-          "name": "Unhappy w Service",
-          "count": 49
+          "name": "Bad Debt",
+          "count": 53
         },
         {
           "name": "Other - Review Note",
@@ -246,47 +311,47 @@
       "csvCategories": [
         {
           "name": "Barrier Spray",
-          "count": 88
+          "count": 178
         },
         {
           "name": "Restart",
-          "count": 76
+          "count": 124
         },
         {
           "name": "Event Spray",
-          "count": 38
+          "count": 73
         },
         {
           "name": "Noseeum",
-          "count": 14
+          "count": 27
         },
         {
           "name": "Misting System",
+          "count": 18
+        },
+        {
+          "name": "Perimeter Pest",
           "count": 14
         },
         {
           "name": "Bundle - HPD/Barrier",
-          "count": 11
+          "count": 14
         },
         {
           "name": "One Time",
-          "count": 7
+          "count": 11
         },
         {
           "name": "HPD  (Indoor)",
-          "count": 5
-        },
-        {
-          "name": "Perimeter Pest",
-          "count": 4
-        },
-        {
-          "name": "Fleas/Ticks",
-          "count": 4
+          "count": 6
         },
         {
           "name": "MS Takeover",
-          "count": 3
+          "count": 6
+        },
+        {
+          "name": "Fleas/Ticks",
+          "count": 5
         },
         {
           "name": "Barrier Spray + Flea",
@@ -294,11 +359,11 @@
         },
         {
           "name": "Thermacell",
-          "count": 2
+          "count": 3
         },
         {
           "name": "Inzecto",
-          "count": 2
+          "count": 3
         },
         {
           "name": "Mosquito/PP",
@@ -311,16 +376,20 @@
         {
           "name": "Rodent Station",
           "count": 1
+        },
+        {
+          "name": "Moved",
+          "count": 1
         }
       ],
       "servSuitePrograms": [
         {
           "name": "Signature Program",
-          "count": 176
+          "count": 186
         },
         {
           "name": "Misting Systems",
-          "count": 35
+          "count": 36
         },
         {
           "name": "Residential - One Time Services",
@@ -339,15 +408,15 @@
           "count": 9
         },
         {
+          "name": "Inzecto Traps",
+          "count": 5
+        },
+        {
           "name": "Barrier Spray Program - 1 week",
           "count": 4
         },
         {
           "name": "LIV System",
-          "count": 3
-        },
-        {
-          "name": "Inzecto Traps",
           "count": 3
         },
         {
@@ -358,11 +427,11 @@
       "servSuiteSources": [
         {
           "name": "Online",
-          "count": 126
+          "count": 133
         },
         {
           "name": "MoJo Customer",
-          "count": 72
+          "count": 73
         },
         {
           "name": "Referral",
@@ -374,19 +443,19 @@
         },
         {
           "name": "Mosquito Joe Vehicle",
-          "count": 8
+          "count": 10
+        },
+        {
+          "name": "Printed Material",
+          "count": 7
         },
         {
           "name": "Online Search",
           "count": 7
         },
         {
-          "name": "Printed Material",
-          "count": 5
-        },
-        {
           "name": "Advertising",
-          "count": 3
+          "count": 4
         },
         {
           "name": "Local Branding",
@@ -402,27 +471,21 @@
   },
   "insights": [
     {
-      "priority": "high",
-      "title": "CSR tracking misses sales",
-      "detail": "20 sales (7%) in ServSuite are not reflected in CSR tracking. This means the daily sales count Yoel sees is underreported. Possible causes: techs closing sales in the field (not logged by CSRs), online self-service activations, or program upgrades counted as new sales in ServSuite.",
-      "action": "Audit the sales gap — pull ServSuite new customer list and cross-reference with CSR log to find the missing entries."
-    },
-    {
       "priority": "medium",
       "title": "Tech upsells severely underreported",
-      "detail": "Only 6 tech upsells logged in the CSV. With 91 total sales and techs in the field daily, this is almost certainly incomplete. Upsell attribution helps measure tech sales performance and incentives.",
+      "detail": "Only 9 tech upsells logged in the CSV. With 91 total sales and techs in the field daily, this is almost certainly incomplete. Upsell attribution helps measure tech sales performance and incentives.",
       "action": "Implement a simple upsell logging workflow — tech texts CSR with customer name, CSR logs it. Or build a simple form in GHL."
     },
     {
       "priority": "medium",
       "title": "Revenue tracking gap",
-      "detail": "YTD revenue is $916,981 across 9,539 invoices (avg $96/invoice). The Office Tracking CSV doesn't include revenue amounts, so the sales dashboard can't show dollar values per sale or per CSR.",
+      "detail": "YTD revenue is $946,368 across 9,863 invoices (avg $96/invoice). The Office Tracking CSV doesn't include revenue amounts, so the sales dashboard can't show dollar values per sale or per CSR.",
       "action": "Add a \"Sale Value\" column to the Office Tracking sheet, or better yet, pull revenue data directly from ServSuite into the dashboard."
     },
     {
       "priority": "high",
       "title": "Recoverable cancel opportunity",
-      "detail": "132 cancel events (27%) are flagged as recoverable in ServSuite. These are customers who paused or expressed temporary disinterest — prime targets for reactivation as peak season starts.",
+      "detail": "133 cancel events (26%) are flagged as recoverable in ServSuite. These are customers who paused or expressed temporary disinterest — prime targets for reactivation as peak season starts.",
       "action": "Build a reactivation campaign list from recoverable cancels. Target with seasonal restart offer via GHL automation."
     }
   ],

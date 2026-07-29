@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-07-27T12:49:52.459Z",
-  "period": "Jan 1 - Jul 27, 2026",
+  "generated_at": "2026-07-29T21:44:53.087Z",
+  "period": "Jan 1 - Jul 29, 2026",
   "headline": {
-    "ytd_revenue": 1437025,
+    "ytd_revenue": 1463829,
     "target": 5000000,
-    "pct_complete": 28.7,
-    "pct_year_elapsed": 57,
+    "pct_complete": 29.3,
+    "pct_year_elapsed": 57.5,
     "on_pace": false,
-    "annual_projection": 2521703,
-    "projection_gap": 2478297,
-    "remaining": 3562975,
-    "days_remaining": 157
+    "annual_projection": 2544274,
+    "projection_gap": 2455726,
+    "remaining": 3536171,
+    "days_remaining": 155
   },
   "pace": {
-    "daily_actual": 6909,
-    "daily_required": 22694,
-    "pace_ratio": 0.3,
+    "daily_actual": 6971,
+    "daily_required": 22814,
+    "pace_ratio": 0.31,
     "status": "behind",
-    "stops_per_day": 48.1,
-    "required_stops_per_day": 160.2,
+    "stops_per_day": 33.5,
+    "required_stops_per_day": 241.1,
     "fy25_daily_pace": 8294,
-    "pace_vs_fy25_pct": -17
+    "pace_vs_fy25_pct": -16
   },
   "milestones": [
     {
@@ -37,27 +37,27 @@
       "label": "$2M",
       "icon": "🥈",
       "reached": false,
-      "pctToMilestone": 72,
-      "daysToReach": 82,
-      "estimatedDate": "Oct 17"
+      "pctToMilestone": 73,
+      "daysToReach": 77,
+      "estimatedDate": "Oct 14"
     },
     {
       "amount": 3000000,
       "label": "$3M (FY25 Match)",
       "icon": "🥇",
       "reached": false,
-      "pctToMilestone": 48,
-      "daysToReach": 227,
-      "estimatedDate": "Mar 11"
+      "pctToMilestone": 49,
+      "daysToReach": 221,
+      "estimatedDate": "Mar 7"
     },
     {
       "amount": 4000000,
       "label": "$4M",
       "icon": "🏆",
       "reached": false,
-      "pctToMilestone": 36,
-      "daysToReach": 371,
-      "estimatedDate": "Aug 2"
+      "pctToMilestone": 37,
+      "daysToReach": 364,
+      "estimatedDate": "Jul 28"
     },
     {
       "amount": 5000000,
@@ -65,8 +65,8 @@
       "icon": "🎯",
       "reached": false,
       "pctToMilestone": 29,
-      "daysToReach": 516,
-      "estimatedDate": "Dec 25"
+      "daysToReach": 508,
+      "estimatedDate": "Dec 19"
     }
   ],
   "monthly_revenue": [
@@ -127,8 +127,8 @@
     {
       "month": "Jul",
       "monthNum": 7,
-      "actual": 189160,
-      "projected": 217184,
+      "actual": 215965,
+      "projected": 230859,
       "target": 575000,
       "isPast": false,
       "isCurrent": true
@@ -137,7 +137,7 @@
       "month": "Aug",
       "monthNum": 8,
       "actual": null,
-      "projected": 264779,
+      "projected": 267149,
       "target": 525000,
       "isPast": false,
       "isCurrent": false
@@ -146,7 +146,7 @@
       "month": "Sep",
       "monthNum": 9,
       "actual": null,
-      "projected": 239562,
+      "projected": 241706,
       "target": 475000,
       "isPast": false,
       "isCurrent": false
@@ -155,7 +155,7 @@
       "month": "Oct",
       "monthNum": 10,
       "actual": null,
-      "projected": 214345,
+      "projected": 216263,
       "target": 425000,
       "isPast": false,
       "isCurrent": false
@@ -164,7 +164,7 @@
       "month": "Nov",
       "monthNum": 11,
       "actual": null,
-      "projected": 126085,
+      "projected": 127214,
       "target": 250000,
       "isPast": false,
       "isCurrent": false
@@ -173,7 +173,7 @@
       "month": "Dec",
       "monthNum": 12,
       "actual": null,
-      "projected": 100868,
+      "projected": 101771,
       "target": 200000,
       "isPast": false,
       "isCurrent": false
@@ -183,29 +183,29 @@
     {
       "label": "Current Pace",
       "description": "If nothing changes",
-      "projected": 2521703,
-      "gap": 2478297,
+      "projected": 2544274,
+      "gap": 2455726,
       "achievable": false
     },
     {
       "label": "+2 Techs (Q2)",
       "description": "Hire 2 by April, ramp by May",
-      "projected": 3031643,
-      "gap": 1968357,
+      "projected": 2884978,
+      "gap": 2115022,
       "achievable": false
     },
     {
       "label": "+5 Techs (Q2-Q3)",
       "description": "Aggressive hiring wave",
-      "projected": 3584078,
-      "gap": 1415922,
+      "projected": 3254074,
+      "gap": 1745926,
       "achievable": false
     },
     {
       "label": "Price Increase +10%",
       "description": "Raise avg ticket $9.40",
-      "projected": 2773873,
-      "gap": 2226127,
+      "projected": 2798701,
+      "gap": 2201299,
       "achievable": false
     }
   ],
@@ -213,12 +213,12 @@
   "comparisons": {
     "fy2025_revenue": 3027365.83,
     "fy2025_daily": 8294,
-    "yoy_growth_pct": -17,
+    "yoy_growth_pct": -16,
     "target_vs_fy25_pct": 65
   },
   "data_sources": {
     "revenue": "ServiceMinder Org Download API invoices",
-    "service_minder_generated_at": "2026-07-27T12:49:52.251Z",
+    "service_minder_generated_at": "2026-07-29T21:44:52.888Z",
     "servsuite_processed_invoices_revenue": 946368.04999993
   }
 }
