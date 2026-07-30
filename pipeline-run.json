@@ -1,17 +1,44 @@
 {
-  "generated_at": "2026-04-23T17:28:34.486Z",
-  "total_duration_sec": 942,
-  "steps_total": 20,
-  "steps_passed": 20,
+  "generated_at": "2026-07-29T21:45:02.379Z",
+  "total_duration_sec": 80,
+  "steps_total": 23,
+  "steps_passed": 23,
   "steps_failed": 0,
   "steps_timed_out": 0,
   "all_green": true,
   "steps": [
     {
-      "name": "servsuite",
+      "name": "sales-import",
+      "success": true,
+      "exit_code": 1,
+      "duration_sec": 2,
+      "retries": 1,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "sales-csv-fallback",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 913,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "sharepoint-fallback",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 3,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "serviceminder-sync",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 52,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -20,7 +47,7 @@
       "name": "dashboard-update",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 3,
+      "duration_sec": 2,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -56,7 +83,7 @@
       "name": "build-sm-kpi",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 5,
+      "duration_sec": 3,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -74,7 +101,7 @@
       "name": "build-tech",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 3,
+      "duration_sec": 2,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -146,7 +173,7 @@
       "name": "weekly-snapshot",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 0,
+      "duration_sec": 1,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -164,7 +191,7 @@
       "name": "sync-report",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 1,
+      "duration_sec": 0,
       "retries": 0,
       "timed_out": false,
       "critical": false
