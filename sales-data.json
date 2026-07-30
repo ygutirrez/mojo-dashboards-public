@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-30T20:30:16.665Z",
+  "updated_at": "2026-07-30T21:00:16.637Z",
   "csv_date": "2026-07-30",
   "period": "Jan 1 - Jul 30, 2026 (YTD)",
   "summary": {
     "total_sales": 495,
-    "total_cancels": 281,
-    "net": 214,
+    "total_cancels": 282,
+    "net": 213,
     "paused_wp": 62,
     "paused_pct": 22,
     "days_tracked": 211
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 286,
-      "cancels": 90
+      "cancels": 91
     },
     {
       "name": "Norma",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Financial",
-      "count": 30,
+      "count": 31,
       "pct": 11
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-07-30",
       "dateFmt": "Jul 30",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-30",
+      "dateFmt": "Jul 30",
       "type": "Sale",
       "category": "Misting System",
       "csr": "Bev"
@@ -240,13 +247,6 @@
       "dateFmt": "Jul 28",
       "type": "Sale",
       "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-07-28",
-      "dateFmt": "Jul 28",
-      "type": "Sale",
-      "category": "Event Spray",
       "csr": "Lucy"
     }
   ],
