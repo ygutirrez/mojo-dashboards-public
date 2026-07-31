@@ -293,15 +293,18 @@
             return `<div class="fleet-row ${cls}"><span>${medal}</span><span><strong>${f.name}</strong></span><span style="font-size:0.65rem;color:${idleColor}">${idleH}h idle</span><span style="color:${scoreColor};font-weight:bold;">${f.score} pts${warn}</span></div>`;
         }).join('');
 
-        const reviewRaceUnderConstruction = `
-            <div style="height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:rgba(255,215,0,0.06);border:1px dashed rgba(255,215,0,0.25);border-radius:10px;">
-                <div>
-                    <div style="font-size:1.6rem;margin-bottom:8px;">🚧</div>
-                    <div style="font-size:1.1rem;font-weight:700;color:#ffd700;text-transform:uppercase;letter-spacing:1px;">Under Construction</div>
-                    <div style="font-size:0.78rem;color:#8b949e;margin-top:8px;line-height:1.35;">Review race data is being verified and will be back once it is corrected.</div>
+        const raceHTML = (d.review_race || []).map(r => {
+            const pct = Math.min(100, Math.round(r.count / r.target * 100));
+            const note = r.note ? ` <span style="color:${r.color};font-size:0.65rem;">🔥 ${r.note}</span>` : '';
+            return `<div class="racer">
+                <div class="racer-ava" style="background:linear-gradient(135deg,${r.color},${r.color}88);color:#fff;">${r.initials}</div>
+                <div class="racer-info">
+                    <div class="racer-name">${r.name}${note}</div>
+                    <div class="racer-bar"><div class="racer-fill" style="width:${pct}%;background:linear-gradient(90deg,${r.color},${r.color}88);"></div></div>
                 </div>
-            </div>
-        `;
+                <div class="racer-count">${r.count}/${r.target} <span style="color:#555;font-size:0.6rem;">(${Math.round(r.totalCredits || 0)} lifetime)</span></div>
+            </div>`;
+        }).join('') || '<div style="color:#8b949e;text-align:center;padding:18px;">No review race data available</div>';
 
         // Featured review
         const fr = d.featured_review;
@@ -356,7 +359,10 @@
             <div class="card" style="flex:1;overflow:hidden;min-height:0;">
                 <h2>⭐ Review Race — $50 Bonus</h2>
                 <div class="card-body" style="overflow-y:auto;">
-                    ${reviewRaceUnderConstruction}
+                    <div style="text-align:center;margin-bottom:10px;">
+                        <span style="background:linear-gradient(90deg,#ffd700,#ff6b35);color:#000;padding:4px 14px;border-radius:12px;font-weight:bold;font-size:0.8rem;">💰 $500 / 10 REVIEWS</span>
+                    </div>
+                    ${raceHTML}
                 </div>
             </div>
             <div class="card" style="flex:0 0 200px;">
