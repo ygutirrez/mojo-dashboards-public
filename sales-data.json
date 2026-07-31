@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-31T14:30:18.943Z",
+  "updated_at": "2026-07-31T15:00:16.330Z",
   "csv_date": "2026-07-31",
   "period": "Jan 1 - Jul 31, 2026 (YTD)",
   "summary": {
     "total_sales": 495,
-    "total_cancels": 283,
-    "net": 212,
+    "total_cancels": 284,
+    "net": 211,
     "paused_wp": 62,
     "paused_pct": 22,
     "days_tracked": 212
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 286,
-      "cancels": 92
+      "cancels": 93
     },
     {
       "name": "Norma",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Unhappy",
-      "count": 27,
+      "count": 28,
       "pct": 10
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-07-31",
       "dateFmt": "Jul 31",
       "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-07-31",
+      "dateFmt": "Jul 31",
+      "type": "Cancel",
       "category": "Financial",
       "csr": "Lucy"
     },
@@ -240,13 +247,6 @@
       "dateFmt": "Jul 29",
       "type": "Sale",
       "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-07-29",
-      "dateFmt": "Jul 29",
-      "type": "Sale",
-      "category": "One Time",
       "csr": "Lucy"
     }
   ],
