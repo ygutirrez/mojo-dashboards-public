@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-31T09:16:46.737Z",
-  "total_duration_sec": 88,
+  "generated_at": "2026-08-01T09:17:03.177Z",
+  "total_duration_sec": 110,
   "steps_total": 23,
   "steps_passed": 23,
   "steps_failed": 0,
@@ -10,9 +10,9 @@
     {
       "name": "sales-import",
       "success": true,
-      "exit_code": 1,
+      "exit_code": 0,
       "duration_sec": 1,
-      "retries": 1,
+      "retries": 0,
       "timed_out": false,
       "critical": false
     },
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 61,
+      "duration_sec": 83,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -191,7 +191,7 @@
       "name": "sync-report",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 0,
+      "duration_sec": 1,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -209,7 +209,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 15,
+      "duration_sec": 14,
       "retries": 0,
       "timed_out": false,
       "critical": true
