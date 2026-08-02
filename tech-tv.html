@@ -293,7 +293,9 @@
             return `<div class="fleet-row ${cls}"><span>${medal}</span><span><strong>${f.name}</strong></span><span style="font-size:0.65rem;color:${idleColor}">${idleH}h idle</span><span style="color:${scoreColor};font-weight:bold;">${f.score} pts${warn}</span></div>`;
         }).join('');
 
-        const raceHTML = (d.review_race || []).map(r => {
+        const reviewRace = [...(d.review_race || [])]
+            .sort((a, b) => (b.count || 0) - (a.count || 0) || String(a.name).localeCompare(String(b.name)));
+        const raceHTML = reviewRace.map(r => {
             const pct = Math.min(100, Math.round(r.count / r.target * 100));
             const note = r.note ? ` <span style="color:${r.color};font-size:0.65rem;">🔥 ${r.note}</span>` : '';
             return `<div class="racer">
