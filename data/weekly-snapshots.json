@@ -1,110 +1,66 @@
 {
   "description": "Weekly business metric snapshots for trend analysis",
   "source": {
-    "sales_cancels": "data/sales/sales-data-2026-07-31.csv",
+    "sales_cancels": "data/sales/sales-data-2026-08-03.csv",
     "revenue": "data/serviceminder/normalized/invoices.json",
     "visits": "data/serviceminder/normalized/appointments.json"
   },
-  "created": "2026-08-02T09:16:22.723Z",
-  "last_updated": "2026-08-02T09:16:22.723Z",
+  "created": "2026-08-03T09:16:45.973Z",
+  "last_updated": "2026-08-03T09:16:45.973Z",
   "snapshots": [
-    {
-      "week": "2026-W19",
-      "weekLabel": "May 11 - May 17",
-      "week_start": "2026-05-11",
-      "week_end": "2026-05-17",
-      "captured_at": "2026-08-02T09:16:22.723Z",
-      "day_of_year": 137,
-      "period": {
-        "sales": 0,
-        "cancels": 0,
-        "revenue": 48362,
-        "invoices": 539,
-        "visits": 2
-      },
-      "sales": {
-        "total": 0,
-        "value": 0,
-        "annual_value": 0,
-        "by_type": {},
-        "top_source": [
-          "Office tally",
-          0
-        ],
-        "top_service": [
-          "N/A",
-          0
-        ]
-      },
-      "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
-        "top_reason": [
-          "N/A",
-          0
-        ]
-      },
-      "revenue": {
-        "total": 922653,
-        "invoices": 9863,
-        "discounts": 0,
-        "avg_invoice": 94
-      },
-      "operations": {
-        "total_visits": 9,
-        "total_techs": 0,
-        "total_revenue": 922653
-      },
-      "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
-        "revenue_per_day": 6735,
-        "cancel_rate": 0
-      },
-      "wow_change": {
-        "sales": 0,
-        "cancels": 0,
-        "revenue": 48362,
-        "visits": 2,
-        "net": 0
-      }
-    },
     {
       "week": "2026-W20",
       "weekLabel": "May 18 - May 24",
       "week_start": "2026-05-18",
       "week_end": "2026-05-24",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 144,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 18,
+        "cancels": 12,
         "revenue": 53870,
         "invoices": 565,
         "visits": 18
       },
       "sales": {
-        "total": 0,
+        "total": 304,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 5,
+          "Restart": 82,
+          "Perimeter Pest": 5,
+          "Noseeum": 16,
+          "Barrier Spray": 103,
+          "Fleas/Ticks": 4,
+          "Misting System": 14,
+          "One Time": 7,
+          "Bundle - HPD/Barrier": 13,
+          "MS Takeover": 3,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 41,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 2
+        },
         "top_source": [
           "Office tally",
-          0
+          304
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          103
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 183,
+        "unique_accounts": 183,
+        "recoverable": 49,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          49
         ]
       },
       "revenue": {
@@ -119,17 +75,17 @@
         "total_revenue": 976523
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 121,
+        "sales_per_day": 2.11,
         "revenue_per_day": 6781,
-        "cancel_rate": 0
+        "cancel_rate": 37.6
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 18,
+        "cancels": 12,
         "revenue": 53870,
         "visits": 18,
-        "net": 0
+        "net": 121
       }
     },
     {
@@ -137,36 +93,54 @@
       "weekLabel": "May 25 - May 31",
       "week_start": "2026-05-25",
       "week_end": "2026-05-31",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 151,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 25,
+        "cancels": 5,
         "revenue": 40493,
         "invoices": 460,
         "visits": 470
       },
       "sales": {
-        "total": 0,
+        "total": 329,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 91,
+          "Perimeter Pest": 8,
+          "Noseeum": 17,
+          "Barrier Spray": 110,
+          "Fleas/Ticks": 5,
+          "Misting System": 14,
+          "One Time": 7,
+          "Bundle - HPD/Barrier": 13,
+          "MS Takeover": 3,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 44,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 2
+        },
         "top_source": [
           "Office tally",
-          0
+          329
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          110
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 188,
+        "unique_accounts": 188,
+        "recoverable": 49,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          49
         ]
       },
       "revenue": {
@@ -181,17 +155,17 @@
         "total_revenue": 1017017
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 141,
+        "sales_per_day": 2.18,
         "revenue_per_day": 6735,
-        "cancel_rate": 0
+        "cancel_rate": 36.4
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 25,
+        "cancels": 5,
         "revenue": 40493,
         "visits": 470,
-        "net": 0
+        "net": 20
       }
     },
     {
@@ -199,36 +173,55 @@
       "weekLabel": "Jun 1 - Jun 7",
       "week_start": "2026-06-01",
       "week_end": "2026-06-07",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 158,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 26,
+        "cancels": 5,
         "revenue": 57525,
         "invoices": 662,
         "visits": 581
       },
       "sales": {
-        "total": 0,
+        "total": 355,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 99,
+          "Perimeter Pest": 9,
+          "Noseeum": 21,
+          "Barrier Spray": 115,
+          "Fleas/Ticks": 5,
+          "Misting System": 14,
+          "One Time": 7,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 3,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 50,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 2,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          355
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          115
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 193,
+        "unique_accounts": 193,
+        "recoverable": 49,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          49
         ]
       },
       "revenue": {
@@ -243,17 +236,17 @@
         "total_revenue": 1074542
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 162,
+        "sales_per_day": 2.25,
         "revenue_per_day": 6801,
-        "cancel_rate": 0
+        "cancel_rate": 35.2
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 26,
+        "cancels": 5,
         "revenue": 57525,
         "visits": 581,
-        "net": 0
+        "net": 21
       }
     },
     {
@@ -261,36 +254,55 @@
       "weekLabel": "Jun 8 - Jun 14",
       "week_start": "2026-06-08",
       "week_end": "2026-06-14",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 165,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 24,
+        "cancels": 11,
         "revenue": 51248,
         "invoices": 604,
         "visits": 530
       },
       "sales": {
-        "total": 0,
+        "total": 379,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 102,
+          "Perimeter Pest": 9,
+          "Noseeum": 21,
+          "Barrier Spray": 126,
+          "Fleas/Ticks": 5,
+          "Misting System": 16,
+          "One Time": 7,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 53,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          379
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          126
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 204,
+        "unique_accounts": 204,
+        "recoverable": 52,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          52
         ]
       },
       "revenue": {
@@ -305,17 +317,17 @@
         "total_revenue": 1125790
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 175,
+        "sales_per_day": 2.3,
         "revenue_per_day": 6823,
-        "cancel_rate": 0
+        "cancel_rate": 35
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 24,
+        "cancels": 11,
         "revenue": 51248,
         "visits": 530,
-        "net": 0
+        "net": 13
       }
     },
     {
@@ -323,36 +335,55 @@
       "weekLabel": "Jun 15 - Jun 21",
       "week_start": "2026-06-15",
       "week_end": "2026-06-21",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 172,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 33,
+        "cancels": 11,
         "revenue": 47598,
         "invoices": 575,
         "visits": 619
       },
       "sales": {
-        "total": 0,
+        "total": 412,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 111,
+          "Perimeter Pest": 10,
+          "Noseeum": 22,
+          "Barrier Spray": 143,
+          "Fleas/Ticks": 5,
+          "Misting System": 16,
+          "One Time": 8,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 57,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          412
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          143
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 215,
+        "unique_accounts": 215,
+        "recoverable": 52,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          52
         ]
       },
       "revenue": {
@@ -367,17 +398,17 @@
         "total_revenue": 1173388
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 197,
+        "sales_per_day": 2.4,
         "revenue_per_day": 6822,
-        "cancel_rate": 0
+        "cancel_rate": 34.3
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 33,
+        "cancels": 11,
         "revenue": 47598,
         "visits": 619,
-        "net": 0
+        "net": 22
       }
     },
     {
@@ -385,36 +416,55 @@
       "weekLabel": "Jun 22 - Jun 28",
       "week_start": "2026-06-22",
       "week_end": "2026-06-28",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 179,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 14,
+        "cancels": 11,
         "revenue": 51315,
         "invoices": 550,
         "visits": 842
       },
       "sales": {
-        "total": 0,
+        "total": 426,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 112,
+          "Perimeter Pest": 10,
+          "Noseeum": 25,
+          "Barrier Spray": 152,
+          "Fleas/Ticks": 5,
+          "Misting System": 16,
+          "One Time": 8,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 58,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          426
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          152
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 226,
+        "unique_accounts": 226,
+        "recoverable": 56,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          56
         ]
       },
       "revenue": {
@@ -429,17 +479,17 @@
         "total_revenue": 1224703
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 200,
+        "sales_per_day": 2.38,
         "revenue_per_day": 6842,
-        "cancel_rate": 0
+        "cancel_rate": 34.7
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 14,
+        "cancels": 11,
         "revenue": 51315,
         "visits": 842,
-        "net": 0
+        "net": 3
       }
     },
     {
@@ -447,36 +497,55 @@
       "weekLabel": "Jun 29 - Jul 5",
       "week_start": "2026-06-29",
       "week_end": "2026-07-05",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 186,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 18,
         "revenue": 51624,
         "invoices": 588,
         "visits": 1096
       },
       "sales": {
-        "total": 0,
+        "total": 441,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 116,
+          "Perimeter Pest": 10,
+          "Noseeum": 26,
+          "Barrier Spray": 159,
+          "Fleas/Ticks": 5,
+          "Misting System": 16,
+          "One Time": 9,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 60,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          441
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          159
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 244,
+        "unique_accounts": 244,
+        "recoverable": 58,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          58
         ]
       },
       "revenue": {
@@ -491,17 +560,17 @@
         "total_revenue": 1276327
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 197,
+        "sales_per_day": 2.37,
         "revenue_per_day": 6862,
-        "cancel_rate": 0
+        "cancel_rate": 35.6
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 18,
         "revenue": 51624,
         "visits": 1096,
-        "net": 0
+        "net": -3
       }
     },
     {
@@ -509,36 +578,55 @@
       "weekLabel": "Jul 6 - Jul 12",
       "week_start": "2026-07-06",
       "week_end": "2026-07-12",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 193,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 9,
         "revenue": 51774,
         "invoices": 578,
         "visits": 1142
       },
       "sales": {
-        "total": 0,
+        "total": 456,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 117,
+          "Perimeter Pest": 12,
+          "Noseeum": 26,
+          "Barrier Spray": 168,
+          "Fleas/Ticks": 5,
+          "Misting System": 16,
+          "One Time": 10,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 62,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          456
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          168
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 253,
+        "unique_accounts": 253,
+        "recoverable": 60,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          60
         ]
       },
       "revenue": {
@@ -553,17 +641,17 @@
         "total_revenue": 1328101
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 203,
+        "sales_per_day": 2.36,
         "revenue_per_day": 6881,
-        "cancel_rate": 0
+        "cancel_rate": 35.7
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 9,
         "revenue": 51774,
         "visits": 1142,
-        "net": 0
+        "net": 6
       }
     },
     {
@@ -571,36 +659,55 @@
       "weekLabel": "Jul 13 - Jul 19",
       "week_start": "2026-07-13",
       "week_end": "2026-07-19",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 200,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 10,
         "revenue": 54499,
         "invoices": 613,
         "visits": 1187
       },
       "sales": {
-        "total": 0,
+        "total": 471,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 123,
+          "Perimeter Pest": 13,
+          "Noseeum": 26,
+          "Barrier Spray": 173,
+          "Fleas/Ticks": 5,
+          "Misting System": 17,
+          "One Time": 10,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 64,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          471
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          173
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 263,
+        "unique_accounts": 263,
+        "recoverable": 61,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          61
         ]
       },
       "revenue": {
@@ -615,17 +722,17 @@
         "total_revenue": 1382599
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 208,
+        "sales_per_day": 2.35,
         "revenue_per_day": 6913,
-        "cancel_rate": 0
+        "cancel_rate": 35.8
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 10,
         "revenue": 54499,
         "visits": 1187,
-        "net": 0
+        "net": 5
       }
     },
     {
@@ -633,36 +740,55 @@
       "weekLabel": "Jul 20 - Jul 26",
       "week_start": "2026-07-20",
       "week_end": "2026-07-26",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 207,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 13,
+        "cancels": 12,
         "revenue": 54425,
         "invoices": 609,
         "visits": 1264
       },
       "sales": {
-        "total": 0,
+        "total": 484,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 124,
+          "Perimeter Pest": 14,
+          "Noseeum": 27,
+          "Barrier Spray": 174,
+          "Fleas/Ticks": 5,
+          "Misting System": 17,
+          "One Time": 10,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 73,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          484
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          174
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 275,
+        "unique_accounts": 275,
+        "recoverable": 62,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          62
         ]
       },
       "revenue": {
@@ -677,17 +803,17 @@
         "total_revenue": 1437025
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 209,
+        "sales_per_day": 2.34,
         "revenue_per_day": 6942,
-        "cancel_rate": 0
+        "cancel_rate": 36.2
       },
       "wow_change": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 13,
+        "cancels": 12,
         "revenue": 54425,
         "visits": 1264,
-        "net": 0
+        "net": 1
       }
     },
     {
@@ -695,36 +821,55 @@
       "weekLabel": "Jul 27 - Aug 2",
       "week_start": "2026-07-27",
       "week_end": "2026-08-02",
-      "captured_at": "2026-08-02T09:16:22.723Z",
+      "captured_at": "2026-08-03T09:16:45.973Z",
       "day_of_year": 214,
       "period": {
-        "sales": 0,
-        "cancels": 0,
+        "sales": 15,
+        "cancels": 8,
         "revenue": 51264,
         "invoices": 559,
         "visits": 1233
       },
       "sales": {
-        "total": 0,
+        "total": 499,
         "value": 0,
         "annual_value": 0,
-        "by_type": {},
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 127,
+          "Perimeter Pest": 14,
+          "Noseeum": 29,
+          "Barrier Spray": 179,
+          "Fleas/Ticks": 5,
+          "Misting System": 19,
+          "One Time": 11,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 75,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
         "top_source": [
           "Office tally",
-          0
+          499
         ],
         "top_service": [
-          "N/A",
-          0
+          "Barrier Spray",
+          179
         ]
       },
       "cancels": {
-        "total_events": 0,
-        "unique_accounts": 0,
-        "recoverable": 0,
+        "total_events": 283,
+        "unique_accounts": 283,
+        "recoverable": 62,
         "top_reason": [
-          "N/A",
-          0
+          "Paused/WP",
+          62
         ]
       },
       "revenue": {
@@ -739,16 +884,97 @@
         "total_revenue": 1488288
       },
       "derived": {
-        "net_customers": 0,
-        "sales_per_day": 0,
+        "net_customers": 216,
+        "sales_per_day": 2.33,
         "revenue_per_day": 6955,
-        "cancel_rate": 0
+        "cancel_rate": 36.2
+      },
+      "wow_change": {
+        "sales": 15,
+        "cancels": 8,
+        "revenue": 51264,
+        "visits": 1233,
+        "net": 7
+      }
+    },
+    {
+      "week": "2026-W31",
+      "weekLabel": "Aug 3 - Aug 9",
+      "week_start": "2026-08-03",
+      "week_end": "2026-08-09",
+      "captured_at": "2026-08-03T09:16:45.973Z",
+      "day_of_year": 215,
+      "period": {
+        "sales": 0,
+        "cancels": 0,
+        "revenue": 0,
+        "invoices": 0,
+        "visits": 186
+      },
+      "sales": {
+        "total": 499,
+        "value": 0,
+        "annual_value": 0,
+        "by_type": {
+          "Mosquito/PP": 1,
+          "HPD  (Indoor)": 6,
+          "Restart": 127,
+          "Perimeter Pest": 14,
+          "Noseeum": 29,
+          "Barrier Spray": 179,
+          "Fleas/Ticks": 5,
+          "Misting System": 19,
+          "One Time": 11,
+          "Bundle - HPD/Barrier": 14,
+          "MS Takeover": 6,
+          "New": 1,
+          "Rodent Station": 1,
+          "Event Spray": 75,
+          "Barrier Spray + Flea": 3,
+          "Thermacell": 3,
+          "Inzecto": 4,
+          "Moved": 1
+        },
+        "top_source": [
+          "Office tally",
+          499
+        ],
+        "top_service": [
+          "Barrier Spray",
+          179
+        ]
+      },
+      "cancels": {
+        "total_events": 283,
+        "unique_accounts": 283,
+        "recoverable": 62,
+        "top_reason": [
+          "Paused/WP",
+          62
+        ]
+      },
+      "revenue": {
+        "total": 1488288,
+        "invoices": 16226,
+        "discounts": 0,
+        "avg_invoice": 92
+      },
+      "operations": {
+        "total_visits": 9177,
+        "total_techs": 0,
+        "total_revenue": 1488288
+      },
+      "derived": {
+        "net_customers": 216,
+        "sales_per_day": 2.26,
+        "revenue_per_day": 6734,
+        "cancel_rate": 36.2
       },
       "wow_change": {
         "sales": 0,
         "cancels": 0,
-        "revenue": 51264,
-        "visits": 1233,
+        "revenue": 0,
+        "visits": 186,
         "net": 0
       }
     }
