@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-05T13:00:18.844Z",
+  "updated_at": "2026-08-05T13:30:18.169Z",
   "csv_date": "2026-08-05",
   "period": "Jan 1 - Aug 5, 2026 (YTD)",
   "summary": {
-    "total_sales": 512,
-    "total_cancels": 290,
-    "net": 222,
+    "total_sales": 507,
+    "total_cancels": 291,
+    "net": 216,
     "paused_wp": 62,
     "paused_pct": 21,
     "days_tracked": 217
@@ -13,7 +13,7 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 297,
+      "sales": 292,
       "cancels": 97
     },
     {
@@ -24,17 +24,17 @@
     {
       "name": "Bev",
       "sales": 52,
-      "cancels": 91
+      "cancels": 92
     }
   ],
   "cancel_reasons": [
     {
-      "name": "Paused/WP",
-      "count": 62,
-      "pct": 21
+      "name": "Moved",
+      "count": 63,
+      "pct": 22
     },
     {
-      "name": "Moved",
+      "name": "Paused/WP",
       "count": 62,
       "pct": 21
     },
@@ -107,7 +107,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 184
+      "count": 183
     },
     {
       "name": "Restart",
@@ -138,10 +138,6 @@
       "count": 11
     },
     {
-      "name": "Inzecto",
-      "count": 8
-    },
-    {
       "name": "HPD  (Indoor)",
       "count": 6
     },
@@ -152,6 +148,10 @@
     {
       "name": "Fleas/Ticks",
       "count": 5
+    },
+    {
+      "name": "Inzecto",
+      "count": 4
     },
     {
       "name": "Barrier Spray + Flea",
@@ -179,6 +179,13 @@
     }
   ],
   "recent_activity": [
+    {
+      "date": "2026-08-05",
+      "dateFmt": "Aug 5",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
     {
       "date": "2026-08-05",
       "dateFmt": "Aug 5",
@@ -241,18 +248,11 @@
       "type": "Cancel",
       "category": "Financial",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-03",
-      "dateFmt": "Aug 3",
-      "type": "Sale",
-      "category": "Inzecto",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
-    "name": "Paused/WP",
-    "count": 62
+    "name": "Moved",
+    "count": 63
   },
   "tech_upsells": [
     {
