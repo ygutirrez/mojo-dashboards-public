@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-05T15:00:18.644Z",
+  "updated_at": "2026-08-05T15:30:19.429Z",
   "csv_date": "2026-08-05",
   "period": "Jan 1 - Aug 5, 2026 (YTD)",
   "summary": {
-    "total_sales": 507,
+    "total_sales": 508,
     "total_cancels": 291,
-    "net": 216,
+    "net": 217,
     "paused_wp": 62,
     "paused_pct": 21,
     "days_tracked": 217
@@ -13,7 +13,7 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 292,
+      "sales": 293,
       "cancels": 97
     },
     {
@@ -107,7 +107,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 183
+      "count": 184
     },
     {
       "name": "Restart",
@@ -182,6 +182,13 @@
     {
       "date": "2026-08-05",
       "dateFmt": "Aug 5",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-08-05",
+      "dateFmt": "Aug 5",
       "type": "Cancel",
       "category": "Moved",
       "csr": "Bev"
@@ -240,13 +247,6 @@
       "dateFmt": "Aug 3",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-03",
-      "dateFmt": "Aug 3",
-      "type": "Cancel",
-      "category": "Financial",
       "csr": "Lucy"
     }
   ],
