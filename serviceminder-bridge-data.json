@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-06T09:16:44.222Z",
+    "generated_at": "2026-08-06T12:16:34.227Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-06T09:16:28.044Z",
+      "generated_at": "2026-08-06T12:16:33.355Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 24100,
+      "appointments": 24101,
       "contacts": 13817,
-      "invoices": 16990,
+      "invoices": 16995,
       "proposals": 1612
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1519639,
+      "ytd_invoiced": 1520266,
       "avg_per_visit": 72,
-      "mtd": 34338,
-      "mtd_jobs": 372
+      "mtd": 34965,
+      "mtd_jobs": 377
     },
     "operations": {
       "total_jobs": 9998,
@@ -177,7 +177,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1519639
+      "total_wo_revenue": 1520266
     },
     "employees": [
       {
@@ -228,7 +228,7 @@
         "name": "Joe Pagan",
         "jobs": 738,
         "revenue": 80253.27,
-        "avgRevenue": 180.34,
+        "avgRevenue": 179.94,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -271,8 +271,8 @@
     ],
     "appointment_statuses": {
       "Queued": 15538,
-      "Scheduled": 5538,
-      "Started": 153,
+      "Scheduled": 5536,
+      "Started": 156,
       "Completed": 3
     },
     "service_mix": {
@@ -298,7 +298,7 @@
       "Synthetic + In2Care": 35,
       "In2Care Service": 34,
       "Re-Spray": 32,
-      "Misting System Repair Service": 30,
+      "Misting System Repair Service": 31,
       "Synthetic Signature Single Svc 3": 22,
       "Fly Management Service": 21,
       "One-time Service": 20,
@@ -330,7 +330,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1519639
+      "total_revenue": 1520266
     },
     "employees": [
       {
@@ -424,14 +424,14 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1519639,
+    "revenue": 1520266,
     "proposals": 1612,
     "invoiced_proposals": 1383,
     "complete_proposals": 151,
     "sources": {
-      "Online": 11171,
-      "Referral": 9828,
-      "MoJo Customer": 5161,
+      "Online": 11174,
+      "Referral": 9829,
+      "MoJo Customer": 5163,
       "Yard Sign": 3490,
       "Direct Mail Postcard": 3325,
       "Mosquito Joe Vehicle": 2536,
@@ -512,9 +512,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 34337.89,
-        "invoices": 372,
-        "appointments": 4630,
+        "invoiceRevenue": 34964.84,
+        "invoices": 377,
+        "appointments": 4631,
         "proposals": 0,
         "cancels": 6
       },
