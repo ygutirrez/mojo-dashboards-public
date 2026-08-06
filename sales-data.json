@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-06T18:00:16.496Z",
+  "updated_at": "2026-08-06T18:30:16.062Z",
   "csv_date": "2026-08-06",
   "period": "Jan 1 - Aug 6, 2026 (YTD)",
   "summary": {
     "total_sales": 514,
-    "total_cancels": 294,
-    "net": 220,
+    "total_cancels": 295,
+    "net": 219,
     "paused_wp": 62,
     "paused_pct": 21,
     "days_tracked": 218
@@ -24,7 +24,7 @@
     {
       "name": "Bev",
       "sales": 53,
-      "cancels": 93
+      "cancels": 94
     }
   ],
   "cancel_reasons": [
@@ -50,7 +50,7 @@
     },
     {
       "name": "Unhappy",
-      "count": 32,
+      "count": 33,
       "pct": 11
     },
     {
@@ -190,6 +190,13 @@
       "date": "2026-08-06",
       "dateFmt": "Aug 6",
       "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-08-06",
+      "dateFmt": "Aug 6",
+      "type": "Cancel",
       "category": "Moved",
       "csr": "Lucy"
     },
@@ -240,13 +247,6 @@
       "dateFmt": "Aug 5",
       "type": "Sale",
       "category": "Inzecto",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-05",
-      "dateFmt": "Aug 5",
-      "type": "Sale",
-      "category": "Barrier Spray",
       "csr": "Lucy"
     }
   ],
