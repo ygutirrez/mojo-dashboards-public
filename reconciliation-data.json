@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-08-05T09:16:33.278Z",
+  "generated_at": "2026-08-06T09:16:39.353Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-08-04.csv",
-    "date": "2026-08-04",
-    "totalSales": 505,
-    "totalCancels": 289,
+    "file": "sales-data-2026-08-05.csv",
+    "date": "2026-08-05",
+    "totalSales": 508,
+    "totalCancels": 292,
     "net": 216,
     "upsells": 9,
     "csrs": [
       {
         "name": "Lucy",
-        "sales": 290,
-        "cancels": 96
+        "sales": 293,
+        "cancels": 98
       },
       {
         "name": "Norma",
@@ -23,7 +23,7 @@
       {
         "name": "Bev",
         "sales": 52,
-        "cancels": 91
+        "cancels": 92
       }
     ],
     "weekly": [
@@ -179,8 +179,8 @@
       },
       {
         "week": "2026-08-03",
-        "sales": 10,
-        "cancels": 4
+        "sales": 13,
+        "cancels": 7
       },
       {
         "week": "2926-07-22",
@@ -190,7 +190,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-08-05T09:16:24.042Z",
+    "date": "2026-08-06T09:16:30.224Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -203,21 +203,21 @@
     "discrepancies": [
       {
         "metric": "Sales Count",
-        "csv": 505,
+        "csv": 508,
         "servSuite": 307,
-        "gap": -198,
-        "gapPct": -64,
+        "gap": -201,
+        "gapPct": -65,
         "severity": "high",
-        "explanation": "CSRs logged 198 more sales than ServSuite. Could include pending activations or data entry timing differences."
+        "explanation": "CSRs logged 201 more sales than ServSuite. Could include pending activations or data entry timing differences."
       },
       {
         "metric": "Cancel Events",
-        "csv": 289,
+        "csv": 292,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 220,
+        "gap": 217,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (289). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (292). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -231,11 +231,11 @@
     "cancelReasonComparison": {
       "csv": [
         {
-          "name": "Paused/WP",
-          "count": 62
+          "name": "Moved",
+          "count": 63
         },
         {
-          "name": "Moved",
+          "name": "Paused/WP",
           "count": 62
         },
         {
@@ -248,7 +248,7 @@
         },
         {
           "name": "Unhappy",
-          "count": 30
+          "count": 31
         },
         {
           "name": "One Time",
@@ -256,7 +256,7 @@
         },
         {
           "name": "Barrier Spray",
-          "count": 15
+          "count": 16
         },
         {
           "name": "Went w/Competitor",
@@ -311,7 +311,7 @@
       "csvCategories": [
         {
           "name": "Barrier Spray",
-          "count": 183
+          "count": 184
         },
         {
           "name": "Restart",
@@ -319,7 +319,7 @@
         },
         {
           "name": "Event Spray",
-          "count": 75
+          "count": 77
         },
         {
           "name": "Noseeum",
