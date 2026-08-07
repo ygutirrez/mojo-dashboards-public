@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-07T12:16:29.830Z",
+    "generated_at": "2026-08-07T13:15:56.907Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-07T12:16:28.872Z",
+      "generated_at": "2026-08-07T13:15:55.941Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 24525,
+      "appointments": 24542,
       "contacts": 13826,
-      "invoices": 17137,
+      "invoices": 17140,
       "proposals": 1612
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1532462,
+      "ytd_invoiced": 1532695,
       "avg_per_visit": 71,
-      "mtd": 47161,
-      "mtd_jobs": 519
+      "mtd": 47394,
+      "mtd_jobs": 522
     },
     "operations": {
       "total_jobs": 9998,
@@ -178,14 +178,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1532462
+      "total_wo_revenue": 1532695
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 59745.65,
-        "avgRevenue": 88.78,
+        "revenue": 59831.64,
+        "avgRevenue": 88.77,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -228,8 +228,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 82783.27,
-        "avgRevenue": 180.75,
+        "revenue": 83243.27,
+        "avgRevenue": 180.96,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -261,8 +261,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 43440.35,
-        "avgRevenue": 83.06,
+        "revenue": 43692.33,
+        "avgRevenue": 83.22,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -271,15 +271,15 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 15887,
-      "Scheduled": 5598,
-      "Started": 159,
+      "Queued": 15889,
+      "Scheduled": 5603,
+      "Started": 163,
       "Completed": 3
     },
     "service_mix": {
       "Mojo Essential": 9753,
-      "Synthetic Barrier Spray - 2 week": 6791,
-      "Misting System Recurring Service Bi-Monthly": 1361,
+      "Synthetic Barrier Spray - 2 week": 6795,
+      "Misting System Recurring Service Bi-Monthly": 1367,
       "HPD - 42 Days": 783,
       "Gnat/Midge/No-seeums Service - 2 weeks": 635,
       "Synthetic Barrier Spray - 4 week": 423,
@@ -298,7 +298,7 @@
       "Flea Service": 35,
       "Synthetic + In2Care": 35,
       "In2Care Service": 34,
-      "Re-Spray": 32,
+      "Re-Spray": 33,
       "Misting System Repair Service": 31,
       "Synthetic Signature Single Svc 3": 22,
       "Fly Management Service": 21,
@@ -331,7 +331,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1532462
+      "total_revenue": 1532695
     },
     "employees": [
       {
@@ -341,7 +341,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 59746,
+        "revenue": 59832,
         "upsells": 0,
         "resprays": 0
       },
@@ -385,7 +385,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 82783,
+        "revenue": 83243,
         "upsells": 0,
         "resprays": 0
       },
@@ -418,26 +418,26 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 43440,
+        "revenue": 43692,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1532462,
+    "revenue": 1532695,
     "proposals": 1612,
     "invoiced_proposals": 1379,
     "complete_proposals": 155,
     "sources": {
-      "Online": 11390,
-      "Referral": 9943,
-      "MoJo Customer": 5234,
+      "Online": 11396,
+      "Referral": 9944,
+      "MoJo Customer": 5237,
       "Yard Sign": 3530,
       "Direct Mail Postcard": 3349,
       "Mosquito Joe Vehicle": 2577,
       "Other": 1138,
-      "Advertising": 895,
+      "Advertising": 899,
       "Printed Material": 464,
       "Mail Advertising": 384,
       "Existing Customer": 304,
@@ -513,9 +513,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 47160.57,
-        "invoices": 519,
-        "appointments": 4633,
+        "invoiceRevenue": 47393.54,
+        "invoices": 522,
+        "appointments": 4635,
         "proposals": 0,
         "cancels": 7
       },
@@ -531,7 +531,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2691,
+        "appointments": 2697,
         "proposals": 0,
         "cancels": 9
       },
@@ -547,7 +547,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 363,
+        "appointments": 366,
         "proposals": 0,
         "cancels": 4
       }
