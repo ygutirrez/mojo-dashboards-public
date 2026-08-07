@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-07T19:00:16.180Z",
+  "updated_at": "2026-08-07T19:30:16.550Z",
   "csv_date": "2026-08-07",
   "period": "Jan 1 - Aug 7, 2026 (YTD)",
   "summary": {
     "total_sales": 515,
-    "total_cancels": 297,
-    "net": 218,
+    "total_cancels": 298,
+    "net": 217,
     "paused_wp": 62,
     "paused_pct": 21,
     "days_tracked": 219
@@ -24,7 +24,7 @@
     {
       "name": "Bev",
       "sales": 53,
-      "cancels": 94
+      "cancels": 95
     }
   ],
   "cancel_reasons": [
@@ -40,7 +40,7 @@
     },
     {
       "name": "Not Interested",
-      "count": 36,
+      "count": 37,
       "pct": 12
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-08-07",
       "dateFmt": "Aug 7",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-08-07",
+      "dateFmt": "Aug 7",
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
@@ -240,13 +247,6 @@
       "dateFmt": "Aug 5",
       "type": "Sale",
       "category": "Event Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-05",
-      "dateFmt": "Aug 5",
-      "type": "Cancel",
-      "category": "Barrier Spray",
       "csr": "Lucy"
     }
   ],
