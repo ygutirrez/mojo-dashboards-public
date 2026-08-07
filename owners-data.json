@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-08-06T09:16:44.222Z",
-  "generated_date": "August 6, 2026",
+  "generated_at": "2026-08-07T09:17:03.690Z",
+  "generated_date": "August 7, 2026",
   "sales": {
-    "csv_date": "2026-08-05",
-    "total_sales": 512,
-    "total_cancels": 292,
-    "net": 220,
+    "csv_date": "2026-08-06",
+    "total_sales": 514,
+    "total_cancels": 296,
+    "net": 218,
     "paused": 62,
     "cancel_reasons": {
-      "Moved": 63,
+      "Moved": 65,
       "Paused/WP": 62,
       "Not Interested": 36,
       "Financial": 33,
-      "Unhappy": 31,
+      "Unhappy": 33,
       "One Time": 17,
       "Barrier Spray": 16,
       "Went w/Competitor": 14,
@@ -25,8 +25,8 @@
       "Went w/competitor": 1
     },
     "sale_categories": {
-      "Barrier Spray": 185,
-      "Restart": 129,
+      "Barrier Spray": 186,
+      "Restart": 130,
       "Event Spray": 78,
       "Noseeum": 29,
       "Misting System": 20,
@@ -46,16 +46,16 @@
     },
     "team": {
       "Lucy": {
-        "sales": 297,
-        "cancels": 98
+        "sales": 298,
+        "cancels": 100
       },
       "Norma": {
         "sales": 163,
         "cancels": 102
       },
       "Bev": {
-        "sales": 52,
-        "cancels": 92
+        "sales": 53,
+        "cancels": 94
       }
     },
     "paused_pct": 21
@@ -93,34 +93,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1519639,
-    "avg_per_visit": 72,
-    "mtd": 34338,
-    "mtd_jobs": 372
+    "ytd_invoiced": 1532462,
+    "avg_per_visit": 71,
+    "mtd": 47161,
+    "mtd_jobs": 519
   },
   "operations": {
     "total_jobs": 9998,
     "jobs_per_tech_day": 8,
-    "revenue_per_tech_day": 739,
+    "revenue_per_tech_day": 734,
     "first_time_success": 98.9,
     "callback_rate": 1.1,
     "resprays": 114,
     "active_techs": 8,
-    "working_days_ytd": 156
+    "working_days_ytd": 157
   },
   "serviceminder": {
-    "generated_at": "2026-08-06T09:16:44.222Z",
+    "generated_at": "2026-08-07T09:17:03.690Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-06T09:16:28.044Z",
+      "generated_at": "2026-08-07T09:16:46.893Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 24100,
-      "contacts": 13817,
-      "invoices": 16990,
+      "appointments": 24525,
+      "contacts": 13826,
+      "invoices": 17137,
       "proposals": 1612
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -224,14 +224,15 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1534,
-    "total_cancels": 34,
-    "net": 1500,
+    "total_cancels": 36,
+    "net": 1498,
     "cancel_reasons": {
-      "Moving": 12,
+      "Moving": 13,
       "No Longer Needed": 10,
       "Found Different Company": 7,
       "Financial": 4,
-      "Scheduling Conflict": 1
+      "Scheduling Conflict": 1,
+      "Error": 1
     },
     "sale_categories": {
       "Mojo Essential": 743,
