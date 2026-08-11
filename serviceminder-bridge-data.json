@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-11T12:16:30.592Z",
+    "generated_at": "2026-08-11T13:15:52.773Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-11T12:16:29.686Z",
+      "generated_at": "2026-08-11T13:15:51.777Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 24670,
+      "appointments": 24678,
       "contacts": 13857,
-      "invoices": 17339,
+      "invoices": 17359,
       "proposals": 1614
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1551788,
+      "ytd_invoiced": 1554030,
       "avg_per_visit": 71,
-      "mtd": 66486,
-      "mtd_jobs": 721
+      "mtd": 68729,
+      "mtd_jobs": 741
     },
     "operations": {
       "total_jobs": 9998,
@@ -179,7 +179,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1551788
+      "total_wo_revenue": 1554030
     },
     "employees": [
       {
@@ -196,8 +196,8 @@
       {
         "name": "Stanley Prophete",
         "jobs": 1285,
-        "revenue": 54662.56,
-        "avgRevenue": 87.6,
+        "revenue": 54552.57,
+        "avgRevenue": 87.56,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
@@ -251,8 +251,8 @@
       {
         "name": "Travis Johnson",
         "jobs": 265,
-        "revenue": 26908.83,
-        "avgRevenue": 86.52,
+        "revenue": 26525.87,
+        "avgRevenue": 86.4,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
@@ -262,8 +262,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 43606.34,
-        "avgRevenue": 83.22,
+        "revenue": 43520.35,
+        "avgRevenue": 83.21,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -272,9 +272,9 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 15997,
-      "Scheduled": 5606,
-      "Started": 172,
+      "Queued": 15996,
+      "Scheduled": 5608,
+      "Started": 179,
       "Completed": 3
     },
     "service_mix": {
@@ -285,13 +285,13 @@
       "Gnat/Midge/No-seeums Service - 2 weeks": 655,
       "Synthetic Barrier Spray - 4 week": 423,
       "Accelerated - Synthetic Signature Service": 340,
-      "All-Natural Barrier Spray": 293,
+      "All-Natural Barrier Spray": 297,
       "Misting system - 4 Weeks": 183,
       "InZecto Trap Service": 133,
       "In2Care Service - 4 Weeks Service": 127,
       "Misting system - 6 Weeks": 105,
       "Inzecto Trap Replacement": 96,
-      "Synthetic Signature Service": 83,
+      "Synthetic Signature Service": 87,
       "Special Event Service": 72,
       "Property Assessment": 63,
       "Mojo Essential - Eco Friendly": 41,
@@ -332,7 +332,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1551788
+      "total_revenue": 1554030
     },
     "employees": [
       {
@@ -353,7 +353,7 @@
         "initials": "SP",
         "jobs": 1285,
         "rank": 2,
-        "revenue": 54663,
+        "revenue": 54553,
         "upsells": 0,
         "resprays": 0
       },
@@ -408,7 +408,7 @@
         "initials": "TJ",
         "jobs": 265,
         "rank": 7,
-        "revenue": 26909,
+        "revenue": 26526,
         "upsells": 0,
         "resprays": 0
       },
@@ -419,30 +419,30 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 43606,
+        "revenue": 43520,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1551788,
+    "revenue": 1554030,
     "proposals": 1614,
     "invoiced_proposals": 1377,
     "complete_proposals": 157,
     "sources": {
-      "Online": 11518,
-      "Referral": 10006,
-      "MoJo Customer": 5264,
-      "Yard Sign": 3554,
-      "Direct Mail Postcard": 3374,
+      "Online": 11524,
+      "Referral": 10017,
+      "MoJo Customer": 5269,
+      "Yard Sign": 3556,
+      "Direct Mail Postcard": 3376,
       "Mosquito Joe Vehicle": 2598,
       "Other": 1144,
-      "Advertising": 911,
+      "Advertising": 912,
       "Printed Material": 464,
       "Mail Advertising": 388,
       "Existing Customer": 305,
-      "Online Search": 202,
+      "Online Search": 203,
       "DMP": 159,
       "Accelerated": 71,
       "Neighborly": 66,
@@ -514,9 +514,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 66486.43,
-        "invoices": 721,
-        "appointments": 4653,
+        "invoiceRevenue": 68728.75,
+        "invoices": 741,
+        "appointments": 4652,
         "proposals": 0,
         "cancels": 9
       },
@@ -524,7 +524,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3736,
+        "appointments": 3740,
         "proposals": 0,
         "cancels": 10
       },
@@ -532,7 +532,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2738,
+        "appointments": 2741,
         "proposals": 0,
         "cancels": 11
       },
@@ -540,7 +540,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1320,
+        "appointments": 1321,
         "proposals": 0,
         "cancels": 1
       },
@@ -548,7 +548,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 370,
+        "appointments": 371,
         "proposals": 0,
         "cancels": 5
       }
