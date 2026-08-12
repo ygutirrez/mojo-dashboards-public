@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-11T09:16:04.515Z",
+  "generated_at": "2026-08-12T09:16:14.072Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-08-10.csv",
-    "date": "2026-08-10",
-    "totalSales": 515,
+    "file": "sales-data-2026-08-11.csv",
+    "date": "2026-08-11",
+    "totalSales": 517,
     "totalCancels": 300,
-    "net": 215,
+    "net": 217,
     "upsells": 9,
     "csrs": [
       {
@@ -22,7 +22,7 @@
       },
       {
         "name": "Bev",
-        "sales": 54,
+        "sales": 56,
         "cancels": 97
       }
     ],
@@ -184,7 +184,7 @@
       },
       {
         "week": "2026-08-10",
-        "sales": 3,
+        "sales": 5,
         "cancels": 2
       },
       {
@@ -195,7 +195,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-08-11T09:15:54.944Z",
+    "date": "2026-08-12T09:16:04.646Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -208,12 +208,12 @@
     "discrepancies": [
       {
         "metric": "Sales Count",
-        "csv": 515,
+        "csv": 517,
         "servSuite": 307,
-        "gap": -208,
+        "gap": -210,
         "gapPct": -68,
         "severity": "high",
-        "explanation": "CSRs logged 208 more sales than ServSuite. Could include pending activations or data entry timing differences."
+        "explanation": "CSRs logged 210 more sales than ServSuite. Could include pending activations or data entry timing differences."
       },
       {
         "metric": "Cancel Events",
@@ -332,7 +332,7 @@
         },
         {
           "name": "Misting System",
-          "count": 21
+          "count": 22
         },
         {
           "name": "Perimeter Pest",
@@ -351,12 +351,12 @@
           "count": 6
         },
         {
-          "name": "MS Takeover",
+          "name": "Fleas/Ticks",
           "count": 6
         },
         {
-          "name": "Fleas/Ticks",
-          "count": 5
+          "name": "MS Takeover",
+          "count": 6
         },
         {
           "name": "Inzecto",
