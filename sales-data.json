@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-12T20:30:17.203Z",
+  "updated_at": "2026-08-12T21:00:18.399Z",
   "csv_date": "2026-08-12",
   "period": "Jan 1 - Aug 12, 2026 (YTD)",
   "summary": {
     "total_sales": 524,
-    "total_cancels": 300,
-    "net": 224,
+    "total_cancels": 301,
+    "net": 223,
     "paused_wp": 62,
     "paused_pct": 21,
     "days_tracked": 224
@@ -19,7 +19,7 @@
     {
       "name": "Norma",
       "sales": 163,
-      "cancels": 102
+      "cancels": 103
     },
     {
       "name": "Bev",
@@ -45,8 +45,8 @@
     },
     {
       "name": "Financial",
-      "count": 34,
-      "pct": 11
+      "count": 35,
+      "pct": 12
     },
     {
       "name": "Unhappy",
@@ -182,6 +182,13 @@
     {
       "date": "2026-08-12",
       "dateFmt": "Aug 12",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-08-12",
+      "dateFmt": "Aug 12",
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
@@ -240,13 +247,6 @@
       "dateFmt": "Aug 10",
       "type": "Cancel",
       "category": "Moved",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-08-07",
-      "dateFmt": "Aug 7",
-      "type": "Sale",
-      "category": "Misting System",
       "csr": "Bev"
     }
   ],
