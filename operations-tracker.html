@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MoJo Operations Tracker</title>
+  <style>
+    :root{--bg:#0f0f1a;--panel:#17172a;--line:#303047;--text:#f7f7fb;--muted:#a6a6bb;--gold:#ffd43b;--green:#34d399;--red:#fb7185}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{max-width:920px;margin:auto;padding:24px 16px 80px}header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}
+    h1{font-size:clamp(1.55rem,5vw,2.25rem);margin:0}.eyebrow{color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+    .muted{color:var(--muted)}a{color:var(--gold)}.panel{background:linear-gradient(145deg,#1b1b31,#151528);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}
+    .roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.role{border:1px solid var(--line);border-radius:12px;padding:16px;background:#111120;color:var(--text);text-align:left;cursor:pointer}
+    .role strong{display:block;font-size:1.05rem}.role.active{border-color:var(--gold);box-shadow:0 0 0 2px #ffd43b25}.role small{color:var(--muted)}
+    label.title{display:block;font-weight:800;margin:20px 0 8px}input,textarea,select{width:100%;background:#10101e;border:1px solid var(--line);border-radius:9px;color:var(--text);padding:12px;font:inherit}textarea{min-height:96px;resize:vertical}
+    .tasks{display:grid;gap:9px}.task{display:grid;grid-template-columns:24px 1fr 120px;gap:10px;align-items:center;background:#111120;border:1px solid #28283d;border-radius:10px;padding:11px}.task input{width:18px;height:18px}.task select{padding:8px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer;text-decoration:none}.primary{background:var(--gold);color:#18130a}.secondary{background:#2a2a40;color:#fff}.note{border-left:3px solid var(--gold);padding-left:12px;color:var(--muted);font-size:.9rem}
+    .hidden{display:none}.required{color:var(--red)}#status{margin-top:12px;color:var(--green)}
+    @media(max-width:650px){.roles{grid-template-columns:1fr}.task{grid-template-columns:24px 1fr}.task select{grid-column:2}header{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body><main>
+  <header><div><div class="eyebrow">Mosquito Joe of Miami</div><h1>Operations Tracker</h1><div class="muted">Weekly accountability report for office and field operations</div></div><a href="./">← Command Center</a></header>
+  <div class="panel">
+    <div class="eyebrow">1 · Select your role</div>
+    <div class="roles" style="margin-top:12px">
+      <button class="role" data-role="Travis"><strong>Travis</strong><small>Operations Manager · Office / Systems</small></button>
+      <button class="role" data-role="Jorge"><strong>Jorge</strong><small>Field Operations Manager · Tech Oversight</small></button>
+    </div>
+  </div>
+  <form id="report" class="panel hidden">
+    <div class="eyebrow">2 · Weekly report</div>
+    <label class="title" for="week">Week ending <span class="required">*</span></label><input type="date" id="week" required>
+    <label class="title">Task status</label><div id="tasks" class="tasks"></div>
+    <label class="title" for="wins">Wins / work completed</label><textarea id="wins" placeholder="What got done this week?"></textarea>
+    <label class="title" for="issues">Issues, blockers, or follow-up needed</label><textarea id="issues" placeholder="What needs attention, resources, or a decision?"></textarea>
+    <label class="title" for="next">Priorities for next week</label><textarea id="next" placeholder="Top priorities and commitments for next week"></textarea>
+    <label class="title" for="safety">Safety / compliance notes</label><textarea id="safety" placeholder="Incidents, risks, expiring items, or corrective action"></textarea>
+    <div class="actions"><button class="btn primary" type="submit">Submit weekly report</button><button class="btn secondary" type="button" id="draft">Save draft on this device</button></div>
+    <div id="status"></div>
+  </form>
+  <div class="panel"><div class="eyebrow">Management</div><p class="note">Reports are stored as auditable entries in the private dashboard repository. A GitHub login with repository access is required to submit or review them.</p><div class="actions"><a class="btn secondary" href="https://github.com/ygutirrez/mojo-dashboards/issues?q=is%3Aissue+label%3Aoperations-report" target="_blank" rel="noopener">Review submitted reports</a></div></div>
+</main>
+<script>
+const tasks={
+Travis:["Inventory check-up: chemicals, PPE, and equipment","Driver licenses, insurance, permits, and compliance review","Blower maintenance scheduling","Reports, product ordering, and ClickUp follow-up","New technician training and onboarding","Yesterday's pending to-do list follow-up","Tech meeting agenda, scheduling, and leadership","Customer complaints/issues follow-up with Bev","Resources and support coordinated for Jorge","Weekly operations report: jobs, callbacks, revenue vs projections","Vehicle logs and maintenance reviewed with Jorge","Next-day vehicle and technician readiness confirmed"],
+Jorge:["Morning vehicle and equipment inspections","Vehicle maintenance: oil, tires, repairs, mechanic coordination","Blower/equipment gas and maintenance standards","Warehouse readiness, cleanliness, and safety checks","Supply pickups completed as needed","Field spot checks: quality, uniform, customer interaction","Morning truck checkout and evening check-in","Daily field issues reported to Travis","Formal weekly vehicle inspections submitted","Warehouse deep check and chemical storage compliance","Shadowed 1–2 technicians in the field","Weekly field issue summary delivered before meeting"]};
+let role="";const form=document.querySelector('#report'),taskBox=document.querySelector('#tasks'),statusEl=document.querySelector('#status');
+const esc=s=>(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+document.querySelectorAll('.role').forEach(b=>b.onclick=()=>{role=b.dataset.role;document.querySelectorAll('.role').forEach(x=>x.classList.toggle('active',x===b));form.classList.remove('hidden');render();restore();form.scrollIntoView({behavior:'smooth',block:'start'})});
+function render(){taskBox.innerHTML=tasks[role].map((t,i)=>`<div class="task"><input type="checkbox" id="t${i}"><label for="t${i}">${esc(t)}</label><select aria-label="Status for ${esc(t)}"><option>Complete</option><option>In progress</option><option>Needs attention</option><option>Not applicable</option></select></div>`).join('')}
+function data(){return{role,week:week.value,wins:wins.value,issues:issues.value,next:next.value,safety:safety.value,items:[...taskBox.querySelectorAll('.task')].map((x,i)=>({task:tasks[role][i],done:x.querySelector('input').checked,status:x.querySelector('select').value}))}}
+function restore(){try{const d=JSON.parse(localStorage.getItem('mojo-ops-'+role)||'null');if(!d)return;week.value=d.week||week.value;wins.value=d.wins||'';issues.value=d.issues||'';next.value=d.next||'';safety.value=d.safety||'';d.items?.forEach((v,i)=>{const row=taskBox.children[i];if(row){row.querySelector('input').checked=v.done;row.querySelector('select').value=v.status}})}catch(e){}}
+document.querySelector('#draft').onclick=()=>{localStorage.setItem('mojo-ops-'+role,JSON.stringify(data()));statusEl.textContent='Draft saved on this device.'}
+form.onsubmit=e=>{e.preventDefault();const d=data();if(!d.week)return;const lines=d.items.map(x=>`- [${x.done?'x':' '}] ${x.task} — **${x.status}**`).join('\n');const body=`## Weekly Operations Report\n\n**Manager:** ${d.role}\n**Week ending:** ${d.week}\n\n### Task status\n${lines}\n\n### Wins / completed\n${d.wins||'None reported'}\n\n### Issues / blockers\n${d.issues||'None reported'}\n\n### Next-week priorities\n${d.next||'None reported'}\n\n### Safety / compliance\n${d.safety||'None reported'}\n\n_Submitted from MoJo Operations Tracker_`;localStorage.setItem('mojo-ops-'+role,JSON.stringify(d));const url='https://github.com/ygutirrez/mojo-dashboards/issues/new?labels=operations-report,'+role.toLowerCase()+'&title='+encodeURIComponent(`[Operations] ${role} — Week ending ${d.week}`)+'&body='+encodeURIComponent(body);window.open(url,'_blank','noopener');statusEl.textContent='GitHub opened. Review the report and click “Submit new issue” to finish.'}
+const now=new Date(),day=now.getDay(),delta=(5-day+7)%7;now.setDate(now.getDate()+delta);week.value=now.toISOString().slice(0,10);
+</script></body></html>
