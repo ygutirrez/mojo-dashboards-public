@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-13T17:30:16.680Z",
+  "updated_at": "2026-08-13T18:00:18.100Z",
   "csv_date": "2026-08-13",
   "period": "Jan 1 - Aug 13, 2026 (YTD)",
   "summary": {
     "total_sales": 524,
-    "total_cancels": 304,
-    "net": 220,
+    "total_cancels": 305,
+    "net": 219,
     "paused_wp": 62,
     "paused_pct": 20,
     "days_tracked": 225
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 304,
-      "cancels": 103
+      "cancels": 104
     },
     {
       "name": "Norma",
@@ -30,7 +30,7 @@
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 66,
+      "count": 67,
       "pct": 22
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-08-13",
       "dateFmt": "Aug 13",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-08-13",
+      "dateFmt": "Aug 13",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Lucy"
     },
@@ -241,18 +248,11 @@
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-10",
-      "dateFmt": "Aug 10",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 66
+    "count": 67
   },
   "tech_upsells": [
     {
