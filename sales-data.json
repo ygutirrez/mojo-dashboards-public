@@ -1,20 +1,20 @@
 {
-  "updated_at": "2026-08-13T12:30:17.960Z",
+  "updated_at": "2026-08-13T13:00:19.374Z",
   "csv_date": "2026-08-13",
   "period": "Jan 1 - Aug 13, 2026 (YTD)",
   "summary": {
-    "total_sales": 525,
-    "total_cancels": 301,
-    "net": 224,
+    "total_sales": 524,
+    "total_cancels": 303,
+    "net": 221,
     "paused_wp": 62,
-    "paused_pct": 21,
+    "paused_pct": 20,
     "days_tracked": 225
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 305,
-      "cancels": 101
+      "sales": 304,
+      "cancels": 102
     },
     {
       "name": "Norma",
@@ -24,7 +24,7 @@
     {
       "name": "Bev",
       "sales": 57,
-      "cancels": 97
+      "cancels": 98
     }
   ],
   "cancel_reasons": [
@@ -36,11 +36,11 @@
     {
       "name": "Paused/WP",
       "count": 62,
-      "pct": 21
+      "pct": 20
     },
     {
       "name": "Not Interested",
-      "count": 38,
+      "count": 40,
       "pct": 13
     },
     {
@@ -115,7 +115,7 @@
     },
     {
       "name": "Event Spray",
-      "count": 80
+      "count": 79
     },
     {
       "name": "Noseeum",
@@ -180,11 +180,18 @@
   ],
   "recent_activity": [
     {
-      "date": "2026-08-12",
-      "dateFmt": "Aug 12",
-      "type": "Sale",
-      "category": "Event Spray",
+      "date": "2026-08-13",
+      "dateFmt": "Aug 13",
+      "type": "Cancel",
+      "category": "Not Interested",
       "csr": "Lucy"
+    },
+    {
+      "date": "2026-08-13",
+      "dateFmt": "Aug 13",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
     },
     {
       "date": "2026-08-12",
@@ -241,13 +248,6 @@
       "type": "Sale",
       "category": "Restart",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-10",
-      "dateFmt": "Aug 10",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
