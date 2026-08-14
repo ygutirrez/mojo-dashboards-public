@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-14T18:00:16.958Z",
+  "updated_at": "2026-08-14T18:30:16.520Z",
   "csv_date": "2026-08-14",
   "period": "Jan 1 - Aug 14, 2026 (YTD)",
   "summary": {
-    "total_sales": 526,
-    "total_cancels": 306,
+    "total_sales": 527,
+    "total_cancels": 307,
     "net": 220,
     "paused_wp": 62,
     "paused_pct": 20,
@@ -18,19 +18,19 @@
     },
     {
       "name": "Norma",
-      "sales": 164,
+      "sales": 165,
       "cancels": 104
     },
     {
       "name": "Bev",
       "sales": 57,
-      "cancels": 98
+      "cancels": 99
     }
   ],
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 68,
+      "count": 69,
       "pct": 22
     },
     {
@@ -107,7 +107,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 189
+      "count": 190
     },
     {
       "name": "Restart",
@@ -184,6 +184,20 @@
       "dateFmt": "Aug 14",
       "type": "Cancel",
       "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-08-14",
+      "dateFmt": "Aug 14",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-08-14",
+      "dateFmt": "Aug 14",
+      "type": "Cancel",
+      "category": "Moved",
       "csr": "Norma"
     },
     {
@@ -234,25 +248,11 @@
       "type": "Cancel",
       "category": "Financial",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-08-12",
-      "dateFmt": "Aug 12",
-      "type": "Sale",
-      "category": "Noseeum",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-12",
-      "dateFmt": "Aug 12",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 68
+    "count": 69
   },
   "tech_upsells": [
     {
