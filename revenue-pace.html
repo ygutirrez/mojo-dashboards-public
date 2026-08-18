@@ -414,40 +414,45 @@
 
         async function load() {
             try {
-                const [kpiRes, finRes] = await Promise.all([
-                    fetch('sales-kpi-data.json?t=' + Date.now()),
-                    fetch('financial-data.json?t=' + Date.now()).catch(() => null)
-                ]);
-                const kpi = await kpiRes.json();
-                const fin = finRes ? await finRes.json().catch(() => null) : null;
+                const response = await fetch('sm-daily-data.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Current ServiceMinder feed unavailable');
+                const sm = await response.json();
+                const generated = new Date(sm.meta?.generated_at);
+                const ageHours = (Date.now() - generated.getTime()) / 3600000;
+                if (!Number.isFinite(ageHours) || ageHours > 36) throw new Error('ServiceMinder feed is stale; legacy figures are hidden');
 
-                const pace = kpi.revenue_pace || {};
-                const summary = kpi.summary || {};
-                const weeklyTrend = kpi.weekly_trend || [];
-
-                const ytdRev = pace.ytd_revenue || summary.total_revenue || 0;
-                const daysElapsed = pace.days_elapsed || summary.days_tracked || 1;
-                const projectedAnnual = pace.projected_annual || 0;
-                const pctTarget = pace.pct_of_target || Math.round(projectedAnnual / TARGET * 100);
-                const dailyRate = summary.revenue_per_day || Math.round(ytdRev / daysElapsed);
+                const ytd = sm.executive?.ytd || {};
+                const mtd = sm.executive?.mtd || {};
+                const ytdRev = ytd.invoiced || 0;
+                const now = new Date();
+                const start = new Date(now.getFullYear(), 0, 1);
+                const daysElapsed = Math.floor((now - start) / 86400000) + 1;
+                const currentMonth = now.getMonth() + 1;
+                const daysInMonth = new Date(now.getFullYear(), currentMonth, 0).getDate();
+                let seasonalElapsed = 0;
+                for (let month = 1; month < currentMonth; month++) seasonalElapsed += SEASONAL_WEIGHTS[month];
+                seasonalElapsed += SEASONAL_WEIGHTS[currentMonth] * (now.getDate() / daysInMonth);
+                const projectedAnnual = seasonalElapsed > 0 ? Math.round(ytdRev / seasonalElapsed) : 0;
+                const pctTarget = projectedAnnual / TARGET * 100;
+                const dailyRate = Math.round(ytdRev / daysElapsed);
                 const requiredDailyRate = Math.round((TARGET - ytdRev) / (365 - daysElapsed));
                 const gap = TARGET - ytdRev;
                 const ytdPct = (ytdRev / TARGET * 100);
 
                 // Subtitle
                 document.getElementById('subtitle').textContent =
-                    `Updated ${new Date(kpi.updated_at).toLocaleString()} — Day ${daysElapsed} of 365`;
+                    `ServiceMinder invoices · Updated ${generated.toLocaleString()} — Day ${daysElapsed} of 365`;
 
                 // Hero cards
                 document.getElementById('ytdRevenue').textContent = fmtMoney(ytdRev);
                 document.getElementById('ytdDetail').textContent =
-                    `${ytdPct.toFixed(1)}% of $5M collected`;
+                    `${ytdPct.toFixed(1)}% of $5M invoiced`;
 
                 const paceEl = document.getElementById('pacePercent');
-                paceEl.textContent = pctTarget + '%';
+                paceEl.textContent = pctTarget.toFixed(1) + '%';
                 paceEl.className = 'big ' + (pctTarget >= 90 ? 'green' : pctTarget >= 60 ? 'amber' : 'red');
                 document.getElementById('paceDetail').textContent =
-                    pace.on_pace ? '✅ On track' : '⚠️ Behind pace — need acceleration';
+                    projectedAnnual >= TARGET ? '✅ On track' : '⚠️ Behind seasonal pace';
 
                 document.getElementById('dailyRate').textContent = '$' + fmtNum(dailyRate) + '/day';
                 document.getElementById('rateDetail').textContent =
@@ -468,7 +473,7 @@
                 document.getElementById('paceGap').textContent = fmtMoney(gap) + ' remaining';
 
                 // Add expected-pace marker
-                const expectedPct = (daysElapsed / 365 * 100);
+                const expectedPct = seasonalElapsed * 100;
                 const marker = document.createElement('div');
                 marker.className = 'pace-marker';
                 marker.style.left = expectedPct + '%';
@@ -476,13 +481,13 @@
                 document.getElementById('paceBarOuter').appendChild(marker);
 
                 // Monthly revenue chart
-                buildMonthlyChart(ytdRev, daysElapsed, weeklyTrend, fin);
+                buildMonthlyChart(ytdRev, daysElapsed, [], null, projectedAnnual);
 
                 // Weekly trend chart
-                buildWeeklyChart(weeklyTrend);
+                buildWeeklyChart([]);
 
                 // Key numbers
-                buildKeyNumbers(kpi, dailyRate, requiredDailyRate, fin);
+                buildKeyNumbers(sm, dailyRate, requiredDailyRate);
 
                 // Seasonal chart
                 buildSeasonChart(daysElapsed);
@@ -493,7 +498,7 @@
             }
         }
 
-        function buildMonthlyChart(ytdRev, daysElapsed, weeklyTrend, fin) {
+        function buildMonthlyChart(ytdRev, daysElapsed, weeklyTrend, fin, projectedAnnual) {
             const container = document.getElementById('monthlyChart');
             container.innerHTML = '';
 
@@ -532,9 +537,9 @@
                 }
             }
 
-            // Project future months using seasonal weights scaled to hit $5M target
+            // Project future months from the current seasonally adjusted run rate.
             const monthlyProjected = new Array(12).fill(0);
-            const remaining = TARGET - ytdRev;
+            const remaining = Math.max(0, projectedAnnual - ytdRev);
             let futureWeight = 0;
             for (let m = currentMonth + 1; m < 12; m++) futureWeight += SEASONAL_WEIGHTS[m + 1];
             for (let m = currentMonth + 1; m < 12; m++) {
@@ -586,7 +591,7 @@
             container.innerHTML = '';
 
             if (!weeklyTrend || weeklyTrend.length === 0) {
-                container.textContent = 'No weekly data yet';
+                container.textContent = 'Weekly breakout is not yet available from the current ServiceMinder feed.';
                 return;
             }
 
@@ -605,28 +610,20 @@
             });
         }
 
-        function buildKeyNumbers(kpi, dailyRate, requiredRate, fin) {
+        function buildKeyNumbers(sm, dailyRate, requiredRate) {
             const container = document.getElementById('keyNumbers');
-            const pace = kpi.revenue_pace || {};
-            const summary = kpi.summary || {};
+            const ytd = sm.executive?.ytd || {};
+            const mtd = sm.executive?.mtd || {};
 
             const rows = [
-                ['YTD Sales', summary.total_sales || 0, ''],
-                ['Total Invoices', fmtNum(summary.total_invoices || 0), ''],
-                ['Avg Invoice', fmtMoney(summary.total_revenue / (summary.total_invoices || 1)), ''],
-                ['Revenue/Sale', fmtMoney(summary.total_revenue / (summary.total_sales || 1)), ''],
+                ['YTD Invoices', fmtNum(ytd.invoice_count || 0), ''],
+                ['Average Invoice', fmtMoney(ytd.average_invoice), ''],
+                ['MTD Invoiced', fmtMoney(mtd.invoiced), ''],
+                ['MTD Collected', fmtMoney(mtd.payments_collected), ''],
                 ['Current Pace', '$' + fmtNum(dailyRate) + '/day', dailyRate >= requiredRate ? 'green' : 'red'],
                 ['Required Pace', '$' + fmtNum(requiredRate) + '/day', ''],
-                ['Pace Gap', '$' + fmtNum(Math.abs(dailyRate - requiredRate)) + '/day', dailyRate >= requiredRate ? 'green' : 'red'],
-                ['Active Customers', fmtNum(kpi.active_customers || '—'), ''],
-                ['Customer Goal', fmtNum(kpi.customer_goal || '—'), ''],
+                ['Daily Pace Gap', '$' + fmtNum(Math.abs(dailyRate - requiredRate)) + '/day', dailyRate >= requiredRate ? 'green' : 'red']
             ];
-
-            // Add margin data if financial data available
-            if (fin?.ytd2026) {
-                rows.push(['Gross Margin', ((fin.ytd2026.grossProfit / fin.ytd2026.revenue) * 100).toFixed(1) + '%', '']);
-                rows.push(['Net Margin', ((fin.ytd2026.netIncome / fin.ytd2026.revenue) * 100).toFixed(1) + '%', '']);
-            }
 
             container.innerHTML = rows.map(([label, value, colorClass]) =>
                 `<div class="metric-row">

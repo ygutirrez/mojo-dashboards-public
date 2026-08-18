@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-18T16:22:46.371Z",
+    "generated_at": "2026-08-18T16:35:17.497Z",
     "report_date": "2026-08-18",
     "timezone": "America/New_York",
     "source": "ServiceMinder direct API",
@@ -10,7 +10,8 @@
       "today": "2026-08-18",
       "next7_from": "2026-08-18",
       "next7_through": "2026-08-24",
-      "month_start": "2026-08-01"
+      "month_start": "2026-08-01",
+      "year_start": "2026-01-01"
     }
   },
   "executive": {
@@ -36,9 +37,14 @@
     },
     "mtd": {
       "invoiced": 119783.98,
-      "payments_collected": 117012.5,
+      "payments_collected": 117282.17,
       "invoice_count": 1338,
-      "payment_count": 1408
+      "payment_count": 1411
+    },
+    "ytd": {
+      "invoiced": 1603730.64,
+      "invoice_count": 17563,
+      "average_invoice": 91.31
     },
     "alerts": [
       "No major ServiceMinder data warnings detected."
@@ -292,7 +298,7 @@
           },
           {
             "name": "Scheduled",
-            "value": 30
+            "value": 28
           },
           {
             "name": "Canceled",
@@ -300,7 +306,7 @@
           },
           {
             "name": "In Progress",
-            "value": 1
+            "value": 3
           }
         ],
         "byTech": [
@@ -516,7 +522,7 @@
         "byStatus": [
           {
             "name": "Scheduled",
-            "value": 438
+            "value": 436
           },
           {
             "name": "Completed",
@@ -532,7 +538,7 @@
           },
           {
             "name": "In Progress",
-            "value": 1
+            "value": 3
           }
         ],
         "byTech": [
@@ -836,21 +842,59 @@
       }
     },
     "finance": {
+      "year_to_date": {
+        "invoices": {
+          "totalRecords": 17563,
+          "returned": 17563,
+          "invoiced": 1603730.64,
+          "balanceDue": -27156.59,
+          "avgInvoice": 91.31,
+          "byStatus": [
+            {
+              "name": "2",
+              "value": 17468
+            },
+            {
+              "name": "3",
+              "value": 95
+            }
+          ],
+          "byType": [
+            {
+              "name": "Unknown",
+              "value": 17490
+            },
+            {
+              "name": "3",
+              "value": 46
+            },
+            {
+              "name": "2",
+              "value": 26
+            },
+            {
+              "name": "1",
+              "value": 1
+            }
+          ],
+          "errors": []
+        }
+      },
       "month_to_date": {
         "invoices": {
           "totalRecords": 1338,
           "returned": 1338,
           "invoiced": 119783.98,
-          "balanceDue": 1302.46,
+          "balanceDue": 1032.79,
           "avgInvoice": 89.52,
           "byStatus": [
             {
               "name": "2",
-              "value": 1324
+              "value": 1327
             },
             {
               "name": "3",
-              "value": 14
+              "value": 11
             }
           ],
           "byType": [
@@ -870,14 +914,14 @@
           "errors": []
         },
         "payments": {
-          "totalRecords": 1408,
-          "returned": 1408,
-          "collected": 117012.5,
-          "avgPayment": 83.11,
+          "totalRecords": 1411,
+          "returned": 1411,
+          "collected": 117282.17,
+          "avgPayment": 83.12,
           "byMethod": [
             {
               "name": "Card on File",
-              "value": 891
+              "value": 894
             },
             {
               "name": "Credit Card",
@@ -1103,6 +1147,7 @@
         }
       },
       "invoice_errors": [],
+      "ytd_invoice_errors": [],
       "payment_errors": [],
       "custom_fields_available": 278,
       "custom_fields_status": "available"
