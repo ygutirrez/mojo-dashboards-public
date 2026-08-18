@@ -446,6 +446,7 @@
 
     <script>
         const DATA_SOURCES = {
+            smDaily: 'sm-daily-data.json',
             owners: 'owners-data.json',
             salesKpi: 'sales-kpi-data.json',
             sales: 'sales-data.json',
@@ -485,6 +486,86 @@
         }
 
         function render() {
+            const sm = allData.smDaily;
+            if (sm && sm.meta && sm.executive) {
+                renderServiceMinderBrief(sm);
+                return;
+            }
+
+            document.getElementById('briefDate').textContent = 'Current ServiceMinder data unavailable';
+            document.getElementById('alerts').innerHTML = '<div class="alert alert-danger"><span class="icon">⚠️</span> Live ServiceMinder data could not be loaded. Legacy figures are intentionally hidden.</div>';
+            ['kpiStrip','revenuePace','opsSnapshot','csrPerf','cancelPulse','fleetStatus','marketingStatus'].forEach(id => {
+                document.getElementById(id).innerHTML = '<div class="loading">Current data unavailable</div>';
+            });
+            document.getElementById('lastUpdate').textContent = 'Refresh failed';
+        }
+
+        function renderServiceMinderBrief(sm) {
+            const meta = sm.meta;
+            const ex = sm.executive;
+            const ops = sm.dashboards?.operations || {};
+            const generated = new Date(meta.generated_at);
+            const ageHours = (Date.now() - generated.getTime()) / 3600000;
+            const current = ageHours <= 36;
+            const dateLabel = generated.toLocaleString('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+
+            document.getElementById('briefDate').textContent = `${meta.report_date} · ServiceMinder live data`;
+            document.getElementById('lastUpdate').textContent = `Updated ${dateLabel} ET`;
+            document.querySelector('#revenuePace').closest('.section').querySelector('h2').innerHTML = '<span class="icon">💰</span> Month-to-Date Cash & Revenue';
+            document.querySelector('#csrPerf').closest('.section').querySelector('h2').innerHTML = '<span class="icon">📅</span> Today’s Field Schedule';
+            document.querySelector('#cancelPulse').closest('.section').querySelector('h2').innerHTML = '<span class="icon">🚨</span> Cancellation Pulse';
+            document.querySelector('#fleetStatus').closest('.section').querySelector('h2').innerHTML = '<span class="icon">🛠️</span> Yesterday’s Production';
+            document.querySelector('#marketingStatus').closest('.section').querySelector('h2').innerHTML = '<span class="icon">📈</span> Next 7 Days';
+
+            const warnings = [...(ex.alerts || [])];
+            if (!current) warnings.unshift(`Data is ${Math.floor(ageHours)} hours old and should not be treated as current.`);
+            document.getElementById('alerts').innerHTML = warnings.map((msg, i) => `<div class="alert ${!current || i ? 'alert-warn' : 'alert-good'}"><span class="icon">${!current ? '🔴' : 'ℹ️'}</span> ${msg}</div>`).join('');
+
+            document.getElementById('kpiStrip').innerHTML = `
+                ${smKpi('MTD Invoiced', fmt(ex.mtd.invoiced), `${ex.mtd.invoice_count.toLocaleString()} invoices`, 'var(--green)')}
+                ${smKpi('MTD Collected', fmt(ex.mtd.payments_collected), `${ex.mtd.payment_count.toLocaleString()} payments`, 'var(--accent)')}
+                ${smKpi('Yesterday Completed', ex.yesterday.completed_jobs.toLocaleString(), `${fmt(ex.yesterday.completed_value)} value`, 'var(--green)')}
+                ${smKpi('Today Completed', ex.today.completed_jobs.toLocaleString(), `${ex.today.scheduled_jobs} still scheduled`, 'var(--accent)')}
+                ${smKpi('Next 7 Days', ex.next7.appointments.toLocaleString(), `${ex.next7.scheduled_jobs} scheduled`, 'var(--yellow)')}
+                ${smKpi('Next 7 Value', fmt(ex.next7.scheduled_value), `${ex.next7.cancels} cancels`, 'var(--green)')}`;
+
+            document.getElementById('revenuePace').innerHTML = smGrid([
+                ['Invoiced', fmt(ex.mtd.invoiced)], ['Collected', fmt(ex.mtd.payments_collected)],
+                ['Collection Ratio', ex.mtd.invoiced ? fmtPct(ex.mtd.payments_collected / ex.mtd.invoiced * 100) : '—'],
+                ['Avg Invoice', fmt(sm.dashboards?.finance?.month_to_date?.invoices?.avgInvoice)]
+            ]);
+            document.getElementById('opsSnapshot').innerHTML = smGrid([
+                ['Today Total', (ops.today?.total || 0).toLocaleString()], ['Completed', ex.today.completed_jobs.toLocaleString()],
+                ['Still Scheduled', ex.today.scheduled_jobs.toLocaleString()], ['Canceled', ex.today.cancels.toLocaleString()],
+                ['Appointment Value', fmt(ex.today.appointment_value)], ['Scheduled Value', fmt(ex.today.scheduled_value)]
+            ]);
+            document.getElementById('csrPerf').innerHTML = smGrid([
+                ['Appointments', (ops.today?.total || 0).toLocaleString()], ['Completed', ex.today.completed_jobs.toLocaleString()],
+                ['Actual Hours', `${ops.today?.actualHours || 0} hrs`], ['Avg Appointment', fmt(ops.today?.avgValue)]
+            ]);
+            document.getElementById('cancelPulse').innerHTML = smGrid([
+                ['Yesterday', ex.yesterday.cancels.toLocaleString()], ['Today', ex.today.cancels.toLocaleString()],
+                ['Next 7 Days', ex.next7.cancels.toLocaleString()], ['Next 7 Rate', ex.next7.appointments ? fmtPct(ex.next7.cancels / ex.next7.appointments * 100) : '—']
+            ]);
+            document.getElementById('fleetStatus').innerHTML = smGrid([
+                ['Completed Jobs', ex.yesterday.completed_jobs.toLocaleString()], ['Completed Value', fmt(ex.yesterday.completed_value)],
+                ['Appointment Value', fmt(ex.yesterday.appointment_value)], ['Actual Hours', `${ex.yesterday.actual_hours} hrs`]
+            ]);
+            document.getElementById('marketingStatus').innerHTML = smGrid([
+                ['Appointments', ex.next7.appointments.toLocaleString()], ['Scheduled', ex.next7.scheduled_jobs.toLocaleString()],
+                ['Scheduled Value', fmt(ex.next7.scheduled_value)], ['Cancels', ex.next7.cancels.toLocaleString()]
+            ]);
+        }
+
+        function smKpi(label, value, sub, color) {
+            return `<div class="kpi-card" style="--kpi-color:${color}"><div class="label">${label}</div><div class="value">${value}</div><div class="sub">${sub}</div></div>`;
+        }
+
+        function smGrid(items) {
+            return `<div class="ops-grid">${items.map(([label,value]) => `<div class="ops-item"><span class="ops-label">${label}</span><span class="ops-value">${value}</span></div>`).join('')}</div>`;
+        }
+
+        function renderLegacy() {
             const o = allData.owners || {};
             const sk = allData.salesKpi || {};
             const s = allData.sales || {};
