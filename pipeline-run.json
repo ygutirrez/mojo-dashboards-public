@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-16T09:16:22.129Z",
-  "total_duration_sec": 71,
+  "generated_at": "2026-08-17T09:17:04.905Z",
+  "total_duration_sec": 112,
   "steps_total": 23,
   "steps_passed": 23,
   "steps_failed": 0,
@@ -10,9 +10,9 @@
     {
       "name": "sales-import",
       "success": true,
-      "exit_code": 0,
+      "exit_code": 1,
       "duration_sec": 1,
-      "retries": 0,
+      "retries": 1,
       "timed_out": false,
       "critical": false
     },
@@ -28,8 +28,8 @@
     {
       "name": "sharepoint-fallback",
       "success": true,
-      "exit_code": 1,
-      "duration_sec": 0,
+      "exit_code": 0,
+      "duration_sec": 3,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 44,
+      "duration_sec": 83,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -65,7 +65,7 @@
       "name": "build-sales-kpi",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 0,
+      "duration_sec": 1,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -209,7 +209,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 16,
+      "duration_sec": 15,
       "retries": 0,
       "timed_out": false,
       "critical": true
