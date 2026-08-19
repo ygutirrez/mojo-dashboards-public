@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-17T09:17:04.905Z",
-  "total_duration_sec": 112,
+  "generated_at": "2026-08-18T09:16:30.726Z",
+  "total_duration_sec": 77,
   "steps_total": 23,
   "steps_passed": 23,
   "steps_failed": 0,
@@ -28,8 +28,8 @@
     {
       "name": "sharepoint-fallback",
       "success": true,
-      "exit_code": 0,
-      "duration_sec": 3,
+      "exit_code": 1,
+      "duration_sec": 0,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 83,
+      "duration_sec": 48,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -101,7 +101,7 @@
       "name": "build-tech",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 2,
+      "duration_sec": 3,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -209,7 +209,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 15,
+      "duration_sec": 16,
       "retries": 0,
       "timed_out": false,
       "critical": true
