@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-20T17:30:18.048Z",
+  "updated_at": "2026-08-20T18:00:16.681Z",
   "csv_date": "2026-08-20",
   "period": "Jan 1 - Aug 20, 2026 (YTD)",
   "summary": {
     "total_sales": 535,
-    "total_cancels": 311,
-    "net": 224,
+    "total_cancels": 312,
+    "net": 223,
     "paused_wp": 62,
     "paused_pct": 20,
     "days_tracked": 232
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 313,
-      "cancels": 106
+      "cancels": 107
     },
     {
       "name": "Norma",
@@ -31,7 +31,7 @@
     {
       "name": "Moved",
       "count": 70,
-      "pct": 23
+      "pct": 22
     },
     {
       "name": "Paused/WP",
@@ -41,11 +41,11 @@
     {
       "name": "Not Interested",
       "count": 42,
-      "pct": 14
+      "pct": 13
     },
     {
       "name": "Financial",
-      "count": 37,
+      "count": 38,
       "pct": 12
     },
     {
@@ -66,7 +66,7 @@
     {
       "name": "Went w/Competitor",
       "count": 14,
-      "pct": 5
+      "pct": 4
     },
     {
       "name": "Bad Debt",
@@ -182,6 +182,13 @@
     {
       "date": "2026-08-20",
       "dateFmt": "Aug 20",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-08-20",
+      "dateFmt": "Aug 20",
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
@@ -240,13 +247,6 @@
       "dateFmt": "Aug 17",
       "type": "Cancel",
       "category": "Financial",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-17",
-      "dateFmt": "Aug 17",
-      "type": "Sale",
-      "category": "Restart",
       "csr": "Lucy"
     }
   ],
