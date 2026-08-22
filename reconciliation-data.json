@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-08-21T09:16:15.192Z",
+  "generated_at": "2026-08-22T09:16:28.145Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-08-20.csv",
-    "date": "2026-08-20",
+    "file": "sales-data-2026-08-21.csv",
+    "date": "2026-08-21",
     "totalSales": 532,
-    "totalCancels": 312,
-    "net": 220,
+    "totalCancels": 313,
+    "net": 219,
     "upsells": 9,
     "csrs": [
       {
         "name": "Lucy",
         "sales": 309,
-        "cancels": 107
+        "cancels": 108
       },
       {
         "name": "Norma",
@@ -190,7 +190,7 @@
       {
         "week": "2026-08-17",
         "sales": 10,
-        "cancels": 5
+        "cancels": 6
       },
       {
         "week": "2926-07-22",
@@ -200,7 +200,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-08-21T09:16:05.891Z",
+    "date": "2026-08-22T09:16:18.882Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -222,12 +222,12 @@
       },
       {
         "metric": "Cancel Events",
-        "csv": 312,
+        "csv": 313,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 197,
+        "gap": 196,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (312). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (313). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -254,7 +254,7 @@
         },
         {
           "name": "Financial",
-          "count": 38
+          "count": 39
         },
         {
           "name": "Unhappy",
