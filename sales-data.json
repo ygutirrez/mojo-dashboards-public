@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-08-24T17:30:16.281Z",
+  "updated_at": "2026-08-24T18:00:36.065Z",
   "csv_date": "2026-08-24",
   "period": "Jan 1 - Aug 24, 2026 (YTD)",
   "summary": {
     "total_sales": 538,
-    "total_cancels": 316,
-    "net": 222,
+    "total_cancels": 317,
+    "net": 221,
     "paused_wp": 63,
     "paused_pct": 20,
     "days_tracked": 236
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 313,
-      "cancels": 108
+      "cancels": 109
     },
     {
       "name": "Norma",
@@ -30,7 +30,7 @@
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 70,
+      "count": 71,
       "pct": 22
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-08-24",
       "dateFmt": "Aug 24",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-08-24",
+      "dateFmt": "Aug 24",
+      "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Norma"
     },
@@ -241,18 +248,11 @@
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-19",
-      "dateFmt": "Aug 19",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 70
+    "count": 71
   },
   "tech_upsells": [
     {
