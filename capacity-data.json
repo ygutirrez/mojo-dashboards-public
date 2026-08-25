@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-24T09:16:07.104Z",
-  "period": "Jan 1 - Aug 24, 2026 (YTD)",
+  "generated_at": "2026-08-25T09:17:24.889Z",
+  "period": "Jan 1 - Aug 25, 2026 (YTD)",
   "workforce": {
     "active_techs": 9,
     "total_employees": 10,
-    "avg_daily_stops": 41.8,
+    "avg_daily_stops": 41.6,
     "avg_stops_per_tech": 4.6,
-    "team_utilization": 39,
+    "team_utilization": 38,
     "overloaded_count": 0,
     "high_util_count": 0,
     "optimal_stops_per_day": 10,
@@ -19,10 +19,10 @@
       "jobs": 1368,
       "revenue": 124192,
       "dailyAvg": 8.1,
-      "utilization": 68,
+      "utilization": 67,
       "status": "normal",
-      "annualizedJobs": 2117,
-      "annualizedRevenue": 192189,
+      "annualizedJobs": 2105,
+      "annualizedRevenue": 191100,
       "revenuePerJob": 91,
       "resprays": 11,
       "upsells": 0
@@ -33,10 +33,10 @@
       "jobs": 1285,
       "revenue": 117494,
       "dailyAvg": 7.6,
-      "utilization": 64,
+      "utilization": 63,
       "status": "normal",
-      "annualizedJobs": 1989,
-      "annualizedRevenue": 181864,
+      "annualizedJobs": 1977,
+      "annualizedRevenue": 180767,
       "revenuePerJob": 91,
       "resprays": 6,
       "upsells": 0
@@ -49,8 +49,8 @@
       "dailyAvg": 7.1,
       "utilization": 59,
       "status": "normal",
-      "annualizedJobs": 1849,
-      "annualizedRevenue": 146224,
+      "annualizedJobs": 1838,
+      "annualizedRevenue": 145354,
       "revenuePerJob": 79,
       "resprays": 7,
       "upsells": 0
@@ -61,10 +61,10 @@
       "jobs": 1165,
       "revenue": 101813,
       "dailyAvg": 6.9,
-      "utilization": 58,
+      "utilization": 57,
       "status": "normal",
-      "annualizedJobs": 1803,
-      "annualizedRevenue": 157570,
+      "annualizedJobs": 1792,
+      "annualizedRevenue": 156608,
       "revenuePerJob": 87,
       "resprays": 7,
       "upsells": 4
@@ -75,10 +75,10 @@
       "jobs": 738,
       "revenue": 116673,
       "dailyAvg": 4.4,
-      "utilization": 37,
+      "utilization": 36,
       "status": "underutilized",
-      "annualizedJobs": 1142,
-      "annualizedRevenue": 180543,
+      "annualizedJobs": 1135,
+      "annualizedRevenue": 179436,
       "revenuePerJob": 158,
       "resprays": 1,
       "upsells": 1
@@ -91,8 +91,8 @@
       "dailyAvg": 3.5,
       "utilization": 29,
       "status": "underutilized",
-      "annualizedJobs": 913,
-      "annualizedRevenue": 73628,
+      "annualizedJobs": 908,
+      "annualizedRevenue": 73225,
       "revenuePerJob": 81,
       "resprays": 2,
       "upsells": 2
@@ -105,8 +105,8 @@
       "dailyAvg": 1.6,
       "utilization": 13,
       "status": "underutilized",
-      "annualizedJobs": 410,
-      "annualizedRevenue": 37974,
+      "annualizedJobs": 408,
+      "annualizedRevenue": 37788,
       "revenuePerJob": 93,
       "resprays": 1,
       "upsells": 0
@@ -119,8 +119,8 @@
       "dailyAvg": 1.4,
       "utilization": 12,
       "status": "underutilized",
-      "annualizedJobs": 367,
-      "annualizedRevenue": 30551,
+      "annualizedJobs": 365,
+      "annualizedRevenue": 30384,
       "revenuePerJob": 83,
       "resprays": 3,
       "upsells": 0
@@ -133,8 +133,8 @@
       "dailyAvg": 1.1,
       "utilization": 9,
       "status": "underutilized",
-      "annualizedJobs": 283,
-      "annualizedRevenue": 28464,
+      "annualizedJobs": 282,
+      "annualizedRevenue": 28363,
       "revenuePerJob": 101,
       "resprays": 1,
       "upsells": 0
@@ -155,15 +155,15 @@
     }
   ],
   "scaling": {
-    "current_annual_run_rate": 1028513,
+    "current_annual_run_rate": 1024173,
     "target": 5000000,
-    "gap": 3971487,
+    "gap": 3975827,
     "avg_revenue_per_stop": 94.64,
     "required_daily_stops": 204,
-    "current_daily_stops": 41.8,
+    "current_daily_stops": 41.6,
     "techs_needed_total": 21,
     "new_hires_needed": 12,
-    "capacity_increase_pct": 388
+    "capacity_increase_pct": 391
   },
   "hiring_costs": {
     "salary_annual": 46648,
@@ -236,7 +236,7 @@
       "month": "Mar",
       "factor": 0.9,
       "label": "Peak Start",
-      "adjustedDailyStops": 38,
+      "adjustedDailyStops": 37,
       "techsNeeded": 4,
       "currentTechs": 9,
       "surplus": 5,
@@ -306,7 +306,7 @@
       "month": "Oct",
       "factor": 0.9,
       "label": "Wind Down",
-      "adjustedDailyStops": 38,
+      "adjustedDailyStops": 37,
       "techsNeeded": 4,
       "currentTechs": 9,
       "surplus": 5,
@@ -335,21 +335,21 @@
   ],
   "customer_growth": {
     "active_customers": 2060,
-    "ytd_net_growth": 224,
+    "ytd_net_growth": 221,
     "monthly_net_growth": 28,
     "annualized_growth": 336,
     "avg_visits_per_customer": 5.3,
-    "avg_revenue_per_customer": 499,
-    "customers_for_5m": 10015,
-    "customer_gap": 7955,
-    "years_to_close_gap": 23.7
+    "avg_revenue_per_customer": 497,
+    "customers_for_5m": 10057,
+    "customer_gap": 7997,
+    "years_to_close_gap": 23.8
   },
   "insights": [
     {
       "type": "info",
       "icon": "🟢",
       "title": "Healthy capacity",
-      "detail": "Team is at 39% utilization with room for growth before hiring."
+      "detail": "Team is at 38% utilization with room for growth before hiring."
     },
     {
       "type": "positive",
