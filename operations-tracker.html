@@ -32,7 +32,7 @@
     <div class="eyebrow">2 · Select report</div>
     <div class="roles" style="margin-top:12px"><button type="button" class="role cadence active" data-cadence="Weekly"><strong>Weekly</strong><small>Execution and immediate follow-up</small></button><button type="button" class="role cadence" data-cadence="Monthly"><strong>Monthly</strong><small>Audits, trends, and compliance</small></button></div>
     <label class="title" for="period"><span id="periodLabel">Week ending</span> <span class="required">*</span></label><input type="date" id="period" required>
-    <label class="title" for="employeePin">Your PIN <span class="required">*</span></label><input type="password" id="employeePin" inputmode="numeric" autocomplete="current-password" maxlength="12" required placeholder="Enter your assigned PIN">
+    <label class="title" for="employeePin">Your PIN <span class="required">*</span></label><input type="password" id="employeePin" inputmode="text" autocapitalize="none" spellcheck="false" autocomplete="current-password" maxlength="12" required placeholder="Enter your assigned PIN">
     <label class="title">Task status</label><div id="tasks" class="tasks"></div>
     <label class="title" for="wins">Wins / work completed</label><textarea id="wins" placeholder="What got done this week?"></textarea>
     <label class="title" for="issues">Issues, blockers, or follow-up needed</label><textarea id="issues" placeholder="What needs attention, resources, or a decision?"></textarea>
@@ -41,7 +41,7 @@
     <div class="actions"><button class="btn primary" id="submitBtn" type="submit">Submit weekly report</button><button class="btn secondary" type="button" id="draft">Save draft on this device</button></div>
     <div id="status"></div>
   </form>
-  <div class="panel"><div class="eyebrow">Management</div><p class="note">Enter the owner PIN to load submitted weekly and monthly reports. No GitHub account is required.</p><label class="title" for="ownerPin">Owner PIN</label><input type="password" id="ownerPin" inputmode="numeric" maxlength="12" placeholder="Enter owner PIN"><div class="actions"><button class="btn secondary" id="managerReports" type="button">Load submitted reports</button></div><div id="reportHistory" class="tasks" style="margin-top:16px"></div></div>
+  <div class="panel"><div class="eyebrow">Management</div><p class="note">Enter the owner PIN to load submitted weekly and monthly reports. No GitHub account is required.</p><label class="title" for="ownerPin">Owner PIN</label><input type="password" id="ownerPin" inputmode="text" autocapitalize="none" spellcheck="false" maxlength="12" placeholder="Enter owner PIN"><div class="actions"><button class="btn secondary" id="managerReports" type="button">Load submitted reports</button></div><div id="reportHistory" class="tasks" style="margin-top:16px"></div></div>
 </main>
 <script>
 const tasks={Travis:{
