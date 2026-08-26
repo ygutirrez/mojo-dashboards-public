@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-26T12:06:07.085Z",
+    "generated_at": "2026-08-26T13:16:22.600Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-26T12:06:05.758Z",
+      "generated_at": "2026-08-26T13:16:21.263Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 26694,
       "contacts": 13948,
-      "invoices": 42352,
+      "invoices": 42360,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1666498,
+      "ytd_invoiced": 1667605,
       "avg_per_visit": 71,
-      "mtd": 181295,
-      "mtd_jobs": 1998
+      "mtd": 182402,
+      "mtd_jobs": 2006
     },
     "operations": {
       "total_jobs": 9998,
@@ -180,14 +180,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1666498
+      "total_wo_revenue": 1667605
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 80989.29,
-        "avgRevenue": 88.8,
+        "revenue": 81327.7,
+        "avgRevenue": 89.08,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -197,8 +197,8 @@
       {
         "name": "Stanley Prophete",
         "jobs": 1285,
-        "revenue": 74714.93,
-        "avgRevenue": 89.27,
+        "revenue": 74320.95,
+        "avgRevenue": 88.9,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
@@ -208,8 +208,8 @@
       {
         "name": "Marcus Rubi",
         "jobs": 1195,
-        "revenue": 61370.55,
-        "avgRevenue": 76.33,
+        "revenue": 61944.49,
+        "avgRevenue": 76.38,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
         "technician_status": "active",
@@ -219,8 +219,8 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 65224.27,
-        "avgRevenue": 82.88,
+        "revenue": 63815.28,
+        "avgRevenue": 82.24,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
@@ -241,8 +241,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 31925.07,
-        "avgRevenue": 83.36,
+        "revenue": 34360.15,
+        "avgRevenue": 83.4,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -252,8 +252,8 @@
       {
         "name": "Travis Johnson",
         "jobs": 265,
-        "revenue": 27898.71,
-        "avgRevenue": 84.54,
+        "revenue": 29085.71,
+        "avgRevenue": 84.06,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
@@ -263,8 +263,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 58810.39,
-        "avgRevenue": 82.48,
+        "revenue": 57348.61,
+        "avgRevenue": 82.52,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -273,9 +273,9 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 15964,
-      "Scheduled": 7398,
-      "Started": 222,
+      "Queued": 15962,
+      "Scheduled": 7397,
+      "Started": 225,
       "Completed": 3
     },
     "service_mix": {
@@ -333,7 +333,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1666498
+      "total_revenue": 1667605
     },
     "employees": [
       {
@@ -343,7 +343,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 80989,
+        "revenue": 81328,
         "upsells": 0,
         "resprays": 0
       },
@@ -354,7 +354,7 @@
         "initials": "SP",
         "jobs": 1285,
         "rank": 2,
-        "revenue": 74715,
+        "revenue": 74321,
         "upsells": 0,
         "resprays": 0
       },
@@ -365,7 +365,7 @@
         "initials": "MR",
         "jobs": 1195,
         "rank": 3,
-        "revenue": 61371,
+        "revenue": 61944,
         "upsells": 0,
         "resprays": 0
       },
@@ -376,7 +376,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 4,
-        "revenue": 65224,
+        "revenue": 63815,
         "upsells": 0,
         "resprays": 0
       },
@@ -398,7 +398,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 31925,
+        "revenue": 34360,
         "upsells": 0,
         "resprays": 0
       },
@@ -409,7 +409,7 @@
         "initials": "TJ",
         "jobs": 265,
         "rank": 7,
-        "revenue": 27899,
+        "revenue": 29086,
         "upsells": 0,
         "resprays": 0
       },
@@ -420,35 +420,35 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 58810,
+        "revenue": 57349,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1666498,
+    "revenue": 1667605,
     "proposals": 1627,
     "invoiced_proposals": 1368,
     "complete_proposals": 173,
     "sources": {
-      "Online": 12442,
-      "Referral": 10762,
+      "Online": 12444,
+      "Referral": 10764,
       "MoJo Customer": 5657,
       "Yard Sign": 3823,
       "Direct Mail Postcard": 3632,
-      "Mosquito Joe Vehicle": 2776,
+      "Mosquito Joe Vehicle": 2777,
       "Other": 1251,
       "Advertising": 979,
       "Printed Material": 489,
-      "Mail Advertising": 419,
+      "Mail Advertising": 420,
       "Existing Customer": 331,
-      "Online Search": 225,
+      "Online Search": 226,
       "DMP": 170,
       "Accelerated": 76,
       "Local Branding": 72,
       "Neighborly": 70,
-      "Print Material": 58,
+      "Print Material": 59,
       "Event/Sponsorship": 51,
       "Competitor": 46,
       "Email": 43,
@@ -515,8 +515,8 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 181295.28,
-        "invoices": 1998,
+        "invoiceRevenue": 182402.21,
+        "invoices": 2006,
         "appointments": 4706,
         "proposals": 0,
         "cancels": 9
