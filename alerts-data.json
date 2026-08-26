@@ -1,31 +1,22 @@
 {
-  "generated_at": "2026-08-25T09:17:25.111Z",
+  "generated_at": "2026-08-26T09:16:46.388Z",
   "summary": {
-    "total": 13,
+    "total": 12,
     "critical": 6,
-    "warning": 4,
+    "warning": 3,
     "info": 3,
     "overall": "critical",
-    "health_score": 89,
+    "health_score": 91,
     "pipeline_status": "warn"
   },
   "alerts": [
-    {
-      "id": "freshness-sales-data.json",
-      "level": "warning",
-      "category": "data-freshness",
-      "message": "sales-data.json is 59h stale",
-      "detail": "Source: Office Tracking CSV, last updated 59h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
-      "source": "sync-report"
-    },
     {
       "id": "anomaly-data-warning",
       "level": "warning",
       "category": "data",
       "message": "1 of 4 key data files are stale (>48h)",
       "detail": "Run nightly sync or manual deploy",
-      "timestamp": "2026-08-24T09:16:08.544Z",
+      "timestamp": "2026-08-25T09:17:26.308Z",
       "source": "anomaly-detector"
     },
     {
@@ -34,7 +25,7 @@
       "category": "cancellations",
       "message": "\"Moved\" accounts for 31% of cancels",
       "detail": "160 of 509 events",
-      "timestamp": "2026-08-24T09:16:08.542Z",
+      "timestamp": "2026-08-25T09:17:26.306Z",
       "source": "anomaly-detector"
     },
     {
@@ -52,7 +43,7 @@
       "category": "seasonal",
       "message": "🔥 Peak season (month 8/12) — maximize revenue and customer retention",
       "detail": "Focus on: route efficiency, upsells, review collection, referral programs",
-      "timestamp": "2026-08-24T09:16:08.544Z",
+      "timestamp": "2026-08-25T09:17:26.308Z",
       "source": "anomaly-detector"
     },
     {
@@ -61,7 +52,7 @@
       "category": "operations",
       "message": "5 tech(s) below 50% of avg visits (714)",
       "detail": "Travis Johnson: 265, Curtis Blount: 237, Jeovany  Osorio: 183, Jordan Meddock: 85, Omar Sanchez: 1",
-      "timestamp": "2026-08-24T09:16:08.543Z",
+      "timestamp": "2026-08-25T09:17:26.307Z",
       "source": "anomaly-detector"
     },
     {
@@ -70,52 +61,52 @@
       "category": "cancellations",
       "message": "133 potentially recoverable cancels (26%)",
       "detail": "Win-back campaigns could target these",
-      "timestamp": "2026-08-24T09:16:08.542Z",
+      "timestamp": "2026-08-25T09:17:26.306Z",
       "source": "anomaly-detector"
     },
     {
       "id": "freshness-dashboard-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "dashboard-data.json is 745h stale",
-      "detail": "Source: ServSuite, last updated 745h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
+      "message": "dashboard-data.json is 769h stale",
+      "detail": "Source: ServSuite, last updated 769h ago",
+      "timestamp": "2026-08-25T09:17:26.396Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-retention-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "retention-data.json is 745h stale",
-      "detail": "Source: ServSuite, last updated 745h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
+      "message": "retention-data.json is 769h stale",
+      "detail": "Source: ServSuite, last updated 769h ago",
+      "timestamp": "2026-08-25T09:17:26.396Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-cancel-analysis.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "cancel-analysis.json is 745h stale",
-      "detail": "Source: ServSuite, last updated 745h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
+      "message": "cancel-analysis.json is 769h stale",
+      "detail": "Source: ServSuite, last updated 769h ago",
+      "timestamp": "2026-08-25T09:17:26.396Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-chemical-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "chemical-data.json is 745h stale",
-      "detail": "Source: ServSuite, last updated 745h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
+      "message": "chemical-data.json is 769h stale",
+      "detail": "Source: ServSuite, last updated 769h ago",
+      "timestamp": "2026-08-25T09:17:26.396Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-pipeline-status.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "pipeline-status.json is 745h stale",
-      "detail": "Source: Internal, last updated 745h ago",
-      "timestamp": "2026-08-24T09:16:08.641Z",
+      "message": "pipeline-status.json is 769h stale",
+      "detail": "Source: Internal, last updated 769h ago",
+      "timestamp": "2026-08-25T09:17:26.396Z",
       "source": "sync-report"
     },
     {
@@ -123,8 +114,8 @@
       "level": "critical",
       "category": "revenue",
       "message": "Revenue pace at 29% of $5M target",
-      "detail": "Projected: $1,463,662 vs target $5,000,000",
-      "timestamp": "2026-08-24T09:16:08.541Z",
+      "detail": "Projected: $1,457,487 vs target $5,000,000",
+      "timestamp": "2026-08-25T09:17:26.306Z",
       "source": "anomaly-detector"
     }
   ],
@@ -210,7 +201,7 @@
   "sources": {
     "anomaly": {
       "count": 6,
-      "generated_at": "2026-08-24T09:16:08.553Z"
+      "generated_at": "2026-08-25T09:17:26.317Z"
     },
     "pipeline": {
       "status": "warn",
@@ -221,13 +212,13 @@
     "fleet": {
       "vehicles": 14,
       "withTrouble": 0,
-      "generated_at": "2026-08-25T09:17:24.596Z"
+      "generated_at": "2026-08-26T09:16:45.851Z"
     },
     "sync": {
-      "health_score": 89,
+      "health_score": 91,
       "total": 17,
-      "stale": 6,
-      "generated_at": "2026-08-24T09:16:08.641Z"
+      "stale": 5,
+      "generated_at": "2026-08-25T09:17:26.396Z"
     }
   }
 }
