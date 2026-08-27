@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-08-26T22:30:23.556Z",
-  "csv_date": "2026-08-26",
-  "period": "Jan 1 - Aug 26, 2026 (YTD)",
+  "updated_at": "2026-08-27T17:42:58.624Z",
+  "csv_date": "2026-08-27",
+  "period": "Jan 1 - Aug 27, 2026 (YTD)",
   "summary": {
     "total_sales": 540,
-    "total_cancels": 318,
-    "net": 222,
+    "total_cancels": 320,
+    "net": 220,
     "paused_wp": 63,
     "paused_pct": 20,
-    "days_tracked": 238
+    "days_tracked": 239
   },
   "csrs": [
     {
@@ -19,12 +19,12 @@
     {
       "name": "Norma",
       "sales": 165,
-      "cancels": 106
+      "cancels": 107
     },
     {
       "name": "Bev",
       "sales": 61,
-      "cancels": 102
+      "cancels": 103
     }
   ],
   "cancel_reasons": [
@@ -40,8 +40,8 @@
     },
     {
       "name": "Not Interested",
-      "count": 45,
-      "pct": 14
+      "count": 47,
+      "pct": 15
     },
     {
       "name": "Financial",
@@ -180,6 +180,20 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-08-27",
+      "dateFmt": "Aug 27",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-08-27",
+      "dateFmt": "Aug 27",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-08-25",
       "dateFmt": "Aug 25",
       "type": "Sale",
@@ -233,20 +247,6 @@
       "dateFmt": "Aug 24",
       "type": "Cancel",
       "category": "Not Interested",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-08-21",
-      "dateFmt": "Aug 21",
-      "type": "Cancel",
-      "category": "Financial",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-20",
-      "dateFmt": "Aug 20",
-      "type": "Sale",
-      "category": "Thermacell",
       "csr": "Bev"
     }
   ],
