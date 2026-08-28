@@ -309,8 +309,8 @@
         }).join('') || '<div style="color:#8b949e;text-align:center;padding:18px;">No review race data available</div>';
 
         // Featured review
-        const fr = d.featured_review;
-        const stars = '⭐'.repeat(fr.stars);
+        const fr = d.featured_review || { stars: 0, text: 'No featured review selected.', author: '', tech: '' };
+        const stars = '⭐'.repeat(Math.max(0, Number(fr.stars) || 0));
 
         let html = `
         <!-- LEFT: Podium + Achievements -->
