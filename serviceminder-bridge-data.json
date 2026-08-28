@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T12:16:04.091Z",
+    "generated_at": "2026-08-28T13:15:59.742Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T12:16:02.783Z",
+      "generated_at": "2026-08-28T13:15:58.005Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27090,
+      "appointments": 27099,
       "contacts": 13952,
-      "invoices": 42599,
+      "invoices": 42607,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -115,10 +115,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1689714,
+      "ytd_invoiced": 1690369,
       "avg_per_visit": 71,
-      "mtd": 204511,
-      "mtd_jobs": 2245
+      "mtd": 205166,
+      "mtd_jobs": 2253
     },
     "operations": {
       "total_jobs": 9998,
@@ -180,14 +180,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1689714
+      "total_wo_revenue": 1690369
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 84837.3,
-        "avgRevenue": 88.93,
+        "revenue": 85809.53,
+        "avgRevenue": 89.11,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -219,7 +219,7 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 66210.76,
+        "revenue": 66286.75,
         "avgRevenue": 82.45,
         "route_label": "Route 12",
         "technician": "David Carbajal",
@@ -241,8 +241,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 37001,
-        "avgRevenue": 82.96,
+        "revenue": 35872.62,
+        "avgRevenue": 82.85,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -263,8 +263,8 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 60330.38,
-        "avgRevenue": 82.64,
+        "revenue": 60482.36,
+        "avgRevenue": 82.63,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
@@ -273,20 +273,20 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 16030,
-      "Scheduled": 7683,
-      "Started": 231,
+      "Queued": 16031,
+      "Scheduled": 7688,
+      "Started": 234,
       "Completed": 3
     },
     "service_mix": {
-      "Mojo Essential": 10814,
-      "Synthetic Barrier Spray - 2 week": 7652,
+      "Mojo Essential": 10816,
+      "Synthetic Barrier Spray - 2 week": 7657,
       "Misting System Recurring Service Bi-Monthly": 1406,
       "HPD - 42 Days": 795,
       "Gnat/Midge/No-seeums Service - 2 weeks": 740,
       "Synthetic Barrier Spray - 4 week": 423,
       "Accelerated - Synthetic Signature Service": 368,
-      "All-Natural Barrier Spray": 331,
+      "All-Natural Barrier Spray": 332,
       "Misting system - 4 Weeks": 191,
       "InZecto Trap Service": 139,
       "In2Care Service - 4 Weeks Service": 127,
@@ -297,7 +297,7 @@
       "Property Assessment": 71,
       "Flea & Tick Treatment": 49,
       "Misting System Repair Service": 47,
-      "Mojo Essential - Eco Friendly": 43,
+      "Mojo Essential - Eco Friendly": 44,
       "Flea Service": 41,
       "In2Care Service": 38,
       "Synthetic + In2Care": 38,
@@ -333,7 +333,7 @@
       "total_techs": 8,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1689714
+      "total_revenue": 1690369
     },
     "employees": [
       {
@@ -343,7 +343,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 84837,
+        "revenue": 85810,
         "upsells": 0,
         "resprays": 0
       },
@@ -376,7 +376,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 4,
-        "revenue": 66211,
+        "revenue": 66287,
         "upsells": 0,
         "resprays": 0
       },
@@ -398,7 +398,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 37001,
+        "revenue": 35873,
         "upsells": 0,
         "resprays": 0
       },
@@ -420,29 +420,29 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 60330,
+        "revenue": 60482,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1689714,
+    "revenue": 1690369,
     "proposals": 1627,
     "invoiced_proposals": 1367,
     "complete_proposals": 174,
     "sources": {
-      "Online": 12571,
-      "Referral": 10921,
-      "MoJo Customer": 5736,
+      "Online": 12579,
+      "Referral": 10922,
+      "MoJo Customer": 5741,
       "Yard Sign": 3909,
       "Direct Mail Postcard": 3686,
-      "Mosquito Joe Vehicle": 2818,
+      "Mosquito Joe Vehicle": 2819,
       "Other": 1263,
       "Advertising": 989,
-      "Printed Material": 502,
+      "Printed Material": 503,
       "Mail Advertising": 423,
-      "Existing Customer": 333,
+      "Existing Customer": 334,
       "Online Search": 231,
       "DMP": 173,
       "Accelerated": 78,
@@ -515,8 +515,8 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 204511.11,
-        "invoices": 2245,
+        "invoiceRevenue": 205165.66,
+        "invoices": 2253,
         "appointments": 4692,
         "proposals": 0,
         "cancels": 9
@@ -525,7 +525,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3915,
+        "appointments": 3916,
         "proposals": 0,
         "cancels": 9
       },
@@ -533,7 +533,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3016,
+        "appointments": 3018,
         "proposals": 0,
         "cancels": 13
       },
@@ -541,7 +541,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2163,
+        "appointments": 2166,
         "proposals": 0,
         "cancels": 6
       },
@@ -549,7 +549,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1202,
+        "appointments": 1205,
         "proposals": 0,
         "cancels": 5
       }
