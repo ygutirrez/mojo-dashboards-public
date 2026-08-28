@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-28T16:16:51.216Z",
+  "updated_at": "2026-08-28T16:34:50.302Z",
   "period": "Jan 1 - Aug 28, 2026 (YTD)",
   "summary": {
-    "total_jobs": 9998,
-    "total_techs": 11,
-    "resprays": 114,
-    "first_time_success": "98.9%",
-    "total_upsells": 6,
+    "total_jobs": 18651,
+    "total_techs": 12,
+    "resprays": 133,
+    "first_time_success": "99.3%",
+    "total_upsells": 7,
     "total_revenue": 1689632
   },
   "employees": [
@@ -55,12 +55,23 @@
       "resprays": 0
     },
     {
+      "name": "Joe Pagan",
+      "route_label": "Misting Route",
+      "technician_status": "active",
+      "initials": "JP",
+      "jobs": 738,
+      "rank": 5,
+      "revenue": 102313,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
       "name": "Jorge Navarro",
       "route_label": "Route 2",
       "technician_status": "active",
       "initials": "JN",
       "jobs": 590,
-      "rank": 5,
+      "rank": 6,
       "revenue": 37001,
       "upsells": 0,
       "resprays": 0
@@ -71,7 +82,7 @@
       "technician_status": "active",
       "initials": "TJ",
       "jobs": 265,
-      "rank": 6,
+      "rank": 7,
       "revenue": 28894,
       "upsells": 0,
       "resprays": 0
@@ -82,7 +93,7 @@
       "technician_status": "active",
       "initials": "CB",
       "jobs": 237,
-      "rank": 7,
+      "rank": 8,
       "revenue": 60330,
       "upsells": 0,
       "resprays": 0
@@ -92,7 +103,7 @@
       "technician_status": "active",
       "initials": "GR",
       "jobs": 37,
-      "rank": 8,
+      "rank": 9,
       "revenue": 0,
       "upsells": 0,
       "resprays": 0
@@ -102,7 +113,7 @@
       "technician_status": "active",
       "initials": "LP",
       "jobs": 28,
-      "rank": 9,
+      "rank": 10,
       "revenue": 0,
       "upsells": 0,
       "resprays": 0
@@ -112,7 +123,7 @@
       "technician_status": "active",
       "initials": "WP",
       "jobs": 25,
-      "rank": 10,
+      "rank": 11,
       "revenue": 0,
       "upsells": 0,
       "resprays": 0
@@ -122,7 +133,7 @@
       "technician_status": "active",
       "initials": "MS",
       "jobs": 14,
-      "rank": 11,
+      "rank": 12,
       "revenue": 0,
       "upsells": 0,
       "resprays": 0
@@ -136,6 +147,10 @@
     {
       "name": "Jorge",
       "count": 2
+    },
+    {
+      "name": "Joe",
+      "count": 1
     }
   ],
   "fleet_safety": [
@@ -235,6 +250,10 @@
         "days": 26
       },
       {
+        "name": "Joe",
+        "days": 15
+      },
+      {
         "name": "Lenny",
         "days": 0
       },
@@ -279,6 +298,10 @@
       {
         "name": "Marcus",
         "days": 10
+      },
+      {
+        "name": "Joe",
+        "days": 7
       },
       {
         "name": "Lenny",
@@ -352,6 +375,17 @@
       "payoutsOwed": 0
     },
     {
+      "name": "Joseph Pagan",
+      "initials": "JP",
+      "count": 1.5,
+      "target": 10,
+      "color": "#00d9ff",
+      "note": "",
+      "totalCredits": 69.17,
+      "totalPayouts": 7,
+      "payoutsOwed": 0
+    },
+    {
       "name": "Travis Johnson",
       "initials": "TJ",
       "count": 1,
@@ -379,10 +413,10 @@
       "count": 0,
       "target": 10,
       "color": "#a855f7",
-      "note": "OWED 1 payout ($500)",
+      "note": "",
       "totalCredits": 10,
-      "totalPayouts": 0,
-      "payoutsOwed": 1
+      "totalPayouts": 1,
+      "payoutsOwed": 0
     }
   ],
   "review_stats": {
@@ -393,7 +427,14 @@
     "source": "Google Reviews bonus sheet CSV",
     "updated_at": "2026-08-02T16:37:13.637Z"
   },
-  "payouts_2025": [],
+  "payouts_2025": [
+    {
+      "name": "Joseph Pagan",
+      "amount": 1500,
+      "reviews": 69.17,
+      "cashed": 30
+    }
+  ],
   "payouts_2026": [
     {
       "name": "Travis Johnson",
@@ -406,9 +447,45 @@
       "amount": 500,
       "reviews": 13.5,
       "cashed": 10
+    },
+    {
+      "name": "Joseph Pagan",
+      "amount": 1000,
+      "reviews": 69.17,
+      "cashed": 20
+    },
+    {
+      "name": "Jorge Navarro",
+      "amount": 500,
+      "reviews": 10,
+      "cashed": 10
     }
   ],
   "wall_of_fame": [
+    {
+      "reviewer": "Eddy Alvarez",
+      "stars": 5,
+      "date": "2026-07-29",
+      "tech": "Joe",
+      "quote": "Joe was great. He answered all my questions and was able to finish the entire backyard setup quickly!",
+      "color": "#00d9ff"
+    },
+    {
+      "reviewer": "Jasmine Acosta",
+      "stars": 5,
+      "date": "2026-06-29",
+      "tech": "Joe",
+      "quote": "Joe was great!  Thorough, great attention to detail and explained the process easily.  Can’t wait to finally enjoy my backyard.",
+      "color": "#00d9ff"
+    },
+    {
+      "reviewer": "Charles Reimer",
+      "stars": 5,
+      "date": "2026-06-24",
+      "tech": "Joe",
+      "quote": "Mosquito Joe’s technician Joe did a wonderful job on adding a misting system to our backyard.  He was punctual, cared for every detail of his work and the final product exceeded expectations.  Highly ",
+      "color": "#00d9ff"
+    },
     {
       "reviewer": "Camila Castano",
       "stars": 5,
@@ -416,40 +493,44 @@
       "tech": "Damian",
       "quote": "Damian has been great to work with! He is very attentive, professional, and always takes the time to make sure the treatment is done thoroughly. After just two services, I’ve already noticed a differe",
       "color": "#ffd700"
+    },
+    {
+      "reviewer": "Cyrus Mallare",
+      "stars": 5,
+      "date": "2026-05-29",
+      "tech": "Joe",
+      "quote": "We recently had a mosquito repellent system installed by Joe from Mosquito Joe of Miami, and we couldn’t be happier with the experience. Joe was friendly, professional, and extremely knowledgeable. He",
+      "color": "#00d9ff"
+    },
+    {
+      "reviewer": "Lazaro Rojas",
+      "stars": 5,
+      "date": "2026-05-28",
+      "tech": "Joe",
+      "quote": "Joe is the best hands down",
+      "color": "#00d9ff"
+    },
+    {
+      "reviewer": "Carlos Munoz",
+      "stars": 5,
+      "date": "2026-05-27",
+      "tech": "Joe",
+      "quote": "We just had Joe over to install the thermacell system. He was on time and efficient. We went over the app and functions together and did a good job cleaning up. Just spent a couple of hours on the pat",
+      "color": "#00d9ff"
+    },
+    {
+      "reviewer": "Alec Burks",
+      "stars": 5,
+      "date": "2026-05-15",
+      "tech": "Joe",
+      "quote": "Joe and the team did an amazing job",
+      "color": "#00d9ff"
     }
   ],
   "resprays_by_tech": [
     {
-      "name": "Damian Machin",
-      "count": 11
-    },
-    {
-      "name": "David Carbajal",
-      "count": 7
-    },
-    {
-      "name": "Marcus Rubi",
-      "count": 7
-    },
-    {
-      "name": "Stanley Prophete",
-      "count": 6
-    },
-    {
-      "name": "Curtis Blount",
-      "count": 3
-    },
-    {
-      "name": "Jorge Navarro",
-      "count": 2
-    },
-    {
-      "name": "Travis Johnson",
-      "count": 1
-    },
-    {
-      "name": "Jeovany Osorio",
-      "count": 1
+      "name": "Team total (current ServiceMinder)",
+      "count": 133
     }
   ],
   "achievements": [
@@ -472,6 +553,12 @@
       "stat": "1285 jobs — 83 behind!"
     },
     {
+      "icon": "💎",
+      "title": "Premium Pro",
+      "name": "Joseph Pagan",
+      "stat": "Highest premium service mix"
+    },
+    {
       "icon": "🛡️",
       "title": "Zero Callbacks",
       "name": "Omar Sanchez",
@@ -481,7 +568,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 56 re-sprays out of 7027!"
+      "stat": "Only 133 re-sprays out of 18,651!"
     }
   ],
   "generated_at": "2026-08-28T09:19:00.876Z",
@@ -578,5 +665,12 @@
       }
     },
     "write_existing_applied": true
+  },
+  "featured_review": {
+    "stars": 5,
+    "text": "Joe was great. He answered all my questions and was able to finish the entire backyard setup quickly!",
+    "author": "Eddy Alvarez",
+    "tech": "Joe",
+    "date": "2026-07-29"
   }
 }
