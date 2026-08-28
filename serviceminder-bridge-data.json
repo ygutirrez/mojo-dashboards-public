@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T13:15:59.742Z",
+    "generated_at": "2026-08-28T16:34:26.060Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T13:15:58.005Z",
+      "generated_at": "2026-08-28T16:34:24.728Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27099,
-      "contacts": 13952,
-      "invoices": 42607,
+      "appointments": 27170,
+      "contacts": 13953,
+      "invoices": 42668,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -25,6 +25,11 @@
         "technician": "Joe Pagan",
         "status": "active",
         "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
       },
       "Route 1": {
         "technician": "Travis Johnson",
@@ -83,8 +88,7 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9",
-      "Lenny Pierre"
+      "Route 9"
     ],
     "personnel_notes": [
       {
@@ -115,19 +119,19 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1690369,
+      "ytd_invoiced": 1695560,
       "avg_per_visit": 71,
-      "mtd": 205166,
-      "mtd_jobs": 2253
+      "mtd": 210357,
+      "mtd_jobs": 2314
     },
     "operations": {
       "total_jobs": 9998,
-      "jobs_per_tech_day": 7.3,
-      "revenue_per_tech_day": 670,
+      "jobs_per_tech_day": 6.5,
+      "revenue_per_tech_day": 596,
       "first_time_success": 98.9,
       "callback_rate": 1.1,
       "resprays": 114,
-      "active_techs": 8,
+      "active_techs": 9,
       "working_days_ytd": 172
     },
     "sales": {
@@ -180,14 +184,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 9998,
-      "total_wo_revenue": 1690369
+      "total_wo_revenue": 1695560
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 85809.53,
-        "avgRevenue": 89.11,
+        "revenue": 87928.61,
+        "avgRevenue": 88.91,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -197,8 +201,8 @@
       {
         "name": "Stanley Prophete",
         "jobs": 1285,
-        "revenue": 77054.56,
-        "avgRevenue": 88.87,
+        "revenue": 79715.16,
+        "avgRevenue": 88.47,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
@@ -208,8 +212,8 @@
       {
         "name": "Marcus Rubi",
         "jobs": 1195,
-        "revenue": 62154.42,
-        "avgRevenue": 76.26,
+        "revenue": 64344.39,
+        "avgRevenue": 76.24,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
         "technician_status": "active",
@@ -219,8 +223,8 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 66286.75,
-        "avgRevenue": 82.45,
+        "revenue": 67769.62,
+        "avgRevenue": 82.65,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
@@ -230,8 +234,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 102313.17,
-        "avgRevenue": 180.13,
+        "revenue": 104353.17,
+        "avgRevenue": 181.48,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -241,8 +245,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 35872.62,
-        "avgRevenue": 82.85,
+        "revenue": 37323.45,
+        "avgRevenue": 82.94,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -263,30 +267,41 @@
       {
         "name": "Curtis Blount",
         "jobs": 237,
-        "revenue": 60482.36,
-        "avgRevenue": 82.63,
+        "revenue": 62211.71,
+        "avgRevenue": 82.73,
         "route_label": "Route 7",
         "technician": "Curtis Blount",
         "technician_status": "active",
         "mapping_source": "Yoel route screenshot 2026-06-16",
         "legacy_revenue": 19729.190000000028
+      },
+      {
+        "name": "Lenny Pierre",
+        "jobs": 11,
+        "revenue": 1125.99,
+        "avgRevenue": 102.36,
+        "route_label": "Lenny Pierre",
+        "technician": "Lenny Pierre",
+        "technician_status": "active",
+        "mapping_source": "Yoel note 2026-08-28: current technician",
+        "legacy_revenue": null
       }
     ],
     "appointment_statuses": {
-      "Queued": 16031,
-      "Scheduled": 7688,
-      "Started": 234,
+      "Queued": 15869,
+      "Scheduled": 7906,
+      "Started": 237,
       "Completed": 3
     },
     "service_mix": {
-      "Mojo Essential": 10816,
-      "Synthetic Barrier Spray - 2 week": 7657,
-      "Misting System Recurring Service Bi-Monthly": 1406,
+      "Mojo Essential": 10822,
+      "Synthetic Barrier Spray - 2 week": 7689,
+      "Misting System Recurring Service Bi-Monthly": 1418,
       "HPD - 42 Days": 795,
-      "Gnat/Midge/No-seeums Service - 2 weeks": 740,
+      "Gnat/Midge/No-seeums Service - 2 weeks": 748,
       "Synthetic Barrier Spray - 4 week": 423,
       "Accelerated - Synthetic Signature Service": 368,
-      "All-Natural Barrier Spray": 332,
+      "All-Natural Barrier Spray": 333,
       "Misting system - 4 Weeks": 191,
       "InZecto Trap Service": 139,
       "In2Care Service - 4 Weeks Service": 127,
@@ -330,10 +345,10 @@
   "tech": {
     "summary": {
       "total_jobs": 9998,
-      "total_techs": 8,
+      "total_techs": 9,
       "resprays": 114,
       "first_time_success": "98.9%",
-      "total_revenue": 1690369
+      "total_revenue": 1695560
     },
     "employees": [
       {
@@ -343,7 +358,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 85810,
+        "revenue": 87929,
         "upsells": 0,
         "resprays": 0
       },
@@ -354,7 +369,7 @@
         "initials": "SP",
         "jobs": 1285,
         "rank": 2,
-        "revenue": 77055,
+        "revenue": 79715,
         "upsells": 0,
         "resprays": 0
       },
@@ -365,7 +380,7 @@
         "initials": "MR",
         "jobs": 1195,
         "rank": 3,
-        "revenue": 62154,
+        "revenue": 64344,
         "upsells": 0,
         "resprays": 0
       },
@@ -376,7 +391,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 4,
-        "revenue": 66287,
+        "revenue": 67770,
         "upsells": 0,
         "resprays": 0
       },
@@ -387,7 +402,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 102313,
+        "revenue": 104353,
         "upsells": 0,
         "resprays": 0
       },
@@ -398,7 +413,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 35873,
+        "revenue": 37323,
         "upsells": 0,
         "resprays": 0
       },
@@ -420,34 +435,45 @@
         "initials": "CB",
         "jobs": 237,
         "rank": 8,
-        "revenue": 60482,
+        "revenue": 62212,
+        "upsells": 0,
+        "resprays": 0
+      },
+      {
+        "name": "Lenny Pierre",
+        "route_label": "Lenny Pierre",
+        "technician_status": "active",
+        "initials": "LP",
+        "jobs": 11,
+        "rank": 9,
+        "revenue": 1126,
         "upsells": 0,
         "resprays": 0
       }
     ]
   },
   "salesKpi": {
-    "revenue": 1690369,
+    "revenue": 1695560,
     "proposals": 1627,
     "invoiced_proposals": 1367,
     "complete_proposals": 174,
     "sources": {
-      "Online": 12579,
-      "Referral": 10922,
-      "MoJo Customer": 5741,
-      "Yard Sign": 3909,
-      "Direct Mail Postcard": 3686,
-      "Mosquito Joe Vehicle": 2819,
-      "Other": 1263,
-      "Advertising": 989,
-      "Printed Material": 503,
-      "Mail Advertising": 423,
+      "Online": 12617,
+      "Referral": 10946,
+      "MoJo Customer": 5756,
+      "Yard Sign": 3916,
+      "Direct Mail Postcard": 3693,
+      "Mosquito Joe Vehicle": 2830,
+      "Other": 1268,
+      "Advertising": 993,
+      "Printed Material": 506,
+      "Mail Advertising": 424,
       "Existing Customer": 334,
-      "Online Search": 231,
-      "DMP": 173,
+      "Online Search": 232,
+      "DMP": 175,
       "Accelerated": 78,
-      "Local Branding": 74,
-      "Neighborly": 72,
+      "Local Branding": 75,
+      "Neighborly": 73,
       "Print Material": 60,
       "Event/Sponsorship": 51,
       "Competitor": 46,
@@ -515,9 +541,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 205165.66,
-        "invoices": 2253,
-        "appointments": 4692,
+        "invoiceRevenue": 210357.43,
+        "invoices": 2314,
+        "appointments": 4691,
         "proposals": 0,
         "cancels": 9
       },
@@ -525,7 +551,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3916,
+        "appointments": 3962,
         "proposals": 0,
         "cancels": 9
       },
@@ -533,7 +559,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3018,
+        "appointments": 3023,
         "proposals": 0,
         "cancels": 13
       },
@@ -541,7 +567,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2166,
+        "appointments": 2168,
         "proposals": 0,
         "cancels": 6
       },
@@ -549,14 +575,14 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1205,
+        "appointments": 1212,
         "proposals": 0,
         "cancels": 5
       }
     ]
   },
   "warnings": [
-    "Unmapped ServiceMinder route labels remain: Route 9, Lenny Pierre.",
+    "Unmapped ServiceMinder route labels remain: Route 9.",
     "Chemical/material usage is not available from the current ServiceMinder Org downloads.",
     "CSR attribution and tech upsells remain on the Office Tracking/CSV path until ServiceMinder fields are confirmed."
   ]
