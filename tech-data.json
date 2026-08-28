@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-08-28T16:34:50.302Z",
+  "updated_at": "2026-08-28T16:35:29.683Z",
   "period": "Jan 1 - Aug 28, 2026 (YTD)",
   "summary": {
     "total_jobs": 18651,
-    "total_techs": 12,
+    "total_techs": 9,
     "resprays": 133,
     "first_time_success": "99.3%",
     "total_upsells": 7,
-    "total_revenue": 1689632
+    "total_revenue": 1695560
   },
   "employees": [
     {
@@ -17,7 +17,7 @@
       "initials": "DM",
       "jobs": 1368,
       "rank": 1,
-      "revenue": 84837,
+      "revenue": 87929,
       "upsells": 0,
       "resprays": 0
     },
@@ -28,7 +28,7 @@
       "initials": "SP",
       "jobs": 1285,
       "rank": 2,
-      "revenue": 77055,
+      "revenue": 79715,
       "upsells": 0,
       "resprays": 0
     },
@@ -39,7 +39,7 @@
       "initials": "MR",
       "jobs": 1195,
       "rank": 3,
-      "revenue": 62154,
+      "revenue": 64344,
       "upsells": 0,
       "resprays": 0
     },
@@ -50,7 +50,7 @@
       "initials": "DC",
       "jobs": 1165,
       "rank": 4,
-      "revenue": 66211,
+      "revenue": 67770,
       "upsells": 0,
       "resprays": 0
     },
@@ -61,7 +61,7 @@
       "initials": "JP",
       "jobs": 738,
       "rank": 5,
-      "revenue": 102313,
+      "revenue": 104353,
       "upsells": 0,
       "resprays": 0
     },
@@ -72,7 +72,7 @@
       "initials": "JN",
       "jobs": 590,
       "rank": 6,
-      "revenue": 37001,
+      "revenue": 37323,
       "upsells": 0,
       "resprays": 0
     },
@@ -94,47 +94,18 @@
       "initials": "CB",
       "jobs": 237,
       "rank": 8,
-      "revenue": 60330,
-      "upsells": 0,
-      "resprays": 0
-    },
-    {
-      "name": "Guillermo Rodriguez",
-      "technician_status": "active",
-      "initials": "GR",
-      "jobs": 37,
-      "rank": 9,
-      "revenue": 0,
+      "revenue": 62212,
       "upsells": 0,
       "resprays": 0
     },
     {
       "name": "Lenny Pierre",
+      "route_label": "Lenny Pierre",
       "technician_status": "active",
       "initials": "LP",
-      "jobs": 28,
-      "rank": 10,
-      "revenue": 0,
-      "upsells": 0,
-      "resprays": 0
-    },
-    {
-      "name": "Wilbeni Pierre",
-      "technician_status": "active",
-      "initials": "WP",
-      "jobs": 25,
-      "rank": 11,
-      "revenue": 0,
-      "upsells": 0,
-      "resprays": 0
-    },
-    {
-      "name": "Michael Sanon",
-      "technician_status": "active",
-      "initials": "MS",
-      "jobs": 14,
-      "rank": 12,
-      "revenue": 0,
+      "jobs": 11,
+      "rank": 9,
+      "revenue": 1126,
       "upsells": 0,
       "resprays": 0
     }
@@ -529,8 +500,48 @@
   ],
   "resprays_by_tech": [
     {
-      "name": "Team total (current ServiceMinder)",
-      "count": 133
+      "name": "Former / unassigned routes",
+      "count": 37
+    },
+    {
+      "name": "Damian Machin",
+      "count": 23
+    },
+    {
+      "name": "David Carbajal",
+      "count": 16
+    },
+    {
+      "name": "Jorge Navarro",
+      "count": 15
+    },
+    {
+      "name": "Marcus Rubi",
+      "count": 9
+    },
+    {
+      "name": "Lenny Pierre",
+      "count": 9
+    },
+    {
+      "name": "Stanley Prophete",
+      "count": 8
+    },
+    {
+      "name": "Travis Johnson",
+      "count": 7
+    },
+    {
+      "name": "John Sabin",
+      "count": 4
+    },
+    {
+      "name": "Curtis Blount",
+      "count": 4
+    },
+    {
+      "name": "Joseph Pagan",
+      "count": 1
     }
   ],
   "achievements": [
@@ -561,8 +572,8 @@
     {
       "icon": "🛡️",
       "title": "Zero Callbacks",
-      "name": "Omar Sanchez",
-      "stat": "1 jobs, 0 re-sprays"
+      "name": "Guillermo Rodriguez",
+      "stat": "37 jobs, 0 re-sprays"
     },
     {
       "icon": "⭐",
@@ -571,24 +582,39 @@
       "stat": "Only 133 re-sprays out of 18,651!"
     }
   ],
-  "generated_at": "2026-08-28T09:19:00.876Z",
+  "generated_at": "2026-08-28T16:34:26.060Z",
   "serviceminder": {
-    "generated_at": "2026-08-28T09:19:00.876Z",
+    "generated_at": "2026-08-28T16:34:26.060Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T09:18:43.035Z",
+      "generated_at": "2026-08-28T16:34:24.728Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27090,
-      "contacts": 13952,
-      "invoices": 42598,
+      "appointments": 27170,
+      "contacts": 13953,
+      "invoices": 42668,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
+      },
       "Route 1": {
         "technician": "Travis Johnson",
         "status": "active",
@@ -598,6 +624,11 @@
         "technician": "Jorge Navarro",
         "status": "active",
         "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
         "technician": "Stanley Prophete",
@@ -641,10 +672,14 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9",
-      "Lenny Pierre"
+      "Route 9"
     ],
     "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
       {
         "name": "Jeffrey Baptiste",
         "status": "inactive",

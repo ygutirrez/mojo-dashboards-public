@@ -155,7 +155,10 @@
 
         // Respray accountability — handle both object {name: count} and array [{name, count}] formats
         const rbtRaw = d.resprays_by_tech || {};
-        const rbt = Array.isArray(rbtRaw) ? rbtRaw : Object.entries(rbtRaw).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count);
+        const rbt = (Array.isArray(rbtRaw) ? rbtRaw : Object.entries(rbtRaw).map(([name, count]) => ({ name, count })))
+            .map(r => ({ name: r.name || r.tech || 'Unassigned', count: Number(r.count ?? r.resprays ?? 0) }))
+            .filter(r => r.count > 0 && !/^team total/i.test(r.name))
+            .sort((a, b) => b.count - a.count || String(a.name).localeCompare(String(b.name)));
         let resprayHTML = rbt.length > 0 ? rbt.map((r, i) => {
             const barPct = Math.round(r.count / (rbt[0]?.count || 1) * 100);
             return `<div style="display:flex;align-items:center;gap:7px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.12;">
@@ -308,6 +311,20 @@
             </div>`;
         }).join('') || '<div style="color:#8b949e;text-align:center;padding:18px;">No review race data available</div>';
 
+        const ytdPayouts = [...(d.payouts_2026 || [])]
+            .filter(p => Number(p.amount || 0) > 0)
+            .sort((a, b) => Number(b.amount || 0) - Number(a.amount || 0) || String(a.name).localeCompare(String(b.name)));
+        const payoutTotal = ytdPayouts.reduce((sum, p) => sum + Number(p.amount || 0), 0);
+        const payoutHTML = ytdPayouts.length ? `
+            <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,215,0,0.22);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.6px;color:#ffd700;font-weight:700;">
+                    <span>💵 2026 Bonuses Paid</span><span>$${payoutTotal.toLocaleString()}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                    ${ytdPayouts.map(p => `<span style="background:rgba(255,215,0,0.10);border:1px solid rgba(255,215,0,0.20);border-radius:10px;padding:3px 7px;font-size:0.65rem;color:#ddd;"><strong style="color:#fff;">${p.name}</strong> · $${Number(p.amount).toLocaleString()}</span>`).join('')}
+                </div>
+            </div>` : '<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08);font-size:0.65rem;color:#8b949e;text-align:center;">No 2026 bonuses paid yet</div>';
+
         // Featured review
         const fr = d.featured_review || { stars: 0, text: 'No featured review selected.', author: '', tech: '' };
         const stars = '⭐'.repeat(Math.max(0, Number(fr.stars) || 0));
@@ -365,6 +382,7 @@
                         <span style="background:linear-gradient(90deg,#ffd700,#ff6b35);color:#000;padding:4px 14px;border-radius:12px;font-weight:bold;font-size:0.8rem;">💰 $500 / 10 REVIEWS</span>
                     </div>
                     ${raceHTML}
+                    ${payoutHTML}
                 </div>
             </div>
             <div class="card" style="flex:0 0 200px;">
