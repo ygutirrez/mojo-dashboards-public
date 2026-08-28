@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-28T09:18:59.668Z",
+  "updated_at": "2026-08-28T16:16:51.216Z",
   "period": "Jan 1 - Aug 28, 2026 (YTD)",
   "summary": {
     "total_jobs": 9998,
-    "total_techs": 8,
+    "total_techs": 11,
     "resprays": 114,
     "first_time_success": "98.9%",
-    "total_upsells": 7,
+    "total_upsells": 6,
     "total_revenue": 1689632
   },
   "employees": [
@@ -55,23 +55,12 @@
       "resprays": 0
     },
     {
-      "name": "Joe Pagan",
-      "route_label": "Misting Route",
-      "technician_status": "active",
-      "initials": "JP",
-      "jobs": 738,
-      "rank": 5,
-      "revenue": 102313,
-      "upsells": 0,
-      "resprays": 0
-    },
-    {
       "name": "Jorge Navarro",
       "route_label": "Route 2",
       "technician_status": "active",
       "initials": "JN",
       "jobs": 590,
-      "rank": 6,
+      "rank": 5,
       "revenue": 37001,
       "upsells": 0,
       "resprays": 0
@@ -82,7 +71,7 @@
       "technician_status": "active",
       "initials": "TJ",
       "jobs": 265,
-      "rank": 7,
+      "rank": 6,
       "revenue": 28894,
       "upsells": 0,
       "resprays": 0
@@ -93,8 +82,48 @@
       "technician_status": "active",
       "initials": "CB",
       "jobs": 237,
-      "rank": 8,
+      "rank": 7,
       "revenue": 60330,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
+      "name": "Guillermo Rodriguez",
+      "technician_status": "active",
+      "initials": "GR",
+      "jobs": 37,
+      "rank": 8,
+      "revenue": 0,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
+      "name": "Lenny Pierre",
+      "technician_status": "active",
+      "initials": "LP",
+      "jobs": 28,
+      "rank": 9,
+      "revenue": 0,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
+      "name": "Wilbeni Pierre",
+      "technician_status": "active",
+      "initials": "WP",
+      "jobs": 25,
+      "rank": 10,
+      "revenue": 0,
+      "upsells": 0,
+      "resprays": 0
+    },
+    {
+      "name": "Michael Sanon",
+      "technician_status": "active",
+      "initials": "MS",
+      "jobs": 14,
+      "rank": 11,
+      "revenue": 0,
       "upsells": 0,
       "resprays": 0
     }
@@ -107,10 +136,6 @@
     {
       "name": "Jorge",
       "count": 2
-    },
-    {
-      "name": "Joe",
-      "count": 1
     }
   ],
   "fleet_safety": [
@@ -210,8 +235,8 @@
         "days": 26
       },
       {
-        "name": "Joe",
-        "days": 15
+        "name": "Lenny",
+        "days": 0
       },
       {
         "name": "Jorge",
@@ -220,6 +245,18 @@
       {
         "name": "Damian",
         "days": 8
+      },
+      {
+        "name": "Guillermo",
+        "days": 0
+      },
+      {
+        "name": "Wilbeni",
+        "days": 0
+      },
+      {
+        "name": "Michael",
+        "days": 0
       }
     ],
     "y2026": [
@@ -244,8 +281,8 @@
         "days": 10
       },
       {
-        "name": "Joe",
-        "days": 7
+        "name": "Lenny",
+        "days": 3
       },
       {
         "name": "Jorge",
@@ -254,6 +291,18 @@
       {
         "name": "Damian",
         "days": 14
+      },
+      {
+        "name": "Guillermo",
+        "days": 0
+      },
+      {
+        "name": "Wilbeni",
+        "days": 2
+      },
+      {
+        "name": "Michael",
+        "days": 2
       }
     ]
   },
@@ -303,17 +352,6 @@
       "payoutsOwed": 0
     },
     {
-      "name": "Joseph Pagan",
-      "initials": "JP",
-      "count": 1.5,
-      "target": 10,
-      "color": "#00d9ff",
-      "note": "OWED 1 payout ($500)",
-      "totalCredits": 69.17,
-      "totalPayouts": 6,
-      "payoutsOwed": 1
-    },
-    {
       "name": "Travis Johnson",
       "initials": "TJ",
       "count": 1,
@@ -355,21 +393,7 @@
     "source": "Google Reviews bonus sheet CSV",
     "updated_at": "2026-08-02T16:37:13.637Z"
   },
-  "featured_review": {
-    "stars": 5,
-    "text": "Joe was great. He answered all my questions and was able to finish the entire backyard setup quickly!",
-    "author": "Eddy Alvarez",
-    "tech": "Joe",
-    "date": "2026-07-29"
-  },
-  "payouts_2025": [
-    {
-      "name": "Joseph Pagan",
-      "amount": 1500,
-      "reviews": 69.17,
-      "cashed": 30
-    }
-  ],
+  "payouts_2025": [],
   "payouts_2026": [
     {
       "name": "Travis Johnson",
@@ -382,39 +406,9 @@
       "amount": 500,
       "reviews": 13.5,
       "cashed": 10
-    },
-    {
-      "name": "Joseph Pagan",
-      "amount": 500,
-      "reviews": 69.17,
-      "cashed": 10
     }
   ],
   "wall_of_fame": [
-    {
-      "reviewer": "Eddy Alvarez",
-      "stars": 5,
-      "date": "2026-07-29",
-      "tech": "Joe",
-      "quote": "Joe was great. He answered all my questions and was able to finish the entire backyard setup quickly!",
-      "color": "#00d9ff"
-    },
-    {
-      "reviewer": "Jasmine Acosta",
-      "stars": 5,
-      "date": "2026-06-29",
-      "tech": "Joe",
-      "quote": "Joe was great!  Thorough, great attention to detail and explained the process easily.  Can’t wait to finally enjoy my backyard.",
-      "color": "#00d9ff"
-    },
-    {
-      "reviewer": "Charles Reimer",
-      "stars": 5,
-      "date": "2026-06-24",
-      "tech": "Joe",
-      "quote": "Mosquito Joe’s technician Joe did a wonderful job on adding a misting system to our backyard.  He was punctual, cared for every detail of his work and the final product exceeded expectations.  Highly ",
-      "color": "#00d9ff"
-    },
     {
       "reviewer": "Camila Castano",
       "stars": 5,
@@ -422,38 +416,6 @@
       "tech": "Damian",
       "quote": "Damian has been great to work with! He is very attentive, professional, and always takes the time to make sure the treatment is done thoroughly. After just two services, I’ve already noticed a differe",
       "color": "#ffd700"
-    },
-    {
-      "reviewer": "Cyrus Mallare",
-      "stars": 5,
-      "date": "2026-05-29",
-      "tech": "Joe",
-      "quote": "We recently had a mosquito repellent system installed by Joe from Mosquito Joe of Miami, and we couldn’t be happier with the experience. Joe was friendly, professional, and extremely knowledgeable. He",
-      "color": "#00d9ff"
-    },
-    {
-      "reviewer": "Lazaro Rojas",
-      "stars": 5,
-      "date": "2026-05-28",
-      "tech": "Joe",
-      "quote": "Joe is the best hands down",
-      "color": "#00d9ff"
-    },
-    {
-      "reviewer": "Carlos Munoz",
-      "stars": 5,
-      "date": "2026-05-27",
-      "tech": "Joe",
-      "quote": "We just had Joe over to install the thermacell system. He was on time and efficient. We went over the app and functions together and did a good job cleaning up. Just spent a couple of hours on the pat",
-      "color": "#00d9ff"
-    },
-    {
-      "reviewer": "Alec Burks",
-      "stars": 5,
-      "date": "2026-05-15",
-      "tech": "Joe",
-      "quote": "Joe and the team did an amazing job",
-      "color": "#00d9ff"
     }
   ],
   "resprays_by_tech": [
@@ -488,10 +450,6 @@
     {
       "name": "Jeovany Osorio",
       "count": 1
-    },
-    {
-      "name": "Joseph Pagan",
-      "count": 1
     }
   ],
   "achievements": [
@@ -512,12 +470,6 @@
       "title": "Runner Up",
       "name": "Stanley Prophete",
       "stat": "1285 jobs — 83 behind!"
-    },
-    {
-      "icon": "💎",
-      "title": "Premium Pro",
-      "name": "Joseph Pagan",
-      "stat": "Highest premium service mix"
     },
     {
       "icon": "🛡️",
@@ -550,16 +502,6 @@
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
-      "Missing Route": {
-        "technician": "Joe Pagan",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Misting Route": {
-        "technician": "Joe Pagan",
-        "status": "active",
-        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
-      },
       "Route 1": {
         "technician": "Travis Johnson",
         "status": "active",
@@ -569,11 +511,6 @@
         "technician": "Jorge Navarro",
         "status": "active",
         "source": "Yoel route screenshot 2026-06-16"
-      },
-      "Route 4": {
-        "technician": "Andrew Schamel",
-        "status": "inactive",
-        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
         "technician": "Stanley Prophete",
@@ -621,11 +558,6 @@
       "Lenny Pierre"
     ],
     "personnel_notes": [
-      {
-        "name": "Andrew Schamel",
-        "status": "inactive",
-        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
-      },
       {
         "name": "Jeffrey Baptiste",
         "status": "inactive",
