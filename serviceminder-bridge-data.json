@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T16:34:26.060Z",
+    "generated_at": "2026-08-29T09:18:33.353Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T16:34:24.728Z",
+      "generated_at": "2026-08-29T09:18:15.196Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27170,
-      "contacts": 13953,
-      "invoices": 42668,
+      "appointments": 27198,
+      "contacts": 13954,
+      "invoices": 42679,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -109,28 +109,27 @@
     ],
     "overrides_applied": {
       "tech_resprays": {
-        "value": 114,
-        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
-        "updated_at": "2026-07-07T14:35:00Z",
-        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
       }
     },
     "write_existing_applied": true
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1695560,
+      "ytd_invoiced": 1696441,
       "avg_per_visit": 71,
-      "mtd": 210357,
-      "mtd_jobs": 2314
+      "mtd": 211238,
+      "mtd_jobs": 2325
     },
     "operations": {
-      "total_jobs": 9998,
-      "jobs_per_tech_day": 6.5,
+      "total_jobs": 18651,
+      "jobs_per_tech_day": 12,
       "revenue_per_tech_day": 596,
-      "first_time_success": 98.9,
-      "callback_rate": 1.1,
-      "resprays": 114,
+      "first_time_success": 99.3,
+      "callback_rate": 0.7,
+      "resprays": 133,
       "active_techs": 9,
       "working_days_ytd": 172
     },
@@ -183,15 +182,15 @@
   },
   "ops": {
     "summary": {
-      "total_wo_completed": 9998,
-      "total_wo_revenue": 1695560
+      "total_wo_completed": 18651,
+      "total_wo_revenue": 1696441
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 87928.61,
-        "avgRevenue": 88.91,
+        "revenue": 87832.31,
+        "avgRevenue": 88.9,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -288,16 +287,16 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 15869,
-      "Scheduled": 7906,
+      "Queued": 15891,
+      "Scheduled": 7903,
       "Started": 237,
       "Completed": 3
     },
     "service_mix": {
-      "Mojo Essential": 10822,
-      "Synthetic Barrier Spray - 2 week": 7689,
+      "Mojo Essential": 10830,
+      "Synthetic Barrier Spray - 2 week": 7694,
       "Misting System Recurring Service Bi-Monthly": 1418,
-      "HPD - 42 Days": 795,
+      "HPD - 42 Days": 799,
       "Gnat/Midge/No-seeums Service - 2 weeks": 748,
       "Synthetic Barrier Spray - 4 week": 423,
       "Accelerated - Synthetic Signature Service": 368,
@@ -308,7 +307,7 @@
       "Misting system - 6 Weeks": 113,
       "Synthetic Signature Service": 111,
       "Inzecto Trap Replacement": 97,
-      "Special Event Service": 77,
+      "Special Event Service": 79,
       "Property Assessment": 71,
       "Flea & Tick Treatment": 49,
       "Misting System Repair Service": 47,
@@ -344,11 +343,11 @@
   },
   "tech": {
     "summary": {
-      "total_jobs": 9998,
+      "total_jobs": 18651,
       "total_techs": 9,
-      "resprays": 114,
-      "first_time_success": "98.9%",
-      "total_revenue": 1695560
+      "resprays": 133,
+      "first_time_success": "99.3%",
+      "total_revenue": 1696441
     },
     "employees": [
       {
@@ -358,7 +357,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 87929,
+        "revenue": 87832,
         "upsells": 0,
         "resprays": 0
       },
@@ -453,18 +452,18 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1695560,
+    "revenue": 1696441,
     "proposals": 1627,
-    "invoiced_proposals": 1367,
-    "complete_proposals": 174,
+    "invoiced_proposals": 1365,
+    "complete_proposals": 176,
     "sources": {
-      "Online": 12617,
-      "Referral": 10946,
-      "MoJo Customer": 5756,
-      "Yard Sign": 3916,
-      "Direct Mail Postcard": 3693,
-      "Mosquito Joe Vehicle": 2830,
-      "Other": 1268,
+      "Online": 12632,
+      "Referral": 10949,
+      "MoJo Customer": 5762,
+      "Yard Sign": 3918,
+      "Direct Mail Postcard": 3694,
+      "Mosquito Joe Vehicle": 2831,
+      "Other": 1270,
       "Advertising": 993,
       "Printed Material": 506,
       "Mail Advertising": 424,
@@ -541,9 +540,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 210357.43,
-        "invoices": 2314,
-        "appointments": 4691,
+        "invoiceRevenue": 211238.32,
+        "invoices": 2325,
+        "appointments": 4687,
         "proposals": 0,
         "cancels": 9
       },
@@ -551,7 +550,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3962,
+        "appointments": 3970,
         "proposals": 0,
         "cancels": 9
       },
@@ -559,7 +558,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3023,
+        "appointments": 3029,
         "proposals": 0,
         "cancels": 13
       },
@@ -567,7 +566,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2168,
+        "appointments": 2172,
         "proposals": 0,
         "cancels": 6
       },
@@ -575,7 +574,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1212,
+        "appointments": 1217,
         "proposals": 0,
         "cancels": 5
       }

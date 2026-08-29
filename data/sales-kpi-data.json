@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-08-28T09:19:00.876Z",
-  "period": "Jan 1 - Aug 28, 2026 (YTD)",
+  "updated_at": "2026-08-29T09:18:33.353Z",
+  "period": "Jan 1 - Aug 29, 2026 (YTD)",
   "summary": {
-    "total_sales": 540,
-    "total_cancels": 320,
+    "total_sales": 542,
+    "total_cancels": 321,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 1689632,
-    "total_invoices": 18448,
+    "total_revenue": 1696441,
+    "total_invoices": 18529,
     "total_discounts": 15611,
-    "net": 220,
-    "days_tracked": 240,
-    "sales_per_day": 2.3,
-    "revenue_per_day": 7040
+    "net": 221,
+    "days_tracked": 241,
+    "sales_per_day": 2.2,
+    "revenue_per_day": 7039
   },
   "office_tally": {
-    "csv_date": "2026-08-27",
-    "total_sales": 540,
-    "total_cancels": 320,
-    "net": 220,
+    "csv_date": "2026-08-28",
+    "total_sales": 542,
+    "total_cancels": 321,
+    "net": 221,
     "paused_wp": 63,
     "paused_pct": 20,
     "sale_categories": [
@@ -29,11 +29,11 @@
       },
       {
         "name": "Restart",
-        "count": 135
+        "count": 136
       },
       {
         "name": "Event Spray",
-        "count": 81
+        "count": 82
       },
       {
         "name": "Noseeum",
@@ -119,8 +119,8 @@
       },
       {
         "name": "Unhappy",
-        "count": 33,
-        "pct": 10
+        "count": 34,
+        "pct": 11
       },
       {
         "name": "One Time",
@@ -324,8 +324,8 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 314,
-      "cancels": 110
+      "sales": 316,
+      "cancels": 111
     },
     {
       "name": "Norma",
@@ -442,20 +442,20 @@
       "week": "Aug 24",
       "sales": 0,
       "cancels": 0,
-      "revenue": 32929,
+      "revenue": 44146,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 1678415
+      "cumulative_revenue": 1689632
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 1689632,
-    "days_elapsed": 240,
+    "ytd_revenue": 1696441,
+    "days_elapsed": 241,
     "days_total": 365,
-    "projected_annual": 2569649,
+    "projected_annual": 2569299,
     "on_pace": false,
     "pct_of_target": 51.4
   },
@@ -470,27 +470,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-08-28T09:19:00.876Z"
+    "serviceminder_cutover_at": "2026-08-29T09:18:33.353Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-08-27",
-    "generated_at": "2026-08-28T09:18:48.379Z"
+    "sales_csv_date": "2026-08-28",
+    "generated_at": "2026-08-29T09:18:20.441Z"
   },
-  "total_sales": 540,
-  "total_cancels": 320,
+  "total_sales": 542,
+  "total_cancels": 321,
   "serviceminder": {
-    "generated_at": "2026-08-28T09:19:00.876Z",
+    "generated_at": "2026-08-29T09:18:33.353Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T09:18:43.035Z",
+      "generated_at": "2026-08-29T09:18:15.196Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27090,
-      "contacts": 13952,
-      "invoices": 42598,
+      "appointments": 27198,
+      "contacts": 13954,
+      "invoices": 42679,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -504,6 +504,11 @@
         "technician": "Joe Pagan",
         "status": "active",
         "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
       },
       "Route 1": {
         "technician": "Travis Johnson",
@@ -562,8 +567,7 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9",
-      "Lenny Pierre"
+      "Route 9"
     ],
     "personnel_notes": [
       {
@@ -584,36 +588,35 @@
     ],
     "overrides_applied": {
       "tech_resprays": {
-        "value": 114,
-        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
-        "updated_at": "2026-07-07T14:35:00Z",
-        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
       }
     },
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 1689632,
+    "revenue": 1696441,
     "proposals": 1627,
-    "invoiced_proposals": 1367,
-    "complete_proposals": 174,
+    "invoiced_proposals": 1365,
+    "complete_proposals": 176,
     "sources": {
-      "Online": 12571,
-      "Referral": 10921,
-      "MoJo Customer": 5735,
-      "Yard Sign": 3909,
-      "Direct Mail Postcard": 3686,
-      "Mosquito Joe Vehicle": 2818,
-      "Other": 1263,
-      "Advertising": 989,
-      "Printed Material": 502,
-      "Mail Advertising": 423,
-      "Existing Customer": 333,
-      "Online Search": 231,
-      "DMP": 173,
+      "Online": 12632,
+      "Referral": 10949,
+      "MoJo Customer": 5762,
+      "Yard Sign": 3918,
+      "Direct Mail Postcard": 3694,
+      "Mosquito Joe Vehicle": 2831,
+      "Other": 1270,
+      "Advertising": 993,
+      "Printed Material": 506,
+      "Mail Advertising": 424,
+      "Existing Customer": 334,
+      "Online Search": 232,
+      "DMP": 175,
       "Accelerated": 78,
-      "Local Branding": 74,
-      "Neighborly": 72,
+      "Local Branding": 75,
+      "Neighborly": 73,
       "Print Material": 60,
       "Event/Sponsorship": 51,
       "Competitor": 46,
@@ -681,9 +684,9 @@
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 204429.42,
-        "invoices": 2244,
-        "appointments": 4692,
+        "invoiceRevenue": 211238.32,
+        "invoices": 2325,
+        "appointments": 4687,
         "proposals": 0,
         "cancels": 9
       },
@@ -691,7 +694,7 @@
         "month": "2026-09",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3915,
+        "appointments": 3970,
         "proposals": 0,
         "cancels": 9
       },
@@ -699,7 +702,7 @@
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3016,
+        "appointments": 3029,
         "proposals": 0,
         "cancels": 13
       },
@@ -707,7 +710,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 2163,
+        "appointments": 2172,
         "proposals": 0,
         "cancels": 6
       },
@@ -715,7 +718,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1202,
+        "appointments": 1217,
         "proposals": 0,
         "cancels": 5
       }

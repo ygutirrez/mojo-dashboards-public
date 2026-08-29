@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-08-28T17:05:17.209Z",
-  "period": "Jan 1 - Aug 28, 2026 (YTD)",
+  "updated_at": "2026-08-29T09:18:32.155Z",
+  "period": "Jan 1 - Aug 29, 2026 (YTD)",
   "summary": {
     "total_jobs": 18651,
     "total_techs": 9,
     "resprays": 133,
     "first_time_success": "99.3%",
     "total_upsells": 7,
-    "total_revenue": 1695560
+    "total_revenue": 1696441
   },
   "employees": [
     {
@@ -17,7 +17,7 @@
       "initials": "DM",
       "jobs": 1368,
       "rank": 1,
-      "revenue": 87929,
+      "revenue": 87832,
       "upsells": 0,
       "resprays": 0
     },
@@ -221,12 +221,12 @@
         "days": 26
       },
       {
-        "name": "Joe",
-        "days": 15
-      },
-      {
         "name": "Lenny",
         "days": 0
+      },
+      {
+        "name": "Joe",
+        "days": 15
       },
       {
         "name": "Jorge",
@@ -271,12 +271,12 @@
         "days": 10
       },
       {
-        "name": "Joe",
-        "days": 7
-      },
-      {
         "name": "Lenny",
         "days": 3
+      },
+      {
+        "name": "Joe",
+        "days": 7
       },
       {
         "name": "Jorge",
@@ -442,24 +442,19 @@
     "source": "Google Reviews bonus sheet CSV",
     "updated_at": "2026-08-28T17:05:17.208Z"
   },
+  "featured_review": {
+    "stars": 5,
+    "text": "Joe the tech was excellent! So informative and thorough with the service. Went above and beyond to make sure I was happy with the work done. Communication was clear and prompt. Would recommend Joe fro",
+    "author": "joaquin garuz",
+    "tech": "Joe",
+    "date": "2026-08-27"
+  },
   "payouts_2025": [
     {
       "name": "Joseph Pagan",
       "amount": 1500,
       "reviews": 73.17,
       "cashed": 30
-    },
-    {
-      "name": "John",
-      "amount": 1000,
-      "reviews": 76,
-      "cashed": 20
-    },
-    {
-      "name": "Andrew",
-      "amount": 500,
-      "reviews": 18,
-      "cashed": 10
     }
   ],
   "payouts_2026": [
@@ -588,10 +583,6 @@
       "count": 7
     },
     {
-      "name": "John Sabin",
-      "count": 4
-    },
-    {
       "name": "Curtis Blount",
       "count": 4
     },
@@ -620,38 +611,32 @@
       "stat": "1285 jobs — 83 behind!"
     },
     {
-      "icon": "💎",
-      "title": "Premium Pro",
-      "name": "Joseph Pagan",
-      "stat": "Highest premium service mix"
-    },
-    {
       "icon": "🛡️",
       "title": "Zero Callbacks",
       "name": "Guillermo Rodriguez",
-      "stat": "37 jobs, 0 re-sprays"
+      "stat": "38 jobs, 0 re-sprays"
     },
     {
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 133 re-sprays out of 18,651!"
+      "stat": "Only 133 re-sprays out of 18651!"
     }
   ],
-  "generated_at": "2026-08-28T16:34:26.060Z",
+  "generated_at": "2026-08-29T09:18:33.353Z",
   "serviceminder": {
-    "generated_at": "2026-08-28T16:34:26.060Z",
+    "generated_at": "2026-08-29T09:18:33.353Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T16:34:24.728Z",
+      "generated_at": "2026-08-29T09:18:15.196Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27170,
-      "contacts": 13953,
-      "invoices": 42668,
+      "appointments": 27198,
+      "contacts": 13954,
+      "invoices": 42679,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -749,19 +734,11 @@
     ],
     "overrides_applied": {
       "tech_resprays": {
-        "value": 114,
-        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
-        "updated_at": "2026-07-07T14:35:00Z",
-        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
       }
     },
     "write_existing_applied": true
-  },
-  "featured_review": {
-    "stars": 5,
-    "text": "Joe the tech was excellent! So informative and thorough with the service. Went above and beyond to make sure I was happy with the work done. Communication was clear and prompt. Would recommend Joe fro",
-    "author": "joaquin garuz",
-    "tech": "Joe",
-    "date": "2026-08-27"
   }
 }

@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-08-28T09:18:55.114Z",
-  "period": "Jan 1 - Aug 28, 2026 (YTD)",
+  "generated_at": "2026-08-29T09:18:27.399Z",
+  "period": "Jan 1 - Aug 29, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 7027,
-    "total_revenue": 665011,
-    "avg_revenue_per_stop": 94.64,
+    "total_stops": 18651,
+    "total_revenue": 646605,
+    "avg_revenue_per_stop": 34.67,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
-    "estimated_gross_profit_per_stop": 73.44,
-    "estimated_gross_margin": 77.6,
-    "active_techs": 10
+    "estimated_gross_profit_per_stop": 13.47,
+    "estimated_gross_margin": 38.8,
+    "active_techs": 12
   },
   "cost_breakdown_per_stop": {
-    "revenue": 94.64,
+    "revenue": 34.67,
     "chemical": 3.2,
     "labor_estimate": 12,
     "fuel_estimate": 4,
     "vehicle_estimate": 2,
     "total_direct": 21.2,
-    "gross_profit": 73.44,
+    "gross_profit": 13.47,
     "note": "Labor, fuel, and vehicle costs are estimates based on industry averages. Chemical cost is actual."
   },
   "financial_benchmarks": {
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 1011371,
+    "current_annual_run_rate": 979298,
     "target": 5000000,
-    "gap": 3988629,
-    "additional_stops_needed": 42147,
-    "additional_daily_stops_needed": 169,
-    "current_daily_avg": 29.3,
-    "required_daily_avg": 198.3,
-    "capacity_increase_pct": 577.2
+    "gap": 4020702,
+    "additional_stops_needed": 115976,
+    "additional_daily_stops_needed": 464,
+    "current_daily_avg": 77.4,
+    "required_daily_avg": 541.4,
+    "capacity_increase_pct": 599.6
   },
   "tech_profitability": [
     {
@@ -200,44 +200,84 @@
       "rank": 8
     },
     {
-      "name": "Jeovany Osorio",
-      "initials": "JO",
-      "jobs": 183,
-      "revenue": 18406,
-      "avgRevenuePerStop": 100.58,
+      "name": "Michael Sanon",
+      "initials": "MS",
+      "jobs": 15,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
       "costs": {
-        "chemical": 585.6,
-        "labor": 2196,
-        "fuel": 732,
-        "vehicle": 366,
-        "total": 3879.6
+        "chemical": 48,
+        "labor": 180,
+        "fuel": 60,
+        "vehicle": 30,
+        "total": 318
       },
-      "grossProfit": 14526.4,
-      "margin": 78.9,
-      "resprays": 1,
-      "resprayRate": 0.55,
-      "efficiencyRating": 66,
+      "grossProfit": -318,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 21,
       "rank": 9
     },
     {
-      "name": "Omar Sanchez",
-      "initials": "OS",
-      "jobs": 1,
-      "revenue": 76,
-      "avgRevenuePerStop": 76,
+      "name": "Wilbeni Pierre",
+      "initials": "WP",
+      "jobs": 25,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
       "costs": {
-        "chemical": 3.2,
-        "labor": 12,
-        "fuel": 4,
-        "vehicle": 2,
-        "total": 21.2
+        "chemical": 80,
+        "labor": 300,
+        "fuel": 100,
+        "vehicle": 50,
+        "total": 530
       },
-      "grossProfit": 54.8,
-      "margin": 72.1,
+      "grossProfit": -530,
+      "margin": 0,
       "resprays": 0,
       "resprayRate": 0,
-      "efficiencyRating": 56,
+      "efficiencyRating": 21,
       "rank": 10
+    },
+    {
+      "name": "Lenny Pierre",
+      "initials": "LP",
+      "jobs": 28,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 89.6,
+        "labor": 336,
+        "fuel": 112,
+        "vehicle": 56,
+        "total": 593.6
+      },
+      "grossProfit": -593.6,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 21,
+      "rank": 11
+    },
+    {
+      "name": "Guillermo Rodriguez",
+      "initials": "GR",
+      "jobs": 38,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 121.6,
+        "labor": 456,
+        "fuel": 152,
+        "vehicle": 76,
+        "total": 805.6
+      },
+      "grossProfit": -805.6,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 22,
+      "rank": 12
     }
   ],
   "top_performers": [
@@ -271,8 +311,8 @@
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 7027 total stops, even a 5% upsell rate at $75 avg would add $26,351 in revenue.",
-      "potential_value": 26351
+      "description": "At 6949 total stops, even a 5% upsell rate at $75 avg would add $26,059 in revenue.",
+      "potential_value": 26059
     }
   ]
 }

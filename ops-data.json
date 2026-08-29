@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T09:19:00.876Z",
+  "updated_at": "2026-08-29T09:18:33.353Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -11,8 +11,8 @@
     "vehicles_with_codes": 9,
     "blowers_active": 13,
     "drivers_need_coaching": 0,
-    "total_wo_completed": 9998,
-    "total_wo_revenue": 1689632
+    "total_wo_completed": 18651,
+    "total_wo_revenue": 1696441
   },
   "alerts": [
     {
@@ -595,8 +595,8 @@
     {
       "name": "Damian Machin",
       "jobs": 1368,
-      "revenue": 84837.3,
-      "avgRevenue": 88.93,
+      "revenue": 87832.31,
+      "avgRevenue": 88.9,
       "route_label": "Route 11",
       "technician": "Damian Machin",
       "technician_status": "active",
@@ -606,8 +606,8 @@
     {
       "name": "Stanley Prophete",
       "jobs": 1285,
-      "revenue": 77054.56,
-      "avgRevenue": 88.87,
+      "revenue": 79715.16,
+      "avgRevenue": 88.47,
       "route_label": "Route 5",
       "technician": "Stanley Prophete",
       "technician_status": "active",
@@ -617,8 +617,8 @@
     {
       "name": "Marcus Rubi",
       "jobs": 1195,
-      "revenue": 62154.42,
-      "avgRevenue": 76.26,
+      "revenue": 64344.39,
+      "avgRevenue": 76.24,
       "route_label": "Route 6",
       "technician": "Marcus Rubi",
       "technician_status": "active",
@@ -628,8 +628,8 @@
     {
       "name": "David Carbajal",
       "jobs": 1165,
-      "revenue": 66210.76,
-      "avgRevenue": 82.45,
+      "revenue": 67769.62,
+      "avgRevenue": 82.65,
       "route_label": "Route 12",
       "technician": "David Carbajal",
       "technician_status": "active",
@@ -639,8 +639,8 @@
     {
       "name": "Joe Pagan",
       "jobs": 738,
-      "revenue": 102313.17,
-      "avgRevenue": 180.13,
+      "revenue": 104353.17,
+      "avgRevenue": 181.48,
       "route_label": "Misting Route",
       "technician": "Joe Pagan",
       "technician_status": "active",
@@ -650,8 +650,8 @@
     {
       "name": "Jorge Navarro",
       "jobs": 590,
-      "revenue": 37001,
-      "avgRevenue": 82.96,
+      "revenue": 37323.45,
+      "avgRevenue": 82.94,
       "route_label": "Route 2",
       "technician": "Jorge Navarro",
       "technician_status": "active",
@@ -672,28 +672,39 @@
     {
       "name": "Curtis Blount",
       "jobs": 237,
-      "revenue": 60330.38,
-      "avgRevenue": 82.64,
+      "revenue": 62211.71,
+      "avgRevenue": 82.73,
       "route_label": "Route 7",
       "technician": "Curtis Blount",
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
       "legacy_revenue": 19729.190000000028
+    },
+    {
+      "name": "Lenny Pierre",
+      "jobs": 11,
+      "revenue": 1125.99,
+      "avgRevenue": 102.36,
+      "route_label": "Lenny Pierre",
+      "technician": "Lenny Pierre",
+      "technician_status": "active",
+      "mapping_source": "Yoel note 2026-08-28: current technician",
+      "legacy_revenue": null
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-08-28T09:19:00.876Z",
+    "generated_at": "2026-08-29T09:18:33.353Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-28T09:18:43.035Z",
+      "generated_at": "2026-08-29T09:18:15.196Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27090,
-      "contacts": 13952,
-      "invoices": 42598,
+      "appointments": 27198,
+      "contacts": 13954,
+      "invoices": 42679,
       "proposals": 1627
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -707,6 +718,11 @@
         "technician": "Joe Pagan",
         "status": "active",
         "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
       },
       "Route 1": {
         "technician": "Travis Johnson",
@@ -765,8 +781,7 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9",
-      "Lenny Pierre"
+      "Route 9"
     ],
     "personnel_notes": [
       {
@@ -787,10 +802,9 @@
     ],
     "overrides_applied": {
       "tech_resprays": {
-        "value": 114,
-        "source": "Yoel ServiceMinder appointments report, 2026 YTD",
-        "updated_at": "2026-07-07T14:35:00Z",
-        "note": "ServiceMinder Org Download API currently returns only 19 Re-Spray rows; Yoel's UI appointments report shows 114."
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
       }
     },
     "write_existing_applied": true
