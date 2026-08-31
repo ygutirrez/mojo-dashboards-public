@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-08-30T09:18:35.451Z",
-  "period": "Jan 1 - Aug 30, 2026",
+  "generated_at": "2026-08-31T09:16:49.738Z",
+  "period": "Jan 1 - Aug 31, 2026",
   "headline": {
     "ytd_revenue": 1696893,
     "target": 5000000,
     "pct_complete": 33.9,
-    "pct_year_elapsed": 66.3,
+    "pct_year_elapsed": 66.6,
     "on_pace": false,
-    "annual_projection": 2559363,
-    "projection_gap": 2440637,
+    "annual_projection": 2548831,
+    "projection_gap": 2451169,
     "remaining": 3303107,
-    "days_remaining": 123
+    "days_remaining": 122
   },
   "pace": {
-    "daily_actual": 7012,
-    "daily_required": 26855,
+    "daily_actual": 6983,
+    "daily_required": 27075,
     "pace_ratio": 0.26,
     "status": "behind",
-    "stops_per_day": 77.1,
-    "required_stops_per_day": 774.6,
+    "stops_per_day": 76.8,
+    "required_stops_per_day": 780.9,
     "fy25_daily_pace": 8294,
-    "pace_vs_fy25_pct": -15
+    "pace_vs_fy25_pct": -16
   },
   "milestones": [
     {
@@ -39,7 +39,7 @@
       "reached": false,
       "pctToMilestone": 85,
       "daysToReach": 44,
-      "estimatedDate": "Oct 13"
+      "estimatedDate": "Oct 14"
     },
     {
       "amount": 3000000,
@@ -47,8 +47,8 @@
       "icon": "🥇",
       "reached": false,
       "pctToMilestone": 57,
-      "daysToReach": 186,
-      "estimatedDate": "Mar 4"
+      "daysToReach": 187,
+      "estimatedDate": "Mar 6"
     },
     {
       "amount": 4000000,
@@ -56,8 +56,8 @@
       "icon": "🏆",
       "reached": false,
       "pctToMilestone": 42,
-      "daysToReach": 329,
-      "estimatedDate": "Jul 25"
+      "daysToReach": 330,
+      "estimatedDate": "Jul 27"
     },
     {
       "amount": 5000000,
@@ -65,8 +65,8 @@
       "icon": "🎯",
       "reached": false,
       "pctToMilestone": 34,
-      "daysToReach": 472,
-      "estimatedDate": "Dec 15"
+      "daysToReach": 474,
+      "estimatedDate": "Dec 18"
     }
   ],
   "monthly_revenue": [
@@ -137,16 +137,16 @@
       "month": "Aug",
       "monthNum": 8,
       "actual": 211690,
-      "projected": 218746,
+      "projected": null,
       "target": 525000,
-      "isPast": false,
-      "isCurrent": true
+      "isPast": true,
+      "isCurrent": false
     },
     {
       "month": "Sep",
       "monthNum": 9,
       "actual": null,
-      "projected": 243139,
+      "projected": 242139,
       "target": 475000,
       "isPast": false,
       "isCurrent": false
@@ -155,7 +155,7 @@
       "month": "Oct",
       "monthNum": 10,
       "actual": null,
-      "projected": 217546,
+      "projected": 216651,
       "target": 425000,
       "isPast": false,
       "isCurrent": false
@@ -164,7 +164,7 @@
       "month": "Nov",
       "monthNum": 11,
       "actual": null,
-      "projected": 127968,
+      "projected": 127442,
       "target": 250000,
       "isPast": false,
       "isCurrent": false
@@ -173,7 +173,7 @@
       "month": "Dec",
       "monthNum": 12,
       "actual": null,
-      "projected": 102375,
+      "projected": 101953,
       "target": 200000,
       "isPast": false,
       "isCurrent": false
@@ -183,29 +183,29 @@
     {
       "label": "Current Pace",
       "description": "If nothing changes",
-      "projected": 2559363,
-      "gap": 2440637,
+      "projected": 2548831,
+      "gap": 2451169,
       "achievable": false
     },
     {
       "label": "+2 Techs (Q2)",
       "description": "Hire 2 by April, ramp by May",
-      "projected": 2684175,
-      "gap": 2315825,
+      "projected": 2673643,
+      "gap": 2326357,
       "achievable": false
     },
     {
       "label": "+5 Techs (Q2-Q3)",
       "description": "Aggressive hiring wave",
-      "projected": 2819388,
-      "gap": 2180612,
+      "projected": 2808856,
+      "gap": 2191144,
       "achievable": false
     },
     {
       "label": "Price Increase +10%",
       "description": "Raise avg ticket $9.40",
-      "projected": 2815299,
-      "gap": 2184701,
+      "projected": 2803714,
+      "gap": 2196286,
       "achievable": false
     }
   ],
@@ -213,12 +213,12 @@
   "comparisons": {
     "fy2025_revenue": 3027365.83,
     "fy2025_daily": 8294,
-    "yoy_growth_pct": -15,
+    "yoy_growth_pct": -16,
     "target_vs_fy25_pct": 65
   },
   "data_sources": {
     "revenue": "ServiceMinder Org Download API invoices",
-    "service_minder_generated_at": "2026-08-30T09:18:35.232Z",
+    "service_minder_generated_at": "2026-08-31T09:16:49.523Z",
     "servsuite_processed_invoices_revenue": 946368.04999993
   }
 }
