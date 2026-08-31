@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-08-31T18:32:48.845Z",
+  "updated_at": "2026-08-31T19:00:19.999Z",
   "csv_date": "2026-08-31",
   "period": "Jan 1 - Aug 31, 2026 (YTD)",
   "summary": {
     "total_sales": 542,
-    "total_cancels": 321,
-    "net": 221,
-    "paused_wp": 63,
+    "total_cancels": 324,
+    "net": 218,
+    "paused_wp": 66,
     "paused_pct": 20,
     "days_tracked": 243
   },
@@ -19,12 +19,12 @@
     {
       "name": "Norma",
       "sales": 165,
-      "cancels": 107
+      "cancels": 109
     },
     {
       "name": "Bev",
       "sales": 61,
-      "cancels": 103
+      "cancels": 104
     }
   ],
   "cancel_reasons": [
@@ -35,7 +35,7 @@
     },
     {
       "name": "Paused/WP",
-      "count": 63,
+      "count": 66,
       "pct": 20
     },
     {
@@ -51,7 +51,7 @@
     {
       "name": "Unhappy",
       "count": 34,
-      "pct": 11
+      "pct": 10
     },
     {
       "name": "One Time",
@@ -180,6 +180,27 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-08-31",
+      "dateFmt": "Aug 31",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-08-31",
+      "dateFmt": "Aug 31",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-08-31",
+      "dateFmt": "Aug 31",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Norma"
+    },
+    {
       "date": "2026-08-28",
       "dateFmt": "Aug 28",
       "type": "Sale",
@@ -227,27 +248,6 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-25",
-      "dateFmt": "Aug 25",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-24",
-      "dateFmt": "Aug 24",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-24",
-      "dateFmt": "Aug 24",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
