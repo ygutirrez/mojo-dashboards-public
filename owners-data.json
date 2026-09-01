@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-31T09:16:49.523Z",
-  "generated_date": "August 31, 2026",
+  "generated_at": "2026-09-01T09:16:23.784Z",
+  "generated_date": "September 1, 2026",
   "sales": {
-    "csv_date": "2026-08-28",
+    "csv_date": "2026-08-31",
     "total_sales": 542,
-    "total_cancels": 321,
-    "net": 221,
-    "paused": 63,
+    "total_cancels": 324,
+    "net": 218,
+    "paused": 66,
     "cancel_reasons": {
       "Moved": 71,
-      "Paused/WP": 63,
+      "Paused/WP": 66,
       "Not Interested": 47,
       "Financial": 39,
       "Unhappy": 34,
@@ -51,11 +51,11 @@
       },
       "Norma": {
         "sales": 165,
-        "cancels": 107
+        "cancels": 109
       },
       "Bev": {
         "sales": 61,
-        "cancels": 103
+        "cancels": 104
       }
     },
     "paused_pct": 20
@@ -93,35 +93,35 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1696893,
-    "avg_per_visit": 71,
-    "mtd": 211690,
-    "mtd_jobs": 2328
+    "ytd_invoiced": 1706659,
+    "avg_per_visit": 69,
+    "mtd": 0,
+    "mtd_jobs": 0
   },
   "operations": {
     "total_jobs": 18651,
-    "jobs_per_tech_day": 12,
-    "revenue_per_tech_day": 592,
+    "jobs_per_tech_day": 11.9,
+    "revenue_per_tech_day": 589,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 173
+    "working_days_ytd": 174
   },
   "serviceminder": {
-    "generated_at": "2026-08-31T09:16:49.523Z",
+    "generated_at": "2026-09-01T09:16:23.784Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-08-31T09:16:30.641Z",
+      "generated_at": "2026-09-01T09:16:05.041Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27198,
-      "contacts": 13966,
-      "invoices": 42682,
-      "proposals": 1627
+      "appointments": 27974,
+      "contacts": 13970,
+      "invoices": 42786,
+      "proposals": 1629
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -227,20 +227,20 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1541,
-    "total_cancels": 52,
-    "net": 1489,
+    "total_cancels": 68,
+    "net": 1473,
     "cancel_reasons": {
-      "Moving": 14,
-      "Workpool": 12,
+      "Moving": 15,
+      "Error": 14,
+      "Workpool": 13,
+      "Found Different Company": 11,
       "No Longer Needed": 10,
-      "Found Different Company": 10,
       "Financial": 4,
-      "Scheduling Conflict": 1,
-      "Error": 1
+      "Scheduling Conflict": 1
     },
     "sale_categories": {
-      "Mojo Essential": 747,
-      "Synthetic Barrier Spray - 2 week": 450,
+      "Mojo Essential": 748,
+      "Synthetic Barrier Spray - 2 week": 451,
       "Misting System Recurring Service Bi-Monthly": 127,
       "HPD - 42 Days": 76,
       "Synthetic Barrier Spray - 4 week": 44,
