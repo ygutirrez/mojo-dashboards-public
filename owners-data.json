@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-01T09:16:23.784Z",
-  "generated_date": "September 1, 2026",
+  "generated_at": "2026-09-02T09:16:37.242Z",
+  "generated_date": "September 2, 2026",
   "sales": {
-    "csv_date": "2026-08-31",
+    "csv_date": "2026-09-01",
     "total_sales": 542,
-    "total_cancels": 324,
-    "net": 218,
+    "total_cancels": 327,
+    "net": 215,
     "paused": 66,
     "cancel_reasons": {
       "Moved": 71,
       "Paused/WP": 66,
-      "Not Interested": 47,
+      "Not Interested": 50,
       "Financial": 39,
       "Unhappy": 34,
       "One Time": 17,
@@ -51,11 +51,11 @@
       },
       "Norma": {
         "sales": 165,
-        "cancels": 109
+        "cancels": 111
       },
       "Bev": {
         "sales": 61,
-        "cancels": 104
+        "cancels": 105
       }
     },
     "paused_pct": 20
@@ -93,34 +93,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1706659,
+    "ytd_invoiced": 1716650,
     "avg_per_visit": 69,
-    "mtd": 0,
-    "mtd_jobs": 0
+    "mtd": 9990,
+    "mtd_jobs": 109
   },
   "operations": {
     "total_jobs": 18651,
-    "jobs_per_tech_day": 11.9,
-    "revenue_per_tech_day": 589,
+    "jobs_per_tech_day": 11.8,
+    "revenue_per_tech_day": 586,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 174
+    "working_days_ytd": 175
   },
   "serviceminder": {
-    "generated_at": "2026-09-01T09:16:23.784Z",
+    "generated_at": "2026-09-02T09:16:37.242Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-01T09:16:05.041Z",
+      "generated_at": "2026-09-02T09:16:17.929Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 27974,
-      "contacts": 13970,
-      "invoices": 42786,
+      "appointments": 28051,
+      "contacts": 13977,
+      "invoices": 42895,
       "proposals": 1629
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
