@@ -30,6 +30,7 @@
         // Operations
         { name: 'Operations', url: 'operations-dashboard.html', icon: '⚙️', category: 'Operations', keywords: 'ops work orders route scheduling daily' },
         { name: 'Tech Performance & Fleet', url: 'tech-dashboard.html', icon: '🛠️', category: 'Operations', keywords: 'technician stats reviews fleet safety zubie' },
+        { name: 'Technician Scorecard', url: 'technician-scorecard.html', icon: '🏅', category: 'Operations', keywords: 'technician annual performance review score percentile quality productivity' },
         { name: 'Fleet Dashboard', url: 'fleet-dashboard.html', icon: '🚛', category: 'Operations', keywords: 'vehicle safety mileage driver speeding' },
         { name: 'Chemical Usage', url: 'chemical-dashboard.html', icon: '🧪', category: 'Operations', keywords: 'chemical inventory usage cost treatment reorder' },
         { name: 'CSR Performance', url: 'csr-performance.html', icon: '📊', category: 'Operations', keywords: 'csr win rate sales team individual analytics norma lucy bev' },
