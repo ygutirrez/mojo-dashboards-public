@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-09-07T09:16:30.760Z",
+  "generated_at": "2026-09-08T15:32:15.553Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-09-07.csv",
-    "date": "2026-09-07",
+    "file": "sales-data-2026-09-08.csv",
+    "date": "2026-09-08",
     "totalSales": 537,
-    "totalCancels": 329,
-    "net": 208,
+    "totalCancels": 331,
+    "net": 206,
     "upsells": 9,
     "csrs": [
       {
         "name": "Lucy",
         "sales": 312,
-        "cancels": 112
+        "cancels": 113
       },
       {
         "name": "Norma",
         "sales": 165,
-        "cancels": 111
+        "cancels": 112
       },
       {
         "name": "Bev",
@@ -27,11 +27,6 @@
       }
     ],
     "weekly": [
-      {
-        "week": "1026-04-03",
-        "sales": 0,
-        "cancels": 1
-      },
       {
         "week": "2026-01-05",
         "sales": 0,
@@ -208,6 +203,11 @@
         "cancels": 8
       },
       {
+        "week": "2026-09-07",
+        "sales": 0,
+        "cancels": 2
+      },
+      {
         "week": "2926-07-22",
         "sales": 0,
         "cancels": 1
@@ -215,7 +215,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-09-07T09:16:21.096Z",
+    "date": "2026-09-08T15:32:03.488Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -237,12 +237,12 @@
       },
       {
         "metric": "Cancel Events",
-        "csv": 329,
+        "csv": 331,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 180,
+        "gap": 178,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (329). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (331). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -257,7 +257,7 @@
       "csv": [
         {
           "name": "Moved",
-          "count": 71
+          "count": 72
         },
         {
           "name": "Paused/WP",
@@ -269,7 +269,7 @@
         },
         {
           "name": "Financial",
-          "count": 39
+          "count": 40
         },
         {
           "name": "Unhappy",
