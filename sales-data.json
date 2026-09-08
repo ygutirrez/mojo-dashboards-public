@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-09-07T14:30:18.895Z",
-  "csv_date": "2026-09-07",
-  "period": "Jan 1 - Sep 7, 2026 (YTD)",
+  "updated_at": "2026-09-08T15:27:07.267Z",
+  "csv_date": "2026-09-08",
+  "period": "Jan 1 - Sep 8, 2026 (YTD)",
   "summary": {
     "total_sales": 542,
-    "total_cancels": 329,
-    "net": 213,
+    "total_cancels": 331,
+    "net": 211,
     "paused_wp": 66,
     "paused_pct": 20,
-    "days_tracked": 250
+    "days_tracked": 251
   },
   "csrs": [
     {
       "name": "Lucy",
       "sales": 316,
-      "cancels": 112
+      "cancels": 113
     },
     {
       "name": "Norma",
       "sales": 165,
-      "cancels": 111
+      "cancels": 112
     },
     {
       "name": "Bev",
@@ -30,7 +30,7 @@
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 71,
+      "count": 72,
       "pct": 22
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "name": "Financial",
-      "count": 39,
+      "count": 40,
       "pct": 12
     },
     {
@@ -180,6 +180,20 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-09-08",
+      "dateFmt": "Sep 8",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-09-08",
+      "dateFmt": "Sep 8",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Norma"
+    },
+    {
       "date": "2026-09-04",
       "dateFmt": "Sep 4",
       "type": "Cancel",
@@ -234,25 +248,11 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-08-28",
-      "dateFmt": "Aug 28",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-08-28",
-      "dateFmt": "Aug 28",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 71
+    "count": 72
   },
   "tech_upsells": [
     {
