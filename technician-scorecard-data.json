@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-08T15:32:28.441Z",
+  "generated_at": "2026-09-08T21:08:39.417Z",
   "range": {
-    "min": "2026-01-05",
+    "min": "2026-01-03",
     "max": "2026-05-15"
   },
   "scoring": {
@@ -16,11 +16,83 @@
     },
     "note": "Period metrics are ranked against active technicians with at least 20 completed jobs. Reviews are cumulative and safety is the latest snapshot."
   },
+  "sources": {
+    "jobs": {
+      "label": "Completed jobs & revenue",
+      "system": "Legacy ServSuite completed work-order export",
+      "coverage": {
+        "min": "2026-01-03",
+        "max": "2026-05-15"
+      },
+      "status": "stale",
+      "detail": "Dated technician production stops at the end of this export. A current ServiceMinder technician-level completed appointment feed is needed."
+    },
+    "quality": {
+      "label": "Re-sprays / first-time success",
+      "system": "Legacy ServSuite service-call export",
+      "coverage": {
+        "min": "2026-01-08",
+        "max": "2026-05-15"
+      },
+      "status": "stale",
+      "detail": "Re-sprays are attributed to the technician on the prior completed service. Current ServiceMinder callback history is needed for complete YTD quality."
+    },
+    "upsells": {
+      "label": "Technician upsells",
+      "system": "Office sales tally (sales-data-2026-09-08.csv)",
+      "coverage": {
+        "min": "2026-02-04",
+        "max": "2026-07-08"
+      },
+      "status": "current",
+      "detail": "Dated technician-attributed upsells from the office tally. Only rows naming a technician are counted."
+    },
+    "reviews": {
+      "label": "Google review credits",
+      "system": "Google Reviews bonus sheet CSV",
+      "coverage": {
+        "min": null,
+        "max": "2026-09-07"
+      },
+      "status": "limited",
+      "detail": "Current cumulative credits and payouts; historical dated credit snapshots are not retained, so date filters do not change this metric."
+    },
+    "safety": {
+      "label": "Driving safety",
+      "system": "Zubie fleet snapshot",
+      "coverage": {
+        "min": "2026-08-31",
+        "max": "2026-09-07"
+      },
+      "status": "limited",
+      "detail": "Latest mapped driver score only. Historical driver scores are not retained; technicians without a mapped vehicle are excluded from this score component."
+    },
+    "attendance": {
+      "label": "Days out",
+      "system": "Office days-out tally",
+      "coverage": {
+        "min": "2026-01-01",
+        "max": "2026-09-08"
+      },
+      "status": "limited",
+      "detail": "Cumulative YTD context only; it is displayed but not included in the score."
+    },
+    "roster": {
+      "label": "Roster & route assignment",
+      "system": "Manual route mapping + personnel notes",
+      "coverage": {
+        "min": null,
+        "max": "2026-08-28"
+      },
+      "status": "limited",
+      "detail": "Route ownership began from a June screenshot with later personnel notes. A current employee/route export would make this authoritative."
+    }
+  },
   "technicians": [
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "route": "Route 11",
+      "route": "Unassigned",
       "photo": "assets/technicians/damian-machin.jpg",
       "reviewCredits": 14,
       "reviewPayouts": 1,
@@ -31,73 +103,73 @@
     {
       "name": "Stanley Prophete",
       "initials": "SP",
-      "route": "Route 5",
+      "route": "Unassigned",
       "photo": "assets/technicians/stanley-prophete.jpg",
       "reviewCredits": 2,
       "reviewPayouts": 0,
       "reviewCreditsCurrent": 2,
-      "safetyScore": 100,
+      "safetyScore": 98,
       "daysOut": 11
     },
     {
       "name": "Marcus Rubi",
       "initials": "MR",
-      "route": "Route 6",
+      "route": "Unassigned",
       "photo": "assets/technicians/marcus-rubi.jpg",
       "reviewCredits": 61.5,
       "reviewPayouts": 3,
       "reviewCreditsCurrent": 6,
-      "safetyScore": 88,
+      "safetyScore": 86,
       "daysOut": 10
     },
     {
       "name": "David Carbajal",
       "initials": "DC",
-      "route": "Route 12",
+      "route": "Unassigned",
       "photo": "assets/technicians/david-carbajal.jpg",
       "reviewCredits": 1.67,
       "reviewPayouts": 0,
       "reviewCreditsCurrent": 1.67,
-      "safetyScore": 92,
+      "safetyScore": 93,
       "daysOut": 18
     },
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "route": "Misting Route",
+      "route": "Unassigned",
       "photo": "assets/technicians/joseph-pagan.jpg",
       "reviewCredits": 73.17,
       "reviewPayouts": 7,
       "reviewCreditsCurrent": 0,
-      "safetyScore": null,
+      "safetyScore": 98,
       "daysOut": 7
     },
     {
       "name": "Jorge Navarro",
       "initials": "JN",
-      "route": "Route 2",
+      "route": "Unassigned",
       "photo": "assets/technicians/jorge-navarro.jpg",
       "reviewCredits": 10,
       "reviewPayouts": 1,
       "reviewCreditsCurrent": 0,
-      "safetyScore": 88,
+      "safetyScore": 98,
       "daysOut": 9
     },
     {
       "name": "Travis Johnson",
       "initials": "TJ",
-      "route": "Route 1",
+      "route": "Unassigned",
       "photo": "assets/technicians/travis-johnson.jpg",
       "reviewCredits": 28.5,
       "reviewPayouts": 1,
       "reviewCreditsCurrent": 1,
-      "safetyScore": 98,
+      "safetyScore": 100,
       "daysOut": 9
     },
     {
       "name": "Curtis Blount",
       "initials": "CB",
-      "route": "Route 7",
+      "route": "Unassigned",
       "photo": "assets/technicians/curtis-blount.jpg",
       "reviewCredits": 0,
       "reviewPayouts": 0,
@@ -108,7 +180,7 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "route": "Lenny Pierre",
+      "route": "Unassigned",
       "photo": "assets/technicians/lenny-pierre.jpg",
       "reviewCredits": 0.5,
       "reviewPayouts": 0,
@@ -1213,7 +1285,7 @@
       "jobs": 11,
       "revenue": 819.89,
       "resprays": 0,
-      "upsells": 0
+      "upsells": 1
     },
     {
       "name": "Marcus Rubi",
@@ -1326,6 +1398,14 @@
       "revenue": 1448.94,
       "resprays": 0,
       "upsells": 0
+    },
+    {
+      "name": "David Carbajal",
+      "date": "2026-02-08",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
     },
     {
       "name": "Damian Machin",
@@ -1784,6 +1864,14 @@
       "upsells": 0
     },
     {
+      "name": "Jorge Navarro",
+      "date": "2026-02-22",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
+    },
+    {
       "name": "Damian Machin",
       "date": "2026-02-23",
       "jobs": 16,
@@ -2214,6 +2302,14 @@
       "revenue": 2219.92,
       "resprays": 0,
       "upsells": 0
+    },
+    {
+      "name": "David Carbajal",
+      "date": "2026-03-08",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
     },
     {
       "name": "Damian Machin",
@@ -2886,6 +2982,14 @@
       "revenue": 1685.8200000000002,
       "resprays": 0,
       "upsells": 0
+    },
+    {
+      "name": "David Carbajal",
+      "date": "2026-03-30",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
     },
     {
       "name": "Jorge Navarro",
@@ -4638,6 +4742,22 @@
       "revenue": 759.9,
       "resprays": 1,
       "upsells": 0
+    },
+    {
+      "name": "Jorge Navarro",
+      "date": "2026-05-19",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
+    },
+    {
+      "name": "David Carbajal",
+      "date": "2026-07-08",
+      "jobs": 0,
+      "revenue": 0,
+      "resprays": 0,
+      "upsells": 1
     }
   ]
 }
