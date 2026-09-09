@@ -432,6 +432,23 @@
             padding: 60px;
             color: #666;
         }
+
+        .source-banner {
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,170,0,0.3);
+            border-radius: 10px;
+            background: rgba(255,170,0,0.06);
+            color: #bbb;
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+        .source-banner strong { color: #ffaa00; }
+        .table-wrap { overflow-x: auto; }
+        .recent-table { width: 100%; border-collapse: collapse; }
+        .recent-table th, .recent-table td { padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; text-align: left; }
+        .recent-table th { color: #888; font-weight: 500; }
+        .recent-table td { color: #ccc; }
     </style>
 </head>
 <body>
@@ -468,23 +485,19 @@
         return '$' + Math.round(n).toLocaleString();
     }
 
+    function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
     function render(data) {
         const s = data.summary;
         const el = document.getElementById('dashboard');
 
-        // Controllable percentage
-        const totalClassified = s.controllable_events + s.uncontrollable_events + s.structural_events;
-        const controllablePct = totalClassified > 0 ? Math.round((s.controllable_events / totalClassified) * 100) : 0;
-        const uncontrollablePct = totalClassified > 0 ? Math.round((s.uncontrollable_events / totalClassified) * 100) : 0;
-        const structuralPct = 100 - controllablePct - uncontrollablePct;
-
-        // Donut gradient
-        const c1 = controllablePct;
-        const c2 = c1 + uncontrollablePct;
-        const donutGrad = `conic-gradient(#ff8800 0% ${c1}%, #666 ${c1}% ${c2}%, #444 ${c2}% 100%)`;
+        const reasonCapturePct = s.reason_capture_pct || 0;
+        const donutGrad = `conic-gradient(#00c853 0% ${reasonCapturePct}%, #ff4444 ${reasonCapturePct}% 100%)`;
 
         // Reason bars
-        const maxEvents = Math.max(...data.by_reason.map(r => r.events));
+        const maxEvents = Math.max(1, ...data.by_reason.map(r => r.events));
         const reasonBars = data.by_reason.map(r => {
             const pct = (r.events / maxEvents * 100).toFixed(0);
             const color = r.recoverable ? '#00c853' :
@@ -495,7 +508,7 @@
                           '#888';
             return `
                 <div class="bar-row">
-                    <div class="bar-label">${r.reason}</div>
+                    <div class="bar-label">${esc(r.reason)}</div>
                     <div class="bar-track">
                         <div class="bar-fill" style="width:${pct}%; background:${color}">
                             ${r.events}
@@ -550,40 +563,32 @@
             </tr>
         `).join('');
 
-        // Recovery opportunity items
-        const recoverableReasons = data.by_reason.filter(r => r.recoverable);
-        const oppItems = recoverableReasons.map(r => `
-            <div class="opp-item">
-                <div class="opp-icon">🎯</div>
-                <div class="opp-text">
-                    <h4>${r.reason}</h4>
-                    <p>${r.unique_accounts} accounts · <span class="value">${fmt$(r.annual_value_lost)}/yr</span> recoverable</p>
-                </div>
-            </div>
-        `).join('');
+        const serviceRows = data.by_program.slice(0, 8).map(r => `<tr><td>${esc(r.program)}</td><td>${r.unique_accounts}</td><td>${fmt$(r.annual_value_lost)}</td></tr>`).join('');
+        const recentRows = (data.recent_losses || []).slice(0, 12).map(r => `<tr><td>${esc(r.date)}</td><td>${esc(r.zip)}</td><td>${esc(r.service)}</td><td>${r.tenure_days == null ? '—' : (r.tenure_days / 365).toFixed(1) + 'y'}</td><td>${fmt$(r.trailing_12m_revenue)}</td><td>${esc(r.reason)}</td></tr>`).join('');
 
         el.innerHTML = `
+            <div class="source-banner"><strong>Current source: ServiceMinder</strong> · A lost customer is a unique contact currently categorized <em>Inactive: Cancelled</em>. Revenue shown is paid invoice revenue from the 365 days before loss. ServiceMinder does not expose the account-category change timestamp, so contact UpdatedAt is the best available loss-date proxy.</div>
             <!-- KPI Row 1: The Headline Numbers -->
             <div class="kpi-row">
                 <div class="kpi-card alert">
                     <div class="kpi-value">${fmt$(s.total_annual_value_lost)}</div>
-                    <div class="kpi-label">Annual Revenue Lost</div>
-                    <div class="kpi-sub">${s.unique_accounts_cancelled} accounts cancelled</div>
+                    <div class="kpi-label">Trailing 12-Month Revenue Lost</div>
+                    <div class="kpi-sub">Revenue previously produced by lost accounts</div>
+                </div>
+                <div class="kpi-card alert">
+                    <div class="kpi-value">${s.unique_accounts_cancelled}</div>
+                    <div class="kpi-label">Recorded Customer Losses</div>
+                    <div class="kpi-sub">${s.recorded_attrition_pct}% of active + lost base since cutover</div>
                 </div>
                 <div class="kpi-card warning">
-                    <div class="kpi-value">${controllablePct}%</div>
-                    <div class="kpi-label">Controllable Cancels</div>
-                    <div class="kpi-sub">${s.controllable_events} events · ${fmt$(s.controllable_value_lost)}</div>
+                    <div class="kpi-value">${s.recent_30d_accounts}</div>
+                    <div class="kpi-label">Lost in Last 30 Days</div>
+                    <div class="kpi-sub">${fmt$(s.recent_30d_revenue)} trailing revenue</div>
                 </div>
-                <div class="kpi-card success">
-                    <div class="kpi-value">${fmt$(s.recoverable_annual_value)}</div>
-                    <div class="kpi-label">Recoverable Revenue</div>
-                    <div class="kpi-sub">${s.recoverable_accounts} accounts winnable</div>
-                </div>
-                <div class="kpi-card ${isNegative ? 'alert' : 'success'}">
-                    <div class="kpi-value" style="color:${netColor}">${netSign}${s.net_new_customers}</div>
-                    <div class="kpi-label">Net Customer Growth</div>
-                    <div class="kpi-sub">${s.total_sales_ytd} sales − ${s.unique_accounts_cancelled} cancels</div>
+                <div class="kpi-card ${reasonCapturePct < 90 ? 'alert' : 'success'}">
+                    <div class="kpi-value">${reasonCapturePct.toFixed(1)}%</div>
+                    <div class="kpi-label">Cancel Reason Capture</div>
+                    <div class="kpi-sub">${s.reason_known_accounts} of ${s.unique_accounts_cancelled} lost accounts</div>
                 </div>
             </div>
 
@@ -592,59 +597,56 @@
                 <div class="net-growth">
                     <div class="net-block">
                         <div class="num" style="color:#00c853">+${s.total_sales_ytd}</div>
-                        <div class="lbl">New Sales</div>
+                        <div class="lbl">New Active Customers</div>
                     </div>
                     <div class="net-arrow">→</div>
                     <div class="net-block">
                         <div class="num" style="color:#ff4444">-${s.unique_accounts_cancelled}</div>
-                        <div class="lbl">Cancelled</div>
+                        <div class="lbl">Recorded Losses</div>
                     </div>
                     <div class="net-arrow">=</div>
                     <div class="net-block">
                         <div class="num" style="color:${netColor}">${netSign}${s.net_new_customers}</div>
-                        <div class="lbl">Net Growth</div>
+                        <div class="lbl">Net Since Cutover</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Recovery Opportunity Banner -->
+            <!-- Immediate retention queue -->
             <div class="opportunity-card">
-                <h3>💰 Win-Back Opportunity: ${fmt$(s.recoverable_annual_value)}/year from ${s.recoverable_accounts} accounts</h3>
+                <h3>☎️ Immediate retention review: ${s.recent_30d_accounts} customers and ${fmt$(s.recent_30d_revenue)} of trailing revenue lost in the last 30 days</h3>
                 <div class="opportunity-grid">
-                    ${oppItems}
+                    <div class="opp-item"><div class="opp-icon">⚠️</div><div class="opp-text"><h4>Reason capture is the critical gap</h4><p>${s.unknown_events} customer losses have no account-level cancellation reason in ServiceMinder. Require a reason whenever a contact is moved to <em>Inactive: Cancelled</em>.</p></div></div>
+                    <div class="opp-item"><div class="opp-icon">📞</div><div class="opp-text"><h4>Work the recent-loss queue</h4><p>Prioritize former customers with recent service and the highest trailing revenue. The anonymized queue appears below; use ServiceMinder for customer-level follow-up.</p></div></div>
                 </div>
             </div>
 
             <!-- Reason Breakdown + Controllable Split -->
             <div class="grid-2">
                 <div class="panel">
-                    <h3><span class="icon">📊</span>Cancel Reasons (by event count)</h3>
+                    <h3><span class="icon">📊</span>Account-Level Cancel Reasons</h3>
                     <div class="bar-chart">
                         ${reasonBars}
                     </div>
                 </div>
                 <div>
                     <div class="panel" style="margin-bottom:20px">
-                        <h3><span class="icon">🎯</span>Controllable vs Uncontrollable</h3>
+                        <h3><span class="icon">🧾</span>Reason Data Completeness</h3>
                         <div class="donut-container">
                             <div class="donut" style="background:${donutGrad}">
                                 <div class="donut-center">
-                                    <div class="pct">${controllablePct}%</div>
-                                    <div class="lbl">Controllable</div>
+                                    <div class="pct">${reasonCapturePct.toFixed(1)}%</div>
+                                    <div class="lbl">Captured</div>
                                 </div>
                             </div>
                             <div class="legend">
                                 <div class="legend-item">
-                                    <div class="legend-dot" style="background:#ff8800"></div>
-                                    Controllable (${s.controllable_events}) — ${fmt$(s.controllable_value_lost)}
+                                    <div class="legend-dot" style="background:#00c853"></div>
+                                    Reason captured (${s.reason_known_accounts})
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-dot" style="background:#666"></div>
-                                    Uncontrollable (${s.uncontrollable_events}) — ${fmt$(s.uncontrollable_value_lost)}
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-dot" style="background:#444"></div>
-                                    Program Change (${s.structural_events})
+                                    <div class="legend-dot" style="background:#ff4444"></div>
+                                    Missing account reason (${s.unknown_events})
                                 </div>
                             </div>
                         </div>
@@ -677,36 +679,50 @@
                     </div>
                 </div>
                 <div class="panel">
-                    <h3><span class="icon">📍</span>Top Cancel Zip Codes</h3>
+                    <h3><span class="icon">🦟</span>Last Billed Service Before Loss</h3>
                     <table class="zip-table">
-                        <thead>
-                            <tr><th>Zip Code</th><th>Accounts</th><th>Events</th></tr>
-                        </thead>
-                        <tbody>${zipRows}</tbody>
+                        <thead><tr><th>Service</th><th>Accounts</th><th>Trailing Revenue</th></tr></thead>
+                        <tbody>${serviceRows}</tbody>
                     </table>
                 </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="panel">
+                    <h3><span class="icon">📍</span>Top Loss Zip Codes</h3>
+                    <table class="zip-table"><thead><tr><th>Zip Code</th><th>Accounts</th><th>Loss Records</th></tr></thead><tbody>${zipRows}</tbody></table>
+                </div>
+                <div class="panel">
+                    <h3><span class="icon">📌</span>Coverage & Definitions</h3>
+                    <div class="opp-text"><p><strong>Active customer base:</strong> ${s.active_customer_base.toLocaleString()}</p><p><strong>90-day losses:</strong> ${s.recent_90d_accounts}</p><p><strong>Customer loss definition:</strong> ${esc(data.source.definition)}</p><p><strong>Value metric:</strong> ${esc(data.source.value_metric)}</p></div>
+                </div>
+            </div>
+
+            <div class="panel" style="margin-bottom:20px">
+                <h3><span class="icon">🔎</span>Recent Losses — Anonymized Operating View</h3>
+                <div class="table-wrap"><table class="recent-table"><thead><tr><th>Date</th><th>Zip</th><th>Last Service</th><th>Tenure</th><th>Trailing Revenue</th><th>Reason</th></tr></thead><tbody>${recentRows}</tbody></table></div>
             </div>
 
             <!-- Average Value Card -->
             <div class="kpi-row" style="margin-top:20px">
                 <div class="kpi-card">
                     <div class="kpi-value" style="color:#ccc">${fmt$(s.avg_annual_value_per_account)}</div>
-                    <div class="kpi-label">Avg Annual Value / Lost Account</div>
+                    <div class="kpi-label">Avg Trailing Revenue / Lost Account</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-value" style="color:#ccc">${s.total_cancel_events}</div>
-                    <div class="kpi-label">Total Cancel Events</div>
-                    <div class="kpi-sub">${(s.total_cancel_events / s.unique_accounts_cancelled).toFixed(1)} events per account avg</div>
+                    <div class="kpi-value" style="color:#ccc">${s.active_customer_base.toLocaleString()}</div>
+                    <div class="kpi-label">Current Active Customer Base</div>
+                    <div class="kpi-sub">ServiceMinder active categories</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-value" style="color:#ccc">${s.cancel_to_sales_ratio.toFixed(2)}x</div>
-                    <div class="kpi-label">Cancel-to-Sales Ratio</div>
-                    <div class="kpi-sub">${s.cancel_to_sales_ratio > 1 ? '⚠️ Losing more than gaining' : '✅ Growing'}</div>
+                    <div class="kpi-label">Loss-to-New-Active Ratio</div>
+                    <div class="kpi-sub">Same ServiceMinder cutover period</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-value" style="color:#ccc">${data.by_program[0]?.program || 'N/A'}</div>
-                    <div class="kpi-label">Most Cancelled Program</div>
-                    <div class="kpi-sub">${data.by_program[0]?.events || 0} events · ${fmt$(data.by_program[0]?.annual_value_lost || 0)}</div>
+                    <div class="kpi-label">Largest Lost Service Segment</div>
+                    <div class="kpi-sub">${data.by_program[0]?.unique_accounts || 0} accounts · ${fmt$(data.by_program[0]?.annual_value_lost || 0)}</div>
                 </div>
             </div>
         `;

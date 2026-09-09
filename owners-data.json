@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-09T11:01:39.860Z",
+  "generated_at": "2026-09-09T17:58:07.279Z",
   "generated_date": "September 9, 2026",
   "sales": {
-    "csv_date": "2026-09-08",
+    "csv_date": "2026-09-09",
     "total_sales": 545,
-    "total_cancels": 332,
-    "net": 213,
+    "total_cancels": 335,
+    "net": 210,
     "paused": 66,
     "cancel_reasons": {
-      "Moved": 72,
+      "Moved": 73,
       "Paused/WP": 66,
-      "Not Interested": 53,
-      "Financial": 40,
+      "Not Interested": 54,
+      "Financial": 41,
       "Unhappy": 34,
       "One Time": 17,
       "Barrier Spray": 16,
@@ -47,15 +47,15 @@
     "team": {
       "Lucy": {
         "sales": 319,
-        "cancels": 113
+        "cancels": 114
       },
       "Norma": {
         "sales": 165,
-        "cancels": 112
+        "cancels": 113
       },
       "Bev": {
         "sales": 61,
-        "cancels": 107
+        "cancels": 108
       }
     },
     "paused_pct": 20
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1766924,
-    "avg_per_visit": 70,
-    "mtd": 60265,
-    "mtd_jobs": 645
+    "ytd_invoiced": 1767868,
+    "avg_per_visit": 69,
+    "mtd": 61209,
+    "mtd_jobs": 655
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 180
   },
   "serviceminder": {
-    "generated_at": "2026-09-09T11:01:39.860Z",
+    "generated_at": "2026-09-09T17:58:07.279Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-09T11:01:21.017Z",
-      "kinds_ok": 4,
+      "generated_at": "2026-09-09T17:45:21.389Z",
+      "kinds_ok": 1,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 28651,
+      "appointments": 43345,
       "contacts": 14008,
-      "invoices": 43431,
+      "invoices": 43441,
       "proposals": 1632
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,16 +227,16 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1545,
-    "total_cancels": 70,
-    "net": 1475,
+    "total_cancels": 77,
+    "net": 1468,
     "cancel_reasons": {
+      "Error": 20,
       "Moving": 15,
-      "Error": 14,
       "Workpool": 13,
       "Found Different Company": 11,
       "No Longer Needed": 10,
-      "Financial": 4,
-      "Scheduling Conflict": 3
+      "Scheduling Conflict": 4,
+      "Financial": 4
     },
     "sale_categories": {
       "Mojo Essential": 748,
