@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-08T15:32:42.598Z",
-  "total_duration_sec": 82,
+  "generated_at": "2026-09-09T09:16:18.669Z",
+  "total_duration_sec": 68,
   "steps_total": 23,
   "steps_passed": 23,
   "steps_failed": 0,
@@ -11,7 +11,7 @@
       "name": "sales-import",
       "success": true,
       "exit_code": 1,
-      "duration_sec": 2,
+      "duration_sec": 1,
       "retries": 1,
       "timed_out": false,
       "critical": false
@@ -47,7 +47,7 @@
       "name": "dashboard-update",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 4,
+      "duration_sec": 2,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -83,7 +83,7 @@
       "name": "build-sm-kpi",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 4,
+      "duration_sec": 3,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -209,7 +209,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 25,
+      "duration_sec": 14,
       "retries": 0,
       "timed_out": false,
       "critical": true
