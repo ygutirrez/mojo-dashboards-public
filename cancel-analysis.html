@@ -564,10 +564,13 @@
         `).join('');
 
         const serviceRows = data.by_program.slice(0, 8).map(r => `<tr><td>${esc(r.program)}</td><td>${r.unique_accounts}</td><td>${fmt$(r.annual_value_lost)}</td></tr>`).join('');
-        const recentRows = (data.recent_losses || []).slice(0, 12).map(r => `<tr><td>${esc(r.date)}</td><td>${esc(r.zip)}</td><td>${esc(r.service)}</td><td>${r.tenure_days == null ? '—' : (r.tenure_days / 365).toFixed(1) + 'y'}</td><td>${fmt$(r.trailing_12m_revenue)}</td><td>${esc(r.reason)}</td></tr>`).join('');
+        const sales = data.sales_context || {};
+        const salesCategoryRows = (sales.by_category || []).slice(0, 8).map(r => `<tr><td>${esc(r.category)}</td><td>${r.sales}</td></tr>`).join('');
+        const csrRows = (data.by_csr || []).filter(r => r.csr !== 'Not recorded').map(r => `<tr><td>${esc(r.csr)}</td><td>${r.accounts}</td><td>${fmt$(r.annual_value_lost)}</td></tr>`).join('');
+        const recentRows = (data.recent_losses || []).slice(0, 12).map(r => `<tr><td>${esc(r.date)}</td><td>${esc(r.zip)}</td><td>${esc(r.service)}</td><td>${r.tenure_days == null ? '—' : (r.tenure_days / 365).toFixed(1) + 'y'}</td><td>${fmt$(r.trailing_12m_revenue)}</td><td>${esc(r.reason)}</td><td>${esc(r.csr)}</td></tr>`).join('');
 
         el.innerHTML = `
-            <div class="source-banner"><strong>Current source: ServiceMinder</strong> · A lost customer is a unique contact currently categorized <em>Inactive: Cancelled</em>. Revenue shown is paid invoice revenue from the 365 days before loss. ServiceMinder does not expose the account-category change timestamp, so contact UpdatedAt is the best available loss-date proxy.</div>
+            <div class="source-banner"><strong>Primary source: ServiceMinder · Cross-check: Office Tally</strong> · ServiceMinder determines whether an account is actually lost and supplies invoice revenue. Office Tally supplies the cancellation date, reason, and recording CSR only when one unique customer name matches within 30 days. Unmatched records remain explicitly labeled <em>Not recorded</em>.</div>
             <!-- KPI Row 1: The Headline Numbers -->
             <div class="kpi-row">
                 <div class="kpi-card alert">
@@ -592,31 +595,37 @@
                 </div>
             </div>
 
-            <!-- Net Growth Visualizer -->
+            <!-- Office Tally sales context -->
             <div class="panel" style="margin-bottom:20px">
+                <h3><span class="icon">📈</span>Last 30 Days: Sales Activity vs Confirmed Customer Losses</h3>
                 <div class="net-growth">
                     <div class="net-block">
-                        <div class="num" style="color:#00c853">+${s.total_sales_ytd}</div>
-                        <div class="lbl">New Active Customers</div>
+                        <div class="num" style="color:#00c853">${sales.sales_logged_30d ?? '—'}</div>
+                        <div class="lbl">Office Tally Sales Logged</div>
                     </div>
-                    <div class="net-arrow">→</div>
+                    <div class="net-arrow">vs</div>
                     <div class="net-block">
-                        <div class="num" style="color:#ff4444">-${s.unique_accounts_cancelled}</div>
-                        <div class="lbl">Recorded Losses</div>
+                        <div class="num" style="color:#ff4444">${s.recent_30d_accounts}</div>
+                        <div class="lbl">ServiceMinder Confirmed Losses</div>
                     </div>
                     <div class="net-arrow">=</div>
                     <div class="net-block">
-                        <div class="num" style="color:${netColor}">${netSign}${s.net_new_customers}</div>
-                        <div class="lbl">Net Since Cutover</div>
+                        <div class="num" style="color:${(sales.gross_activity_gap_30d || 0) > 0 ? '#ffaa00' : '#ff4444'}">${(sales.gross_activity_gap_30d || 0) > 0 ? '+' : ''}${sales.gross_activity_gap_30d ?? '—'}</div>
+                        <div class="lbl">Gross Activity Gap</div>
+                    </div>
+                    <div class="net-block">
+                        <div class="num" style="color:#66aaff">${sales.restarts_30d ?? '—'}</div>
+                        <div class="lbl">Restarts / Winbacks</div>
                     </div>
                 </div>
+                <div class="opp-text" style="text-align:center"><p>Sales logged are broader than net-new recurring customers: the tally includes restarts, one-time work, and add-on programs. Use this comparison as activity context, not accounting net growth.</p></div>
             </div>
 
             <!-- Immediate retention queue -->
             <div class="opportunity-card">
                 <h3>☎️ Immediate retention review: ${s.recent_30d_accounts} customers and ${fmt$(s.recent_30d_revenue)} of trailing revenue lost in the last 30 days</h3>
                 <div class="opportunity-grid">
-                    <div class="opp-item"><div class="opp-icon">⚠️</div><div class="opp-text"><h4>Reason capture is the critical gap</h4><p>${s.unknown_events} customer losses have no account-level cancellation reason in ServiceMinder. Require a reason whenever a contact is moved to <em>Inactive: Cancelled</em>.</p></div></div>
+                    <div class="opp-item"><div class="opp-icon">⚠️</div><div class="opp-text"><h4>Close the remaining reason gap</h4><p>${s.unknown_events} ServiceMinder customer losses could not be confidently matched to a reason in the Office Tally. Require the same customer identifier in both systems and a reason whenever an account is closed.</p></div></div>
                     <div class="opp-item"><div class="opp-icon">📞</div><div class="opp-text"><h4>Work the recent-loss queue</h4><p>Prioritize former customers with recent service and the highest trailing revenue. The anonymized queue appears below; use ServiceMinder for customer-level follow-up.</p></div></div>
                 </div>
             </div>
@@ -689,18 +698,30 @@
 
             <div class="grid-2">
                 <div class="panel">
+                    <h3><span class="icon">🎯</span>Office Tally Sales Mix — YTD</h3>
+                    <table class="zip-table"><thead><tr><th>Sale Type</th><th>Logged Sales</th></tr></thead><tbody>${salesCategoryRows}</tbody></table>
+                </div>
+                <div class="panel">
+                    <h3><span class="icon">📌</span>Coverage & Definitions</h3>
+                    <div class="opp-text"><p><strong>Active customer base:</strong> ${s.active_customer_base.toLocaleString()}</p><p><strong>90-day losses:</strong> ${s.recent_90d_accounts}</p><p><strong>Office sales logged YTD:</strong> ${(sales.sales_logged_ytd || 0).toLocaleString()} (${sales.restarts_ytd || 0} restarts)</p><p><strong>Customer loss definition:</strong> ${esc(data.source.definition)}</p><p><strong>Loss date:</strong> ${esc(data.source.loss_date)}</p><p><strong>Reason matching:</strong> ${esc(data.source.reason_capture)}</p><p><strong>Sales context:</strong> ${esc(sales.definition || '')}</p><p><strong>Value metric:</strong> ${esc(data.source.value_metric)}</p></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="panel">
                     <h3><span class="icon">📍</span>Top Loss Zip Codes</h3>
                     <table class="zip-table"><thead><tr><th>Zip Code</th><th>Accounts</th><th>Loss Records</th></tr></thead><tbody>${zipRows}</tbody></table>
                 </div>
                 <div class="panel">
-                    <h3><span class="icon">📌</span>Coverage & Definitions</h3>
-                    <div class="opp-text"><p><strong>Active customer base:</strong> ${s.active_customer_base.toLocaleString()}</p><p><strong>90-day losses:</strong> ${s.recent_90d_accounts}</p><p><strong>Customer loss definition:</strong> ${esc(data.source.definition)}</p><p><strong>Value metric:</strong> ${esc(data.source.value_metric)}</p></div>
+                    <h3><span class="icon">📝</span>Cancellation Records Entered by CSR</h3>
+                    <div class="opp-text" style="margin-bottom:10px"><p>This shows who recorded or handled the matched cancellation entry. It does not attribute responsibility for the customer loss.</p></div>
+                    <table class="zip-table"><thead><tr><th>Recorded by</th><th>Matched Accounts</th><th>Trailing Revenue</th></tr></thead><tbody>${csrRows}</tbody></table>
                 </div>
             </div>
 
             <div class="panel" style="margin-bottom:20px">
                 <h3><span class="icon">🔎</span>Recent Losses — Anonymized Operating View</h3>
-                <div class="table-wrap"><table class="recent-table"><thead><tr><th>Date</th><th>Zip</th><th>Last Service</th><th>Tenure</th><th>Trailing Revenue</th><th>Reason</th></tr></thead><tbody>${recentRows}</tbody></table></div>
+                <div class="table-wrap"><table class="recent-table"><thead><tr><th>Date</th><th>Zip</th><th>Last Service</th><th>Tenure</th><th>Trailing Revenue</th><th>Reason</th><th>Recorded by</th></tr></thead><tbody>${recentRows}</tbody></table></div>
             </div>
 
             <!-- Average Value Card -->
