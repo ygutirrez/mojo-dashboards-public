@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-09-09T11:01:33.781Z",
+  "generated_at": "2026-09-09T18:02:45.891Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-09-08.csv",
-    "date": "2026-09-08",
+    "file": "sales-data-2026-09-09.csv",
+    "date": "2026-09-09",
     "totalSales": 540,
-    "totalCancels": 332,
-    "net": 208,
+    "totalCancels": 335,
+    "net": 205,
     "upsells": 9,
     "csrs": [
       {
         "name": "Lucy",
         "sales": 315,
-        "cancels": 113
+        "cancels": 114
       },
       {
         "name": "Norma",
         "sales": 165,
-        "cancels": 112
+        "cancels": 113
       },
       {
         "name": "Bev",
         "sales": 60,
-        "cancels": 107
+        "cancels": 108
       }
     ],
     "weekly": [
@@ -205,7 +205,7 @@
       {
         "week": "2026-09-07",
         "sales": 3,
-        "cancels": 3
+        "cancels": 6
       },
       {
         "week": "2926-07-22",
@@ -215,7 +215,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-09-09T11:01:24.192Z",
+    "date": "2026-09-09T18:02:30.680Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -237,12 +237,12 @@
       },
       {
         "metric": "Cancel Events",
-        "csv": 332,
+        "csv": 335,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 177,
+        "gap": 174,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (332). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (335). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -257,7 +257,7 @@
       "csv": [
         {
           "name": "Moved",
-          "count": 72
+          "count": 73
         },
         {
           "name": "Paused/WP",
@@ -265,11 +265,11 @@
         },
         {
           "name": "Not Interested",
-          "count": 53
+          "count": 54
         },
         {
           "name": "Financial",
-          "count": 40
+          "count": 41
         },
         {
           "name": "Unhappy",

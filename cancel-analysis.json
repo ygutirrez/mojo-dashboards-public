@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T17:57:50.117337+00:00",
+  "generated_at": "2026-09-09T18:02:28.835508+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-09",
   "source": {
     "system": "ServiceMinder Org Download API",
@@ -8,9 +8,9 @@
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Appointment cancel reason joined only when it belongs to the same contact",
     "generated": {
-      "contacts": "2026-09-09T13:15:27.619Z",
-      "appointments": "2026-09-09T17:45:17.385Z",
-      "invoices": "2026-09-09T13:15:38.711Z"
+      "contacts": "2026-09-09T18:01:39.715Z",
+      "appointments": "2026-09-09T18:01:27.492Z",
+      "invoices": "2026-09-09T18:01:55.278Z"
     }
   },
   "summary": {
@@ -20,14 +20,14 @@
     "avg_annual_value_per_account": 597.55,
     "avg_customer_lifetime_days": 915,
     "median_customer_lifetime_days": 675,
-    "recoverable_accounts": 1,
-    "recoverable_annual_value": 799.89,
-    "controllable_events": 1,
-    "uncontrollable_events": 0,
+    "recoverable_accounts": 3,
+    "recoverable_annual_value": 2752.56,
+    "controllable_events": 3,
+    "uncontrollable_events": 1,
     "structural_events": 0,
-    "unknown_events": 110,
-    "controllable_value_lost": 799.89,
-    "uncontrollable_value_lost": 0,
+    "unknown_events": 107,
+    "controllable_value_lost": 2752.56,
+    "uncontrollable_value_lost": 911.88,
     "total_sales_ytd": 128,
     "net_new_customers": 17,
     "cancel_to_sales_ratio": 0.87,
@@ -36,16 +36,32 @@
     "recent_30d_accounts": 25,
     "recent_30d_revenue": 18125.62,
     "recent_90d_accounts": 83,
-    "reason_known_accounts": 1,
-    "reason_capture_pct": 0.9
+    "reason_known_accounts": 4,
+    "reason_capture_pct": 3.6
   },
   "by_reason": [
     {
       "reason": "Not recorded in ServiceMinder",
-      "events": 110,
-      "unique_accounts": 110,
-      "annual_value_lost": 65528.08,
-      "avg_value_per_account": 595.71,
+      "events": 107,
+      "unique_accounts": 107,
+      "annual_value_lost": 62663.53,
+      "avg_value_per_account": 585.64,
+      "recoverable": false
+    },
+    {
+      "reason": "Financial",
+      "events": 2,
+      "unique_accounts": 2,
+      "annual_value_lost": 1952.67,
+      "avg_value_per_account": 976.34,
+      "recoverable": true
+    },
+    {
+      "reason": "Moving",
+      "events": 1,
+      "unique_accounts": 1,
+      "annual_value_lost": 911.88,
+      "avg_value_per_account": 911.88,
       "recoverable": false
     },
     {
@@ -287,7 +303,7 @@
   "recent_losses": [
     {
       "date": "2026-09-09",
-      "reason": "Not recorded in ServiceMinder",
+      "reason": "Financial",
       "service": "Synthetic Barrier Spray - 2 week",
       "zip": "33196",
       "city": "Miami",
@@ -298,7 +314,7 @@
     },
     {
       "date": "2026-09-08",
-      "reason": "Not recorded in ServiceMinder",
+      "reason": "Moving",
       "service": "Mojo Essential",
       "zip": "33143",
       "city": "Miami",
@@ -309,7 +325,7 @@
     },
     {
       "date": "2026-09-08",
-      "reason": "Not recorded in ServiceMinder",
+      "reason": "Financial",
       "service": "Synthetic Barrier Spray - 2 week",
       "zip": "33133",
       "city": "Miami",

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-09T11:01:33.870Z",
+  "generated_at": "2026-09-09T18:02:45.991Z",
   "period": "Jan 1 - Sep 9, 2026 (YTD)",
   "workforce": {
-    "active_techs": 8,
+    "active_techs": 11,
     "total_employees": 12,
     "avg_daily_stops": 103.6,
-    "avg_stops_per_tech": 13,
-    "team_utilization": 108,
+    "avg_stops_per_tech": 9.4,
+    "team_utilization": 78,
     "overloaded_count": 0,
     "high_util_count": 0,
     "optimal_stops_per_day": 10,
@@ -128,12 +128,12 @@
     {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
-      "jobs": 44,
+      "jobs": 69,
       "revenue": 0,
-      "dailyAvg": 0.2,
-      "utilization": 2,
+      "dailyAvg": 0.4,
+      "utilization": 3,
       "status": "underutilized",
-      "annualizedJobs": 64,
+      "annualizedJobs": 100,
       "annualizedRevenue": 0,
       "revenuePerJob": 0,
       "resprays": 0,
@@ -142,12 +142,12 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 33,
+      "jobs": 58,
       "revenue": 0,
-      "dailyAvg": 0.2,
-      "utilization": 2,
+      "dailyAvg": 0.3,
+      "utilization": 3,
       "status": "underutilized",
-      "annualizedJobs": 48,
+      "annualizedJobs": 84,
       "annualizedRevenue": 0,
       "revenuePerJob": 0,
       "resprays": 0,
@@ -156,12 +156,12 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 29,
+      "jobs": 55,
       "revenue": 0,
-      "dailyAvg": 0.2,
-      "utilization": 1,
+      "dailyAvg": 0.3,
+      "utilization": 3,
       "status": "underutilized",
-      "annualizedJobs": 42,
+      "annualizedJobs": 79,
       "annualizedRevenue": 0,
       "revenuePerJob": 0,
       "resprays": 0,
@@ -170,12 +170,12 @@
     {
       "name": "Michael Sanon",
       "initials": "MS",
-      "jobs": 15,
+      "jobs": 44,
       "revenue": 0,
-      "dailyAvg": 0.1,
-      "utilization": 1,
+      "dailyAvg": 0.2,
+      "utilization": 2,
       "status": "underutilized",
-      "annualizedJobs": 22,
+      "annualizedJobs": 64,
       "annualizedRevenue": 0,
       "revenuePerJob": 0,
       "resprays": 0,
@@ -190,51 +190,51 @@
     "required_daily_stops": 555,
     "current_daily_stops": 103.6,
     "techs_needed_total": 56,
-    "new_hires_needed": 48,
+    "new_hires_needed": 45,
     "capacity_increase_pct": 436
   },
   "hiring_costs": {
-    "salary_annual": 52479,
+    "salary_annual": 38167,
     "vehicle_monthly": 800,
     "vehicle_annual": 9600,
     "equipment_onetime": 2500,
     "training_onetime": 1500,
-    "total_first_year": 66079,
-    "total_ongoing_annual": 62079,
+    "total_first_year": 51767,
+    "total_ongoing_annual": 47767,
     "revenue_per_tech_annual": 90138,
-    "break_even_months": 3
+    "break_even_months": 2
   },
   "hiring_roadmap": [
     {
       "phase": 1,
       "label": "Q2 2026",
-      "hires": 16,
-      "totalTechs": 24,
-      "dailyCapacity": 240,
-      "annualCapacity": 2163324,
-      "investmentCost": 1057264,
-      "revenueTarget": 2163324,
-      "gapToTarget": 2836676
+      "hires": 15,
+      "totalTechs": 26,
+      "dailyCapacity": 260,
+      "annualCapacity": 2343601,
+      "investmentCost": 776505,
+      "revenueTarget": 2343601,
+      "gapToTarget": 2656399
     },
     {
       "phase": 2,
       "label": "Q4 2026",
-      "hires": 16,
-      "totalTechs": 40,
-      "dailyCapacity": 400,
-      "annualCapacity": 3605540,
-      "investmentCost": 1057264,
-      "revenueTarget": 3605540,
-      "gapToTarget": 1394460
+      "hires": 15,
+      "totalTechs": 41,
+      "dailyCapacity": 410,
+      "annualCapacity": 3695678,
+      "investmentCost": 776505,
+      "revenueTarget": 3695678,
+      "gapToTarget": 1304322
     },
     {
       "phase": 3,
       "label": "Q2 2027",
-      "hires": 16,
+      "hires": 15,
       "totalTechs": 56,
       "dailyCapacity": 560,
       "annualCapacity": 5047756,
-      "investmentCost": 1057264,
+      "investmentCost": 776505,
       "revenueTarget": 5000000,
       "gapToTarget": 0
     }
@@ -246,9 +246,9 @@
       "label": "Low",
       "adjustedDailyStops": 62,
       "techsNeeded": 7,
-      "currentTechs": 8,
-      "surplus": 1,
-      "status": "tight"
+      "currentTechs": 11,
+      "surplus": 4,
+      "status": "adequate"
     },
     {
       "month": "Feb",
@@ -256,9 +256,9 @@
       "label": "Ramp",
       "adjustedDailyStops": 73,
       "techsNeeded": 8,
-      "currentTechs": 8,
-      "surplus": 0,
-      "status": "tight"
+      "currentTechs": 11,
+      "surplus": 3,
+      "status": "adequate"
     },
     {
       "month": "Mar",
@@ -266,9 +266,9 @@
       "label": "Peak Start",
       "adjustedDailyStops": 93,
       "techsNeeded": 10,
-      "currentTechs": 8,
-      "surplus": -2,
-      "status": "understaffed"
+      "currentTechs": 11,
+      "surplus": 1,
+      "status": "tight"
     },
     {
       "month": "Apr",
@@ -276,9 +276,9 @@
       "label": "Peak",
       "adjustedDailyStops": 104,
       "techsNeeded": 11,
-      "currentTechs": 8,
-      "surplus": -3,
-      "status": "understaffed"
+      "currentTechs": 11,
+      "surplus": 0,
+      "status": "tight"
     },
     {
       "month": "May",
@@ -286,8 +286,8 @@
       "label": "Peak",
       "adjustedDailyStops": 114,
       "techsNeeded": 12,
-      "currentTechs": 8,
-      "surplus": -4,
+      "currentTechs": 11,
+      "surplus": -1,
       "status": "understaffed"
     },
     {
@@ -296,8 +296,8 @@
       "label": "Peak",
       "adjustedDailyStops": 119,
       "techsNeeded": 12,
-      "currentTechs": 8,
-      "surplus": -4,
+      "currentTechs": 11,
+      "surplus": -1,
       "status": "understaffed"
     },
     {
@@ -306,8 +306,8 @@
       "label": "Peak",
       "adjustedDailyStops": 119,
       "techsNeeded": 12,
-      "currentTechs": 8,
-      "surplus": -4,
+      "currentTechs": 11,
+      "surplus": -1,
       "status": "understaffed"
     },
     {
@@ -316,8 +316,8 @@
       "label": "Peak",
       "adjustedDailyStops": 114,
       "techsNeeded": 12,
-      "currentTechs": 8,
-      "surplus": -4,
+      "currentTechs": 11,
+      "surplus": -1,
       "status": "understaffed"
     },
     {
@@ -326,9 +326,9 @@
       "label": "Peak",
       "adjustedDailyStops": 104,
       "techsNeeded": 11,
-      "currentTechs": 8,
-      "surplus": -3,
-      "status": "understaffed"
+      "currentTechs": 11,
+      "surplus": 0,
+      "status": "tight"
     },
     {
       "month": "Oct",
@@ -336,9 +336,9 @@
       "label": "Wind Down",
       "adjustedDailyStops": 93,
       "techsNeeded": 10,
-      "currentTechs": 8,
-      "surplus": -2,
-      "status": "understaffed"
+      "currentTechs": 11,
+      "surplus": 1,
+      "status": "tight"
     },
     {
       "month": "Nov",
@@ -346,9 +346,9 @@
       "label": "Low",
       "adjustedDailyStops": 73,
       "techsNeeded": 8,
-      "currentTechs": 8,
-      "surplus": 0,
-      "status": "tight"
+      "currentTechs": 11,
+      "surplus": 3,
+      "status": "adequate"
     },
     {
       "month": "Dec",
@@ -356,14 +356,14 @@
       "label": "Low",
       "adjustedDailyStops": 52,
       "techsNeeded": 6,
-      "currentTechs": 8,
-      "surplus": 2,
+      "currentTechs": 11,
+      "surplus": 5,
       "status": "adequate"
     }
   ],
   "customer_growth": {
     "active_customers": 2060,
-    "ytd_net_growth": 213,
+    "ytd_net_growth": 210,
     "monthly_net_growth": 25,
     "annualized_growth": 300,
     "avg_visits_per_customer": 13.1,
@@ -374,10 +374,10 @@
   },
   "insights": [
     {
-      "type": "critical",
-      "icon": "🔴",
-      "title": "Workforce at capacity",
-      "detail": "Team is at 108% utilization. Immediate hiring needed to avoid burnout and maintain quality."
+      "type": "warning",
+      "icon": "🟡",
+      "title": "Approaching capacity limits",
+      "detail": "Team is at 78% utilization. Start recruiting now — hiring takes 4-6 weeks."
     },
     {
       "type": "positive",

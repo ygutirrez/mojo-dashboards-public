@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T11:01:33.649Z",
+  "generated_at": "2026-09-09T18:02:45.748Z",
   "period": "Jan 1 - Sep 9, 2026 (YTD)",
   "executive_summary": {
     "total_stops": 18651,
@@ -202,66 +202,6 @@
     {
       "name": "Michael Sanon",
       "initials": "MS",
-      "jobs": 15,
-      "revenue": 0,
-      "avgRevenuePerStop": 0,
-      "costs": {
-        "chemical": 48,
-        "labor": 180,
-        "fuel": 60,
-        "vehicle": 30,
-        "total": 318
-      },
-      "grossProfit": -318,
-      "margin": 0,
-      "resprays": 0,
-      "resprayRate": 0,
-      "efficiencyRating": 21,
-      "rank": 9
-    },
-    {
-      "name": "Wilbeni Pierre",
-      "initials": "WP",
-      "jobs": 29,
-      "revenue": 0,
-      "avgRevenuePerStop": 0,
-      "costs": {
-        "chemical": 92.8,
-        "labor": 348,
-        "fuel": 116,
-        "vehicle": 58,
-        "total": 614.8
-      },
-      "grossProfit": -614.8,
-      "margin": 0,
-      "resprays": 0,
-      "resprayRate": 0,
-      "efficiencyRating": 21,
-      "rank": 10
-    },
-    {
-      "name": "Lenny Pierre",
-      "initials": "LP",
-      "jobs": 33,
-      "revenue": 0,
-      "avgRevenuePerStop": 0,
-      "costs": {
-        "chemical": 105.6,
-        "labor": 396,
-        "fuel": 132,
-        "vehicle": 66,
-        "total": 699.6
-      },
-      "grossProfit": -699.6,
-      "margin": 0,
-      "resprays": 0,
-      "resprayRate": 0,
-      "efficiencyRating": 22,
-      "rank": 11
-    },
-    {
-      "name": "Guillermo Rodriguez",
-      "initials": "GR",
       "jobs": 44,
       "revenue": 0,
       "avgRevenuePerStop": 0,
@@ -277,6 +217,66 @@
       "resprays": 0,
       "resprayRate": 0,
       "efficiencyRating": 22,
+      "rank": 9
+    },
+    {
+      "name": "Wilbeni Pierre",
+      "initials": "WP",
+      "jobs": 55,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 176,
+        "labor": 660,
+        "fuel": 220,
+        "vehicle": 110,
+        "total": 1166
+      },
+      "grossProfit": -1166,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 23,
+      "rank": 10
+    },
+    {
+      "name": "Lenny Pierre",
+      "initials": "LP",
+      "jobs": 58,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 185.6,
+        "labor": 696,
+        "fuel": 232,
+        "vehicle": 116,
+        "total": 1229.6
+      },
+      "grossProfit": -1229.6,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 23,
+      "rank": 11
+    },
+    {
+      "name": "Guillermo Rodriguez",
+      "initials": "GR",
+      "jobs": 69,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 220.8,
+        "labor": 828,
+        "fuel": 276,
+        "vehicle": 138,
+        "total": 1462.8
+      },
+      "grossProfit": -1462.8,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 23,
       "rank": 12
     }
   ],
@@ -302,6 +302,13 @@
   ],
   "improvement_opportunities": [
     {
+      "type": "margin_improvement",
+      "impact": "high",
+      "title": "Low-margin technicians",
+      "description": "3 tech(s) below average margin: Wilbeni Pierre, Lenny Pierre, Guillermo Rodriguez",
+      "potential_value": 0
+    },
+    {
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
@@ -311,8 +318,8 @@
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 6964 total stops, even a 5% upsell rate at $75 avg would add $26,115 in revenue.",
-      "potential_value": 26115
+      "description": "At 7069 total stops, even a 5% upsell rate at $75 avg would add $26,509 in revenue.",
+      "potential_value": 26509
     }
   ]
 }
