@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-07T09:16:51.304Z",
-  "total_duration_sec": 74,
+  "generated_at": "2026-09-08T15:32:42.598Z",
+  "total_duration_sec": 82,
   "steps_total": 23,
   "steps_passed": 23,
   "steps_failed": 0,
@@ -11,7 +11,7 @@
       "name": "sales-import",
       "success": true,
       "exit_code": 1,
-      "duration_sec": 1,
+      "duration_sec": 2,
       "retries": 1,
       "timed_out": false,
       "critical": false
@@ -28,8 +28,8 @@
     {
       "name": "sharepoint-fallback",
       "success": true,
-      "exit_code": 0,
-      "duration_sec": 2,
+      "exit_code": 1,
+      "duration_sec": 0,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -47,7 +47,7 @@
       "name": "dashboard-update",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 2,
+      "duration_sec": 4,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -209,7 +209,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 18,
+      "duration_sec": 25,
       "retries": 0,
       "timed_out": false,
       "critical": true
