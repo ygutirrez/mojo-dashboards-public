@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-09T18:17:21.692Z",
-  "period": "Jan 1 - Sep 9, 2026 (YTD)",
+  "generated_at": "2026-09-10T09:17:20.816Z",
+  "period": "Jan 1 - Sep 10, 2026 (YTD)",
   "executive_summary": {
     "total_stops": 18651,
     "total_revenue": 646605,
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 936551,
+    "current_annual_run_rate": 932849,
     "target": 5000000,
-    "gap": 4063449,
-    "additional_stops_needed": 117209,
-    "additional_daily_stops_needed": 469,
-    "current_daily_avg": 74,
-    "required_daily_avg": 543,
-    "capacity_increase_pct": 633.7
+    "gap": 4067151,
+    "additional_stops_needed": 117315,
+    "additional_daily_stops_needed": 470,
+    "current_daily_avg": 73.7,
+    "required_daily_avg": 543.7,
+    "capacity_increase_pct": 637.6
   },
   "tech_profitability": [
     {
@@ -220,26 +220,6 @@
       "rank": 9
     },
     {
-      "name": "Wilbeni Pierre",
-      "initials": "WP",
-      "jobs": 55,
-      "revenue": 0,
-      "avgRevenuePerStop": 0,
-      "costs": {
-        "chemical": 176,
-        "labor": 660,
-        "fuel": 220,
-        "vehicle": 110,
-        "total": 1166
-      },
-      "grossProfit": -1166,
-      "margin": 0,
-      "resprays": 0,
-      "resprayRate": 0,
-      "efficiencyRating": 23,
-      "rank": 10
-    },
-    {
       "name": "Lenny Pierre",
       "initials": "LP",
       "jobs": 58,
@@ -253,6 +233,26 @@
         "total": 1229.6
       },
       "grossProfit": -1229.6,
+      "margin": 0,
+      "resprays": 0,
+      "resprayRate": 0,
+      "efficiencyRating": 23,
+      "rank": 10
+    },
+    {
+      "name": "Wilbeni Pierre",
+      "initials": "WP",
+      "jobs": 62,
+      "revenue": 0,
+      "avgRevenuePerStop": 0,
+      "costs": {
+        "chemical": 198.4,
+        "labor": 744,
+        "fuel": 248,
+        "vehicle": 124,
+        "total": 1314.4
+      },
+      "grossProfit": -1314.4,
       "margin": 0,
       "resprays": 0,
       "resprayRate": 0,
@@ -305,7 +305,7 @@
       "type": "margin_improvement",
       "impact": "high",
       "title": "Low-margin technicians",
-      "description": "3 tech(s) below average margin: Wilbeni Pierre, Lenny Pierre, Guillermo Rodriguez",
+      "description": "3 tech(s) below average margin: Lenny Pierre, Wilbeni Pierre, Guillermo Rodriguez",
       "potential_value": 0
     },
     {
@@ -318,8 +318,8 @@
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 7069 total stops, even a 5% upsell rate at $75 avg would add $26,509 in revenue.",
-      "potential_value": 26509
+      "description": "At 7076 total stops, even a 5% upsell rate at $75 avg would add $26,535 in revenue.",
+      "potential_value": 26535
     }
   ]
 }
