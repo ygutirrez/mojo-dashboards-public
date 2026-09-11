@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-11T14:00:15.159Z",
+  "updated_at": "2026-09-11T14:30:13.979Z",
   "csv_date": "2026-09-11",
   "period": "Jan 1 - Sep 11, 2026 (YTD)",
   "summary": {
     "total_sales": 550,
-    "total_cancels": 336,
-    "net": 214,
+    "total_cancels": 337,
+    "net": 213,
     "paused_wp": 66,
     "paused_pct": 20,
     "days_tracked": 254
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 322,
-      "cancels": 114
+      "cancels": 115
     },
     {
       "name": "Norma",
@@ -30,7 +30,7 @@
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 73,
+      "count": 74,
       "pct": 22
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-09-11",
       "dateFmt": "Sep 11",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-09-11",
+      "dateFmt": "Sep 11",
       "type": "Sale",
       "category": "MS Takeover",
       "csr": "Bev"
@@ -241,18 +248,11 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-09-08",
-      "dateFmt": "Sep 8",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 73
+    "count": 74
   },
   "tech_upsells": [
     {
