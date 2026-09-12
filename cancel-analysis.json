@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-11T09:17:17.400066+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-09",
+  "generated_at": "2026-09-12T09:17:16.436633+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-11",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-09-10.csv",
+    "office_tally_file": "sales-data-2026-09-11.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-09-11T09:16:27.861Z",
-      "appointments": "2026-09-11T09:16:20.096Z",
-      "invoices": "2026-09-11T09:16:43.566Z"
+      "contacts": "2026-09-12T09:16:16.389Z",
+      "appointments": "2026-09-12T09:16:05.744Z",
+      "invoices": "2026-09-12T09:16:37.108Z"
     }
   },
   "summary": {
-    "total_cancel_events": 111,
-    "unique_accounts_cancelled": 111,
-    "total_annual_value_lost": 66327.97,
-    "avg_annual_value_per_account": 597.55,
-    "avg_customer_lifetime_days": 915,
-    "median_customer_lifetime_days": 675,
+    "total_cancel_events": 112,
+    "unique_accounts_cancelled": 112,
+    "total_annual_value_lost": 66694.21,
+    "avg_annual_value_per_account": 595.48,
+    "avg_customer_lifetime_days": 907,
+    "median_customer_lifetime_days": 657,
     "recoverable_accounts": 63,
     "recoverable_annual_value": 39837.07,
     "controllable_events": 63,
-    "uncontrollable_events": 19,
+    "uncontrollable_events": 20,
     "structural_events": 0,
     "unknown_events": 25,
     "controllable_value_lost": 39837.07,
-    "uncontrollable_value_lost": 13682.8,
-    "total_sales_ytd": 130,
-    "net_new_customers": 19,
-    "cancel_to_sales_ratio": 0.85,
-    "active_customer_base": 1609,
+    "uncontrollable_value_lost": 14049.04,
+    "total_sales_ytd": 127,
+    "net_new_customers": 15,
+    "cancel_to_sales_ratio": 0.88,
+    "active_customer_base": 1606,
     "recorded_attrition_pct": 6.5,
-    "recent_30d_accounts": 24,
-    "recent_30d_revenue": 17693.39,
-    "recent_90d_accounts": 82,
-    "reason_known_accounts": 86,
-    "reason_capture_pct": 77.5
+    "recent_30d_accounts": 22,
+    "recent_30d_revenue": 16507.01,
+    "recent_90d_accounts": 83,
+    "reason_known_accounts": 87,
+    "reason_capture_pct": 77.7
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 543,
-    "sales_logged_since_first_loss": 261,
-    "sales_logged_30d": 25,
-    "sales_logged_90d": 169,
+    "sales_logged_ytd": 544,
+    "sales_logged_since_first_loss": 262,
+    "sales_logged_30d": 26,
+    "sales_logged_90d": 170,
     "restarts_ytd": 135,
     "restarts_30d": 5,
-    "gross_activity_gap_30d": 1,
-    "sales_per_confirmed_loss_30d": 1.04,
+    "gross_activity_gap_30d": 4,
+    "sales_per_confirmed_loss_30d": 1.18,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -86,7 +86,7 @@
       },
       {
         "category": "MS Takeover",
-        "sales": 8
+        "sales": 9
       },
       {
         "category": "HPD  (Indoor)",
@@ -160,7 +160,7 @@
       },
       {
         "month": "2026-09",
-        "sales": 7
+        "sales": 8
       }
     ]
   },
@@ -183,10 +183,10 @@
     },
     {
       "reason": "Moved",
-      "events": 19,
-      "unique_accounts": 19,
-      "annual_value_lost": 13682.8,
-      "avg_value_per_account": 720.15,
+      "events": 20,
+      "unique_accounts": 20,
+      "annual_value_lost": 14049.04,
+      "avg_value_per_account": 702.45,
       "recoverable": false
     },
     {
@@ -241,8 +241,8 @@
   "by_csr": [
     {
       "csr": "Lucy",
-      "accounts": 62,
-      "annual_value_lost": 40270.49
+      "accounts": 63,
+      "annual_value_lost": 40636.73
     },
     {
       "csr": "Not recorded",
@@ -263,9 +263,9 @@
   "by_program": [
     {
       "program": "Synthetic Barrier Spray - 2 week",
-      "events": 42,
-      "unique_accounts": 42,
-      "annual_value_lost": 30125.83
+      "events": 43,
+      "unique_accounts": 43,
+      "annual_value_lost": 30492.07
     },
     {
       "program": "Mojo Essential",
@@ -367,9 +367,9 @@
     },
     {
       "month": "2026-09",
-      "events": 9,
-      "unique_accounts": 9,
-      "annual_value_lost": 7481.67
+      "events": 10,
+      "unique_accounts": 10,
+      "annual_value_lost": 7847.91
     }
   ],
   "lifetime_distribution": [
@@ -379,7 +379,7 @@
     },
     {
       "bucket": "31-90 days",
-      "count": 16
+      "count": 17
     },
     {
       "bucket": "91-180 days",
@@ -488,6 +488,19 @@
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-09-11",
+      "reason": "Moved",
+      "reason_source": "Office Tally exact-name/date match",
+      "csr": "Lucy",
+      "service": "Synthetic Barrier Spray - 2 week",
+      "zip": "33033",
+      "city": "Homestead",
+      "tenure_days": 81,
+      "days_since_last_service": 14,
+      "trailing_12m_revenue": 366.24,
+      "lifetime_value": 366.24
+    },
     {
       "date": "2026-09-09",
       "reason": "Financial",
@@ -734,19 +747,6 @@
       "days_since_last_service": 1,
       "trailing_12m_revenue": 234.26,
       "lifetime_value": 234.26
-    },
-    {
-      "date": "2026-08-17",
-      "reason": "Moved",
-      "reason_source": "Office Tally exact-name/date match",
-      "csr": "Lucy",
-      "service": "Mojo Essential",
-      "zip": "33143",
-      "city": "Miami",
-      "tenure_days": 2294,
-      "days_since_last_service": 19,
-      "trailing_12m_revenue": 859.9,
-      "lifetime_value": 9248.9
     }
   ]
 }
