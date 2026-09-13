@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-11T09:18:29.482Z",
-  "total_duration_sec": 200,
+  "generated_at": "2026-09-12T09:18:27.939Z",
+  "total_duration_sec": 199,
   "steps_total": 25,
   "steps_passed": 25,
   "steps_failed": 0,
@@ -10,9 +10,9 @@
     {
       "name": "sales-import",
       "success": true,
-      "exit_code": 1,
+      "exit_code": 0,
       "duration_sec": 1,
-      "retries": 1,
+      "retries": 0,
       "timed_out": false,
       "critical": false
     },
@@ -47,7 +47,7 @@
       "name": "build-cancel-analysis",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 6,
+      "duration_sec": 7,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -218,7 +218,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 22,
+      "duration_sec": 21,
       "retries": 0,
       "timed_out": false,
       "critical": true
