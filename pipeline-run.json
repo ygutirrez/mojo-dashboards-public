@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-09-13T09:18:32.888Z",
-  "total_duration_sec": 202,
+  "generated_at": "2026-09-14T09:19:46.611Z",
+  "total_duration_sec": 277,
   "steps_total": 25,
-  "steps_passed": 25,
-  "steps_failed": 0,
+  "steps_passed": 24,
+  "steps_failed": 1,
   "steps_timed_out": 0,
-  "all_green": true,
+  "all_green": false,
   "steps": [
     {
       "name": "sales-import",
       "success": true,
-      "exit_code": 0,
+      "exit_code": 1,
       "duration_sec": 1,
-      "retries": 0,
+      "retries": 1,
       "timed_out": false,
       "critical": false
     },
@@ -27,9 +27,9 @@
     },
     {
       "name": "sharepoint-fallback",
-      "success": true,
-      "exit_code": 1,
-      "duration_sec": 0,
+      "success": false,
+      "exit_code": 3,
+      "duration_sec": 1,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 95,
+      "duration_sec": 194,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -47,7 +47,7 @@
       "name": "build-cancel-analysis",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 6,
+      "duration_sec": 7,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -182,7 +182,7 @@
       "name": "weekly-snapshot",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 4,
+      "duration_sec": 5,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -218,7 +218,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 21,
+      "duration_sec": 23,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -227,7 +227,7 @@
       "name": "live-verify",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 61,
+      "duration_sec": 31,
       "retries": 0,
       "timed_out": false,
       "critical": true
