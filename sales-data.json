@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-17T19:00:16.008Z",
+  "updated_at": "2026-09-17T19:30:14.931Z",
   "csv_date": "2026-09-17",
   "period": "Jan 1 - Sep 17, 2026 (YTD)",
   "summary": {
     "total_sales": 558,
-    "total_cancels": 347,
-    "net": 211,
+    "total_cancels": 348,
+    "net": 210,
     "paused_wp": 70,
     "paused_pct": 20,
     "days_tracked": 260
@@ -14,7 +14,7 @@
     {
       "name": "Lucy",
       "sales": 327,
-      "cancels": 119
+      "cancels": 120
     },
     {
       "name": "Norma",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Financial",
-      "count": 41,
+      "count": 42,
       "pct": 12
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-09-17",
       "dateFmt": "Sep 17",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-09-17",
+      "dateFmt": "Sep 17",
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
@@ -240,13 +247,6 @@
       "dateFmt": "Sep 14",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-09-14",
-      "dateFmt": "Sep 14",
-      "type": "Sale",
-      "category": "Misting System",
       "csr": "Bev"
     }
   ],
