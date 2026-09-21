@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-20T09:16:45.864Z",
+  "generated_at": "2026-09-21T09:16:45.750Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-09-18.csv",
-    "date": "2026-09-18",
+    "file": "sales-data-2026-09-21.csv",
+    "date": "2026-09-21",
     "totalSales": 553,
     "totalCancels": 348,
     "net": 205,
@@ -27,6 +27,11 @@
       }
     ],
     "weekly": [
+      {
+        "week": "1026-04-03",
+        "sales": 0,
+        "cancels": 1
+      },
       {
         "week": "2026-01-05",
         "sales": 0,
@@ -220,7 +225,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-09-20T09:16:31.836Z",
+    "date": "2026-09-21T09:16:31.290Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
