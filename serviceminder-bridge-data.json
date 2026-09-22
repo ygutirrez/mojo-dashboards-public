@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-09-22T09:17:18.204Z",
+    "generated_at": "2026-09-22T12:17:55.782Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-22T09:16:26.646Z",
+      "generated_at": "2026-09-22T12:17:50.030Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 44082,
-      "contacts": 14069,
-      "invoices": 44466,
+      "contacts": 14070,
+      "invoices": 44470,
       "proposals": 1639
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1863386,
+      "ytd_invoiced": 1863567,
       "avg_per_visit": 71,
-      "mtd": 156727,
-      "mtd_jobs": 1680
+      "mtd": 156908,
+      "mtd_jobs": 1684
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 1863386
+      "total_wo_revenue": 1863567
     },
     "employees": [
       {
@@ -203,7 +203,7 @@
         "name": "Stanley Prophete",
         "jobs": 1285,
         "revenue": 117525,
-        "avgRevenue": 88.17,
+        "avgRevenue": 88.1,
         "route_label": "Route 5",
         "technician": "Stanley Prophete",
         "technician_status": "active",
@@ -236,7 +236,7 @@
         "name": "Joe Pagan",
         "jobs": 738,
         "revenue": 138602.65,
-        "avgRevenue": 185.79,
+        "avgRevenue": 185.55,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -289,9 +289,9 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 14000,
-      "Scheduled": 10574,
-      "Completed": 1209,
+      "Queued": 13998,
+      "Scheduled": 10573,
+      "Completed": 1212,
       "Started": 255,
       "Canceled": 40
     },
@@ -351,7 +351,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 1863386
+      "total_revenue": 1863567
     },
     "employees": [
       {
@@ -456,7 +456,7 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1863386,
+    "revenue": 1863567,
     "proposals": 1639,
     "invoiced_proposals": 1345,
     "complete_proposals": 203,
@@ -464,11 +464,11 @@
       "Online": 13825,
       "Referral": 11884,
       "MoJo Customer": 6230,
-      "Yard Sign": 4238,
+      "Yard Sign": 4239,
       "Direct Mail Postcard": 3964,
       "Mosquito Joe Vehicle": 3062,
       "Other": 1404,
-      "Advertising": 1089,
+      "Advertising": 1090,
       "Printed Material": 548,
       "Mail Advertising": 460,
       "Existing Customer": 365,
@@ -481,7 +481,7 @@
       "Event/Sponsorship": 53,
       "Competitor": 46,
       "Email": 44,
-      "Social": 31,
+      "Social": 33,
       "Mass Media": 22,
       "Unknown": 4
     },
@@ -552,8 +552,8 @@
       },
       {
         "month": "2026-09",
-        "invoiceRevenue": 156726.87,
-        "invoices": 1680,
+        "invoiceRevenue": 156907.85,
+        "invoices": 1684,
         "appointments": 4072,
         "proposals": 0,
         "cancels": 52
