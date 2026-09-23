@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-09-22T09:16:43.476780+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-21",
+  "generated_at": "2026-09-23T09:17:09.853948+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-22",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-09-21.csv",
+    "office_tally_file": "sales-data-2026-09-22.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-09-22T09:15:57.901Z",
-      "appointments": "2026-09-22T09:15:49.431Z",
-      "invoices": "2026-09-22T09:16:18.627Z"
+      "contacts": "2026-09-23T09:16:16.090Z",
+      "appointments": "2026-09-23T09:16:03.615Z",
+      "invoices": "2026-09-23T09:16:39.995Z"
     }
   },
   "summary": {
-    "total_cancel_events": 117,
-    "unique_accounts_cancelled": 117,
-    "total_annual_value_lost": 73733.81,
-    "avg_annual_value_per_account": 630.2,
-    "avg_customer_lifetime_days": 901,
-    "median_customer_lifetime_days": 650,
+    "total_cancel_events": 118,
+    "unique_accounts_cancelled": 118,
+    "total_annual_value_lost": 74585.64,
+    "avg_annual_value_per_account": 632.08,
+    "avg_customer_lifetime_days": 914,
+    "median_customer_lifetime_days": 657,
     "recoverable_accounts": 66,
     "recoverable_annual_value": 42009.09,
     "controllable_events": 66,
-    "uncontrollable_events": 21,
+    "uncontrollable_events": 22,
     "structural_events": 0,
     "unknown_events": 25,
     "controllable_value_lost": 42009.09,
-    "uncontrollable_value_lost": 16478.85,
+    "uncontrollable_value_lost": 17330.68,
     "total_sales_ytd": 129,
-    "net_new_customers": 12,
+    "net_new_customers": 11,
     "cancel_to_sales_ratio": 0.91,
-    "active_customer_base": 1601,
-    "recorded_attrition_pct": 6.8,
-    "recent_30d_accounts": 20,
-    "recent_30d_revenue": 18895.54,
-    "recent_90d_accounts": 80,
-    "reason_known_accounts": 92,
-    "reason_capture_pct": 78.6
+    "active_customer_base": 1599,
+    "recorded_attrition_pct": 6.9,
+    "recent_30d_accounts": 19,
+    "recent_30d_revenue": 18567.22,
+    "recent_90d_accounts": 79,
+    "reason_known_accounts": 93,
+    "reason_capture_pct": 78.8
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
     "sales_logged_ytd": 554,
     "sales_logged_since_first_loss": 272,
-    "sales_logged_30d": 23,
-    "sales_logged_90d": 135,
+    "sales_logged_30d": 22,
+    "sales_logged_90d": 133,
     "restarts_ytd": 138,
     "restarts_30d": 4,
     "gross_activity_gap_30d": 3,
-    "sales_per_confirmed_loss_30d": 1.15,
+    "sales_per_confirmed_loss_30d": 1.16,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -222,20 +222,20 @@
       "recoverable": false
     },
     {
+      "reason": "Moving",
+      "events": 2,
+      "unique_accounts": 2,
+      "annual_value_lost": 3281.64,
+      "avg_value_per_account": 1640.82,
+      "recoverable": false
+    },
+    {
       "reason": "Paused/WP",
       "events": 2,
       "unique_accounts": 2,
       "annual_value_lost": 2341.98,
       "avg_value_per_account": 1170.99,
       "recoverable": true
-    },
-    {
-      "reason": "Moving",
-      "events": 1,
-      "unique_accounts": 1,
-      "annual_value_lost": 2429.81,
-      "avg_value_per_account": 2429.81,
-      "recoverable": false
     },
     {
       "reason": "No Longer Needed",
@@ -254,8 +254,8 @@
     },
     {
       "csr": "Not recorded",
-      "accounts": 27,
-      "annual_value_lost": 13312.12
+      "accounts": 28,
+      "annual_value_lost": 14163.95
     },
     {
       "csr": "Norma",
@@ -289,9 +289,9 @@
     },
     {
       "program": "HPD - 42 Days",
-      "events": 3,
-      "unique_accounts": 3,
-      "annual_value_lost": 2094.76
+      "events": 4,
+      "unique_accounts": 4,
+      "annual_value_lost": 2946.59
     },
     {
       "program": "Accelerated - Synthetic Signature Service",
@@ -375,9 +375,9 @@
     },
     {
       "month": "2026-09",
-      "events": 15,
-      "unique_accounts": 15,
-      "annual_value_lost": 14887.51
+      "events": 16,
+      "unique_accounts": 16,
+      "annual_value_lost": 15739.34
     }
   ],
   "lifetime_distribution": [
@@ -411,7 +411,7 @@
     },
     {
       "bucket": "5+ years",
-      "count": 26
+      "count": 27
     },
     {
       "bucket": "Unknown",
@@ -420,14 +420,14 @@
   ],
   "top_zip_codes": [
     {
-      "zip": "33143",
+      "zip": "33156",
       "events": 11,
       "unique_accounts": 11
     },
     {
-      "zip": "33156",
-      "events": 10,
-      "unique_accounts": 10
+      "zip": "33143",
+      "events": 11,
+      "unique_accounts": 11
     },
     {
       "zip": "33157",
@@ -496,6 +496,19 @@
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-09-22",
+      "reason": "Moving",
+      "reason_source": "ServiceMinder appointment",
+      "csr": "Not recorded",
+      "service": "HPD - 42 Days",
+      "zip": "33156",
+      "city": "Miami",
+      "tenure_days": 2449,
+      "days_since_last_service": 20,
+      "trailing_12m_revenue": 851.83,
+      "lifetime_value": 8338.26
+    },
     {
       "date": "2026-09-21",
       "reason": "Barrier Spray",
@@ -742,19 +755,6 @@
       "days_since_last_service": 18,
       "trailing_12m_revenue": 945.89,
       "lifetime_value": 6918.7
-    },
-    {
-      "date": "2026-08-24",
-      "reason": "Not recorded",
-      "reason_source": "missing",
-      "csr": "Not recorded",
-      "service": "Synthetic Barrier Spray - 2 week",
-      "zip": "33035",
-      "city": "Homestead",
-      "tenure_days": 45,
-      "days_since_last_service": 10,
-      "trailing_12m_revenue": 234.26,
-      "lifetime_value": 234.26
     }
   ]
 }
