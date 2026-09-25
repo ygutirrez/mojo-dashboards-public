@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-09-25T09:17:30.448Z",
+    "generated_at": "2026-09-25T12:16:39.938Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-25T09:16:39.088Z",
+      "generated_at": "2026-09-25T12:16:34.245Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 44248,
-      "contacts": 14084,
+      "contacts": 14085,
       "invoices": 44795,
       "proposals": 1640
     },
@@ -135,14 +135,14 @@
     },
     "sales": {
       "total_sales": 1548,
-      "total_cancels": 147,
-      "net": 1401,
+      "total_cancels": 149,
+      "net": 1399,
       "cancel_reasons": {
-        "No Longer Needed": 29,
+        "No Longer Needed": 30,
         "Scheduling Conflict": 28,
         "Moving": 24,
+        "Workpool": 23,
         "Error": 22,
-        "Workpool": 22,
         "Found Different Company": 11,
         "Financial": 8,
         "Not Working": 2,
@@ -290,10 +290,10 @@
     ],
     "appointment_statuses": {
       "Queued": 13831,
-      "Scheduled": 10532,
+      "Scheduled": 10530,
       "Completed": 1544,
       "Started": 253,
-      "Canceled": 53
+      "Canceled": 55
     },
     "service_mix": {
       "Mojo Essential": 11600,
@@ -556,7 +556,7 @@
         "invoices": 2009,
         "appointments": 4076,
         "proposals": 0,
-        "cancels": 61
+        "cancels": 63
       },
       {
         "month": "2026-10",
