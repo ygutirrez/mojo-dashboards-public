@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-24T09:18:24.018Z",
-  "generated_date": "September 24, 2026",
+  "generated_at": "2026-09-25T09:17:30.448Z",
+  "generated_date": "September 25, 2026",
   "sales": {
-    "csv_date": "2026-09-23",
-    "total_sales": 561,
-    "total_cancels": 354,
-    "net": 207,
+    "csv_date": "2026-09-24",
+    "total_sales": 564,
+    "total_cancels": 356,
+    "net": 208,
     "paused": 74,
     "cancel_reasons": {
+      "Moved": 76,
       "Paused/WP": 74,
-      "Moved": 74,
       "Not Interested": 57,
       "Financial": 42,
       "Unhappy": 38,
@@ -25,15 +25,15 @@
       "Went w/competitor": 1
     },
     "sale_categories": {
-      "Barrier Spray": 198,
-      "Restart": 139,
+      "Barrier Spray": 199,
+      "Restart": 140,
       "Event Spray": 88,
       "Noseeum": 33,
       "Misting System": 27,
       "Perimeter Pest": 14,
       "Bundle - HPD/Barrier": 14,
       "One Time": 11,
-      "MS Takeover": 9,
+      "MS Takeover": 10,
       "HPD  (Indoor)": 6,
       "Fleas/Ticks": 6,
       "Inzecto": 5,
@@ -47,15 +47,15 @@
     "team": {
       "Lucy": {
         "sales": 329,
-        "cancels": 122
+        "cancels": 123
       },
       "Norma": {
-        "sales": 166,
+        "sales": 167,
         "cancels": 118
       },
       "Bev": {
-        "sales": 66,
-        "cancels": 114
+        "sales": 68,
+        "cancels": 115
       }
     },
     "paused_pct": 21
@@ -93,34 +93,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1881972,
+    "ytd_invoiced": 1893018,
     "avg_per_visit": 72,
-    "mtd": 175313,
-    "mtd_jobs": 1875
+    "mtd": 186358,
+    "mtd_jobs": 2009
   },
   "operations": {
     "total_jobs": 18651,
     "jobs_per_tech_day": 10.8,
-    "revenue_per_tech_day": 537,
+    "revenue_per_tech_day": 534,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 191
+    "working_days_ytd": 192
   },
   "serviceminder": {
-    "generated_at": "2026-09-24T09:18:24.018Z",
+    "generated_at": "2026-09-25T09:17:30.448Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-24T09:17:06.621Z",
+      "generated_at": "2026-09-25T09:16:39.088Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 44188,
+      "appointments": 44248,
       "contacts": 14084,
-      "invoices": 44661,
+      "invoices": 44795,
       "proposals": 1640
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,11 +227,11 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1548,
-    "total_cancels": 144,
-    "net": 1404,
+    "total_cancels": 147,
+    "net": 1401,
     "cancel_reasons": {
+      "No Longer Needed": 29,
       "Scheduling Conflict": 28,
-      "No Longer Needed": 26,
       "Moving": 24,
       "Error": 22,
       "Workpool": 22,
