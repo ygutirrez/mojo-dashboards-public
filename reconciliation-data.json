@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-25T09:17:12.339Z",
+  "generated_at": "2026-09-26T09:17:15.686Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-09-24.csv",
-    "date": "2026-09-24",
+    "file": "sales-data-2026-09-25.csv",
+    "date": "2026-09-25",
     "totalSales": 559,
-    "totalCancels": 356,
-    "net": 203,
+    "totalCancels": 359,
+    "net": 200,
     "upsells": 9,
     "csrs": [
       {
@@ -18,12 +18,12 @@
       {
         "name": "Norma",
         "sales": 167,
-        "cancels": 118
+        "cancels": 119
       },
       {
         "name": "Bev",
         "sales": 67,
-        "cancels": 115
+        "cancels": 117
       }
     ],
     "weekly": [
@@ -215,7 +215,7 @@
       {
         "week": "2026-09-21",
         "sales": 6,
-        "cancels": 8
+        "cancels": 11
       },
       {
         "week": "2926-07-22",
@@ -225,7 +225,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-09-25T09:16:57.609Z",
+    "date": "2026-09-26T09:17:00.002Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -247,12 +247,12 @@
       },
       {
         "metric": "Cancel Events",
-        "csv": 356,
+        "csv": 359,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 153,
+        "gap": 150,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (356). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (359). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -266,16 +266,16 @@
     "cancelReasonComparison": {
       "csv": [
         {
+          "name": "Paused/WP",
+          "count": 76
+        },
+        {
           "name": "Moved",
           "count": 76
         },
         {
-          "name": "Paused/WP",
-          "count": 74
-        },
-        {
           "name": "Not Interested",
-          "count": 57
+          "count": 58
         },
         {
           "name": "Financial",

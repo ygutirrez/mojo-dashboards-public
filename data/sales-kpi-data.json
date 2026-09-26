@@ -1,26 +1,26 @@
 {
-  "updated_at": "2026-09-25T09:17:30.448Z",
-  "period": "Jan 1 - Sep 25, 2026 (YTD)",
+  "updated_at": "2026-09-26T09:17:36.866Z",
+  "period": "Jan 1 - Sep 26, 2026 (YTD)",
   "summary": {
     "total_sales": 564,
-    "total_cancels": 356,
+    "total_cancels": 359,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 1893018,
-    "total_invoices": 20645,
+    "total_revenue": 1901526,
+    "total_invoices": 20743,
     "total_discounts": 15611,
-    "net": 208,
-    "days_tracked": 268,
+    "net": 205,
+    "days_tracked": 269,
     "sales_per_day": 2.1,
-    "revenue_per_day": 7064
+    "revenue_per_day": 7069
   },
   "office_tally": {
-    "csv_date": "2026-09-24",
+    "csv_date": "2026-09-25",
     "total_sales": 564,
-    "total_cancels": 356,
-    "net": 208,
-    "paused_wp": 74,
+    "total_cancels": 359,
+    "net": 205,
+    "paused_wp": 76,
     "paused_pct": 21,
     "sale_categories": [
       {
@@ -98,18 +98,18 @@
     ],
     "cancel_reasons": [
       {
+        "name": "Paused/WP",
+        "count": 76,
+        "pct": 21
+      },
+      {
         "name": "Moved",
         "count": 76,
         "pct": 21
       },
       {
-        "name": "Paused/WP",
-        "count": 74,
-        "pct": 21
-      },
-      {
         "name": "Not Interested",
-        "count": 57,
+        "count": 58,
         "pct": 16
       },
       {
@@ -330,12 +330,12 @@
     {
       "name": "Norma",
       "sales": 167,
-      "cancels": 118
+      "cancels": 119
     },
     {
       "name": "Bev",
       "sales": 68,
-      "cancels": 115
+      "cancels": 117
     }
   ],
   "weekly_trend": [
@@ -442,20 +442,20 @@
       "week": "Sep 21",
       "sales": 0,
       "cancels": 0,
-      "revenue": 30763,
+      "revenue": 41809,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 1881972
+      "cumulative_revenue": 1893018
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 1893018,
-    "days_elapsed": 268,
+    "ytd_revenue": 1901526,
+    "days_elapsed": 269,
     "days_total": 365,
-    "projected_annual": 2578178,
+    "projected_annual": 2580138,
     "on_pace": false,
     "pct_of_target": 51.6
   },
@@ -470,27 +470,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-09-25T09:17:30.448Z"
+    "serviceminder_cutover_at": "2026-09-26T09:17:36.866Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-09-24",
-    "generated_at": "2026-09-25T09:17:00.094Z"
+    "sales_csv_date": "2026-09-25",
+    "generated_at": "2026-09-26T09:17:02.693Z"
   },
   "total_sales": 564,
-  "total_cancels": 356,
+  "total_cancels": 359,
   "serviceminder": {
-    "generated_at": "2026-09-25T09:17:30.448Z",
+    "generated_at": "2026-09-26T09:17:36.866Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-25T09:16:39.088Z",
+      "generated_at": "2026-09-26T09:16:39.136Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 44248,
-      "contacts": 14084,
-      "invoices": 44795,
+      "appointments": 44306,
+      "contacts": 14090,
+      "invoices": 44893,
       "proposals": 1640
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -596,24 +596,24 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 1893018,
+    "revenue": 1901526,
     "proposals": 1640,
-    "invoiced_proposals": 1336,
-    "complete_proposals": 212,
+    "invoiced_proposals": 1333,
+    "complete_proposals": 215,
     "sources": {
-      "Online": 13957,
-      "Referral": 12017,
-      "MoJo Customer": 6276,
-      "Yard Sign": 4290,
-      "Direct Mail Postcard": 3987,
-      "Mosquito Joe Vehicle": 3084,
-      "Other": 1425,
-      "Advertising": 1105,
-      "Printed Material": 553,
+      "Online": 14009,
+      "Referral": 12059,
+      "MoJo Customer": 6292,
+      "Yard Sign": 4296,
+      "Direct Mail Postcard": 3993,
+      "Mosquito Joe Vehicle": 3093,
+      "Other": 1429,
+      "Advertising": 1108,
+      "Printed Material": 555,
       "Mail Advertising": 461,
-      "Existing Customer": 368,
+      "Existing Customer": 369,
       "Online Search": 264,
-      "DMP": 190,
+      "DMP": 191,
       "Local Branding": 88,
       "Accelerated": 82,
       "Neighborly": 82,
@@ -692,35 +692,35 @@
       },
       {
         "month": "2026-09",
-        "invoiceRevenue": 186358.46,
-        "invoices": 2009,
+        "invoiceRevenue": 194867.08,
+        "invoices": 2107,
         "appointments": 4076,
         "proposals": 0,
-        "cancels": 61
+        "cancels": 67
       },
       {
         "month": "2026-10",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3673,
+        "appointments": 3689,
         "proposals": 0,
-        "cancels": 34
+        "cancels": 43
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3150,
+        "appointments": 3168,
         "proposals": 0,
-        "cancels": 22
+        "cancels": 28
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 1678,
+        "appointments": 1688,
         "proposals": 0,
-        "cancels": 11
+        "cancels": 14
       }
     ]
   }

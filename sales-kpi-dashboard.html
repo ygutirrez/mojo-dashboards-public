@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: September 25, 2026 @ 5:16 am</div>
-        <div class="period">📅 Jan 1 - Sep 25, 2026 (YTD)</div>
+        <div class="updated">Last updated: September 26, 2026 @ 5:17 am</div>
+        <div class="period">📅 Jan 1 - Sep 26, 2026 (YTD)</div>
         <div class="updated">ServSuite exports + Office Tracking CSV.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>564 sales and 356 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
+        <p><strong>564 sales and 359 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -99,7 +99,7 @@
                 <div class="rank">🥈</div>
                 <div class="name">Norma</div>
                 <div class="sales-count">167</div>
-                <div class="sales-label">sales | 118 cancels</div>
+                <div class="sales-label">sales | 119 cancels</div>
             </div>
             <div class="podium-spot first">
                 <div class="rank">🥇</div>
@@ -111,7 +111,7 @@
                 <div class="rank">🥉</div>
                 <div class="name">Bev</div>
                 <div class="sales-count">68</div>
-                <div class="sales-label">sales | 115 cancels</div>
+                <div class="sales-label">sales | 117 cancels</div>
             </div>
         </div>
     </div>
@@ -124,17 +124,17 @@
         </div>
         <div class="metric-card negative">
             <div class="label">Cancel Events</div>
-            <div class="value">356</div>
+            <div class="value">359</div>
             <div class="subtext">YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Accounts Cancelled</div>
-            <div class="value">356</div>
+            <div class="value">359</div>
             <div class="subtext">Unique customers lost</div>
         </div>
         <div class="metric-card positive">
             <div class="label">Net Change</div>
-            <div class="value">+208</div>
+            <div class="value">+205</div>
             <div class="subtext">Customer base growing</div>
         </div>
         <div class="metric-card neutral">
@@ -144,25 +144,25 @@
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
-            <div class="value">268</div>
-            <div class="subtext">Jan 1 - Sep 25</div>
+            <div class="value">269</div>
+            <div class="subtext">Jan 1 - Sep 26</div>
         </div>
     </div>
 
     <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
+        <div class="metric-card warning">
+            <div class="label">Paused/WP</div>
+            <div class="value">76</div>
+            <div class="subtext">21% of cancellations</div>
+        </div>
         <div class="metric-card warning">
             <div class="label">Moved</div>
             <div class="value">76</div>
             <div class="subtext">21% of cancellations</div>
         </div>
         <div class="metric-card warning">
-            <div class="label">Paused/WP</div>
-            <div class="value">74</div>
-            <div class="subtext">21% of cancellations</div>
-        </div>
-        <div class="metric-card warning">
             <div class="label">Not Interested</div>
-            <div class="value">57</div>
+            <div class="value">58</div>
             <div class="subtext">16% of cancellations</div>
         </div>
         <div class="metric-card warning">
@@ -258,8 +258,8 @@
                 <div class="name">Norma</div>
                 <div class="stats">
                     <span class="sales">📈 167 sales</span>
-                    <span>❌ 118 cancels</span>
-                    <span>📊 Net: 49</span>
+                    <span>❌ 119 cancels</span>
+                    <span>📊 Net: 48</span>
                 </div>
             </div>
 
@@ -267,8 +267,8 @@
                 <div class="name">Bev</div>
                 <div class="stats">
                     <span class="sales">📈 68 sales</span>
-                    <span>❌ 115 cancels</span>
-                    <span>📊 Net: -47</span>
+                    <span>❌ 117 cancels</span>
+                    <span>📊 Net: -49</span>
                 </div>
             </div>
         </div>
@@ -294,9 +294,9 @@
         new Chart(document.getElementById('cancelReasonsChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Moved","Paused/WP","Not Interested","Financial","Unhappy","Barrier Spray","One Time","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor"],
+                labels: ["Paused/WP","Moved","Not Interested","Financial","Unhappy","Barrier Spray","One Time","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor"],
                 datasets: [{
-                    data: [76,74,57,42,38,18,17,14,11,2,2,2,1,1,1],
+                    data: [76,76,58,42,38,18,17,14,11,2,2,2,1,1,1],
                     backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
                     borderWidth: 0
                 }]

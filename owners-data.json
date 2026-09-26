@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-25T09:17:30.448Z",
-  "generated_date": "September 25, 2026",
+  "generated_at": "2026-09-26T09:17:36.866Z",
+  "generated_date": "September 26, 2026",
   "sales": {
-    "csv_date": "2026-09-24",
+    "csv_date": "2026-09-25",
     "total_sales": 564,
-    "total_cancels": 356,
-    "net": 208,
-    "paused": 74,
+    "total_cancels": 359,
+    "net": 205,
+    "paused": 76,
     "cancel_reasons": {
+      "Paused/WP": 76,
       "Moved": 76,
-      "Paused/WP": 74,
-      "Not Interested": 57,
+      "Not Interested": 58,
       "Financial": 42,
       "Unhappy": 38,
       "Barrier Spray": 18,
@@ -51,11 +51,11 @@
       },
       "Norma": {
         "sales": 167,
-        "cancels": 118
+        "cancels": 119
       },
       "Bev": {
         "sales": 68,
-        "cancels": 115
+        "cancels": 117
       }
     },
     "paused_pct": 21
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1893018,
+    "ytd_invoiced": 1901526,
     "avg_per_visit": 72,
-    "mtd": 186358,
-    "mtd_jobs": 2009
+    "mtd": 194867,
+    "mtd_jobs": 2107
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 192
   },
   "serviceminder": {
-    "generated_at": "2026-09-25T09:17:30.448Z",
+    "generated_at": "2026-09-26T09:17:36.866Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-25T09:16:39.088Z",
+      "generated_at": "2026-09-26T09:16:39.136Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 44248,
-      "contacts": 14084,
-      "invoices": 44795,
+      "appointments": 44306,
+      "contacts": 14090,
+      "invoices": 44893,
       "proposals": 1640
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,16 +227,16 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1548,
-    "total_cancels": 147,
-    "net": 1401,
+    "total_cancels": 171,
+    "net": 1377,
     "cancel_reasons": {
-      "No Longer Needed": 29,
-      "Scheduling Conflict": 28,
+      "Workpool": 33,
+      "Error": 31,
+      "No Longer Needed": 30,
+      "Scheduling Conflict": 29,
       "Moving": 24,
-      "Error": 22,
-      "Workpool": 22,
       "Found Different Company": 11,
-      "Financial": 8,
+      "Financial": 10,
       "Not Working": 2,
       "Weather": 1
     },
