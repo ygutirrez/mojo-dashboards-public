@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-28T19:00:24.489Z",
+  "updated_at": "2026-09-28T19:30:24.009Z",
   "csv_date": "2026-09-28",
   "period": "Jan 1 - Sep 28, 2026 (YTD)",
   "summary": {
     "total_sales": 566,
-    "total_cancels": 363,
-    "net": 203,
+    "total_cancels": 364,
+    "net": 202,
     "paused_wp": 76,
     "paused_pct": 21,
     "days_tracked": 271
@@ -24,13 +24,13 @@
     {
       "name": "Bev",
       "sales": 68,
-      "cancels": 117
+      "cancels": 118
     }
   ],
   "cancel_reasons": [
     {
       "name": "Moved",
-      "count": 77,
+      "count": 78,
       "pct": 21
     },
     {
@@ -183,6 +183,13 @@
       "date": "2026-09-28",
       "dateFmt": "Sep 28",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-09-28",
+      "dateFmt": "Sep 28",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Norma"
     },
@@ -241,18 +248,11 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-09-24",
-      "dateFmt": "Sep 24",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
     "name": "Moved",
-    "count": 77
+    "count": 78
   },
   "tech_upsells": [
     {
