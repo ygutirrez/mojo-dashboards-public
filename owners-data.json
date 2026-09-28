@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-28T09:17:07.827Z",
+  "generated_at": "2026-09-28T19:55:37.129Z",
   "generated_date": "September 28, 2026",
   "sales": {
-    "csv_date": "2026-09-25",
-    "total_sales": 564,
-    "total_cancels": 359,
-    "net": 205,
+    "csv_date": "2026-09-28",
+    "total_sales": 566,
+    "total_cancels": 364,
+    "net": 202,
     "paused": 76,
     "cancel_reasons": {
+      "Moved": 78,
       "Paused/WP": 76,
-      "Moved": 76,
-      "Not Interested": 58,
+      "Not Interested": 61,
       "Financial": 42,
       "Unhappy": 38,
       "Barrier Spray": 18,
@@ -25,7 +25,7 @@
       "Went w/competitor": 1
     },
     "sale_categories": {
-      "Barrier Spray": 199,
+      "Barrier Spray": 200,
       "Restart": 140,
       "Event Spray": 88,
       "Noseeum": 33,
@@ -37,8 +37,8 @@
       "HPD  (Indoor)": 6,
       "Fleas/Ticks": 6,
       "Inzecto": 5,
+      "Barrier Spray + Flea": 4,
       "Thermacell": 4,
-      "Barrier Spray + Flea": 3,
       "Mosquito/PP": 1,
       "New": 1,
       "Rodent Station": 1,
@@ -46,16 +46,16 @@
     },
     "team": {
       "Lucy": {
-        "sales": 329,
+        "sales": 330,
         "cancels": 123
       },
       "Norma": {
-        "sales": 167,
-        "cancels": 119
+        "sales": 168,
+        "cancels": 123
       },
       "Bev": {
         "sales": 68,
-        "cancels": 117
+        "cancels": 118
       }
     },
     "paused_pct": 21
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1902665,
+    "ytd_invoiced": 1903201,
     "avg_per_visit": 72,
-    "mtd": 196006,
-    "mtd_jobs": 2120
+    "mtd": 196542,
+    "mtd_jobs": 2127
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 193
   },
   "serviceminder": {
-    "generated_at": "2026-09-28T09:17:07.827Z",
+    "generated_at": "2026-09-28T13:16:24.484Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-28T09:16:10.511Z",
+      "generated_at": "2026-09-28T13:16:19.133Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 44306,
-      "contacts": 14105,
-      "invoices": 44906,
+      "appointments": 44328,
+      "contacts": 14106,
+      "invoices": 44913,
       "proposals": 1640
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,12 +227,12 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1548,
-    "total_cancels": 171,
-    "net": 1377,
+    "total_cancels": 174,
+    "net": 1374,
     "cancel_reasons": {
-      "Workpool": 33,
+      "Workpool": 34,
+      "No Longer Needed": 32,
       "Error": 31,
-      "No Longer Needed": 30,
       "Scheduling Conflict": 29,
       "Moving": 24,
       "Found Different Company": 11,
