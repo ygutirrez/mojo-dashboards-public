@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-28T13:30:14.795Z",
+  "updated_at": "2026-09-28T14:00:15.491Z",
   "csv_date": "2026-09-28",
   "period": "Jan 1 - Sep 28, 2026 (YTD)",
   "summary": {
-    "total_sales": 564,
-    "total_cancels": 360,
+    "total_sales": 565,
+    "total_cancels": 361,
     "net": 204,
     "paused_wp": 76,
     "paused_pct": 21,
@@ -13,13 +13,13 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 329,
+      "sales": 330,
       "cancels": 123
     },
     {
       "name": "Norma",
       "sales": 167,
-      "cancels": 120
+      "cancels": 121
     },
     {
       "name": "Bev",
@@ -29,12 +29,12 @@
   ],
   "cancel_reasons": [
     {
-      "name": "Paused/WP",
-      "count": 76,
+      "name": "Moved",
+      "count": 77,
       "pct": 21
     },
     {
-      "name": "Moved",
+      "name": "Paused/WP",
       "count": 76,
       "pct": 21
     },
@@ -154,12 +154,12 @@
       "count": 5
     },
     {
-      "name": "Thermacell",
+      "name": "Barrier Spray + Flea",
       "count": 4
     },
     {
-      "name": "Barrier Spray + Flea",
-      "count": 3
+      "name": "Thermacell",
+      "count": 4
     },
     {
       "name": "Mosquito/PP",
@@ -179,6 +179,20 @@
     }
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-28",
+      "dateFmt": "Sep 28",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-09-28",
+      "dateFmt": "Sep 28",
+      "type": "Sale",
+      "category": "Barrier Spray + Flea",
+      "csr": "Lucy"
+    },
     {
       "date": "2026-09-28",
       "dateFmt": "Sep 28",
@@ -234,25 +248,11 @@
       "type": "Cancel",
       "category": "Moved",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-09-24",
-      "dateFmt": "Sep 24",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-09-23",
-      "dateFmt": "Sep 23",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
-    "name": "Paused/WP",
-    "count": 76
+    "name": "Moved",
+    "count": 77
   },
   "tech_upsells": [
     {
