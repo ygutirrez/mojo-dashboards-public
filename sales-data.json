@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-28T18:30:16.149Z",
+  "updated_at": "2026-09-28T19:00:24.489Z",
   "csv_date": "2026-09-28",
   "period": "Jan 1 - Sep 28, 2026 (YTD)",
   "summary": {
     "total_sales": 566,
-    "total_cancels": 362,
-    "net": 204,
+    "total_cancels": 363,
+    "net": 203,
     "paused_wp": 76,
     "paused_pct": 21,
     "days_tracked": 271
@@ -19,7 +19,7 @@
     {
       "name": "Norma",
       "sales": 168,
-      "cancels": 122
+      "cancels": 123
     },
     {
       "name": "Bev",
@@ -40,7 +40,7 @@
     },
     {
       "name": "Not Interested",
-      "count": 60,
+      "count": 61,
       "pct": 17
     },
     {
@@ -182,6 +182,13 @@
     {
       "date": "2026-09-28",
       "dateFmt": "Sep 28",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-09-28",
+      "dateFmt": "Sep 28",
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Norma"
@@ -240,13 +247,6 @@
       "dateFmt": "Sep 24",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-09-24",
-      "dateFmt": "Sep 24",
-      "type": "Sale",
-      "category": "MS Takeover",
       "csr": "Bev"
     }
   ],
