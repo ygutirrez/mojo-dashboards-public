@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-09-29T09:17:25.079Z",
+    "generated_at": "2026-09-29T12:16:20.041Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-09-29T09:16:27.245Z",
+      "generated_at": "2026-09-29T12:16:14.071Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 44399,
       "contacts": 14112,
-      "invoices": 44999,
+      "invoices": 45001,
       "proposals": 1640
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1912436,
+      "ytd_invoiced": 1912536,
       "avg_per_visit": 73,
-      "mtd": 205777,
-      "mtd_jobs": 2213
+      "mtd": 205877,
+      "mtd_jobs": 2215
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 1912436
+      "total_wo_revenue": 1912536
     },
     "employees": [
       {
@@ -290,9 +290,9 @@
     ],
     "appointment_statuses": {
       "Queued": 13743,
-      "Scheduled": 10507,
-      "Completed": 1750,
-      "Started": 253,
+      "Scheduled": 10503,
+      "Completed": 1752,
+      "Started": 255,
       "Canceled": 72
     },
     "service_mix": {
@@ -351,7 +351,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 1912436
+      "total_revenue": 1912536
     },
     "employees": [
       {
@@ -456,13 +456,13 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1912436,
+    "revenue": 1912536,
     "proposals": 1640,
     "invoiced_proposals": 1328,
     "complete_proposals": 220,
     "sources": {
-      "Online": 14076,
-      "Referral": 12098,
+      "Online": 14077,
+      "Referral": 12099,
       "MoJo Customer": 6320,
       "Yard Sign": 4306,
       "Direct Mail Postcard": 4003,
@@ -552,8 +552,8 @@
       },
       {
         "month": "2026-09",
-        "invoiceRevenue": 205777.02,
-        "invoices": 2213,
+        "invoiceRevenue": 205877,
+        "invoices": 2215,
         "appointments": 4072,
         "proposals": 0,
         "cancels": 72
