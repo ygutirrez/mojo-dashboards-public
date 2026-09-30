@@ -378,12 +378,24 @@
         }
         .weekly-rank { font-size: 22px; width: 36px; text-align: center; }
         .weekly-name { flex: 1; font-size: 18px; font-weight: 700; }
-        .weekly-sales {
+        .weekly-metrics { display: flex; align-items: center; gap: 18px; }
+        .weekly-metric { min-width: 56px; text-align: center; }
+        .weekly-metric-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 28px;
+            font-size: 24px;
+            line-height: 1;
             font-weight: 900;
-            color: var(--mojo-green);
         }
+        .weekly-metric-label {
+            margin-top: 3px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            color: var(--muted);
+        }
+        .weekly-sale { color: var(--mojo-green); }
+        .weekly-cancel { color: #fb7185; }
+        .week-range { margin-left: auto; font-size: 10px; color: var(--muted); letter-spacing: 1px; }
 
         /* Streaks */
         .streaks-card {
@@ -931,6 +943,7 @@
 
     function applyServiceMinderHeadlines(data, salesData, serviceMinder) {
         if (salesData?.csrs) data.csrs = salesData.csrs;
+        if (salesData?.week) data.week = salesData.week;
         if (!serviceMinder?.meta?.write_existing_applied) return;
 
         const smRevenue = serviceMinder.owners?.revenue || {};
@@ -977,26 +990,9 @@
         const cancelReasons = (data.cancels && data.cancels.by_reason) || [];
         const revPace = data.revenue_pace || {};
         const weeklyTrend = data.weekly_trend || [];
+        const weeklyRows = data.week?.csrs || [];
+        const weeklyByName = Object.fromEntries(weeklyRows.map(csr => [csr.name, csr]));
         const nextiva = data.nextiva || null;
-
-        // Calculate weekly sales from trend (last entry minus previous)
-        let weeklySales = {};
-        if (weeklyTrend.length >= 2) {
-            const latest = weeklyTrend[weeklyTrend.length - 1];
-            const prev = weeklyTrend[weeklyTrend.length - 2];
-            // Approximate per-CSR weekly: distribute proportionally
-            const weekTotal = latest.sales || 0;
-            const totalSales = csrs.reduce((a, c) => a + c.sales, 0) || 1;
-            csrs.forEach(c => {
-                weeklySales[c.name] = Math.round((c.sales / totalSales) * weekTotal);
-            });
-        } else if (weeklyTrend.length === 1) {
-            const weekTotal = weeklyTrend[0].sales || 0;
-            const totalSales = csrs.reduce((a, c) => a + c.sales, 0) || 1;
-            csrs.forEach(c => {
-                weeklySales[c.name] = Math.round((c.sales / totalSales) * weekTotal);
-            });
-        }
 
         // Detect net change for confetti
         if (previousNet !== null && s.net > previousNet) {
@@ -1152,17 +1148,24 @@
 
                 <!-- Weekly Leaderboard -->
                 <div class="glass weekly-card fade-in-up" style="animation-delay:0.45s">
-                    <div class="section-title"><span class="emoji">📅</span> THIS WEEK</div>
+                    <div class="section-title"><span class="emoji">📅</span> THIS WEEK <span class="week-range">${data.week?.label || ''}</span></div>
                     <div class="weekly-list">`;
 
-        const weeklySorted = [...csrs].sort((a, b) => (weeklySales[b.name] || 0) - (weeklySales[a.name] || 0));
+        const weeklySorted = [...csrs].sort((a, b) => {
+            const aw = weeklyByName[a.name] || { sales: 0, cancels: 0 };
+            const bw = weeklyByName[b.name] || { sales: 0, cancels: 0 };
+            return bw.sales - aw.sales || aw.cancels - bw.cancels || a.name.localeCompare(b.name);
+        });
         weeklySorted.forEach((csr, i) => {
-            const ws = weeklySales[csr.name] || 0;
+            const weekRow = weeklyByName[csr.name] || { sales: 0, cancels: 0 };
             html += `
                         <div class="weekly-entry">
                             <div class="weekly-rank">${medals[i] || (i+1)}</div>
                             <div class="weekly-name">${csr.name}</div>
-                            <div class="weekly-sales">${ws}</div>
+                            <div class="weekly-metrics">
+                                <div class="weekly-metric"><div class="weekly-metric-value weekly-sale">${weekRow.sales}</div><div class="weekly-metric-label">SALES</div></div>
+                                <div class="weekly-metric"><div class="weekly-metric-value weekly-cancel">${weekRow.cancels}</div><div class="weekly-metric-label">CANCELS</div></div>
+                            </div>
                         </div>`;
         });
 
