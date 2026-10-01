@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T09:16:53.813593+00:00",
+  "generated_at": "2026-10-01T09:16:59.863253+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-29",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,50 +7,50 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-09-29.csv",
+    "office_tally_file": "sales-data-2026-09-30.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-09-30T09:16:06.154Z",
-      "appointments": "2026-09-30T09:15:56.238Z",
-      "invoices": "2026-09-30T09:16:23.765Z"
+      "contacts": "2026-10-01T09:16:09.692Z",
+      "appointments": "2026-10-01T09:16:01.102Z",
+      "invoices": "2026-10-01T09:16:27.516Z"
     }
   },
   "summary": {
-    "total_cancel_events": 129,
-    "unique_accounts_cancelled": 129,
-    "total_annual_value_lost": 82785.18,
-    "avg_annual_value_per_account": 641.75,
-    "avg_customer_lifetime_days": 899,
-    "median_customer_lifetime_days": 650,
-    "recoverable_accounts": 73,
-    "recoverable_annual_value": 45548.01,
-    "controllable_events": 73,
+    "total_cancel_events": 130,
+    "unique_accounts_cancelled": 130,
+    "total_annual_value_lost": 85689.96,
+    "avg_annual_value_per_account": 659.15,
+    "avg_customer_lifetime_days": 904,
+    "median_customer_lifetime_days": 657,
+    "recoverable_accounts": 74,
+    "recoverable_annual_value": 48452.79,
+    "controllable_events": 74,
     "uncontrollable_events": 26,
     "structural_events": 0,
     "unknown_events": 25,
-    "controllable_value_lost": 45548.01,
+    "controllable_value_lost": 48452.79,
     "uncontrollable_value_lost": 21991.3,
-    "total_sales_ytd": 129,
+    "total_sales_ytd": 130,
     "net_new_customers": 0,
     "cancel_to_sales_ratio": 1.0,
-    "active_customer_base": 1580,
-    "recorded_attrition_pct": 7.5,
-    "recent_30d_accounts": 28,
-    "recent_30d_revenue": 24738.77,
-    "recent_90d_accounts": 76,
-    "reason_known_accounts": 104,
-    "reason_capture_pct": 80.6
+    "active_customer_base": 1579,
+    "recorded_attrition_pct": 7.6,
+    "recent_30d_accounts": 27,
+    "recent_30d_revenue": 26031.83,
+    "recent_90d_accounts": 77,
+    "reason_known_accounts": 105,
+    "reason_capture_pct": 80.8
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 561,
-    "sales_logged_since_first_loss": 279,
-    "sales_logged_30d": 25,
-    "sales_logged_90d": 130,
+    "sales_logged_ytd": 563,
+    "sales_logged_since_first_loss": 281,
+    "sales_logged_30d": 27,
+    "sales_logged_90d": 127,
     "restarts_ytd": 139,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": -3,
-    "sales_per_confirmed_loss_30d": 0.89,
+    "gross_activity_gap_30d": 0,
+    "sales_per_confirmed_loss_30d": 1.0,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -62,7 +62,7 @@
       },
       {
         "category": "Event Spray",
-        "sales": 87
+        "sales": 88
       },
       {
         "category": "Noseeum",
@@ -81,11 +81,11 @@
         "sales": 14
       },
       {
-        "category": "One Time",
-        "sales": 10
+        "category": "MS Takeover",
+        "sales": 11
       },
       {
-        "category": "MS Takeover",
+        "category": "One Time",
         "sales": 10
       },
       {
@@ -160,17 +160,17 @@
       },
       {
         "month": "2026-09",
-        "sales": 25
+        "sales": 27
       }
     ]
   },
   "by_reason": [
     {
       "reason": "Not Interested",
-      "events": 25,
-      "unique_accounts": 25,
-      "annual_value_lost": 14918.82,
-      "avg_value_per_account": 596.75,
+      "events": 26,
+      "unique_accounts": 26,
+      "annual_value_lost": 17823.6,
+      "avg_value_per_account": 685.52,
       "recoverable": true
     },
     {
@@ -272,8 +272,8 @@
     },
     {
       "csr": "Bev",
-      "accounts": 4,
-      "annual_value_lost": 3779.31
+      "accounts": 5,
+      "annual_value_lost": 6684.09
     }
   ],
   "by_program": [
@@ -291,9 +291,9 @@
     },
     {
       "program": "Gnat/Midge/No-seeums Service - 2 weeks",
-      "events": 6,
-      "unique_accounts": 6,
-      "annual_value_lost": 5652.33
+      "events": 7,
+      "unique_accounts": 7,
+      "annual_value_lost": 8557.11
     },
     {
       "program": "HPD - 42 Days",
@@ -389,9 +389,9 @@
     },
     {
       "month": "2026-09",
-      "events": 28,
-      "unique_accounts": 28,
-      "annual_value_lost": 24738.77
+      "events": 29,
+      "unique_accounts": 29,
+      "annual_value_lost": 27643.55
     }
   ],
   "lifetime_distribution": [
@@ -421,7 +421,7 @@
     },
     {
       "bucket": "3-5 years",
-      "count": 22
+      "count": 23
     },
     {
       "bucket": "5+ years",

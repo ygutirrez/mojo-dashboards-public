@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-29T09:18:09.496Z",
-  "total_duration_sec": 180,
+  "generated_at": "2026-09-30T09:18:18.071Z",
+  "total_duration_sec": 185,
   "steps_total": 25,
   "steps_passed": 25,
   "steps_failed": 0,
@@ -11,7 +11,7 @@
       "name": "sales-import",
       "success": true,
       "exit_code": 1,
-      "duration_sec": 2,
+      "duration_sec": 3,
       "retries": 1,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 87,
+      "duration_sec": 91,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -47,7 +47,7 @@
       "name": "build-cancel-analysis",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 9,
+      "duration_sec": 8,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -110,7 +110,7 @@
       "name": "build-tech",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 7,
+      "duration_sec": 9,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -182,7 +182,7 @@
       "name": "weekly-snapshot",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 5,
+      "duration_sec": 6,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -218,7 +218,7 @@
       "name": "deploy",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 28,
+      "duration_sec": 27,
       "retries": 0,
       "timed_out": false,
       "critical": true
