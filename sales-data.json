@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-01T15:30:15.259Z",
+  "updated_at": "2026-10-01T16:00:14.700Z",
   "csv_date": "2026-10-01",
   "period": "Jan 1 - Oct 1, 2026 (YTD)",
   "summary": {
-    "total_sales": 569,
+    "total_sales": 571,
     "total_cancels": 368,
-    "net": 201,
+    "net": 203,
     "paused_wp": 78,
     "paused_pct": 21,
     "days_tracked": 274
@@ -15,40 +15,40 @@
     "end": "2026-10-04",
     "label": "Sep 28 – Oct 4",
     "summary": {
-      "total_sales": 5,
+      "total_sales": 7,
       "total_cancels": 9,
-      "net": -4
+      "net": -2
     },
     "csrs": [
       {
         "name": "Lucy",
-        "sales": 3,
+        "sales": 4,
         "cancels": 0,
-        "net": 3
+        "net": 4
+      },
+      {
+        "name": "Norma",
+        "sales": 2,
+        "cancels": 6,
+        "net": -4
       },
       {
         "name": "Bev",
         "sales": 1,
         "cancels": 3,
         "net": -2
-      },
-      {
-        "name": "Norma",
-        "sales": 1,
-        "cancels": 6,
-        "net": -5
       }
     ]
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 332,
+      "sales": 333,
       "cancels": 123
     },
     {
       "name": "Norma",
-      "sales": 168,
+      "sales": 169,
       "cancels": 125
     },
     {
@@ -137,7 +137,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 201
+      "count": 203
     },
     {
       "name": "Restart",
@@ -210,6 +210,20 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-01",
+      "dateFmt": "Oct 1",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-01",
+      "dateFmt": "Oct 1",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy"
+    },
+    {
       "date": "2026-09-30",
       "dateFmt": "Sep 30",
       "type": "Cancel",
@@ -264,20 +278,6 @@
       "type": "Cancel",
       "category": "Moved",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-09-28",
-      "dateFmt": "Sep 28",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-09-28",
-      "dateFmt": "Sep 28",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
