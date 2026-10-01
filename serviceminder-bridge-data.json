@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-10-01T09:17:36.635Z",
+    "generated_at": "2026-10-01T12:16:59.224Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-01T09:16:42.012Z",
+      "generated_at": "2026-10-01T12:16:52.661Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 44551,
+      "appointments": 44552,
       "contacts": 14125,
-      "invoices": 45185,
+      "invoices": 45189,
       "proposals": 1642
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1931479,
+      "ytd_invoiced": 1931845,
       "avg_per_visit": 73,
-      "mtd": 0,
-      "mtd_jobs": 0
+      "mtd": 366,
+      "mtd_jobs": 4
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 1931479
+      "total_wo_revenue": 1931845
     },
     "employees": [
       {
@@ -213,7 +213,7 @@
       {
         "name": "Marcus Rubi",
         "jobs": 1195,
-        "revenue": 98411.47,
+        "revenue": 98335.48,
         "avgRevenue": 76.23,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
@@ -236,7 +236,7 @@
         "name": "Joe Pagan",
         "jobs": 738,
         "revenue": 150965.65,
-        "avgRevenue": 188.24,
+        "avgRevenue": 187.77,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -290,9 +290,9 @@
     ],
     "appointment_statuses": {
       "Queued": 13646,
-      "Scheduled": 10529,
-      "Completed": 1938,
-      "Started": 253,
+      "Scheduled": 10525,
+      "Completed": 1942,
+      "Started": 254,
       "Canceled": 80
     },
     "service_mix": {
@@ -308,10 +308,10 @@
       "InZecto Trap Service": 148,
       "In2Care Service - 4 Weeks Service": 131,
       "Misting system - 6 Weeks": 131,
-      "Synthetic Signature Service": 121,
+      "Synthetic Signature Service": 113,
       "Inzecto Trap Replacement": 109,
       "Special Event Service": 94,
-      "Property Assessment": 85,
+      "Property Assessment": 86,
       "Misting System Repair Service": 75,
       "Flea & Tick Treatment": 60,
       "Flea Service": 53,
@@ -331,6 +331,7 @@
       "Synthetic Signature Single Svc 1": 10,
       "Misting System Equipment": 9,
       "HPD - One Time Treatment": 8,
+      "Signature Service": 8,
       "HPD - 56 Days": 6,
       "Inzecto Installation": 5,
       "Synthetic Barrier Spray - 6 week": 4,
@@ -351,7 +352,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 1931479
+      "total_revenue": 1931845
     },
     "employees": [
       {
@@ -383,7 +384,7 @@
         "initials": "MR",
         "jobs": 1195,
         "rank": 3,
-        "revenue": 98411,
+        "revenue": 98335,
         "upsells": 0,
         "resprays": 0
       },
@@ -456,14 +457,14 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1931479,
+    "revenue": 1931845,
     "proposals": 1642,
     "invoiced_proposals": 1324,
     "complete_proposals": 225,
     "sources": {
-      "Online": 14169,
-      "Referral": 12169,
-      "MoJo Customer": 6367,
+      "Online": 14171,
+      "Referral": 12170,
+      "MoJo Customer": 6368,
       "Yard Sign": 4327,
       "Direct Mail Postcard": 4028,
       "Mosquito Joe Vehicle": 3120,
@@ -483,7 +484,7 @@
       "Email": 44,
       "Social": 33,
       "Mass Media": 22,
-      "Unknown": 4
+      "Unknown": 5
     },
     "monthly": [
       {
@@ -560,9 +561,9 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 0,
-        "invoices": 0,
-        "appointments": 3756,
+        "invoiceRevenue": 365.97,
+        "invoices": 4,
+        "appointments": 3757,
         "proposals": 0,
         "cancels": 53
       },
