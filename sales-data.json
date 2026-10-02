@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-02T13:00:24.990Z",
+  "updated_at": "2026-10-02T13:30:17.158Z",
   "csv_date": "2026-10-02",
   "period": "Jan 1 - Oct 2, 2026 (YTD)",
   "summary": {
     "total_sales": 570,
-    "total_cancels": 369,
-    "net": 201,
+    "total_cancels": 370,
+    "net": 200,
     "paused_wp": 78,
     "paused_pct": 21,
     "days_tracked": 275
@@ -16,15 +16,15 @@
     "label": "Sep 28 – Oct 4",
     "summary": {
       "total_sales": 6,
-      "total_cancels": 10,
-      "net": -4
+      "total_cancels": 11,
+      "net": -5
     },
     "csrs": [
       {
         "name": "Lucy",
         "sales": 3,
-        "cancels": 0,
-        "net": 3
+        "cancels": 1,
+        "net": 2
       },
       {
         "name": "Norma",
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 332,
-      "cancels": 123
+      "cancels": 124
     },
     {
       "name": "Norma",
@@ -75,8 +75,8 @@
     },
     {
       "name": "Financial",
-      "count": 42,
-      "pct": 11
+      "count": 43,
+      "pct": 12
     },
     {
       "name": "Unhappy",
@@ -210,6 +210,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-02",
+      "dateFmt": "Oct 2",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Lucy"
+    },
+    {
       "date": "2026-10-01",
       "dateFmt": "Oct 1",
       "type": "Cancel",
@@ -271,13 +278,6 @@
       "type": "Sale",
       "category": "MS Takeover",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-09-29",
-      "dateFmt": "Sep 29",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
