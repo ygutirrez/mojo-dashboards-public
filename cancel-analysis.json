@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T09:16:59.863253+00:00",
+  "generated_at": "2026-10-02T09:17:09.519888+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-09-29",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-09-30.csv",
+    "office_tally_file": "sales-data-2026-10-01.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-01T09:16:09.692Z",
-      "appointments": "2026-10-01T09:16:01.102Z",
-      "invoices": "2026-10-01T09:16:27.516Z"
+      "contacts": "2026-10-02T09:16:29.693Z",
+      "appointments": "2026-10-02T09:16:16.730Z",
+      "invoices": "2026-10-02T09:16:37.745Z"
     }
   },
   "summary": {
@@ -33,9 +33,9 @@
     "total_sales_ytd": 130,
     "net_new_customers": 0,
     "cancel_to_sales_ratio": 1.0,
-    "active_customer_base": 1579,
+    "active_customer_base": 1578,
     "recorded_attrition_pct": 7.6,
-    "recent_30d_accounts": 27,
+    "recent_30d_accounts": 26,
     "recent_30d_revenue": 26031.83,
     "recent_90d_accounts": 77,
     "reason_known_accounts": 105,
@@ -43,18 +43,18 @@
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 563,
-    "sales_logged_since_first_loss": 281,
-    "sales_logged_30d": 27,
-    "sales_logged_90d": 127,
+    "sales_logged_ytd": 564,
+    "sales_logged_since_first_loss": 282,
+    "sales_logged_30d": 28,
+    "sales_logged_90d": 128,
     "restarts_ytd": 139,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": 0,
-    "sales_per_confirmed_loss_30d": 1.0,
+    "gross_activity_gap_30d": 2,
+    "sales_per_confirmed_loss_30d": 1.08,
     "by_category": [
       {
         "category": "Barrier Spray",
-        "sales": 200
+        "sales": 202
       },
       {
         "category": "Restart",
@@ -97,16 +97,16 @@
         "sales": 6
       },
       {
-        "category": "Barrier Spray + Flea",
-        "sales": 4
-      },
-      {
         "category": "Thermacell",
         "sales": 4
       },
       {
         "category": "Inzecto",
         "sales": 4
+      },
+      {
+        "category": "Barrier Spray + Flea",
+        "sales": 3
       },
       {
         "category": "Mosquito/PP",
@@ -160,7 +160,11 @@
       },
       {
         "month": "2026-09",
-        "sales": 27
+        "sales": 26
+      },
+      {
+        "month": "2026-10",
+        "sales": 2
       }
     ]
   },
