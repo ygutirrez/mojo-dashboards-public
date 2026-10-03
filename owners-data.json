@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-02T22:30:17.607Z",
-  "generated_date": "October 2, 2026",
+  "generated_at": "2026-10-03T09:18:10.670Z",
+  "generated_date": "October 3, 2026",
   "sales": {
     "csv_date": "2026-10-02",
     "total_sales": 570,
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1932115,
-    "avg_per_visit": 69,
-    "mtd": 2316,
-    "mtd_jobs": 20
+    "ytd_invoiced": 1940917,
+    "avg_per_visit": 70,
+    "mtd": 11118,
+    "mtd_jobs": 122
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 197
   },
   "serviceminder": {
-    "generated_at": "2026-10-02T13:17:13.148Z",
+    "generated_at": "2026-10-03T09:18:10.670Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-02T13:17:04.628Z",
+      "generated_at": "2026-10-03T09:17:19.023Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46053,
-      "contacts": 14128,
-      "invoices": 45205,
+      "appointments": 46094,
+      "contacts": 14137,
+      "invoices": 45307,
       "proposals": 1642
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,16 +227,16 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1549,
-    "total_cancels": 215,
-    "net": 1334,
+    "total_cancels": 218,
+    "net": 1331,
     "cancel_reasons": {
       "Error": 41,
       "No Longer Needed": 41,
       "Workpool": 40,
       "Scheduling Conflict": 37,
-      "Moving": 27,
+      "Moving": 29,
+      "Financial": 13,
       "Found Different Company": 13,
-      "Financial": 12,
       "Not Working": 3,
       "Weather": 1
     },
