@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-04T09:17:43.292Z",
-  "health_score": 94,
+  "generated_at": "2026-10-05T09:17:30.453Z",
+  "health_score": 91,
   "summary": {
     "total_data_files": 17,
-    "healthy": 14,
-    "stale": 3,
+    "healthy": 13,
+    "stale": 4,
     "missing": 0,
     "invalid": 0,
-    "critical_issues": 1,
+    "critical_issues": 2,
     "warnings": 2,
     "dashboards": 26,
     "dashboards_ok": 26,
@@ -16,10 +16,16 @@
   },
   "critical_issues": [
     {
+      "file": "sales-data.json",
+      "problem": "stale",
+      "source": "Office Tracking CSV",
+      "age": "58.8h"
+    },
+    {
       "file": "retention-data.json",
       "problem": "stale",
       "source": "ServSuite",
-      "age": "1728.6h"
+      "age": "1752.6h"
     }
   ],
   "data_files": [
@@ -30,8 +36,8 @@
       "critical": true,
       "sizeKB": 70.1,
       "fileAgeHours": 20,
-      "dataAgeHours": 1728.6,
-      "lastModified": "2026-10-03T13:17:14.120Z",
+      "dataAgeHours": 1752.6,
+      "lastModified": "2026-10-04T13:16:40.627Z",
       "dataTimestamp": "2026-07-24T08:42:24.950Z",
       "valid": true,
       "recordCount": null
@@ -44,8 +50,8 @@
       "sizeKB": 7.3,
       "fileAgeHours": 20,
       "dataAgeHours": 20,
-      "lastModified": "2026-10-03T13:17:14.108Z",
-      "dataTimestamp": "2026-10-03T13:17:13.964Z",
+      "lastModified": "2026-10-04T13:16:40.617Z",
+      "dataTimestamp": "2026-10-04T13:16:40.513Z",
       "valid": true
     },
     {
@@ -56,8 +62,8 @@
       "sizeKB": 21.7,
       "fileAgeHours": 20,
       "dataAgeHours": 20,
-      "lastModified": "2026-10-03T13:17:14.110Z",
-      "dataTimestamp": "2026-10-03T13:17:13.964Z",
+      "lastModified": "2026-10-04T13:16:40.619Z",
+      "dataTimestamp": "2026-10-04T13:16:40.513Z",
       "valid": true,
       "recordCount": null
     },
@@ -69,19 +75,19 @@
       "sizeKB": 11,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:34.930Z",
-      "dataTimestamp": "2026-10-04T09:17:34.897Z",
+      "lastModified": "2026-10-05T09:17:23.611Z",
+      "dataTimestamp": "2026-10-05T09:17:23.584Z",
       "valid": true,
       "recordCount": null
     },
     {
       "name": "sales-data.json",
-      "status": "ok",
+      "status": "stale",
       "source": "Office Tracking CSV",
       "critical": true,
       "sizeKB": 5,
-      "fileAgeHours": 34.8,
-      "dataAgeHours": 34.8,
+      "fileAgeHours": 58.8,
+      "dataAgeHours": 58.8,
       "lastModified": "2026-10-02T22:30:17.637Z",
       "dataTimestamp": "2026-10-02T22:30:17.607Z",
       "valid": true,
@@ -95,8 +101,8 @@
       "sizeKB": 16.5,
       "fileAgeHours": 20,
       "dataAgeHours": 20,
-      "lastModified": "2026-10-03T13:17:14.117Z",
-      "dataTimestamp": "2026-10-03T13:17:13.964Z",
+      "lastModified": "2026-10-04T13:16:40.623Z",
+      "dataTimestamp": "2026-10-04T13:16:40.513Z",
       "valid": true
     },
     {
@@ -105,8 +111,8 @@
       "source": "ServSuite",
       "critical": true,
       "sizeKB": 1.4,
-      "fileAgeHours": 1728.6,
-      "dataAgeHours": 1728.6,
+      "fileAgeHours": 1752.6,
+      "dataAgeHours": 1752.6,
       "lastModified": "2026-07-24T08:42:20.096Z",
       "dataTimestamp": "2026-07-24T08:42:20.000Z",
       "valid": true,
@@ -120,8 +126,8 @@
       "sizeKB": 18.5,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:15.740Z",
-      "dataTimestamp": "2026-10-04T09:17:14.141Z",
+      "lastModified": "2026-10-05T09:17:06.489Z",
+      "dataTimestamp": "2026-10-05T09:17:05.157Z",
       "valid": true,
       "recordCount": null
     },
@@ -131,8 +137,8 @@
       "source": "ServSuite",
       "critical": false,
       "sizeKB": 20.4,
-      "fileAgeHours": 1728.6,
-      "dataAgeHours": 1728.6,
+      "fileAgeHours": 1752.6,
+      "dataAgeHours": 1752.6,
       "lastModified": "2026-07-24T08:42:03.225Z",
       "dataTimestamp": "2026-07-24T08:42:01.927Z",
       "valid": true,
@@ -146,8 +152,8 @@
       "sizeKB": 6.1,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:35.131Z",
-      "dataTimestamp": "2026-10-04T09:17:35.129Z",
+      "lastModified": "2026-10-05T09:17:23.791Z",
+      "dataTimestamp": "2026-10-05T09:17:23.789Z",
       "valid": true,
       "recordCount": null
     },
@@ -159,8 +165,8 @@
       "sizeKB": 13.7,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:35.281Z",
-      "dataTimestamp": "2026-10-04T09:17:35.278Z",
+      "lastModified": "2026-10-05T09:17:23.903Z",
+      "dataTimestamp": "2026-10-05T09:17:23.901Z",
       "valid": true,
       "recordCount": null
     },
@@ -172,8 +178,8 @@
       "sizeKB": 15.7,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:25.493Z",
-      "dataTimestamp": "2026-10-04T09:17:25.492Z",
+      "lastModified": "2026-10-05T09:17:15.855Z",
+      "dataTimestamp": "2026-10-05T09:17:15.855Z",
       "valid": true,
       "recordCount": null
     },
@@ -185,8 +191,8 @@
       "sizeKB": 8.6,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:25.695Z",
-      "dataTimestamp": "2026-10-04T09:17:25.663Z",
+      "lastModified": "2026-10-05T09:17:16.028Z",
+      "dataTimestamp": "2026-10-05T09:17:16.002Z",
       "valid": true,
       "recordCount": null
     },
@@ -198,8 +204,8 @@
       "sizeKB": 2.1,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:20.595Z",
-      "dataTimestamp": "2026-10-04T09:17:20.593Z",
+      "lastModified": "2026-10-05T09:17:11.530Z",
+      "dataTimestamp": "2026-10-05T09:17:11.529Z",
       "valid": true,
       "recordCount": null
     },
@@ -211,8 +217,8 @@
       "sizeKB": 6,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:19.571Z",
-      "dataTimestamp": "2026-10-04T09:17:19.566Z",
+      "lastModified": "2026-10-05T09:17:10.579Z",
+      "dataTimestamp": "2026-10-05T09:17:10.574Z",
       "valid": true,
       "recordCount": null
     },
@@ -222,8 +228,8 @@
       "source": "Internal",
       "critical": false,
       "sizeKB": 1.5,
-      "fileAgeHours": 1728.6,
-      "dataAgeHours": 1728.6,
+      "fileAgeHours": 1752.6,
+      "dataAgeHours": 1752.6,
       "lastModified": "2026-07-24T08:42:39.696Z",
       "dataTimestamp": "2026-07-24T08:42:39.000Z",
       "valid": true,
@@ -237,8 +243,8 @@
       "sizeKB": 1.6,
       "fileAgeHours": 0,
       "dataAgeHours": 0,
-      "lastModified": "2026-10-04T09:17:43.060Z",
-      "dataTimestamp": "2026-10-04T09:17:43.059Z",
+      "lastModified": "2026-10-05T09:17:30.358Z",
+      "dataTimestamp": "2026-10-05T09:17:30.357Z",
       "valid": true,
       "recordCount": null
     }
@@ -470,145 +476,145 @@
   "servsuite_exports": [
     {
       "name": "Active customer directory.xlsx",
-      "ageHours": 1728.8,
+      "ageHours": 1752.8,
       "sizeKB": 292,
       "status": "stale"
     },
     {
       "name": "Cancelled Events in Detail by Event.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 87,
       "status": "stale"
     },
     {
       "name": "Completed WO detail by date.xlsx",
-      "ageHours": 1728.8,
+      "ageHours": 1752.7,
       "sizeKB": 1771,
       "status": "stale"
     },
     {
       "name": "Completed WO detail by program.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 1771,
       "status": "stale"
     },
     {
       "name": "Completed WO detail by service.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 2184,
       "status": "stale"
     },
     {
       "name": "Completed WO total by date.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 547,
       "status": "stale"
     },
     {
       "name": "Customer detail by program with initial service completed.xlsx",
-      "ageHours": 3816.6,
+      "ageHours": 3840.6,
       "sizeKB": 11,
       "status": "stale"
     },
     {
       "name": "Detail to do by date with work pool.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 1651,
       "status": "stale"
     },
     {
       "name": "Detail to do by route ZIP+4 and date.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 1328,
       "status": "stale"
     },
     {
       "name": "Employee (primary) totals of work orders completed.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 678,
       "status": "stale"
     },
     {
       "name": "Financial hold accounts by sort.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 4,
       "status": "stale"
     },
     {
       "name": "Invoice Detail by Date .xlsx",
-      "ageHours": 3949.2,
+      "ageHours": 3973.2,
       "sizeKB": 316,
       "status": "stale"
     },
     {
       "name": "Invoice Detail by Date.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 984,
       "status": "stale"
     },
     {
       "name": "Management Totals by Month.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 92,
       "status": "stale"
     },
     {
       "name": "Materials used detail for daily record keeping.xlsx",
-      "ageHours": 3840.7,
+      "ageHours": 3864.7,
       "sizeKB": 1377,
       "status": "stale"
     },
     {
       "name": "Office_Tracking.xlsx",
-      "ageHours": 3949.2,
+      "ageHours": 3973.2,
       "sizeKB": 144,
       "status": "stale"
     },
     {
       "name": "Office_Tracking_2026-03-24.xlsx",
-      "ageHours": 3949.2,
+      "ageHours": 3973.2,
       "sizeKB": 138,
       "status": "stale"
     },
     {
       "name": "Sales detail by secondary source.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 44,
       "status": "stale"
     },
     {
       "name": "Sales detail by source.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 57,
       "status": "stale"
     },
     {
       "name": "Sales total by source.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.6,
       "sizeKB": 55,
       "status": "stale"
     },
     {
       "name": "Service calls completed by employee with last done info.xlsx",
-      "ageHours": 1728.6,
+      "ageHours": 1752.6,
       "sizeKB": 13,
       "status": "stale"
     },
     {
       "name": "Tax total report on payments received.xlsx",
-      "ageHours": 1728.7,
+      "ageHours": 1752.7,
       "sizeKB": 622,
       "status": "stale"
     },
     {
       "name": "office-tracking-2026-03-10.xlsx",
-      "ageHours": 3949.2,
+      "ageHours": 3973.2,
       "sizeKB": 130,
       "status": "stale"
     },
     {
       "name": "office-tracking-2026-03-15.xlsx",
-      "ageHours": 3949.2,
+      "ageHours": 3973.2,
       "sizeKB": 131,
       "status": "stale"
     }
