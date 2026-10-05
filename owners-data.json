@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-10-05T13:00:22.321Z",
+  "generated_at": "2026-10-05T13:30:36.369Z",
   "generated_date": "October 5, 2026",
   "sales": {
     "csv_date": "2026-10-05",
     "total_sales": 571,
-    "total_cancels": 373,
-    "net": 198,
+    "total_cancels": 374,
+    "net": 197,
     "paused": 80,
     "cancel_reasons": {
       "Paused/WP": 80,
       "Moved": 80,
       "Not Interested": 63,
       "Financial": 43,
-      "Unhappy": 38,
+      "Unhappy": 39,
       "Barrier Spray": 18,
       "One Time": 17,
       "Went w/Competitor": 14,
@@ -55,7 +55,7 @@
       },
       "Bev": {
         "sales": 69,
-        "cancels": 122
+        "cancels": 123
       }
     },
     "paused_pct": 21
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1943614,
+    "ytd_invoiced": 1944137,
     "avg_per_visit": 70,
-    "mtd": 13815,
-    "mtd_jobs": 140
+    "mtd": 14337,
+    "mtd_jobs": 146
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 198
   },
   "serviceminder": {
-    "generated_at": "2026-10-05T12:26:30.313Z",
+    "generated_at": "2026-10-05T13:17:12.788Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-05T12:26:23.976Z",
+      "generated_at": "2026-10-05T13:17:04.070Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46098,
-      "contacts": 14149,
-      "invoices": 45325,
+      "appointments": 46102,
+      "contacts": 14150,
+      "invoices": 45331,
       "proposals": 1642
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,16 +227,16 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1549,
-    "total_cancels": 218,
-    "net": 1331,
+    "total_cancels": 220,
+    "net": 1329,
     "cancel_reasons": {
       "Error": 41,
       "No Longer Needed": 41,
-      "Workpool": 40,
+      "Workpool": 41,
       "Scheduling Conflict": 37,
       "Moving": 29,
+      "Found Different Company": 14,
       "Financial": 13,
-      "Found Different Company": 13,
       "Not Working": 3,
       "Weather": 1
     },
