@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-05T14:00:20.670Z",
+  "updated_at": "2026-10-05T14:30:20.839Z",
   "csv_date": "2026-10-05",
   "period": "Jan 1 - Oct 5, 2026 (YTD)",
   "summary": {
     "total_sales": 571,
-    "total_cancels": 374,
-    "net": 197,
+    "total_cancels": 376,
+    "net": 195,
     "paused_wp": 80,
     "paused_pct": 21,
     "days_tracked": 278
@@ -16,8 +16,8 @@
     "label": "Oct 5 – Oct 11",
     "summary": {
       "total_sales": 0,
-      "total_cancels": 3,
-      "net": -3
+      "total_cancels": 5,
+      "net": -5
     },
     "csrs": [
       {
@@ -29,14 +29,14 @@
       {
         "name": "Lucy",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 2,
+        "net": -2
       },
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 2,
-        "net": -2
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 333,
-      "cancels": 126
+      "cancels": 127
     },
     {
       "name": "Norma",
@@ -54,23 +54,23 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 123
+      "cancels": 124
     }
   ],
   "cancel_reasons": [
+    {
+      "name": "Moved",
+      "count": 81,
+      "pct": 22
+    },
     {
       "name": "Paused/WP",
       "count": 80,
       "pct": 21
     },
     {
-      "name": "Moved",
-      "count": 80,
-      "pct": 21
-    },
-    {
       "name": "Not Interested",
-      "count": 63,
+      "count": 64,
       "pct": 17
     },
     {
@@ -213,6 +213,20 @@
       "date": "2026-10-05",
       "dateFmt": "Oct 5",
       "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-05",
+      "dateFmt": "Oct 5",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-05",
+      "dateFmt": "Oct 5",
+      "type": "Cancel",
       "category": "Unhappy",
       "csr": "Bev"
     },
@@ -264,25 +278,11 @@
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-10-01",
-      "dateFmt": "Oct 1",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-09-30",
-      "dateFmt": "Sep 30",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
-    "name": "Paused/WP",
-    "count": 80
+    "name": "Moved",
+    "count": 81
   },
   "tech_upsells": [
     {
