@@ -648,45 +648,26 @@
                 text-align: left;
             }
         }
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .header h1 { font-size: 1.5rem; }
-            .header { margin-bottom: 16px; }
-            .big-stat .value { font-size: 1.6rem; }
-            .big-stat .label { font-size: 0.75rem; }
-            table { font-size: 0.8rem; }
-            th, td { padding: 8px 6px; }
-            .card { padding: 16px; border-radius: 12px; }
-            .card h2 { font-size: 1rem; }
-        }
-        @media (max-width: 480px) {
-            .header h1 { font-size: 1.3rem; }
-            .big-stat .value { font-size: 1.3rem; }
-        }
-            .back-link { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; margin-bottom: 16px; transition: color 0.2s; }
-        .back-link:hover { color: #93bbfc; }
     </style>
 </head>
 <body>
-    <a href="hub.html" class="back-link">← Hub</a>
-    <a href="index.html" style="color:#888; text-decoration:none; font-size:0.85rem; display:inline-block; margin-bottom:8px;">← Back to Hub</a>
     <div class="header">
         <h1>🏆 Tech Leaderboard</h1>
-        <div class="date-range">Jan 3 - Feb 6, 2026 • Mosquito Joe of Miami</div>
+        <div class="date-range" id="dateRange">Loading...</div>
     </div>
     
     <!-- Big Stats -->
     <div class="big-stats" style="max-width: 1800px; margin: 0 auto 20px;">
         <div class="big-stat">
-            <div class="value gold">$238,460</div>
+            <div class="value gold" id="statRevenue">—</div>
             <div class="label">💰 Total Revenue</div>
         </div>
         <div class="big-stat">
-            <div class="value green">2,549</div>
+            <div class="value green" id="statJobs">—</div>
             <div class="label">✅ Jobs Completed</div>
         </div>
         <div class="big-stat">
-            <div class="value blue">99.7%</div>
+            <div class="value blue" id="statSuccess">—</div>
             <div class="label">⭐ First-Time Success</div>
         </div>
     </div>
@@ -695,567 +676,103 @@
         <!-- Jobs Podium -->
         <div class="card">
             <h2>🥇 Most Jobs</h2>
-            <div class="podium-container">
-                <div class="podium-place second">
-                    <div class="podium-avatar">JS</div>
-                    <div class="podium-name">John Sabin</div>
-                    <div class="podium-jobs">343</div>
-                    <div class="podium-label">jobs</div>
-                    <div class="podium-stand">2</div>
-                </div>
-                <div class="podium-place first">
-                    <div class="podium-avatar">
-                        <span class="crown">👑</span>
-                        DM
-                    </div>
-                    <div class="podium-name">Damian Machin</div>
-                    <div class="podium-jobs">344</div>
-                    <div class="podium-label">jobs</div>
-                    <div class="podium-stand">1</div>
-                </div>
-                <div class="podium-place third">
-                    <div class="podium-avatar">SP</div>
-                    <div class="podium-name">Stanley Prophete</div>
-                    <div class="podium-jobs">334</div>
-                    <div class="podium-label">jobs</div>
-                    <div class="podium-stand">3</div>
-                </div>
+            <div class="podium-container" id="jobsPodium">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Revenue Podium -->
         <div class="card">
             <h2>💰 Most Revenue</h2>
-            <div class="podium-container">
-                <div class="podium-place second">
-                    <div class="podium-avatar" style="background: linear-gradient(135deg, #00ff88, #00cc66);">DM</div>
-                    <div class="podium-name">Damian Machin</div>
-                    <div class="podium-jobs" style="color: #00ff88;">$31,291</div>
-                    <div class="podium-label">344 jobs</div>
-                    <div class="podium-stand" style="background: linear-gradient(180deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 136, 0.1)); color: #00ff88;">2</div>
-                </div>
-                <div class="podium-place first">
-                    <div class="podium-avatar" style="background: linear-gradient(135deg, #ffd700, #ffaa00); box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);">
-                        <span class="crown">💵</span>
-                        JP
-                    </div>
-                    <div class="podium-name">Joseph Pagan</div>
-                    <div class="podium-jobs" style="color: #ffd700;">$32,536</div>
-                    <div class="podium-label">204 jobs</div>
-                    <div class="podium-stand">1</div>
-                </div>
-                <div class="podium-place third">
-                    <div class="podium-avatar" style="background: linear-gradient(135deg, #00d9ff, #0099cc);">SP</div>
-                    <div class="podium-name">Stanley Prophete</div>
-                    <div class="podium-jobs" style="color: #00d9ff;">$31,069</div>
-                    <div class="podium-label">334 jobs</div>
-                    <div class="podium-stand" style="background: linear-gradient(180deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.1)); color: #00d9ff;">3</div>
-                </div>
+            <div class="podium-container" id="revenuePodium">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Achievements -->
         <div class="card wide">
             <h2>🎖️ Achievements</h2>
-            <div class="achievements">
-                <div class="achievement">
-                    <div class="achievement-icon">🔥</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Iron Man</div>
-                        <div class="achievement-name">Damian Machin</div>
-                        <div class="achievement-stat">Most jobs completed — 344</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">💎</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">High Roller</div>
-                        <div class="achievement-name">Joseph Pagan</div>
-                        <div class="achievement-stat">$160/job avg — highest value services</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">⚡</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Speed Demon</div>
-                        <div class="achievement-name">Damian Machin</div>
-                        <div class="achievement-stat">10.1 jobs/day average</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">🎯</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Runner Up</div>
-                        <div class="achievement-name">John Sabin</div>
-                        <div class="achievement-stat">343 jobs — just 1 behind the leader!</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">💰</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Money Maker</div>
-                        <div class="achievement-name">Joseph Pagan</div>
-                        <div class="achievement-stat">$31,500 revenue — top earner</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">🚀</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Rising Star</div>
-                        <div class="achievement-name">Jeovany Osorio</div>
-                        <div class="achievement-stat">$100/job avg — premium service specialist</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">⭐</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Quality Crew</div>
-                        <div class="achievement-name">Entire Team</div>
-                        <div class="achievement-stat">Only 8 re-sprays out of 2,467 jobs!</div>
-                    </div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-icon">🛡️</div>
-                    <div class="achievement-info">
-                        <div class="achievement-title">Zero Callbacks</div>
-                        <div class="achievement-name">John Sabin</div>
-                        <div class="achievement-stat">328 jobs, 0 re-sprays — flawless</div>
-                    </div>
-                </div>
+            <div class="achievements" id="achievements">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Review Race -->
         <div class="card wide">
             <h2>⭐ Review Race — $50 Bonus Challenge</h2>
-            <div class="review-race">
-                <div class="race-header">
-                    <span style="color: #888;">$50 per review mention → <strong>$500 payout every 10!</strong></span>
-                    <span class="race-prize">💰 $500 / 10 REVIEWS</span>
-                </div>
-                
-                <!-- 2026 YTD Progress (including carryover) -->
-                <h3 style="color: #00ff88; font-size: 1rem; margin-top: 10px;">🏃 2026 Progress (incl. 2025 carryover)</h3>
-                
-                <div class="racer">
-                    <div class="racer-avatar" style="background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff;">JN</div>
-                    <div class="racer-info">
-                        <div class="racer-name">Jorge Navarro <span style="color: #a855f7; font-size: 0.8rem;">🔥 CLOSEST!</span></div>
-                        <div class="racer-progress">
-                            <div class="progress-track">
-                                <div class="progress-runner" style="width: 60%; background: linear-gradient(90deg, #a855f7, #7c3aed);"></div>
-                            </div>
-                            <div class="progress-count"><span class="current">6</span>/10 <span style="font-size: 0.7rem;">(6 carry)</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="racer">
-                    <div class="racer-avatar" style="background: linear-gradient(135deg, #00ff88, #00cc66); color: #000;">AS</div>
-                    <div class="racer-info">
-                        <div class="racer-name">Andrew Schamel</div>
-                        <div class="racer-progress">
-                            <div class="progress-track">
-                                <div class="progress-runner green" style="width: 50%"></div>
-                            </div>
-                            <div class="progress-count"><span class="current">5</span>/10 <span style="font-size: 0.7rem;">(4 carry + 1 new)</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="racer">
-                    <div class="racer-avatar">JS</div>
-                    <div class="racer-info">
-                        <div class="racer-name">John Sabin</div>
-                        <div class="racer-progress">
-                            <div class="progress-track">
-                                <div class="progress-runner blue" style="width: 40%"></div>
-                            </div>
-                            <div class="progress-count"><span class="current">4</span>/10 <span style="font-size: 0.7rem;">(3 carry + 1 new)</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="racer">
-                    <div class="racer-avatar">DM</div>
-                    <div class="racer-info">
-                        <div class="racer-name">Damian Machin</div>
-                        <div class="racer-progress">
-                            <div class="progress-track">
-                                <div class="progress-runner orange" style="width: 10%"></div>
-                            </div>
-                            <div class="progress-count"><span class="current">1</span>/10 <span style="font-size: 0.7rem;">(1 carry)</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="racer" style="opacity: 0.6;">
-                    <div class="racer-avatar">+5</div>
-                    <div class="racer-info">
-                        <div class="racer-name" style="color: #888;">Others (Leo 3, David 3, Travis 2, Omar 1, Marcus 1)</div>
-                        <div class="racer-progress">
-                            <div class="progress-track">
-                                <div class="progress-runner" style="width: 10%; background: #555;"></div>
-                            </div>
-                            <div class="progress-count" style="color: #666;">1-3/10</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2025 Payouts -->
-                <div class="year-comparison">
-                    <div class="year-box" style="border: 1px solid rgba(255, 215, 0, 0.3);">
-                        <h4>💵 2025 Payouts</h4>
-                        <div class="winners">
-                            <span class="name">🥇 John Sabin — <span class="count">$1,000</span> <span style="color: #888;">(23 reviews, 20 cashed)</span></span>
-                            <span class="name">🥈 Andrew Schamel — <span class="count">$500</span> <span style="color: #888;">(14 reviews, 10 cashed)</span></span>
-                            <span class="name">🥉 Damian Machin — <span class="count">$500</span> <span style="color: #888;">(11 reviews, 10 cashed)</span></span>
-                        </div>
-                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); color: #ffd700; font-weight: bold;">
-                            Total Paid: $2,000
-                        </div>
-                    </div>
-                    <div class="year-box">
-                        <h4>🎯 Next to Cash Out</h4>
-                        <div class="winners" style="font-size: 0.9rem;">
-                            <span class="name" style="color: #a855f7;">Jorge Navarro — <strong>4 away!</strong></span>
-                            <span class="name" style="color: #00ff88;">Andrew Schamel — <strong>5 away!</strong></span>
-                            <span class="name" style="color: #00d9ff;">John Sabin — <strong>6 away!</strong></span>
-                        </div>
-                        <div style="margin-top: 12px; font-size: 0.8rem; color: #888;">
-                            Carryover reviews roll into 2026!
-                        </div>
-                    </div>
-                </div>
+            <div class="review-race" id="reviewRace">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Review Stats -->
         <div class="card">
             <h2>📊 Review Stats — 2026 YTD</h2>
-            <div style="text-align: center; padding: 20px 0;">
-                <div style="display: flex; justify-content: space-around; margin-bottom: 30px;">
-                    <div>
-                        <div style="font-size: 3rem; font-weight: bold; color: #00d9ff;">19</div>
-                        <div style="color: #888; font-size: 0.9rem;">Total Reviews</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; font-weight: bold; color: #ffd700;">2</div>
-                        <div style="color: #888; font-size: 0.9rem;">Mention a Tech</div>
-                    </div>
-                </div>
-                <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
-                    <div style="font-size: 2rem; font-weight: bold; color: #ff6b35;">10.5%</div>
-                    <div style="color: #888; font-size: 0.85rem;">Name Mention Rate</div>
-                    <div style="color: #ff6b35; font-size: 0.8rem; margin-top: 8px;">⚠️ Down from 54% in 2025!</div>
-                </div>
-                <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,53,0.1)); border-radius: 12px; border: 1px dashed rgba(255,215,0,0.3);">
-                    <div style="font-size: 1.1rem; color: #ffd700;">💡 PRO TIP</div>
-                    <div style="color: #ccc; font-size: 0.95rem; margin-top: 8px;">
-                        "Hi, I'm <strong>[YOUR NAME]</strong>! If you're happy with the service, mention me by name in your Google review!"
-                    </div>
-                    <div style="color: #00ff88; font-size: 0.85rem; margin-top: 8px;">= $50 per mention → $500 every 10!</div>
-                </div>
+            <div id="reviewStats">
+                <div style="color: #888; text-align: center; padding: 20px;">Loading...</div>
             </div>
         </div>
         
         <!-- Review of the Week -->
         <div class="card">
             <h2>⭐ Review of the Week</h2>
-            <div style="padding: 20px; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05)); border-radius: 12px; border-left: 4px solid #ffd700;">
-                <div style="font-size: 1.5rem; margin-bottom: 12px;">⭐⭐⭐⭐⭐</div>
-                <div style="font-style: italic; color: #ccc; font-size: 1.1rem; line-height: 1.5;">
-                    "John was great"
-                </div>
-                <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-                    <div style="color: #888; font-size: 0.9rem;">
-                        — Juan Arciniegas
-                    </div>
-                    <div style="background: #ffd700; color: #000; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">
-                        🏆 JOHN
-                    </div>
-                </div>
-                <div style="color: #666; font-size: 0.8rem; margin-top: 8px;">Jan 21, 2026</div>
+            <div id="featuredReview">
+                <div style="color: #888; text-align: center; padding: 20px;">Loading...</div>
             </div>
         </div>
         
         <!-- Wall of Fame -->
         <div class="card wide">
             <h2>🏆 Wall of Fame — Recent Reviews Mentioning Techs</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #00ff88;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Valeria Chamorro</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Jan 10, 2026</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"Great service by <strong style="color: #00ff88;">Andrew</strong>"</div>
-                </div>
-                
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #00d9ff;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Brigitte Badell</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Dec 23, 2025</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"<strong style="color: #00d9ff;">Jorge</strong> was great"</div>
-                </div>
-                
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #a855f7;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Matt Gilbert</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Dec 5, 2025</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"<strong style="color: #a855f7;">Andrew</strong> was professional and provided great service!"</div>
-                </div>
-                
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #ff6b35;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Julien Gray</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Dec 4, 2025</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"<strong style="color: #ff6b35;">Marcus</strong> proceeded with care and was very knowledgeable..."</div>
-                </div>
-                
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #00ff88;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Eliane Lessa</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Nov 26, 2025</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"<strong style="color: #00ff88;">Travis</strong> is a great professional!! I recommend him!!"</div>
-                </div>
-                
-                <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid #00d9ff;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div style="font-weight: 600;">Patty</div>
-                        <div style="color: #ffd700; font-size: 0.8rem;">⭐⭐⭐⭐⭐</div>
-                    </div>
-                    <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">Nov 12, 2025</div>
-                    <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"We are very happy... especially <strong style="color: #00d9ff;">John</strong>. He was very attentive."</div>
-                </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;" id="wallOfFame">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Full Leaderboard -->
         <div class="card wide">
             <h2>📊 Full Rankings</h2>
-            <div class="leaderboard">
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 100%"></div>
-                    <div class="rank-badge" style="background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000;">1</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Damian Machin 👑</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">344</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$31,291</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 99%"></div>
-                    <div class="rank-badge" style="background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000;">2</div>
-                    <div class="tech-info">
-                        <div class="tech-name">John Sabin</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">343</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$30,255</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 97%"></div>
-                    <div class="rank-badge" style="background: linear-gradient(135deg, #cd7f32, #a0522d); color: #fff;">3</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Stanley Prophete</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">334</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$31,069</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 92%"></div>
-                    <div class="rank-badge">4</div>
-                    <div class="tech-info">
-                        <div class="tech-name">David Carbajal</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">318</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$28,449</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 90%"></div>
-                    <div class="rank-badge">5</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Marcus Rubi</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">308</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$24,167</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 80%"></div>
-                    <div class="rank-badge">6</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Andrew Schamel</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">275</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$22,991</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 59%"></div>
-                    <div class="rank-badge">7</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Joseph Pagan ⭐</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">204</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$32,536</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 53%"></div>
-                    <div class="rank-badge">8</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Jeovany Osorio</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">183</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$18,406</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 42%"></div>
-                    <div class="rank-badge">9</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Jorge Navarro</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">146</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$11,519</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-row">
-                    <div class="progress-bg" style="width: 27%"></div>
-                    <div class="rank-badge">10</div>
-                    <div class="tech-info">
-                        <div class="tech-name">Travis Johnson</div>
-                    </div>
-                    <div class="tech-stats">
-                        <div class="stat-col">
-                            <div class="stat-value green">94</div>
-                            <div class="stat-label">Jobs</div>
-                        </div>
-                        <div class="stat-col">
-                            <div class="stat-value gold">$7,778</div>
-                            <div class="stat-label">Revenue</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="leaderboard" id="fullRankings">
+                <div style="color: #888;">Loading...</div>
             </div>
         </div>
         
         <!-- Service Mix -->
         <div class="card">
             <h2>🧪 Services Performed</h2>
-            <div class="service-list">
+            <div class="service-list" id="serviceMix">
                 <div>
                     <div class="service-row">
                         <div class="service-name">Synthetic Barrier Spray</div>
-                        <div class="service-count">1,615</div>
+                        <div class="service-count">—</div>
                     </div>
                     <div class="progress-bar"><div class="progress-fill blue" style="width: 100%"></div></div>
                 </div>
-                
                 <div>
                     <div class="service-row">
                         <div class="service-name">Synthetic 2-Week</div>
-                        <div class="service-count">1,175</div>
+                        <div class="service-count">—</div>
                     </div>
                     <div class="progress-bar"><div class="progress-fill green" style="width: 73%"></div></div>
                 </div>
-                
                 <div>
                     <div class="service-row">
                         <div class="service-name">Gnat/Midge Service</div>
-                        <div class="service-count">247</div>
+                        <div class="service-count">—</div>
                     </div>
                     <div class="progress-bar"><div class="progress-fill orange" style="width: 15%"></div></div>
                 </div>
-                
                 <div>
                     <div class="service-row">
                         <div class="service-name">HPD (42-Day)</div>
-                        <div class="service-count">116</div>
+                        <div class="service-count">—</div>
                     </div>
                     <div class="progress-bar"><div class="progress-fill purple" style="width: 7%"></div></div>
                 </div>
-                
                 <div>
                     <div class="service-row">
                         <div class="service-name">All-Natural Barrier</div>
-                        <div class="service-count">52</div>
+                        <div class="service-count">—</div>
                     </div>
                     <div class="progress-bar"><div class="progress-fill yellow" style="width: 3%"></div></div>
                 </div>
@@ -1273,8 +790,7 @@
         <!-- Fleet Driving Leaderboard -->
         <div class="card wide">
             <h2>🚛 Fleet Safety Leaderboard</h2>
-            <p style="color: #888; margin-bottom: 6px; font-size: 0.9rem;">Sorted by safety score, then miles driven.</p>
-            <p id="fleetUpdated" style="color: #666; margin-bottom: 15px; font-size: 0.8rem;">Data refreshed: —</p>
+            <p style="color: #888; margin-bottom: 15px; font-size: 0.9rem;">Sorted by safety score, then miles driven.</p>
             <div id="fleetLeaderboard" class="fleet-leaderboard">
                 <div class="fleet-row header">
                     <div>Rank</div>
@@ -1300,166 +816,524 @@
         </div>
     </div>
     
-    <div class="footer">
-        Last updated: Feb 6, 2026 (overnight build) • Review data synced from Google Sheet • Mosquito Joe of Miami 🦟
+    <div class="footer" id="footer">
+        Loading... • Mosquito Joe of Miami 🦟
     </div>
     
     <script>
-        const ctx = document.getElementById('weeklyChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-                datasets: [{
-                    label: 'Jobs Completed',
-                    data: [550, 511, 458, 501, 420],
-                    backgroundColor: [
-                        'rgba(0, 255, 136, 0.7)',
-                        'rgba(0, 255, 136, 0.7)',
-                        'rgba(0, 255, 136, 0.7)',
-                        'rgba(0, 255, 136, 0.7)',
-                        'rgba(0, 255, 136, 0.7)'
-                    ],
-                    borderColor: 'rgba(0, 255, 136, 1)',
-                    borderWidth: 2,
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        },
-                        ticks: {
-                            color: '#888',
-                            font: { size: 14 }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            color: '#888',
-                            font: { size: 14 }
-                        }
-                    }
-                }
-            }
-        });
+        // ─── Helpers ───
+        const $ = id => document.getElementById(id);
+        const fmt = n => Number(n).toLocaleString();
+        const fmtMoney = n => '$' + fmt(n);
+        const starStr = n => '⭐'.repeat(n);
 
-        const fleetLeaderboardEl = document.getElementById('fleetLeaderboard');
-        const formatMiles = (value) => {
-            if (typeof value !== 'number' || Number.isNaN(value)) return '—';
-            return `${Math.round(value).toLocaleString()} mi`;
-        };
-        const formatRate = (value) => {
-            if (typeof value !== 'number' || Number.isNaN(value)) return '—';
-            return value.toFixed(1);
-        };
-        const scoreClass = (score) => {
-            if (score > 90) return 'green';
-            if (score >= 75) return 'yellow';
-            return 'red';
-        };
-        const rankLabel = (rank) => {
-            if (rank === 1) return '🥇 1';
-            if (rank === 2) return '🥈 2';
-            if (rank === 3) return '🥉 3';
-            return `${rank}`;
-        };
+        // ─── Render functions ───
 
-        fetch('zubie-data/data/fleet-stats-latest.json')
-            .then((response) => response.json())
-            .then((json) => {
-                const data = json.vehicles || json;
-                if (!Array.isArray(data)) return;
-                const filtered = data.filter((vehicle) => {
-                    const hasDriver = vehicle.driver && vehicle.driver.trim().length > 0;
-                    return hasDriver || (typeof vehicle.total_miles === 'number' && vehicle.total_miles > 50);
-                });
-                const sorted = filtered.sort((a, b) => {
-                    const scoreDiff = (b.safety_score || 0) - (a.safety_score || 0);
-                    if (scoreDiff !== 0) return scoreDiff;
-                    return (b.total_miles || 0) - (a.total_miles || 0);
-                });
+        function renderBigStats(data) {
+            $('statRevenue').textContent = fmtMoney(data.summary.total_revenue || 0);
+            $('statJobs').textContent = fmt(data.summary.total_jobs);
+            $('statSuccess').textContent = data.summary.first_time_success;
+        }
 
-                fleetLeaderboardEl.innerHTML = `
-                    <div class="fleet-row header">
-                        <div>Rank</div>
-                        <div>Driver</div>
-                        <div>Truck</div>
-                        <div style="text-align: right;">Safety</div>
-                        <div style="text-align: right;">Miles</div>
-                        <div style="text-align: right;">Hard Brakes / 100mi</div>
+        function renderJobsPodium(employees) {
+            const sorted = [...employees].sort((a, b) => b.jobs - a.jobs);
+            const top3 = sorted.slice(0, 3);
+            // Display order: 2nd, 1st, 3rd
+            const [first, second, third] = [top3[0], top3[1], top3[2]];
+            $('jobsPodium').innerHTML = `
+                <div class="podium-place second">
+                    <div class="podium-avatar">${second.initials}</div>
+                    <div class="podium-name">${second.name}</div>
+                    <div class="podium-jobs">${fmt(second.jobs)}</div>
+                    <div class="podium-label">jobs</div>
+                    <div class="podium-stand">2</div>
+                </div>
+                <div class="podium-place first">
+                    <div class="podium-avatar">
+                        <span class="crown">👑</span>
+                        ${first.initials}
+                    </div>
+                    <div class="podium-name">${first.name}</div>
+                    <div class="podium-jobs">${fmt(first.jobs)}</div>
+                    <div class="podium-label">jobs</div>
+                    <div class="podium-stand">1</div>
+                </div>
+                <div class="podium-place third">
+                    <div class="podium-avatar">${third.initials}</div>
+                    <div class="podium-name">${third.name}</div>
+                    <div class="podium-jobs">${fmt(third.jobs)}</div>
+                    <div class="podium-label">jobs</div>
+                    <div class="podium-stand">3</div>
+                </div>
+            `;
+        }
+
+        function renderRevenuePodium(employees) {
+            const sorted = [...employees].sort((a, b) => (b.revenue || 0) - (a.revenue || 0));
+            const top3 = sorted.slice(0, 3);
+            const [first, second, third] = [top3[0], top3[1], top3[2]];
+            const colors = ['#ffd700', '#00ff88', '#00d9ff'];
+            const gradients = [
+                { bg: 'linear-gradient(135deg, #ffd700, #ffaa00)', shadow: '0 0 30px rgba(255, 215, 0, 0.5)', stand: '' },
+                { bg: 'linear-gradient(135deg, #00ff88, #00cc66)', shadow: '0 0 20px rgba(0, 255, 136, 0.4)', stand: 'background: linear-gradient(180deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 136, 0.1)); color: #00ff88;' },
+                { bg: 'linear-gradient(135deg, #00d9ff, #0099cc)', shadow: '0 0 20px rgba(0, 217, 255, 0.4)', stand: 'background: linear-gradient(180deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.1)); color: #00d9ff;' }
+            ];
+
+            function podiumSlot(emp, place, idx) {
+                const placeClass = ['first', 'second', 'third'][place];
+                const jobsForLabel = emp.jobs ? `${fmt(emp.jobs)} jobs` : '';
+                const crownEmoji = place === 0 ? '<span class="crown">💵</span>' : '';
+                const g = gradients[idx];
+                return `
+                    <div class="podium-place ${placeClass}">
+                        <div class="podium-avatar" style="background: ${g.bg}; box-shadow: ${g.shadow};">${crownEmoji}${emp.initials}</div>
+                        <div class="podium-name">${emp.name}</div>
+                        <div class="podium-jobs" style="color: ${colors[idx]};">${fmtMoney(emp.revenue || 0)}</div>
+                        <div class="podium-label">${jobsForLabel}</div>
+                        <div class="podium-stand" ${g.stand ? 'style="' + g.stand + '"' : ''}>${place + 1}</div>
                     </div>
                 `;
+            }
 
-                if (sorted.length === 0) {
-                    fleetLeaderboardEl.insertAdjacentHTML(
-                        'beforeend',
-                        `
-                            <div class="fleet-row">
-                                <div class="fleet-rank">—</div>
-                                <div class="fleet-driver">No fleet data available</div>
-                                <div class="fleet-truck">—</div>
-                                <div class="fleet-score">—</div>
-                                <div class="fleet-metric">—</div>
-                                <div class="fleet-metric">—</div>
-                            </div>
-                        `
-                    );
-                    return;
-                }
+            // Display order: 2nd, 1st, 3rd
+            $('revenuePodium').innerHTML =
+                podiumSlot(second, 1, 1) +
+                podiumSlot(first, 0, 0) +
+                podiumSlot(third, 2, 2);
+        }
 
-                sorted.forEach((vehicle, index) => {
-                    const driverName = vehicle.driver && vehicle.driver.trim().length > 0 ? vehicle.driver : 'Unassigned';
-                    const truckName = vehicle.nickname || 'Unknown';
-                    const score = typeof vehicle.safety_score === 'number' ? Math.round(vehicle.safety_score) : null;
-                    const scoreDisplay = score === null ? '—' : `${score}`;
-                    const row = `
-                        <div class="fleet-row">
-                            <div class="fleet-rank">${rankLabel(index + 1)}</div>
-                            <div class="fleet-driver">${driverName}</div>
-                            <div class="fleet-truck">${truckName}</div>
-                            <div class="fleet-score ${score === null ? '' : scoreClass(score)}">${scoreDisplay}</div>
-                            <div class="fleet-metric">${formatMiles(vehicle.total_miles)}</div>
-                            <div class="fleet-metric">${formatRate(vehicle.hard_brakes_per_100mi)}</div>
-                        </div>
-                    `;
-                    fleetLeaderboardEl.insertAdjacentHTML('beforeend', row);
-                });
-            })
-            .catch(() => {
-                fleetLeaderboardEl.innerHTML = `
-                    <div class="fleet-row header">
-                        <div>Rank</div>
-                        <div>Driver</div>
-                        <div>Truck</div>
-                        <div style="text-align: right;">Safety</div>
-                        <div style="text-align: right;">Miles</div>
-                        <div style="text-align: right;">Hard Brakes / 100mi</div>
+        function renderAchievements(achievements) {
+            if (!achievements || !achievements.length) {
+                $('achievements').innerHTML = '<div style="color: #888;">No achievements data</div>';
+                return;
+            }
+            $('achievements').innerHTML = achievements.map(a => `
+                <div class="achievement">
+                    <div class="achievement-icon">${a.icon}</div>
+                    <div class="achievement-info">
+                        <div class="achievement-title">${a.title}</div>
+                        <div class="achievement-name">${a.name}</div>
+                        <div class="achievement-stat">${a.stat}</div>
                     </div>
-                    <div class="fleet-row">
-                        <div class="fleet-rank">—</div>
-                        <div class="fleet-driver">Unable to load fleet data</div>
-                        <div class="fleet-truck">—</div>
-                        <div class="fleet-score">—</div>
-                        <div class="fleet-metric">—</div>
-                        <div class="fleet-metric">—</div>
+                </div>
+            `).join('');
+        }
+
+        function renderReviewRace(data) {
+            const race = data.review_race || [];
+            const payouts2025 = data.payouts_2025 || [];
+            const payouts2026 = data.payouts_2026 || [];
+
+            // Sort by count descending
+            const sorted = [...race].sort((a, b) => b.count - a.count);
+            // Top racers with count > 0
+            const active = sorted.filter(r => r.count > 0);
+            const inactive = sorted.filter(r => r.count === 0);
+
+            let html = `
+                <div class="race-header">
+                    <span style="color: #888;">$50 per review mention → <strong>$500 payout every 10!</strong></span>
+                    <span class="race-prize">💰 $500 / 10 REVIEWS</span>
+                </div>
+                <h3 style="color: #00ff88; font-size: 1rem; margin-top: 10px;">🏃 2026 Progress (incl. 2025 carryover)</h3>
+            `;
+
+            // Render active racers (top 5 individually)
+            const showIndividually = active.slice(0, 5);
+            const showGrouped = active.slice(5);
+
+            showIndividually.forEach((r, i) => {
+                const pct = Math.min(100, Math.round((r.count / r.target) * 100));
+                const isClosest = i === 0 && r.count >= r.target * 0.5;
+                const label = isClosest ? ` <span style="color: ${r.color}; font-size: 0.8rem;">🔥 CLOSEST!</span>` : '';
+                html += `
+                    <div class="racer">
+                        <div class="racer-avatar" style="background: linear-gradient(135deg, ${r.color}, ${r.color}90); color: #fff;">${r.initials}</div>
+                        <div class="racer-info">
+                            <div class="racer-name">${r.name}${label}</div>
+                            <div class="racer-progress">
+                                <div class="progress-track">
+                                    <div class="progress-runner" style="width: ${pct}%; background: linear-gradient(90deg, ${r.color}, ${r.color}90);"></div>
+                                </div>
+                                <div class="progress-count"><span class="current">${r.count}</span>/${r.target}</div>
+                            </div>
+                        </div>
                     </div>
                 `;
             });
+
+            // Group remaining active + inactive
+            const others = [...showGrouped, ...inactive];
+            if (others.length > 0) {
+                const otherNames = others.map(r => {
+                    const firstName = r.name.split(' ')[0].replace('(Tech)', '').trim();
+                    return `${firstName} ${r.count}`;
+                }).join(', ');
+                html += `
+                    <div class="racer" style="opacity: 0.6;">
+                        <div class="racer-avatar">+${others.length}</div>
+                        <div class="racer-info">
+                            <div class="racer-name" style="color: #888;">Others (${otherNames})</div>
+                            <div class="racer-progress">
+                                <div class="progress-track">
+                                    <div class="progress-runner" style="width: 10%; background: #555;"></div>
+                                </div>
+                                <div class="progress-count" style="color: #666;">0-${Math.max(...others.map(r => r.count), 0)}/10</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Payouts section
+            const medals = ['🥇', '🥈', '🥉'];
+            let payouts2025Html = '';
+            payouts2025.forEach((p, i) => {
+                payouts2025Html += `<span class="name">${medals[i] || ''} ${p.name} — <span class="count">$${fmt(p.amount)}</span> <span style="color: #888;">(${p.reviews} reviews, ${p.cashed} cashed)</span></span>`;
+            });
+            const total2025 = payouts2025.reduce((s, p) => s + p.amount, 0);
+
+            // Next to cash out
+            const nextToCash = sorted.filter(r => r.count > 0 && r.count < r.target).sort((a, b) => b.count - a.count).slice(0, 3);
+            let nextHtml = '';
+            nextToCash.forEach(r => {
+                const away = Math.ceil(r.target - r.count);
+                nextHtml += `<span class="name" style="color: ${r.color};">${r.name} — <strong>${away} away!</strong></span>`;
+            });
+
+            html += `
+                <div class="year-comparison">
+                    <div class="year-box" style="border: 1px solid rgba(255, 215, 0, 0.3);">
+                        <h4>💵 2025 Payouts</h4>
+                        <div class="winners">${payouts2025Html}</div>
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); color: #ffd700; font-weight: bold;">
+                            Total Paid: $${fmt(total2025)}
+                        </div>
+                    </div>
+                    <div class="year-box">
+                        <h4>🎯 Next to Cash Out</h4>
+                        <div class="winners" style="font-size: 0.9rem;">${nextHtml}</div>
+                        <div style="margin-top: 12px; font-size: 0.8rem; color: #888;">
+                            Carryover reviews roll into 2026!
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            $('reviewRace').innerHTML = html;
+        }
+
+        function renderReviewStats(stats) {
+            if (!stats) return;
+            const rate = parseFloat(stats.mention_rate) || 0;
+            const rateColor = rate < 30 ? '#ff6b35' : '#00ff88';
+            const rateWarning = rate < 30 ? `<div style="color: #ff6b35; font-size: 0.8rem; margin-top: 8px;">⚠️ Name mention rate needs improvement!</div>` : '';
+
+            $('reviewStats').innerHTML = `
+                <div style="text-align: center; padding: 20px 0;">
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 30px;">
+                        <div>
+                            <div style="font-size: 3rem; font-weight: bold; color: #00d9ff;">${stats.total_reviews}</div>
+                            <div style="color: #888; font-size: 0.9rem;">Total Reviews</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 3rem; font-weight: bold; color: #ffd700;">${stats.tech_mentions}</div>
+                            <div style="color: #888; font-size: 0.9rem;">Mention a Tech</div>
+                        </div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: ${rateColor};">${stats.mention_rate}</div>
+                        <div style="color: #888; font-size: 0.85rem;">Name Mention Rate</div>
+                        ${rateWarning}
+                    </div>
+                    <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,53,0.1)); border-radius: 12px; border: 1px dashed rgba(255,215,0,0.3);">
+                        <div style="font-size: 1.1rem; color: #ffd700;">💡 PRO TIP</div>
+                        <div style="color: #ccc; font-size: 0.95rem; margin-top: 8px;">
+                            "Hi, I'm <strong>[YOUR NAME]</strong>! If you're happy with the service, mention me by name in your Google review!"
+                        </div>
+                        <div style="color: #00ff88; font-size: 0.85rem; margin-top: 8px;">= $50 per mention → $500 every 10!</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFeaturedReview(review) {
+            if (!review) return;
+            const dateStr = review.date ? new Date(review.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+            $('featuredReview').innerHTML = `
+                <div style="padding: 20px; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05)); border-radius: 12px; border-left: 4px solid #ffd700;">
+                    <div style="font-size: 1.5rem; margin-bottom: 12px;">${starStr(review.stars)}</div>
+                    <div style="font-style: italic; color: #ccc; font-size: 1.1rem; line-height: 1.5;">
+                        "${review.text}"
+                    </div>
+                    <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: #888; font-size: 0.9rem;">
+                            — ${review.author}
+                        </div>
+                        <div style="background: #ffd700; color: #000; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">
+                            🏆 ${(review.tech || '').toUpperCase()}
+                        </div>
+                    </div>
+                    <div style="color: #666; font-size: 0.8rem; margin-top: 8px;">${dateStr}</div>
+                </div>
+            `;
+        }
+
+        function renderWallOfFame(reviews) {
+            if (!reviews || !reviews.length) {
+                $('wallOfFame').innerHTML = '<div style="color: #888;">No reviews with tech mentions yet</div>';
+                return;
+            }
+            $('wallOfFame').innerHTML = reviews.map(r => {
+                const dateStr = r.date ? new Date(r.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+                // Highlight the tech name in the quote
+                const techName = r.tech || '';
+                let quote = r.quote || '';
+                if (techName) {
+                    // Try to bold the tech name in the quote
+                    const regex = new RegExp(`(${techName})`, 'gi');
+                    quote = quote.replace(regex, `<strong style="color: ${r.color};">$1</strong>`);
+                }
+                return `
+                    <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; border-left: 3px solid ${r.color};">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="font-weight: 600;">${r.reviewer}</div>
+                            <div style="color: #ffd700; font-size: 0.8rem;">${starStr(r.stars)}</div>
+                        </div>
+                        <div style="color: #888; font-size: 0.8rem; margin: 4px 0;">${dateStr}</div>
+                        <div style="color: #ccc; font-size: 0.9rem; margin-top: 8px;">"${quote}"</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderFullRankings(employees) {
+            const sorted = [...employees].sort((a, b) => b.jobs - a.jobs);
+            const maxJobs = sorted[0]?.jobs || 1;
+            // Find top revenue earner for star badge
+            const topRevenue = [...employees].sort((a, b) => (b.revenue || 0) - (a.revenue || 0))[0];
+
+            $('fullRankings').innerHTML = sorted.map((emp, i) => {
+                const rank = i + 1;
+                const pct = Math.round((emp.jobs / maxJobs) * 100);
+                let badgeStyle = '';
+                let badgeColor = '#888';
+                if (rank === 1) { badgeStyle = 'background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000;'; }
+                else if (rank === 2) { badgeStyle = 'background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000;'; }
+                else if (rank === 3) { badgeStyle = 'background: linear-gradient(135deg, #cd7f32, #a0522d); color: #fff;'; }
+
+                let nameSuffix = '';
+                if (rank === 1) nameSuffix = ' 👑';
+                if (topRevenue && emp.name === topRevenue.name && rank !== 1) nameSuffix = ' ⭐';
+
+                return `
+                    <div class="tech-row">
+                        <div class="progress-bg" style="width: ${pct}%"></div>
+                        <div class="rank-badge" ${badgeStyle ? 'style="' + badgeStyle + '"' : ''}>${rank}</div>
+                        <div class="tech-info">
+                            <div class="tech-name">${emp.name}${nameSuffix}</div>
+                        </div>
+                        <div class="tech-stats">
+                            <div class="stat-col">
+                                <div class="stat-value green">${fmt(emp.jobs)}</div>
+                                <div class="stat-label">Jobs</div>
+                            </div>
+                            <div class="stat-col">
+                                <div class="stat-value gold">${fmtMoney(emp.revenue || 0)}</div>
+                                <div class="stat-label">Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderFooter(data) {
+            const updated = data.updated_at ? new Date(data.updated_at) : new Date();
+            const dateStr = updated.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            $('footer').innerHTML = `Last updated: ${dateStr} (overnight build) • Review data synced from Google Sheet • Mosquito Joe of Miami 🦟`;
+            $('dateRange').textContent = `${data.period || ''} • Mosquito Joe of Miami`;
+        }
+
+        // ─── Weekly Chart ───
+        function renderWeeklyChart(data) {
+            const weekly = Array.isArray(data.weekly_trend) ? data.weekly_trend : [];
+            const ctx = document.getElementById('weeklyChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: weekly.map(row => row.label),
+                    datasets: [{
+                        label: 'Jobs Completed',
+                        data: weekly.map(row => row.jobs),
+                        backgroundColor: weekly.map(() => 'rgba(0, 255, 136, 0.7)'),
+                        borderColor: 'rgba(0, 255, 136, 1)',
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: { size: 14 }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#888',
+                                font: { size: 14 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ─── Fleet Safety (reads from zubie-data — unchanged) ───
+        function renderFleetSafety() {
+            const fleetLeaderboardEl = $('fleetLeaderboard');
+            const formatMiles = (value) => {
+                if (typeof value !== 'number' || Number.isNaN(value)) return '—';
+                return `${Math.round(value).toLocaleString()} mi`;
+            };
+            const formatRate = (value) => {
+                if (typeof value !== 'number' || Number.isNaN(value)) return '—';
+                return value.toFixed(1);
+            };
+            const scoreClass = (score) => {
+                if (score > 90) return 'green';
+                if (score >= 75) return 'yellow';
+                return 'red';
+            };
+            const rankLabel = (rank) => {
+                if (rank === 1) return '🥇 1';
+                if (rank === 2) return '🥈 2';
+                if (rank === 3) return '🥉 3';
+                return `${rank}`;
+            };
+
+            fetch('zubie-data/data/fleet-stats-latest.json')
+                .then((response) => response.json())
+                .then((json) => {
+                    const data = json.vehicles || json;
+                    if (!Array.isArray(data)) return;
+                    const filtered = data.filter((vehicle) => {
+                        const hasDriver = vehicle.driver && vehicle.driver.trim().length > 0;
+                        return hasDriver || (typeof vehicle.total_miles === 'number' && vehicle.total_miles > 50);
+                    });
+                    const sorted = filtered.sort((a, b) => {
+                        const scoreDiff = (b.safety_score || 0) - (a.safety_score || 0);
+                        if (scoreDiff !== 0) return scoreDiff;
+                        return (b.total_miles || 0) - (a.total_miles || 0);
+                    });
+
+                    fleetLeaderboardEl.innerHTML = `
+                        <div class="fleet-row header">
+                            <div>Rank</div>
+                            <div>Driver</div>
+                            <div>Truck</div>
+                            <div style="text-align: right;">Safety</div>
+                            <div style="text-align: right;">Miles</div>
+                            <div style="text-align: right;">Hard Brakes / 100mi</div>
+                        </div>
+                    `;
+
+                    if (sorted.length === 0) {
+                        fleetLeaderboardEl.insertAdjacentHTML(
+                            'beforeend',
+                            `
+                                <div class="fleet-row">
+                                    <div class="fleet-rank">—</div>
+                                    <div class="fleet-driver">No fleet data available</div>
+                                    <div class="fleet-truck">—</div>
+                                    <div class="fleet-score">—</div>
+                                    <div class="fleet-metric">—</div>
+                                    <div class="fleet-metric">—</div>
+                                </div>
+                            `
+                        );
+                        return;
+                    }
+
+                    sorted.forEach((vehicle, index) => {
+                        const driverName = vehicle.driver && vehicle.driver.trim().length > 0 ? vehicle.driver : 'Unassigned';
+                        const truckName = vehicle.nickname || 'Unknown';
+                        const score = typeof vehicle.safety_score === 'number' ? Math.round(vehicle.safety_score) : null;
+                        const scoreDisplay = score === null ? '—' : `${score}`;
+                        const row = `
+                            <div class="fleet-row">
+                                <div class="fleet-rank">${rankLabel(index + 1)}</div>
+                                <div class="fleet-driver">${driverName}</div>
+                                <div class="fleet-truck">${truckName}</div>
+                                <div class="fleet-score ${score === null ? '' : scoreClass(score)}">${scoreDisplay}</div>
+                                <div class="fleet-metric">${formatMiles(vehicle.total_miles)}</div>
+                                <div class="fleet-metric">${formatRate(vehicle.hard_brakes_per_100mi)}</div>
+                            </div>
+                        `;
+                        fleetLeaderboardEl.insertAdjacentHTML('beforeend', row);
+                    });
+                })
+                .catch(() => {
+                    fleetLeaderboardEl.innerHTML = `
+                        <div class="fleet-row header">
+                            <div>Rank</div>
+                            <div>Driver</div>
+                            <div>Truck</div>
+                            <div style="text-align: right;">Safety</div>
+                            <div style="text-align: right;">Miles</div>
+                            <div style="text-align: right;">Hard Brakes / 100mi</div>
+                        </div>
+                        <div class="fleet-row">
+                            <div class="fleet-rank">—</div>
+                            <div class="fleet-driver">Unable to load fleet data</div>
+                            <div class="fleet-truck">—</div>
+                            <div class="fleet-score">—</div>
+                            <div class="fleet-metric">—</div>
+                            <div class="fleet-metric">—</div>
+                        </div>
+                    `;
+                });
+        }
+
+        // ─── Main: Fetch data and render everything ───
+        fetch('tech-data.json?t=' + Date.now(), { cache: 'no-store' })
+            .then(r => r.json())
+            .then(data => {
+                renderBigStats(data);
+                renderJobsPodium(data.employees);
+                renderRevenuePodium(data.employees);
+                renderAchievements(data.achievements);
+                renderReviewRace(data);
+                renderReviewStats(data.review_stats);
+                renderFeaturedReview(data.featured_review);
+                renderWallOfFame(data.wall_of_fame);
+                renderFullRankings(data.employees);
+                renderFooter(data);
+                renderWeeklyChart(data);
+            })
+            .catch(err => {
+                console.error('Failed to load tech-data.json:', err);
+                document.body.innerHTML = '<div style="text-align:center;padding:100px;color:#ff6666;"><h1>⚠️ Dashboard Error</h1><p>Could not load tech-data.json</p><p style="color:#888;">' + err.message + '</p></div>';
+            });
+
+        // Fleet safety loads independently from zubie data
+        renderFleetSafety();
     </script>
-    <script src="navigator.js"></script>
 </body>
 </html>
