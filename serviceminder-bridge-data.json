@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-10-06T11:12:14.839Z",
+    "generated_at": "2026-10-06T12:16:35.699Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-06T09:16:13.504Z",
+      "generated_at": "2026-10-06T12:16:29.588Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46136,
+      "appointments": 46146,
       "contacts": 14155,
-      "invoices": 45428,
+      "invoices": 45429,
       "proposals": 1643
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1953149,
+      "ytd_invoiced": 1953238,
       "avg_per_visit": 70,
-      "mtd": 23349,
-      "mtd_jobs": 243
+      "mtd": 23439,
+      "mtd_jobs": 244
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,10 +135,10 @@
     },
     "sales": {
       "total_sales": 1549,
-      "total_cancels": 226,
-      "net": 1323,
+      "total_cancels": 230,
+      "net": 1319,
       "cancel_reasons": {
-        "No Longer Needed": 44,
+        "No Longer Needed": 48,
         "Workpool": 42,
         "Error": 41,
         "Scheduling Conflict": 37,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 1953149
+      "total_wo_revenue": 1953238
     },
     "employees": [
       {
@@ -224,8 +224,8 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 115081.64,
-        "avgRevenue": 81.1,
+        "revenue": 115171.63,
+        "avgRevenue": 81.11,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
@@ -246,8 +246,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 70088.1,
-        "avgRevenue": 82.46,
+        "revenue": 69963.11,
+        "avgRevenue": 82.41,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -289,17 +289,17 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 13695,
-      "Scheduled": 11682,
-      "Completed": 2172,
-      "Started": 254,
-      "Canceled": 104
+      "Queued": 13702,
+      "Scheduled": 11675,
+      "Completed": 2173,
+      "Started": 256,
+      "Canceled": 108
     },
     "service_mix": {
       "Mojo Essential": 12109,
       "Synthetic Barrier Spray - 2 week": 9553,
       "Misting System Recurring Service Bi-Monthly": 1483,
-      "Gnat/Midge/No-seeums Service - 2 weeks": 956,
+      "Gnat/Midge/No-seeums Service - 2 weeks": 961,
       "HPD - 42 Days": 817,
       "Synthetic Barrier Spray - 4 week": 461,
       "Accelerated - Synthetic Signature Service": 416,
@@ -343,7 +343,8 @@
       "One-Time Spray": 2,
       "Special Event Spray": 2,
       "LIV System Service": 2,
-      "LIV Refill": 2
+      "LIV Refill": 2,
+      "Barrier Spray - 8 Week": 2
     }
   },
   "tech": {
@@ -352,7 +353,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 1953149
+      "total_revenue": 1953238
     },
     "employees": [
       {
@@ -395,7 +396,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 4,
-        "revenue": 115082,
+        "revenue": 115172,
         "upsells": 0,
         "resprays": 0
       },
@@ -417,7 +418,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 70088,
+        "revenue": 69963,
         "upsells": 0,
         "resprays": 0
       },
@@ -457,18 +458,18 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1953149,
+    "revenue": 1953238,
     "proposals": 1643,
     "invoiced_proposals": 1314,
     "complete_proposals": 235,
     "sources": {
       "Online": 14696,
-      "Referral": 12578,
+      "Referral": 12583,
       "MoJo Customer": 6580,
       "Yard Sign": 4478,
       "Direct Mail Postcard": 4141,
       "Mosquito Joe Vehicle": 3229,
-      "Other": 1508,
+      "Other": 1511,
       "Advertising": 1146,
       "Printed Material": 572,
       "Mail Advertising": 474,
@@ -561,27 +562,27 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 23349.29,
-        "invoices": 243,
-        "appointments": 3836,
+        "invoiceRevenue": 23439.28,
+        "invoices": 244,
+        "appointments": 3838,
         "proposals": 0,
-        "cancels": 71
+        "cancels": 73
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3295,
+        "appointments": 3297,
         "proposals": 0,
-        "cancels": 31
+        "cancels": 32
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3136,
+        "appointments": 3139,
         "proposals": 0,
-        "cancels": 29
+        "cancels": 30
       }
     ]
   },
