@@ -1206,7 +1206,7 @@
         }
 
         // ─── Fleet Safety (reads from zubie-data — unchanged) ───
-        function renderFleetSafety() {
+        function renderFleetSafety(snapshot) {
             const fleetLeaderboardEl = $('fleetLeaderboard');
             const formatMiles = (value) => {
                 if (typeof value !== 'number' || Number.isNaN(value)) return '—';
@@ -1227,6 +1227,29 @@
                 if (rank === 3) return '🥉 3';
                 return `${rank}`;
             };
+
+            if (Array.isArray(snapshot)) {
+                const sorted = [...snapshot].sort((a, b) => (b.score || 0) - (a.score || 0) || (b.miles || 0) - (a.miles || 0));
+                fleetLeaderboardEl.innerHTML = `
+                    <div class="fleet-row header">
+                        <div>Rank</div><div>Driver</div><div>Truck</div>
+                        <div style="text-align:right;">Safety</div><div style="text-align:right;">Miles</div>
+                        <div style="text-align:right;">Hard Brakes / 100mi</div>
+                    </div>`;
+                sorted.forEach((vehicle, index) => {
+                    const score = Number.isFinite(Number(vehicle.score)) ? Math.round(Number(vehicle.score)) : null;
+                    fleetLeaderboardEl.insertAdjacentHTML('beforeend', `
+                        <div class="fleet-row">
+                            <div class="fleet-rank">${rankLabel(index + 1)}</div>
+                            <div class="fleet-driver">${vehicle.name || 'Unassigned'}</div>
+                            <div class="fleet-truck">${vehicle.truck || 'Unknown'}</div>
+                            <div class="fleet-score ${score === null ? '' : scoreClass(score)}">${score === null ? '—' : score}</div>
+                            <div class="fleet-metric">${formatMiles(Number(vehicle.miles))}</div>
+                            <div class="fleet-metric">—</div>
+                        </div>`);
+                });
+                return;
+            }
 
             fetch('zubie-data/data/fleet-stats-latest.json')
                 .then((response) => response.json())
@@ -1326,14 +1349,13 @@
                 renderFullRankings(data.employees);
                 renderFooter(data);
                 renderWeeklyChart(data);
+                renderFleetSafety(data.fleet_safety);
             })
             .catch(err => {
                 console.error('Failed to load tech-data.json:', err);
                 document.body.innerHTML = '<div style="text-align:center;padding:100px;color:#ff6666;"><h1>⚠️ Dashboard Error</h1><p>Could not load tech-data.json</p><p style="color:#888;">' + err.message + '</p></div>';
             });
 
-        // Fleet safety loads independently from zubie data
-        renderFleetSafety();
     </script>
 </body>
 </html>
