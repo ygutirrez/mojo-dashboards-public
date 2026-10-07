@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-07T13:00:17.204Z",
+  "generated_at": "2026-10-07T13:30:24.475Z",
   "generated_date": "October 7, 2026",
   "sales": {
     "csv_date": "2026-10-07",
     "total_sales": 576,
-    "total_cancels": 380,
-    "net": 196,
+    "total_cancels": 381,
+    "net": 195,
     "paused": 81,
     "cancel_reasons": {
       "Moved": 82,
       "Paused/WP": 81,
-      "Not Interested": 65,
+      "Not Interested": 66,
       "Financial": 44,
       "Unhappy": 39,
       "Barrier Spray": 18,
@@ -55,7 +55,7 @@
       },
       "Bev": {
         "sales": 69,
-        "cancels": 125
+        "cancels": 126
       }
     },
     "paused_pct": 21
@@ -93,10 +93,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 1963052,
+    "ytd_invoiced": 1966285,
     "avg_per_visit": 70,
-    "mtd": 33252,
-    "mtd_jobs": 362
+    "mtd": 36486,
+    "mtd_jobs": 378
   },
   "operations": {
     "total_jobs": 18651,
@@ -109,18 +109,18 @@
     "working_days_ytd": 200
   },
   "serviceminder": {
-    "generated_at": "2026-10-07T12:16:45.394Z",
+    "generated_at": "2026-10-07T13:17:24.385Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-07T12:16:39.037Z",
+      "generated_at": "2026-10-07T13:17:15.715Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46195,
-      "contacts": 14167,
-      "invoices": 45547,
+      "appointments": 46240,
+      "contacts": 14168,
+      "invoices": 45563,
       "proposals": 1643
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,16 +227,16 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1549,
-    "total_cancels": 232,
-    "net": 1317,
+    "total_cancels": 233,
+    "net": 1316,
     "cancel_reasons": {
       "No Longer Needed": 49,
       "Workpool": 42,
       "Error": 41,
       "Scheduling Conflict": 37,
       "Moving": 32,
+      "Financial": 14,
       "Found Different Company": 14,
-      "Financial": 13,
       "Not Working": 3,
       "Weather": 1
     },
