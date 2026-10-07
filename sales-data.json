@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-07T16:30:17.578Z",
+  "updated_at": "2026-10-07T17:30:20.206Z",
   "csv_date": "2026-10-07",
   "period": "Jan 1 - Oct 7, 2026 (YTD)",
   "summary": {
     "total_sales": 576,
-    "total_cancels": 381,
-    "net": 195,
+    "total_cancels": 382,
+    "net": 194,
     "paused_wp": 81,
     "paused_pct": 21,
     "days_tracked": 280
@@ -16,8 +16,8 @@
     "label": "Oct 5 – Oct 11",
     "summary": {
       "total_sales": 5,
-      "total_cancels": 10,
-      "net": -5
+      "total_cancels": 11,
+      "net": -6
     },
     "csrs": [
       {
@@ -29,8 +29,8 @@
       {
         "name": "Norma",
         "sales": 1,
-        "cancels": 2,
-        "net": -1
+        "cancels": 3,
+        "net": -2
       },
       {
         "name": "Bev",
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 170,
-      "cancels": 127
+      "cancels": 128
     },
     {
       "name": "Bev",
@@ -61,7 +61,7 @@
     {
       "name": "Moved",
       "count": 82,
-      "pct": 22
+      "pct": 21
     },
     {
       "name": "Paused/WP",
@@ -70,8 +70,8 @@
     },
     {
       "name": "Not Interested",
-      "count": 66,
-      "pct": 17
+      "count": 67,
+      "pct": 18
     },
     {
       "name": "Financial",
@@ -214,6 +214,13 @@
       "dateFmt": "Oct 7",
       "type": "Cancel",
       "category": "Not Interested",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-07",
+      "dateFmt": "Oct 7",
+      "type": "Cancel",
+      "category": "Not Interested",
       "csr": "Bev"
     },
     {
@@ -271,13 +278,6 @@
       "type": "Sale",
       "category": "Restart",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-05",
-      "dateFmt": "Oct 5",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
