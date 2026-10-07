@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-07T12:00:18.315Z",
+  "updated_at": "2026-10-07T12:30:37.327Z",
   "csv_date": "2026-10-07",
   "period": "Jan 1 - Oct 7, 2026 (YTD)",
   "summary": {
     "total_sales": 575,
-    "total_cancels": 379,
-    "net": 196,
+    "total_cancels": 380,
+    "net": 195,
     "paused_wp": 81,
     "paused_pct": 21,
     "days_tracked": 280
@@ -16,8 +16,8 @@
     "label": "Oct 5 – Oct 11",
     "summary": {
       "total_sales": 4,
-      "total_cancels": 8,
-      "net": -4
+      "total_cancels": 9,
+      "net": -5
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 3,
-        "net": -3
+        "cancels": 4,
+        "net": -4
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 124
+      "cancels": 125
     }
   ],
   "cancel_reasons": [
@@ -75,8 +75,8 @@
     },
     {
       "name": "Financial",
-      "count": 43,
-      "pct": 11
+      "count": 44,
+      "pct": 12
     },
     {
       "name": "Unhappy",
@@ -210,6 +210,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-07",
+      "dateFmt": "Oct 7",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-10-06",
       "dateFmt": "Oct 6",
       "type": "Sale",
@@ -270,13 +277,6 @@
       "dateFmt": "Oct 5",
       "type": "Cancel",
       "category": "Moved",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-10-05",
-      "dateFmt": "Oct 5",
-      "type": "Cancel",
-      "category": "Unhappy",
       "csr": "Bev"
     }
   ],
