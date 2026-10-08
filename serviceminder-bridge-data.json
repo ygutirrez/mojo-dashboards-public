@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-10-08T12:17:26.651Z",
+    "generated_at": "2026-10-08T13:17:35.648Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-08T12:17:20.966Z",
+      "generated_at": "2026-10-08T13:17:27.973Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46561,
+      "appointments": 46569,
       "contacts": 14174,
-      "invoices": 45676,
+      "invoices": 45685,
       "proposals": 1643
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 1977454,
+      "ytd_invoiced": 1978226,
       "avg_per_visit": 70,
-      "mtd": 47629,
-      "mtd_jobs": 491
+      "mtd": 48401,
+      "mtd_jobs": 500
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 1977454
+      "total_wo_revenue": 1978226
     },
     "employees": [
       {
@@ -235,8 +235,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 167426.4,
-        "avgRevenue": 184.8,
+        "revenue": 167314.4,
+        "avgRevenue": 184.88,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -289,14 +289,14 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 13999,
-      "Scheduled": 11451,
-      "Completed": 2421,
-      "Started": 254,
+      "Queued": 14005,
+      "Scheduled": 11440,
+      "Completed": 2430,
+      "Started": 255,
       "Canceled": 124
     },
     "service_mix": {
-      "Mojo Essential": 12215,
+      "Mojo Essential": 12218,
       "Synthetic Barrier Spray - 2 week": 9704,
       "Misting System Recurring Service Bi-Monthly": 1491,
       "Gnat/Midge/No-seeums Service - 2 weeks": 977,
@@ -306,8 +306,8 @@
       "All-Natural Barrier Spray": 422,
       "Misting system - 4 Weeks": 238,
       "InZecto Trap Service": 150,
+      "In2Care Service - 4 Weeks Service": 133,
       "Misting system - 6 Weeks": 133,
-      "In2Care Service - 4 Weeks Service": 131,
       "Inzecto Trap Replacement": 111,
       "Synthetic Signature Service": 110,
       "Special Event Service": 94,
@@ -355,7 +355,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 1977454
+      "total_revenue": 1978226
     },
     "employees": [
       {
@@ -409,7 +409,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 167426,
+        "revenue": 167314,
         "upsells": 0,
         "resprays": 0
       },
@@ -460,16 +460,16 @@
     ]
   },
   "salesKpi": {
-    "revenue": 1977454,
+    "revenue": 1978226,
     "proposals": 1643,
     "invoiced_proposals": 1308,
     "complete_proposals": 241,
     "sources": {
-      "Online": 14861,
-      "Referral": 12741,
-      "MoJo Customer": 6652,
+      "Online": 14870,
+      "Referral": 12743,
+      "MoJo Customer": 6653,
       "Yard Sign": 4518,
-      "Direct Mail Postcard": 4199,
+      "Direct Mail Postcard": 4201,
       "Mosquito Joe Vehicle": 3243,
       "Other": 1529,
       "Advertising": 1161,
@@ -564,8 +564,8 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 47629.38,
-        "invoices": 491,
+        "invoiceRevenue": 48401.5,
+        "invoices": 500,
         "appointments": 3884,
         "proposals": 0,
         "cancels": 87
@@ -574,7 +574,7 @@
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3428,
+        "appointments": 3431,
         "proposals": 0,
         "cancels": 33
       },
@@ -582,7 +582,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3297,
+        "appointments": 3299,
         "proposals": 0,
         "cancels": 32
       }
