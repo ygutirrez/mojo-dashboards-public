@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-10-07T09:22:08.184Z",
-  "updated_at": "2026-10-07T10:15:12.776Z",
-  "period": "Jan 1 - Oct 7, 2026 (YTD)",
+  "generated_at": "2026-10-08T09:22:24.211Z",
+  "updated_at": "2026-10-08T09:22:19.233Z",
+  "period": "Jan 1 - Oct 8, 2026 (YTD)",
   "summary": {
-    "total_jobs": 16906,
+    "total_jobs": 17029,
     "total_techs": 12,
     "resprays": 143,
     "first_time_success": "99.2%",
     "total_upsells": 7,
-    "total_revenue": 1550921
+    "total_revenue": 1563168
   },
   "employees": [
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 2708,
-      "revenue": 241193.45,
+      "jobs": 2713,
+      "revenue": 241634.91,
       "resprays": 15,
       "upsells": 0,
       "rank": 1
@@ -32,8 +32,8 @@
     {
       "name": "Marcus Rubi",
       "initials": "MR",
-      "jobs": 2345,
-      "revenue": 183256.44,
+      "jobs": 2362,
+      "revenue": 184458.37,
       "resprays": 11,
       "upsells": 0,
       "rank": 3
@@ -41,8 +41,8 @@
     {
       "name": "David Carbajal",
       "initials": "DC",
-      "jobs": 2324,
-      "revenue": 195839.7,
+      "jobs": 2340,
+      "revenue": 196524.62,
       "resprays": 10,
       "upsells": 4,
       "rank": 4
@@ -50,8 +50,8 @@
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 1377,
-      "revenue": 227055.1,
+      "jobs": 1390,
+      "revenue": 230783.1,
       "resprays": 0,
       "upsells": 1,
       "rank": 5
@@ -59,8 +59,8 @@
     {
       "name": "Jorge Navarro",
       "initials": "JN",
-      "jobs": 1202,
-      "revenue": 97332.05,
+      "jobs": 1215,
+      "revenue": 98344.92,
       "resprays": 11,
       "upsells": 2,
       "rank": 6
@@ -77,8 +77,8 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 818,
-      "revenue": 68984.97,
+      "jobs": 835,
+      "revenue": 70399.73,
       "resprays": 12,
       "upsells": 0,
       "rank": 8
@@ -86,8 +86,8 @@
     {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
-      "jobs": 815,
-      "revenue": 73747.93,
+      "jobs": 824,
+      "revenue": 74653.84,
       "resprays": 3,
       "upsells": 0,
       "rank": 9
@@ -95,8 +95,8 @@
     {
       "name": "Travis Johnson",
       "initials": "TJ",
-      "jobs": 769,
-      "revenue": 65495.02,
+      "jobs": 786,
+      "revenue": 66892.89,
       "resprays": 5,
       "upsells": 0,
       "rank": 10
@@ -104,8 +104,8 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 672,
-      "revenue": 60167.4,
+      "jobs": 688,
+      "revenue": 61627.25,
       "resprays": 4,
       "upsells": 0,
       "rank": 11
@@ -235,13 +235,13 @@
       "start": "2026-09-28",
       "end": "2026-10-04",
       "label": "Sep 28–Oct 4",
-      "jobs": 312
+      "jobs": 313
     },
     {
       "start": "2026-10-05",
       "end": "2026-10-11",
       "label": "Oct 5–Oct 11",
-      "jobs": 96
+      "jobs": 218
     }
   ],
   "sources": {
@@ -250,10 +250,10 @@
       "system": "ServiceMinder appointments API",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-10-05"
+        "max": "2026-10-06"
       },
       "status": "current",
-      "detail": "20,811 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping."
+      "detail": "20,943 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -267,7 +267,7 @@
     },
     "upsells": {
       "label": "Technician upsells",
-      "system": "Office sales tally (sales-data-2026-10-06.csv)",
+      "system": "Office sales tally (sales-data-2026-10-07.csv)",
       "coverage": {
         "min": "2026-02-04",
         "max": "2026-07-08"
@@ -280,7 +280,7 @@
       "system": "Google Reviews bonus sheet CSV",
       "coverage": {
         "min": null,
-        "max": "2026-10-06"
+        "max": "2026-10-07"
       },
       "status": "limited",
       "detail": "Current cumulative credits and payouts; historical dated credit snapshots are not retained, so date filters do not change this metric."
@@ -300,7 +300,7 @@
       "system": "Office days-out tally",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-10-06"
+        "max": "2026-10-07"
       },
       "status": "limited",
       "detail": "Cumulative YTD context only; it is displayed but not included in the score."
@@ -481,18 +481,6 @@
       "amount": 1500,
       "reviews": 75.17,
       "cashed": 30
-    },
-    {
-      "name": "John",
-      "amount": 1000,
-      "reviews": 76,
-      "cashed": 20
-    },
-    {
-      "name": "Andrew",
-      "amount": 500,
-      "reviews": 18,
-      "cashed": 10
     }
   ],
   "payouts_2026": [
@@ -634,7 +622,7 @@
       "icon": "🔥",
       "title": "Iron Man",
       "name": "Damian Machin",
-      "stat": "Most jobs — 2708"
+      "stat": "Most jobs — 2713"
     },
     {
       "icon": "⚡",
@@ -646,34 +634,34 @@
       "icon": "🎯",
       "title": "Runner Up",
       "name": "Stanley Prophete",
-      "stat": "2491 jobs — 217 behind!"
+      "stat": "2491 jobs — 222 behind!"
     },
     {
       "icon": "🛡️",
       "title": "Zero Callbacks",
       "name": "Joseph Pagan",
-      "stat": "1377 jobs, 0 re-sprays"
+      "stat": "1390 jobs, 0 re-sprays"
     },
     {
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 143 re-sprays out of 16906!"
+      "stat": "Only 143 re-sprays out of 17029!"
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-10-07T09:22:08.184Z",
+    "generated_at": "2026-10-08T09:22:24.211Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-07T09:16:43.190Z",
+      "generated_at": "2026-10-08T09:17:13.430Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46195,
-      "contacts": 14166,
-      "invoices": 45547,
+      "appointments": 46540,
+      "contacts": 14173,
+      "invoices": 45674,
       "proposals": 1643
     },
     "completed_jobs_source": "ServiceMinder appointments API via technician-scorecard-data.json",
