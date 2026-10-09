@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-09T00:00:23.985Z",
-  "updated_at": "2026-10-09T00:00:23.985Z",
-  "period": "Jan 1 - Oct 8, 2026 (YTD)",
+  "generated_at": "2026-10-09T09:22:11.356Z",
+  "updated_at": "2026-10-09T09:22:06.164Z",
+  "period": "Jan 1 - Oct 9, 2026 (YTD)",
   "summary": {
     "total_jobs": 17145,
     "total_techs": 12,
@@ -430,7 +430,7 @@
       "system": "Office days-out tally",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-10-08"
+        "max": "2026-10-09"
       },
       "status": "limited",
       "detail": "Cumulative YTD context only; it is displayed but not included in the score."
@@ -778,5 +778,122 @@
       "name": "Entire Team",
       "stat": "Only 143 re-sprays out of 17145!"
     }
-  ]
+  ],
+  "serviceminder": {
+    "generated_at": "2026-10-09T09:22:11.356Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-10-09T09:17:02.073Z",
+      "kinds_ok": 4,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 46679,
+      "contacts": 14182,
+      "invoices": 45830,
+      "proposals": 1643
+    },
+    "completed_jobs_source": "ServiceMinder appointments API via technician-scorecard-data.json",
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": "Jorge Navarro",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [
+      "Route 9"
+    ],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jordan Meddock",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      }
+    ],
+    "overrides_applied": {
+      "tech_resprays": {
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
+      }
+    },
+    "write_existing_applied": true
+  }
 }

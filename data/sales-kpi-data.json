@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-08T09:22:24.211Z",
-  "period": "Jan 1 - Oct 8, 2026 (YTD)",
+  "updated_at": "2026-10-09T09:22:11.356Z",
+  "period": "Jan 1 - Oct 9, 2026 (YTD)",
   "summary": {
     "total_sales": 576,
     "total_cancels": 384,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 1977194,
-    "total_invoices": 21524,
+    "total_revenue": 1990867,
+    "total_invoices": 21680,
     "total_discounts": 15611,
     "net": 192,
-    "days_tracked": 281,
+    "days_tracked": 282,
     "sales_per_day": 2,
-    "revenue_per_day": 7036
+    "revenue_per_day": 7060
   },
   "office_tally": {
-    "csv_date": "2026-10-07",
+    "csv_date": "2026-10-08",
     "total_sales": 576,
     "total_cancels": 384,
     "net": 192,
@@ -424,10 +424,10 @@
       "week": "Sep 21",
       "sales": 0,
       "cancels": 0,
-      "revenue": 51456,
+      "revenue": 51482,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 1902665
+      "cumulative_revenue": 1902691
     },
     {
       "week": "Sep 28",
@@ -436,28 +436,28 @@
       "revenue": 40767,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 1943432
+      "cumulative_revenue": 1943458
     },
     {
       "week": "Oct 5",
       "sales": 0,
       "cancels": 0,
-      "revenue": 19620,
+      "revenue": 33736,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 1963052
+      "cumulative_revenue": 1977194
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 1977194,
-    "days_elapsed": 281,
+    "ytd_revenue": 1990867,
+    "days_elapsed": 282,
     "days_total": 365,
-    "projected_annual": 2568241,
+    "projected_annual": 2576831,
     "on_pace": false,
-    "pct_of_target": 51.4
+    "pct_of_target": 51.5
   },
   "serviceminder_sales_preview": {
     "total_sales": 307,
@@ -470,27 +470,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-10-08T09:22:24.211Z"
+    "serviceminder_cutover_at": "2026-10-09T09:22:11.356Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-10-07",
-    "generated_at": "2026-10-08T09:17:32.847Z"
+    "sales_csv_date": "2026-10-08",
+    "generated_at": "2026-10-09T09:17:22.614Z"
   },
   "total_sales": 576,
   "total_cancels": 384,
   "serviceminder": {
-    "generated_at": "2026-10-08T09:22:24.211Z",
+    "generated_at": "2026-10-09T09:22:11.356Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-08T09:17:13.430Z",
+      "generated_at": "2026-10-09T09:17:02.073Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46540,
-      "contacts": 14173,
-      "invoices": 45674,
+      "appointments": 46679,
+      "contacts": 14182,
+      "invoices": 45830,
       "proposals": 1643
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -596,33 +596,33 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 1977194,
+    "revenue": 1990867,
     "proposals": 1643,
-    "invoiced_proposals": 1308,
-    "complete_proposals": 241,
+    "invoiced_proposals": 1306,
+    "complete_proposals": 243,
     "sources": {
-      "Online": 14855,
-      "Referral": 12732,
-      "MoJo Customer": 6648,
-      "Yard Sign": 4518,
-      "Direct Mail Postcard": 4199,
-      "Mosquito Joe Vehicle": 3243,
-      "Other": 1529,
-      "Advertising": 1161,
-      "Printed Material": 585,
+      "Online": 14938,
+      "Referral": 12792,
+      "MoJo Customer": 6676,
+      "Yard Sign": 4544,
+      "Direct Mail Postcard": 4215,
+      "Mosquito Joe Vehicle": 3257,
+      "Other": 1533,
+      "Advertising": 1162,
+      "Printed Material": 588,
       "Mail Advertising": 484,
       "Existing Customer": 394,
-      "Online Search": 290,
-      "DMP": 201,
-      "Local Branding": 92,
-      "Accelerated": 89,
-      "Neighborly": 85,
+      "Online Search": 291,
+      "DMP": 204,
+      "Local Branding": 93,
+      "Accelerated": 90,
+      "Neighborly": 88,
       "Print Material": 72,
       "Event/Sponsorship": 56,
       "Email": 53,
       "Competitor": 51,
       "Social": 36,
-      "Mass Media": 22,
+      "Mass Media": 23,
       "Unknown": 4
     },
     "monthly": [
@@ -700,17 +700,17 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 47369.4,
-        "invoices": 489,
-        "appointments": 3883,
+        "invoiceRevenue": 61041.98,
+        "invoices": 645,
+        "appointments": 3889,
         "proposals": 0,
-        "cancels": 86
+        "cancels": 94
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3419,
+        "appointments": 3456,
         "proposals": 0,
         "cancels": 33
       },
@@ -718,9 +718,9 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3290,
+        "appointments": 3336,
         "proposals": 0,
-        "cancels": 32
+        "cancels": 33
       }
     ]
   }
