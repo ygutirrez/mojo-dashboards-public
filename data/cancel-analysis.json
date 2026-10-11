@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T09:17:26.568876+00:00",
+  "generated_at": "2026-10-11T09:16:47.154952+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-09",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-10-08.csv",
+    "office_tally_file": "sales-data-2026-10-11.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-10T09:16:26.263Z",
-      "appointments": "2026-10-10T09:16:17.790Z",
-      "invoices": "2026-10-10T09:16:50.130Z"
+      "contacts": "2026-10-11T09:16:08.356Z",
+      "appointments": "2026-10-11T09:15:59.917Z",
+      "invoices": "2026-10-11T09:16:19.624Z"
     }
   },
   "summary": {
@@ -22,35 +22,35 @@
     "avg_annual_value_per_account": 668.34,
     "avg_customer_lifetime_days": 951,
     "median_customer_lifetime_days": 728,
-    "recoverable_accounts": 80,
-    "recoverable_annual_value": 53173.9,
-    "controllable_events": 80,
+    "recoverable_accounts": 79,
+    "recoverable_annual_value": 52114.0,
+    "controllable_events": 79,
     "uncontrollable_events": 29,
     "structural_events": 0,
     "unknown_events": 25,
-    "controllable_value_lost": 53173.9,
+    "controllable_value_lost": 52114.0,
     "uncontrollable_value_lost": 24480.17,
     "total_sales_ytd": 131,
     "net_new_customers": -8,
     "cancel_to_sales_ratio": 1.06,
     "active_customer_base": 1561,
     "recorded_attrition_pct": 8.2,
-    "recent_30d_accounts": 28,
-    "recent_30d_revenue": 24467.08,
+    "recent_30d_accounts": 27,
+    "recent_30d_revenue": 24100.84,
     "recent_90d_accounts": 77,
     "reason_known_accounts": 114,
     "reason_capture_pct": 82.0
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 570,
-    "sales_logged_since_first_loss": 288,
+    "sales_logged_ytd": 571,
+    "sales_logged_since_first_loss": 289,
     "sales_logged_30d": 27,
-    "sales_logged_90d": 119,
+    "sales_logged_90d": 114,
     "restarts_ytd": 140,
     "restarts_30d": 5,
-    "gross_activity_gap_30d": -1,
-    "sales_per_confirmed_loss_30d": 0.96,
+    "gross_activity_gap_30d": 0,
+    "sales_per_confirmed_loss_30d": 1.0,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -62,7 +62,7 @@
       },
       {
         "category": "Event Spray",
-        "sales": 88
+        "sales": 89
       },
       {
         "category": "Noseeum",
@@ -164,7 +164,7 @@
       },
       {
         "month": "2026-10",
-        "sales": 8
+        "sales": 9
       }
     ]
   },
@@ -219,10 +219,10 @@
     },
     {
       "reason": "Barrier Spray",
-      "events": 5,
-      "unique_accounts": 5,
-      "annual_value_lost": 5163.45,
-      "avg_value_per_account": 1032.69,
+      "events": 6,
+      "unique_accounts": 6,
+      "annual_value_lost": 6223.35,
+      "avg_value_per_account": 1037.23,
       "recoverable": false
     },
     {
@@ -250,14 +250,6 @@
       "recoverable": false
     },
     {
-      "reason": "Found Different Company",
-      "events": 1,
-      "unique_accounts": 1,
-      "annual_value_lost": 1059.9,
-      "avg_value_per_account": 1059.9,
-      "recoverable": true
-    },
-    {
       "reason": "Scheduling Conflict",
       "events": 1,
       "unique_accounts": 1,
@@ -274,13 +266,13 @@
     },
     {
       "csr": "Not recorded",
-      "accounts": 33,
-      "annual_value_lost": 17444.57
+      "accounts": 32,
+      "annual_value_lost": 16384.67
     },
     {
       "csr": "Norma",
-      "accounts": 29,
-      "annual_value_lost": 21850.12
+      "accounts": 30,
+      "annual_value_lost": 22910.02
     },
     {
       "csr": "Bev",
@@ -536,9 +528,9 @@
   "recent_losses": [
     {
       "date": "2026-10-09",
-      "reason": "Found Different Company",
-      "reason_source": "ServiceMinder appointment",
-      "csr": "Not recorded",
+      "reason": "Barrier Spray",
+      "reason_source": "Office Tally exact-name/date match",
+      "csr": "Norma",
       "service": "Mojo Essential",
       "zip": "33168",
       "city": "Miami",
