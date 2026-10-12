@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-11T09:20:59.105Z",
-  "period": "Jan 1 - Oct 11, 2026 (YTD)",
+  "generated_at": "2026-10-12T09:20:43.172Z",
+  "period": "Jan 1 - Oct 12, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 17379,
-    "total_revenue": 1595738,
-    "avg_revenue_per_stop": 91.82,
+    "total_stops": 17395,
+    "total_revenue": 1597376,
+    "avg_revenue_per_stop": 91.83,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
-    "estimated_gross_profit_per_stop": 70.62,
+    "estimated_gross_profit_per_stop": 70.63,
     "estimated_gross_margin": 76.9,
     "active_techs": 12
   },
   "cost_breakdown_per_stop": {
-    "revenue": 91.82,
+    "revenue": 91.83,
     "chemical": 3.2,
     "labor_estimate": 12,
     "fuel_estimate": 4,
     "vehicle_estimate": 2,
     "total_direct": 21.2,
-    "gross_profit": 70.62,
+    "gross_profit": 70.63,
     "note": "Labor, fuel, and vehicle costs are estimates based on industry averages. Chemical cost is actual."
   },
   "financial_benchmarks": {
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 2050860,
+    "current_annual_run_rate": 2045762,
     "target": 5000000,
-    "gap": 2949140,
-    "additional_stops_needed": 32119,
+    "gap": 2954238,
+    "additional_stops_needed": 32171,
     "additional_daily_stops_needed": 129,
-    "current_daily_avg": 61.2,
-    "required_daily_avg": 190.2,
-    "capacity_increase_pct": 210.8
+    "current_daily_avg": 61,
+    "required_daily_avg": 190,
+    "capacity_increase_pct": 211.4
   },
   "tech_profitability": [
     {
@@ -62,17 +62,17 @@
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 2763,
-      "revenue": 246291.54,
-      "avgRevenuePerStop": 89.14,
+      "jobs": 2772,
+      "revenue": 247076.85,
+      "avgRevenuePerStop": 89.13,
       "costs": {
-        "chemical": 8841.6,
-        "labor": 33156,
-        "fuel": 11052,
-        "vehicle": 5526,
-        "total": 58575.6
+        "chemical": 8870.4,
+        "labor": 33264,
+        "fuel": 11088,
+        "vehicle": 5544,
+        "total": 58766.4
       },
-      "grossProfit": 187715.94,
+      "grossProfit": 188310.45,
       "margin": 76.2,
       "resprays": 15,
       "resprayRate": 0.54,
@@ -242,18 +242,18 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 721,
-      "revenue": 64232.64,
-      "avgRevenuePerStop": 89.09,
+      "jobs": 728,
+      "revenue": 65085.09,
+      "avgRevenuePerStop": 89.4,
       "costs": {
-        "chemical": 2307.2,
-        "labor": 8652,
-        "fuel": 2884,
-        "vehicle": 1442,
-        "total": 15285.2
+        "chemical": 2329.6,
+        "labor": 8736,
+        "fuel": 2912,
+        "vehicle": 1456,
+        "total": 15433.6
       },
-      "grossProfit": 48947.44,
-      "margin": 76.2,
+      "grossProfit": 49651.49,
+      "margin": 76.3,
       "resprays": 4,
       "resprayRate": 0.55,
       "efficiencyRating": 92,
@@ -289,9 +289,9 @@
     },
     {
       "name": "Damian Machin",
-      "grossProfit": 187715.94,
+      "grossProfit": 188310.45,
       "margin": 76.2,
-      "jobs": 2763
+      "jobs": 2772
     },
     {
       "name": "Stanley Prophete",
@@ -305,14 +305,14 @@
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
-      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1418), Damian Machin (2763), Stanley Prophete (2541), David Carbajal (2390), Marcus Rubi (2380), Jorge Navarro (1237), Curtis Blount (1034), Guillermo Rodriguez (867), Lenny Pierre (868), Travis Johnson (809), Wilbeni Pierre (721). Consider route optimization or adding techs to reduce burnout."
+      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1418), Damian Machin (2772), Stanley Prophete (2541), David Carbajal (2390), Marcus Rubi (2380), Jorge Navarro (1237), Curtis Blount (1034), Guillermo Rodriguez (867), Lenny Pierre (868), Travis Johnson (809), Wilbeni Pierre (728). Consider route optimization or adding techs to reduce burnout."
     },
     {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 17379 total stops, even a 5% upsell rate at $75 avg would add $65,171 in revenue.",
-      "potential_value": 65171
+      "description": "At 17395 total stops, even a 5% upsell rate at $75 avg would add $65,231 in revenue.",
+      "potential_value": 65231
     }
   ]
 }
