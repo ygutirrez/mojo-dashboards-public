@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-13T18:00:15.307Z",
+  "updated_at": "2026-10-13T18:30:14.118Z",
   "csv_date": "2026-10-13",
   "period": "Jan 1 - Oct 13, 2026 (YTD)",
   "summary": {
-    "total_sales": 582,
+    "total_sales": 583,
     "total_cancels": 389,
-    "net": 193,
+    "net": 194,
     "paused_wp": 84,
     "paused_pct": 22,
     "days_tracked": 286
@@ -15,16 +15,16 @@
     "end": "2026-10-18",
     "label": "Oct 12 – Oct 18",
     "summary": {
-      "total_sales": 5,
+      "total_sales": 6,
       "total_cancels": 1,
-      "net": 4
+      "net": 5
     },
     "csrs": [
       {
         "name": "Lucy",
-        "sales": 5,
+        "sales": 6,
         "cancels": 1,
-        "net": 4
+        "net": 5
       },
       {
         "name": "Bev",
@@ -43,7 +43,7 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 343,
+      "sales": 344,
       "cancels": 129
     },
     {
@@ -137,7 +137,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 210
+      "count": 211
     },
     {
       "name": "Restart",
@@ -213,6 +213,13 @@
       "date": "2026-10-13",
       "dateFmt": "Oct 13",
       "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-13",
+      "dateFmt": "Oct 13",
+      "type": "Sale",
       "category": "Restart",
       "csr": "Lucy"
     },
@@ -271,13 +278,6 @@
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-08",
-      "dateFmt": "Oct 8",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
