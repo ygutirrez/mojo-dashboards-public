@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T09:16:49.834538+00:00",
+  "generated_at": "2026-10-15T09:17:27.552578+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-12",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-10-13.csv",
+    "office_tally_file": "sales-data-2026-10-14.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-14T09:16:07.172Z",
-      "appointments": "2026-10-14T09:15:55.688Z",
-      "invoices": "2026-10-14T09:16:21.479Z"
+      "contacts": "2026-10-15T09:16:31.995Z",
+      "appointments": "2026-10-15T09:16:21.615Z",
+      "invoices": "2026-10-15T09:16:53.058Z"
     }
   },
   "summary": {
@@ -33,11 +33,11 @@
     "total_sales_ytd": 135,
     "net_new_customers": -4,
     "cancel_to_sales_ratio": 1.03,
-    "active_customer_base": 1565,
+    "active_customer_base": 1563,
     "recorded_attrition_pct": 8.2,
-    "recent_30d_accounts": 27,
-    "recent_30d_revenue": 25296.78,
-    "recent_90d_accounts": 74,
+    "recent_30d_accounts": 26,
+    "recent_30d_revenue": 24546.84,
+    "recent_90d_accounts": 73,
     "reason_known_accounts": 115,
     "reason_capture_pct": 82.7
   },
@@ -46,11 +46,11 @@
     "sales_logged_ytd": 577,
     "sales_logged_since_first_loss": 295,
     "sales_logged_30d": 27,
-    "sales_logged_90d": 113,
+    "sales_logged_90d": 111,
     "restarts_ytd": 141,
     "restarts_30d": 3,
-    "gross_activity_gap_30d": 0,
-    "sales_per_confirmed_loss_30d": 1.0,
+    "gross_activity_gap_30d": 1,
+    "sales_per_confirmed_loss_30d": 1.04,
     "by_category": [
       {
         "category": "Barrier Spray",

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-14T22:30:14.454Z",
-  "generated_date": "October 14, 2026",
+  "generated_at": "2026-10-15T09:22:11.543Z",
+  "generated_date": "October 15, 2026",
   "sales": {
     "csv_date": "2026-10-14",
     "total_sales": 583,
@@ -93,35 +93,35 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2018426,
+    "ytd_invoiced": 2032299,
     "avg_per_visit": 71,
-    "mtd": 88601,
-    "mtd_jobs": 962
+    "mtd": 102474,
+    "mtd_jobs": 1091
   },
   "operations": {
     "total_jobs": 18651,
     "jobs_per_tech_day": 10.1,
-    "revenue_per_tech_day": 500,
+    "revenue_per_tech_day": 497,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 205
+    "working_days_ytd": 206
   },
   "serviceminder": {
-    "generated_at": "2026-10-14T13:17:22.325Z",
+    "generated_at": "2026-10-15T09:22:11.543Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-14T13:17:15.260Z",
+      "generated_at": "2026-10-15T09:17:07.415Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 46976,
-      "contacts": 14204,
-      "invoices": 46151,
-      "proposals": 1643
+      "appointments": 47190,
+      "contacts": 14206,
+      "invoices": 46280,
+      "proposals": 1644
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -227,13 +227,13 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1550,
-    "total_cancels": 263,
-    "net": 1287,
+    "total_cancels": 269,
+    "net": 1281,
     "cancel_reasons": {
-      "No Longer Needed": 57,
+      "No Longer Needed": 62,
+      "Workpool": 46,
       "Error": 45,
       "Scheduling Conflict": 45,
-      "Workpool": 45,
       "Moving": 33,
       "Financial": 19,
       "Found Different Company": 15,
@@ -242,7 +242,7 @@
     },
     "sale_categories": {
       "Mojo Essential": 751,
-      "Synthetic Barrier Spray - 2 week": 455,
+      "Synthetic Barrier Spray - 2 week": 456,
       "Misting System Recurring Service Bi-Monthly": 130,
       "HPD - 42 Days": 77,
       "Synthetic Barrier Spray - 4 week": 44,
