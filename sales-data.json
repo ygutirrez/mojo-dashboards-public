@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-15T19:30:14.875Z",
+  "updated_at": "2026-10-15T20:00:14.472Z",
   "csv_date": "2026-10-15",
   "period": "Jan 1 - Oct 15, 2026 (YTD)",
   "summary": {
     "total_sales": 584,
-    "total_cancels": 393,
-    "net": 191,
+    "total_cancels": 392,
+    "net": 192,
     "paused_wp": 85,
     "paused_pct": 22,
     "days_tracked": 288
@@ -15,16 +15,16 @@
     "end": "2026-10-18",
     "label": "Oct 12 – Oct 18",
     "summary": {
-      "total_sales": 7,
-      "total_cancels": 5,
-      "net": 2
+      "total_sales": 8,
+      "total_cancels": 4,
+      "net": 4
     },
     "csrs": [
       {
         "name": "Lucy",
-        "sales": 7,
+        "sales": 8,
         "cancels": 1,
-        "net": 6
+        "net": 7
       },
       {
         "name": "Bev",
@@ -35,8 +35,8 @@
       {
         "name": "Norma",
         "sales": 0,
-        "cancels": 3,
-        "net": -3
+        "cancels": 2,
+        "net": -2
       }
     ]
   },
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 170,
-      "cancels": 132
+      "cancels": 131
     },
     {
       "name": "Bev",
@@ -70,8 +70,8 @@
     },
     {
       "name": "Not Interested",
-      "count": 69,
-      "pct": 18
+      "count": 68,
+      "pct": 17
     },
     {
       "name": "Financial",
@@ -137,11 +137,11 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 211
+      "count": 212
     },
     {
       "name": "Restart",
-      "count": 142
+      "count": 141
     },
     {
       "name": "Event Spray",
@@ -212,6 +212,13 @@
     {
       "date": "2026-10-15",
       "dateFmt": "Oct 15",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-15",
+      "dateFmt": "Oct 15",
       "type": "Cancel",
       "category": "Financial",
       "csr": "Norma"
@@ -229,13 +236,6 @@
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-14",
-      "dateFmt": "Oct 14",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Norma"
     },
     {
       "date": "2026-10-14",
