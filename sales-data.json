@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-16T14:30:18.367Z",
+  "updated_at": "2026-10-16T15:00:19.596Z",
   "csv_date": "2026-10-16",
   "period": "Jan 1 - Oct 16, 2026 (YTD)",
   "summary": {
     "total_sales": 585,
-    "total_cancels": 393,
-    "net": 192,
+    "total_cancels": 394,
+    "net": 191,
     "paused_wp": 85,
     "paused_pct": 22,
     "days_tracked": 289
@@ -16,8 +16,8 @@
     "label": "Oct 12 – Oct 18",
     "summary": {
       "total_sales": 9,
-      "total_cancels": 5,
-      "net": 4
+      "total_cancels": 6,
+      "net": 3
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Norma",
         "sales": 0,
-        "cancels": 2,
-        "net": -2
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 170,
-      "cancels": 131
+      "cancels": 132
     },
     {
       "name": "Bev",
@@ -80,7 +80,7 @@
     },
     {
       "name": "Unhappy",
-      "count": 40,
+      "count": 41,
       "pct": 10
     },
     {
@@ -212,6 +212,13 @@
     {
       "date": "2026-10-16",
       "dateFmt": "Oct 16",
+      "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-16",
+      "dateFmt": "Oct 16",
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Lucy"
@@ -270,13 +277,6 @@
       "dateFmt": "Oct 13",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-12",
-      "dateFmt": "Oct 12",
-      "type": "Sale",
-      "category": "Noseeum",
       "csr": "Lucy"
     }
   ],
