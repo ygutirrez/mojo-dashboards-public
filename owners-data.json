@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-15T22:30:15.892Z",
-  "generated_date": "October 15, 2026",
+  "generated_at": "2026-10-16T09:21:46.937Z",
+  "generated_date": "October 16, 2026",
   "sales": {
     "csv_date": "2026-10-15",
     "total_sales": 584,
@@ -93,34 +93,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2033397,
+    "ytd_invoiced": 2042831,
     "avg_per_visit": 71,
-    "mtd": 103572,
-    "mtd_jobs": 1101
+    "mtd": 113006,
+    "mtd_jobs": 1220
   },
   "operations": {
     "total_jobs": 18651,
-    "jobs_per_tech_day": 10.1,
-    "revenue_per_tech_day": 497,
+    "jobs_per_tech_day": 10,
+    "revenue_per_tech_day": 495,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 206
+    "working_days_ytd": 207
   },
   "serviceminder": {
-    "generated_at": "2026-10-15T13:17:47.611Z",
+    "generated_at": "2026-10-16T09:21:46.937Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-15T13:17:38.704Z",
+      "generated_at": "2026-10-16T09:16:56.498Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 47207,
-      "contacts": 14207,
-      "invoices": 46290,
+      "appointments": 47268,
+      "contacts": 14219,
+      "invoices": 46409,
       "proposals": 1644
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,17 +227,17 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1550,
-    "total_cancels": 270,
-    "net": 1280,
+    "total_cancels": 276,
+    "net": 1274,
     "cancel_reasons": {
       "No Longer Needed": 62,
-      "Error": 46,
+      "Error": 48,
       "Workpool": 46,
       "Scheduling Conflict": 45,
       "Moving": 33,
-      "Financial": 19,
+      "Financial": 21,
       "Found Different Company": 15,
-      "Not Working": 3,
+      "Not Working": 5,
       "Weather": 1
     },
     "sale_categories": {

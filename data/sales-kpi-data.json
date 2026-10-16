@@ -1,39 +1,39 @@
 {
-  "updated_at": "2026-10-15T09:22:11.543Z",
-  "period": "Jan 1 - Oct 15, 2026 (YTD)",
+  "updated_at": "2026-10-16T09:21:46.937Z",
+  "period": "Jan 1 - Oct 16, 2026 (YTD)",
   "summary": {
-    "total_sales": 583,
-    "total_cancels": 391,
+    "total_sales": 584,
+    "total_cancels": 393,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 2032299,
-    "total_invoices": 22126,
+    "total_revenue": 2042831,
+    "total_invoices": 22255,
     "total_discounts": 15611,
-    "net": 192,
-    "days_tracked": 288,
+    "net": 191,
+    "days_tracked": 289,
     "sales_per_day": 2,
-    "revenue_per_day": 7057
+    "revenue_per_day": 7069
   },
   "office_tally": {
-    "csv_date": "2026-10-14",
-    "total_sales": 583,
-    "total_cancels": 391,
-    "net": 192,
+    "csv_date": "2026-10-15",
+    "total_sales": 584,
+    "total_cancels": 393,
+    "net": 191,
     "paused_wp": 85,
     "paused_pct": 22,
     "sale_categories": [
       {
         "name": "Barrier Spray",
-        "count": 211
+        "count": 212
       },
       {
         "name": "Restart",
-        "count": 142
+        "count": 141
       },
       {
         "name": "Event Spray",
-        "count": 90
+        "count": 91
       },
       {
         "name": "Noseeum",
@@ -114,17 +114,17 @@
       },
       {
         "name": "Financial",
-        "count": 45,
+        "count": 47,
         "pct": 12
       },
       {
         "name": "Unhappy",
-        "count": 39,
+        "count": 40,
         "pct": 10
       },
       {
         "name": "Barrier Spray",
-        "count": 19,
+        "count": 18,
         "pct": 5
       },
       {
@@ -324,8 +324,8 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 344,
-      "cancels": 129
+      "sales": 345,
+      "cancels": 130
     },
     {
       "name": "Norma",
@@ -335,7 +335,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 131
+      "cancels": 132
     }
   ],
   "weekly_trend": [
@@ -442,22 +442,22 @@
       "week": "Oct 12",
       "sales": 0,
       "cancels": 0,
-      "revenue": 17034,
+      "revenue": 31734,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 2017599
+      "cumulative_revenue": 2032299
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 2032299,
-    "days_elapsed": 288,
+    "ytd_revenue": 2042831,
+    "days_elapsed": 289,
     "days_total": 365,
-    "projected_annual": 2575657,
+    "projected_annual": 2580046,
     "on_pace": false,
-    "pct_of_target": 51.5
+    "pct_of_target": 51.6
   },
   "serviceminder_sales_preview": {
     "total_sales": 307,
@@ -470,27 +470,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-10-15T09:22:11.543Z"
+    "serviceminder_cutover_at": "2026-10-16T09:21:46.937Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-10-14",
-    "generated_at": "2026-10-15T09:17:32.473Z"
+    "sales_csv_date": "2026-10-15",
+    "generated_at": "2026-10-16T09:17:20.967Z"
   },
-  "total_sales": 583,
-  "total_cancels": 391,
+  "total_sales": 584,
+  "total_cancels": 393,
   "serviceminder": {
-    "generated_at": "2026-10-15T09:22:11.543Z",
+    "generated_at": "2026-10-16T09:21:46.937Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-15T09:17:07.415Z",
+      "generated_at": "2026-10-16T09:16:56.498Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 47190,
-      "contacts": 14206,
-      "invoices": 46280,
+      "appointments": 47268,
+      "contacts": 14219,
+      "invoices": 46409,
       "proposals": 1644
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -596,28 +596,28 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 2032299,
+    "revenue": 2042831,
     "proposals": 1644,
-    "invoiced_proposals": 1302,
-    "complete_proposals": 248,
+    "invoiced_proposals": 1299,
+    "complete_proposals": 251,
     "sources": {
-      "Online": 15223,
-      "Referral": 12968,
-      "MoJo Customer": 6758,
-      "Yard Sign": 4587,
-      "Direct Mail Postcard": 4290,
-      "Mosquito Joe Vehicle": 3300,
-      "Other": 1568,
-      "Advertising": 1181,
-      "Printed Material": 599,
-      "Mail Advertising": 489,
-      "Existing Customer": 399,
+      "Online": 15276,
+      "Referral": 13019,
+      "MoJo Customer": 6769,
+      "Yard Sign": 4608,
+      "Direct Mail Postcard": 4307,
+      "Mosquito Joe Vehicle": 3311,
+      "Other": 1572,
+      "Advertising": 1183,
+      "Printed Material": 600,
+      "Mail Advertising": 493,
+      "Existing Customer": 401,
       "Online Search": 295,
       "DMP": 207,
       "Local Branding": 93,
       "Accelerated": 90,
       "Neighborly": 88,
-      "Print Material": 81,
+      "Print Material": 82,
       "Event/Sponsorship": 57,
       "Email": 54,
       "Competitor": 51,
@@ -700,25 +700,25 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 102473.86,
-        "invoices": 1091,
-        "appointments": 3924,
+        "invoiceRevenue": 113005.97,
+        "invoices": 1220,
+        "appointments": 3930,
         "proposals": 0,
-        "cancels": 103
+        "cancels": 109
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3596,
+        "appointments": 3612,
         "proposals": 0,
-        "cancels": 36
+        "cancels": 37
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3511,
+        "appointments": 3538,
         "proposals": 0,
         "cancels": 35
       }
