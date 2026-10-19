@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-19T18:30:19.254Z",
+  "updated_at": "2026-10-19T19:00:17.785Z",
   "csv_date": "2026-10-19",
   "period": "Jan 1 - Oct 19, 2026 (YTD)",
   "summary": {
-    "total_sales": 585,
+    "total_sales": 586,
     "total_cancels": 397,
-    "net": 188,
+    "net": 189,
     "paused_wp": 88,
     "paused_pct": 22,
     "days_tracked": 292
@@ -15,11 +15,17 @@
     "end": "2026-10-25",
     "label": "Oct 19 – Oct 25",
     "summary": {
-      "total_sales": 0,
+      "total_sales": 1,
       "total_cancels": 2,
-      "net": -2
+      "net": -1
     },
     "csrs": [
+      {
+        "name": "Norma",
+        "sales": 1,
+        "cancels": 1,
+        "net": 0
+      },
       {
         "name": "Bev",
         "sales": 0,
@@ -28,12 +34,6 @@
       },
       {
         "name": "Lucy",
-        "sales": 0,
-        "cancels": 1,
-        "net": -1
-      },
-      {
-        "name": "Norma",
         "sales": 0,
         "cancels": 1,
         "net": -1
@@ -48,7 +48,7 @@
     },
     {
       "name": "Norma",
-      "sales": 170,
+      "sales": 171,
       "cancels": 134
     },
     {
@@ -156,11 +156,11 @@
       "count": 27
     },
     {
-      "name": "Perimeter Pest",
-      "count": 14
+      "name": "Bundle - HPD/Barrier",
+      "count": 15
     },
     {
-      "name": "Bundle - HPD/Barrier",
+      "name": "Perimeter Pest",
       "count": 14
     },
     {
@@ -209,6 +209,13 @@
     }
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-19",
+      "dateFmt": "Oct 19",
+      "type": "Sale",
+      "category": "Bundle - HPD/Barrier",
+      "csr": "Norma"
+    },
     {
       "date": "2026-10-19",
       "dateFmt": "Oct 19",
@@ -270,13 +277,6 @@
       "dateFmt": "Oct 15",
       "type": "Sale",
       "category": "Event Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-15",
-      "dateFmt": "Oct 15",
-      "type": "Cancel",
-      "category": "Financial",
       "csr": "Lucy"
     }
   ],
