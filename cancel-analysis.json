@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T09:17:07.963991+00:00",
+  "generated_at": "2026-10-19T09:16:44.080669+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-16",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-10-16.csv",
+    "office_tally_file": "sales-data-2026-10-19.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-18T09:16:13.624Z",
-      "appointments": "2026-10-18T09:16:02.037Z",
-      "invoices": "2026-10-18T09:16:25.223Z"
+      "contacts": "2026-10-19T09:16:03.516Z",
+      "appointments": "2026-10-19T09:15:54.935Z",
+      "invoices": "2026-10-19T09:16:18.044Z"
     }
   },
   "summary": {
@@ -46,7 +46,7 @@
     "sales_logged_ytd": 579,
     "sales_logged_since_first_loss": 297,
     "sales_logged_30d": 27,
-    "sales_logged_90d": 111,
+    "sales_logged_90d": 106,
     "restarts_ytd": 140,
     "restarts_30d": 2,
     "gross_activity_gap_30d": -2,

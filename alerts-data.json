@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T09:21:38.171Z",
+  "generated_at": "2026-10-19T09:21:32.291Z",
   "summary": {
     "total": 11,
     "critical": 5,
@@ -16,7 +16,7 @@
       "category": "data",
       "message": "1 of 4 key data files are stale (>48h)",
       "detail": "Run nightly sync or manual deploy",
-      "timestamp": "2026-10-17T09:22:02.743Z",
+      "timestamp": "2026-10-18T09:21:47.105Z",
       "source": "anomaly-detector"
     },
     {
@@ -25,7 +25,7 @@
       "category": "cancellations",
       "message": "\"Moved\" accounts for 31% of cancels",
       "detail": "160 of 509 events",
-      "timestamp": "2026-10-17T09:22:02.740Z",
+      "timestamp": "2026-10-18T09:21:47.102Z",
       "source": "anomaly-detector"
     },
     {
@@ -43,7 +43,7 @@
       "category": "seasonal",
       "message": "🔥 Peak season (month 10/12) — maximize revenue and customer retention",
       "detail": "Focus on: route efficiency, upsells, review collection, referral programs",
-      "timestamp": "2026-10-17T09:22:02.743Z",
+      "timestamp": "2026-10-18T09:21:47.105Z",
       "source": "anomaly-detector"
     },
     {
@@ -52,7 +52,7 @@
       "category": "operations",
       "message": "5 tech(s) below 50% of avg visits (714)",
       "detail": "Travis Johnson: 265, Curtis Blount: 237, Jeovany  Osorio: 183, Jordan Meddock: 85, Omar Sanchez: 1",
-      "timestamp": "2026-10-17T09:22:02.741Z",
+      "timestamp": "2026-10-18T09:21:47.103Z",
       "source": "anomaly-detector"
     },
     {
@@ -61,43 +61,43 @@
       "category": "cancellations",
       "message": "133 potentially recoverable cancels (26%)",
       "detail": "Win-back campaigns could target these",
-      "timestamp": "2026-10-17T09:22:02.740Z",
+      "timestamp": "2026-10-18T09:21:47.102Z",
       "source": "anomaly-detector"
     },
     {
       "id": "freshness-dashboard-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "dashboard-data.json is 2041h stale",
-      "detail": "Source: ServSuite, last updated 2041h ago",
-      "timestamp": "2026-10-17T09:22:02.843Z",
+      "message": "dashboard-data.json is 2065h stale",
+      "detail": "Source: ServSuite, last updated 2065h ago",
+      "timestamp": "2026-10-18T09:21:47.276Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-retention-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "retention-data.json is 2041h stale",
-      "detail": "Source: ServSuite, last updated 2041h ago",
-      "timestamp": "2026-10-17T09:22:02.843Z",
+      "message": "retention-data.json is 2065h stale",
+      "detail": "Source: ServSuite, last updated 2065h ago",
+      "timestamp": "2026-10-18T09:21:47.276Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-chemical-data.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "chemical-data.json is 2041h stale",
-      "detail": "Source: ServSuite, last updated 2041h ago",
-      "timestamp": "2026-10-17T09:22:02.843Z",
+      "message": "chemical-data.json is 2065h stale",
+      "detail": "Source: ServSuite, last updated 2065h ago",
+      "timestamp": "2026-10-18T09:21:47.276Z",
       "source": "sync-report"
     },
     {
       "id": "freshness-pipeline-status.json",
       "level": "critical",
       "category": "data-freshness",
-      "message": "pipeline-status.json is 2041h stale",
-      "detail": "Source: Internal, last updated 2041h ago",
-      "timestamp": "2026-10-17T09:22:02.843Z",
+      "message": "pipeline-status.json is 2065h stale",
+      "detail": "Source: Internal, last updated 2065h ago",
+      "timestamp": "2026-10-18T09:21:47.276Z",
       "source": "sync-report"
     },
     {
@@ -105,8 +105,8 @@
       "level": "critical",
       "category": "revenue",
       "message": "Revenue pace at 24% of $5M target",
-      "detail": "Projected: $1,191,118 vs target $5,000,000",
-      "timestamp": "2026-10-17T09:22:02.740Z",
+      "detail": "Projected: $1,187,025 vs target $5,000,000",
+      "timestamp": "2026-10-18T09:21:47.101Z",
       "source": "anomaly-detector"
     }
   ],
@@ -192,7 +192,7 @@
   "sources": {
     "anomaly": {
       "count": 6,
-      "generated_at": "2026-10-17T09:22:02.754Z"
+      "generated_at": "2026-10-18T09:21:47.122Z"
     },
     "pipeline": {
       "status": "warn",
@@ -203,13 +203,13 @@
     "fleet": {
       "vehicles": 13,
       "withTrouble": 0,
-      "generated_at": "2026-10-18T09:21:37.209Z"
+      "generated_at": "2026-10-19T09:21:31.670Z"
     },
     "sync": {
       "health_score": 94,
       "total": 17,
       "stale": 4,
-      "generated_at": "2026-10-17T09:22:02.843Z"
+      "generated_at": "2026-10-18T09:21:47.276Z"
     }
   }
 }
