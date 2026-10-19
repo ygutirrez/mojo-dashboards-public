@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-19T20:30:19.366Z",
+  "updated_at": "2026-10-19T21:00:27.514Z",
   "csv_date": "2026-10-19",
   "period": "Jan 1 - Oct 19, 2026 (YTD)",
   "summary": {
     "total_sales": 586,
-    "total_cancels": 397,
-    "net": 189,
+    "total_cancels": 398,
+    "net": 188,
     "paused_wp": 88,
     "paused_pct": 22,
     "days_tracked": 292
@@ -16,8 +16,8 @@
     "label": "Oct 19 – Oct 25",
     "summary": {
       "total_sales": 1,
-      "total_cancels": 2,
-      "net": -1
+      "total_cancels": 3,
+      "net": -2
     },
     "csrs": [
       {
@@ -29,8 +29,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 0,
-        "net": 0
+        "cancels": 1,
+        "net": -1
       },
       {
         "name": "Lucy",
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 132
+      "cancels": 133
     }
   ],
   "cancel_reasons": [
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 83,
+      "count": 84,
       "pct": 21
     },
     {
@@ -212,6 +212,13 @@
     {
       "date": "2026-10-19",
       "dateFmt": "Oct 19",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-19",
+      "dateFmt": "Oct 19",
       "type": "Sale",
       "category": "Bundle - HPD/Barrier",
       "csr": "Norma"
@@ -271,13 +278,6 @@
       "type": "Cancel",
       "category": "Unhappy",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-10-15",
-      "dateFmt": "Oct 15",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
