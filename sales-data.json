@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-20T15:00:20.106Z",
+  "updated_at": "2026-10-20T15:30:19.214Z",
   "csv_date": "2026-10-20",
   "period": "Jan 1 - Oct 20, 2026 (YTD)",
   "summary": {
-    "total_sales": 588,
-    "total_cancels": 398,
+    "total_sales": 587,
+    "total_cancels": 397,
     "net": 190,
     "paused_wp": 88,
     "paused_pct": 22,
@@ -15,8 +15,8 @@
     "end": "2026-10-25",
     "label": "Oct 19 – Oct 25",
     "summary": {
-      "total_sales": 3,
-      "total_cancels": 3,
+      "total_sales": 2,
+      "total_cancels": 2,
       "net": 0
     },
     "csrs": [
@@ -27,13 +27,13 @@
         "net": 1
       },
       {
-        "name": "Lucy",
-        "sales": 1,
-        "cancels": 1,
+        "name": "Bev",
+        "sales": 0,
+        "cancels": 0,
         "net": 0
       },
       {
-        "name": "Bev",
+        "name": "Lucy",
         "sales": 0,
         "cancels": 1,
         "net": -1
@@ -43,7 +43,7 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 347,
+      "sales": 346,
       "cancels": 131
     },
     {
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 133
+      "cancels": 132
     }
   ],
   "cancel_reasons": [
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 84,
+      "count": 83,
       "pct": 21
     },
     {
@@ -141,7 +141,7 @@
     },
     {
       "name": "Restart",
-      "count": 143
+      "count": 142
     },
     {
       "name": "Event Spray",
@@ -214,21 +214,7 @@
       "dateFmt": "Oct 20",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-20",
-      "dateFmt": "Oct 20",
-      "type": "Sale",
-      "category": "Restart",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-10-19",
-      "dateFmt": "Oct 19",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Bev"
     },
     {
       "date": "2026-10-19",
@@ -278,6 +264,20 @@
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-15",
+      "dateFmt": "Oct 15",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-15",
+      "dateFmt": "Oct 15",
+      "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Bev"
     }
   ],
   "top_reason": {
