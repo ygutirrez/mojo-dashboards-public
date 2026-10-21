@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: October 20, 2026 @ 5:17 am</div>
-        <div class="period">📅 Jan 1 - Oct 20, 2026 (YTD)</div>
+        <div class="updated">Last updated: October 21, 2026 @ 5:17 am</div>
+        <div class="period">📅 Jan 1 - Oct 21, 2026 (YTD)</div>
         <div class="updated">ServSuite exports + Office Tracking CSV.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>586 sales and 398 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
+        <p><strong>587 sales and 398 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -98,7 +98,7 @@
             <div class="podium-spot second">
                 <div class="rank">🥈</div>
                 <div class="name">Norma</div>
-                <div class="sales-count">171</div>
+                <div class="sales-count">172</div>
                 <div class="sales-label">sales | 134 cancels</div>
             </div>
             <div class="podium-spot first">
@@ -119,7 +119,7 @@
     <div class="metrics-grid">
         <div class="metric-card positive">
             <div class="label">Total Sales</div>
-            <div class="value">586</div>
+            <div class="value">587</div>
             <div class="subtext">Office tally YTD</div>
         </div>
         <div class="metric-card negative">
@@ -134,7 +134,7 @@
         </div>
         <div class="metric-card positive">
             <div class="label">Net Change</div>
-            <div class="value">+188</div>
+            <div class="value">+189</div>
             <div class="subtext">Customer base growing</div>
         </div>
         <div class="metric-card neutral">
@@ -144,8 +144,8 @@
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
-            <div class="value">293</div>
-            <div class="subtext">Jan 1 - Oct 20</div>
+            <div class="value">294</div>
+            <div class="subtext">Jan 1 - Oct 21</div>
         </div>
     </div>
 
@@ -157,7 +157,7 @@
         </div>
         <div class="metric-card warning">
             <div class="label">Moved</div>
-            <div class="value">84</div>
+            <div class="value">83</div>
             <div class="subtext">21% of cancellations</div>
         </div>
         <div class="metric-card warning">
@@ -225,6 +225,11 @@
             <div class="value">1</div>
             <div class="subtext">0% of cancellations</div>
         </div>
+        <div class="metric-card warning">
+            <div class="label">Misting System</div>
+            <div class="value">1</div>
+            <div class="subtext">0% of cancellations</div>
+        </div>
     </div>
 
     <div class="charts-grid">
@@ -257,9 +262,9 @@
             <div class="csr-card">
                 <div class="name">Norma</div>
                 <div class="stats">
-                    <span class="sales">📈 171 sales</span>
+                    <span class="sales">📈 172 sales</span>
                     <span>❌ 134 cancels</span>
-                    <span>📊 Net: 37</span>
+                    <span>📊 Net: 38</span>
                 </div>
             </div>
 
@@ -294,9 +299,9 @@
         new Chart(document.getElementById('cancelReasonsChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Paused/WP","Moved","Not Interested","Financial","Unhappy","Barrier Spray","One Time","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor"],
+                labels: ["Paused/WP","Moved","Not Interested","Financial","Unhappy","Barrier Spray","One Time","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor","Misting System"],
                 datasets: [{
-                    data: [88,84,68,47,41,18,17,15,11,2,2,2,1,1,1],
+                    data: [88,83,68,47,41,18,17,15,11,2,2,2,1,1,1,1],
                     backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
                     borderWidth: 0
                 }]
@@ -310,7 +315,7 @@
                 labels: ["Barrier Spray","Restart","Event Spray","Noseeum","Misting System","Bundle - HPD/Barrier","Perimeter Pest","One Time"],
                 datasets: [{
                     label: 'Sales',
-                    data: [213,141,91,35,27,15,14,11],
+                    data: [213,142,91,35,27,15,14,11],
                     backgroundColor: '#00ff88',
                     borderRadius: 4
                 }]
