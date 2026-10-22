@@ -1,758 +1,1088 @@
 {
   "meta": {
-    "generated": "2026-10-22T11:58:07.975Z",
-    "version": 2,
+    "generated": "2026-10-22T17:40:41.270Z",
+    "version": 3,
+    "source": "ServiceMinder Org API + Office Sales Tally",
+    "dataThrough": "2026-10-21",
+    "serviceMinderSyncAt": "2026-10-22T11:57:33.565Z",
     "sources": [
-      "Management Totals by Month.xlsx",
-      "Employee (primary) totals of work orders completed.xlsx",
-      "Completed WO detail by date.xlsx"
+      "ServiceMinder completed appointments",
+      "ServiceMinder org downloads",
+      "ServiceMinder cancellation analysis",
+      "Office sales tally"
     ]
   },
   "summary": {
     "ytd": {
-      "production": 919568.02,
-      "stops": 9998,
-      "avgRevPerStop": 91.98,
-      "sales": 273,
-      "cancels": 157,
-      "netCustomerChange": 116,
-      "estimates": 385,
-      "estimateConversion": 70.9,
-      "dailyProductionRate": 3127.78,
-      "annualPace": 1141641,
-      "daysElapsed": 294
+      "production": 2017987.72,
+      "stops": 22197,
+      "avgRevPerStop": 90.91,
+      "sales": 581,
+      "cancels": 148,
+      "netCustomerChange": 433,
+      "estimates": 183,
+      "estimateConversion": 0,
+      "dailyProductionRate": 6840.64,
+      "annualPace": 2496832,
+      "daysElapsed": 295
     },
-    "techCount": 14,
+    "techCount": 12,
     "topTech": {
       "name": "Damian Machin",
-      "visits": 1331,
-      "revenue": 124192.24,
-      "initials": 28,
-      "renewals": 0,
-      "serviceCalls": 9,
-      "avgRevPerVisit": 93.31
+      "visits": 2867,
+      "revenue": 255223.25,
+      "avgRevPerVisit": 89.02,
+      "resprays": 15,
+      "upsells": 0
     },
-    "programCount": 17
+    "programCount": 53
   },
   "monthly": [
     {
-      "period": "January - 2026",
-      "production": 193255.24,
-      "stops": 2046,
+      "period": "January 2026",
+      "production": 194665.66,
+      "stops": 2048,
       "skips": 0,
-      "estimatesReceived": 18,
-      "estimatesCompleted": 18,
-      "salesDollars": 2410.79,
-      "salesAccounts": 21,
-      "cancelsDollars": 8612.88,
-      "cancelsAccounts": 30,
-      "revenuePerStop": 94.45515151515151
+      "estimatesReceived": 7,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 12,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 95.05
     },
     {
-      "period": "February - 2026",
-      "production": 181956.29,
-      "stops": 1979,
+      "period": "February 2026",
+      "production": 182997.74,
+      "stops": 1977,
       "skips": 0,
-      "estimatesReceived": 29,
-      "estimatesCompleted": 29,
-      "salesDollars": 3499.71,
+      "estimatesReceived": 12,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 15,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 92.56
+    },
+    {
+      "period": "March 2026",
+      "production": 197660.49,
+      "stops": 2111,
+      "skips": 0,
+      "estimatesReceived": 33,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 83,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 93.63
+    },
+    {
+      "period": "April 2026",
+      "production": 214573.39,
+      "stops": 2348,
+      "skips": 0,
+      "estimatesReceived": 73,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 109,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 91.39
+    },
+    {
+      "period": "May 2026",
+      "production": 212879.22,
+      "stops": 2336,
+      "skips": 0,
+      "estimatesReceived": 58,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 106,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 10,
+      "revenuePerStop": 91.13
+    },
+    {
+      "period": "June 2026",
+      "production": 216469.97,
+      "stops": 2499,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 101,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 33,
+      "revenuePerStop": 86.62
+    },
+    {
+      "period": "July 2026",
+      "production": 228432.86,
+      "stops": 2593,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 68,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 31,
+      "revenuePerStop": 88.1
+    },
+    {
+      "period": "August 2026",
+      "production": 210740.36,
+      "stops": 2344,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 42,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 24,
+      "revenuePerStop": 89.91
+    },
+    {
+      "period": "September 2026",
+      "production": 209414.85,
+      "stops": 2321,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 26,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 29,
+      "revenuePerStop": 90.23
+    },
+    {
+      "period": "October 2026",
+      "production": 150153.18,
+      "stops": 1620,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
       "salesAccounts": 19,
-      "cancelsDollars": 5896.44,
-      "cancelsAccounts": 22,
-      "revenuePerStop": 91.94355229914099
-    },
-    {
-      "period": "March - 2026",
-      "production": 205834.96,
-      "stops": 2230,
-      "skips": 0,
-      "estimatesReceived": 80,
-      "estimatesCompleted": 80,
-      "salesDollars": 11391.04,
-      "salesAccounts": 62,
-      "cancelsDollars": 13944.51,
-      "cancelsAccounts": 56,
-      "revenuePerStop": 92.3026726457399
-    },
-    {
-      "period": "April - 2026",
-      "production": 221871.67,
-      "stops": 2461,
-      "skips": 0,
-      "estimatesReceived": 162,
-      "estimatesCompleted": 162,
-      "salesDollars": 20996.03,
-      "salesAccounts": 113,
-      "cancelsDollars": 9514.18,
-      "cancelsAccounts": 38,
-      "revenuePerStop": 90.15508736286063
-    },
-    {
-      "period": "May - 2026",
-      "production": 116649.86,
-      "stops": 1282,
-      "skips": 0,
-      "estimatesReceived": 96,
-      "estimatesCompleted": 89,
-      "salesDollars": 10274.88,
-      "salesAccounts": 58,
-      "cancelsDollars": 3009.64,
-      "cancelsAccounts": 11,
-      "revenuePerStop": 90.99053042121685
-    },
-    {
-      "period": "June - 2026",
-      "production": 0,
-      "stops": 0,
-      "skips": 0,
-      "estimatesReceived": 0,
-      "estimatesCompleted": 0,
-      "salesDollars": 0,
-      "salesAccounts": 0,
       "cancelsDollars": 0,
-      "cancelsAccounts": 0,
-      "revenuePerStop": 0
-    },
-    {
-      "period": "July - 2026",
-      "production": 0,
-      "stops": 0,
-      "skips": 0,
-      "estimatesReceived": 0,
-      "estimatesCompleted": 0,
-      "salesDollars": 0,
-      "salesAccounts": 0,
-      "cancelsDollars": 0,
-      "cancelsAccounts": 0,
-      "revenuePerStop": 0
+      "cancelsAccounts": 21,
+      "revenuePerStop": 92.69
     }
   ],
   "monthlyComparison": {
     "current": {
-      "period": "July - 2026",
-      "production": 0,
-      "stops": 0,
-      "sales": 0,
-      "cancels": 0,
+      "period": "October 2026",
+      "production": 150153.18,
+      "stops": 1620,
+      "sales": 19,
+      "cancels": 21,
       "daysElapsed": 22,
-      "dailyPace": 0
+      "dailyPace": 6825.14
     },
     "previous": {
-      "period": "June - 2026",
-      "production": 0,
-      "stops": 0,
-      "sales": 0,
-      "cancels": 0,
+      "period": "September 2026",
+      "production": 209414.85,
+      "stops": 2321,
+      "sales": 26,
+      "cancels": 29,
       "daysElapsed": 30,
-      "dailyPace": 0
+      "dailyPace": 6980.5
     },
     "changes": {
-      "productionPace": 0,
-      "stopsPerDay": 0,
-      "revPerStop": 0
+      "productionPace": -2,
+      "stopsPerDay": -3.7,
+      "revPerStop": 2.46
     }
   },
   "technicians": [
     {
       "name": "Damian Machin",
-      "visits": 1331,
-      "revenue": 124192.24,
-      "initials": 28,
-      "renewals": 0,
-      "serviceCalls": 9,
-      "avgRevPerVisit": 93.31
+      "visits": 2867,
+      "revenue": 255223.25,
+      "avgRevPerVisit": 89.02,
+      "resprays": 15,
+      "upsells": 0
     },
     {
       "name": "Stanley Prophete",
-      "visits": 1268,
-      "revenue": 117493.61,
-      "initials": 12,
-      "renewals": 0,
-      "serviceCalls": 5,
-      "avgRevPerVisit": 92.66
-    },
-    {
-      "name": "Marcus Rubi",
-      "visits": 1171,
-      "revenue": 94504.23,
-      "initials": 20,
-      "renewals": 0,
-      "serviceCalls": 4,
-      "avgRevPerVisit": 80.7
+      "visits": 2634,
+      "revenue": 238415.14,
+      "avgRevPerVisit": 90.51,
+      "resprays": 7,
+      "upsells": 0
     },
     {
       "name": "David Carbajal",
-      "visits": 1138,
-      "revenue": 101812.84,
-      "initials": 20,
-      "renewals": 0,
-      "serviceCalls": 7,
-      "avgRevPerVisit": 89.47
+      "visits": 2486,
+      "revenue": 209222.22,
+      "avgRevPerVisit": 84.16,
+      "resprays": 10,
+      "upsells": 4
     },
     {
-      "name": "John Sabin",
-      "visits": 1099,
-      "revenue": 98889.8,
-      "initials": 11,
-      "renewals": 0,
-      "serviceCalls": 4,
-      "avgRevPerVisit": 89.98
-    },
-    {
-      "name": "Andrew Schamel",
-      "visits": 1012,
-      "revenue": 87913.06,
-      "initials": 18,
-      "renewals": 0,
-      "serviceCalls": 5,
-      "avgRevPerVisit": 86.87
+      "name": "Marcus Rubi",
+      "visits": 2435,
+      "revenue": 190089.92,
+      "avgRevPerVisit": 78.07,
+      "resprays": 11,
+      "upsells": 0
     },
     {
       "name": "Joseph Pagan",
-      "visits": 735,
-      "revenue": 116672.99,
-      "initials": 2,
-      "renewals": 0,
-      "serviceCalls": 1,
-      "avgRevPerVisit": 158.74
-    },
-    {
-      "name": "Jeffrey Baptiste",
-      "visits": 714,
-      "revenue": 63941.7,
-      "initials": 14,
-      "renewals": 0,
-      "serviceCalls": 9,
-      "avgRevPerVisit": 89.55
+      "visits": 1521,
+      "revenue": 249611.19,
+      "avgRevPerVisit": 164.11,
+      "resprays": 0,
+      "upsells": 1
     },
     {
       "name": "Jorge Navarro",
-      "visits": 569,
-      "revenue": 47579.99,
-      "initials": 15,
-      "renewals": 0,
-      "serviceCalls": 6,
-      "avgRevPerVisit": 83.62
-    },
-    {
-      "name": "Travis Johnson",
-      "visits": 256,
-      "revenue": 24543.62,
-      "initials": 4,
-      "renewals": 0,
-      "serviceCalls": 5,
-      "avgRevPerVisit": 95.87
+      "visits": 1270,
+      "revenue": 103189.09,
+      "avgRevPerVisit": 81.25,
+      "resprays": 11,
+      "upsells": 2
     },
     {
       "name": "Curtis Blount",
-      "visits": 230,
-      "revenue": 19729.19,
-      "initials": 6,
-      "renewals": 0,
-      "serviceCalls": 1,
-      "avgRevPerVisit": 85.78
+      "visits": 1034,
+      "revenue": 85967.24,
+      "avgRevPerVisit": 83.14,
+      "resprays": 8,
+      "upsells": 0
     },
     {
-      "name": "Jeovany Osorio",
-      "visits": 183,
-      "revenue": 18406.4,
-      "initials": 0,
-      "renewals": 0,
-      "serviceCalls": 0,
-      "avgRevPerVisit": 100.58
+      "name": "Lenny Pierre",
+      "visits": 985,
+      "revenue": 83301.41,
+      "avgRevPerVisit": 84.57,
+      "resprays": 13,
+      "upsells": 0
     },
     {
-      "name": "Jordan Meddock",
-      "visits": 81,
-      "revenue": 6547.18,
-      "initials": 4,
-      "renewals": 0,
-      "serviceCalls": 0,
-      "avgRevPerVisit": 80.83
+      "name": "Guillermo Rodriguez",
+      "visits": 951,
+      "revenue": 85831.03,
+      "avgRevPerVisit": 90.25,
+      "resprays": 3,
+      "upsells": 0
     },
     {
-      "name": "Omar Sanchez",
-      "visits": 1,
-      "revenue": 75.99,
-      "initials": 0,
-      "renewals": 0,
-      "serviceCalls": 0,
-      "avgRevPerVisit": 75.99
+      "name": "Travis Johnson",
+      "visits": 826,
+      "revenue": 70098.9,
+      "avgRevPerVisit": 84.87,
+      "resprays": 5,
+      "upsells": 0
+    },
+    {
+      "name": "Wilbeni Pierre",
+      "visits": 817,
+      "revenue": 72970.12,
+      "avgRevPerVisit": 89.31,
+      "resprays": 4,
+      "upsells": 0
+    },
+    {
+      "name": "Michael Sanon",
+      "visits": 351,
+      "revenue": 26850.98,
+      "avgRevPerVisit": 76.5,
+      "resprays": 0,
+      "upsells": 0
     }
   ],
   "techEfficiency": {
-    "avgVisitsPerTech": 699,
-    "avgRevPerVisit": 93.14,
+    "avgVisitsPerTech": 1850,
+    "avgRevPerVisit": 90.91,
     "topPerformer": {
       "name": "Damian Machin",
-      "revenue": 124192.24,
-      "visits": 1331
+      "visits": 2867,
+      "revenue": 255223.25,
+      "avgRevPerVisit": 89.02,
+      "resprays": 15,
+      "upsells": 0
     },
     "bottomPerformer": {
-      "name": "Marcus Rubi",
-      "avgRevPerVisit": 80.7,
-      "visits": 1171
+      "name": "Michael Sanon",
+      "visits": 351,
+      "revenue": 26850.98,
+      "avgRevPerVisit": 76.5,
+      "resprays": 0,
+      "upsells": 0
     },
-    "revenueConcentration": 13
+    "revenueConcentration": 15
   },
   "workOrders": {
     "byProgram": [
       {
-        "name": "Signature Program",
-        "count": 7379,
-        "revenue": 616877.38
+        "name": "Mojo Essential",
+        "count": 9677,
+        "revenue": 827427.28
       },
       {
-        "name": "Residential Service",
-        "count": 1102,
-        "revenue": 98108.49
+        "name": "Synthetic Barrier Spray - 2 week",
+        "count": 7503,
+        "revenue": 626090.35
       },
       {
-        "name": "Misting Systems",
-        "count": 439,
-        "revenue": 93529.41
+        "name": "Gnat/Midge/No-seeums Service - 2 weeks",
+        "count": 706,
+        "revenue": 92123.93
       },
       {
-        "name": "Home Pest Defense",
-        "count": 233,
-        "revenue": 19094.04
+        "name": "Misting System Recurring Service Bi-Monthly",
+        "count": 598,
+        "revenue": 147960.17
       },
       {
-        "name": "Barrier Spray Program - 1 week",
-        "count": 231,
-        "revenue": 19507.69
+        "name": "Accelerated - Synthetic Signature Service",
+        "count": 484,
+        "revenue": 32282.55
       },
       {
-        "name": "Commercial Service",
-        "count": 170,
-        "revenue": 33944.55
+        "name": "HPD - 42 Days",
+        "count": 475,
+        "revenue": 37524.87
       },
       {
-        "name": "Residential - One Time Services",
-        "count": 90,
-        "revenue": 9699.72
+        "name": "Synthetic Barrier Spray - 4 week",
+        "count": 403,
+        "revenue": 31669.46
       },
       {
-        "name": "Barrier Spray Program - 2 weeks",
-        "count": 66,
-        "revenue": 7205.45
+        "name": "All-Natural Barrier Spray",
+        "count": 297,
+        "revenue": 31234.11
       },
       {
-        "name": "Inzecto Traps",
-        "count": 66,
-        "revenue": 5299.35
+        "name": "Signature Single Svc 1",
+        "count": 162,
+        "revenue": 12642.98
       },
       {
-        "name": "Other Insects / Specialty Services",
-        "count": 61,
-        "revenue": 7523.39
+        "name": "Synthetic Signature Single Svc 3",
+        "count": 162,
+        "revenue": 12618.69
       },
       {
-        "name": "In2Care",
-        "count": 60,
-        "revenue": 4520
+        "name": "Synthetic Signature Single Svc 2",
+        "count": 161,
+        "revenue": 12630.1
       },
       {
-        "name": "Barrier Spray Program - 4 weeks",
+        "name": "Re-Spray",
+        "count": 145,
+        "revenue": 0
+      },
+      {
+        "name": "Misting system - 4 Weeks",
+        "count": 132,
+        "revenue": 31066.42
+      },
+      {
+        "name": "Special Event Service",
+        "count": 115,
+        "revenue": 11024.21
+      },
+      {
+        "name": "In2Care Service - 4 Weeks Service",
+        "count": 110,
+        "revenue": 8428
+      },
+      {
+        "name": "InZecto Trap Service",
+        "count": 110,
+        "revenue": 8199.86
+      },
+      {
+        "name": "Property Assessment",
+        "count": 108,
+        "revenue": 0
+      },
+      {
+        "name": "Special Event Spray",
+        "count": 87,
+        "revenue": 9528.75
+      },
+      {
+        "name": "Misting System Repair Service",
+        "count": 78,
+        "revenue": 9740.5
+      },
+      {
+        "name": "Misting system - 6 Weeks",
+        "count": 65,
+        "revenue": 20187.18
+      },
+      {
+        "name": "Signature Service",
         "count": 51,
-        "revenue": 4073.54
+        "revenue": 3727.59
       },
       {
-        "name": "In2Care Service - 3 Weeks",
-        "count": 25,
-        "revenue": 856
+        "name": "Inzecto Trap Replacement",
+        "count": 50,
+        "revenue": 4648.72
+      },
+      {
+        "name": "Misting System Service - 2 week",
+        "count": 48,
+        "revenue": 0
+      },
+      {
+        "name": "In2Care Service",
+        "count": 47,
+        "revenue": 1404
+      },
+      {
+        "name": "Synthetic + In2Care",
+        "count": 40,
+        "revenue": 5441.73
+      },
+      {
+        "name": "Mojo Essential - Eco Friendly",
+        "count": 40,
+        "revenue": 4282.71
+      },
+      {
+        "name": "One-time Service",
+        "count": 37,
+        "revenue": 3528.68
+      },
+      {
+        "name": "Misting System Installation",
+        "count": 36,
+        "revenue": 0
       },
       {
         "name": "Flea & Tick Treatment",
-        "count": 16,
-        "revenue": 1418.84
+        "count": 35,
+        "revenue": 3148.67
       },
       {
-        "name": "Fly Program",
+        "name": "Flea Service",
+        "count": 30,
+        "revenue": 2642.7
+      },
+      {
+        "name": "Gnats/Midges/No-seeums - 3 week",
+        "count": 26,
+        "revenue": 3449.74
+      },
+      {
+        "name": "Gnats/Midges/No-see-ums",
+        "count": 23,
+        "revenue": 2949.27
+      },
+      {
+        "name": "HPD - One Time Treatment",
+        "count": 22,
+        "revenue": 2282.9
+      },
+      {
+        "name": "Fly Management Service",
+        "count": 21,
+        "revenue": 660
+      },
+      {
+        "name": "Misting System Equipment",
+        "count": 19,
+        "revenue": 4464.5
+      },
+      {
+        "name": "One-Time Spray",
+        "count": 18,
+        "revenue": 1642.86
+      },
+      {
+        "name": "HPD - Quarterly",
+        "count": 12,
+        "revenue": 1019.88
+      },
+      {
+        "name": "Misting System Refill",
+        "count": 10,
+        "revenue": 2700
+      },
+      {
+        "name": "Inzecto Installation",
+        "count": 9,
+        "revenue": 450
+      },
+      {
+        "name": "RT Service Monthly",
+        "count": 8,
+        "revenue": 475
+      },
+      {
+        "name": "Synthetic Barrier Spray - 1 week",
+        "count": 7,
+        "revenue": 4018
+      },
+      {
+        "name": "HPD - 56 Days",
         "count": 5,
-        "revenue": 250
+        "revenue": 319.95
       },
       {
-        "name": "Commercial - One Time Services",
-        "count": 2,
-        "revenue": 225
+        "name": "LIV Installation",
+        "count": 5,
+        "revenue": 349.99
       },
       {
-        "name": "LIV System",
+        "name": "Misting System Service",
+        "count": 4,
+        "revenue": 352.5
+      },
+      {
+        "name": "LIV System Service",
+        "count": 4,
+        "revenue": 40
+      },
+      {
+        "name": "Quarterly Tick & Flea Treatment",
+        "count": 3,
+        "revenue": 287.97
+      },
+      {
+        "name": "LIV Refill",
         "count": 2,
-        "revenue": 169.99
+        "revenue": 714.98
+      },
+      {
+        "name": "Synthetic Barrier Spray - 6 week",
+        "count": 2,
+        "revenue": 179.98
+      },
+      {
+        "name": "In2Care Setup",
+        "count": 1,
+        "revenue": 96
+      },
+      {
+        "name": "Rodent Control Set-up",
+        "count": 1,
+        "revenue": 90
+      },
+      {
+        "name": "LIV Repair/Service",
+        "count": 1,
+        "revenue": 0
+      },
+      {
+        "name": "Barrier Spray - 8 Week",
+        "count": 1,
+        "revenue": 89.99
+      },
+      {
+        "name": "Flea Service - 4 Weeks",
+        "count": 1,
+        "revenue": 150
       }
     ],
     "weeklyTrend": [
       {
         "week": "2025-12-28",
-        "stops": 14,
-        "revenue": 2181.96
+        "stops": 15,
+        "revenue": 2257.95
       },
       {
         "week": "2026-01-04",
-        "stops": 556,
-        "revenue": 54694.19
+        "stops": 559,
+        "revenue": 55852.16
       },
       {
         "week": "2026-01-11",
         "stops": 513,
-        "revenue": 49160.88
+        "revenue": 50290.88
       },
       {
         "week": "2026-01-18",
-        "stops": 461,
-        "revenue": 42150.77
+        "stops": 463,
+        "revenue": 41187.75
       },
       {
         "week": "2026-01-25",
-        "stops": 502,
-        "revenue": 46241.91
+        "stops": 498,
+        "revenue": 45076.92
       },
       {
         "week": "2026-02-01",
-        "stops": 512,
-        "revenue": 45479.68
+        "stops": 513,
+        "revenue": 45670.67
       },
       {
         "week": "2026-02-08",
-        "stops": 519,
-        "revenue": 52355.98
+        "stops": 520,
+        "revenue": 53061.97
       },
       {
         "week": "2026-02-15",
-        "stops": 477,
-        "revenue": 42213.55
+        "stops": 480,
+        "revenue": 42441.52
       },
       {
         "week": "2026-02-22",
-        "stops": 471,
-        "revenue": 42003.55
+        "stops": 464,
+        "revenue": 41823.58
       },
       {
         "week": "2026-03-01",
-        "stops": 496,
-        "revenue": 46180.03
+        "stops": 498,
+        "revenue": 46892.01
       },
       {
         "week": "2026-03-08",
-        "stops": 509,
-        "revenue": 49568.66
+        "stops": 511,
+        "revenue": 51190.61
       },
       {
         "week": "2026-03-15",
-        "stops": 508,
-        "revenue": 48032.76
+        "stops": 509,
+        "revenue": 46248.85
       },
       {
         "week": "2026-03-22",
-        "stops": 515,
-        "revenue": 45592.26
+        "stops": 517,
+        "revenue": 45913.19
       },
       {
         "week": "2026-03-29",
-        "stops": 546,
-        "revenue": 49416
+        "stops": 422,
+        "revenue": 39571.62
       },
       {
         "week": "2026-04-05",
         "stops": 525,
-        "revenue": 46939.26
+        "revenue": 47374.43
       },
       {
         "week": "2026-04-12",
-        "stops": 597,
-        "revenue": 54992.83
+        "stops": 599,
+        "revenue": 55274.81
       },
       {
         "week": "2026-04-19",
-        "stops": 552,
-        "revenue": 49038.03
+        "stops": 555,
+        "revenue": 49286
       },
       {
         "week": "2026-04-26",
-        "stops": 558,
-        "revenue": 49407.19
+        "stops": 438,
+        "revenue": 40535.34
       },
       {
         "week": "2026-05-03",
-        "stops": 608,
-        "revenue": 56162.93
+        "stops": 610,
+        "revenue": 57147.41
       },
       {
         "week": "2026-05-10",
-        "stops": 559,
-        "revenue": 50490.42
+        "stops": 570,
+        "revenue": 51763.33
+      },
+      {
+        "week": "2026-05-17",
+        "stops": 570,
+        "revenue": 53456.25
+      },
+      {
+        "week": "2026-05-24",
+        "stops": 471,
+        "revenue": 40459.25
+      },
+      {
+        "week": "2026-05-31",
+        "stops": 665,
+        "revenue": 56909.62
+      },
+      {
+        "week": "2026-06-07",
+        "stops": 604,
+        "revenue": 52369.73
+      },
+      {
+        "week": "2026-06-14",
+        "stops": 556,
+        "revenue": 45150.67
+      },
+      {
+        "week": "2026-06-21",
+        "stops": 552,
+        "revenue": 51821.73
+      },
+      {
+        "week": "2026-06-28",
+        "stops": 434,
+        "revenue": 37399.93
+      },
+      {
+        "week": "2026-07-05",
+        "stops": 590,
+        "revenue": 52213.85
+      },
+      {
+        "week": "2026-07-12",
+        "stops": 625,
+        "revenue": 54570.87
+      },
+      {
+        "week": "2026-07-19",
+        "stops": 620,
+        "revenue": 54766.07
+      },
+      {
+        "week": "2026-07-26",
+        "stops": 460,
+        "revenue": 41340.94
+      },
+      {
+        "week": "2026-08-02",
+        "stops": 586,
+        "revenue": 51144.1
+      },
+      {
+        "week": "2026-08-09",
+        "stops": 586,
+        "revenue": 53308.38
+      },
+      {
+        "week": "2026-08-16",
+        "stops": 580,
+        "revenue": 53226.9
+      },
+      {
+        "week": "2026-08-23",
+        "stops": 578,
+        "revenue": 51420.4
+      },
+      {
+        "week": "2026-08-30",
+        "stops": 488,
+        "revenue": 45529.57
+      },
+      {
+        "week": "2026-09-06",
+        "stops": 516,
+        "revenue": 47614.86
+      },
+      {
+        "week": "2026-09-13",
+        "stops": 569,
+        "revenue": 49195.43
+      },
+      {
+        "week": "2026-09-20",
+        "stops": 565,
+        "revenue": 50416.73
+      },
+      {
+        "week": "2026-09-27",
+        "stops": 314,
+        "revenue": 29329.44
+      },
+      {
+        "week": "2026-10-04",
+        "stops": 610,
+        "revenue": 56685.23
+      },
+      {
+        "week": "2026-10-11",
+        "stops": 574,
+        "revenue": 52504.71
+      },
+      {
+        "week": "2026-10-18",
+        "stops": 305,
+        "revenue": 28292.06
       }
     ],
-    "totalWOs": 9998
+    "totalWOs": 22197
   },
   "dailyProduction": [
     {
-      "date": "2026-04-11",
-      "stops": 34,
-      "revenue": 2493.21,
+      "date": "2026-09-16",
+      "stops": 128,
+      "revenue": 12271.84,
+      "techCount": 10,
+      "avgStopsPerTech": 12.8
+    },
+    {
+      "date": "2026-09-17",
+      "stops": 108,
+      "revenue": 8733.16,
+      "techCount": 8,
+      "avgStopsPerTech": 13.5
+    },
+    {
+      "date": "2026-09-18",
+      "stops": 80,
+      "revenue": 6421,
+      "techCount": 8,
+      "avgStopsPerTech": 10
+    },
+    {
+      "date": "2026-09-19",
+      "stops": 28,
+      "revenue": 2867.56,
       "techCount": 2,
-      "avgStopsPerTech": 17
+      "avgStopsPerTech": 14
     },
     {
-      "date": "2026-04-13",
-      "stops": 119,
-      "revenue": 12112.44,
+      "date": "2026-09-21",
+      "stops": 120,
+      "revenue": 12109.17,
       "techCount": 9,
-      "avgStopsPerTech": 13.2
+      "avgStopsPerTech": 13.3
     },
     {
-      "date": "2026-04-14",
+      "date": "2026-09-22",
       "stops": 110,
-      "revenue": 9850.93,
+      "revenue": 10800.58,
       "techCount": 8,
       "avgStopsPerTech": 13.8
     },
     {
-      "date": "2026-04-15",
-      "stops": 127,
-      "revenue": 13110.75,
+      "date": "2026-09-23",
+      "stops": 89,
+      "revenue": 7861.62,
       "techCount": 8,
-      "avgStopsPerTech": 15.9
+      "avgStopsPerTech": 11.1
     },
     {
-      "date": "2026-04-16",
-      "stops": 133,
-      "revenue": 10434.63,
+      "date": "2026-09-24",
+      "stops": 134,
+      "revenue": 10815.38,
       "techCount": 9,
-      "avgStopsPerTech": 14.8
+      "avgStopsPerTech": 14.9
     },
     {
-      "date": "2026-04-17",
-      "stops": 93,
-      "revenue": 7792.16,
+      "date": "2026-09-25",
+      "stops": 99,
+      "revenue": 7691.11,
       "techCount": 9,
-      "avgStopsPerTech": 10.3
+      "avgStopsPerTech": 11
     },
     {
-      "date": "2026-04-18",
+      "date": "2026-09-26",
+      "stops": 13,
+      "revenue": 1138.87,
+      "techCount": 1,
+      "avgStopsPerTech": 13
+    },
+    {
+      "date": "2026-09-28",
+      "stops": 95,
+      "revenue": 9771.07,
+      "techCount": 9,
+      "avgStopsPerTech": 10.6
+    },
+    {
+      "date": "2026-09-29",
+      "stops": 88,
+      "revenue": 6887.19,
+      "techCount": 9,
+      "avgStopsPerTech": 9.8
+    },
+    {
+      "date": "2026-10-01",
+      "stops": 7,
+      "revenue": 527.95,
+      "techCount": 3,
+      "avgStopsPerTech": 2.3
+    },
+    {
+      "date": "2026-10-02",
+      "stops": 109,
+      "revenue": 10119.72,
+      "techCount": 9,
+      "avgStopsPerTech": 12.1
+    },
+    {
+      "date": "2026-10-03",
       "stops": 15,
-      "revenue": 1691.92,
+      "revenue": 2023.51,
       "techCount": 1,
       "avgStopsPerTech": 15
     },
     {
-      "date": "2026-04-20",
-      "stops": 72,
-      "revenue": 6148.82,
-      "techCount": 7,
-      "avgStopsPerTech": 10.3
+      "date": "2026-10-05",
+      "stops": 105,
+      "revenue": 9716.21,
+      "techCount": 8,
+      "avgStopsPerTech": 13.1
     },
     {
-      "date": "2026-04-21",
-      "stops": 128,
-      "revenue": 10809.87,
-      "techCount": 9,
-      "avgStopsPerTech": 14.2
-    },
-    {
-      "date": "2026-04-22",
-      "stops": 119,
-      "revenue": 11755.46,
-      "techCount": 10,
-      "avgStopsPerTech": 11.9
-    },
-    {
-      "date": "2026-04-23",
+      "date": "2026-10-06",
       "stops": 131,
-      "revenue": 10846.76,
-      "techCount": 9,
-      "avgStopsPerTech": 14.6
+      "revenue": 12916.99,
+      "techCount": 10,
+      "avgStopsPerTech": 13.1
     },
     {
-      "date": "2026-04-24",
-      "stops": 93,
-      "revenue": 8431.19,
-      "techCount": 8,
-      "avgStopsPerTech": 11.6
-    },
-    {
-      "date": "2026-04-25",
-      "stops": 9,
-      "revenue": 1045.93,
-      "techCount": 1,
-      "avgStopsPerTech": 9
-    },
-    {
-      "date": "2026-04-27",
-      "stops": 110,
-      "revenue": 10321.47,
-      "techCount": 8,
-      "avgStopsPerTech": 13.8
-    },
-    {
-      "date": "2026-04-28",
-      "stops": 92,
-      "revenue": 7742.01,
-      "techCount": 8,
-      "avgStopsPerTech": 11.5
-    },
-    {
-      "date": "2026-04-29",
-      "stops": 117,
-      "revenue": 11342.89,
-      "techCount": 9,
-      "avgStopsPerTech": 13
-    },
-    {
-      "date": "2026-04-30",
-      "stops": 124,
-      "revenue": 9907.84,
-      "techCount": 8,
-      "avgStopsPerTech": 15.5
-    },
-    {
-      "date": "2026-05-01",
-      "stops": 106,
-      "revenue": 9142.06,
-      "techCount": 9,
-      "avgStopsPerTech": 11.8
-    },
-    {
-      "date": "2026-05-02",
-      "stops": 9,
-      "revenue": 950.92,
-      "techCount": 1,
-      "avgStopsPerTech": 9
-    },
-    {
-      "date": "2026-05-04",
-      "stops": 74,
-      "revenue": 7008.34,
-      "techCount": 7,
-      "avgStopsPerTech": 10.6
-    },
-    {
-      "date": "2026-05-05",
+      "date": "2026-10-07",
       "stops": 115,
-      "revenue": 9643.01,
+      "revenue": 11355.09,
       "techCount": 9,
       "avgStopsPerTech": 12.8
     },
     {
-      "date": "2026-05-06",
-      "stops": 127,
-      "revenue": 11795.1,
-      "techCount": 9,
-      "avgStopsPerTech": 14.1
-    },
-    {
-      "date": "2026-05-07",
-      "stops": 151,
-      "revenue": 13527.69,
+      "date": "2026-10-08",
+      "stops": 155,
+      "revenue": 12882.63,
       "techCount": 10,
-      "avgStopsPerTech": 15.1
+      "avgStopsPerTech": 15.5
     },
     {
-      "date": "2026-05-08",
-      "stops": 126,
-      "revenue": 12766.88,
-      "techCount": 9,
-      "avgStopsPerTech": 14
-    },
-    {
-      "date": "2026-05-09",
-      "stops": 15,
-      "revenue": 1421.91,
-      "techCount": 1,
-      "avgStopsPerTech": 15
-    },
-    {
-      "date": "2026-05-11",
-      "stops": 107,
-      "revenue": 9276.99,
-      "techCount": 8,
-      "avgStopsPerTech": 13.4
-    },
-    {
-      "date": "2026-05-12",
-      "stops": 119,
-      "revenue": 11720.58,
-      "techCount": 10,
-      "avgStopsPerTech": 11.9
-    },
-    {
-      "date": "2026-05-13",
-      "stops": 133,
-      "revenue": 12680.69,
-      "techCount": 9,
-      "avgStopsPerTech": 14.8
-    },
-    {
-      "date": "2026-05-14",
-      "stops": 113,
-      "revenue": 8717.93,
-      "techCount": 8,
-      "avgStopsPerTech": 14.1
-    },
-    {
-      "date": "2026-05-15",
+      "date": "2026-10-09",
       "stops": 87,
-      "revenue": 8094.23,
+      "revenue": 8060.56,
+      "techCount": 7,
+      "avgStopsPerTech": 12.4
+    },
+    {
+      "date": "2026-10-10",
+      "stops": 17,
+      "revenue": 1753.75,
+      "techCount": 2,
+      "avgStopsPerTech": 8.5
+    },
+    {
+      "date": "2026-10-12",
+      "stops": 103,
+      "revenue": 8645.91,
+      "techCount": 7,
+      "avgStopsPerTech": 14.7
+    },
+    {
+      "date": "2026-10-13",
+      "stops": 103,
+      "revenue": 8272.09,
+      "techCount": 7,
+      "avgStopsPerTech": 14.7
+    },
+    {
+      "date": "2026-10-14",
+      "stops": 141,
+      "revenue": 14913.58,
       "techCount": 9,
-      "avgStopsPerTech": 9.7
+      "avgStopsPerTech": 15.7
+    },
+    {
+      "date": "2026-10-15",
+      "stops": 127,
+      "revenue": 10448.6,
+      "techCount": 8,
+      "avgStopsPerTech": 15.9
+    },
+    {
+      "date": "2026-10-16",
+      "stops": 92,
+      "revenue": 9242.19,
+      "techCount": 9,
+      "avgStopsPerTech": 10.2
+    },
+    {
+      "date": "2026-10-17",
+      "stops": 8,
+      "revenue": 982.34,
+      "techCount": 1,
+      "avgStopsPerTech": 8
+    },
+    {
+      "date": "2026-10-19",
+      "stops": 97,
+      "revenue": 10151.4,
+      "techCount": 7,
+      "avgStopsPerTech": 13.9
+    },
+    {
+      "date": "2026-10-20",
+      "stops": 90,
+      "revenue": 7982.81,
+      "techCount": 8,
+      "avgStopsPerTech": 11.3
+    },
+    {
+      "date": "2026-10-21",
+      "stops": 118,
+      "revenue": 10157.85,
+      "techCount": 8,
+      "avgStopsPerTech": 14.8
     }
   ],
   "seasonScore": {
-    "score": 40,
+    "score": 55,
     "factors": [
-      "✅ 13 active techs",
-      "⚠️ Sales flat/down (0 → 0)",
-      "⚠️ Cancels ↑ (0 → 0)",
-      "❌ Well below $5M ($1142k pace)"
+      "✅ 12 active techs",
+      "⚠️ Sales activity down",
+      "✅ Confirmed losses stable/down",
+      "❌ Below $4M production pace"
     ]
   },
   "salesBreakdown": {
-    "total": 307,
-    "value": 306071.56,
+    "total": 581,
+    "value": null,
     "bySource": {
-      "MoJo Customer": 73,
-      "Mass Media": 1,
-      "Referral": 48,
-      "Yard Sign": 19,
-      "Advertising": 4,
-      "Online": 133,
-      "Mosquito Joe Vehicle": 10,
-      "Printed Material": 7,
-      "Direct Mail Postcard": 1,
-      "Online Search": 7,
-      "Local Branding": 2,
-      "Print Material": 2
+      "Barrier Spray": 212,
+      "Restart": 141,
+      "Event Spray": 90,
+      "Noseeum": 35,
+      "Misting System": 26,
+      "Bundle - HPD/Barrier": 15,
+      "Perimeter Pest": 14,
+      "MS Takeover": 11,
+      "One Time": 10,
+      "HPD  (Indoor)": 6,
+      "Fleas/Ticks": 6,
+      "Thermacell": 4,
+      "Inzecto": 4,
+      "Barrier Spray + Flea": 3,
+      "Mosquito/PP": 1,
+      "New": 1,
+      "Rodent Station": 1,
+      "Moved": 1
     },
     "byProgram": {
-      "Signature Program": 186,
-      "Misting Systems": 36,
-      "Residential - One Time Services": 26,
-      "Other Insects / Specialty Services": 9,
-      "Residential Service": 10,
-      "LIV System": 3,
-      "Barrier Spray Program - 1 week": 4,
-      "In2Care ": 1,
-      "Home Pest Defense": 25,
-      "Inzecto Traps": 5,
-      "Flea & Tick Treatment": 2
-    }
+      "Barrier Spray": 212,
+      "Restart": 141,
+      "Event Spray": 90,
+      "Noseeum": 35,
+      "Misting System": 26,
+      "Bundle - HPD/Barrier": 15,
+      "Perimeter Pest": 14,
+      "MS Takeover": 11,
+      "One Time": 10,
+      "HPD  (Indoor)": 6,
+      "Fleas/Ticks": 6,
+      "Thermacell": 4,
+      "Inzecto": 4,
+      "Barrier Spray + Flea": 3,
+      "Mosquito/PP": 1,
+      "New": 1,
+      "Rodent Station": 1,
+      "Moved": 1
+    },
+    "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services"
   },
   "cancelsBreakdown": {
-    "uniqueAccounts": 155,
+    "totalEvents": 148,
+    "uniqueAccounts": 148,
     "byReason": {
-      "Moved": 160,
-      "Went w Competition": 29,
-      "Unknown": 16,
-      "Unhappy w Service": 53,
-      "Bad Debt": 53,
-      "Change of Program": 13,
-      "Not Interested at this time": 61,
-      "Customer only wanted one spray": 17,
-      "Other - Review Note": 47,
-      "Financial Reasons": 59,
-      "One Time to On Going Customer": 1
-    }
+      "Not Interested": 27,
+      "Moved": 27,
+      "Not recorded": 25,
+      "Financial": 24,
+      "Unhappy": 16,
+      "Went w/Competitor": 9,
+      "No Longer Needed": 7,
+      "Paused/WP": 5,
+      "Barrier Spray": 5,
+      "Moving": 2,
+      "Scheduling Conflict": 1
+    },
+    "recoverable": 89,
+    "definition": "Unique contacts currently categorized Inactive: Cancelled"
   }
 }

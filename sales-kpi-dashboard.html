@@ -82,14 +82,14 @@
     <a href="hub.html" class="back-link">← Hub</a>
     <div class="header">
         <h1>💰 Sales & Retention Dashboard</h1>
-        <div class="updated">Last updated: October 22, 2026 @ 8:01 am</div>
+        <div class="updated">Last updated: October 22, 2026 @ 1:30 pm</div>
         <div class="period">📅 Jan 1 - Oct 22, 2026 (YTD)</div>
-        <div class="updated">ServSuite exports + Office Tracking CSV.</div>
+        <div class="updated">Office tally sales/cancels. ServiceMinder invoice revenue.</div>
     </div>
 
     <div class="insight-box">
         <h4>📊 Key Insight</h4>
-        <p><strong>587 sales and 398 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$946,368</strong> invoiced revenue.</p>
+        <p><strong>592 sales and 403 cancels from the Office tally</strong> YTD. ServiceMinder is used here for invoice revenue only: <strong>$2,082,644</strong> invoiced revenue.</p>
     </div>
 
     <div class="leaderboard">
@@ -119,17 +119,17 @@
     <div class="metrics-grid">
         <div class="metric-card positive">
             <div class="label">Total Sales</div>
-            <div class="value">587</div>
+            <div class="value">592</div>
             <div class="subtext">Office tally YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Cancel Events</div>
-            <div class="value">398</div>
+            <div class="value">403</div>
             <div class="subtext">YTD</div>
         </div>
         <div class="metric-card negative">
             <div class="label">Accounts Cancelled</div>
-            <div class="value">398</div>
+            <div class="value">403</div>
             <div class="subtext">Unique customers lost</div>
         </div>
         <div class="metric-card positive">
@@ -139,8 +139,8 @@
         </div>
         <div class="metric-card neutral">
             <div class="label">Total Revenue</div>
-            <div class="value">$946k</div>
-            <div class="subtext">9,863 invoices YTD</div>
+            <div class="value">$2083k</div>
+            <div class="subtext">22,670 invoices YTD</div>
         </div>
         <div class="metric-card neutral">
             <div class="label">Days Tracked</div>
@@ -152,7 +152,7 @@
     <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
         <div class="metric-card warning">
             <div class="label">Paused/WP</div>
-            <div class="value">88</div>
+            <div class="value">89</div>
             <div class="subtext">22% of cancellations</div>
         </div>
         <div class="metric-card warning">
@@ -162,12 +162,12 @@
         </div>
         <div class="metric-card warning">
             <div class="label">Not Interested</div>
-            <div class="value">68</div>
-            <div class="subtext">17% of cancellations</div>
+            <div class="value">71</div>
+            <div class="subtext">18% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">Financial</div>
-            <div class="value">47</div>
+            <div class="value">48</div>
             <div class="subtext">12% of cancellations</div>
         </div>
         <div class="metric-card warning">
@@ -178,7 +178,7 @@
         <div class="metric-card warning">
             <div class="label">Barrier Spray</div>
             <div class="value">18</div>
-            <div class="subtext">5% of cancellations</div>
+            <div class="subtext">4% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">One Time</div>
@@ -198,17 +198,17 @@
         <div class="metric-card warning">
             <div class="label">Perimeter Pest</div>
             <div class="value">2</div>
-            <div class="subtext">1% of cancellations</div>
+            <div class="subtext">0% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">Noseeum</div>
             <div class="value">2</div>
-            <div class="subtext">1% of cancellations</div>
+            <div class="subtext">0% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">Inzecto</div>
             <div class="value">2</div>
-            <div class="subtext">1% of cancellations</div>
+            <div class="subtext">0% of cancellations</div>
         </div>
         <div class="metric-card warning">
             <div class="label">Bundle - HPD/Barrier</div>
@@ -286,9 +286,9 @@
         new Chart(document.getElementById('leadSourceChart'), {
             type: 'doughnut',
             data: {
-                labels: ["Online","MoJo Customer","Referral","Yard Sign","Mosquito Joe Vehicle","Printed Material","Online Search","Advertising","Local Branding","Print Material","Mass Media","Direct Mail Postcard"],
+                labels: ["Online","Referral","MoJo Customer","Yard Sign","Direct Mail Postcard","Mosquito Joe Vehicle","Other","Advertising","Printed Material","Mail Advertising","Existing Customer","Online Search","DMP","Local Branding","Accelerated","Neighborly","Print Material","Event/Sponsorship","Email","Competitor","Social","Mass Media","Unknown"],
                 datasets: [{
-                    data: [133,73,48,19,10,7,7,4,2,2,1,1],
+                    data: [15446,13187,6869,4654,4345,3346,1582,1190,603,496,405,298,208,94,90,88,83,57,54,52,37,23,4],
                     backgroundColor: ["#00ff88","#00d9ff","#ffd700","#ff9f43","#c792ea","#ff78c5","#82aaff","#ff6b6b"],
                     borderWidth: 0
                 }]
@@ -301,7 +301,7 @@
             data: {
                 labels: ["Paused/WP","Moved","Not Interested","Financial","Unhappy","Barrier Spray","One Time","Went w/Competitor","Bad Debt","Perimeter Pest","Noseeum","Inzecto","Bundle - HPD/Barrier","Event Spray","Went w/competitor","Misting System"],
                 datasets: [{
-                    data: [88,83,68,47,41,18,17,15,11,2,2,2,1,1,1,1],
+                    data: [89,83,71,48,41,18,17,15,11,2,2,2,1,1,1,1],
                     backgroundColor: ["#ff6b6b","#ffd700","#ff9f43","#00d9ff","#00ff88","#c792ea","#ff78c5","#82aaff"],
                     borderWidth: 0
                 }]

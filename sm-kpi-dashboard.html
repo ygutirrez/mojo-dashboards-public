@@ -218,7 +218,7 @@
             { label: 'YTD Revenue', value: fmt(s.production), color: '#00d4ff', sub: `${s.stops} stops` },
             { label: 'Avg/Stop', value: '$' + s.avgRevPerStop.toFixed(2), color: '#00ff88', sub: mc ? (mc.changes.revPerStop >= 0 ? '↑' : '↓') + ' $' + Math.abs(mc.changes.revPerStop).toFixed(2) + ' vs prev' : '' },
             { label: 'Annual Pace', value: fmt(s.annualPace), color: s.annualPace >= 5000000 ? '#22c55e' : s.annualPace >= 4000000 ? '#eab308' : '#ef4444', sub: s.annualPace >= 5000000 ? '✅ On target' : '⚠️ Below $5M' },
-            { label: 'Net Customers', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444', sub: `${s.sales} sales / ${s.cancels} cancels` },
+            { label: 'Sales − Losses', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444', sub: `${s.sales} sales activities / ${s.cancels} lost accounts` },
             { label: 'Daily Pace', value: fmt(s.dailyProductionRate), color: '#a78bfa', sub: `Day ${s.daysElapsed} of 365` },
             { label: 'Active Techs', value: s.techCount || data.summary.techCount, color: '#f97316', sub: data.summary.programCount + ' programs' },
         ];
@@ -354,7 +354,7 @@
         $('#tech-efficiency-strip').innerHTML = effHtml;
 
         // Tech table
-        let tableHtml = `<table><thead><tr><th>#</th><th>Technician</th><th>Visits</th><th>Revenue</th><th>$/Visit</th><th>Initials</th><th>Svc Calls</th><th></th></tr></thead><tbody>`;
+        let tableHtml = `<table><thead><tr><th>#</th><th>Technician</th><th>Visits</th><th>Revenue</th><th>$/Visit</th><th>Re-sprays</th><th>Upsells</th><th></th></tr></thead><tbody>`;
         techs.forEach((t, i) => {
             const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
             const barW = Math.max(2, Math.round(t.revenue / maxRev * 100));
@@ -364,8 +364,8 @@
                 <td>${t.visits}</td>
                 <td>${fmt(t.revenue)}</td>
                 <td>$${t.avgRevPerVisit.toFixed(2)}</td>
-                <td>${t.initials}</td>
-                <td>${t.serviceCalls}</td>
+                <td>${t.resprays}</td>
+                <td>${t.upsells}</td>
                 <td><div class="bar-cell"><div class="bar" style="width:${barW}px;background:${COLORS[i % COLORS.length]}"></div></div></td>
             </tr>`;
         });
@@ -396,12 +396,12 @@
                 labels: top8.map(t => t.name.split(' ')[0]),
                 datasets: [
                     { label: 'Visits', data: top8.map(t => t.visits), backgroundColor: '#00d4ff55' },
-                    { label: 'Initials', data: top8.map(t => t.initials), backgroundColor: '#00ff8855' },
+                    { label: 'Re-sprays', data: top8.map(t => t.resprays), backgroundColor: '#00ff8855' },
                 ]
             },
             options: {
                 responsive: true,
-                plugins: { title: { display: true, text: 'Visits & Initials by Tech', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa' } } },
+                plugins: { title: { display: true, text: 'Visits & Re-sprays by Tech', color: '#fff', font: { size: 14 } }, legend: { labels: { color: '#aaa' } } },
                 scales: { y: { ticks: { color: '#888' } }, x: { ticks: { color: '#ccc' } } }
             }
         });
@@ -423,7 +423,7 @@
             { label: 'YTD Stops', value: fmtN(s.stops), color: '#00d4ff', sub: `${Math.round(s.stops / Math.max(s.daysElapsed,1))}/day avg` },
             { label: 'Avg Stops/Day (7d)', value: last7Avg.toFixed(1), color: '#00ff88', sub: stopsTrend !== 0 ? `${stopsTrend > 0 ? '↑' : '↓'} ${Math.abs(stopsTrend)}% vs prev week` : 'Same as prev week', change: stopsTrend },
             { label: 'YTD Revenue', value: fmt(s.production), color: '#ffd93d' },
-            { label: 'Estimate Conv', value: s.estimateConversion + '%', color: '#a78bfa', sub: `${s.estimates} estimates` },
+            { label: 'Proposal Records', value: fmtN(s.estimates), color: '#a78bfa', sub: 'ServiceMinder proposals' },
         ];
         let html = '';
         prodKpis.forEach(k => {
@@ -520,9 +520,9 @@
 
         // Sales KPIs
         const salesKpis = [
-            { label: 'YTD Sales', value: sb.total || s.sales, color: '#22c55e' },
-            { label: 'YTD Cancels', value: cb.totalEvents || s.cancels, color: '#ef4444' },
-            { label: 'Net Change', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444' },
+            { label: 'YTD Sales Activity', value: sb.total || s.sales, color: '#22c55e' },
+            { label: 'Confirmed Lost Accounts', value: cb.totalEvents || s.cancels, color: '#ef4444' },
+            { label: 'Sales − Losses', value: (s.netCustomerChange >= 0 ? '+' : '') + s.netCustomerChange, color: s.netCustomerChange >= 0 ? '#22c55e' : '#ef4444' },
             { label: 'Recoverable', value: cb.recoverable || 0, color: '#eab308', sub: 'Paused/WP' },
         ];
         let html = '';
@@ -531,7 +531,7 @@
         });
         $('#sales-kpis').innerHTML = html;
 
-        // Sales by Source
+        // Sales activity by category
         if (sb.bySource) {
             const sources = Object.entries(sb.bySource).sort((a,b) => b[1] - a[1]).slice(0, 8);
             new Chart($('#sourceChart'), {
@@ -542,7 +542,7 @@
                 },
                 options: {
                     indexAxis: 'y', responsive: true,
-                    plugins: { title: { display: true, text: 'Sales by Source', color: '#fff', font: { size: 14 } }, legend: { display: false } },
+                    plugins: { title: { display: true, text: 'Sales Activity by Category', color: '#fff', font: { size: 14 } }, legend: { display: false } },
                     scales: { x: { ticks: { color: '#888' } }, y: { ticks: { color: '#ccc', font: { size: 10 } } } }
                 }
             });
