@@ -1,66 +1,66 @@
 {
-  "updated_at": "2026-10-21T13:06:46.262Z",
-  "csv_date": "2026-10-21",
-  "period": "Jan 1 - Oct 21, 2026 (YTD)",
+  "updated_at": "2026-10-22T12:01:13.425Z",
+  "csv_date": "2026-10-22",
+  "period": "Jan 1 - Oct 22, 2026 (YTD)",
   "summary": {
-    "total_sales": 587,
-    "total_cancels": 398,
+    "total_sales": 592,
+    "total_cancels": 403,
     "net": 189,
-    "paused_wp": 88,
+    "paused_wp": 89,
     "paused_pct": 22,
-    "days_tracked": 294
+    "days_tracked": 295
   },
   "week": {
     "start": "2026-10-19",
     "end": "2026-10-25",
     "label": "Oct 19 – Oct 25",
     "summary": {
-      "total_sales": 2,
-      "total_cancels": 3,
+      "total_sales": 7,
+      "total_cancels": 8,
       "net": -1
     },
     "csrs": [
       {
+        "name": "Lucy",
+        "sales": 5,
+        "cancels": 4,
+        "net": 1
+      },
+      {
         "name": "Norma",
         "sales": 2,
-        "cancels": 1,
-        "net": 1
+        "cancels": 2,
+        "net": 0
       },
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
-      },
-      {
-        "name": "Lucy",
-        "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 2,
+        "net": -2
       }
     ]
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 346,
-      "cancels": 131
+      "sales": 351,
+      "cancels": 134
     },
     {
       "name": "Norma",
       "sales": 172,
-      "cancels": 134
+      "cancels": 135
     },
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 133
+      "cancels": 134
     }
   ],
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 88,
+      "count": 89,
       "pct": 22
     },
     {
@@ -70,12 +70,12 @@
     },
     {
       "name": "Not Interested",
-      "count": 68,
-      "pct": 17
+      "count": 71,
+      "pct": 18
     },
     {
       "name": "Financial",
-      "count": 47,
+      "count": 48,
       "pct": 12
     },
     {
@@ -86,7 +86,7 @@
     {
       "name": "Barrier Spray",
       "count": 18,
-      "pct": 5
+      "pct": 4
     },
     {
       "name": "One Time",
@@ -106,17 +106,17 @@
     {
       "name": "Perimeter Pest",
       "count": 2,
-      "pct": 1
+      "pct": 0
     },
     {
       "name": "Noseeum",
       "count": 2,
-      "pct": 1
+      "pct": 0
     },
     {
       "name": "Inzecto",
       "count": 2,
-      "pct": 1
+      "pct": 0
     },
     {
       "name": "Bundle - HPD/Barrier",
@@ -177,16 +177,16 @@
       "count": 11
     },
     {
+      "name": "Inzecto",
+      "count": 10
+    },
+    {
       "name": "HPD  (Indoor)",
       "count": 6
     },
     {
       "name": "Fleas/Ticks",
       "count": 6
-    },
-    {
-      "name": "Inzecto",
-      "count": 5
     },
     {
       "name": "Thermacell",
@@ -215,6 +215,48 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Sale",
+      "category": "Inzecto",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-21",
+      "dateFmt": "Oct 21",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
       "date": "2026-10-20",
       "dateFmt": "Oct 20",
       "type": "Cancel",
@@ -241,53 +283,11 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-10-19",
-      "dateFmt": "Oct 19",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-16",
-      "dateFmt": "Oct 16",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-10-16",
-      "dateFmt": "Oct 16",
-      "type": "Cancel",
-      "category": "Unhappy",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-10-16",
-      "dateFmt": "Oct 16",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-15",
-      "dateFmt": "Oct 15",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-15",
-      "dateFmt": "Oct 15",
-      "type": "Cancel",
-      "category": "Financial",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 88
+    "count": 89
   },
   "tech_upsells": [
     {
