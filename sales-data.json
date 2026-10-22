@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-22T18:00:21.978Z",
+  "updated_at": "2026-10-22T18:30:27.815Z",
   "csv_date": "2026-10-22",
   "period": "Jan 1 - Oct 22, 2026 (YTD)",
   "summary": {
     "total_sales": 592,
-    "total_cancels": 403,
-    "net": 189,
+    "total_cancels": 404,
+    "net": 188,
     "paused_wp": 89,
     "paused_pct": 22,
     "days_tracked": 295
@@ -16,15 +16,15 @@
     "label": "Oct 19 – Oct 25",
     "summary": {
       "total_sales": 7,
-      "total_cancels": 8,
-      "net": -1
+      "total_cancels": 9,
+      "net": -2
     },
     "csrs": [
       {
         "name": "Lucy",
         "sales": 5,
-        "cancels": 4,
-        "net": 1
+        "cancels": 5,
+        "net": 0
       },
       {
         "name": "Norma",
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 351,
-      "cancels": 134
+      "cancels": 135
     },
     {
       "name": "Norma",
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 83,
+      "count": 84,
       "pct": 21
     },
     {
@@ -215,6 +215,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-22",
+      "dateFmt": "Oct 22",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
       "date": "2026-10-21",
       "dateFmt": "Oct 21",
       "type": "Sale",
@@ -275,13 +282,6 @@
       "dateFmt": "Oct 19",
       "type": "Sale",
       "category": "Bundle - HPD/Barrier",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-10-19",
-      "dateFmt": "Oct 19",
-      "type": "Cancel",
-      "category": "Paused/WP",
       "csr": "Norma"
     }
   ],
