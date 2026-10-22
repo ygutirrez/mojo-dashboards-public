@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-10-22T12:04:09.691Z",
+    "generated_at": "2026-10-22T12:17:30.114Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-22T11:57:33.585Z",
+      "generated_at": "2026-10-22T12:17:22.765Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 47545,
       "contacts": 14242,
-      "invoices": 46812,
+      "invoices": 46813,
       "proposals": 1649
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2081530,
+      "ytd_invoiced": 2081620,
       "avg_per_visit": 72,
-      "mtd": 151706,
-      "mtd_jobs": 1623
+      "mtd": 151796,
+      "mtd_jobs": 1624
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2081530
+      "total_wo_revenue": 2081620
     },
     "employees": [
       {
@@ -213,8 +213,8 @@
       {
         "name": "Marcus Rubi",
         "jobs": 1195,
-        "revenue": 114888.78,
-        "avgRevenue": 76.44,
+        "revenue": 114728.28,
+        "avgRevenue": 76.38,
         "route_label": "Route 6",
         "technician": "Marcus Rubi",
         "technician_status": "active",
@@ -235,8 +235,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 194924.59,
-        "avgRevenue": 180.49,
+        "revenue": 195085.09,
+        "avgRevenue": 180.47,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -290,8 +290,8 @@
     ],
     "appointment_statuses": {
       "Queued": 13420,
-      "Scheduled": 11491,
-      "Completed": 3562,
+      "Scheduled": 11490,
+      "Completed": 3563,
       "Started": 254,
       "Canceled": 164
     },
@@ -356,7 +356,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2081530
+      "total_revenue": 2081620
     },
     "employees": [
       {
@@ -388,7 +388,7 @@
         "initials": "MR",
         "jobs": 1195,
         "rank": 3,
-        "revenue": 114889,
+        "revenue": 114728,
         "upsells": 0,
         "resprays": 0
       },
@@ -410,7 +410,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 194925,
+        "revenue": 195085,
         "upsells": 0,
         "resprays": 0
       },
@@ -461,13 +461,13 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2081530,
+    "revenue": 2081620,
     "proposals": 1649,
     "invoiced_proposals": 1291,
     "complete_proposals": 260,
     "sources": {
       "Online": 15443,
-      "Referral": 13182,
+      "Referral": 13183,
       "MoJo Customer": 6866,
       "Yard Sign": 4653,
       "Direct Mail Postcard": 4345,
@@ -565,8 +565,8 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 151705.55,
-        "invoices": 1623,
+        "invoiceRevenue": 151795.54,
+        "invoices": 1624,
         "appointments": 3945,
         "proposals": 0,
         "cancels": 124
