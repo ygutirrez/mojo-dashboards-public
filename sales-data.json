@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-23T19:00:17.391Z",
+  "updated_at": "2026-10-23T19:30:19.539Z",
   "csv_date": "2026-10-23",
   "period": "Jan 1 - Oct 23, 2026 (YTD)",
   "summary": {
-    "total_sales": 592,
+    "total_sales": 593,
     "total_cancels": 407,
-    "net": 185,
+    "net": 186,
     "paused_wp": 89,
     "paused_pct": 22,
     "days_tracked": 296
@@ -15,9 +15,9 @@
     "end": "2026-10-25",
     "label": "Oct 19 – Oct 25",
     "summary": {
-      "total_sales": 7,
+      "total_sales": 8,
       "total_cancels": 12,
-      "net": -5
+      "net": -4
     },
     "csrs": [
       {
@@ -34,9 +34,9 @@
       },
       {
         "name": "Bev",
-        "sales": 0,
+        "sales": 1,
         "cancels": 5,
-        "net": -5
+        "net": -4
       }
     ]
   },
@@ -53,7 +53,7 @@
     },
     {
       "name": "Bev",
-      "sales": 69,
+      "sales": 70,
       "cancels": 137
     }
   ],
@@ -154,7 +154,7 @@
     },
     {
       "name": "Noseeum",
-      "count": 35
+      "count": 36
     },
     {
       "name": "Misting System",
@@ -217,6 +217,13 @@
     {
       "date": "2026-10-23",
       "dateFmt": "Oct 23",
+      "type": "Sale",
+      "category": "Noseeum",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-23",
+      "dateFmt": "Oct 23",
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
@@ -276,13 +283,6 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-10-21",
-      "dateFmt": "Oct 21",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Lucy"
     }
   ],
   "top_reason": {
