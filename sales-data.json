@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-23T12:30:23.506Z",
+  "updated_at": "2026-10-23T13:00:20.471Z",
   "csv_date": "2026-10-23",
   "period": "Jan 1 - Oct 23, 2026 (YTD)",
   "summary": {
     "total_sales": 592,
-    "total_cancels": 405,
-    "net": 187,
+    "total_cancels": 406,
+    "net": 186,
     "paused_wp": 89,
     "paused_pct": 22,
     "days_tracked": 296
@@ -16,8 +16,8 @@
     "label": "Oct 19 – Oct 25",
     "summary": {
       "total_sales": 7,
-      "total_cancels": 10,
-      "net": -3
+      "total_cancels": 11,
+      "net": -4
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 3,
-        "net": -3
+        "cancels": 4,
+        "net": -4
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 135
+      "cancels": 136
     }
   ],
   "cancel_reasons": [
@@ -70,7 +70,7 @@
     },
     {
       "name": "Not Interested",
-      "count": 72,
+      "count": 73,
       "pct": 18
     },
     {
@@ -222,6 +222,13 @@
       "csr": "Bev"
     },
     {
+      "date": "2026-10-23",
+      "dateFmt": "Oct 23",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-10-22",
       "dateFmt": "Oct 22",
       "type": "Cancel",
@@ -276,13 +283,6 @@
       "type": "Cancel",
       "category": "Misting System",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-10-20",
-      "dateFmt": "Oct 20",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
