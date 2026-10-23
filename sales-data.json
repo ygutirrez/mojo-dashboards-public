@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-23T12:00:22.974Z",
+  "updated_at": "2026-10-23T12:30:23.506Z",
   "csv_date": "2026-10-23",
   "period": "Jan 1 - Oct 23, 2026 (YTD)",
   "summary": {
     "total_sales": 592,
-    "total_cancels": 404,
-    "net": 188,
+    "total_cancels": 405,
+    "net": 187,
     "paused_wp": 89,
     "paused_pct": 22,
     "days_tracked": 296
@@ -16,8 +16,8 @@
     "label": "Oct 19 – Oct 25",
     "summary": {
       "total_sales": 7,
-      "total_cancels": 9,
-      "net": -2
+      "total_cancels": 10,
+      "net": -3
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 2,
-        "net": -2
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 69,
-      "cancels": 134
+      "cancels": 135
     }
   ],
   "cancel_reasons": [
@@ -70,7 +70,7 @@
     },
     {
       "name": "Not Interested",
-      "count": 71,
+      "count": 72,
       "pct": 18
     },
     {
@@ -215,6 +215,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-10-23",
+      "dateFmt": "Oct 23",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-10-22",
       "dateFmt": "Oct 22",
       "type": "Cancel",
@@ -275,13 +282,6 @@
       "dateFmt": "Oct 20",
       "type": "Sale",
       "category": "Restart",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-10-19",
-      "dateFmt": "Oct 19",
-      "type": "Sale",
-      "category": "Bundle - HPD/Barrier",
       "csr": "Norma"
     }
   ],
