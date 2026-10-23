@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-10-22T17:40:41.270Z",
+    "generated": "2026-10-23T09:17:36.256Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
     "dataThrough": "2026-10-21",
-    "serviceMinderSyncAt": "2026-10-22T11:57:33.565Z",
+    "serviceMinderSyncAt": "2026-10-23T09:17:14.893Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -17,14 +17,14 @@
       "production": 2017987.72,
       "stops": 22197,
       "avgRevPerStop": 90.91,
-      "sales": 581,
-      "cancels": 148,
+      "sales": 582,
+      "cancels": 149,
       "netCustomerChange": 433,
       "estimates": 183,
       "estimateConversion": 0,
-      "dailyProductionRate": 6840.64,
-      "annualPace": 2496832,
-      "daysElapsed": 295
+      "dailyProductionRate": 6817.53,
+      "annualPace": 2488397,
+      "daysElapsed": 296
     },
     "techCount": 12,
     "topTech": {
@@ -163,9 +163,9 @@
       "estimatesReceived": 0,
       "estimatesCompleted": 0,
       "salesDollars": 0,
-      "salesAccounts": 19,
+      "salesAccounts": 20,
       "cancelsDollars": 0,
-      "cancelsAccounts": 21,
+      "cancelsAccounts": 22,
       "revenuePerStop": 92.69
     }
   ],
@@ -174,10 +174,10 @@
       "period": "October 2026",
       "production": 150153.18,
       "stops": 1620,
-      "sales": 19,
-      "cancels": 21,
-      "daysElapsed": 22,
-      "dailyPace": 6825.14
+      "sales": 20,
+      "cancels": 22,
+      "daysElapsed": 23,
+      "dailyPace": 6528.4
     },
     "previous": {
       "period": "September 2026",
@@ -189,8 +189,8 @@
       "dailyPace": 6980.5
     },
     "changes": {
-      "productionPace": -2,
-      "stopsPerDay": -3.7,
+      "productionPace": -6,
+      "stopsPerDay": -6.9,
       "revPerStop": 2.46
     }
   },
@@ -1022,7 +1022,7 @@
     ]
   },
   "salesBreakdown": {
-    "total": 581,
+    "total": 582,
     "value": null,
     "bySource": {
       "Barrier Spray": 212,
@@ -1036,8 +1036,8 @@
       "One Time": 10,
       "HPD  (Indoor)": 6,
       "Fleas/Ticks": 6,
+      "Inzecto": 5,
       "Thermacell": 4,
-      "Inzecto": 4,
       "Barrier Spray + Flea": 3,
       "Mosquito/PP": 1,
       "New": 1,
@@ -1056,8 +1056,8 @@
       "One Time": 10,
       "HPD  (Indoor)": 6,
       "Fleas/Ticks": 6,
+      "Inzecto": 5,
       "Thermacell": 4,
-      "Inzecto": 4,
       "Barrier Spray + Flea": 3,
       "Mosquito/PP": 1,
       "New": 1,
@@ -1067,18 +1067,18 @@
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services"
   },
   "cancelsBreakdown": {
-    "totalEvents": 148,
-    "uniqueAccounts": 148,
+    "totalEvents": 149,
+    "uniqueAccounts": 149,
     "byReason": {
-      "Not Interested": 27,
-      "Moved": 27,
+      "Not Interested": 30,
+      "Moved": 28,
       "Not recorded": 25,
       "Financial": 24,
       "Unhappy": 16,
       "Went w/Competitor": 9,
-      "No Longer Needed": 7,
       "Paused/WP": 5,
       "Barrier Spray": 5,
+      "No Longer Needed": 4,
       "Moving": 2,
       "Scheduling Conflict": 1
     },

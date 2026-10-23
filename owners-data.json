@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-22T22:30:18.180Z",
-  "generated_date": "October 22, 2026",
+  "generated_at": "2026-10-23T09:22:27.706Z",
+  "generated_date": "October 23, 2026",
   "sales": {
     "csv_date": "2026-10-22",
     "total_sales": 592,
@@ -94,34 +94,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2082644,
+    "ytd_invoiced": 2091022,
     "avg_per_visit": 72,
-    "mtd": 152819,
-    "mtd_jobs": 1635
+    "mtd": 161197,
+    "mtd_jobs": 1744
   },
   "operations": {
     "total_jobs": 18651,
     "jobs_per_tech_day": 9.8,
-    "revenue_per_tech_day": 486,
+    "revenue_per_tech_day": 483,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 9,
-    "working_days_ytd": 211
+    "working_days_ytd": 212
   },
   "serviceminder": {
-    "generated_at": "2026-10-22T17:41:00.108Z",
+    "generated_at": "2026-10-23T09:22:27.706Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-22T13:17:32.871Z",
+      "generated_at": "2026-10-23T09:17:14.904Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 47546,
-      "contacts": 14243,
-      "invoices": 46824,
+      "appointments": 47641,
+      "contacts": 14248,
+      "invoices": 46933,
       "proposals": 1649
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -227,15 +227,15 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_preview": {
-    "total_sales": 1551,
-    "total_cancels": 302,
-    "net": 1249,
+    "total_sales": 1552,
+    "total_cancels": 307,
+    "net": 1245,
     "cancel_reasons": {
       "No Longer Needed": 69,
-      "Scheduling Conflict": 50,
+      "Scheduling Conflict": 54,
       "Workpool": 50,
       "Error": 48,
-      "Moving": 34,
+      "Moving": 35,
       "Financial": 29,
       "Found Different Company": 15,
       "Not Working": 6,
