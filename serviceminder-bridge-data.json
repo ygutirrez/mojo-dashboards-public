@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-10-23T12:17:27.511Z",
+    "generated_at": "2026-10-23T13:17:34.252Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-10-23T12:17:22.081Z",
+      "generated_at": "2026-10-23T13:17:27.472Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 47645,
+      "appointments": 47646,
       "contacts": 14249,
-      "invoices": 46933,
+      "invoices": 46942,
       "proposals": 1649
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2091022,
+      "ytd_invoiced": 2092018,
       "avg_per_visit": 72,
-      "mtd": 161197,
-      "mtd_jobs": 1744
+      "mtd": 162193,
+      "mtd_jobs": 1753
     },
     "operations": {
       "total_jobs": 18651,
@@ -138,9 +138,9 @@
       "total_cancels": 308,
       "net": 1244,
       "cancel_reasons": {
-        "No Longer Needed": 70,
+        "No Longer Needed": 71,
         "Scheduling Conflict": 54,
-        "Workpool": 50,
+        "Workpool": 49,
         "Error": 48,
         "Moving": 35,
         "Financial": 29,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2091022
+      "total_wo_revenue": 2092018
     },
     "employees": [
       {
@@ -246,8 +246,8 @@
       {
         "name": "Jorge Navarro",
         "jobs": 590,
-        "revenue": 75608,
-        "avgRevenue": 82.81,
+        "revenue": 75671.99,
+        "avgRevenue": 82.79,
         "route_label": "Route 2",
         "technician": "Jorge Navarro",
         "technician_status": "active",
@@ -289,11 +289,11 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 13363,
-      "Scheduled": 11490,
-      "Completed": 3684,
+      "Queued": 13359,
+      "Scheduled": 11485,
+      "Completed": 3693,
       "Started": 254,
-      "Canceled": 170
+      "Canceled": 171
     },
     "service_mix": {
       "Mojo Essential": 12441,
@@ -321,8 +321,8 @@
       "Synthetic + In2Care": 48,
       "Synthetic Signature Single Svc 3": 31,
       "Signature Service": 30,
+      "One-time Service": 25,
       "Gnats/Midges/No-seeums - 3 week": 24,
-      "One-time Service": 24,
       "Misting System Installation": 23,
       "Fly Management Service": 22,
       "RT Service Monthly": 18,
@@ -356,7 +356,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2091022
+      "total_revenue": 2092018
     },
     "employees": [
       {
@@ -421,7 +421,7 @@
         "initials": "JN",
         "jobs": 590,
         "rank": 6,
-        "revenue": 75608,
+        "revenue": 75672,
         "upsells": 0,
         "resprays": 0
       },
@@ -461,22 +461,22 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2091022,
+    "revenue": 2092018,
     "proposals": 1649,
     "invoiced_proposals": 1291,
     "complete_proposals": 261,
     "sources": {
-      "Online": 15497,
+      "Online": 15499,
       "Referral": 13221,
-      "MoJo Customer": 6893,
+      "MoJo Customer": 6895,
       "Yard Sign": 4666,
-      "Direct Mail Postcard": 4369,
-      "Mosquito Joe Vehicle": 3353,
+      "Direct Mail Postcard": 4370,
+      "Mosquito Joe Vehicle": 3354,
       "Other": 1585,
-      "Advertising": 1194,
-      "Printed Material": 605,
+      "Advertising": 1195,
+      "Printed Material": 606,
       "Mail Advertising": 503,
-      "Existing Customer": 405,
+      "Existing Customer": 406,
       "Online Search": 300,
       "DMP": 210,
       "Local Branding": 94,
@@ -484,7 +484,7 @@
       "Accelerated": 90,
       "Print Material": 84,
       "Event/Sponsorship": 58,
-      "Email": 54,
+      "Email": 55,
       "Competitor": 52,
       "Social": 37,
       "Mass Media": 23,
@@ -565,9 +565,9 @@
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 161196.61,
-        "invoices": 1744,
-        "appointments": 3950,
+        "invoiceRevenue": 162193.16,
+        "invoices": 1753,
+        "appointments": 3951,
         "proposals": 0,
         "cancels": 128
       },
