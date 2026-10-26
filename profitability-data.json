@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-25T09:22:04.603Z",
-  "period": "Jan 1 - Oct 25, 2026 (YTD)",
+  "generated_at": "2026-10-26T09:23:48.649Z",
+  "period": "Jan 1 - Oct 26, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 18369,
-    "total_revenue": 1687743,
-    "avg_revenue_per_stop": 91.88,
+    "total_stops": 18382,
+    "total_revenue": 1689420,
+    "avg_revenue_per_stop": 91.91,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
-    "estimated_gross_profit_per_stop": 70.68,
+    "estimated_gross_profit_per_stop": 70.71,
     "estimated_gross_margin": 76.9,
     "active_techs": 12
   },
   "cost_breakdown_per_stop": {
-    "revenue": 91.88,
+    "revenue": 91.91,
     "chemical": 3.2,
     "labor_estimate": 12,
     "fuel_estimate": 4,
     "vehicle_estimate": 2,
     "total_direct": 21.2,
-    "gross_profit": 70.68,
+    "gross_profit": 70.71,
     "note": "Labor, fuel, and vehicle costs are estimates based on industry averages. Chemical cost is actual."
   },
   "financial_benchmarks": {
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 2067202,
+    "current_annual_run_rate": 2062335,
     "target": 5000000,
-    "gap": 2932798,
-    "additional_stops_needed": 31920,
+    "gap": 2937665,
+    "additional_stops_needed": 31964,
     "additional_daily_stops_needed": 128,
-    "current_daily_avg": 61.6,
-    "required_daily_avg": 189.6,
-    "capacity_increase_pct": 207.7
+    "current_daily_avg": 61.5,
+    "required_daily_avg": 189.5,
+    "capacity_increase_pct": 208.2
   },
   "tech_profitability": [
     {
@@ -222,18 +222,18 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 846,
-      "revenue": 75171.93,
-      "avgRevenuePerStop": 88.86,
+      "jobs": 859,
+      "revenue": 76848.45,
+      "avgRevenuePerStop": 89.46,
       "costs": {
-        "chemical": 2707.2,
-        "labor": 10152,
-        "fuel": 3384,
-        "vehicle": 1692,
-        "total": 17935.2
+        "chemical": 2748.8,
+        "labor": 10308,
+        "fuel": 3436,
+        "vehicle": 1718,
+        "total": 18210.8
       },
-      "grossProfit": 57236.73,
-      "margin": 76.1,
+      "grossProfit": 58637.65,
+      "margin": 76.3,
       "resprays": 4,
       "resprayRate": 0.47,
       "efficiencyRating": 96,
@@ -305,14 +305,14 @@
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
-      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1549), Damian Machin (2898), Stanley Prophete (2649), David Carbajal (2522), Marcus Rubi (2449), Jorge Navarro (1281), Guillermo Rodriguez (951), Curtis Blount (1034), Lenny Pierre (1011), Wilbeni Pierre (846), Travis Johnson (828). Consider route optimization or adding techs to reduce burnout."
+      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1549), Damian Machin (2898), Stanley Prophete (2649), David Carbajal (2522), Marcus Rubi (2449), Jorge Navarro (1281), Guillermo Rodriguez (951), Curtis Blount (1034), Lenny Pierre (1011), Wilbeni Pierre (859), Travis Johnson (828). Consider route optimization or adding techs to reduce burnout."
     },
     {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 18369 total stops, even a 5% upsell rate at $75 avg would add $68,884 in revenue.",
-      "potential_value": 68884
+      "description": "At 18382 total stops, even a 5% upsell rate at $75 avg would add $68,933 in revenue.",
+      "potential_value": 68933
     }
   ]
 }

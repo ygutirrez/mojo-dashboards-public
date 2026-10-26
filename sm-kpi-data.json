@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-10-25T09:17:00.675Z",
+    "generated": "2026-10-26T09:18:36.265Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
-    "dataThrough": "2026-10-23",
-    "serviceMinderSyncAt": "2026-10-25T09:16:38.722Z",
+    "dataThrough": "2026-10-24",
+    "serviceMinderSyncAt": "2026-10-26T09:18:09.908Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -14,17 +14,17 @@
   },
   "summary": {
     "ytd": {
-      "production": 2037659.5,
-      "stops": 22421,
-      "avgRevPerStop": 90.88,
+      "production": 2039336.02,
+      "stops": 22434,
+      "avgRevPerStop": 90.9,
       "sales": 583,
       "cancels": 149,
       "netCustomerChange": 434,
       "estimates": 183,
       "estimateConversion": 0,
-      "dailyProductionRate": 6837.78,
-      "annualPace": 2495791,
-      "daysElapsed": 298
+      "dailyProductionRate": 6820.52,
+      "annualPace": 2489490,
+      "daysElapsed": 299
     },
     "techCount": 12,
     "topTech": {
@@ -157,8 +157,8 @@
     },
     {
       "period": "October 2026",
-      "production": 169824.96,
-      "stops": 1844,
+      "production": 171501.48,
+      "stops": 1857,
       "skips": 0,
       "estimatesReceived": 0,
       "estimatesCompleted": 0,
@@ -166,18 +166,18 @@
       "salesAccounts": 21,
       "cancelsDollars": 0,
       "cancelsAccounts": 22,
-      "revenuePerStop": 92.1
+      "revenuePerStop": 92.35
     }
   ],
   "monthlyComparison": {
     "current": {
       "period": "October 2026",
-      "production": 169824.96,
-      "stops": 1844,
+      "production": 171501.48,
+      "stops": 1857,
       "sales": 21,
       "cancels": 22,
-      "daysElapsed": 25,
-      "dailyPace": 6793
+      "daysElapsed": 26,
+      "dailyPace": 6596.21
     },
     "previous": {
       "period": "September 2026",
@@ -189,9 +189,9 @@
       "dailyPace": 6980.5
     },
     "changes": {
-      "productionPace": -3,
-      "stopsPerDay": -3.6,
-      "revPerStop": 1.87
+      "productionPace": -6,
+      "stopsPerDay": -5.9,
+      "revPerStop": 2.12
     }
   },
   "technicians": [
@@ -269,9 +269,9 @@
     },
     {
       "name": "Wilbeni Pierre",
-      "visits": 846,
-      "revenue": 75171.93,
-      "avgRevPerVisit": 88.86,
+      "visits": 859,
+      "revenue": 76848.45,
+      "avgRevPerVisit": 89.46,
       "resprays": 4,
       "upsells": 0
     },
@@ -293,8 +293,8 @@
     }
   ],
   "techEfficiency": {
-    "avgVisitsPerTech": 1868,
-    "avgRevPerVisit": 90.88,
+    "avgVisitsPerTech": 1870,
+    "avgRevPerVisit": 90.9,
     "topPerformer": {
       "name": "Damian Machin",
       "visits": 2898,
@@ -317,13 +317,13 @@
     "byProgram": [
       {
         "name": "Mojo Essential",
-        "count": 9768,
-        "revenue": 834770.71
+        "count": 9778,
+        "revenue": 836118.85
       },
       {
         "name": "Synthetic Barrier Spray - 2 week",
-        "count": 7588,
-        "revenue": 632875.89
+        "count": 7590,
+        "revenue": 633126.88
       },
       {
         "name": "Gnat/Midge/No-seeums Service - 2 weeks",
@@ -447,8 +447,8 @@
       },
       {
         "name": "One-time Service",
-        "count": 37,
-        "revenue": 3528.68
+        "count": 38,
+        "revenue": 3606.07
       },
       {
         "name": "Misting System Installation",
@@ -799,20 +799,13 @@
       },
       {
         "week": "2026-10-18",
-        "stops": 529,
-        "revenue": 47963.84
+        "stops": 542,
+        "revenue": 49640.36
       }
     ],
-    "totalWOs": 22421
+    "totalWOs": 22434
   },
   "dailyProduction": [
-    {
-      "date": "2026-09-18",
-      "stops": 80,
-      "revenue": 6421,
-      "techCount": 8,
-      "avgStopsPerTech": 10
-    },
     {
       "date": "2026-09-19",
       "stops": 28,
@@ -1015,6 +1008,13 @@
       "revenue": 9739.76,
       "techCount": 8,
       "avgStopsPerTech": 12.3
+    },
+    {
+      "date": "2026-10-24",
+      "stops": 13,
+      "revenue": 1676.52,
+      "techCount": 1,
+      "avgStopsPerTech": 13
     }
   ],
   "seasonScore": {
