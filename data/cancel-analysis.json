@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T09:18:30.565304+00:00",
+  "generated_at": "2026-10-29T22:34:10.034900+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-22",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-10-26.csv",
+    "office_tally_file": "sales-data-2026-10-29.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-26T09:16:59.870Z",
-      "appointments": "2026-10-26T09:16:49.774Z",
-      "invoices": "2026-10-26T09:18:02.031Z"
+      "contacts": "2026-10-29T22:33:11.601Z",
+      "appointments": "2026-10-29T22:32:59.593Z",
+      "invoices": "2026-10-29T22:33:33.089Z"
     }
   },
   "summary": {
@@ -30,31 +30,31 @@
     "unknown_events": 25,
     "controllable_value_lost": 64111.56,
     "uncontrollable_value_lost": 25544.03,
-    "total_sales_ytd": 135,
-    "net_new_customers": -14,
-    "cancel_to_sales_ratio": 1.1,
-    "active_customer_base": 1549,
+    "total_sales_ytd": 137,
+    "net_new_customers": -12,
+    "cancel_to_sales_ratio": 1.09,
+    "active_customer_base": 1541,
     "recorded_attrition_pct": 8.8,
-    "recent_30d_accounts": 28,
-    "recent_30d_revenue": 25140.08,
-    "recent_90d_accounts": 79,
+    "recent_30d_accounts": 22,
+    "recent_30d_revenue": 20429.59,
+    "recent_90d_accounts": 75,
     "reason_known_accounts": 124,
     "reason_capture_pct": 83.2
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 583,
-    "sales_logged_since_first_loss": 301,
-    "sales_logged_30d": 25,
-    "sales_logged_90d": 98,
+    "sales_logged_ytd": 586,
+    "sales_logged_since_first_loss": 304,
+    "sales_logged_30d": 26,
+    "sales_logged_90d": 92,
     "restarts_ytd": 141,
     "restarts_30d": 2,
-    "gross_activity_gap_30d": -3,
-    "sales_per_confirmed_loss_30d": 0.89,
+    "gross_activity_gap_30d": 4,
+    "sales_per_confirmed_loss_30d": 1.18,
     "by_category": [
       {
         "category": "Barrier Spray",
-        "sales": 212
+        "sales": 213
       },
       {
         "category": "Restart",
@@ -62,7 +62,7 @@
       },
       {
         "category": "Event Spray",
-        "sales": 90
+        "sales": 92
       },
       {
         "category": "Noseeum",
@@ -164,7 +164,7 @@
       },
       {
         "month": "2026-10",
-        "sales": 21
+        "sales": 24
       }
     ]
   },
