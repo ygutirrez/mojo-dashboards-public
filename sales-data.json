@@ -1,25 +1,31 @@
 {
-  "updated_at": "2026-10-26T16:00:25.533Z",
-  "csv_date": "2026-10-26",
-  "period": "Jan 1 - Oct 26, 2026 (YTD)",
+  "updated_at": "2026-10-29T22:34:46.829Z",
+  "csv_date": "2026-10-29",
+  "period": "Jan 1 - Oct 29, 2026 (YTD)",
   "summary": {
-    "total_sales": 593,
-    "total_cancels": 409,
-    "net": 184,
-    "paused_wp": 90,
+    "total_sales": 596,
+    "total_cancels": 415,
+    "net": 181,
+    "paused_wp": 91,
     "paused_pct": 22,
-    "days_tracked": 299
+    "days_tracked": 302
   },
   "week": {
     "start": "2026-10-26",
     "end": "2026-11-01",
     "label": "Oct 26 – Nov 1",
     "summary": {
-      "total_sales": 0,
-      "total_cancels": 2,
-      "net": -2
+      "total_sales": 3,
+      "total_cancels": 8,
+      "net": -5
     },
     "csrs": [
+      {
+        "name": "Norma",
+        "sales": 3,
+        "cancels": 3,
+        "net": 0
+      },
       {
         "name": "Lucy",
         "sales": 0,
@@ -29,14 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
-      },
-      {
-        "name": "Norma",
-        "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 5,
+        "net": -5
       }
     ]
   },
@@ -48,29 +48,29 @@
     },
     {
       "name": "Norma",
-      "sales": 172,
-      "cancels": 136
+      "sales": 175,
+      "cancels": 138
     },
     {
       "name": "Bev",
       "sales": 70,
-      "cancels": 138
+      "cancels": 142
     }
   ],
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 90,
+      "count": 91,
       "pct": 22
     },
     {
       "name": "Moved",
-      "count": 84,
+      "count": 88,
       "pct": 21
     },
     {
       "name": "Not Interested",
-      "count": 75,
+      "count": 76,
       "pct": 18
     },
     {
@@ -142,7 +142,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 213
+      "count": 214
     },
     {
       "name": "Restart",
@@ -150,7 +150,7 @@
     },
     {
       "name": "Event Spray",
-      "count": 91
+      "count": 93
     },
     {
       "name": "Noseeum",
@@ -215,79 +215,79 @@
   ],
   "recent_activity": [
     {
-      "date": "2026-10-26",
-      "dateFmt": "Oct 26",
+      "date": "2026-10-29",
+      "dateFmt": "Oct 29",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-29",
+      "dateFmt": "Oct 29",
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Norma"
+    },
+    {
+      "date": "2026-10-29",
+      "dateFmt": "Oct 29",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-27",
+      "dateFmt": "Oct 27",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-27",
+      "dateFmt": "Oct 27",
+      "type": "Sale",
+      "category": "Event Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-27",
+      "dateFmt": "Oct 27",
+      "type": "Sale",
+      "category": "Event Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-10-27",
+      "dateFmt": "Oct 27",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-10-27",
+      "dateFmt": "Oct 27",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
     },
     {
       "date": "2026-10-26",
       "dateFmt": "Oct 26",
       "type": "Cancel",
       "category": "Paused/WP",
-      "csr": "Bev"
+      "csr": "Norma"
     },
     {
-      "date": "2026-10-23",
-      "dateFmt": "Oct 23",
+      "date": "2026-10-26",
+      "dateFmt": "Oct 26",
       "type": "Sale",
-      "category": "Noseeum",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-10-23",
-      "dateFmt": "Oct 23",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-10-23",
-      "dateFmt": "Oct 23",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-10-23",
-      "dateFmt": "Oct 23",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-10-22",
-      "dateFmt": "Oct 22",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-21",
-      "dateFmt": "Oct 21",
-      "type": "Sale",
-      "category": "Inzecto",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-21",
-      "dateFmt": "Oct 21",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-10-21",
-      "dateFmt": "Oct 21",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Lucy"
+      "category": "Barrier Spray",
+      "csr": "Norma"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 90
+    "count": 91
   },
   "tech_upsells": [
     {
