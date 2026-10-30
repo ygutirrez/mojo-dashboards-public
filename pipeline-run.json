@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-29T22:29:00.761Z",
-  "total_duration_sec": 147,
-  "steps_total": 10,
-  "steps_passed": 9,
-  "steps_failed": 1,
+  "generated_at": "2026-10-29T22:35:40.511Z",
+  "total_duration_sec": 237,
+  "steps_total": 25,
+  "steps_passed": 25,
+  "steps_failed": 0,
   "steps_timed_out": 0,
-  "all_green": false,
+  "all_green": true,
   "steps": [
     {
       "name": "sales-import",
       "success": true,
       "exit_code": 1,
-      "duration_sec": 2,
+      "duration_sec": 1,
       "retries": 1,
       "timed_out": false,
       "critical": false
@@ -28,8 +28,8 @@
     {
       "name": "sharepoint-fallback",
       "success": true,
-      "exit_code": 0,
-      "duration_sec": 3,
+      "exit_code": 1,
+      "duration_sec": 0,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 127,
+      "duration_sec": 139,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -47,7 +47,7 @@
       "name": "build-cancel-analysis",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 12,
+      "duration_sec": 8,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -89,11 +89,146 @@
       "critical": false
     },
     {
+      "name": "build-tech",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 30,
+      "retries": 0,
+      "timed_out": false,
+      "critical": true
+    },
+    {
       "name": "build-sm-kpi",
-      "success": false,
-      "exit_code": 1,
+      "success": true,
+      "exit_code": 0,
       "duration_sec": 0,
-      "retries": 1,
+      "retries": 0,
+      "timed_out": false,
+      "critical": true
+    },
+    {
+      "name": "build-clv",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-marketing",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-fleet",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-profitability",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-reconciliation",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-capacity",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-goal-tracker",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "build-alerts",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "weekly-snapshot",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 5,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "anomaly-detection",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "sync-report",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "freshness",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 0,
+      "retries": 0,
+      "timed_out": false,
+      "critical": false
+    },
+    {
+      "name": "deploy",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 18,
+      "retries": 0,
+      "timed_out": false,
+      "critical": true
+    },
+    {
+      "name": "live-verify",
+      "success": true,
+      "exit_code": 0,
+      "duration_sec": 31,
+      "retries": 0,
       "timed_out": false,
       "critical": true
     }
