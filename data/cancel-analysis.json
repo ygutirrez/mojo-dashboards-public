@@ -1,60 +1,60 @@
 {
-  "generated_at": "2026-10-30T09:17:08.283684+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-22",
+  "generated_at": "2026-10-31T09:17:00.408942+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-10-30",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-10-29.csv",
+    "office_tally_file": "sales-data-2026-10-30.csv",
     "office_tally_invalid_dated_rows": 4,
     "generated": {
-      "contacts": "2026-10-30T09:16:25.437Z",
-      "appointments": "2026-10-30T09:16:16.692Z",
-      "invoices": "2026-10-30T09:16:36.431Z"
+      "contacts": "2026-10-31T09:16:13.732Z",
+      "appointments": "2026-10-31T09:16:05.142Z",
+      "invoices": "2026-10-31T09:16:24.744Z"
     }
   },
   "summary": {
-    "total_cancel_events": 149,
-    "unique_accounts_cancelled": 149,
+    "total_cancel_events": 150,
+    "unique_accounts_cancelled": 150,
     "total_annual_value_lost": 104875.7,
-    "avg_annual_value_per_account": 703.86,
-    "avg_customer_lifetime_days": 968,
-    "median_customer_lifetime_days": 739,
+    "avg_annual_value_per_account": 699.17,
+    "avg_customer_lifetime_days": 966,
+    "median_customer_lifetime_days": 734,
     "recoverable_accounts": 89,
     "recoverable_annual_value": 64111.56,
     "controllable_events": 89,
     "uncontrollable_events": 30,
     "structural_events": 0,
-    "unknown_events": 25,
+    "unknown_events": 26,
     "controllable_value_lost": 64111.56,
     "uncontrollable_value_lost": 25544.03,
-    "total_sales_ytd": 137,
-    "net_new_customers": -12,
-    "cancel_to_sales_ratio": 1.09,
-    "active_customer_base": 1541,
-    "recorded_attrition_pct": 8.8,
-    "recent_30d_accounts": 22,
+    "total_sales_ytd": 139,
+    "net_new_customers": -11,
+    "cancel_to_sales_ratio": 1.08,
+    "active_customer_base": 1524,
+    "recorded_attrition_pct": 9.0,
+    "recent_30d_accounts": 23,
     "recent_30d_revenue": 20429.59,
-    "recent_90d_accounts": 75,
+    "recent_90d_accounts": 76,
     "reason_known_accounts": 124,
-    "reason_capture_pct": 83.2
+    "reason_capture_pct": 82.7
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 586,
-    "sales_logged_since_first_loss": 304,
-    "sales_logged_30d": 24,
-    "sales_logged_90d": 92,
+    "sales_logged_ytd": 587,
+    "sales_logged_since_first_loss": 305,
+    "sales_logged_30d": 23,
+    "sales_logged_90d": 93,
     "restarts_ytd": 141,
     "restarts_30d": 2,
-    "gross_activity_gap_30d": 2,
-    "sales_per_confirmed_loss_30d": 1.09,
+    "gross_activity_gap_30d": 0,
+    "sales_per_confirmed_loss_30d": 1.0,
     "by_category": [
       {
         "category": "Barrier Spray",
-        "sales": 213
+        "sales": 214
       },
       {
         "category": "Restart",
@@ -164,7 +164,7 @@
       },
       {
         "month": "2026-10",
-        "sales": 24
+        "sales": 25
       }
     ]
   },
@@ -187,10 +187,10 @@
     },
     {
       "reason": "Not recorded",
-      "events": 25,
-      "unique_accounts": 25,
+      "events": 26,
+      "unique_accounts": 26,
       "annual_value_lost": 10056.66,
-      "avg_value_per_account": 402.27,
+      "avg_value_per_account": 386.79,
       "recoverable": false
     },
     {
@@ -265,14 +265,14 @@
       "annual_value_lost": 52022.66
     },
     {
+      "csr": "Not recorded",
+      "accounts": 34,
+      "annual_value_lost": 17654.73
+    },
+    {
       "csr": "Norma",
       "accounts": 34,
       "annual_value_lost": 26957.24
-    },
-    {
-      "csr": "Not recorded",
-      "accounts": 33,
-      "annual_value_lost": 17654.73
     },
     {
       "csr": "Bev",
@@ -367,8 +367,8 @@
     },
     {
       "program": "Unknown",
-      "events": 9,
-      "unique_accounts": 9,
+      "events": 10,
+      "unique_accounts": 10,
       "annual_value_lost": 0.0
     }
   ],
@@ -405,8 +405,8 @@
     },
     {
       "month": "2026-10",
-      "events": 22,
-      "unique_accounts": 22,
+      "events": 23,
+      "unique_accounts": 23,
       "annual_value_lost": 20429.59
     }
   ],
@@ -429,7 +429,7 @@
     },
     {
       "bucket": "1-2 years",
-      "count": 15
+      "count": 16
     },
     {
       "bucket": "2-3 years",
@@ -460,12 +460,12 @@
       "unique_accounts": 13
     },
     {
-      "zip": "33146",
-      "events": 11,
-      "unique_accounts": 11
+      "zip": "33133",
+      "events": 12,
+      "unique_accounts": 12
     },
     {
-      "zip": "33133",
+      "zip": "33146",
       "events": 11,
       "unique_accounts": 11
     },
@@ -526,6 +526,19 @@
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-10-30",
+      "reason": "Not recorded",
+      "reason_source": "missing",
+      "csr": "Not recorded",
+      "service": "Unknown",
+      "zip": "33133",
+      "city": "Miami",
+      "tenure_days": 646,
+      "days_since_last_service": 562,
+      "trailing_12m_revenue": 0,
+      "lifetime_value": 498.22
+    },
     {
       "date": "2026-10-22",
       "reason": "Moved",
@@ -772,19 +785,6 @@
       "days_since_last_service": 11,
       "trailing_12m_revenue": 831.09,
       "lifetime_value": 831.09
-    },
-    {
-      "date": "2026-10-05",
-      "reason": "Not Interested",
-      "reason_source": "Office Tally exact-name/date match",
-      "csr": "Lucy",
-      "service": "Inzecto Trap Replacement",
-      "zip": "33189",
-      "city": "Cutler Bay",
-      "tenure_days": 903,
-      "days_since_last_service": 84,
-      "trailing_12m_revenue": 299.88,
-      "lifetime_value": 999.6
     }
   ]
 }
