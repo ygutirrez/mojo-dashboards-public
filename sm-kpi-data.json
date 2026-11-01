@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-10-31T09:17:34.393Z",
+    "generated": "2026-11-01T10:17:20.000Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
     "dataThrough": "2026-10-30",
-    "serviceMinderSyncAt": "2026-10-31T09:16:42.161Z",
+    "serviceMinderSyncAt": "2026-11-01T10:16:24.987Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -14,17 +14,17 @@
   },
   "summary": {
     "ytd": {
-      "production": 2081208.43,
-      "stops": 22884,
+      "production": 2081314.42,
+      "stops": 22885,
       "avgRevPerStop": 90.95,
       "sales": 587,
       "cancels": 150,
       "netCustomerChange": 437,
       "estimates": 184,
       "estimateConversion": 0,
-      "dailyProductionRate": 6846.08,
-      "annualPace": 2498819,
-      "daysElapsed": 304
+      "dailyProductionRate": 6823.98,
+      "annualPace": 2490753,
+      "daysElapsed": 305
     },
     "techCount": 12,
     "topTech": {
@@ -157,8 +157,8 @@
     },
     {
       "period": "October 2026",
-      "production": 217147.44,
-      "stops": 2361,
+      "production": 217253.43,
+      "stops": 2362,
       "skips": 0,
       "estimatesReceived": 1,
       "estimatesCompleted": 0,
@@ -166,32 +166,45 @@
       "salesAccounts": 25,
       "cancelsDollars": 0,
       "cancelsAccounts": 23,
-      "revenuePerStop": 91.97
+      "revenuePerStop": 91.98
+    },
+    {
+      "period": "November 2026",
+      "production": 0,
+      "stops": 0,
+      "skips": 0,
+      "estimatesReceived": 0,
+      "estimatesCompleted": 0,
+      "salesDollars": 0,
+      "salesAccounts": 0,
+      "cancelsDollars": 0,
+      "cancelsAccounts": 0,
+      "revenuePerStop": 0
     }
   ],
   "monthlyComparison": {
     "current": {
+      "period": "November 2026",
+      "production": 0,
+      "stops": 0,
+      "sales": 0,
+      "cancels": 0,
+      "daysElapsed": 1,
+      "dailyPace": 0
+    },
+    "previous": {
       "period": "October 2026",
-      "production": 217147.44,
-      "stops": 2361,
+      "production": 217253.43,
+      "stops": 2362,
       "sales": 25,
       "cancels": 23,
       "daysElapsed": 31,
-      "dailyPace": 7004.76
-    },
-    "previous": {
-      "period": "September 2026",
-      "production": 208674.93,
-      "stops": 2311,
-      "sales": 26,
-      "cancels": 29,
-      "daysElapsed": 30,
-      "dailyPace": 6955.83
+      "dailyPace": 7008.18
     },
     "changes": {
-      "productionPace": 1,
-      "stopsPerDay": -0.9,
-      "revPerStop": 1.67
+      "productionPace": -100,
+      "stopsPerDay": -76.2,
+      "revPerStop": -91.98
     }
   },
   "technicians": [
@@ -269,9 +282,9 @@
     },
     {
       "name": "Wilbeni Pierre",
-      "visits": 902,
-      "revenue": 80605.21,
-      "avgRevPerVisit": 89.36,
+      "visits": 903,
+      "revenue": 80711.2,
+      "avgRevPerVisit": 89.38,
       "resprays": 4,
       "upsells": 0
     },
@@ -317,8 +330,8 @@
     "byProgram": [
       {
         "name": "Mojo Essential",
-        "count": 9985,
-        "revenue": 853892.11
+        "count": 9986,
+        "revenue": 853998.1
       },
       {
         "name": "Synthetic Barrier Spray - 2 week",
@@ -804,11 +817,11 @@
       },
       {
         "week": "2026-10-25",
-        "stops": 512,
-        "revenue": 46299.89
+        "stops": 513,
+        "revenue": 46405.88
       }
     ],
-    "totalWOs": 22884
+    "totalWOs": 22885
   },
   "dailyProduction": [
     {
@@ -1016,10 +1029,10 @@
     },
     {
       "date": "2026-10-30",
-      "stops": 102,
-      "revenue": 9408.18,
+      "stops": 103,
+      "revenue": 9514.17,
       "techCount": 7,
-      "avgStopsPerTech": 14.6
+      "avgStopsPerTech": 14.7
     }
   ],
   "seasonScore": {

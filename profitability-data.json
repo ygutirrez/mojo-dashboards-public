@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-31T09:17:34.784Z",
-  "period": "Jan 1 - Oct 31, 2026 (YTD)",
+  "generated_at": "2026-11-01T10:17:20.410Z",
+  "period": "Jan 1 - Nov 1, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 18758,
-    "total_revenue": 1723803,
+    "total_stops": 18759,
+    "total_revenue": 1723909,
     "avg_revenue_per_stop": 91.9,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 2069698,
+    "current_annual_run_rate": 2063039,
     "target": 5000000,
-    "gap": 2930302,
-    "additional_stops_needed": 31887,
+    "gap": 2936961,
+    "additional_stops_needed": 31960,
     "additional_daily_stops_needed": 128,
-    "current_daily_avg": 61.7,
-    "required_daily_avg": 189.7,
-    "capacity_increase_pct": 207.4
+    "current_daily_avg": 61.5,
+    "required_daily_avg": 189.5,
+    "capacity_increase_pct": 208.1
   },
   "tech_profitability": [
     {
@@ -222,17 +222,17 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 902,
-      "revenue": 80605.21,
-      "avgRevenuePerStop": 89.36,
+      "jobs": 903,
+      "revenue": 80711.2,
+      "avgRevenuePerStop": 89.38,
       "costs": {
-        "chemical": 2886.4,
-        "labor": 10824,
-        "fuel": 3608,
-        "vehicle": 1804,
-        "total": 19122.4
+        "chemical": 2889.6,
+        "labor": 10836,
+        "fuel": 3612,
+        "vehicle": 1806,
+        "total": 19143.6
       },
-      "grossProfit": 61482.81,
+      "grossProfit": 61567.6,
       "margin": 76.3,
       "resprays": 4,
       "resprayRate": 0.44,
@@ -305,14 +305,14 @@
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
-      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1604), Damian Machin (2964), Stanley Prophete (2638), David Carbajal (2585), Marcus Rubi (2453), Jorge Navarro (1329), Lenny Pierre (1088), Guillermo Rodriguez (951), Curtis Blount (1032), Wilbeni Pierre (902), Travis Johnson (862). Consider route optimization or adding techs to reduce burnout."
+      "description": "11 tech(s) with 700+ stops: Joseph Pagan (1604), Damian Machin (2964), Stanley Prophete (2638), David Carbajal (2585), Marcus Rubi (2453), Jorge Navarro (1329), Lenny Pierre (1088), Guillermo Rodriguez (951), Curtis Blount (1032), Wilbeni Pierre (903), Travis Johnson (862). Consider route optimization or adding techs to reduce burnout."
     },
     {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 18758 total stops, even a 5% upsell rate at $75 avg would add $70,343 in revenue.",
-      "potential_value": 70343
+      "description": "At 18759 total stops, even a 5% upsell rate at $75 avg would add $70,346 in revenue.",
+      "potential_value": 70346
     }
   ]
 }
