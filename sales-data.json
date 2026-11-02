@@ -1,31 +1,25 @@
 {
-  "updated_at": "2026-10-30T22:30:18.499Z",
-  "csv_date": "2026-10-30",
-  "period": "Jan 1 - Oct 30, 2026 (YTD)",
+  "updated_at": "2026-11-02T13:00:20.308Z",
+  "csv_date": "2026-11-02",
+  "period": "Jan 1 - Nov 2, 2026 (YTD)",
   "summary": {
     "total_sales": 597,
-    "total_cancels": 416,
-    "net": 181,
+    "total_cancels": 417,
+    "net": 180,
     "paused_wp": 92,
     "paused_pct": 22,
-    "days_tracked": 303
+    "days_tracked": 306
   },
   "week": {
-    "start": "2026-10-26",
-    "end": "2026-11-01",
-    "label": "Oct 26 – Nov 1",
+    "start": "2026-11-02",
+    "end": "2026-11-08",
+    "label": "Nov 2 – Nov 8",
     "summary": {
-      "total_sales": 4,
-      "total_cancels": 9,
-      "net": -5
+      "total_sales": 0,
+      "total_cancels": 1,
+      "net": -1
     },
     "csrs": [
-      {
-        "name": "Norma",
-        "sales": 4,
-        "cancels": 4,
-        "net": 0
-      },
       {
         "name": "Lucy",
         "sales": 0,
@@ -33,10 +27,16 @@
         "net": 0
       },
       {
+        "name": "Norma",
+        "sales": 0,
+        "cancels": 0,
+        "net": 0
+      },
+      {
         "name": "Bev",
         "sales": 0,
-        "cancels": 5,
-        "net": -5
+        "cancels": 1,
+        "net": -1
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 70,
-      "cancels": 142
+      "cancels": 143
     }
   ],
   "cancel_reasons": [
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 88,
+      "count": 89,
       "pct": 21
     },
     {
@@ -215,6 +215,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-11-02",
+      "dateFmt": "Nov 2",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-10-30",
       "dateFmt": "Oct 30",
       "type": "Cancel",
@@ -269,13 +276,6 @@
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-10-27",
-      "dateFmt": "Oct 27",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Bev"
     },
     {
       "date": "2026-10-27",
