@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-02T10:17:44.643Z",
+    "generated_at": "2026-11-02T13:16:26.830Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-02T10:16:37.769Z",
+      "generated_at": "2026-11-02T13:16:20.712Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 48117,
+      "appointments": 48146,
       "contacts": 14273,
-      "invoices": 47693,
+      "invoices": 47695,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2152285,
+      "ytd_invoiced": 2152780,
       "avg_per_visit": 74,
-      "mtd": 1346,
-      "mtd_jobs": 8
+      "mtd": 1842,
+      "mtd_jobs": 10
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,14 +135,14 @@
     },
     "sales": {
       "total_sales": 1553,
-      "total_cancels": 352,
-      "net": 1201,
+      "total_cancels": 353,
+      "net": 1200,
       "cancel_reasons": {
         "No Longer Needed": 79,
         "Workpool": 61,
         "Error": 56,
         "Scheduling Conflict": 55,
-        "Moving": 38,
+        "Moving": 39,
         "Financial": 30,
         "Found Different Company": 19,
         "Weather": 8,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2152285
+      "total_wo_revenue": 2152780
     },
     "employees": [
       {
@@ -235,8 +235,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 207343,
-        "avgRevenue": 175.86,
+        "revenue": 208023,
+        "avgRevenue": 175.7,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -289,16 +289,16 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 13300,
-      "Scheduled": 11163,
-      "Completed": 4328,
+      "Queued": 13298,
+      "Scheduled": 11166,
+      "Completed": 4330,
       "Started": 253,
-      "Canceled": 204
+      "Canceled": 205
     },
     "service_mix": {
       "Mojo Essential": 12528,
       "Synthetic Barrier Spray - 2 week": 10137,
-      "Misting System Recurring Service Bi-Monthly": 1532,
+      "Misting System Recurring Service Bi-Monthly": 1534,
       "Gnat/Midge/No-seeums Service - 2 weeks": 1031,
       "HPD - 42 Days": 827,
       "Synthetic Barrier Spray - 4 week": 472,
@@ -306,13 +306,13 @@
       "All-Natural Barrier Spray": 436,
       "Misting system - 4 Weeks": 262,
       "InZecto Trap Service": 152,
+      "Misting system - 6 Weeks": 138,
       "In2Care Service - 4 Weeks Service": 137,
-      "Misting system - 6 Weeks": 137,
       "Inzecto Trap Replacement": 111,
       "Special Event Service": 105,
       "Synthetic Signature Service": 101,
       "Misting System Repair Service": 95,
-      "Property Assessment": 90,
+      "Property Assessment": 91,
       "Flea & Tick Treatment": 61,
       "Re-Spray": 57,
       "Flea Service": 55,
@@ -356,7 +356,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2152285
+      "total_revenue": 2152780
     },
     "employees": [
       {
@@ -410,7 +410,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 5,
-        "revenue": 207343,
+        "revenue": 208023,
         "upsells": 0,
         "resprays": 0
       },
@@ -461,15 +461,15 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2152285,
+    "revenue": 2152780,
     "proposals": 1652,
     "invoiced_proposals": 1277,
     "complete_proposals": 276,
     "sources": {
-      "Online": 15770,
-      "Referral": 13447,
-      "MoJo Customer": 7004,
-      "Yard Sign": 4734,
+      "Online": 15771,
+      "Referral": 13448,
+      "MoJo Customer": 7006,
+      "Yard Sign": 4735,
       "Direct Mail Postcard": 4443,
       "Mosquito Joe Vehicle": 3424,
       "Other": 1619,
@@ -477,7 +477,7 @@
       "Printed Material": 620,
       "Mail Advertising": 514,
       "Existing Customer": 417,
-      "Online Search": 305,
+      "Online Search": 306,
       "DMP": 213,
       "Local Branding": 99,
       "Neighborly": 94,
@@ -573,9 +573,9 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 1346.4,
-        "invoices": 8,
-        "appointments": 3868,
+        "invoiceRevenue": 1841.89,
+        "invoices": 10,
+        "appointments": 3869,
         "proposals": 0,
         "cancels": 67
       },
@@ -583,9 +583,9 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3844,
+        "appointments": 3847,
         "proposals": 0,
-        "cancels": 47
+        "cancels": 48
       }
     ]
   },
