@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-03T14:30:22.601Z",
+  "updated_at": "2026-11-03T15:00:25.597Z",
   "csv_date": "2026-11-03",
   "period": "Jan 1 - Nov 3, 2026 (YTD)",
   "summary": {
-    "total_sales": 602,
-    "total_cancels": 422,
+    "total_sales": 603,
+    "total_cancels": 423,
     "net": 180,
     "paused_wp": 93,
     "paused_pct": 22,
@@ -15,21 +15,21 @@
     "end": "2026-11-08",
     "label": "Nov 2 – Nov 8",
     "summary": {
-      "total_sales": 5,
-      "total_cancels": 6,
-      "net": -1
+      "total_sales": 4,
+      "total_cancels": 7,
+      "net": -3
     },
     "csrs": [
       {
-        "name": "Lucy",
-        "sales": 2,
-        "cancels": 1,
-        "net": 1
-      },
-      {
         "name": "Norma",
         "sales": 2,
-        "cancels": 2,
+        "cancels": 3,
+        "net": -1
+      },
+      {
+        "name": "Lucy",
+        "sales": 1,
+        "cancels": 1,
         "net": 0
       },
       {
@@ -43,13 +43,13 @@
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 353,
+      "sales": 354,
       "cancels": 136
     },
     {
       "name": "Norma",
       "sales": 178,
-      "cancels": 141
+      "cancels": 142
     },
     {
       "name": "Bev",
@@ -70,7 +70,7 @@
     },
     {
       "name": "Not Interested",
-      "count": 77,
+      "count": 78,
       "pct": 18
     },
     {
@@ -170,7 +170,7 @@
     },
     {
       "name": "One Time",
-      "count": 11
+      "count": 12
     },
     {
       "name": "MS Takeover",
@@ -217,6 +217,20 @@
     {
       "date": "2026-11-03",
       "dateFmt": "Nov 3",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-03",
+      "dateFmt": "Nov 3",
+      "type": "Sale",
+      "category": "One Time",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-03",
+      "dateFmt": "Nov 3",
       "type": "Sale",
       "category": "Restart",
       "csr": "Bev"
@@ -236,8 +250,8 @@
       "csr": "Norma"
     },
     {
-      "date": "2026-11-02",
-      "dateFmt": "Nov 2",
+      "date": "1900-01-11",
+      "dateFmt": "Jan 11",
       "type": "Sale",
       "category": "Restart",
       "csr": "Lucy"
@@ -269,20 +283,6 @@
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-11-02",
-      "dateFmt": "Nov 2",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-11-02",
-      "dateFmt": "Nov 2",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
