@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-03T11:00:36.094Z",
-  "updated_at": "2026-11-03T11:15:16.469Z",
+  "generated_at": "2026-11-03T13:00:39.631Z",
+  "updated_at": "2026-11-03T13:00:39.631Z",
   "period": "Jan 1 - Nov 3, 2026 (YTD)",
   "summary": {
-    "total_jobs": 18815,
+    "total_jobs": 18817,
     "total_techs": 12,
     "resprays": 145,
     "first_time_success": "99.2%",
     "total_upsells": 7,
-    "total_revenue": 1729232
+    "total_revenue": 1729429
   },
   "employees": [
     {
@@ -68,8 +68,8 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 1103,
-      "revenue": 93138.65,
+      "jobs": 1105,
+      "revenue": 93335.63,
       "resprays": 11,
       "upsells": 0,
       "rank": 7
@@ -214,19 +214,19 @@
   },
   "current_day": {
     "date": "2026-11-02",
-    "jobs": 56,
-    "revenue": 5322.98,
+    "jobs": 58,
+    "revenue": 5519.96,
     "technicians": [
+      {
+        "name": "Lenny Pierre",
+        "jobs": 17,
+        "revenue": 1565.83,
+        "resprays": 0
+      },
       {
         "name": "Damian Machin",
         "jobs": 15,
         "revenue": 1589.69,
-        "resprays": 0
-      },
-      {
-        "name": "Lenny Pierre",
-        "jobs": 15,
-        "revenue": 1368.85,
         "resprays": 0
       },
       {
@@ -252,20 +252,20 @@
   "this_week": {
     "start": "2026-11-02",
     "end": "2026-11-08",
-    "jobs": 56,
-    "revenue": 5322.98,
+    "jobs": 58,
+    "revenue": 5519.96,
     "prior_week_jobs": 433,
     "technicians": [
+      {
+        "name": "Lenny Pierre",
+        "jobs": 17,
+        "revenue": 1565.83,
+        "resprays": 0
+      },
       {
         "name": "Damian Machin",
         "jobs": 15,
         "revenue": 1589.69,
-        "resprays": 0
-      },
-      {
-        "name": "Lenny Pierre",
-        "jobs": 15,
-        "revenue": 1368.85,
         "resprays": 0
       },
       {
@@ -317,7 +317,7 @@
       "start": "2026-11-02",
       "end": "2026-11-08",
       "label": "Nov 2–Nov 8",
-      "jobs": 56
+      "jobs": 58
     }
   ],
   "sources": {
@@ -329,7 +329,7 @@
         "max": "2026-11-02"
       },
       "status": "current",
-      "detail": "22,960 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping."
+      "detail": "22,962 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -343,7 +343,7 @@
     },
     "upsells": {
       "label": "Technician upsells",
-      "system": "Office sales tally (sales-data-2026-11-02.csv)",
+      "system": "Office sales tally (sales-data-2026-11-03.csv)",
       "coverage": {
         "min": "2026-02-04",
         "max": "2026-07-08"
@@ -356,7 +356,7 @@
       "system": "Google Reviews bonus sheet CSV",
       "coverage": {
         "min": null,
-        "max": "2026-11-02"
+        "max": "2026-11-03"
       },
       "status": "limited",
       "detail": "Current cumulative credits and payouts; historical dated credit snapshots are not retained, so date filters do not change this metric."
@@ -557,18 +557,6 @@
       "amount": 1500,
       "reviews": 75.17,
       "cashed": 30
-    },
-    {
-      "name": "John",
-      "amount": 1000,
-      "reviews": 76,
-      "cashed": 20
-    },
-    {
-      "name": "Andrew",
-      "amount": 500,
-      "reviews": 18,
-      "cashed": 10
     }
   ],
   "payouts_2026": [
@@ -734,7 +722,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 145 re-sprays out of 18815!"
+      "stat": "Only 145 re-sprays out of 18817!"
     }
   ]
 }
