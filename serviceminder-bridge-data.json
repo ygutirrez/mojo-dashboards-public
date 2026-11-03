@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-03T10:17:46.944Z",
+    "generated_at": "2026-11-03T13:16:31.485Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-03T10:16:32.840Z",
+      "generated_at": "2026-11-03T13:16:23.637Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 48303,
+      "appointments": 48307,
       "contacts": 14276,
-      "invoices": 47767,
+      "invoices": 47769,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2159198,
+      "ytd_invoiced": 2159395,
       "avg_per_visit": 74,
-      "mtd": 8260,
-      "mtd_jobs": 82
+      "mtd": 8457,
+      "mtd_jobs": 84
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,14 +135,14 @@
     },
     "sales": {
       "total_sales": 1553,
-      "total_cancels": 363,
-      "net": 1190,
+      "total_cancels": 364,
+      "net": 1189,
       "cancel_reasons": {
         "No Longer Needed": 82,
         "Workpool": 64,
         "Error": 56,
         "Scheduling Conflict": 56,
-        "Moving": 39,
+        "Moving": 40,
         "Financial": 33,
         "Found Different Company": 19,
         "Weather": 8,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2159198
+      "total_wo_revenue": 2159395
     },
     "employees": [
       {
@@ -290,13 +290,13 @@
     ],
     "appointment_statuses": {
       "Queued": 13275,
-      "Scheduled": 11162,
-      "Completed": 4403,
+      "Scheduled": 11161,
+      "Completed": 4405,
       "Started": 254,
-      "Canceled": 213
+      "Canceled": 214
     },
     "service_mix": {
-      "Mojo Essential": 12546,
+      "Mojo Essential": 12548,
       "Synthetic Barrier Spray - 2 week": 10147,
       "Misting System Recurring Service Bi-Monthly": 1535,
       "Gnat/Midge/No-seeums Service - 2 weeks": 1039,
@@ -357,7 +357,7 @@
       "total_techs": 9,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2159198
+      "total_revenue": 2159395
     },
     "employees": [
       {
@@ -462,13 +462,13 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2159198,
+    "revenue": 2159395,
     "proposals": 1652,
     "invoiced_proposals": 1272,
     "complete_proposals": 281,
     "sources": {
       "Online": 15816,
-      "Referral": 13489,
+      "Referral": 13493,
       "MoJo Customer": 7013,
       "Yard Sign": 4743,
       "Direct Mail Postcard": 4452,
@@ -574,17 +574,17 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 8259.67,
-        "invoices": 82,
+        "invoiceRevenue": 8456.65,
+        "invoices": 84,
         "appointments": 3883,
         "proposals": 0,
-        "cancels": 74
+        "cancels": 75
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3888,
+        "appointments": 3890,
         "proposals": 0,
         "cancels": 50
       }
