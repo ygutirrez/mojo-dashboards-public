@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-11-03T19:30:23.697Z",
-  "csv_date": "2026-11-03",
-  "period": "Jan 1 - Nov 3, 2026 (YTD)",
+  "updated_at": "2026-11-04T15:04:39.254Z",
+  "csv_date": "2026-11-04",
+  "period": "Jan 1 - Nov 4, 2026 (YTD)",
   "summary": {
     "total_sales": 603,
-    "total_cancels": 423,
-    "net": 180,
-    "paused_wp": 93,
+    "total_cancels": 424,
+    "net": 179,
+    "paused_wp": 94,
     "paused_pct": 22,
-    "days_tracked": 307
+    "days_tracked": 308
   },
   "week": {
     "start": "2026-11-02",
@@ -16,15 +16,15 @@
     "label": "Nov 2 – Nov 8",
     "summary": {
       "total_sales": 4,
-      "total_cancels": 7,
-      "net": -3
+      "total_cancels": 8,
+      "net": -4
     },
     "csrs": [
       {
         "name": "Norma",
         "sales": 2,
-        "cancels": 3,
-        "net": -1
+        "cancels": 4,
+        "net": -2
       },
       {
         "name": "Lucy",
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 178,
-      "cancels": 142
+      "cancels": 143
     },
     {
       "name": "Bev",
@@ -60,7 +60,7 @@
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 93,
+      "count": 94,
       "pct": 22
     },
     {
@@ -218,6 +218,13 @@
       "date": "2026-11-03",
       "dateFmt": "Nov 3",
       "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-03",
+      "dateFmt": "Nov 3",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Norma"
     },
@@ -276,18 +283,11 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-02",
-      "dateFmt": "Nov 2",
-      "type": "Sale",
-      "category": "Barrier Spray",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 93
+    "count": 94
   },
   "tech_upsells": [
     {
