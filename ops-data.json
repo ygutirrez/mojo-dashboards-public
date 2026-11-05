@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T00:47:24.931Z",
+  "updated_at": "2026-11-05T01:11:41.451Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -12,7 +12,7 @@
     "blowers_active": 13,
     "drivers_need_coaching": 0,
     "total_wo_completed": 18651,
-    "total_wo_revenue": 2173448
+    "total_wo_revenue": 2178407
   },
   "alerts": [
     {
@@ -50,7 +50,7 @@
     },
     {
       "nickname": "Truck 10",
-      "driver": "Stanley Prophete",
+      "driver": "Unassigned",
       "trip_count": 56,
       "total_miles": 86,
       "total_drive_time_min": 399.15,
@@ -407,7 +407,7 @@
     },
     {
       "nickname": "Truck 10",
-      "driver": "Stanley P.",
+      "driver": "Unassigned",
       "make_model": "2019 Ram Ram Pickup 1500 Classic",
       "fuel_level": 49,
       "battery_volts": "12.3",
@@ -516,12 +516,6 @@
   ],
   "blowers": [
     {
-      "tech": "Stanley",
-      "model": "Stihl 430",
-      "lastScan": "2/9/2026",
-      "issue": null
-    },
-    {
       "tech": "Andrew",
       "model": "Solo 451",
       "lastScan": "1/14/2026",
@@ -564,12 +558,6 @@
       "issue": null
     },
     {
-      "tech": "Stanley",
-      "model": "Stihl SR200",
-      "lastScan": "2/5/2026",
-      "issue": null
-    },
-    {
       "tech": "Jeo",
       "model": "Solo 451",
       "lastScan": "1/14/2026",
@@ -602,17 +590,6 @@
       "technician_status": "active",
       "mapping_source": "Yoel route screenshot 2026-06-16",
       "legacy_revenue": 124192.24000000262
-    },
-    {
-      "name": "Stanley Prophete",
-      "jobs": 1285,
-      "revenue": 146568.59,
-      "avgRevenue": 89.97,
-      "route_label": "Route 5",
-      "technician": "Stanley Prophete",
-      "technician_status": "active",
-      "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 117493.61000000237
     },
     {
       "name": "Marcus Rubi",
@@ -659,17 +636,6 @@
       "legacy_revenue": 24543.620000000097
     },
     {
-      "name": "Curtis Blount",
-      "jobs": 237,
-      "revenue": 57198.96,
-      "avgRevenue": 82.06,
-      "route_label": "Route 7",
-      "technician": "Curtis Blount",
-      "technician_status": "active",
-      "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 19729.190000000028
-    },
-    {
       "name": "Lenny Pierre",
       "jobs": 11,
       "revenue": 1125.99,
@@ -682,18 +648,18 @@
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-11-05T00:47:24.931Z",
+    "generated_at": "2026-11-05T01:11:41.451Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-04T14:16:38.698Z",
-      "kinds_ok": 4,
+      "generated_at": "2026-11-05T01:08:21.200Z",
+      "kinds_ok": 1,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 48505,
       "contacts": 14281,
-      "invoices": 47905,
+      "invoices": 47963,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -729,9 +695,9 @@
         "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
-        "technician": "Stanley Prophete",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending"
       },
       "Route 6": {
         "technician": "Marcus Rubi",
@@ -739,9 +705,9 @@
         "source": "Yoel route screenshot 2026-06-16"
       },
       "Route 7": {
-        "technician": "Curtis Blount",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending"
       },
       "Route 8": {
         "technician": "Jeffrey Baptiste",

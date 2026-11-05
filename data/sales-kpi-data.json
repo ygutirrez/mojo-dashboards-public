@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T00:47:24.931Z",
+  "updated_at": "2026-11-05T01:11:41.451Z",
   "period": "Jan 1 - Nov 4, 2026 (YTD)",
   "summary": {
     "total_sales": 604,
@@ -7,13 +7,13 @@
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 2173448,
-    "total_invoices": 23636,
+    "total_revenue": 2178407,
+    "total_invoices": 23694,
     "total_discounts": 15611,
     "net": 178,
     "days_tracked": 308,
     "sales_per_day": 2,
-    "revenue_per_day": 7057
+    "revenue_per_day": 7073
   },
   "office_tally": {
     "csv_date": "2026-11-04",
@@ -457,12 +457,12 @@
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 2173448,
+    "ytd_revenue": 2178407,
     "days_elapsed": 308,
     "days_total": 365,
-    "projected_annual": 2575677,
+    "projected_annual": 2581554,
     "on_pace": false,
-    "pct_of_target": 51.5
+    "pct_of_target": 51.6
   },
   "serviceminder_sales_preview": {
     "total_sales": 307,
@@ -475,7 +475,7 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-11-05T00:47:24.931Z"
+    "serviceminder_cutover_at": "2026-11-05T01:11:41.451Z"
   },
   "data_freshness": {
     "sales_csv_date": "2026-11-04",
@@ -484,18 +484,18 @@
   "total_sales": 604,
   "total_cancels": 426,
   "serviceminder": {
-    "generated_at": "2026-11-05T00:47:24.931Z",
+    "generated_at": "2026-11-05T01:11:41.451Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-04T14:16:38.698Z",
-      "kinds_ok": 4,
+      "generated_at": "2026-11-05T01:08:21.200Z",
+      "kinds_ok": 1,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 48505,
       "contacts": 14281,
-      "invoices": 47905,
+      "invoices": 47963,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -531,9 +531,9 @@
         "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
       },
       "Route 5": {
-        "technician": "Stanley Prophete",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending"
       },
       "Route 6": {
         "technician": "Marcus Rubi",
@@ -541,9 +541,9 @@
         "source": "Yoel route screenshot 2026-06-16"
       },
       "Route 7": {
-        "technician": "Curtis Blount",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending"
       },
       "Route 8": {
         "technician": "Jeffrey Baptiste",
@@ -601,22 +601,22 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 2173448,
+    "revenue": 2178407,
     "proposals": 1652,
     "invoiced_proposals": 1269,
     "complete_proposals": 284,
     "sources": {
-      "Online": 15877,
-      "Referral": 13579,
-      "MoJo Customer": 7046,
-      "Yard Sign": 4762,
-      "Direct Mail Postcard": 4459,
-      "Mosquito Joe Vehicle": 3433,
+      "Online": 15893,
+      "Referral": 13592,
+      "MoJo Customer": 7055,
+      "Yard Sign": 4772,
+      "Direct Mail Postcard": 4464,
+      "Mosquito Joe Vehicle": 3436,
       "Other": 1625,
       "Advertising": 1223,
-      "Printed Material": 621,
+      "Printed Material": 622,
       "Mail Advertising": 516,
-      "Existing Customer": 422,
+      "Existing Customer": 423,
       "Online Search": 308,
       "DMP": 213,
       "Local Branding": 100,
@@ -713,8 +713,8 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 21306.43,
-        "invoices": 210,
+        "invoiceRevenue": 26266.04,
+        "invoices": 268,
         "appointments": 3914,
         "proposals": 0,
         "cancels": 81
