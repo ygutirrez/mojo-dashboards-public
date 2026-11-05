@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-05T01:11:41.731Z",
-  "period": "Jan 1 - Nov 4, 2026",
+  "generated_at": "2026-11-05T10:19:18.462Z",
+  "period": "Jan 1 - Nov 5, 2026",
   "headline": {
     "ytd_revenue": 2178407,
     "target": 5000000,
     "pct_complete": 43.6,
-    "pct_year_elapsed": 84.4,
+    "pct_year_elapsed": 84.7,
     "on_pace": false,
-    "annual_projection": 2581554,
-    "projection_gap": 2418446,
+    "annual_projection": 2573199,
+    "projection_gap": 2426801,
     "remaining": 2821593,
-    "days_remaining": 57
+    "days_remaining": 56
   },
   "pace": {
-    "daily_actual": 7073,
-    "daily_required": 49502,
+    "daily_actual": 7050,
+    "daily_required": 50386,
     "pace_ratio": 0.14,
     "status": "behind",
-    "stops_per_day": 61.1,
-    "required_stops_per_day": 538.6,
+    "stops_per_day": 47,
+    "required_stops_per_day": 537.1,
     "fy25_daily_pace": 8294,
     "pace_vs_fy25_pct": -15
   },
@@ -48,7 +48,7 @@
       "reached": false,
       "pctToMilestone": 73,
       "daysToReach": 117,
-      "estimatedDate": "Mar 1"
+      "estimatedDate": "Mar 2"
     },
     {
       "amount": 4000000,
@@ -56,8 +56,8 @@
       "icon": "🏆",
       "reached": false,
       "pctToMilestone": 54,
-      "daysToReach": 258,
-      "estimatedDate": "Jul 20"
+      "daysToReach": 259,
+      "estimatedDate": "Jul 22"
     },
     {
       "amount": 5000000,
@@ -65,8 +65,8 @@
       "icon": "🎯",
       "reached": false,
       "pctToMilestone": 44,
-      "daysToReach": 399,
-      "estimatedDate": "Dec 8"
+      "daysToReach": 401,
+      "estimatedDate": "Dec 11"
     }
   ],
   "monthly_revenue": [
@@ -164,7 +164,7 @@
       "month": "Nov",
       "monthNum": 11,
       "actual": 26266,
-      "projected": 196995,
+      "projected": 157596,
       "target": 250000,
       "isPast": false,
       "isCurrent": true
@@ -173,7 +173,7 @@
       "month": "Dec",
       "monthNum": 12,
       "actual": null,
-      "projected": 103262,
+      "projected": 102928,
       "target": 200000,
       "isPast": false,
       "isCurrent": false
@@ -183,29 +183,29 @@
     {
       "label": "Current Pace",
       "description": "If nothing changes",
-      "projected": 2581554,
-      "gap": 2418446,
+      "projected": 2573199,
+      "gap": 2426801,
       "achievable": false
     },
     {
       "label": "+2 Techs (Q2)",
       "description": "Hire 2 by April, ramp by May",
-      "projected": 2912430,
-      "gap": 2087570,
+      "projected": 2910915,
+      "gap": 2089085,
       "achievable": false
     },
     {
       "label": "+5 Techs (Q2-Q3)",
       "description": "Aggressive hiring wave",
-      "projected": 3270879,
-      "gap": 1729121,
+      "projected": 3276774,
+      "gap": 1723226,
       "achievable": false
     },
     {
       "label": "Price Increase +10%",
       "description": "Raise avg ticket $9.40",
-      "projected": 2839709,
-      "gap": 2160291,
+      "projected": 2830519,
+      "gap": 2169481,
       "achievable": false
     }
   ],
@@ -218,7 +218,7 @@
   },
   "data_sources": {
     "revenue": "ServiceMinder Org Download API invoices",
-    "service_minder_generated_at": "2026-11-05T01:11:41.451Z",
+    "service_minder_generated_at": "2026-11-05T10:19:18.194Z",
     "servsuite_processed_invoices_revenue": 946368.04999993
   }
 }

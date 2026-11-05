@@ -1,26 +1,41 @@
 {
-  "generated_at": "2026-11-03T10:17:40.368Z",
+  "generated_at": "2026-11-05T10:19:11.998Z",
   "health": {
-    "score": 58,
+    "score": 61,
     "pipelineStatus": "unknown",
     "totalDataFiles": 49,
-    "fresh": 35,
-    "stale": 14,
+    "fresh": 36,
+    "stale": 13,
     "missing": 0,
     "criticalStale": 0,
     "criticalMissing": 0,
     "totalDashboards": 48,
-    "dashboardsHealthy": 41,
-    "dashboardsAffected": 7
+    "dashboardsHealthy": 42,
+    "dashboardsAffected": 6
   },
   "dataFiles": [
+    {
+      "name": "sales-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 5,
+      "lastModified": "2026-11-05T00:45:20.113Z",
+      "ageHours": 9.6,
+      "dataTimestamp": "2026-11-04T23:30:16.099Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "Sales CSV (email/SharePoint)",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "fresh"
+    },
     {
       "name": "dashboard-data.json",
       "location": "root",
       "exists": true,
       "sizeKB": 70.1,
-      "lastModified": "2026-11-02T14:16:16.721Z",
-      "ageHours": 20,
+      "lastModified": "2026-11-05T01:11:41.564Z",
+      "ageHours": 9.1,
       "dataTimestamp": "2026-07-24T08:42:24.950Z",
       "recordCount": null,
       "valid": true,
@@ -33,10 +48,25 @@
       "name": "ops-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 21.7,
-      "lastModified": "2026-11-02T14:16:16.715Z",
-      "ageHours": 20,
-      "dataTimestamp": "2026-11-02T14:16:16.605Z",
+      "sizeKB": 20.5,
+      "lastModified": "2026-11-05T01:11:43.019Z",
+      "ageHours": 9.1,
+      "dataTimestamp": "2026-11-05T01:11:41.451Z",
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": true,
+      "maxAgeHours": 36,
+      "status": "fresh"
+    },
+    {
+      "name": "owners-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 7.3,
+      "lastModified": "2026-11-05T01:11:41.558Z",
+      "ageHours": 9.1,
+      "dataTimestamp": "2026-11-05T01:11:41.451Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -49,9 +79,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 16.5,
-      "lastModified": "2026-11-02T14:16:16.718Z",
-      "ageHours": 20,
-      "dataTimestamp": "2026-11-02T14:16:16.605Z",
+      "lastModified": "2026-11-05T01:11:41.561Z",
+      "ageHours": 9.1,
+      "dataTimestamp": "2026-11-05T01:11:41.451Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Sales CSV",
@@ -60,43 +90,13 @@
       "status": "fresh"
     },
     {
-      "name": "owners-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 7.3,
-      "lastModified": "2026-11-02T23:30:21.469Z",
-      "ageHours": 10.8,
-      "dataTimestamp": "2026-11-02T23:30:20.762Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
-      "name": "sales-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 5.1,
-      "lastModified": "2026-11-02T23:30:20.790Z",
-      "ageHours": 10.8,
-      "dataTimestamp": "2026-11-02T23:30:20.762Z",
-      "recordCount": null,
-      "valid": true,
-      "source": "Sales CSV (email/SharePoint)",
-      "critical": true,
-      "maxAgeHours": 36,
-      "status": "fresh"
-    },
-    {
       "name": "alerts-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 6.8,
-      "lastModified": "2026-11-03T10:17:33.207Z",
+      "sizeKB": 6.5,
+      "lastModified": "2026-11-05T10:19:05.876Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:33.206Z",
+      "dataTimestamp": "2026-11-05T10:19:05.875Z",
       "recordCount": null,
       "valid": true,
       "source": "Derived (all sources)",
@@ -109,9 +109,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 18.7,
-      "lastModified": "2026-11-03T10:16:58.615Z",
+      "lastModified": "2026-11-05T10:18:36.552Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:16:57.311514+00:00",
+      "dataTimestamp": "2026-11-05T10:18:35.321345+00:00",
       "recordCount": null,
       "valid": true,
       "source": "ServiceMinder",
@@ -124,9 +124,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 6,
-      "lastModified": "2026-11-03T10:17:01.621Z",
+      "lastModified": "2026-11-05T10:18:39.233Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:01.619Z",
+      "dataTimestamp": "2026-11-05T10:18:39.231Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -139,9 +139,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 4.7,
-      "lastModified": "2026-11-03T10:17:33.114Z",
+      "lastModified": "2026-11-05T10:19:05.781Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:33.091Z",
+      "dataTimestamp": "2026-11-05T10:19:05.759Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -153,10 +153,10 @@
       "name": "profitability-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 7.5,
-      "lastModified": "2026-11-03T10:17:32.749Z",
+      "sizeKB": 6.1,
+      "lastModified": "2026-11-05T10:19:05.446Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.727Z",
+      "dataTimestamp": "2026-11-05T10:19:05.424Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -168,10 +168,10 @@
       "name": "reconciliation-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 12.8,
-      "lastModified": "2026-11-03T10:17:32.869Z",
+      "sizeKB": 12.9,
+      "lastModified": "2026-11-05T10:19:05.557Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.868Z",
+      "dataTimestamp": "2026-11-05T10:19:05.557Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Sales CSV",
@@ -183,10 +183,10 @@
       "name": "tech-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 15.9,
-      "lastModified": "2026-11-03T10:17:32.052Z",
+      "sizeKB": 15.3,
+      "lastModified": "2026-11-05T10:19:04.762Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.051Z",
+      "dataTimestamp": "2026-11-05T10:19:04.759Z",
       "recordCount": null,
       "valid": true,
       "source": "ServiceMinder + Google Reviews + Zubie",
@@ -199,9 +199,9 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 18.7,
-      "lastModified": "2026-11-03T10:16:58.617Z",
+      "lastModified": "2026-11-05T10:18:36.551Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:16:57.311514+00:00",
+      "dataTimestamp": "2026-11-05T10:18:35.321345+00:00",
       "recordCount": null,
       "valid": true,
       "source": "ServiceMinder",
@@ -213,10 +213,10 @@
       "name": "data/sales-kpi-data.json",
       "location": "data/",
       "exists": true,
-      "sizeKB": 10.1,
-      "lastModified": "2026-11-03T10:17:02.220Z",
+      "sizeKB": 10,
+      "lastModified": "2026-11-05T10:18:39.750Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:01.711Z",
+      "dataTimestamp": "2026-11-05T10:18:39.315Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Sales CSV",
@@ -230,7 +230,7 @@
       "exists": true,
       "sizeKB": 1.5,
       "lastModified": "2026-04-22T20:02:52.729Z",
-      "ageHours": 4670.2,
+      "ageHours": 4718.3,
       "dataTimestamp": "2026-03-15T15:03:32.572Z",
       "recordCount": null,
       "valid": true,
@@ -245,7 +245,7 @@
       "exists": true,
       "sizeKB": 0.5,
       "lastModified": "2026-06-17T13:48:46.699Z",
-      "ageHours": 3332.5,
+      "ageHours": 3380.5,
       "dataTimestamp": "2026-06-17T13:55:00.000Z",
       "recordCount": null,
       "valid": true,
@@ -260,7 +260,7 @@
       "exists": true,
       "sizeKB": 2,
       "lastModified": "2026-06-22T15:12:37.443Z",
-      "ageHours": 3211.1,
+      "ageHours": 3259.1,
       "dataTimestamp": null,
       "recordCount": null,
       "valid": true,
@@ -275,7 +275,7 @@
       "exists": true,
       "sizeKB": 65.3,
       "lastModified": "2026-06-22T15:12:51.961Z",
-      "ageHours": 3211.1,
+      "ageHours": 3259.1,
       "dataTimestamp": "2026-06-22T15:12:51.918Z",
       "recordCount": null,
       "valid": true,
@@ -290,7 +290,7 @@
       "exists": true,
       "sizeKB": 11.4,
       "lastModified": "2026-06-22T15:12:51.654Z",
-      "ageHours": 3211.1,
+      "ageHours": 3259.1,
       "dataTimestamp": "2026-06-22T15:12:51.652Z",
       "recordCount": null,
       "valid": true,
@@ -300,27 +300,12 @@
       "status": "stale"
     },
     {
-      "name": "chemical-data.json",
-      "location": "root",
-      "exists": true,
-      "sizeKB": 20.4,
-      "lastModified": "2026-07-24T08:42:03.225Z",
-      "ageHours": 2449.6,
-      "dataTimestamp": null,
-      "recordCount": null,
-      "valid": true,
-      "source": "ServSuite",
-      "critical": false,
-      "maxAgeHours": 36,
-      "status": "stale"
-    },
-    {
       "name": "pipeline-status.json",
       "location": "root",
       "exists": true,
       "sizeKB": 1.5,
       "lastModified": "2026-07-24T08:42:39.696Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:39Z",
       "recordCount": null,
       "valid": true,
@@ -335,7 +320,7 @@
       "exists": true,
       "sizeKB": 1.4,
       "lastModified": "2026-07-24T08:42:20.096Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:20Z",
       "recordCount": null,
       "valid": true,
@@ -350,7 +335,7 @@
       "exists": true,
       "sizeKB": 11,
       "lastModified": "2026-07-24T08:42:41.509Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": null,
       "recordCount": null,
       "valid": true,
@@ -365,7 +350,7 @@
       "exists": true,
       "sizeKB": 10.6,
       "lastModified": "2026-07-24T08:42:40.006Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:40.004Z",
       "recordCount": null,
       "valid": true,
@@ -380,7 +365,7 @@
       "exists": true,
       "sizeKB": 18.3,
       "lastModified": "2026-07-24T08:42:39.921Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:39.919Z",
       "recordCount": null,
       "valid": true,
@@ -395,7 +380,7 @@
       "exists": true,
       "sizeKB": 1.4,
       "lastModified": "2026-07-24T08:42:20.095Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:20Z",
       "recordCount": null,
       "valid": true,
@@ -410,7 +395,7 @@
       "exists": true,
       "sizeKB": 8.7,
       "lastModified": "2026-07-24T08:42:40.095Z",
-      "ageHours": 2449.6,
+      "ageHours": 2497.6,
       "dataTimestamp": "2026-07-24T08:42:40.093Z",
       "recordCount": null,
       "valid": true,
@@ -425,7 +410,7 @@
       "exists": true,
       "sizeKB": 0.4,
       "lastModified": "2026-08-28T16:35:13.841Z",
-      "ageHours": 1601.7,
+      "ageHours": 1649.7,
       "dataTimestamp": null,
       "recordCount": null,
       "valid": true,
@@ -439,9 +424,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 29.7,
-      "lastModified": "2026-11-02T10:17:38.462Z",
-      "ageHours": 24,
-      "dataTimestamp": "2026-11-02T10:17:38.437Z",
+      "lastModified": "2026-11-03T10:17:40.393Z",
+      "ageHours": 48,
+      "dataTimestamp": "2026-11-03T10:17:40.368Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -454,9 +439,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 4.7,
-      "lastModified": "2026-11-02T10:18:56.906Z",
-      "ageHours": 24,
-      "dataTimestamp": "2026-11-02T10:18:56.905Z",
+      "lastModified": "2026-11-03T10:18:29.336Z",
+      "ageHours": 48,
+      "dataTimestamp": "2026-11-03T10:18:29.333Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -469,8 +454,8 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 3.7,
-      "lastModified": "2026-11-02T10:18:56.906Z",
-      "ageHours": 24,
+      "lastModified": "2026-11-03T10:18:29.339Z",
+      "ageHours": 48,
       "dataTimestamp": null,
       "recordCount": 30,
       "valid": true,
@@ -484,9 +469,9 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 0.5,
-      "lastModified": "2026-11-02T23:30:16.757Z",
+      "lastModified": "2026-11-04T23:30:12.536Z",
       "ageHours": 10.8,
-      "dataTimestamp": "2026-11-02T23:30:16.756786+00:00",
+      "dataTimestamp": "2026-11-04T23:30:12.535320+00:00",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -495,13 +480,28 @@
       "status": "fresh"
     },
     {
+      "name": "chemical-data.json",
+      "location": "root",
+      "exists": true,
+      "sizeKB": 19.1,
+      "lastModified": "2026-11-05T01:03:21.021Z",
+      "ageHours": 9.3,
+      "dataTimestamp": null,
+      "recordCount": null,
+      "valid": true,
+      "source": "ServSuite",
+      "critical": false,
+      "maxAgeHours": 36,
+      "status": "fresh"
+    },
+    {
       "name": "anomaly-report.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 1.6,
-      "lastModified": "2026-11-03T10:17:39.790Z",
+      "sizeKB": 1.8,
+      "lastModified": "2026-11-05T10:19:11.512Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:39.789Z",
+      "dataTimestamp": "2026-11-05T10:19:11.511Z",
       "recordCount": null,
       "valid": true,
       "source": "Anomaly Detector",
@@ -513,10 +513,10 @@
       "name": "capacity-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 8.8,
-      "lastModified": "2026-11-03T10:17:33.003Z",
+      "sizeKB": 8.1,
+      "lastModified": "2026-11-05T10:19:05.672Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.974Z",
+      "dataTimestamp": "2026-11-05T10:19:05.647Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -529,9 +529,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 8.6,
-      "lastModified": "2026-11-03T10:17:32.441Z",
+      "lastModified": "2026-11-05T10:19:05.148Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.419Z",
+      "dataTimestamp": "2026-11-05T10:19:05.125Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -544,9 +544,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 2.1,
-      "lastModified": "2026-11-03T10:17:02.445Z",
+      "lastModified": "2026-11-05T10:18:39.972Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:02.443Z",
+      "dataTimestamp": "2026-11-05T10:18:39.970Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite",
@@ -558,10 +558,10 @@
       "name": "fleet-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 14.5,
-      "lastModified": "2026-11-03T10:17:32.638Z",
+      "sizeKB": 15,
+      "lastModified": "2026-11-05T10:19:05.335Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.636Z",
+      "dataTimestamp": "2026-11-05T10:19:05.333Z",
       "recordCount": null,
       "valid": true,
       "source": "ServSuite + Zubie",
@@ -574,9 +574,9 @@
       "location": "root",
       "exists": true,
       "sizeKB": 6.1,
-      "lastModified": "2026-11-03T10:17:32.533Z",
+      "lastModified": "2026-11-05T10:19:05.237Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:32.531Z",
+      "dataTimestamp": "2026-11-05T10:19:05.235Z",
       "recordCount": null,
       "valid": true,
       "source": "Google Ads + ServSuite",
@@ -588,8 +588,8 @@
       "name": "serviceminder-bridge-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 16.4,
-      "lastModified": "2026-11-03T10:16:50.367Z",
+      "sizeKB": 14.6,
+      "lastModified": "2026-11-05T10:18:28.808Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -604,7 +604,7 @@
       "location": "root",
       "exists": true,
       "sizeKB": 37.8,
-      "lastModified": "2026-11-03T10:16:41.389Z",
+      "lastModified": "2026-11-05T10:18:22.735Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -618,8 +618,8 @@
       "name": "sm-kpi-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 23.1,
-      "lastModified": "2026-11-03T10:17:32.314Z",
+      "sizeKB": 22.6,
+      "lastModified": "2026-11-05T10:19:05.029Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -633,10 +633,10 @@
       "name": "technician-scorecard-data.json",
       "location": "root",
       "exists": true,
-      "sizeKB": 238.9,
-      "lastModified": "2026-11-03T10:17:31.626Z",
+      "sizeKB": 388.4,
+      "lastModified": "2026-11-05T10:19:04.340Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:31.603Z",
+      "dataTimestamp": "2026-11-05T10:19:03.588Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -649,7 +649,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 0.9,
-      "lastModified": "2026-11-03T10:17:01.461Z",
+      "lastModified": "2026-11-05T10:18:39.091Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -664,7 +664,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 0.1,
-      "lastModified": "2026-11-03T10:17:01.462Z",
+      "lastModified": "2026-11-05T10:18:39.091Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -679,7 +679,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 1.9,
-      "lastModified": "2026-11-03T10:17:01.461Z",
+      "lastModified": "2026-11-05T10:18:39.090Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -694,7 +694,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 2.3,
-      "lastModified": "2026-11-03T10:17:01.462Z",
+      "lastModified": "2026-11-05T10:18:39.091Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -709,7 +709,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 2.5,
-      "lastModified": "2026-11-03T10:17:01.739Z",
+      "lastModified": "2026-11-05T10:18:39.340Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -724,9 +724,9 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 14,
-      "lastModified": "2026-11-03T10:17:40.284Z",
+      "lastModified": "2026-11-05T10:19:11.915Z",
       "ageHours": 0,
-      "dataTimestamp": "2026-11-03T10:17:39.877Z",
+      "dataTimestamp": "2026-11-05T10:19:11.596Z",
       "recordCount": null,
       "valid": true,
       "source": "Unknown",
@@ -739,7 +739,7 @@
       "location": "data/",
       "exists": true,
       "sizeKB": 15.8,
-      "lastModified": "2026-11-03T10:17:39.519Z",
+      "lastModified": "2026-11-05T10:19:11.289Z",
       "ageHours": 0,
       "dataTimestamp": null,
       "recordCount": null,
@@ -757,19 +757,7 @@
         {
           "file": "data/activity-log.json",
           "status": "stale",
-          "ageHours": 2449.6
-        }
-      ],
-      "depCount": 1,
-      "status": "stale"
-    },
-    {
-      "name": "chemical-dashboard.html",
-      "dependencies": [
-        {
-          "file": "chemical-data.json",
-          "status": "stale",
-          "ageHours": 2449.6
+          "ageHours": 2497.6
         }
       ],
       "depCount": 1,
@@ -786,7 +774,7 @@
         {
           "file": "data/marketing-dashboard-data.json",
           "status": "stale",
-          "ageHours": 3211.1
+          "ageHours": 3259.1
         }
       ],
       "depCount": 2,
@@ -798,7 +786,7 @@
         {
           "file": "pipeline-status.json",
           "status": "stale",
-          "ageHours": 2449.6
+          "ageHours": 2497.6
         }
       ],
       "depCount": 1,
@@ -810,7 +798,7 @@
         {
           "file": "retention-data.json",
           "status": "stale",
-          "ageHours": 2449.6
+          "ageHours": 2497.6
         }
       ],
       "depCount": 1,
@@ -822,7 +810,7 @@
         {
           "file": "retention-data.json",
           "status": "stale",
-          "ageHours": 2449.6
+          "ageHours": 2497.6
         },
         {
           "file": "clv-data.json",
@@ -839,7 +827,7 @@
         {
           "file": "youtube-data.json",
           "status": "stale",
-          "ageHours": 3211.1
+          "ageHours": 3259.1
         }
       ],
       "depCount": 1,
@@ -882,6 +870,18 @@
       "status": "fresh"
     },
     {
+      "name": "chemical-dashboard.html",
+      "dependencies": [
+        {
+          "file": "chemical-data.json",
+          "status": "fresh",
+          "ageHours": 9.3
+        }
+      ],
+      "depCount": 1,
+      "status": "fresh"
+    },
+    {
       "name": "clv-dashboard.html",
       "dependencies": [
         {
@@ -911,7 +911,7 @@
         {
           "file": "dashboard-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -935,12 +935,12 @@
         {
           "file": "dashboard-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         },
         {
           "file": "sales-kpi-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 2,
@@ -988,12 +988,12 @@
         {
           "file": "sales-data.json",
           "status": "fresh",
-          "ageHours": 10.8
+          "ageHours": 9.6
         },
         {
           "file": "dashboard-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 2,
@@ -1005,7 +1005,7 @@
         {
           "file": "ops-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -1017,7 +1017,7 @@
         {
           "file": "ops-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -1029,7 +1029,7 @@
         {
           "file": "owners-data.json",
           "status": "fresh",
-          "ageHours": 10.8
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -1065,7 +1065,7 @@
         {
           "file": "dashboard-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -1077,7 +1077,7 @@
         {
           "file": "sales-kpi-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         },
         {
           "file": "data/sales-kpi-data.json",
@@ -1099,7 +1099,7 @@
         {
           "file": "sales-kpi-data.json",
           "status": "fresh",
-          "ageHours": 20
+          "ageHours": 9.1
         }
       ],
       "depCount": 1,
@@ -1111,7 +1111,7 @@
         {
           "file": "sales-data.json",
           "status": "fresh",
-          "ageHours": 10.8
+          "ageHours": 9.6
         }
       ],
       "depCount": 1,
@@ -1123,7 +1123,7 @@
         {
           "file": "sales-data.json",
           "status": "fresh",
-          "ageHours": 10.8
+          "ageHours": 9.6
         }
       ],
       "depCount": 1,

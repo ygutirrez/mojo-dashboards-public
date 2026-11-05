@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-05T01:11:41.451Z",
-  "period": "Jan 1 - Nov 4, 2026 (YTD)",
+  "updated_at": "2026-11-05T10:19:18.194Z",
+  "period": "Jan 1 - Nov 5, 2026 (YTD)",
   "summary": {
     "total_sales": 604,
     "total_cancels": 426,
@@ -11,9 +11,9 @@
     "total_invoices": 23694,
     "total_discounts": 15611,
     "net": 178,
-    "days_tracked": 308,
+    "days_tracked": 309,
     "sales_per_day": 2,
-    "revenue_per_day": 7073
+    "revenue_per_day": 7050
   },
   "office_tally": {
     "csv_date": "2026-11-04",
@@ -458,11 +458,11 @@
   "revenue_pace": {
     "target_annual": 5000000,
     "ytd_revenue": 2178407,
-    "days_elapsed": 308,
+    "days_elapsed": 309,
     "days_total": 365,
-    "projected_annual": 2581554,
+    "projected_annual": 2573199,
     "on_pace": false,
-    "pct_of_target": 51.6
+    "pct_of_target": 51.5
   },
   "serviceminder_sales_preview": {
     "total_sales": 307,
@@ -475,28 +475,28 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-11-05T01:11:41.451Z"
+    "serviceminder_cutover_at": "2026-11-05T10:19:18.194Z"
   },
   "data_freshness": {
     "sales_csv_date": "2026-11-04",
-    "generated_at": "2026-11-04T23:30:16.201Z"
+    "generated_at": "2026-11-05T10:18:39.315Z"
   },
   "total_sales": 604,
   "total_cancels": 426,
   "serviceminder": {
-    "generated_at": "2026-11-05T01:11:41.451Z",
+    "generated_at": "2026-11-05T10:19:18.194Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-05T01:08:21.200Z",
-      "kinds_ok": 1,
+      "generated_at": "2026-11-05T10:18:16.761Z",
+      "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 48505,
-      "contacts": 14281,
+      "appointments": 50723,
+      "contacts": 14282,
       "invoices": 47963,
-      "proposals": 1652
+      "proposals": 1656
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -602,18 +602,18 @@
   },
   "serviceminder_sales_kpi": {
     "revenue": 2178407,
-    "proposals": 1652,
-    "invoiced_proposals": 1269,
-    "complete_proposals": 284,
+    "proposals": 1656,
+    "invoiced_proposals": 1267,
+    "complete_proposals": 288,
     "sources": {
-      "Online": 15893,
-      "Referral": 13592,
-      "MoJo Customer": 7055,
-      "Yard Sign": 4772,
-      "Direct Mail Postcard": 4464,
-      "Mosquito Joe Vehicle": 3436,
+      "Online": 15912,
+      "Referral": 13611,
+      "MoJo Customer": 7060,
+      "Yard Sign": 4774,
+      "Direct Mail Postcard": 4473,
+      "Mosquito Joe Vehicle": 3438,
       "Other": 1625,
-      "Advertising": 1223,
+      "Advertising": 1225,
       "Printed Material": 622,
       "Mail Advertising": 516,
       "Existing Customer": 423,
@@ -668,7 +668,7 @@
         "invoiceRevenue": 208482.75,
         "invoices": 2276,
         "appointments": 491,
-        "proposals": 1651,
+        "proposals": 1655,
         "cancels": 0
       },
       {
@@ -707,25 +707,25 @@
         "month": "2026-10",
         "invoiceRevenue": 221469.48,
         "invoices": 2384,
-        "appointments": 3899,
+        "appointments": 3900,
         "proposals": 1,
-        "cancels": 145
+        "cancels": 146
       },
       {
         "month": "2026-11",
         "invoiceRevenue": 26266.04,
         "invoices": 268,
-        "appointments": 3914,
+        "appointments": 3929,
         "proposals": 0,
-        "cancels": 81
+        "cancels": 90
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3941,
+        "appointments": 3979,
         "proposals": 0,
-        "cancels": 50
+        "cancels": 51
       }
     ]
   }
