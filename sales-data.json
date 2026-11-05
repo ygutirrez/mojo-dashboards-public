@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-05T16:00:20.075Z",
+  "updated_at": "2026-11-05T16:30:29.215Z",
   "csv_date": "2026-11-05",
   "period": "Jan 1 - Nov 5, 2026 (YTD)",
   "summary": {
     "total_sales": 605,
-    "total_cancels": 427,
-    "net": 178,
+    "total_cancels": 430,
+    "net": 175,
     "paused_wp": 95,
     "paused_pct": 22,
     "days_tracked": 309
@@ -16,15 +16,15 @@
     "label": "Nov 2 – Nov 8",
     "summary": {
       "total_sales": 6,
-      "total_cancels": 11,
-      "net": -5
+      "total_cancels": 14,
+      "net": -8
     },
     "csrs": [
       {
         "name": "Norma",
         "sales": 3,
-        "cancels": 6,
-        "net": -3
+        "cancels": 7,
+        "net": -4
       },
       {
         "name": "Lucy",
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 1,
-        "cancels": 4,
-        "net": -3
+        "cancels": 6,
+        "net": -5
       }
     ]
   },
@@ -49,12 +49,12 @@
     {
       "name": "Norma",
       "sales": 179,
-      "cancels": 145
+      "cancels": 146
     },
     {
       "name": "Bev",
       "sales": 71,
-      "cancels": 146
+      "cancels": 148
     }
   ],
   "cancel_reasons": [
@@ -65,17 +65,17 @@
     },
     {
       "name": "Moved",
-      "count": 90,
+      "count": 91,
       "pct": 21
     },
     {
       "name": "Not Interested",
-      "count": 79,
+      "count": 80,
       "pct": 19
     },
     {
       "name": "Financial",
-      "count": 50,
+      "count": 51,
       "pct": 12
     },
     {
@@ -217,6 +217,27 @@
     {
       "date": "2026-11-05",
       "dateFmt": "Nov 5",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-05",
+      "dateFmt": "Nov 5",
+      "type": "Cancel",
+      "category": "Moved",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-11-05",
+      "dateFmt": "Nov 5",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-11-05",
+      "dateFmt": "Nov 5",
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
@@ -262,27 +283,6 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-11-03",
-      "dateFmt": "Nov 3",
-      "type": "Sale",
-      "category": "One Time",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-03",
-      "dateFmt": "Nov 3",
-      "type": "Sale",
-      "category": "Restart",
-      "csr": "Bev"
-    },
-    {
-      "date": "2026-11-03",
-      "dateFmt": "Nov 3",
-      "type": "Cancel",
-      "category": "Moved",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
