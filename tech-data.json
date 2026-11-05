@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-04T23:00:42.981Z",
-  "updated_at": "2026-11-04T23:00:42.982Z",
+  "generated_at": "2026-11-05T00:45:27.441Z",
+  "updated_at": "2026-11-05T00:45:21.604Z",
   "period": "Jan 1 - Nov 4, 2026 (YTD)",
   "summary": {
-    "total_jobs": 18925,
-    "total_techs": 12,
+    "total_jobs": 17587,
+    "total_techs": 11,
     "resprays": 145,
     "first_time_success": "99.2%",
-    "total_upsells": 7,
-    "total_revenue": 1740212
+    "total_upsells": 5,
+    "total_revenue": 1631772
   },
   "employees": [
     {
@@ -34,7 +34,7 @@
       "initials": "DC",
       "jobs": 2615,
       "revenue": 219789.08,
-      "resprays": 10,
+      "resprays": 11,
       "upsells": 4,
       "rank": 3
     },
@@ -43,7 +43,7 @@
       "initials": "MR",
       "jobs": 2470,
       "revenue": 192623.41,
-      "resprays": 11,
+      "resprays": 12,
       "upsells": 0,
       "rank": 4
     },
@@ -57,22 +57,13 @@
       "rank": 5
     },
     {
-      "name": "Jorge Navarro",
-      "initials": "JN",
-      "jobs": 1338,
-      "revenue": 108440.27,
-      "resprays": 12,
-      "upsells": 2,
-      "rank": 6
-    },
-    {
       "name": "Lenny Pierre",
       "initials": "LP",
       "jobs": 1118,
       "revenue": 94410.52,
-      "resprays": 11,
+      "resprays": 12,
       "upsells": 0,
-      "rank": 7
+      "rank": 6
     },
     {
       "name": "Curtis Blount",
@@ -81,7 +72,7 @@
       "revenue": 85815.26,
       "resprays": 8,
       "upsells": 0,
-      "rank": 8
+      "rank": 7
     },
     {
       "name": "Guillermo Rodriguez",
@@ -90,7 +81,7 @@
       "revenue": 85831.03,
       "resprays": 3,
       "upsells": 0,
-      "rank": 9
+      "rank": 8
     },
     {
       "name": "Wilbeni Pierre",
@@ -99,16 +90,16 @@
       "revenue": 82065.55,
       "resprays": 4,
       "upsells": 0,
-      "rank": 10
+      "rank": 9
     },
     {
       "name": "Travis Johnson",
       "initials": "TJ",
       "jobs": 863,
       "revenue": 73589.99,
-      "resprays": 5,
+      "resprays": 6,
       "upsells": 0,
-      "rank": 11
+      "rank": 10
     },
     {
       "name": "Michael Sanon",
@@ -117,17 +108,13 @@
       "revenue": 26774.99,
       "resprays": 0,
       "upsells": 0,
-      "rank": 12
+      "rank": 11
     }
   ],
   "tech_upsells": [
     {
       "name": "David",
       "count": 4
-    },
-    {
-      "name": "Jorge",
-      "count": 2
     },
     {
       "name": "Joe",
@@ -200,7 +187,7 @@
       "drive_min": 550
     },
     {
-      "name": "Jorge Navarro",
+      "name": "Unassigned",
       "truck": "Truck 14",
       "score": 88,
       "miles": 153,
@@ -214,8 +201,8 @@
   },
   "current_day": {
     "date": "2026-11-03",
-    "jobs": 104,
-    "revenue": 10400.23,
+    "jobs": 95,
+    "revenue": 9770.21,
     "technicians": [
       {
         "name": "Damian Machin",
@@ -252,21 +239,15 @@
         "jobs": 13,
         "revenue": 1074.89,
         "resprays": 0
-      },
-      {
-        "name": "Jorge Navarro",
-        "jobs": 9,
-        "revenue": 630.02,
-        "resprays": 0
       }
     ]
   },
   "this_week": {
     "start": "2026-11-02",
     "end": "2026-11-08",
-    "jobs": 162,
-    "revenue": 15920.19,
-    "prior_week_jobs": 433,
+    "jobs": 153,
+    "revenue": 15290.17,
+    "prior_week_jobs": 382,
     "technicians": [
       {
         "name": "Damian Machin",
@@ -305,12 +286,6 @@
         "resprays": 0
       },
       {
-        "name": "Jorge Navarro",
-        "jobs": 9,
-        "revenue": 630.02,
-        "resprays": 0
-      },
-      {
         "name": "Travis Johnson",
         "jobs": 1,
         "revenue": 374.5,
@@ -323,31 +298,31 @@
       "start": "2026-10-05",
       "end": "2026-10-11",
       "label": "Oct 5–Oct 11",
-      "jobs": 583
+      "jobs": 539
     },
     {
       "start": "2026-10-12",
       "end": "2026-10-18",
       "label": "Oct 12–Oct 18",
-      "jobs": 519
+      "jobs": 495
     },
     {
       "start": "2026-10-19",
       "end": "2026-10-25",
       "label": "Oct 19–Oct 25",
-      "jobs": 466
+      "jobs": 446
     },
     {
       "start": "2026-10-26",
       "end": "2026-11-01",
       "label": "Oct 26–Nov 1",
-      "jobs": 433
+      "jobs": 382
     },
     {
       "start": "2026-11-02",
       "end": "2026-11-08",
       "label": "Nov 2–Nov 8",
-      "jobs": 162
+      "jobs": 153
     }
   ],
   "sources": {
@@ -366,10 +341,10 @@
       "system": "ServiceMinder appointments API",
       "coverage": {
         "min": "2026-05-20",
-        "max": "2026-10-22"
+        "max": "2026-10-12"
       },
       "status": "limited",
-      "detail": "Callbacks use the original appointment technician when linked (69), then the assigned route (17); 59 remain unattributed."
+      "detail": "Callbacks use the original appointment technician when linked (62), then the assigned route (16); 67 remain unattributed."
     },
     "upsells": {
       "label": "Technician upsells",
@@ -533,17 +508,6 @@
       "payoutsOwed": 0
     },
     {
-      "name": "Jorge Navarro",
-      "initials": "JN",
-      "count": 0,
-      "target": 10,
-      "color": "#a855f7",
-      "note": "",
-      "totalCredits": 10,
-      "totalPayouts": 1,
-      "payoutsOwed": 0
-    },
-    {
       "name": "Michael Sanon",
       "initials": "MS",
       "count": 0,
@@ -606,12 +570,6 @@
       "name": "Damian Machin",
       "amount": 500,
       "reviews": 14,
-      "cashed": 10
-    },
-    {
-      "name": "Jorge Navarro",
-      "amount": 500,
-      "reviews": 10,
       "cashed": 10
     }
   ],
@@ -695,10 +653,6 @@
       "count": 16
     },
     {
-      "name": "Jorge Navarro",
-      "count": 15
-    },
-    {
       "name": "Marcus Rubi",
       "count": 9
     },
@@ -752,7 +706,124 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 145 re-sprays out of 18925!"
+      "stat": "Only 145 re-sprays out of 17587!"
     }
-  ]
+  ],
+  "serviceminder": {
+    "generated_at": "2026-11-05T00:45:27.441Z",
+    "source": "ServiceMinder Org Download API",
+    "sync_health": {
+      "status": "ok",
+      "generated_at": "2026-11-04T14:16:38.698Z",
+      "kinds_ok": 4,
+      "kinds_failed": 0
+    },
+    "normalized_counts": {
+      "appointments": 48505,
+      "contacts": 14281,
+      "invoices": 47905,
+      "proposals": 1652
+    },
+    "completed_jobs_source": "ServiceMinder appointments API via technician-scorecard-data.json",
+    "route_tech_mapping": {
+      "Missing Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Misting Route": {
+        "technician": "Joe Pagan",
+        "status": "active",
+        "source": "Mapped from screenshot label \"Missing Route\" 2026-06-16"
+      },
+      "Lenny Pierre": {
+        "technician": "Lenny Pierre",
+        "status": "active",
+        "source": "Yoel note 2026-08-28: current technician"
+      },
+      "Route 1": {
+        "technician": "Travis Johnson",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 2": {
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending as of 2026-11-04"
+      },
+      "Route 4": {
+        "technician": "Andrew Schamel",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 5": {
+        "technician": "Stanley Prophete",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 6": {
+        "technician": "Marcus Rubi",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 7": {
+        "technician": "Curtis Blount",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 8": {
+        "technician": "Jeffrey Baptiste",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 10": {
+        "technician": "Jordan Meddock",
+        "status": "inactive",
+        "source": "Yoel note 2026-07-07: no longer with Mosquito Joe"
+      },
+      "Route 11": {
+        "technician": "Damian Machin",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Route 12": {
+        "technician": "David Carbajal",
+        "status": "active",
+        "source": "Yoel route screenshot 2026-06-16"
+      },
+      "Bump": {
+        "technician": "Bump",
+        "status": "unused",
+        "source": "Yoel note 2026-06-16: Bump is not used"
+      }
+    },
+    "unmapped_route_labels": [
+      "Route 9"
+    ],
+    "personnel_notes": [
+      {
+        "name": "Andrew Schamel",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jeffrey Baptiste",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      },
+      {
+        "name": "Jordan Meddock",
+        "status": "inactive",
+        "note": "No longer with Mosquito Joe as of 2026-07-07 per Yoel."
+      }
+    ],
+    "overrides_applied": {
+      "tech_resprays": {
+        "value": 133,
+        "source": "ServiceMinder real-time appointments query, Re-Spray service, 2026 YTD",
+        "updated_at": "2026-08-28T16:25:00Z"
+      }
+    },
+    "write_existing_applied": true
+  }
 }

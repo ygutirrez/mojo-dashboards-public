@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-04T14:16:44.430Z",
+    "generated_at": "2026-11-05T00:45:27.441Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
@@ -37,9 +37,9 @@
         "source": "Yoel route screenshot 2026-06-16"
       },
       "Route 2": {
-        "technician": "Jorge Navarro",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending as of 2026-11-04"
       },
       "Route 4": {
         "technician": "Andrew Schamel",
@@ -125,12 +125,12 @@
     },
     "operations": {
       "total_jobs": 18651,
-      "jobs_per_tech_day": 9.4,
-      "revenue_per_tech_day": 466,
+      "jobs_per_tech_day": 10.6,
+      "revenue_per_tech_day": 524,
       "first_time_success": 99.3,
       "callback_rate": 0.7,
       "resprays": 133,
-      "active_techs": 9,
+      "active_techs": 8,
       "working_days_ytd": 220
     },
     "sales": {
@@ -244,17 +244,6 @@
         "legacy_revenue": 116672.9900000006
       },
       {
-        "name": "Jorge Navarro",
-        "jobs": 590,
-        "revenue": 75782.58,
-        "avgRevenue": 82.55,
-        "route_label": "Route 2",
-        "technician": "Jorge Navarro",
-        "technician_status": "active",
-        "mapping_source": "Yoel route screenshot 2026-06-16",
-        "legacy_revenue": 47579.98999999992
-      },
-      {
         "name": "Travis Johnson",
         "jobs": 265,
         "revenue": 58623.25,
@@ -354,7 +343,7 @@
   "tech": {
     "summary": {
       "total_jobs": 18651,
-      "total_techs": 9,
+      "total_techs": 8,
       "resprays": 133,
       "first_time_success": "99.3%",
       "total_revenue": 2173448
@@ -416,23 +405,12 @@
         "resprays": 0
       },
       {
-        "name": "Jorge Navarro",
-        "route_label": "Route 2",
-        "technician_status": "active",
-        "initials": "JN",
-        "jobs": 590,
-        "rank": 6,
-        "revenue": 75783,
-        "upsells": 0,
-        "resprays": 0
-      },
-      {
         "name": "Travis Johnson",
         "route_label": "Route 1",
         "technician_status": "active",
         "initials": "TJ",
         "jobs": 265,
-        "rank": 7,
+        "rank": 6,
         "revenue": 58623,
         "upsells": 0,
         "resprays": 0
@@ -443,7 +421,7 @@
         "technician_status": "active",
         "initials": "CB",
         "jobs": 237,
-        "rank": 8,
+        "rank": 7,
         "revenue": 57199,
         "upsells": 0,
         "resprays": 0
@@ -454,7 +432,7 @@
         "technician_status": "active",
         "initials": "LP",
         "jobs": 11,
-        "rank": 9,
+        "rank": 8,
         "revenue": 1126,
         "upsells": 0,
         "resprays": 0

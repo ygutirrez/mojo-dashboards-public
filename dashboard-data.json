@@ -2470,18 +2470,18 @@
     }
   },
   "serviceminder": {
-    "generated_at": "2026-11-03T10:17:46.944Z",
+    "generated_at": "2026-11-05T00:45:27.441Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-03T10:16:32.840Z",
+      "generated_at": "2026-11-04T14:16:38.698Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 48303,
-      "contacts": 14276,
-      "invoices": 47767,
+      "appointments": 48505,
+      "contacts": 14281,
+      "invoices": 47905,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -2507,9 +2507,9 @@
         "source": "Yoel route screenshot 2026-06-16"
       },
       "Route 2": {
-        "technician": "Jorge Navarro",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending as of 2026-11-04"
       },
       "Route 4": {
         "technician": "Andrew Schamel",
@@ -2587,33 +2587,33 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 2159198,
+    "revenue": 2173448,
     "proposals": 1652,
-    "invoiced_proposals": 1272,
-    "complete_proposals": 281,
+    "invoiced_proposals": 1269,
+    "complete_proposals": 284,
     "sources": {
-      "Online": 15816,
-      "Referral": 13489,
-      "MoJo Customer": 7013,
-      "Yard Sign": 4743,
-      "Direct Mail Postcard": 4452,
-      "Mosquito Joe Vehicle": 3428,
-      "Other": 1622,
-      "Advertising": 1216,
+      "Online": 15877,
+      "Referral": 13579,
+      "MoJo Customer": 7046,
+      "Yard Sign": 4762,
+      "Direct Mail Postcard": 4459,
+      "Mosquito Joe Vehicle": 3433,
+      "Other": 1625,
+      "Advertising": 1223,
       "Printed Material": 621,
       "Mail Advertising": 516,
-      "Existing Customer": 417,
-      "Online Search": 307,
+      "Existing Customer": 422,
+      "Online Search": 308,
       "DMP": 213,
       "Local Branding": 100,
+      "Accelerated": 95,
       "Neighborly": 94,
-      "Accelerated": 93,
       "Print Material": 86,
       "Event/Sponsorship": 59,
       "Email": 56,
       "Competitor": 52,
       "Social": 37,
-      "Mass Media": 23,
+      "Mass Media": 24,
       "Unknown": 4
     },
     "monthly": [
@@ -2667,49 +2667,49 @@
       },
       {
         "month": "2026-07",
-        "invoiceRevenue": 237385.15,
-        "invoices": 2654,
-        "appointments": 5437,
+        "invoiceRevenue": 237741.12,
+        "invoices": 2657,
+        "appointments": 5442,
         "proposals": 0,
-        "cancels": 7
+        "cancels": 8
       },
       {
         "month": "2026-08",
-        "invoiceRevenue": 221456.31,
-        "invoices": 2432,
-        "appointments": 4676,
+        "invoiceRevenue": 221591.3,
+        "invoices": 2433,
+        "appointments": 4677,
         "proposals": 0,
         "cancels": 10
       },
       {
         "month": "2026-09",
-        "invoiceRevenue": 223165.68,
-        "invoices": 2399,
-        "appointments": 4002,
+        "invoiceRevenue": 223521.65,
+        "invoices": 2402,
+        "appointments": 4006,
         "proposals": 0,
         "cancels": 72
       },
       {
         "month": "2026-10",
-        "invoiceRevenue": 221113.51,
-        "invoices": 2381,
-        "appointments": 3897,
+        "invoiceRevenue": 221469.48,
+        "invoices": 2384,
+        "appointments": 3899,
         "proposals": 1,
         "cancels": 145
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 8259.67,
-        "invoices": 82,
-        "appointments": 3883,
+        "invoiceRevenue": 21306.43,
+        "invoices": 210,
+        "appointments": 3914,
         "proposals": 0,
-        "cancels": 74
+        "cancels": 81
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 3888,
+        "appointments": 3941,
         "proposals": 0,
         "cancels": 50
       }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T10:17:46.944Z",
+  "updated_at": "2026-11-05T00:45:27.441Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -12,7 +12,7 @@
     "blowers_active": 13,
     "drivers_need_coaching": 0,
     "total_wo_completed": 18651,
-    "total_wo_revenue": 2159198
+    "total_wo_revenue": 2173448
   },
   "alerts": [
     {
@@ -185,7 +185,7 @@
     },
     {
       "nickname": "Truck 14",
-      "driver": "Jorge Navarro",
+      "driver": "Unassigned",
       "trip_count": 55,
       "total_miles": 153,
       "total_drive_time_min": 1047.6333333333334,
@@ -595,8 +595,8 @@
     {
       "name": "Damian Machin",
       "jobs": 1368,
-      "revenue": 182788.81,
-      "avgRevenue": 88.95,
+      "revenue": 185379.3,
+      "avgRevenue": 88.87,
       "route_label": "Route 11",
       "technician": "Damian Machin",
       "technician_status": "active",
@@ -606,8 +606,8 @@
     {
       "name": "Stanley Prophete",
       "jobs": 1285,
-      "revenue": 146849.28,
-      "avgRevenue": 89.87,
+      "revenue": 146568.59,
+      "avgRevenue": 89.97,
       "route_label": "Route 5",
       "technician": "Stanley Prophete",
       "technician_status": "active",
@@ -617,8 +617,8 @@
     {
       "name": "Marcus Rubi",
       "jobs": 1195,
-      "revenue": 116211.06,
-      "avgRevenue": 76.66,
+      "revenue": 116889.41,
+      "avgRevenue": 76.8,
       "route_label": "Route 6",
       "technician": "Marcus Rubi",
       "technician_status": "active",
@@ -628,8 +628,8 @@
     {
       "name": "David Carbajal",
       "jobs": 1165,
-      "revenue": 135383.73,
-      "avgRevenue": 81.9,
+      "revenue": 136889.34,
+      "avgRevenue": 81.87,
       "route_label": "Route 12",
       "technician": "David Carbajal",
       "technician_status": "active",
@@ -639,8 +639,8 @@
     {
       "name": "Joe Pagan",
       "jobs": 738,
-      "revenue": 213671.48,
-      "avgRevenue": 175.86,
+      "revenue": 217964.24,
+      "avgRevenue": 174.93,
       "route_label": "Misting Route",
       "technician": "Joe Pagan",
       "technician_status": "active",
@@ -648,21 +648,10 @@
       "legacy_revenue": 116672.9900000006
     },
     {
-      "name": "Jorge Navarro",
-      "jobs": 590,
-      "revenue": 76135.91,
-      "avgRevenue": 82.67,
-      "route_label": "Route 2",
-      "technician": "Jorge Navarro",
-      "technician_status": "active",
-      "mapping_source": "Yoel route screenshot 2026-06-16",
-      "legacy_revenue": 47579.98999999992
-    },
-    {
       "name": "Travis Johnson",
       "jobs": 265,
-      "revenue": 56500.47,
-      "avgRevenue": 81.18,
+      "revenue": 58623.25,
+      "avgRevenue": 81.65,
       "route_label": "Route 1",
       "technician": "Travis Johnson",
       "technician_status": "active",
@@ -693,18 +682,18 @@
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-11-03T10:17:46.944Z",
+    "generated_at": "2026-11-05T00:45:27.441Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-03T10:16:32.840Z",
+      "generated_at": "2026-11-04T14:16:38.698Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 48303,
-      "contacts": 14276,
-      "invoices": 47767,
+      "appointments": 48505,
+      "contacts": 14281,
+      "invoices": 47905,
       "proposals": 1652
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -730,9 +719,9 @@
         "source": "Yoel route screenshot 2026-06-16"
       },
       "Route 2": {
-        "technician": "Jorge Navarro",
-        "status": "active",
-        "source": "Yoel route screenshot 2026-06-16"
+        "technician": null,
+        "status": "unassigned",
+        "source": "Current assignment pending as of 2026-11-04"
       },
       "Route 4": {
         "technician": "Andrew Schamel",
