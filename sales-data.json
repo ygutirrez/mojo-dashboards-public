@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-06T14:00:20.522Z",
+  "updated_at": "2026-11-06T14:30:21.806Z",
   "csv_date": "2026-11-06",
   "period": "Jan 1 - Nov 6, 2026 (YTD)",
   "summary": {
     "total_sales": 606,
-    "total_cancels": 431,
-    "net": 175,
+    "total_cancels": 432,
+    "net": 174,
     "paused_wp": 96,
     "paused_pct": 22,
     "days_tracked": 310
@@ -16,15 +16,15 @@
     "label": "Nov 2 – Nov 8",
     "summary": {
       "total_sales": 7,
-      "total_cancels": 15,
-      "net": -8
+      "total_cancels": 16,
+      "net": -9
     },
     "csrs": [
       {
         "name": "Norma",
         "sales": 3,
-        "cancels": 7,
-        "net": -4
+        "cancels": 8,
+        "net": -5
       },
       {
         "name": "Lucy",
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 179,
-      "cancels": 146
+      "cancels": 147
     },
     {
       "name": "Bev",
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 91,
+      "count": 92,
       "pct": 21
     },
     {
@@ -81,7 +81,7 @@
     {
       "name": "Unhappy",
       "count": 41,
-      "pct": 10
+      "pct": 9
     },
     {
       "name": "Barrier Spray",
@@ -218,6 +218,13 @@
       "date": "2026-11-06",
       "dateFmt": "Nov 6",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-06",
+      "dateFmt": "Nov 6",
+      "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Bev"
     },
@@ -275,13 +282,6 @@
       "dateFmt": "Nov 4",
       "type": "Cancel",
       "category": "Not Interested",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-11-04",
-      "dateFmt": "Nov 4",
-      "type": "Cancel",
-      "category": "Paused/WP",
       "csr": "Norma"
     }
   ],
