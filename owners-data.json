@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-06T23:30:21.578Z",
-  "generated_date": "November 6, 2026",
+  "generated_at": "2026-11-07T10:18:48.797Z",
+  "generated_date": "November 7, 2026",
   "sales": {
     "csv_date": "2026-11-06",
     "total_sales": 606,
@@ -94,10 +94,10 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2188652,
+    "ytd_invoiced": 2198059,
     "avg_per_visit": 74,
-    "mtd": 36511,
-    "mtd_jobs": 390
+    "mtd": 45918,
+    "mtd_jobs": 490
   },
   "operations": {
     "total_jobs": 18651,
@@ -110,19 +110,19 @@
     "working_days_ytd": 222
   },
   "serviceminder": {
-    "generated_at": "2026-11-06T14:17:18.896Z",
+    "generated_at": "2026-11-07T10:18:48.797Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-06T14:17:12.925Z",
+      "generated_at": "2026-11-07T10:17:46.336Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 50791,
-      "contacts": 14287,
-      "invoices": 48085,
-      "proposals": 1656
+      "appointments": 51108,
+      "contacts": 14290,
+      "invoices": 48185,
+      "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
     "route_tech_mapping": {
@@ -228,21 +228,21 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1555,
-    "total_cancels": 387,
-    "net": 1168,
+    "total_cancels": 396,
+    "net": 1159,
     "cancel_reasons": {
       "No Longer Needed": 84,
-      "Workpool": 68,
+      "Workpool": 74,
+      "Error": 64,
       "Scheduling Conflict": 63,
-      "Error": 62,
-      "Moving": 41,
+      "Moving": 42,
       "Financial": 33,
       "Found Different Company": 20,
       "Weather": 9,
       "Not Working": 7
     },
     "sale_categories": {
-      "Mojo Essential": 757,
+      "Mojo Essential": 758,
       "Synthetic Barrier Spray - 2 week": 461,
       "Misting System Recurring Service Bi-Monthly": 130,
       "HPD - 42 Days": 77,

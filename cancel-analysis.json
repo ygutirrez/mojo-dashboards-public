@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-11-06T10:17:57.769722+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-04",
+  "generated_at": "2026-11-07T10:18:05.619979+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-06",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-05.csv",
+    "office_tally_file": "sales-data-2026-11-06.csv",
     "office_tally_invalid_dated_rows": 5,
     "generated": {
-      "contacts": "2026-11-06T10:17:08.620Z",
-      "appointments": "2026-11-06T10:16:58.612Z",
-      "invoices": "2026-11-06T10:17:19.643Z"
+      "contacts": "2026-11-07T10:17:20.896Z",
+      "appointments": "2026-11-07T10:17:11.478Z",
+      "invoices": "2026-11-07T10:17:31.920Z"
     }
   },
   "summary": {
-    "total_cancel_events": 151,
-    "unique_accounts_cancelled": 151,
+    "total_cancel_events": 152,
+    "unique_accounts_cancelled": 152,
     "total_annual_value_lost": 105610.91,
-    "avg_annual_value_per_account": 699.41,
+    "avg_annual_value_per_account": 694.81,
     "avg_customer_lifetime_days": 971,
     "median_customer_lifetime_days": 739,
     "recoverable_accounts": 89,
     "recoverable_annual_value": 63998.85,
     "controllable_events": 89,
     "uncontrollable_events": 30,
-    "structural_events": 0,
+    "structural_events": 1,
     "unknown_events": 27,
     "controllable_value_lost": 63998.85,
     "uncontrollable_value_lost": 25544.03,
     "total_sales_ytd": 143,
-    "net_new_customers": -8,
+    "net_new_customers": -9,
     "cancel_to_sales_ratio": 1.06,
-    "active_customer_base": 1515,
+    "active_customer_base": 1514,
     "recorded_attrition_pct": 9.1,
-    "recent_30d_accounts": 16,
+    "recent_30d_accounts": 17,
     "recent_30d_revenue": 15136.75,
-    "recent_90d_accounts": 70,
-    "reason_known_accounts": 124,
-    "reason_capture_pct": 82.1
+    "recent_90d_accounts": 71,
+    "reason_known_accounts": 125,
+    "reason_capture_pct": 82.2
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
@@ -49,8 +49,8 @@
     "sales_logged_90d": 83,
     "restarts_ytd": 142,
     "restarts_30d": 3,
-    "gross_activity_gap_30d": 9,
-    "sales_per_confirmed_loss_30d": 1.56,
+    "gross_activity_gap_30d": 8,
+    "sales_per_confirmed_loss_30d": 1.47,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -254,6 +254,14 @@
       "recoverable": false
     },
     {
+      "reason": "Error",
+      "events": 1,
+      "unique_accounts": 1,
+      "annual_value_lost": 0.0,
+      "avg_value_per_account": 0.0,
+      "recoverable": false
+    },
+    {
       "reason": "Scheduling Conflict",
       "events": 1,
       "unique_accounts": 1,
@@ -270,7 +278,7 @@
     },
     {
       "csr": "Not recorded",
-      "accounts": 35,
+      "accounts": 36,
       "annual_value_lost": 18502.65
     },
     {
@@ -374,6 +382,12 @@
       "events": 10,
       "unique_accounts": 10,
       "annual_value_lost": 0.0
+    },
+    {
+      "program": "Barrier Spray - 8 Week",
+      "events": 1,
+      "unique_accounts": 1,
+      "annual_value_lost": 0.0
     }
   ],
   "by_month": [
@@ -415,8 +429,8 @@
     },
     {
       "month": "2026-11",
-      "events": 2,
-      "unique_accounts": 2,
+      "events": 3,
+      "unique_accounts": 3,
       "annual_value_lost": 1583.13
     }
   ],
@@ -455,7 +469,7 @@
     },
     {
       "bucket": "Unknown",
-      "count": 4
+      "count": 5
     }
   ],
   "top_zip_codes": [
@@ -520,6 +534,11 @@
       "unique_accounts": 4
     },
     {
+      "zip": "33177",
+      "events": 3,
+      "unique_accounts": 3
+    },
+    {
       "zip": "33037",
       "events": 3,
       "unique_accounts": 3
@@ -528,14 +547,22 @@
       "zip": "33154",
       "events": 3,
       "unique_accounts": 3
-    },
-    {
-      "zip": "33035",
-      "events": 3,
-      "unique_accounts": 3
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-11-06",
+      "reason": "Error",
+      "reason_source": "ServiceMinder appointment",
+      "csr": "Not recorded",
+      "service": "Barrier Spray - 8 Week",
+      "zip": "33177",
+      "city": "Miami",
+      "tenure_days": null,
+      "days_since_last_service": 31,
+      "trailing_12m_revenue": 0,
+      "lifetime_value": 0.0
+    },
     {
       "date": "2026-11-04",
       "reason": "Not recorded",
@@ -545,9 +572,9 @@
       "zip": "33140",
       "city": "Miami Beach",
       "tenure_days": 268,
-      "days_since_last_service": 177,
+      "days_since_last_service": 0,
       "trailing_12m_revenue": 847.92,
-      "lifetime_value": 847.92
+      "lifetime_value": 953.91
     },
     {
       "date": "2026-11-02",
@@ -782,19 +809,6 @@
       "days_since_last_service": 21,
       "trailing_12m_revenue": 1031.88,
       "lifetime_value": 9696.85
-    },
-    {
-      "date": "2026-10-05",
-      "reason": "Paused/WP",
-      "reason_source": "Office Tally exact-name/date match",
-      "csr": "Bev",
-      "service": "Unknown",
-      "zip": "33143",
-      "city": "Miami",
-      "tenure_days": null,
-      "days_since_last_service": null,
-      "trailing_12m_revenue": 0,
-      "lifetime_value": 0.0
     }
   ]
 }
