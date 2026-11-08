@@ -1,18 +1,46 @@
 {
-  "updated_at": "2026-11-07T10:18:35.255Z",
-  "data_period": "2026-10-30 to 2026-11-06",
+  "updated_at": "2026-11-08T10:18:00.226Z",
+  "data_period": "2026-10-31 to 2026-11-07",
   "summary": {
     "active_vehicles": 12,
     "total_vehicles": 16,
-    "total_miles": 2091,
-    "total_trips": 692,
-    "total_drive_hours": 146,
+    "total_miles": 2252,
+    "total_trips": 690,
+    "total_drive_hours": 174,
     "avg_safety_score": 96,
-    "total_speeding_events": 7284,
-    "total_hard_brakes": 20,
-    "avg_miles_per_trip": 3
+    "total_speeding_events": 7733,
+    "total_hard_brakes": 24,
+    "avg_miles_per_trip": 3.3
   },
   "vehicles": [
+    {
+      "truck": "Truck 1",
+      "driver": "Unassigned",
+      "trips": 84,
+      "miles": 195.7,
+      "drive_hours": 16.9,
+      "hard_brakes": 0,
+      "rapid_accels": 1,
+      "speeding_events": 423,
+      "top_speed": 70,
+      "safety_score": 100,
+      "hard_brakes_per_100mi": 0,
+      "miles_per_trip": 2.3
+    },
+    {
+      "truck": "Truck 4",
+      "driver": "Unassigned",
+      "trips": 53,
+      "miles": 123.3,
+      "drive_hours": 8.1,
+      "hard_brakes": 0,
+      "rapid_accels": 0,
+      "speeding_events": 208,
+      "top_speed": 74,
+      "safety_score": 100,
+      "hard_brakes_per_100mi": 0,
+      "miles_per_trip": 2.3
+    },
     {
       "truck": "Truck 7",
       "driver": "Unassigned",
@@ -30,77 +58,35 @@
     {
       "truck": "Truck 12",
       "driver": "John Sabin",
-      "trips": 84,
-      "miles": 320.7,
-      "drive_hours": 21.8,
+      "trips": 88,
+      "miles": 380.3,
+      "drive_hours": 25.2,
       "hard_brakes": 0,
-      "rapid_accels": 0,
-      "speeding_events": 482,
+      "rapid_accels": 1,
+      "speeding_events": 591,
       "top_speed": 78,
       "safety_score": 100,
       "hard_brakes_per_100mi": 0,
-      "miles_per_trip": 3.8
-    },
-    {
-      "truck": "Best Pest 2",
-      "driver": "Luis Zamora",
-      "trips": 19,
-      "miles": 103.1,
-      "drive_hours": 4.4,
-      "hard_brakes": 0,
-      "rapid_accels": 1,
-      "speeding_events": 678,
-      "top_speed": 84,
-      "safety_score": 100,
-      "hard_brakes_per_100mi": 0,
-      "miles_per_trip": 5.4
-    },
-    {
-      "truck": "Truck 1",
-      "driver": "Unassigned",
-      "trips": 80,
-      "miles": 172.7,
-      "drive_hours": 14.2,
-      "hard_brakes": 1,
-      "rapid_accels": 1,
-      "speeding_events": 463,
-      "top_speed": 72,
-      "safety_score": 98,
-      "hard_brakes_per_100mi": 0.6,
-      "miles_per_trip": 2.2
-    },
-    {
-      "truck": "Truck 4",
-      "driver": "Unassigned",
-      "trips": 50,
-      "miles": 121.8,
-      "drive_hours": 10,
-      "hard_brakes": 1,
-      "rapid_accels": 0,
-      "speeding_events": 95,
-      "top_speed": 68,
-      "safety_score": 98,
-      "hard_brakes_per_100mi": 0.8,
-      "miles_per_trip": 2.4
+      "miles_per_trip": 4.3
     },
     {
       "truck": "Truck 14",
       "driver": "Unassigned",
-      "trips": 48,
-      "miles": 131.4,
-      "drive_hours": 11.2,
+      "trips": 29,
+      "miles": 66.8,
+      "drive_hours": 6.2,
       "hard_brakes": 0,
-      "rapid_accels": 4,
-      "speeding_events": 160,
-      "top_speed": 71,
-      "safety_score": 98,
+      "rapid_accels": 1,
+      "speeding_events": 43,
+      "top_speed": 70,
+      "safety_score": 100,
       "hard_brakes_per_100mi": 0,
-      "miles_per_trip": 2.7
+      "miles_per_trip": 2.3
     },
     {
       "truck": "Truck 15",
       "driver": "Travis Johnson",
-      "trips": 39,
+      "trips": 38,
       "miles": 213.5,
       "drive_hours": 17,
       "hard_brakes": 1,
@@ -109,21 +95,35 @@
       "top_speed": 73,
       "safety_score": 98,
       "hard_brakes_per_100mi": 0.5,
-      "miles_per_trip": 5.5
+      "miles_per_trip": 5.6
+    },
+    {
+      "truck": "Best Pest 2",
+      "driver": "Luis Zamora",
+      "trips": 32,
+      "miles": 183.8,
+      "drive_hours": 27.1,
+      "hard_brakes": 1,
+      "rapid_accels": 2,
+      "speeding_events": 1053,
+      "top_speed": 84,
+      "safety_score": 97,
+      "hard_brakes_per_100mi": 0.5,
+      "miles_per_trip": 5.7
     },
     {
       "truck": "Truck 9",
       "driver": "Damian Machin",
       "trips": 100,
-      "miles": 214.8,
-      "drive_hours": 15.3,
+      "miles": 216.6,
+      "drive_hours": 18.3,
       "hard_brakes": 2,
       "rapid_accels": 0,
-      "speeding_events": 1031,
+      "speeding_events": 779,
       "top_speed": 75,
       "safety_score": 96,
       "hard_brakes_per_100mi": 0.9,
-      "miles_per_trip": 2.1
+      "miles_per_trip": 2.2
     },
     {
       "truck": "Truck 13",
@@ -140,23 +140,9 @@
       "miles_per_trip": 4
     },
     {
-      "truck": "Truck 16",
-      "driver": "David Carbajal",
-      "trips": 99,
-      "miles": 227.6,
-      "drive_hours": 14.8,
-      "hard_brakes": 3,
-      "rapid_accels": 2,
-      "speeding_events": 337,
-      "top_speed": 71,
-      "safety_score": 93,
-      "hard_brakes_per_100mi": 1.3,
-      "miles_per_trip": 2.3
-    },
-    {
       "truck": "Truck 17",
       "driver": "Andrew Schamel",
-      "trips": 24,
+      "trips": 23,
       "miles": 161.4,
       "drive_hours": 5.6,
       "hard_brakes": 4,
@@ -165,29 +151,43 @@
       "top_speed": 79,
       "safety_score": 92,
       "hard_brakes_per_100mi": 2.5,
-      "miles_per_trip": 6.7
+      "miles_per_trip": 7
+    },
+    {
+      "truck": "Truck 16",
+      "driver": "David Carbajal",
+      "trips": 95,
+      "miles": 225,
+      "drive_hours": 15,
+      "hard_brakes": 5,
+      "rapid_accels": 2,
+      "speeding_events": 408,
+      "top_speed": 71,
+      "safety_score": 89,
+      "hard_brakes_per_100mi": 2.2,
+      "miles_per_trip": 2.4
     },
     {
       "truck": "Truck 10",
       "driver": "Unassigned",
-      "trips": 97,
-      "miles": 226.7,
-      "drive_hours": 19.6,
-      "hard_brakes": 6,
-      "rapid_accels": 3,
-      "speeding_events": 1700,
+      "trips": 96,
+      "miles": 288,
+      "drive_hours": 22.9,
+      "hard_brakes": 9,
+      "rapid_accels": 2,
+      "speeding_events": 1890,
       "top_speed": 88,
-      "safety_score": 87,
-      "hard_brakes_per_100mi": 2.6,
-      "miles_per_trip": 2.3
+      "safety_score": 81,
+      "hard_brakes_per_100mi": 3.1,
+      "miles_per_trip": 3
     }
   ],
   "alerts": [
     {
-      "driver": "Damian Machin",
-      "truck": "Truck 9",
-      "safety_score": 96,
-      "speeding_events": 1031,
+      "driver": "Luis Zamora",
+      "truck": "Best Pest 2",
+      "safety_score": 97,
+      "speeding_events": 1053,
       "issue": "Excessive speeding"
     },
     {
@@ -200,8 +200,8 @@
     {
       "driver": "Unassigned",
       "truck": "Truck 10",
-      "safety_score": 87,
-      "speeding_events": 1700,
+      "safety_score": 81,
+      "speeding_events": 1890,
       "issue": "Excessive speeding"
     }
   ],
@@ -670,6 +670,17 @@
       "total_drive_min": 8757,
       "total_hard_brakes": 20,
       "total_speeding": 7284,
+      "avg_safety": 96
+    },
+    {
+      "date": "2026-11-07",
+      "active_trucks": 12,
+      "total_vehicles": 16,
+      "total_trips": 690,
+      "total_miles": 2252,
+      "total_drive_min": 10465,
+      "total_hard_brakes": 24,
+      "total_speeding": 7733,
       "avg_safety": 96
     }
   ]

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-07T10:18:35.344Z",
-  "period": "Jan 1 - Nov 7, 2026 (YTD)",
+  "generated_at": "2026-11-08T10:18:00.322Z",
+  "period": "Jan 1 - Nov 8, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 14695,
-    "total_revenue": 1378428,
+    "total_stops": 14713,
+    "total_revenue": 1380039,
     "avg_revenue_per_stop": 93.8,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
@@ -29,14 +29,14 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 1617769,
+    "current_annual_run_rate": 1614469,
     "target": 5000000,
-    "gap": 3382231,
-    "additional_stops_needed": 36057,
+    "gap": 3385531,
+    "additional_stops_needed": 36095,
     "additional_daily_stops_needed": 145,
-    "current_daily_avg": 47.3,
-    "required_daily_avg": 192.3,
-    "capacity_increase_pct": 306.9
+    "current_daily_avg": 47.2,
+    "required_daily_avg": 192.2,
+    "capacity_increase_pct": 307.5
   },
   "tech_profitability": [
     {
@@ -140,6 +140,26 @@
       "rank": 5
     },
     {
+      "name": "Wilbeni Pierre",
+      "initials": "WP",
+      "jobs": 1006,
+      "revenue": 89440.13,
+      "avgRevenuePerStop": 88.91,
+      "costs": {
+        "chemical": 3219.2,
+        "labor": 12072,
+        "fuel": 4024,
+        "vehicle": 2012,
+        "total": 21327.2
+      },
+      "grossProfit": 68112.93,
+      "margin": 76.2,
+      "resprays": 4,
+      "resprayRate": 0.4,
+      "efficiencyRating": 96,
+      "rank": 6
+    },
+    {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
       "jobs": 982,
@@ -157,26 +177,6 @@
       "resprays": 3,
       "resprayRate": 0.31,
       "efficiencyRating": 97,
-      "rank": 6
-    },
-    {
-      "name": "Wilbeni Pierre",
-      "initials": "WP",
-      "jobs": 988,
-      "revenue": 87829.33,
-      "avgRevenuePerStop": 88.9,
-      "costs": {
-        "chemical": 3161.6,
-        "labor": 11856,
-        "fuel": 3952,
-        "vehicle": 1976,
-        "total": 20945.6
-      },
-      "grossProfit": 66883.73,
-      "margin": 76.2,
-      "resprays": 4,
-      "resprayRate": 0.4,
-      "efficiencyRating": 96,
       "rank": 7
     },
     {
@@ -245,14 +245,14 @@
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
-      "description": "8 tech(s) with 700+ stops: Joseph Pagan (1733), Damian Machin (3166), David Carbajal (2772), Marcus Rubi (2578), Lenny Pierre (1183), Guillermo Rodriguez (982), Wilbeni Pierre (988), Travis Johnson (925). Consider route optimization or adding techs to reduce burnout."
+      "description": "8 tech(s) with 700+ stops: Joseph Pagan (1733), Damian Machin (3166), David Carbajal (2772), Marcus Rubi (2578), Lenny Pierre (1183), Wilbeni Pierre (1006), Guillermo Rodriguez (982), Travis Johnson (925). Consider route optimization or adding techs to reduce burnout."
     },
     {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 14695 total stops, even a 5% upsell rate at $75 avg would add $55,106 in revenue.",
-      "potential_value": 55106
+      "description": "At 14713 total stops, even a 5% upsell rate at $75 avg would add $55,174 in revenue.",
+      "potential_value": 55174
     }
   ]
 }
