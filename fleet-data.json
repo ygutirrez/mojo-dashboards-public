@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-08T10:18:00.226Z",
-  "data_period": "2026-10-31 to 2026-11-07",
+  "updated_at": "2026-11-09T10:17:28.499Z",
+  "data_period": "2026-11-01 to 2026-11-08",
   "summary": {
     "active_vehicles": 12,
     "total_vehicles": 16,
-    "total_miles": 2252,
-    "total_trips": 690,
-    "total_drive_hours": 174,
-    "avg_safety_score": 96,
-    "total_speeding_events": 7733,
-    "total_hard_brakes": 24,
-    "avg_miles_per_trip": 3.3
+    "total_miles": 2196,
+    "total_trips": 691,
+    "total_drive_hours": 173,
+    "avg_safety_score": 97,
+    "total_speeding_events": 6955,
+    "total_hard_brakes": 20,
+    "avg_miles_per_trip": 3.2
   },
   "vehicles": [
     {
@@ -30,7 +30,7 @@
     {
       "truck": "Truck 4",
       "driver": "Unassigned",
-      "trips": 53,
+      "trips": 52,
       "miles": 123.3,
       "drive_hours": 8.1,
       "hard_brakes": 0,
@@ -39,7 +39,7 @@
       "top_speed": 74,
       "safety_score": 100,
       "hard_brakes_per_100mi": 0,
-      "miles_per_trip": 2.3
+      "miles_per_trip": 2.4
     },
     {
       "truck": "Truck 7",
@@ -142,7 +142,7 @@
     {
       "truck": "Truck 17",
       "driver": "Andrew Schamel",
-      "trips": 23,
+      "trips": 22,
       "miles": 161.4,
       "drive_hours": 5.6,
       "hard_brakes": 4,
@@ -151,12 +151,26 @@
       "top_speed": 79,
       "safety_score": 92,
       "hard_brakes_per_100mi": 2.5,
-      "miles_per_trip": 7
+      "miles_per_trip": 7.3
+    },
+    {
+      "truck": "Truck 10",
+      "driver": "Unassigned",
+      "trips": 100,
+      "miles": 232.4,
+      "drive_hours": 21.9,
+      "hard_brakes": 5,
+      "rapid_accels": 1,
+      "speeding_events": 1112,
+      "top_speed": 88,
+      "safety_score": 90,
+      "hard_brakes_per_100mi": 2.2,
+      "miles_per_trip": 2.3
     },
     {
       "truck": "Truck 16",
       "driver": "David Carbajal",
-      "trips": 95,
+      "trips": 94,
       "miles": 225,
       "drive_hours": 15,
       "hard_brakes": 5,
@@ -166,20 +180,6 @@
       "safety_score": 89,
       "hard_brakes_per_100mi": 2.2,
       "miles_per_trip": 2.4
-    },
-    {
-      "truck": "Truck 10",
-      "driver": "Unassigned",
-      "trips": 96,
-      "miles": 288,
-      "drive_hours": 22.9,
-      "hard_brakes": 9,
-      "rapid_accels": 2,
-      "speeding_events": 1890,
-      "top_speed": 88,
-      "safety_score": 81,
-      "hard_brakes_per_100mi": 3.1,
-      "miles_per_trip": 3
     }
   ],
   "alerts": [
@@ -200,8 +200,8 @@
     {
       "driver": "Unassigned",
       "truck": "Truck 10",
-      "safety_score": 81,
-      "speeding_events": 1890,
+      "safety_score": 90,
+      "speeding_events": 1112,
       "issue": "Excessive speeding"
     }
   ],
@@ -682,6 +682,17 @@
       "total_hard_brakes": 24,
       "total_speeding": 7733,
       "avg_safety": 96
+    },
+    {
+      "date": "2026-11-08",
+      "active_trucks": 12,
+      "total_vehicles": 16,
+      "total_trips": 691,
+      "total_miles": 2196,
+      "total_drive_min": 10400,
+      "total_hard_brakes": 20,
+      "total_speeding": 6955,
+      "avg_safety": 97
     }
   ]
 }
