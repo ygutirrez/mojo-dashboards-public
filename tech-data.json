@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-09T13:00:36.991Z",
-  "updated_at": "2026-11-09T13:00:36.991Z",
+  "generated_at": "2026-11-09T15:00:33.548Z",
+  "updated_at": "2026-11-09T15:00:33.548Z",
   "period": "Jan 1 - Nov 9, 2026 (YTD)",
   "summary": {
-    "total_jobs": 14713,
+    "total_jobs": 14726,
     "total_techs": 9,
     "resprays": 149,
     "first_time_success": "99.0%",
     "total_upsells": 5,
-    "total_revenue": 1380039
+    "total_revenue": 1381205
   },
   "employees": [
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 3166,
-      "revenue": 282924.93,
+      "jobs": 3169,
+      "revenue": 283182.9,
       "resprays": 18,
       "upsells": 0,
       "rank": 1
@@ -23,8 +23,8 @@
     {
       "name": "David Carbajal",
       "initials": "DC",
-      "jobs": 2772,
-      "revenue": 232506.09,
+      "jobs": 2774,
+      "revenue": 232612.08,
       "resprays": 15,
       "upsells": 4,
       "rank": 2
@@ -32,8 +32,8 @@
     {
       "name": "Marcus Rubi",
       "initials": "MR",
-      "jobs": 2578,
-      "revenue": 200792.6,
+      "jobs": 2581,
+      "revenue": 201020.53,
       "resprays": 11,
       "upsells": 0,
       "rank": 3
@@ -41,8 +41,8 @@
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 1733,
-      "revenue": 277340.15,
+      "jobs": 1734,
+      "revenue": 277570.15,
       "resprays": 0,
       "upsells": 1,
       "rank": 4
@@ -50,8 +50,8 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 1183,
-      "revenue": 100177.86,
+      "jobs": 1184,
+      "revenue": 100253.85,
       "resprays": 13,
       "upsells": 0,
       "rank": 5
@@ -68,8 +68,8 @@
     {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
-      "jobs": 982,
-      "revenue": 88756.36,
+      "jobs": 985,
+      "revenue": 89024.33,
       "resprays": 3,
       "upsells": 0,
       "rank": 7
@@ -182,14 +182,44 @@
     "y2026": []
   },
   "current_day": {
-    "date": "2026-11-07",
-    "jobs": 18,
-    "revenue": 1610.8,
+    "date": "2026-11-09",
+    "jobs": 13,
+    "revenue": 1165.85,
     "technicians": [
       {
-        "name": "Wilbeni Pierre",
-        "jobs": 18,
-        "revenue": 1610.8,
+        "name": "Guillermo Rodriguez",
+        "jobs": 3,
+        "revenue": 267.97,
+        "resprays": 0
+      },
+      {
+        "name": "Damian Machin",
+        "jobs": 3,
+        "revenue": 257.97,
+        "resprays": 0
+      },
+      {
+        "name": "Marcus Rubi",
+        "jobs": 3,
+        "revenue": 227.93,
+        "resprays": 0
+      },
+      {
+        "name": "David Carbajal",
+        "jobs": 2,
+        "revenue": 105.99,
+        "resprays": 0
+      },
+      {
+        "name": "Joseph Pagan",
+        "jobs": 1,
+        "revenue": 230,
+        "resprays": 0
+      },
+      {
+        "name": "Lenny Pierre",
+        "jobs": 1,
+        "revenue": 75.99,
         "resprays": 0
       }
     ]
@@ -197,10 +227,47 @@
   "this_week": {
     "start": "2026-11-09",
     "end": "2026-11-15",
-    "jobs": 0,
-    "revenue": 0,
+    "jobs": 13,
+    "revenue": 1165.85,
     "prior_week_jobs": 404,
-    "technicians": []
+    "technicians": [
+      {
+        "name": "Guillermo Rodriguez",
+        "jobs": 3,
+        "revenue": 267.97,
+        "resprays": 0
+      },
+      {
+        "name": "Damian Machin",
+        "jobs": 3,
+        "revenue": 257.97,
+        "resprays": 0
+      },
+      {
+        "name": "Marcus Rubi",
+        "jobs": 3,
+        "revenue": 227.93,
+        "resprays": 0
+      },
+      {
+        "name": "David Carbajal",
+        "jobs": 2,
+        "revenue": 105.99,
+        "resprays": 0
+      },
+      {
+        "name": "Joseph Pagan",
+        "jobs": 1,
+        "revenue": 230,
+        "resprays": 0
+      },
+      {
+        "name": "Lenny Pierre",
+        "jobs": 1,
+        "revenue": 75.99,
+        "resprays": 0
+      }
+    ]
   },
   "weekly_trend": [
     {
@@ -231,7 +298,7 @@
       "start": "2026-11-09",
       "end": "2026-11-15",
       "label": "Nov 9–Nov 15",
-      "jobs": 0
+      "jobs": 13
     }
   ],
   "sources": {
@@ -240,10 +307,10 @@
       "system": "ServiceMinder appointments API",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-11-07"
+        "max": "2026-11-09"
       },
       "status": "current",
-      "detail": "24,173 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
+      "detail": "24,196 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -320,7 +387,7 @@
       "system": "ServiceMinder Org Download invoices",
       "coverage": {
         "min": "2020-01-01",
-        "max": "2026-11-07"
+        "max": "2026-11-09"
       },
       "status": "current",
       "detail": "Invoice Total summed by Invoice Date across all staff. Company invoices and completed-appointment production are different measures."
@@ -571,7 +638,7 @@
       "icon": "🔥",
       "title": "Iron Man",
       "name": "Damian Machin",
-      "stat": "Most jobs — 3166"
+      "stat": "Most jobs — 3169"
     },
     {
       "icon": "⚡",
@@ -583,19 +650,19 @@
       "icon": "🎯",
       "title": "Runner Up",
       "name": "David Carbajal",
-      "stat": "2772 jobs — 394 behind!"
+      "stat": "2774 jobs — 395 behind!"
     },
     {
       "icon": "🛡️",
       "title": "Zero Callbacks",
       "name": "Joseph Pagan",
-      "stat": "1733 jobs, 0 re-sprays"
+      "stat": "1734 jobs, 0 re-sprays"
     },
     {
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 149 re-sprays out of 14713!"
+      "stat": "Only 149 re-sprays out of 14726!"
     }
   ]
 }
