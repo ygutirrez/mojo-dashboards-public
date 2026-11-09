@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-09T19:30:19.232Z",
+  "updated_at": "2026-11-09T20:00:27.794Z",
   "csv_date": "2026-11-09",
   "period": "Jan 1 - Nov 9, 2026 (YTD)",
   "summary": {
     "total_sales": 608,
-    "total_cancels": 434,
-    "net": 174,
-    "paused_wp": 97,
-    "paused_pct": 22,
+    "total_cancels": 435,
+    "net": 173,
+    "paused_wp": 98,
+    "paused_pct": 23,
     "days_tracked": 313
   },
   "week": {
@@ -16,8 +16,8 @@
     "label": "Nov 9 – Nov 15",
     "summary": {
       "total_sales": 2,
-      "total_cancels": 2,
-      "net": 0
+      "total_cancels": 3,
+      "net": -1
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 2,
+        "net": -2
       }
     ]
   },
@@ -54,14 +54,14 @@
     {
       "name": "Bev",
       "sales": 72,
-      "cancels": 150
+      "cancels": 151
     }
   ],
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 97,
-      "pct": 22
+      "count": 98,
+      "pct": 23
     },
     {
       "name": "Moved",
@@ -217,6 +217,13 @@
     {
       "date": "2026-11-09",
       "dateFmt": "Nov 9",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-11-09",
+      "dateFmt": "Nov 9",
       "type": "Sale",
       "category": "Barrier Spray",
       "csr": "Lucy"
@@ -276,18 +283,11 @@
       "type": "Cancel",
       "category": "Moved",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-11-05",
-      "dateFmt": "Nov 5",
-      "type": "Cancel",
-      "category": "Financial",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 97
+    "count": 98
   },
   "tech_upsells": [
     {
