@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-09T18:30:21.674Z",
+  "updated_at": "2026-11-09T19:00:20.365Z",
   "csv_date": "2026-11-09",
   "period": "Jan 1 - Nov 9, 2026 (YTD)",
   "summary": {
     "total_sales": 607,
-    "total_cancels": 433,
-    "net": 174,
-    "paused_wp": 96,
+    "total_cancels": 434,
+    "net": 173,
+    "paused_wp": 97,
     "paused_pct": 22,
     "days_tracked": 313
   },
@@ -16,15 +16,15 @@
     "label": "Nov 9 – Nov 15",
     "summary": {
       "total_sales": 1,
-      "total_cancels": 1,
-      "net": 0
+      "total_cancels": 2,
+      "net": -1
     },
     "csrs": [
       {
         "name": "Lucy",
         "sales": 1,
-        "cancels": 0,
-        "net": 1
+        "cancels": 1,
+        "net": 0
       },
       {
         "name": "Norma",
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 356,
-      "cancels": 136
+      "cancels": 137
     },
     {
       "name": "Norma",
@@ -60,7 +60,7 @@
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 96,
+      "count": 97,
       "pct": 22
     },
     {
@@ -217,6 +217,13 @@
     {
       "date": "2026-11-09",
       "dateFmt": "Nov 9",
+      "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-09",
+      "dateFmt": "Nov 9",
       "type": "Sale",
       "category": "Restart",
       "csr": "Lucy"
@@ -276,18 +283,11 @@
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-04",
-      "dateFmt": "Nov 4",
-      "type": "Cancel",
-      "category": "Went w/Competitor",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 96
+    "count": 97
   },
   "tech_upsells": [
     {
