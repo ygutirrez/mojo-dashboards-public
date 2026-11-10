@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-10T13:06:27.366Z",
+    "generated_at": "2026-11-10T14:16:38.935Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-10T13:06:21.129Z",
+      "generated_at": "2026-11-10T14:16:32.619Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51184,
+      "appointments": 51185,
       "contacts": 14293,
-      "invoices": 48311,
+      "invoices": 48323,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2211130,
+      "ytd_invoiced": 2212303,
       "avg_per_visit": 75,
-      "mtd": 58989,
-      "mtd_jobs": 616
+      "mtd": 60162,
+      "mtd_jobs": 628
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2211130
+      "total_wo_revenue": 2212303
     },
     "employees": [
       {
@@ -224,8 +224,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 218866.76,
-        "avgRevenue": 174.67,
+        "revenue": 218459.31,
+        "avgRevenue": 174.35,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -235,8 +235,8 @@
       {
         "name": "Travis Johnson",
         "jobs": 265,
-        "revenue": 60809.07,
-        "avgRevenue": 82.06,
+        "revenue": 62131.94,
+        "avgRevenue": 81.97,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
@@ -257,9 +257,9 @@
     ],
     "appointment_statuses": {
       "Queued": 13036,
-      "Scheduled": 11166,
-      "Completed": 4949,
-      "Started": 254,
+      "Scheduled": 11155,
+      "Completed": 4961,
+      "Started": 253,
       "Canceled": 249
     },
     "service_mix": {
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2211130
+      "total_revenue": 2212303
     },
     "employees": [
       {
@@ -368,7 +368,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 4,
-        "revenue": 218867,
+        "revenue": 218459,
         "upsells": 0,
         "resprays": 0
       },
@@ -379,7 +379,7 @@
         "initials": "TJ",
         "jobs": 265,
         "rank": 5,
-        "revenue": 60809,
+        "revenue": 62132,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,18 +397,18 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2211130,
+    "revenue": 2212303,
     "proposals": 1657,
     "invoiced_proposals": 1257,
     "complete_proposals": 298,
     "sources": {
-      "Online": 16075,
-      "Referral": 13764,
-      "MoJo Customer": 7130,
+      "Online": 16079,
+      "Referral": 13770,
+      "MoJo Customer": 7131,
       "Yard Sign": 4818,
       "Direct Mail Postcard": 4510,
       "Mosquito Joe Vehicle": 3475,
-      "Other": 1632,
+      "Other": 1633,
       "Advertising": 1232,
       "Printed Material": 627,
       "Mail Advertising": 519,
@@ -509,8 +509,8 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 58988.75,
-        "invoices": 616,
+        "invoiceRevenue": 60162.06,
+        "invoices": 628,
         "appointments": 3964,
         "proposals": 0,
         "cancels": 104
