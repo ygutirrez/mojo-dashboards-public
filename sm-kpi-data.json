@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-11-09T10:17:28.202Z",
+    "generated": "2026-11-10T10:17:43.869Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
-    "dataThrough": "2026-11-07",
-    "serviceMinderSyncAt": "2026-11-09T10:16:36.506Z",
+    "dataThrough": "2026-11-09",
+    "serviceMinderSyncAt": "2026-11-10T10:16:49.698Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -14,24 +14,24 @@
   },
   "summary": {
     "ytd": {
-      "production": 2196761.1,
-      "stops": 24173,
-      "avgRevPerStop": 90.88,
-      "sales": 594,
-      "cancels": 152,
-      "netCustomerChange": 442,
+      "production": 2208058.11,
+      "stops": 24281,
+      "avgRevPerStop": 90.94,
+      "sales": 596,
+      "cancels": 153,
+      "netCustomerChange": 443,
       "estimates": 184,
       "estimateConversion": 0,
-      "dailyProductionRate": 7018.41,
-      "annualPace": 2561718,
-      "daysElapsed": 313
+      "dailyProductionRate": 7032.03,
+      "annualPace": 2566692,
+      "daysElapsed": 314
     },
     "techCount": 9,
     "topTech": {
       "name": "Damian Machin",
-      "visits": 3166,
-      "revenue": 282924.93,
-      "avgRevPerVisit": 89.36,
+      "visits": 3181,
+      "revenue": 284459.78,
+      "avgRevPerVisit": 89.42,
       "resprays": 18,
       "upsells": 0
     },
@@ -152,7 +152,7 @@
       "salesDollars": 0,
       "salesAccounts": 26,
       "cancelsDollars": 0,
-      "cancelsAccounts": 29,
+      "cancelsAccounts": 28,
       "revenuePerStop": 90.83
     },
     {
@@ -170,27 +170,27 @@
     },
     {
       "period": "November 2026",
-      "production": 46050.29,
-      "stops": 499,
+      "production": 57347.3,
+      "stops": 607,
       "skips": 0,
       "estimatesReceived": 0,
       "estimatesCompleted": 0,
       "salesDollars": 0,
-      "salesAccounts": 7,
+      "salesAccounts": 9,
       "cancelsDollars": 0,
-      "cancelsAccounts": 3,
-      "revenuePerStop": 92.29
+      "cancelsAccounts": 5,
+      "revenuePerStop": 94.48
     }
   ],
   "monthlyComparison": {
     "current": {
       "period": "November 2026",
-      "production": 46050.29,
-      "stops": 499,
-      "sales": 7,
-      "cancels": 3,
-      "daysElapsed": 9,
-      "dailyPace": 5116.7
+      "production": 57347.3,
+      "stops": 607,
+      "sales": 9,
+      "cancels": 5,
+      "daysElapsed": 10,
+      "dailyPace": 5734.73
     },
     "previous": {
       "period": "October 2026",
@@ -202,49 +202,49 @@
       "dailyPace": 7091.81
     },
     "changes": {
-      "productionPace": -28,
-      "stopsPerDay": -21.7,
-      "revPerStop": 0.3
+      "productionPace": -19,
+      "stopsPerDay": -16.4,
+      "revPerStop": 2.49
     }
   },
   "technicians": [
     {
       "name": "Damian Machin",
-      "visits": 3166,
-      "revenue": 282924.93,
-      "avgRevPerVisit": 89.36,
+      "visits": 3181,
+      "revenue": 284459.78,
+      "avgRevPerVisit": 89.42,
       "resprays": 18,
       "upsells": 0
     },
     {
       "name": "David Carbajal",
-      "visits": 2772,
-      "revenue": 232506.09,
-      "avgRevPerVisit": 83.88,
+      "visits": 2786,
+      "revenue": 233567.96,
+      "avgRevPerVisit": 83.84,
       "resprays": 15,
       "upsells": 4
     },
     {
       "name": "Marcus Rubi",
-      "visits": 2578,
-      "revenue": 200792.6,
-      "avgRevPerVisit": 77.89,
+      "visits": 2588,
+      "revenue": 201806.46,
+      "avgRevPerVisit": 77.98,
       "resprays": 11,
       "upsells": 0
     },
     {
       "name": "Joseph Pagan",
-      "visits": 1733,
-      "revenue": 277340.15,
-      "avgRevPerVisit": 160.03,
+      "visits": 1746,
+      "revenue": 279880.15,
+      "avgRevPerVisit": 160.3,
       "resprays": 0,
       "upsells": 1
     },
     {
       "name": "Lenny Pierre",
-      "visits": 1183,
-      "revenue": 100177.86,
-      "avgRevPerVisit": 84.68,
+      "visits": 1197,
+      "revenue": 101895.57,
+      "avgRevPerVisit": 85.13,
       "resprays": 13,
       "upsells": 0
     },
@@ -258,9 +258,9 @@
     },
     {
       "name": "Guillermo Rodriguez",
-      "visits": 982,
-      "revenue": 88756.36,
-      "avgRevPerVisit": 90.38,
+      "visits": 997,
+      "revenue": 90160.34,
+      "avgRevPerVisit": 90.43,
       "resprays": 3,
       "upsells": 0
     },
@@ -282,13 +282,13 @@
     }
   ],
   "techEfficiency": {
-    "avgVisitsPerTech": 2686,
-    "avgRevPerVisit": 90.88,
+    "avgVisitsPerTech": 2698,
+    "avgRevPerVisit": 90.94,
     "topPerformer": {
       "name": "Damian Machin",
-      "visits": 3166,
-      "revenue": 282924.93,
-      "avgRevPerVisit": 89.36,
+      "visits": 3181,
+      "revenue": 284459.78,
+      "avgRevPerVisit": 89.42,
       "resprays": 18,
       "upsells": 0
     },
@@ -300,39 +300,39 @@
       "resprays": 0,
       "upsells": 0
     },
-    "revenueConcentration": 21
+    "revenueConcentration": 20
   },
   "workOrders": {
     "byProgram": [
       {
         "name": "Mojo Essential",
-        "count": 10558,
-        "revenue": 901642.4
+        "count": 10580,
+        "revenue": 903991.27
       },
       {
         "name": "Synthetic Barrier Spray - 2 week",
-        "count": 8218,
-        "revenue": 685064.28
+        "count": 8278,
+        "revenue": 690109.44
       },
       {
         "name": "Gnat/Midge/No-seeums Service - 2 weeks",
-        "count": 773,
-        "revenue": 100813.28
+        "count": 779,
+        "revenue": 101608.22
       },
       {
         "name": "Misting System Recurring Service Bi-Monthly",
-        "count": 654,
-        "revenue": 160604.35
+        "count": 659,
+        "revenue": 161869.35
       },
       {
         "name": "Accelerated - Synthetic Signature Service",
-        "count": 524,
-        "revenue": 34823.24
+        "count": 525,
+        "revenue": 34913.33
       },
       {
         "name": "HPD - 42 Days",
-        "count": 513,
-        "revenue": 40422.55
+        "count": 514,
+        "revenue": 40488.54
       },
       {
         "name": "Synthetic Barrier Spray - 4 week",
@@ -366,8 +366,8 @@
       },
       {
         "name": "Misting system - 4 Weeks",
-        "count": 143,
-        "revenue": 34056.37
+        "count": 145,
+        "revenue": 34326.37
       },
       {
         "name": "Special Event Service",
@@ -386,13 +386,13 @@
       },
       {
         "name": "Property Assessment",
-        "count": 109,
+        "count": 110,
         "revenue": 0
       },
       {
         "name": "Misting System Repair Service",
-        "count": 90,
-        "revenue": 10765.5
+        "count": 92,
+        "revenue": 10995.5
       },
       {
         "name": "Special Event Spray",
@@ -401,13 +401,13 @@
       },
       {
         "name": "Misting system - 6 Weeks",
-        "count": 73,
-        "revenue": 22027.18
+        "count": 76,
+        "revenue": 22802.18
       },
       {
         "name": "Signature Service",
-        "count": 58,
-        "revenue": 4071.55
+        "count": 60,
+        "revenue": 4157.54
       },
       {
         "name": "Inzecto Trap Replacement",
@@ -435,14 +435,14 @@
         "revenue": 5691.72
       },
       {
+        "name": "Flea & Tick Treatment",
+        "count": 39,
+        "revenue": 3482.63
+      },
+      {
         "name": "One-time Service",
         "count": 39,
         "revenue": 3606.07
-      },
-      {
-        "name": "Flea & Tick Treatment",
-        "count": 38,
-        "revenue": 3386.64
       },
       {
         "name": "Misting System Installation",
@@ -455,14 +455,14 @@
         "revenue": 2738.69
       },
       {
+        "name": "Gnats/Midges/No-see-ums",
+        "count": 29,
+        "revenue": 3719.21
+      },
+      {
         "name": "Gnats/Midges/No-seeums - 3 week",
         "count": 27,
         "revenue": 3579.73
-      },
-      {
-        "name": "Gnats/Midges/No-see-ums",
-        "count": 27,
-        "revenue": 3489.23
       },
       {
         "name": "Fly Management Service",
@@ -805,18 +805,16 @@
         "week": "2026-11-01",
         "stops": 499,
         "revenue": 46050.29
+      },
+      {
+        "week": "2026-11-08",
+        "stops": 108,
+        "revenue": 11297.01
       }
     ],
-    "totalWOs": 24173
+    "totalWOs": 24281
   },
   "dailyProduction": [
-    {
-      "date": "2026-10-05",
-      "stops": 105,
-      "revenue": 9716.21,
-      "techCount": 8,
-      "avgStopsPerTech": 13.1
-    },
     {
       "date": "2026-10-06",
       "stops": 131,
@@ -1019,6 +1017,13 @@
       "revenue": 1610.8,
       "techCount": 1,
       "avgStopsPerTech": 18
+    },
+    {
+      "date": "2026-11-09",
+      "stops": 108,
+      "revenue": 11297.01,
+      "techCount": 8,
+      "avgStopsPerTech": 13.5
     }
   ],
   "seasonScore": {
@@ -1031,11 +1036,11 @@
     ]
   },
   "salesBreakdown": {
-    "total": 594,
+    "total": 596,
     "value": null,
     "bySource": {
-      "Barrier Spray": 216,
-      "Restart": 142,
+      "Barrier Spray": 217,
+      "Restart": 143,
       "Event Spray": 92,
       "Noseeum": 38,
       "Misting System": 26,
@@ -1054,8 +1059,8 @@
       "Moved": 1
     },
     "byProgram": {
-      "Barrier Spray": 216,
-      "Restart": 142,
+      "Barrier Spray": 217,
+      "Restart": 143,
       "Event Spray": 92,
       "Noseeum": 38,
       "Misting System": 26,
@@ -1076,23 +1081,24 @@
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services"
   },
   "cancelsBreakdown": {
-    "totalEvents": 152,
-    "uniqueAccounts": 152,
+    "totalEvents": 153,
+    "uniqueAccounts": 153,
     "byReason": {
       "Not Interested": 30,
       "Moved": 28,
-      "Not recorded": 27,
+      "Not recorded": 26,
       "Financial": 24,
-      "Unhappy": 16,
+      "Unhappy": 17,
       "Went w/Competitor": 9,
       "Paused/WP": 5,
       "Barrier Spray": 5,
       "No Longer Needed": 4,
       "Moving": 2,
+      "Not Working": 1,
       "Error": 1,
       "Scheduling Conflict": 1
     },
-    "recoverable": 89,
+    "recoverable": 90,
     "definition": "Unique contacts currently categorized Inactive: Cancelled"
   }
 }

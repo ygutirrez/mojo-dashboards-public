@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-09T10:17:28.499Z",
-  "data_period": "2026-11-01 to 2026-11-08",
+  "updated_at": "2026-11-10T10:17:44.172Z",
+  "data_period": "2026-11-02 to 2026-11-09",
   "summary": {
     "active_vehicles": 12,
     "total_vehicles": 16,
-    "total_miles": 2196,
-    "total_trips": 691,
-    "total_drive_hours": 173,
+    "total_miles": 2141,
+    "total_trips": 687,
+    "total_drive_hours": 171,
     "avg_safety_score": 97,
-    "total_speeding_events": 6955,
+    "total_speeding_events": 6774,
     "total_hard_brakes": 20,
-    "avg_miles_per_trip": 3.2
+    "avg_miles_per_trip": 3.1
   },
   "vehicles": [
     {
@@ -86,44 +86,44 @@
     {
       "truck": "Truck 15",
       "driver": "Travis Johnson",
-      "trips": 38,
-      "miles": 213.5,
-      "drive_hours": 17,
+      "trips": 37,
+      "miles": 162,
+      "drive_hours": 15.5,
       "hard_brakes": 1,
       "rapid_accels": 0,
-      "speeding_events": 530,
-      "top_speed": 73,
+      "speeding_events": 349,
+      "top_speed": 69,
       "safety_score": 98,
-      "hard_brakes_per_100mi": 0.5,
-      "miles_per_trip": 5.6
+      "hard_brakes_per_100mi": 0.6,
+      "miles_per_trip": 4.4
     },
     {
       "truck": "Best Pest 2",
       "driver": "Luis Zamora",
-      "trips": 32,
-      "miles": 183.8,
-      "drive_hours": 27.1,
+      "trips": 29,
+      "miles": 181.9,
+      "drive_hours": 26.7,
       "hard_brakes": 1,
       "rapid_accels": 2,
       "speeding_events": 1053,
       "top_speed": 84,
       "safety_score": 97,
       "hard_brakes_per_100mi": 0.5,
-      "miles_per_trip": 5.7
+      "miles_per_trip": 6.3
     },
     {
       "truck": "Truck 9",
       "driver": "Damian Machin",
       "trips": 100,
-      "miles": 216.6,
-      "drive_hours": 18.3,
+      "miles": 214.3,
+      "drive_hours": 18.1,
       "hard_brakes": 2,
       "rapid_accels": 0,
       "speeding_events": 779,
       "top_speed": 75,
       "safety_score": 96,
       "hard_brakes_per_100mi": 0.9,
-      "miles_per_trip": 2.2
+      "miles_per_trip": 2.1
     },
     {
       "truck": "Truck 13",
@@ -692,6 +692,17 @@
       "total_drive_min": 10400,
       "total_hard_brakes": 20,
       "total_speeding": 6955,
+      "avg_safety": 97
+    },
+    {
+      "date": "2026-11-09",
+      "active_trucks": 12,
+      "total_vehicles": 16,
+      "total_trips": 687,
+      "total_miles": 2140,
+      "total_drive_min": 10277,
+      "total_hard_brakes": 20,
+      "total_speeding": 6774,
       "avg_safety": 97
     }
   ]
