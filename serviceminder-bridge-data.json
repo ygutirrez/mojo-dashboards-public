@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-10T10:17:57.027Z",
+    "generated_at": "2026-11-10T13:06:27.366Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-10T10:16:49.707Z",
+      "generated_at": "2026-11-10T13:06:21.129Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 51184,
       "contacts": 14293,
-      "invoices": 48310,
+      "invoices": 48311,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2210900,
+      "ytd_invoiced": 2211130,
       "avg_per_visit": 75,
-      "mtd": 58759,
-      "mtd_jobs": 615
+      "mtd": 58989,
+      "mtd_jobs": 616
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,8 +135,8 @@
     },
     "sales": {
       "total_sales": 1555,
-      "total_cancels": 402,
-      "net": 1153,
+      "total_cancels": 403,
+      "net": 1152,
       "cancel_reasons": {
         "No Longer Needed": 85,
         "Workpool": 76,
@@ -145,8 +145,8 @@
         "Moving": 42,
         "Financial": 33,
         "Found Different Company": 20,
-        "Weather": 9,
-        "Not Working": 9
+        "Not Working": 10,
+        "Weather": 9
       },
       "sale_categories": {
         "Mojo Essential": 758,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2210900
+      "total_wo_revenue": 2211130
     },
     "employees": [
       {
@@ -256,11 +256,11 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 13037,
-      "Scheduled": 11168,
-      "Completed": 4948,
-      "Started": 253,
-      "Canceled": 248
+      "Queued": 13036,
+      "Scheduled": 11166,
+      "Completed": 4949,
+      "Started": 254,
+      "Canceled": 249
     },
     "service_mix": {
       "Mojo Essential": 12666,
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2210900
+      "total_revenue": 2211130
     },
     "employees": [
       {
@@ -397,12 +397,12 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2210900,
+    "revenue": 2211130,
     "proposals": 1657,
     "invoiced_proposals": 1257,
     "complete_proposals": 298,
     "sources": {
-      "Online": 16074,
+      "Online": 16075,
       "Referral": 13764,
       "MoJo Customer": 7130,
       "Yard Sign": 4818,
@@ -509,11 +509,11 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 58758.75,
-        "invoices": 615,
+        "invoiceRevenue": 58988.75,
+        "invoices": 616,
         "appointments": 3964,
         "proposals": 0,
-        "cancels": 103
+        "cancels": 104
       },
       {
         "month": "2026-12",
