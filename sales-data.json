@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-11-09T23:30:20.802Z",
-  "csv_date": "2026-11-09",
-  "period": "Jan 1 - Nov 9, 2026 (YTD)",
+  "updated_at": "2026-11-10T13:00:24.237Z",
+  "csv_date": "2026-11-10",
+  "period": "Jan 1 - Nov 10, 2026 (YTD)",
   "summary": {
     "total_sales": 608,
-    "total_cancels": 437,
-    "net": 171,
+    "total_cancels": 438,
+    "net": 170,
     "paused_wp": 99,
     "paused_pct": 23,
-    "days_tracked": 313
+    "days_tracked": 314
   },
   "week": {
     "start": "2026-11-09",
@@ -16,8 +16,8 @@
     "label": "Nov 9 – Nov 15",
     "summary": {
       "total_sales": 2,
-      "total_cancels": 4,
-      "net": -2
+      "total_cancels": 5,
+      "net": -3
     },
     "csrs": [
       {
@@ -27,16 +27,16 @@
         "net": 0
       },
       {
-        "name": "Bev",
+        "name": "Norma",
         "sales": 0,
         "cancels": 1,
         "net": -1
       },
       {
-        "name": "Norma",
+        "name": "Bev",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 2,
+        "net": -2
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 72,
-      "cancels": 151
+      "cancels": 152
     }
   ],
   "cancel_reasons": [
@@ -80,7 +80,7 @@
     },
     {
       "name": "Unhappy",
-      "count": 43,
+      "count": 44,
       "pct": 10
     },
     {
@@ -215,6 +215,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-11-10",
+      "dateFmt": "Nov 10",
+      "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-11-09",
       "dateFmt": "Nov 9",
       "type": "Cancel",
@@ -276,13 +283,6 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-11-05",
-      "dateFmt": "Nov 5",
-      "type": "Sale",
-      "category": "MS Takeover",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
@@ -293,6 +293,10 @@
     {
       "name": "David",
       "count": 4
+    },
+    {
+      "name": "Jorge",
+      "count": 2
     },
     {
       "name": "Joe",
