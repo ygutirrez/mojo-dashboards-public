@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-11T14:00:21.532Z",
+  "updated_at": "2026-11-11T14:30:21.988Z",
   "csv_date": "2026-11-11",
   "period": "Jan 1 - Nov 11, 2026 (YTD)",
   "summary": {
-    "total_sales": 611,
+    "total_sales": 612,
     "total_cancels": 438,
-    "net": 173,
+    "net": 174,
     "paused_wp": 99,
     "paused_pct": 23,
     "days_tracked": 315
@@ -15,9 +15,9 @@
     "end": "2026-11-15",
     "label": "Nov 9 – Nov 15",
     "summary": {
-      "total_sales": 5,
+      "total_sales": 6,
       "total_cancels": 5,
-      "net": 0
+      "net": 1
     },
     "csrs": [
       {
@@ -28,9 +28,9 @@
       },
       {
         "name": "Norma",
-        "sales": 1,
+        "sales": 2,
         "cancels": 1,
-        "net": 0
+        "net": 1
       },
       {
         "name": "Bev",
@@ -48,7 +48,7 @@
     },
     {
       "name": "Norma",
-      "sales": 180,
+      "sales": 181,
       "cancels": 148
     },
     {
@@ -142,7 +142,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 218
+      "count": 219
     },
     {
       "name": "Restart",
@@ -215,8 +215,15 @@
   ],
   "recent_activity": [
     {
-      "date": "2026-11-10",
-      "dateFmt": "Nov 10",
+      "date": "2026-11-11",
+      "dateFmt": "Nov 11",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-11",
+      "dateFmt": "Nov 11",
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Bev"
@@ -275,13 +282,6 @@
       "dateFmt": "Nov 9",
       "type": "Cancel",
       "category": "Paused/WP",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-09",
-      "dateFmt": "Nov 9",
-      "type": "Sale",
-      "category": "Restart",
       "csr": "Lucy"
     }
   ],

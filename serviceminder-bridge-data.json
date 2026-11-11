@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-11T13:07:13.635Z",
+    "generated_at": "2026-11-11T14:17:14.423Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-11T13:07:07.258Z",
+      "generated_at": "2026-11-11T14:17:08.282Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
       "appointments": 51339,
-      "contacts": 14297,
-      "invoices": 48412,
+      "contacts": 14298,
+      "invoices": 48427,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2220564,
+      "ytd_invoiced": 2221983,
       "avg_per_visit": 75,
-      "mtd": 68423,
-      "mtd_jobs": 717
+      "mtd": 69841,
+      "mtd_jobs": 732
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2220564
+      "total_wo_revenue": 2221983
     },
     "employees": [
       {
@@ -257,10 +257,10 @@
     ],
     "appointment_statuses": {
       "Queued": 12723,
-      "Scheduled": 11421,
-      "Completed": 5053,
-      "Canceled": 255,
-      "Started": 254
+      "Scheduled": 11405,
+      "Completed": 5068,
+      "Started": 255,
+      "Canceled": 255
     },
     "service_mix": {
       "Mojo Essential": 12680,
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2220564
+      "total_revenue": 2221983
     },
     "employees": [
       {
@@ -397,20 +397,20 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2220564,
+    "revenue": 2221983,
     "proposals": 1657,
     "invoiced_proposals": 1253,
     "complete_proposals": 302,
     "sources": {
-      "Online": 16113,
-      "Referral": 13809,
-      "MoJo Customer": 7155,
+      "Online": 16119,
+      "Referral": 13815,
+      "MoJo Customer": 7156,
       "Yard Sign": 4830,
       "Direct Mail Postcard": 4520,
-      "Mosquito Joe Vehicle": 3481,
+      "Mosquito Joe Vehicle": 3482,
       "Other": 1641,
       "Advertising": 1233,
-      "Printed Material": 628,
+      "Printed Material": 629,
       "Mail Advertising": 520,
       "Existing Customer": 430,
       "Online Search": 313,
@@ -509,8 +509,8 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 68422.57,
-        "invoices": 717,
+        "invoiceRevenue": 69841.43,
+        "invoices": 732,
         "appointments": 3975,
         "proposals": 0,
         "cancels": 108
