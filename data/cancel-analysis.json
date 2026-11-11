@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-11-10T10:17:08.833011+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-09",
+  "generated_at": "2026-11-11T10:17:43.824557+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-10",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-09.csv",
+    "office_tally_file": "sales-data-2026-11-10.csv",
     "office_tally_invalid_dated_rows": 6,
     "generated": {
-      "contacts": "2026-11-10T10:16:17.928Z",
-      "appointments": "2026-11-10T10:16:05.689Z",
-      "invoices": "2026-11-10T10:16:38.583Z"
+      "contacts": "2026-11-11T10:16:52.946Z",
+      "appointments": "2026-11-11T10:16:41.938Z",
+      "invoices": "2026-11-11T10:17:13.559Z"
     }
   },
   "summary": {
-    "total_cancel_events": 153,
-    "unique_accounts_cancelled": 153,
-    "total_annual_value_lost": 107966.6,
-    "avg_annual_value_per_account": 705.66,
-    "avg_customer_lifetime_days": 975,
+    "total_cancel_events": 154,
+    "unique_accounts_cancelled": 154,
+    "total_annual_value_lost": 108784.23,
+    "avg_annual_value_per_account": 706.39,
+    "avg_customer_lifetime_days": 982,
     "median_customer_lifetime_days": 739,
     "recoverable_accounts": 90,
     "recoverable_annual_value": 65062.71,
     "controllable_events": 90,
-    "uncontrollable_events": 30,
+    "uncontrollable_events": 31,
     "structural_events": 1,
     "unknown_events": 26,
     "controllable_value_lost": 65062.71,
-    "uncontrollable_value_lost": 25544.03,
-    "total_sales_ytd": 143,
+    "uncontrollable_value_lost": 26361.66,
+    "total_sales_ytd": 144,
     "net_new_customers": -10,
     "cancel_to_sales_ratio": 1.07,
-    "active_customer_base": 1512,
-    "recorded_attrition_pct": 9.2,
+    "active_customer_base": 1509,
+    "recorded_attrition_pct": 9.3,
     "recent_30d_accounts": 18,
-    "recent_30d_revenue": 16432.54,
-    "recent_90d_accounts": 71,
-    "reason_known_accounts": 127,
-    "reason_capture_pct": 83.0
+    "recent_30d_revenue": 15130.37,
+    "recent_90d_accounts": 69,
+    "reason_known_accounts": 128,
+    "reason_capture_pct": 83.1
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 596,
-    "sales_logged_since_first_loss": 314,
-    "sales_logged_30d": 26,
-    "sales_logged_90d": 78,
+    "sales_logged_ytd": 599,
+    "sales_logged_since_first_loss": 317,
+    "sales_logged_30d": 25,
+    "sales_logged_90d": 81,
     "restarts_ytd": 143,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": 8,
-    "sales_per_confirmed_loss_30d": 1.44,
+    "gross_activity_gap_30d": 7,
+    "sales_per_confirmed_loss_30d": 1.39,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -62,11 +62,11 @@
       },
       {
         "category": "Event Spray",
-        "sales": 92
+        "sales": 93
       },
       {
         "category": "Noseeum",
-        "sales": 38
+        "sales": 40
       },
       {
         "category": "Misting System",
@@ -168,7 +168,7 @@
       },
       {
         "month": "2026-11",
-        "sales": 9
+        "sales": 12
       }
     ]
   },
@@ -247,10 +247,10 @@
     },
     {
       "reason": "Moving",
-      "events": 2,
-      "unique_accounts": 2,
-      "annual_value_lost": 3330.83,
-      "avg_value_per_account": 1665.41,
+      "events": 3,
+      "unique_accounts": 3,
+      "annual_value_lost": 4148.46,
+      "avg_value_per_account": 1382.82,
       "recoverable": false
     },
     {
@@ -286,8 +286,8 @@
     },
     {
       "csr": "Not recorded",
-      "accounts": 36,
-      "annual_value_lost": 19794.48
+      "accounts": 37,
+      "annual_value_lost": 20612.11
     },
     {
       "csr": "Norma",
@@ -309,9 +309,9 @@
     },
     {
       "program": "Mojo Essential",
-      "events": 53,
-      "unique_accounts": 53,
-      "annual_value_lost": 39356.41
+      "events": 54,
+      "unique_accounts": 54,
+      "annual_value_lost": 40174.04
     },
     {
       "program": "Gnat/Midge/No-seeums Service - 2 weeks",
@@ -437,9 +437,9 @@
     },
     {
       "month": "2026-11",
-      "events": 5,
-      "unique_accounts": 5,
-      "annual_value_lost": 3938.82
+      "events": 6,
+      "unique_accounts": 6,
+      "annual_value_lost": 4756.45
     }
   ],
   "lifetime_distribution": [
@@ -473,7 +473,7 @@
     },
     {
       "bucket": "5+ years",
-      "count": 37
+      "count": 38
     },
     {
       "bucket": "Unknown",
@@ -502,14 +502,14 @@
       "unique_accounts": 11
     },
     {
-      "zip": "33157",
+      "zip": "33134",
       "events": 10,
       "unique_accounts": 10
     },
     {
-      "zip": "33134",
-      "events": 9,
-      "unique_accounts": 9
+      "zip": "33157",
+      "events": 10,
+      "unique_accounts": 10
     },
     {
       "zip": "33176",
@@ -558,6 +558,19 @@
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-11-10",
+      "reason": "Moving",
+      "reason_source": "ServiceMinder appointment",
+      "csr": "Not recorded",
+      "service": "Mojo Essential",
+      "zip": "33134",
+      "city": "Coral Gables",
+      "tenure_days": 1982,
+      "days_since_last_service": 19,
+      "trailing_12m_revenue": 817.63,
+      "lifetime_value": 4000.77
+    },
     {
       "date": "2026-11-09",
       "reason": "Not Working",
@@ -804,19 +817,6 @@
       "days_since_last_service": 21,
       "trailing_12m_revenue": 1059.9,
       "lifetime_value": 9915.36
-    },
-    {
-      "date": "2026-10-07",
-      "reason": "Not Interested",
-      "reason_source": "Office Tally exact-name/date match",
-      "csr": "Norma",
-      "service": "Synthetic Barrier Spray - 2 week",
-      "zip": "33133",
-      "city": "Miami",
-      "tenure_days": 2288,
-      "days_since_last_service": 13,
-      "trailing_12m_revenue": 1715.74,
-      "lifetime_value": 9420.54
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T23:30:22.584Z",
-  "generated_date": "November 10, 2026",
+  "generated_at": "2026-11-11T10:18:27.394Z",
+  "generated_date": "November 11, 2026",
   "sales": {
     "csv_date": "2026-11-10",
     "total_sales": 611,
@@ -94,34 +94,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2212303,
+    "ytd_invoiced": 2220182,
     "avg_per_visit": 75,
-    "mtd": 60162,
-    "mtd_jobs": 628
+    "mtd": 68041,
+    "mtd_jobs": 714
   },
   "operations": {
     "total_jobs": 18651,
-    "jobs_per_tech_day": 13.9,
-    "revenue_per_tech_day": 686,
+    "jobs_per_tech_day": 13.8,
+    "revenue_per_tech_day": 683,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 6,
-    "working_days_ytd": 224
+    "working_days_ytd": 225
   },
   "serviceminder": {
-    "generated_at": "2026-11-10T14:16:38.935Z",
+    "generated_at": "2026-11-11T10:18:27.394Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-10T14:16:32.619Z",
+      "generated_at": "2026-11-11T10:17:24.805Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51185,
-      "contacts": 14293,
-      "invoices": 48323,
+      "appointments": 51325,
+      "contacts": 14297,
+      "invoices": 48409,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -228,14 +228,14 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1555,
-    "total_cancels": 403,
-    "net": 1152,
+    "total_cancels": 409,
+    "net": 1146,
     "cancel_reasons": {
-      "No Longer Needed": 85,
-      "Workpool": 76,
-      "Error": 65,
+      "No Longer Needed": 84,
+      "Workpool": 80,
+      "Error": 67,
       "Scheduling Conflict": 63,
-      "Moving": 42,
+      "Moving": 43,
       "Financial": 33,
       "Found Different Company": 20,
       "Not Working": 10,
