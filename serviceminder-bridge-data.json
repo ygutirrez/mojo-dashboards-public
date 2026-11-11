@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-11T10:18:27.394Z",
+    "generated_at": "2026-11-11T13:07:13.635Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-11T10:17:24.805Z",
+      "generated_at": "2026-11-11T13:07:07.258Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51325,
+      "appointments": 51339,
       "contacts": 14297,
-      "invoices": 48409,
+      "invoices": 48412,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2220182,
+      "ytd_invoiced": 2220564,
       "avg_per_visit": 75,
-      "mtd": 68041,
-      "mtd_jobs": 714
+      "mtd": 68423,
+      "mtd_jobs": 717
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2220182
+      "total_wo_revenue": 2220564
     },
     "employees": [
       {
@@ -224,8 +224,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 220866,
-        "avgRevenue": 171.61,
+        "revenue": 221066,
+        "avgRevenue": 171.64,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -258,14 +258,14 @@
     "appointment_statuses": {
       "Queued": 12723,
       "Scheduled": 11421,
-      "Completed": 5050,
+      "Completed": 5053,
       "Canceled": 255,
-      "Started": 253
+      "Started": 254
     },
     "service_mix": {
       "Mojo Essential": 12680,
-      "Synthetic Barrier Spray - 2 week": 10291,
-      "Misting System Recurring Service Bi-Monthly": 1543,
+      "Synthetic Barrier Spray - 2 week": 10294,
+      "Misting System Recurring Service Bi-Monthly": 1544,
       "Gnat/Midge/No-seeums Service - 2 weeks": 1080,
       "HPD - 42 Days": 834,
       "Synthetic Barrier Spray - 4 week": 479,
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2220182
+      "total_revenue": 2220564
     },
     "employees": [
       {
@@ -368,7 +368,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 4,
-        "revenue": 220866,
+        "revenue": 221066,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,13 +397,13 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2220182,
+    "revenue": 2220564,
     "proposals": 1657,
     "invoiced_proposals": 1253,
     "complete_proposals": 302,
     "sources": {
-      "Online": 16112,
-      "Referral": 13803,
+      "Online": 16113,
+      "Referral": 13809,
       "MoJo Customer": 7155,
       "Yard Sign": 4830,
       "Direct Mail Postcard": 4520,
@@ -509,9 +509,9 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 68040.59,
-        "invoices": 714,
-        "appointments": 3973,
+        "invoiceRevenue": 68422.57,
+        "invoices": 717,
+        "appointments": 3975,
         "proposals": 0,
         "cancels": 108
       },
@@ -519,7 +519,7 @@
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4179,
+        "appointments": 4181,
         "proposals": 0,
         "cancels": 57
       }
