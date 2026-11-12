@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-11-11T10:17:43.824557+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-10",
+  "generated_at": "2026-11-12T10:17:35.916251+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-11",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-10.csv",
+    "office_tally_file": "sales-data-2026-11-11.csv",
     "office_tally_invalid_dated_rows": 6,
     "generated": {
-      "contacts": "2026-11-11T10:16:52.946Z",
-      "appointments": "2026-11-11T10:16:41.938Z",
-      "invoices": "2026-11-11T10:17:13.559Z"
+      "contacts": "2026-11-12T10:16:41.242Z",
+      "appointments": "2026-11-12T10:16:31.529Z",
+      "invoices": "2026-11-12T10:16:58.807Z"
     }
   },
   "summary": {
     "total_cancel_events": 154,
     "unique_accounts_cancelled": 154,
-    "total_annual_value_lost": 108784.23,
-    "avg_annual_value_per_account": 706.39,
+    "total_annual_value_lost": 108846.54,
+    "avg_annual_value_per_account": 706.8,
     "avg_customer_lifetime_days": 982,
     "median_customer_lifetime_days": 739,
     "recoverable_accounts": 90,
@@ -29,32 +29,32 @@
     "structural_events": 1,
     "unknown_events": 26,
     "controllable_value_lost": 65062.71,
-    "uncontrollable_value_lost": 26361.66,
-    "total_sales_ytd": 144,
-    "net_new_customers": -10,
-    "cancel_to_sales_ratio": 1.07,
+    "uncontrollable_value_lost": 26423.97,
+    "total_sales_ytd": 145,
+    "net_new_customers": -9,
+    "cancel_to_sales_ratio": 1.06,
     "active_customer_base": 1509,
     "recorded_attrition_pct": 9.3,
     "recent_30d_accounts": 18,
-    "recent_30d_revenue": 15130.37,
+    "recent_30d_revenue": 15192.68,
     "recent_90d_accounts": 69,
     "reason_known_accounts": 128,
     "reason_capture_pct": 83.1
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 599,
-    "sales_logged_since_first_loss": 317,
-    "sales_logged_30d": 25,
-    "sales_logged_90d": 81,
+    "sales_logged_ytd": 600,
+    "sales_logged_since_first_loss": 318,
+    "sales_logged_30d": 24,
+    "sales_logged_90d": 79,
     "restarts_ytd": 143,
-    "restarts_30d": 4,
-    "gross_activity_gap_30d": 7,
-    "sales_per_confirmed_loss_30d": 1.39,
+    "restarts_30d": 3,
+    "gross_activity_gap_30d": 6,
+    "sales_per_confirmed_loss_30d": 1.33,
     "by_category": [
       {
         "category": "Barrier Spray",
-        "sales": 217
+        "sales": 218
       },
       {
         "category": "Restart",
@@ -168,7 +168,7 @@
       },
       {
         "month": "2026-11",
-        "sales": 12
+        "sales": 13
       }
     ]
   },
@@ -249,8 +249,8 @@
       "reason": "Moving",
       "events": 3,
       "unique_accounts": 3,
-      "annual_value_lost": 4148.46,
-      "avg_value_per_account": 1382.82,
+      "annual_value_lost": 4210.77,
+      "avg_value_per_account": 1403.59,
       "recoverable": false
     },
     {
@@ -287,7 +287,7 @@
     {
       "csr": "Not recorded",
       "accounts": 37,
-      "annual_value_lost": 20612.11
+      "annual_value_lost": 20674.42
     },
     {
       "csr": "Norma",
@@ -311,7 +311,7 @@
       "program": "Mojo Essential",
       "events": 54,
       "unique_accounts": 54,
-      "annual_value_lost": 40174.04
+      "annual_value_lost": 40236.35
     },
     {
       "program": "Gnat/Midge/No-seeums Service - 2 weeks",
@@ -439,7 +439,7 @@
       "month": "2026-11",
       "events": 6,
       "unique_accounts": 6,
-      "annual_value_lost": 4756.45
+      "annual_value_lost": 4818.76
     }
   ],
   "lifetime_distribution": [
@@ -559,16 +559,16 @@
   ],
   "recent_losses": [
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "reason": "Moving",
       "reason_source": "ServiceMinder appointment",
       "csr": "Not recorded",
       "service": "Mojo Essential",
       "zip": "33134",
       "city": "Coral Gables",
-      "tenure_days": 1982,
-      "days_since_last_service": 19,
-      "trailing_12m_revenue": 817.63,
+      "tenure_days": 1983,
+      "days_since_last_service": 20,
+      "trailing_12m_revenue": 879.94,
       "lifetime_value": 4000.77
     },
     {
