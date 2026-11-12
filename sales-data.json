@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-12T15:30:20.602Z",
+  "updated_at": "2026-11-12T16:00:20.801Z",
   "csv_date": "2026-11-12",
   "period": "Jan 1 - Nov 12, 2026 (YTD)",
   "summary": {
-    "total_sales": 613,
+    "total_sales": 614,
     "total_cancels": 439,
-    "net": 174,
+    "net": 175,
     "paused_wp": 100,
     "paused_pct": 23,
     "days_tracked": 316
@@ -15,16 +15,16 @@
     "end": "2026-11-15",
     "label": "Nov 9 – Nov 15",
     "summary": {
-      "total_sales": 7,
+      "total_sales": 8,
       "total_cancels": 6,
-      "net": 1
+      "net": 2
     },
     "csrs": [
       {
         "name": "Norma",
-        "sales": 3,
+        "sales": 4,
         "cancels": 1,
-        "net": 2
+        "net": 3
       },
       {
         "name": "Lucy",
@@ -48,7 +48,7 @@
     },
     {
       "name": "Norma",
-      "sales": 182,
+      "sales": 183,
       "cancels": 148
     },
     {
@@ -146,7 +146,7 @@
     },
     {
       "name": "Restart",
-      "count": 146
+      "count": 147
     },
     {
       "name": "Event Spray",
@@ -218,6 +218,13 @@
       "date": "2026-11-12",
       "dateFmt": "Nov 12",
       "type": "Sale",
+      "category": "Restart",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-12",
+      "dateFmt": "Nov 12",
+      "type": "Sale",
       "category": "Event Spray",
       "csr": "Norma"
     },
@@ -276,13 +283,6 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-11-09",
-      "dateFmt": "Nov 9",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
