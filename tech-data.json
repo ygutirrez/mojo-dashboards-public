@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-14T13:00:41.813Z",
-  "updated_at": "2026-11-14T13:00:41.813Z",
+  "generated_at": "2026-11-14T15:00:37.883Z",
+  "updated_at": "2026-11-14T15:00:37.883Z",
   "period": "Jan 1 - Nov 14, 2026 (YTD)",
   "summary": {
-    "total_jobs": 15098,
+    "total_jobs": 15102,
     "total_techs": 9,
     "resprays": 151,
     "first_time_success": "99.0%",
     "total_upsells": 5,
-    "total_revenue": 1415393
+    "total_revenue": 1415955
   },
   "employees": [
     {
@@ -68,8 +68,8 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 1029,
-      "revenue": 91254.73,
+      "jobs": 1033,
+      "revenue": 91816.08,
       "resprays": 4,
       "upsells": 0,
       "rank": 7
@@ -183,13 +183,13 @@
   },
   "current_day": {
     "date": "2026-11-14",
-    "jobs": 1,
-    "revenue": 99.99,
+    "jobs": 5,
+    "revenue": 661.34,
     "technicians": [
       {
         "name": "Wilbeni Pierre",
-        "jobs": 1,
-        "revenue": 99.99,
+        "jobs": 5,
+        "revenue": 661.34,
         "resprays": 0
       }
     ]
@@ -197,8 +197,8 @@
   "this_week": {
     "start": "2026-11-09",
     "end": "2026-11-15",
-    "jobs": 385,
-    "revenue": 35354.68,
+    "jobs": 389,
+    "revenue": 35916.03,
     "prior_week_jobs": 404,
     "technicians": [
       {
@@ -232,6 +232,12 @@
         "resprays": 1
       },
       {
+        "name": "Wilbeni Pierre",
+        "jobs": 27,
+        "revenue": 2375.95,
+        "resprays": 0
+      },
+      {
         "name": "Marcus Rubi",
         "jobs": 27,
         "revenue": 2163.72,
@@ -242,12 +248,6 @@
         "jobs": 25,
         "revenue": 4777.5,
         "resprays": 1
-      },
-      {
-        "name": "Wilbeni Pierre",
-        "jobs": 23,
-        "revenue": 1814.6,
-        "resprays": 0
       }
     ]
   },
@@ -280,7 +280,7 @@
       "start": "2026-11-09",
       "end": "2026-11-15",
       "label": "Nov 9–Nov 15",
-      "jobs": 385
+      "jobs": 389
     }
   ],
   "sources": {
@@ -292,7 +292,7 @@
         "max": "2026-11-14"
       },
       "status": "current",
-      "detail": "24,709 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
+      "detail": "24,721 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -369,7 +369,7 @@
       "system": "ServiceMinder Org Download invoices",
       "coverage": {
         "min": "2020-01-01",
-        "max": "2026-11-13"
+        "max": "2026-11-14"
       },
       "status": "current",
       "detail": "Invoice Total summed by Invoice Date across all staff. Company invoices and completed-appointment production are different measures."
@@ -644,7 +644,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 151 re-sprays out of 15098!"
+      "stat": "Only 151 re-sprays out of 15102!"
     }
   ]
 }
