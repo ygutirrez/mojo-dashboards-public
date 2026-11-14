@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T10:17:53.204738+00:00",
+  "generated_at": "2026-11-14T10:17:51.537046+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-12",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-12.csv",
+    "office_tally_file": "sales-data-2026-11-13.csv",
     "office_tally_invalid_dated_rows": 6,
     "generated": {
-      "contacts": "2026-11-13T10:16:58.538Z",
-      "appointments": "2026-11-13T10:16:46.737Z",
-      "invoices": "2026-11-13T10:17:09.675Z"
+      "contacts": "2026-11-14T10:16:45.024Z",
+      "appointments": "2026-11-14T10:16:31.933Z",
+      "invoices": "2026-11-14T10:16:59.742Z"
     }
   },
   "summary": {
@@ -33,24 +33,24 @@
     "total_sales_ytd": 144,
     "net_new_customers": -11,
     "cancel_to_sales_ratio": 1.08,
-    "active_customer_base": 1505,
+    "active_customer_base": 1504,
     "recorded_attrition_pct": 9.3,
-    "recent_30d_accounts": 19,
-    "recent_30d_revenue": 15409.25,
+    "recent_30d_accounts": 17,
+    "recent_30d_revenue": 14279.62,
     "recent_90d_accounts": 70,
     "reason_known_accounts": 128,
     "reason_capture_pct": 82.6
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 602,
-    "sales_logged_since_first_loss": 320,
-    "sales_logged_30d": 26,
-    "sales_logged_90d": 81,
+    "sales_logged_ytd": 603,
+    "sales_logged_since_first_loss": 321,
+    "sales_logged_30d": 25,
+    "sales_logged_90d": 82,
     "restarts_ytd": 144,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": 7,
-    "sales_per_confirmed_loss_30d": 1.37,
+    "gross_activity_gap_30d": 8,
+    "sales_per_confirmed_loss_30d": 1.47,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -74,7 +74,7 @@
       },
       {
         "category": "Bundle - HPD/Barrier",
-        "sales": 15
+        "sales": 16
       },
       {
         "category": "Perimeter Pest",
@@ -168,7 +168,7 @@
       },
       {
         "month": "2026-11",
-        "sales": 15
+        "sales": 16
       }
     ]
   },

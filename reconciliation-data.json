@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-13T10:18:24.763Z",
+  "generated_at": "2026-11-14T10:18:22.228Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-11-12.csv",
-    "date": "2026-11-12",
-    "totalSales": 604,
+    "file": "sales-data-2026-11-13.csv",
+    "date": "2026-11-13",
+    "totalSales": 605,
     "totalCancels": 440,
-    "net": 164,
+    "net": 165,
     "upsells": 9,
     "csrs": [
       {
@@ -17,7 +17,7 @@
       },
       {
         "name": "Norma",
-        "sales": 183,
+        "sales": 184,
         "cancels": 148
       },
       {
@@ -254,7 +254,7 @@
       },
       {
         "week": "2026-11-09",
-        "sales": 8,
+        "sales": 9,
         "cancels": 7
       },
       {
@@ -265,7 +265,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-11-13T10:17:55.038Z",
+    "date": "2026-11-14T10:17:53.736Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -278,12 +278,12 @@
     "discrepancies": [
       {
         "metric": "Sales Count",
-        "csv": 604,
+        "csv": 605,
         "servSuite": 307,
-        "gap": -297,
+        "gap": -298,
         "gapPct": -97,
         "severity": "high",
-        "explanation": "CSRs logged 297 more sales than ServSuite. Could include pending activations or data entry timing differences."
+        "explanation": "CSRs logged 298 more sales than ServSuite. Could include pending activations or data entry timing differences."
       },
       {
         "metric": "Cancel Events",
@@ -406,7 +406,7 @@
         },
         {
           "name": "Bundle - HPD/Barrier",
-          "count": 15
+          "count": 16
         },
         {
           "name": "Perimeter Pest",

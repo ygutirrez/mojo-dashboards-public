@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-11-13T10:18:39.564Z",
-  "period": "Jan 1 - Nov 13, 2026 (YTD)",
+  "updated_at": "2026-11-14T10:18:38.246Z",
+  "period": "Jan 1 - Nov 14, 2026 (YTD)",
   "summary": {
-    "total_sales": 614,
+    "total_sales": 615,
     "total_cancels": 440,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
-    "total_revenue": 2239899,
-    "total_invoices": 24369,
+    "total_revenue": 2247474,
+    "total_invoices": 24461,
     "total_discounts": 15611,
-    "net": 174,
-    "days_tracked": 317,
+    "net": 175,
+    "days_tracked": 318,
     "sales_per_day": 1.9,
-    "revenue_per_day": 7066
+    "revenue_per_day": 7068
   },
   "office_tally": {
-    "csv_date": "2026-11-12",
-    "total_sales": 614,
+    "csv_date": "2026-11-13",
+    "total_sales": 615,
     "total_cancels": 440,
-    "net": 174,
+    "net": 175,
     "paused_wp": 101,
     "paused_pct": 23,
     "sale_categories": [
@@ -45,7 +45,7 @@
       },
       {
         "name": "Bundle - HPD/Barrier",
-        "count": 15
+        "count": 16
       },
       {
         "name": "Perimeter Pest",
@@ -334,7 +334,7 @@
     },
     {
       "name": "Norma",
-      "sales": 183,
+      "sales": 184,
       "cancels": 148
     },
     {
@@ -447,20 +447,20 @@
       "week": "Nov 9",
       "sales": 0,
       "cancels": 0,
-      "revenue": 29392,
+      "revenue": 40229,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 2229062
+      "cumulative_revenue": 2239899
     }
   ],
   "active_customers": 2060,
   "customer_goal": 4000,
   "revenue_pace": {
     "target_annual": 5000000,
-    "ytd_revenue": 2239899,
-    "days_elapsed": 317,
+    "ytd_revenue": 2247474,
+    "days_elapsed": 318,
     "days_total": 365,
-    "projected_annual": 2579064,
+    "projected_annual": 2579648,
     "on_pace": false,
     "pct_of_target": 51.6
   },
@@ -475,27 +475,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-11-13T10:18:39.564Z"
+    "serviceminder_cutover_at": "2026-11-14T10:18:38.246Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-11-12",
-    "generated_at": "2026-11-13T10:17:57.314Z"
+    "sales_csv_date": "2026-11-13",
+    "generated_at": "2026-11-14T10:17:56.428Z"
   },
-  "total_sales": 614,
+  "total_sales": 615,
   "total_cancels": 440,
   "serviceminder": {
-    "generated_at": "2026-11-13T10:18:39.564Z",
+    "generated_at": "2026-11-14T10:18:38.246Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-13T10:17:33.527Z",
+      "generated_at": "2026-11-14T10:17:23.659Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51666,
-      "contacts": 14301,
-      "invoices": 48638,
+      "appointments": 51769,
+      "contacts": 14303,
+      "invoices": 48730,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -601,30 +601,30 @@
     "write_existing_applied": true
   },
   "serviceminder_sales_kpi": {
-    "revenue": 2239899,
+    "revenue": 2247474,
     "proposals": 1657,
-    "invoiced_proposals": 1251,
-    "complete_proposals": 304,
+    "invoiced_proposals": 1249,
+    "complete_proposals": 306,
     "sources": {
-      "Online": 16209,
-      "Referral": 13905,
-      "MoJo Customer": 7182,
-      "Yard Sign": 4862,
-      "Direct Mail Postcard": 4545,
-      "Mosquito Joe Vehicle": 3503,
-      "Other": 1657,
-      "Advertising": 1236,
+      "Online": 16256,
+      "Referral": 13939,
+      "MoJo Customer": 7201,
+      "Yard Sign": 4874,
+      "Direct Mail Postcard": 4557,
+      "Mosquito Joe Vehicle": 3515,
+      "Other": 1662,
+      "Advertising": 1238,
       "Printed Material": 630,
-      "Mail Advertising": 527,
+      "Mail Advertising": 528,
       "Existing Customer": 431,
-      "Online Search": 314,
+      "Online Search": 316,
       "DMP": 217,
       "Local Branding": 100,
       "Neighborly": 99,
       "Accelerated": 96,
       "Print Material": 91,
       "Event/Sponsorship": 59,
-      "Email": 57,
+      "Email": 58,
       "Competitor": 53,
       "Social": 37,
       "Mass Media": 24,
@@ -713,19 +713,19 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 87758.16,
-        "invoices": 943,
-        "appointments": 3993,
+        "invoiceRevenue": 95332.52,
+        "invoices": 1035,
+        "appointments": 4024,
         "proposals": 0,
-        "cancels": 115
+        "cancels": 121
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4269,
+        "appointments": 4293,
         "proposals": 0,
-        "cancels": 61
+        "cancels": 64
       }
     ]
   }
