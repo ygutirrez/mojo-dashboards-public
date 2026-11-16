@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-14T10:18:38.246Z",
+    "generated_at": "2026-11-16T14:16:59.397Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-14T10:17:23.659Z",
+      "generated_at": "2026-11-16T14:16:49.538Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51769,
-      "contacts": 14303,
-      "invoices": 48730,
+      "appointments": 51786,
+      "contacts": 14306,
+      "invoices": 48764,
       "proposals": 1657
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,29 +118,29 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2247474,
+      "ytd_invoiced": 2251290,
       "avg_per_visit": 75,
-      "mtd": 95333,
-      "mtd_jobs": 1035
+      "mtd": 99148,
+      "mtd_jobs": 1069
     },
     "operations": {
       "total_jobs": 18651,
-      "jobs_per_tech_day": 13.7,
-      "revenue_per_tech_day": 677,
+      "jobs_per_tech_day": 13.6,
+      "revenue_per_tech_day": 674,
       "first_time_success": 99.3,
       "callback_rate": 0.7,
       "resprays": 133,
       "active_techs": 6,
-      "working_days_ytd": 227
+      "working_days_ytd": 228
     },
     "sales": {
       "total_sales": 1555,
-      "total_cancels": 429,
-      "net": 1126,
+      "total_cancels": 430,
+      "net": 1125,
       "cancel_reasons": {
         "No Longer Needed": 86,
         "Workpool": 85,
-        "Error": 77,
+        "Error": 78,
         "Scheduling Conflict": 66,
         "Moving": 43,
         "Financial": 33,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2247474
+      "total_wo_revenue": 2251290
     },
     "employees": [
       {
@@ -213,8 +213,8 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 147423.5,
-        "avgRevenue": 82.31,
+        "revenue": 147807.46,
+        "avgRevenue": 82.34,
         "route_label": "Route 12",
         "technician": "David Carbajal",
         "technician_status": "active",
@@ -257,14 +257,14 @@
     ],
     "appointment_statuses": {
       "Queued": 12487,
-      "Scheduled": 11483,
-      "Completed": 5372,
-      "Canceled": 272,
-      "Started": 253
+      "Scheduled": 11452,
+      "Completed": 5406,
+      "Canceled": 273,
+      "Started": 258
     },
     "service_mix": {
-      "Mojo Essential": 12732,
-      "Synthetic Barrier Spray - 2 week": 10355,
+      "Mojo Essential": 12735,
+      "Synthetic Barrier Spray - 2 week": 10361,
       "Misting System Recurring Service Bi-Monthly": 1544,
       "Gnat/Midge/No-seeums Service - 2 weeks": 1089,
       "HPD - 42 Days": 837,
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2247474
+      "total_revenue": 2251290
     },
     "employees": [
       {
@@ -357,7 +357,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 3,
-        "revenue": 147424,
+        "revenue": 147807,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,22 +397,22 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2247474,
+    "revenue": 2251290,
     "proposals": 1657,
     "invoiced_proposals": 1249,
     "complete_proposals": 306,
     "sources": {
-      "Online": 16256,
-      "Referral": 13939,
-      "MoJo Customer": 7201,
-      "Yard Sign": 4874,
-      "Direct Mail Postcard": 4557,
-      "Mosquito Joe Vehicle": 3515,
+      "Online": 16267,
+      "Referral": 13949,
+      "MoJo Customer": 7209,
+      "Yard Sign": 4877,
+      "Direct Mail Postcard": 4559,
+      "Mosquito Joe Vehicle": 3517,
       "Other": 1662,
       "Advertising": 1238,
-      "Printed Material": 630,
-      "Mail Advertising": 528,
-      "Existing Customer": 431,
+      "Printed Material": 631,
+      "Mail Advertising": 529,
+      "Existing Customer": 436,
       "Online Search": 316,
       "DMP": 217,
       "Local Branding": 100,
@@ -509,17 +509,17 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 95332.52,
-        "invoices": 1035,
-        "appointments": 4024,
+        "invoiceRevenue": 99148.45,
+        "invoices": 1069,
+        "appointments": 4026,
         "proposals": 0,
-        "cancels": 121
+        "cancels": 122
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4293,
+        "appointments": 4300,
         "proposals": 0,
         "cancels": 64
       }
