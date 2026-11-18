@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-18T10:17:52.537Z",
+    "generated_at": "2026-11-18T13:06:49.334Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-18T10:16:46.785Z",
+      "generated_at": "2026-11-18T13:06:42.981Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51887,
+      "appointments": 51888,
       "contacts": 14316,
-      "invoices": 48981,
+      "invoices": 48989,
       "proposals": 1662
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2269224,
+      "ytd_invoiced": 2270989,
       "avg_per_visit": 76,
-      "mtd": 117083,
-      "mtd_jobs": 1286
+      "mtd": 118848,
+      "mtd_jobs": 1294
     },
     "operations": {
       "total_jobs": 18651,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2269224
+      "total_wo_revenue": 2270989
     },
     "employees": [
       {
@@ -224,8 +224,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 231913.22,
-        "avgRevenue": 169.4,
+        "revenue": 231858.22,
+        "avgRevenue": 169.36,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -257,8 +257,8 @@
     ],
     "appointment_statuses": {
       "Queued": 12471,
-      "Scheduled": 11281,
-      "Completed": 5625,
+      "Scheduled": 11271,
+      "Completed": 5635,
       "Canceled": 284,
       "Started": 253
     },
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2269224
+      "total_revenue": 2270989
     },
     "employees": [
       {
@@ -368,7 +368,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 4,
-        "revenue": 231913,
+        "revenue": 231858,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,13 +397,13 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2269224,
+    "revenue": 2270989,
     "proposals": 1662,
     "invoiced_proposals": 1242,
     "complete_proposals": 314,
     "sources": {
-      "Online": 16331,
-      "Referral": 14016,
+      "Online": 16337,
+      "Referral": 14017,
       "MoJo Customer": 7236,
       "Yard Sign": 4894,
       "Direct Mail Postcard": 4594,
@@ -413,7 +413,7 @@
       "Printed Material": 631,
       "Mail Advertising": 530,
       "Existing Customer": 439,
-      "Online Search": 327,
+      "Online Search": 328,
       "DMP": 217,
       "Local Branding": 101,
       "Neighborly": 99,
@@ -509,8 +509,8 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 117082.72,
-        "invoices": 1286,
+        "invoiceRevenue": 118847.72,
+        "invoices": 1294,
         "appointments": 4032,
         "proposals": 1,
         "cancels": 130
