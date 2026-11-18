@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-18T20:30:20.300Z",
+  "updated_at": "2026-11-18T21:00:27.803Z",
   "csv_date": "2026-11-18",
   "period": "Jan 1 - Nov 18, 2026 (YTD)",
   "summary": {
     "total_sales": 619,
-    "total_cancels": 450,
-    "net": 169,
-    "paused_wp": 107,
+    "total_cancels": 451,
+    "net": 168,
+    "paused_wp": 108,
     "paused_pct": 24,
     "days_tracked": 322
   },
@@ -16,8 +16,8 @@
     "label": "Nov 16 – Nov 22",
     "summary": {
       "total_sales": 4,
-      "total_cancels": 10,
-      "net": -6
+      "total_cancels": 11,
+      "net": -7
     },
     "csrs": [
       {
@@ -29,8 +29,8 @@
       {
         "name": "Lucy",
         "sales": 2,
-        "cancels": 6,
-        "net": -4
+        "cancels": 7,
+        "net": -5
       },
       {
         "name": "Bev",
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 360,
-      "cancels": 146
+      "cancels": 147
     },
     {
       "name": "Norma",
@@ -60,7 +60,7 @@
   "cancel_reasons": [
     {
       "name": "Paused/WP",
-      "count": 107,
+      "count": 108,
       "pct": 24
     },
     {
@@ -218,6 +218,13 @@
       "date": "2026-11-18",
       "dateFmt": "Nov 18",
       "type": "Cancel",
+      "category": "Paused/WP",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-18",
+      "dateFmt": "Nov 18",
+      "type": "Cancel",
       "category": "Unhappy",
       "csr": "Lucy"
     },
@@ -276,18 +283,11 @@
       "type": "Cancel",
       "category": "Unhappy",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-11-16",
-      "dateFmt": "Nov 16",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
     "name": "Paused/WP",
-    "count": 107
+    "count": 108
   },
   "tech_upsells": [
     {
