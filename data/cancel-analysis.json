@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-11-17T10:16:52.525574+00:00",
-  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-16",
+  "generated_at": "2026-11-18T10:17:06.106001+00:00",
+  "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-17",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
     "definition": "Unique contacts currently categorized Inactive: Cancelled",
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-16.csv",
+    "office_tally_file": "sales-data-2026-11-17.csv",
     "office_tally_invalid_dated_rows": 6,
     "generated": {
-      "contacts": "2026-11-17T10:16:04.365Z",
-      "appointments": "2026-11-17T10:15:52.282Z",
-      "invoices": "2026-11-17T10:16:21.827Z"
+      "contacts": "2026-11-18T10:16:17.731Z",
+      "appointments": "2026-11-18T10:16:08.601Z",
+      "invoices": "2026-11-18T10:16:35.394Z"
     }
   },
   "summary": {
-    "total_cancel_events": 156,
-    "unique_accounts_cancelled": 156,
-    "total_annual_value_lost": 111522.9,
-    "avg_annual_value_per_account": 714.89,
-    "avg_customer_lifetime_days": 971,
+    "total_cancel_events": 157,
+    "unique_accounts_cancelled": 157,
+    "total_annual_value_lost": 112172.61,
+    "avg_annual_value_per_account": 714.48,
+    "avg_customer_lifetime_days": 972,
     "median_customer_lifetime_days": 739,
-    "recoverable_accounts": 91,
-    "recoverable_annual_value": 67522.5,
-    "controllable_events": 91,
+    "recoverable_accounts": 92,
+    "recoverable_annual_value": 68172.21,
+    "controllable_events": 92,
     "uncontrollable_events": 31,
     "structural_events": 1,
     "unknown_events": 27,
-    "controllable_value_lost": 67522.5,
+    "controllable_value_lost": 68172.21,
     "uncontrollable_value_lost": 26423.97,
     "total_sales_ytd": 146,
-    "net_new_customers": -10,
-    "cancel_to_sales_ratio": 1.07,
-    "active_customer_base": 1504,
-    "recorded_attrition_pct": 9.4,
+    "net_new_customers": -11,
+    "cancel_to_sales_ratio": 1.08,
+    "active_customer_base": 1503,
+    "recorded_attrition_pct": 9.5,
     "recent_30d_accounts": 16,
-    "recent_30d_revenue": 14652.99,
+    "recent_30d_revenue": 14866.53,
     "recent_90d_accounts": 66,
-    "reason_known_accounts": 129,
-    "reason_capture_pct": 82.7
+    "reason_known_accounts": 130,
+    "reason_capture_pct": 82.8
   },
   "sales_context": {
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services",
-    "sales_logged_ytd": 605,
-    "sales_logged_since_first_loss": 323,
-    "sales_logged_30d": 26,
-    "sales_logged_90d": 77,
+    "sales_logged_ytd": 607,
+    "sales_logged_since_first_loss": 325,
+    "sales_logged_30d": 27,
+    "sales_logged_90d": 76,
     "restarts_ytd": 144,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": 10,
-    "sales_per_confirmed_loss_30d": 1.62,
+    "gross_activity_gap_30d": 11,
+    "sales_per_confirmed_loss_30d": 1.69,
     "by_category": [
       {
         "category": "Barrier Spray",
@@ -62,7 +62,7 @@
       },
       {
         "category": "Event Spray",
-        "sales": 94
+        "sales": 95
       },
       {
         "category": "Noseeum",
@@ -74,7 +74,7 @@
       },
       {
         "category": "Bundle - HPD/Barrier",
-        "sales": 16
+        "sales": 17
       },
       {
         "category": "Perimeter Pest",
@@ -168,17 +168,17 @@
       },
       {
         "month": "2026-11",
-        "sales": 18
+        "sales": 20
       }
     ]
   },
   "by_reason": [
     {
       "reason": "Not Interested",
-      "events": 30,
-      "unique_accounts": 30,
-      "annual_value_lost": 23945.53,
-      "avg_value_per_account": 798.18,
+      "events": 31,
+      "unique_accounts": 31,
+      "annual_value_lost": 24595.24,
+      "avg_value_per_account": 793.39,
       "recoverable": true
     },
     {
@@ -281,8 +281,8 @@
   "by_csr": [
     {
       "csr": "Lucy",
-      "accounts": 76,
-      "annual_value_lost": 53821.73
+      "accounts": 77,
+      "annual_value_lost": 54471.44
     },
     {
       "csr": "Not recorded",
@@ -309,9 +309,9 @@
     },
     {
       "program": "Mojo Essential",
-      "events": 54,
-      "unique_accounts": 54,
-      "annual_value_lost": 40236.35
+      "events": 55,
+      "unique_accounts": 55,
+      "annual_value_lost": 40886.06
     },
     {
       "program": "Gnat/Midge/No-seeums Service - 2 weeks",
@@ -437,9 +437,9 @@
     },
     {
       "month": "2026-11",
-      "events": 8,
-      "unique_accounts": 8,
-      "annual_value_lost": 7495.12
+      "events": 9,
+      "unique_accounts": 9,
+      "annual_value_lost": 8144.83
     }
   ],
   "lifetime_distribution": [
@@ -469,7 +469,7 @@
     },
     {
       "bucket": "3-5 years",
-      "count": 28
+      "count": 29
     },
     {
       "bucket": "5+ years",
@@ -497,6 +497,11 @@
       "unique_accounts": 12
     },
     {
+      "zip": "33134",
+      "events": 11,
+      "unique_accounts": 11
+    },
+    {
       "zip": "33157",
       "events": 11,
       "unique_accounts": 11
@@ -505,11 +510,6 @@
       "zip": "33146",
       "events": 11,
       "unique_accounts": 11
-    },
-    {
-      "zip": "33134",
-      "events": 10,
-      "unique_accounts": 10
     },
     {
       "zip": "33176",
@@ -558,6 +558,19 @@
     }
   ],
   "recent_losses": [
+    {
+      "date": "2026-11-17",
+      "reason": "Not Interested",
+      "reason_source": "Office Tally exact-name/date match",
+      "csr": "Lucy",
+      "service": "Mojo Essential",
+      "zip": "33134",
+      "city": "Coral Gables",
+      "tenure_days": 1174,
+      "days_since_last_service": 1,
+      "trailing_12m_revenue": 649.71,
+      "lifetime_value": 1578.38
+    },
     {
       "date": "2026-11-16",
       "reason": "Unhappy",
@@ -804,19 +817,6 @@
       "days_since_last_service": 27,
       "trailing_12m_revenue": 479.92,
       "lifetime_value": 2692.54
-    },
-    {
-      "date": "2026-10-15",
-      "reason": "Financial",
-      "reason_source": "Office Tally exact-name/date match",
-      "csr": "Lucy",
-      "service": "Mojo Essential",
-      "zip": "33173",
-      "city": "Miami",
-      "tenure_days": 114,
-      "days_since_last_service": 9,
-      "trailing_12m_revenue": 649.71,
-      "lifetime_value": 649.71
     }
   ]
 }

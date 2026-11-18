@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-11-17T10:17:25.750Z",
+    "generated": "2026-11-18T10:17:38.804Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
-    "dataThrough": "2026-11-16",
-    "serviceMinderSyncAt": "2026-11-17T10:16:33.013Z",
+    "dataThrough": "2026-11-17",
+    "serviceMinderSyncAt": "2026-11-18T10:16:46.767Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -14,28 +14,28 @@
   },
   "summary": {
     "ytd": {
-      "production": 2257172.38,
-      "stops": 24835,
-      "avgRevPerStop": 90.89,
-      "sales": 605,
-      "cancels": 156,
-      "netCustomerChange": 449,
-      "estimates": 184,
+      "production": 2266518.98,
+      "stops": 24958,
+      "avgRevPerStop": 90.81,
+      "sales": 607,
+      "cancels": 157,
+      "netCustomerChange": 450,
+      "estimates": 185,
       "estimateConversion": 0,
-      "dailyProductionRate": 7031.69,
-      "annualPace": 2566567,
-      "daysElapsed": 321
+      "dailyProductionRate": 7038.88,
+      "annualPace": 2569191,
+      "daysElapsed": 322
     },
     "techCount": 9,
     "topTech": {
       "name": "Damian Machin",
-      "visits": 3249,
-      "revenue": 290481.96,
-      "avgRevPerVisit": 89.41,
+      "visits": 3267,
+      "revenue": 292015.3,
+      "avgRevPerVisit": 89.38,
       "resprays": 18,
       "upsells": 0
     },
-    "programCount": 55
+    "programCount": 56
   },
   "monthly": [
     {
@@ -170,27 +170,27 @@
     },
     {
       "period": "November 2026",
-      "production": 106461.57,
-      "stops": 1161,
+      "production": 115808.17,
+      "stops": 1284,
       "skips": 0,
-      "estimatesReceived": 0,
+      "estimatesReceived": 1,
       "estimatesCompleted": 0,
       "salesDollars": 0,
-      "salesAccounts": 18,
+      "salesAccounts": 20,
       "cancelsDollars": 0,
-      "cancelsAccounts": 8,
-      "revenuePerStop": 91.7
+      "cancelsAccounts": 9,
+      "revenuePerStop": 90.19
     }
   ],
   "monthlyComparison": {
     "current": {
       "period": "November 2026",
-      "production": 106461.57,
-      "stops": 1161,
-      "sales": 18,
-      "cancels": 8,
-      "daysElapsed": 17,
-      "dailyPace": 6262.45
+      "production": 115808.17,
+      "stops": 1284,
+      "sales": 20,
+      "cancels": 9,
+      "daysElapsed": 18,
+      "dailyPace": 6433.79
     },
     "previous": {
       "period": "October 2026",
@@ -202,33 +202,33 @@
       "dailyPace": 7091.81
     },
     "changes": {
-      "productionPace": -12,
-      "stopsPerDay": -8.8,
-      "revPerStop": -0.29
+      "productionPace": -9,
+      "stopsPerDay": -5.8,
+      "revPerStop": -1.8
     }
   },
   "technicians": [
     {
       "name": "Damian Machin",
-      "visits": 3249,
-      "revenue": 290481.96,
-      "avgRevPerVisit": 89.41,
+      "visits": 3267,
+      "revenue": 292015.3,
+      "avgRevPerVisit": 89.38,
       "resprays": 18,
       "upsells": 0
     },
     {
       "name": "David Carbajal",
-      "visits": 2849,
-      "revenue": 238541.5,
-      "avgRevPerVisit": 83.73,
-      "resprays": 15,
+      "visits": 2865,
+      "revenue": 239135.44,
+      "avgRevPerVisit": 83.47,
+      "resprays": 16,
       "upsells": 4
     },
     {
       "name": "Marcus Rubi",
-      "visits": 2618,
-      "revenue": 204036.21,
-      "avgRevPerVisit": 77.94,
+      "visits": 2633,
+      "revenue": 205137.06,
+      "avgRevPerVisit": 77.91,
       "resprays": 11,
       "upsells": 0
     },
@@ -242,24 +242,24 @@
     },
     {
       "name": "Lenny Pierre",
-      "visits": 1256,
-      "revenue": 106629.15,
-      "avgRevPerVisit": 84.9,
+      "visits": 1272,
+      "revenue": 107975.39,
+      "avgRevPerVisit": 84.89,
       "resprays": 13,
       "upsells": 0
     },
     {
       "name": "Guillermo Rodriguez",
-      "visits": 1076,
-      "revenue": 97057.36,
-      "avgRevPerVisit": 90.2,
+      "visits": 1090,
+      "revenue": 98027.22,
+      "avgRevPerVisit": 89.93,
       "resprays": 3,
       "upsells": 0
     },
     {
       "name": "Wilbeni Pierre",
-      "visits": 1042,
-      "revenue": 93059.85,
+      "visits": 1054,
+      "revenue": 94136.65,
       "avgRevPerVisit": 89.31,
       "resprays": 4,
       "upsells": 0
@@ -282,13 +282,13 @@
     }
   ],
   "techEfficiency": {
-    "avgVisitsPerTech": 2759,
-    "avgRevPerVisit": 90.89,
+    "avgVisitsPerTech": 2773,
+    "avgRevPerVisit": 90.81,
     "topPerformer": {
       "name": "Damian Machin",
-      "visits": 3249,
-      "revenue": 290481.96,
-      "avgRevPerVisit": 89.41,
+      "visits": 3267,
+      "revenue": 292015.3,
+      "avgRevPerVisit": 89.38,
       "resprays": 18,
       "upsells": 0
     },
@@ -306,18 +306,18 @@
     "byProgram": [
       {
         "name": "Mojo Essential",
-        "count": 10828,
-        "revenue": 924838.11
+        "count": 10895,
+        "revenue": 929690.62
       },
       {
         "name": "Synthetic Barrier Spray - 2 week",
-        "count": 8472,
-        "revenue": 706436.74
+        "count": 8512,
+        "revenue": 709676.85
       },
       {
         "name": "Gnat/Midge/No-seeums Service - 2 weeks",
-        "count": 803,
-        "revenue": 104795.49
+        "count": 805,
+        "revenue": 105060.47
       },
       {
         "name": "Misting System Recurring Service Bi-Monthly",
@@ -325,24 +325,24 @@
         "revenue": 163304.35
       },
       {
-        "name": "Accelerated - Synthetic Signature Service",
-        "count": 531,
-        "revenue": 35353.27
+        "name": "HPD - 42 Days",
+        "count": 533,
+        "revenue": 41924.38
       },
       {
-        "name": "HPD - 42 Days",
-        "count": 530,
-        "revenue": 41716.4
+        "name": "Accelerated - Synthetic Signature Service",
+        "count": 532,
+        "revenue": 35443.36
       },
       {
         "name": "Synthetic Barrier Spray - 4 week",
-        "count": 448,
-        "revenue": 35113.53
+        "count": 450,
+        "revenue": 35265.51
       },
       {
         "name": "All-Natural Barrier Spray",
-        "count": 336,
-        "revenue": 35215.72
+        "count": 338,
+        "revenue": 35387.7
       },
       {
         "name": "Signature Single Svc 1",
@@ -361,7 +361,7 @@
       },
       {
         "name": "Re-Spray",
-        "count": 151,
+        "count": 152,
         "revenue": 0
       },
       {
@@ -371,8 +371,8 @@
       },
       {
         "name": "Special Event Service",
-        "count": 128,
-        "revenue": 12848.1
+        "count": 129,
+        "revenue": 12959.09
       },
       {
         "name": "In2Care Service - 4 Weeks Service",
@@ -426,7 +426,7 @@
       },
       {
         "name": "Synthetic + In2Care",
-        "count": 44,
+        "count": 45,
         "revenue": 5853.71
       },
       {
@@ -450,14 +450,14 @@
         "revenue": 0
       },
       {
+        "name": "Gnats/Midges/No-see-ums",
+        "count": 33,
+        "revenue": 4239.17
+      },
+      {
         "name": "Flea Service",
         "count": 32,
         "revenue": 2834.68
-      },
-      {
-        "name": "Gnats/Midges/No-see-ums",
-        "count": 32,
-        "revenue": 4109.18
       },
       {
         "name": "Gnats/Midges/No-seeums - 3 week",
@@ -490,14 +490,14 @@
         "revenue": 1105.87
       },
       {
+        "name": "Inzecto Installation",
+        "count": 11,
+        "revenue": 625
+      },
+      {
         "name": "Misting System Refill",
         "count": 10,
         "revenue": 2700
-      },
-      {
-        "name": "Inzecto Installation",
-        "count": 10,
-        "revenue": 575
       },
       {
         "name": "Synthetic Barrier Spray - 1 week",
@@ -578,6 +578,11 @@
         "name": "Home Pest Defense",
         "count": 1,
         "revenue": 56
+      },
+      {
+        "name": "Systemic Treatment",
+        "count": 1,
+        "revenue": 75.99
       }
     ],
     "weeklyTrend": [
@@ -813,20 +818,13 @@
       },
       {
         "week": "2026-11-15",
-        "stops": 102,
-        "revenue": 9165.63
+        "stops": 225,
+        "revenue": 18512.23
       }
     ],
-    "totalWOs": 24835
+    "totalWOs": 24958
   },
   "dailyProduction": [
-    {
-      "date": "2026-10-13",
-      "stops": 103,
-      "revenue": 8272.09,
-      "techCount": 7,
-      "avgStopsPerTech": 14.7
-    },
     {
       "date": "2026-10-14",
       "stops": 141,
@@ -1029,6 +1027,13 @@
       "revenue": 9165.63,
       "techCount": 7,
       "avgStopsPerTech": 14.6
+    },
+    {
+      "date": "2026-11-17",
+      "stops": 123,
+      "revenue": 9346.6,
+      "techCount": 8,
+      "avgStopsPerTech": 15.4
     }
   ],
   "seasonScore": {
@@ -1041,15 +1046,15 @@
     ]
   },
   "salesBreakdown": {
-    "total": 605,
+    "total": 607,
     "value": null,
     "bySource": {
       "Barrier Spray": 219,
       "Restart": 144,
-      "Event Spray": 94,
+      "Event Spray": 95,
       "Noseeum": 41,
       "Misting System": 26,
-      "Bundle - HPD/Barrier": 16,
+      "Bundle - HPD/Barrier": 17,
       "Perimeter Pest": 14,
       "MS Takeover": 12,
       "One Time": 11,
@@ -1066,10 +1071,10 @@
     "byProgram": {
       "Barrier Spray": 219,
       "Restart": 144,
-      "Event Spray": 94,
+      "Event Spray": 95,
       "Noseeum": 41,
       "Misting System": 26,
-      "Bundle - HPD/Barrier": 16,
+      "Bundle - HPD/Barrier": 17,
       "Perimeter Pest": 14,
       "MS Takeover": 12,
       "One Time": 11,
@@ -1086,10 +1091,10 @@
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services"
   },
   "cancelsBreakdown": {
-    "totalEvents": 156,
-    "uniqueAccounts": 156,
+    "totalEvents": 157,
+    "uniqueAccounts": 157,
     "byReason": {
-      "Not Interested": 30,
+      "Not Interested": 31,
       "Moved": 28,
       "Not recorded": 27,
       "Financial": 24,
@@ -1103,7 +1108,7 @@
       "Error": 1,
       "Scheduling Conflict": 1
     },
-    "recoverable": 91,
+    "recoverable": 92,
     "definition": "Unique contacts currently categorized Inactive: Cancelled"
   }
 }
