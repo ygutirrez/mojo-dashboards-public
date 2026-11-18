@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-18T13:06:49.334Z",
+    "generated_at": "2026-11-18T14:16:57.608Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-18T13:06:42.981Z",
+      "generated_at": "2026-11-18T14:16:50.775Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 51888,
+      "appointments": 51895,
       "contacts": 14316,
-      "invoices": 48989,
+      "invoices": 49005,
       "proposals": 1662
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2270989,
+      "ytd_invoiced": 2275264,
       "avg_per_visit": 76,
-      "mtd": 118848,
-      "mtd_jobs": 1294
+      "mtd": 123123,
+      "mtd_jobs": 1310
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,10 +135,10 @@
     },
     "sales": {
       "total_sales": 1556,
-      "total_cancels": 441,
-      "net": 1115,
+      "total_cancels": 442,
+      "net": 1114,
       "cancel_reasons": {
-        "Workpool": 89,
+        "Workpool": 90,
         "No Longer Needed": 87,
         "Error": 79,
         "Scheduling Conflict": 69,
@@ -185,7 +185,7 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2270989
+      "total_wo_revenue": 2275264
     },
     "employees": [
       {
@@ -224,8 +224,8 @@
       {
         "name": "Joe Pagan",
         "jobs": 738,
-        "revenue": 231858.22,
-        "avgRevenue": 169.36,
+        "revenue": 232283.22,
+        "avgRevenue": 169.67,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -257,9 +257,9 @@
     ],
     "appointment_statuses": {
       "Queued": 12471,
-      "Scheduled": 11271,
-      "Completed": 5635,
-      "Canceled": 284,
+      "Scheduled": 11252,
+      "Completed": 5653,
+      "Canceled": 285,
       "Started": 253
     },
     "service_mix": {
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2270989
+      "total_revenue": 2275264
     },
     "employees": [
       {
@@ -368,7 +368,7 @@
         "initials": "JP",
         "jobs": 738,
         "rank": 4,
-        "revenue": 231858,
+        "revenue": 232283,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,14 +397,14 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2270989,
+    "revenue": 2275264,
     "proposals": 1662,
     "invoiced_proposals": 1242,
     "complete_proposals": 314,
     "sources": {
-      "Online": 16337,
-      "Referral": 14017,
-      "MoJo Customer": 7236,
+      "Online": 16346,
+      "Referral": 14018,
+      "MoJo Customer": 7241,
       "Yard Sign": 4894,
       "Direct Mail Postcard": 4594,
       "Mosquito Joe Vehicle": 3527,
@@ -414,7 +414,7 @@
       "Mail Advertising": 530,
       "Existing Customer": 439,
       "Online Search": 328,
-      "DMP": 217,
+      "DMP": 218,
       "Local Branding": 101,
       "Neighborly": 99,
       "Accelerated": 97,
@@ -509,17 +509,17 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 118847.72,
-        "invoices": 1294,
-        "appointments": 4032,
+        "invoiceRevenue": 123122.72,
+        "invoices": 1310,
+        "appointments": 4031,
         "proposals": 1,
-        "cancels": 130
+        "cancels": 131
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4332,
+        "appointments": 4333,
         "proposals": 0,
         "cancels": 67
       }
