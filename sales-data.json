@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-18T14:30:21.662Z",
+  "updated_at": "2026-11-18T15:00:21.905Z",
   "csv_date": "2026-11-18",
   "period": "Jan 1 - Nov 18, 2026 (YTD)",
   "summary": {
     "total_sales": 619,
-    "total_cancels": 448,
-    "net": 171,
+    "total_cancels": 449,
+    "net": 170,
     "paused_wp": 107,
     "paused_pct": 24,
     "days_tracked": 322
@@ -16,21 +16,21 @@
     "label": "Nov 16 – Nov 22",
     "summary": {
       "total_sales": 4,
-      "total_cancels": 8,
-      "net": -4
+      "total_cancels": 9,
+      "net": -5
     },
     "csrs": [
-      {
-        "name": "Lucy",
-        "sales": 2,
-        "cancels": 4,
-        "net": -2
-      },
       {
         "name": "Norma",
         "sales": 2,
         "cancels": 4,
         "net": -2
+      },
+      {
+        "name": "Lucy",
+        "sales": 2,
+        "cancels": 5,
+        "net": -3
       },
       {
         "name": "Bev",
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 360,
-      "cancels": 144
+      "cancels": 145
     },
     {
       "name": "Norma",
@@ -65,7 +65,7 @@
     },
     {
       "name": "Moved",
-      "count": 92,
+      "count": 93,
       "pct": 21
     },
     {
@@ -218,6 +218,13 @@
       "date": "2026-11-18",
       "dateFmt": "Nov 18",
       "type": "Cancel",
+      "category": "Moved",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-18",
+      "dateFmt": "Nov 18",
+      "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Lucy"
     },
@@ -276,13 +283,6 @@
       "type": "Sale",
       "category": "Noseeum",
       "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-16",
-      "dateFmt": "Nov 16",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
