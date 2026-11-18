@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-18T13:00:33.246Z",
-  "updated_at": "2026-11-18T13:00:33.247Z",
+  "generated_at": "2026-11-18T15:00:40.940Z",
+  "updated_at": "2026-11-18T15:00:40.940Z",
   "period": "Jan 1 - Nov 18, 2026 (YTD)",
   "summary": {
-    "total_jobs": 15283,
+    "total_jobs": 15305,
     "total_techs": 9,
     "resprays": 152,
     "first_time_success": "99.0%",
     "total_upsells": 5,
-    "total_revenue": 1431802
+    "total_revenue": 1436682
   },
   "employees": [
     {
@@ -41,8 +41,8 @@
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 1766,
-      "revenue": 283652.65,
+      "jobs": 1788,
+      "revenue": 288532.65,
       "resprays": 1,
       "upsells": 1,
       "rank": 4
@@ -182,50 +182,14 @@
     "y2026": []
   },
   "current_day": {
-    "date": "2026-11-17",
-    "jobs": 92,
-    "revenue": 6681.03,
+    "date": "2026-11-18",
+    "jobs": 3,
+    "revenue": 815,
     "technicians": [
       {
-        "name": "Damian Machin",
-        "jobs": 18,
-        "revenue": 1533.34,
-        "resprays": 0
-      },
-      {
-        "name": "Lenny Pierre",
-        "jobs": 16,
-        "revenue": 1346.24,
-        "resprays": 0
-      },
-      {
-        "name": "David Carbajal",
-        "jobs": 16,
-        "revenue": 593.94,
-        "resprays": 1
-      },
-      {
-        "name": "Marcus Rubi",
-        "jobs": 15,
-        "revenue": 1100.85,
-        "resprays": 0
-      },
-      {
-        "name": "Guillermo Rodriguez",
-        "jobs": 14,
-        "revenue": 969.86,
-        "resprays": 0
-      },
-      {
-        "name": "Wilbeni Pierre",
-        "jobs": 12,
-        "revenue": 1076.8,
-        "resprays": 0
-      },
-      {
         "name": "Joseph Pagan",
-        "jobs": 1,
-        "revenue": 60,
+        "jobs": 3,
+        "revenue": 815,
         "resprays": 0
       }
     ]
@@ -233,8 +197,8 @@
   "this_week": {
     "start": "2026-11-16",
     "end": "2026-11-22",
-    "jobs": 172,
-    "revenue": 14602.94,
+    "jobs": 194,
+    "revenue": 19482.94,
     "prior_week_jobs": 398,
     "technicians": [
       {
@@ -247,6 +211,12 @@
         "name": "Guillermo Rodriguez",
         "jobs": 33,
         "revenue": 2720.22,
+        "resprays": 0
+      },
+      {
+        "name": "Joseph Pagan",
+        "jobs": 30,
+        "revenue": 6415,
         "resprays": 0
       },
       {
@@ -271,12 +241,6 @@
         "name": "Wilbeni Pierre",
         "jobs": 12,
         "revenue": 1076.8,
-        "resprays": 0
-      },
-      {
-        "name": "Joseph Pagan",
-        "jobs": 8,
-        "revenue": 1535,
         "resprays": 0
       }
     ]
@@ -310,7 +274,7 @@
       "start": "2026-11-16",
       "end": "2026-11-22",
       "label": "Nov 16–Nov 22",
-      "jobs": 172
+      "jobs": 194
     }
   ],
   "sources": {
@@ -319,10 +283,10 @@
       "system": "ServiceMinder appointments API",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-11-17"
+        "max": "2026-11-18"
       },
       "status": "current",
-      "detail": "24,966 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
+      "detail": "24,988 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -399,7 +363,7 @@
       "system": "ServiceMinder Org Download invoices",
       "coverage": {
         "min": "2020-01-01",
-        "max": "2026-11-17"
+        "max": "2026-11-18"
       },
       "status": "current",
       "detail": "Invoice Total summed by Invoice Date across all staff. Company invoices and completed-appointment production are different measures."
@@ -674,7 +638,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 152 re-sprays out of 15283!"
+      "stat": "Only 152 re-sprays out of 15305!"
     }
   ]
 }
