@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-11-18T10:17:38.804Z",
+    "generated": "2026-11-19T10:17:54.508Z",
     "version": 3,
     "source": "ServiceMinder Org API + Office Sales Tally",
-    "dataThrough": "2026-11-17",
-    "serviceMinderSyncAt": "2026-11-18T10:16:46.767Z",
+    "dataThrough": "2026-11-18",
+    "serviceMinderSyncAt": "2026-11-19T10:17:05.524Z",
     "sources": [
       "ServiceMinder completed appointments",
       "ServiceMinder org downloads",
@@ -14,17 +14,17 @@
   },
   "summary": {
     "ytd": {
-      "production": 2266518.98,
-      "stops": 24958,
-      "avgRevPerStop": 90.81,
+      "production": 2274651.48,
+      "stops": 24994,
+      "avgRevPerStop": 91.01,
       "sales": 607,
-      "cancels": 157,
-      "netCustomerChange": 450,
-      "estimates": 185,
+      "cancels": 159,
+      "netCustomerChange": 448,
+      "estimates": 186,
       "estimateConversion": 0,
-      "dailyProductionRate": 7038.88,
-      "annualPace": 2569191,
-      "daysElapsed": 322
+      "dailyProductionRate": 7042.26,
+      "annualPace": 2570427,
+      "daysElapsed": 323
     },
     "techCount": 9,
     "topTech": {
@@ -170,27 +170,27 @@
     },
     {
       "period": "November 2026",
-      "production": 115808.17,
-      "stops": 1284,
+      "production": 123940.67,
+      "stops": 1320,
       "skips": 0,
-      "estimatesReceived": 1,
+      "estimatesReceived": 2,
       "estimatesCompleted": 0,
       "salesDollars": 0,
       "salesAccounts": 20,
       "cancelsDollars": 0,
-      "cancelsAccounts": 9,
-      "revenuePerStop": 90.19
+      "cancelsAccounts": 11,
+      "revenuePerStop": 93.89
     }
   ],
   "monthlyComparison": {
     "current": {
       "period": "November 2026",
-      "production": 115808.17,
-      "stops": 1284,
+      "production": 123940.67,
+      "stops": 1320,
       "sales": 20,
-      "cancels": 9,
-      "daysElapsed": 18,
-      "dailyPace": 6433.79
+      "cancels": 11,
+      "daysElapsed": 19,
+      "dailyPace": 6523.19
     },
     "previous": {
       "period": "October 2026",
@@ -202,9 +202,9 @@
       "dailyPace": 7091.81
     },
     "changes": {
-      "productionPace": -9,
-      "stopsPerDay": -5.8,
-      "revPerStop": -1.8
+      "productionPace": -8,
+      "stopsPerDay": -7.6,
+      "revPerStop": 1.9
     }
   },
   "technicians": [
@@ -234,9 +234,9 @@
     },
     {
       "name": "Joseph Pagan",
-      "visits": 1758,
-      "revenue": 282117.65,
-      "avgRevPerVisit": 160.48,
+      "visits": 1794,
+      "revenue": 290250.15,
+      "avgRevPerVisit": 161.79,
       "resprays": 1,
       "upsells": 1
     },
@@ -282,8 +282,8 @@
     }
   ],
   "techEfficiency": {
-    "avgVisitsPerTech": 2773,
-    "avgRevPerVisit": 90.81,
+    "avgVisitsPerTech": 2777,
+    "avgRevPerVisit": 91.01,
     "topPerformer": {
       "name": "Damian Machin",
       "visits": 3267,
@@ -321,8 +321,8 @@
       },
       {
         "name": "Misting System Recurring Service Bi-Monthly",
-        "count": 667,
-        "revenue": 163304.35
+        "count": 687,
+        "revenue": 169161.85
       },
       {
         "name": "HPD - 42 Days",
@@ -366,8 +366,8 @@
       },
       {
         "name": "Misting system - 4 Weeks",
-        "count": 146,
-        "revenue": 34556.37
+        "count": 150,
+        "revenue": 35506.37
       },
       {
         "name": "Special Event Service",
@@ -386,13 +386,13 @@
       },
       {
         "name": "Property Assessment",
-        "count": 111,
+        "count": 113,
         "revenue": 0
       },
       {
         "name": "Misting System Repair Service",
-        "count": 93,
-        "revenue": 11245.5
+        "count": 101,
+        "revenue": 11900.5
       },
       {
         "name": "Special Event Spray",
@@ -401,8 +401,8 @@
       },
       {
         "name": "Misting system - 6 Weeks",
-        "count": 77,
-        "revenue": 23124.68
+        "count": 79,
+        "revenue": 23794.68
       },
       {
         "name": "Signature Service",
@@ -818,20 +818,13 @@
       },
       {
         "week": "2026-11-15",
-        "stops": 225,
-        "revenue": 18512.23
+        "stops": 261,
+        "revenue": 26644.73
       }
     ],
-    "totalWOs": 24958
+    "totalWOs": 24994
   },
   "dailyProduction": [
-    {
-      "date": "2026-10-14",
-      "stops": 141,
-      "revenue": 14913.58,
-      "techCount": 9,
-      "avgStopsPerTech": 15.7
-    },
     {
       "date": "2026-10-15",
       "stops": 127,
@@ -1023,17 +1016,24 @@
     },
     {
       "date": "2026-11-16",
-      "stops": 102,
-      "revenue": 9165.63,
-      "techCount": 7,
-      "avgStopsPerTech": 14.6
+      "stops": 113,
+      "revenue": 11245.63,
+      "techCount": 8,
+      "avgStopsPerTech": 14.1
     },
     {
       "date": "2026-11-17",
-      "stops": 123,
-      "revenue": 9346.6,
-      "techCount": 8,
+      "stops": 139,
+      "revenue": 12866.6,
+      "techCount": 9,
       "avgStopsPerTech": 15.4
+    },
+    {
+      "date": "2026-11-18",
+      "stops": 9,
+      "revenue": 2532.5,
+      "techCount": 1,
+      "avgStopsPerTech": 9
     }
   ],
   "seasonScore": {
@@ -1091,14 +1091,14 @@
     "definition": "Office Tally rows recorded as Sale; includes new programs, restarts, one-time work, and add-on services"
   },
   "cancelsBreakdown": {
-    "totalEvents": 157,
-    "uniqueAccounts": 157,
+    "totalEvents": 159,
+    "uniqueAccounts": 159,
     "byReason": {
       "Not Interested": 31,
-      "Moved": 28,
+      "Moved": 29,
       "Not recorded": 27,
       "Financial": 24,
-      "Unhappy": 18,
+      "Unhappy": 19,
       "Went w/Competitor": 9,
       "Paused/WP": 5,
       "Barrier Spray": 5,
@@ -1108,7 +1108,7 @@
       "Error": 1,
       "Scheduling Conflict": 1
     },
-    "recoverable": 92,
+    "recoverable": 93,
     "definition": "Unique contacts currently categorized Inactive: Cancelled"
   }
 }

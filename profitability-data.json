@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-18T10:17:39.201Z",
-  "period": "Jan 1 - Nov 18, 2026 (YTD)",
+  "generated_at": "2026-11-19T10:17:54.908Z",
+  "period": "Jan 1 - Nov 19, 2026 (YTD)",
   "executive_summary": {
-    "total_stops": 15275,
-    "total_revenue": 1430267,
-    "avg_revenue_per_stop": 93.63,
+    "total_stops": 15311,
+    "total_revenue": 1438399,
+    "avg_revenue_per_stop": 93.95,
     "chemical_cost_per_stop": 3.2,
     "estimated_total_cost_per_stop": 21.2,
-    "estimated_gross_profit_per_stop": 72.43,
+    "estimated_gross_profit_per_stop": 72.75,
     "estimated_gross_margin": 77.4,
     "active_techs": 9
   },
   "cost_breakdown_per_stop": {
-    "revenue": 93.63,
+    "revenue": 93.95,
     "chemical": 3.2,
     "labor_estimate": 12,
     "fuel_estimate": 4,
     "vehicle_estimate": 2,
     "total_direct": 21.2,
-    "gross_profit": 72.43,
+    "gross_profit": 72.75,
     "note": "Labor, fuel, and vehicle costs are estimates based on industry averages. Chemical cost is actual."
   },
   "financial_benchmarks": {
@@ -29,31 +29,31 @@
     "ytd_cogs": 69316.1
   },
   "scaling_analysis": {
-    "current_annual_run_rate": 1621265,
+    "current_annual_run_rate": 1625435,
     "target": 5000000,
-    "gap": 3378735,
-    "additional_stops_needed": 36085,
-    "additional_daily_stops_needed": 145,
+    "gap": 3374565,
+    "additional_stops_needed": 35921,
+    "additional_daily_stops_needed": 144,
     "current_daily_avg": 47.4,
-    "required_daily_avg": 192.4,
-    "capacity_increase_pct": 305.7
+    "required_daily_avg": 191.4,
+    "capacity_increase_pct": 303.8
   },
   "tech_profitability": [
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 1758,
-      "revenue": 282117.65,
-      "avgRevenuePerStop": 160.48,
+      "jobs": 1794,
+      "revenue": 290250.15,
+      "avgRevenuePerStop": 161.79,
       "costs": {
-        "chemical": 5625.6,
-        "labor": 21096,
-        "fuel": 7032,
-        "vehicle": 3516,
-        "total": 37269.6
+        "chemical": 5740.8,
+        "labor": 21528,
+        "fuel": 7176,
+        "vehicle": 3588,
+        "total": 38032.8
       },
-      "grossProfit": 244848.05,
-      "margin": 86.8,
+      "grossProfit": 252217.35,
+      "margin": 86.9,
       "resprays": 1,
       "resprayRate": 0.06,
       "efficiencyRating": 100,
@@ -223,9 +223,9 @@
   "top_performers": [
     {
       "name": "Joseph Pagan",
-      "grossProfit": 244848.05,
-      "margin": 86.8,
-      "jobs": 1758
+      "grossProfit": 252217.35,
+      "margin": 86.9,
+      "jobs": 1794
     },
     {
       "name": "Damian Machin",
@@ -245,14 +245,14 @@
       "type": "capacity",
       "impact": "medium",
       "title": "High-volume tech distribution",
-      "description": "8 tech(s) with 700+ stops: Joseph Pagan (1758), Damian Machin (3267), David Carbajal (2865), Marcus Rubi (2633), Lenny Pierre (1272), Guillermo Rodriguez (1090), Wilbeni Pierre (1054), Travis Johnson (968). Consider route optimization or adding techs to reduce burnout."
+      "description": "8 tech(s) with 700+ stops: Joseph Pagan (1794), Damian Machin (3267), David Carbajal (2865), Marcus Rubi (2633), Lenny Pierre (1272), Guillermo Rodriguez (1090), Wilbeni Pierre (1054), Travis Johnson (968). Consider route optimization or adding techs to reduce burnout."
     },
     {
       "type": "upsell",
       "impact": "high",
       "title": "Upsell revenue potential",
-      "description": "At 15275 total stops, even a 5% upsell rate at $75 avg would add $57,281 in revenue.",
-      "potential_value": 57281
+      "description": "At 15311 total stops, even a 5% upsell rate at $75 avg would add $57,416 in revenue.",
+      "potential_value": 57416
     }
   ]
 }
