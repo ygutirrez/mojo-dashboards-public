@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-19T14:00:22.320Z",
+  "updated_at": "2026-11-19T14:30:23.882Z",
   "csv_date": "2026-11-19",
   "period": "Jan 1 - Nov 19, 2026 (YTD)",
   "summary": {
     "total_sales": 619,
-    "total_cancels": 452,
-    "net": 167,
+    "total_cancels": 453,
+    "net": 166,
     "paused_wp": 108,
     "paused_pct": 24,
     "days_tracked": 323
@@ -16,15 +16,15 @@
     "label": "Nov 16 – Nov 22",
     "summary": {
       "total_sales": 4,
-      "total_cancels": 12,
-      "net": -8
+      "total_cancels": 13,
+      "net": -9
     },
     "csrs": [
       {
         "name": "Norma",
         "sales": 2,
-        "cancels": 4,
-        "net": -2
+        "cancels": 5,
+        "net": -3
       },
       {
         "name": "Lucy",
@@ -49,7 +49,7 @@
     {
       "name": "Norma",
       "sales": 186,
-      "cancels": 152
+      "cancels": 153
     },
     {
       "name": "Bev",
@@ -80,7 +80,7 @@
     },
     {
       "name": "Unhappy",
-      "count": 46,
+      "count": 47,
       "pct": 10
     },
     {
@@ -218,6 +218,13 @@
       "date": "2026-11-19",
       "dateFmt": "Nov 19",
       "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-19",
+      "dateFmt": "Nov 19",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
     },
@@ -275,13 +282,6 @@
       "dateFmt": "Nov 17",
       "type": "Cancel",
       "category": "Not Interested",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-17",
-      "dateFmt": "Nov 17",
-      "type": "Cancel",
-      "category": "Paused/WP",
       "csr": "Lucy"
     }
   ],
