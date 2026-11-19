@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-19T13:00:38.574Z",
-  "updated_at": "2026-11-19T13:00:38.574Z",
+  "generated_at": "2026-11-19T15:00:29.751Z",
+  "updated_at": "2026-11-19T15:00:29.751Z",
   "period": "Jan 1 - Nov 19, 2026 (YTD)",
   "summary": {
-    "total_jobs": 15315,
+    "total_jobs": 15339,
     "total_techs": 9,
     "resprays": 152,
     "first_time_success": "99.0%",
     "total_upsells": 5,
-    "total_revenue": 1438794
+    "total_revenue": 1440668
   },
   "employees": [
     {
       "name": "Damian Machin",
       "initials": "DM",
-      "jobs": 3267,
-      "revenue": 292015.3,
+      "jobs": 3271,
+      "revenue": 292373.27,
       "resprays": 18,
       "upsells": 0,
       "rank": 1
@@ -41,8 +41,8 @@
     {
       "name": "Joseph Pagan",
       "initials": "JP",
-      "jobs": 1794,
-      "revenue": 290250.15,
+      "jobs": 1797,
+      "revenue": 290468.12,
       "resprays": 1,
       "upsells": 1,
       "rank": 4
@@ -50,8 +50,8 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 1272,
-      "revenue": 107975.39,
+      "jobs": 1278,
+      "revenue": 108405.33,
       "resprays": 13,
       "upsells": 0,
       "rank": 5
@@ -59,8 +59,8 @@
     {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
-      "jobs": 1094,
-      "revenue": 98422.19,
+      "jobs": 1099,
+      "revenue": 98864.14,
       "resprays": 3,
       "upsells": 0,
       "rank": 6
@@ -68,8 +68,8 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 1054,
-      "revenue": 94136.65,
+      "jobs": 1060,
+      "revenue": 94562.79,
       "resprays": 4,
       "upsells": 0,
       "rank": 7
@@ -183,13 +183,37 @@
   },
   "current_day": {
     "date": "2026-11-19",
-    "jobs": 4,
-    "revenue": 394.97,
+    "jobs": 28,
+    "revenue": 2268.94,
     "technicians": [
       {
         "name": "Guillermo Rodriguez",
+        "jobs": 9,
+        "revenue": 836.92,
+        "resprays": 0
+      },
+      {
+        "name": "Lenny Pierre",
+        "jobs": 6,
+        "revenue": 429.94,
+        "resprays": 0
+      },
+      {
+        "name": "Wilbeni Pierre",
+        "jobs": 6,
+        "revenue": 426.14,
+        "resprays": 0
+      },
+      {
+        "name": "Damian Machin",
         "jobs": 4,
-        "revenue": 394.97,
+        "revenue": 357.97,
+        "resprays": 0
+      },
+      {
+        "name": "Joseph Pagan",
+        "jobs": 3,
+        "revenue": 217.97,
         "resprays": 0
       }
     ]
@@ -197,26 +221,32 @@
   "this_week": {
     "start": "2026-11-16",
     "end": "2026-11-22",
-    "jobs": 204,
-    "revenue": 21595.41,
+    "jobs": 228,
+    "revenue": 23469.38,
     "prior_week_jobs": 398,
     "technicians": [
       {
         "name": "Guillermo Rodriguez",
-        "jobs": 37,
-        "revenue": 3115.19,
+        "jobs": 42,
+        "revenue": 3557.14,
         "resprays": 0
       },
       {
         "name": "Joseph Pagan",
-        "jobs": 36,
-        "revenue": 8132.5,
+        "jobs": 39,
+        "revenue": 8350.47,
         "resprays": 0
       },
       {
         "name": "Damian Machin",
-        "jobs": 33,
-        "revenue": 3087.19,
+        "jobs": 37,
+        "revenue": 3445.16,
+        "resprays": 0
+      },
+      {
+        "name": "Lenny Pierre",
+        "jobs": 34,
+        "revenue": 2804.09,
         "resprays": 0
       },
       {
@@ -226,12 +256,6 @@
         "resprays": 1
       },
       {
-        "name": "Lenny Pierre",
-        "jobs": 28,
-        "revenue": 2374.15,
-        "resprays": 0
-      },
-      {
         "name": "Marcus Rubi",
         "jobs": 28,
         "revenue": 2180.74,
@@ -239,8 +263,8 @@
       },
       {
         "name": "Wilbeni Pierre",
-        "jobs": 12,
-        "revenue": 1076.8,
+        "jobs": 18,
+        "revenue": 1502.94,
         "resprays": 0
       }
     ]
@@ -274,7 +298,7 @@
       "start": "2026-11-16",
       "end": "2026-11-22",
       "label": "Nov 16–Nov 22",
-      "jobs": 204
+      "jobs": 228
     }
   ],
   "sources": {
@@ -286,7 +310,7 @@
         "max": "2026-11-19"
       },
       "status": "current",
-      "detail": "24,998 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
+      "detail": "25,035 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -363,7 +387,7 @@
       "system": "ServiceMinder Org Download invoices",
       "coverage": {
         "min": "2020-01-01",
-        "max": "2026-11-18"
+        "max": "2026-11-19"
       },
       "status": "current",
       "detail": "Invoice Total summed by Invoice Date across all staff. Company invoices and completed-appointment production are different measures."
@@ -614,7 +638,7 @@
       "icon": "🔥",
       "title": "Iron Man",
       "name": "Damian Machin",
-      "stat": "Most jobs — 3267"
+      "stat": "Most jobs — 3271"
     },
     {
       "icon": "⚡",
@@ -626,7 +650,7 @@
       "icon": "🎯",
       "title": "Runner Up",
       "name": "David Carbajal",
-      "stat": "2865 jobs — 402 behind!"
+      "stat": "2865 jobs — 406 behind!"
     },
     {
       "icon": "🛡️",
@@ -638,7 +662,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 152 re-sprays out of 15315!"
+      "stat": "Only 152 re-sprays out of 15339!"
     }
   ]
 }
