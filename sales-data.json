@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-19T17:00:20.762Z",
+  "updated_at": "2026-11-19T17:30:29.559Z",
   "csv_date": "2026-11-19",
   "period": "Jan 1 - Nov 19, 2026 (YTD)",
   "summary": {
     "total_sales": 620,
-    "total_cancels": 453,
-    "net": 167,
+    "total_cancels": 454,
+    "net": 166,
     "paused_wp": 108,
     "paused_pct": 24,
     "days_tracked": 323
@@ -16,8 +16,8 @@
     "label": "Nov 16 – Nov 22",
     "summary": {
       "total_sales": 5,
-      "total_cancels": 13,
-      "net": -8
+      "total_cancels": 14,
+      "net": -9
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 2,
+        "net": -2
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 73,
-      "cancels": 153
+      "cancels": 154
     }
   ],
   "cancel_reasons": [
@@ -66,11 +66,11 @@
     {
       "name": "Moved",
       "count": 93,
-      "pct": 21
+      "pct": 20
     },
     {
       "name": "Not Interested",
-      "count": 82,
+      "count": 83,
       "pct": 18
     },
     {
@@ -217,6 +217,13 @@
     {
       "date": "2026-11-19",
       "dateFmt": "Nov 19",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-11-19",
+      "dateFmt": "Nov 19",
       "type": "Sale",
       "category": "Event Spray",
       "csr": "Lucy"
@@ -275,13 +282,6 @@
       "dateFmt": "Nov 17",
       "type": "Cancel",
       "category": "Paused/WP",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-17",
-      "dateFmt": "Nov 17",
-      "type": "Sale",
-      "category": "Bundle - HPD/Barrier",
       "csr": "Lucy"
     }
   ],
