@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-19T19:30:20.962Z",
+  "updated_at": "2026-11-19T20:00:27.203Z",
   "csv_date": "2026-11-19",
   "period": "Jan 1 - Nov 19, 2026 (YTD)",
   "summary": {
-    "total_sales": 620,
-    "total_cancels": 454,
+    "total_sales": 621,
+    "total_cancels": 455,
     "net": 166,
     "paused_wp": 108,
     "paused_pct": 24,
@@ -15,11 +15,17 @@
     "end": "2026-11-22",
     "label": "Nov 16 – Nov 22",
     "summary": {
-      "total_sales": 5,
-      "total_cancels": 14,
+      "total_sales": 6,
+      "total_cancels": 15,
       "net": -9
     },
     "csrs": [
+      {
+        "name": "Norma",
+        "sales": 3,
+        "cancels": 5,
+        "net": -2
+      },
       {
         "name": "Lucy",
         "sales": 3,
@@ -27,16 +33,10 @@
         "net": -4
       },
       {
-        "name": "Norma",
-        "sales": 2,
-        "cancels": 5,
-        "net": -3
-      },
-      {
         "name": "Bev",
         "sales": 0,
-        "cancels": 2,
-        "net": -2
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -48,13 +48,13 @@
     },
     {
       "name": "Norma",
-      "sales": 186,
+      "sales": 187,
       "cancels": 153
     },
     {
       "name": "Bev",
       "sales": 73,
-      "cancels": 154
+      "cancels": 155
     }
   ],
   "cancel_reasons": [
@@ -80,8 +80,8 @@
     },
     {
       "name": "Unhappy",
-      "count": 47,
-      "pct": 10
+      "count": 48,
+      "pct": 11
     },
     {
       "name": "Barrier Spray",
@@ -146,7 +146,7 @@
     },
     {
       "name": "Restart",
-      "count": 147
+      "count": 148
     },
     {
       "name": "Event Spray",
@@ -218,6 +218,20 @@
       "date": "2026-11-19",
       "dateFmt": "Nov 19",
       "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Bev"
+    },
+    {
+      "date": "2026-11-19",
+      "dateFmt": "Nov 19",
+      "type": "Sale",
+      "category": "Restart",
+      "csr": "Norma"
+    },
+    {
+      "date": "2026-11-19",
+      "dateFmt": "Nov 19",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
     },
@@ -266,20 +280,6 @@
     {
       "date": "2026-11-18",
       "dateFmt": "Nov 18",
-      "type": "Cancel",
-      "category": "Paused/WP",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-17",
-      "dateFmt": "Nov 17",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Norma"
-    },
-    {
-      "date": "2026-11-17",
-      "dateFmt": "Nov 17",
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Lucy"
