@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-18T10:19:05.504Z",
-  "total_duration_sec": 229,
+  "generated_at": "2026-11-19T10:18:51.247Z",
+  "total_duration_sec": 215,
   "steps_total": 25,
   "steps_passed": 25,
   "steps_failed": 0,
@@ -11,7 +11,7 @@
       "name": "sales-import",
       "success": true,
       "exit_code": 1,
-      "duration_sec": 1,
+      "duration_sec": 2,
       "retries": 1,
       "timed_out": false,
       "critical": false
@@ -38,7 +38,7 @@
       "name": "serviceminder-sync",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 102,
+      "duration_sec": 121,
       "retries": 0,
       "timed_out": false,
       "critical": false
@@ -92,7 +92,7 @@
       "name": "build-tech",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 28,
+      "duration_sec": 24,
       "retries": 0,
       "timed_out": false,
       "critical": true
@@ -227,7 +227,7 @@
       "name": "live-verify",
       "success": true,
       "exit_code": 0,
-      "duration_sec": 61,
+      "duration_sec": 31,
       "retries": 0,
       "timed_out": false,
       "critical": true
