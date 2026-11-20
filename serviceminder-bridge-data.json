@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-20T13:07:14.666Z",
+    "generated_at": "2026-11-20T14:17:19.014Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-20T13:07:08.229Z",
+      "generated_at": "2026-11-20T14:17:12.820Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52192,
+      "appointments": 52205,
       "contacts": 14320,
-      "invoices": 49128,
+      "invoices": 49137,
       "proposals": 1664
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -118,10 +118,10 @@
   },
   "owners": {
     "revenue": {
-      "ytd_invoiced": 2287362,
+      "ytd_invoiced": 2288268,
       "avg_per_visit": 76,
-      "mtd": 135221,
-      "mtd_jobs": 1433
+      "mtd": 136126,
+      "mtd_jobs": 1442
     },
     "operations": {
       "total_jobs": 18651,
@@ -135,12 +135,12 @@
     },
     "sales": {
       "total_sales": 1556,
-      "total_cancels": 490,
-      "net": 1066,
+      "total_cancels": 491,
+      "net": 1065,
       "cancel_reasons": {
         "Scheduling Conflict": 107,
         "No Longer Needed": 93,
-        "Workpool": 92,
+        "Workpool": 93,
         "Error": 78,
         "Moving": 44,
         "Financial": 33,
@@ -185,14 +185,14 @@
   "ops": {
     "summary": {
       "total_wo_completed": 18651,
-      "total_wo_revenue": 2287362
+      "total_wo_revenue": 2288268
     },
     "employees": [
       {
         "name": "Damian Machin",
         "jobs": 1368,
-        "revenue": 199369.31,
-        "avgRevenue": 89.4,
+        "revenue": 199475.3,
+        "avgRevenue": 89.41,
         "route_label": "Route 11",
         "technician": "Damian Machin",
         "technician_status": "active",
@@ -213,7 +213,7 @@
       {
         "name": "David Carbajal",
         "jobs": 1165,
-        "revenue": 147968.47,
+        "revenue": 147710.5,
         "avgRevenue": 82.11,
         "route_label": "Route 12",
         "technician": "David Carbajal",
@@ -235,8 +235,8 @@
       {
         "name": "Travis Johnson",
         "jobs": 265,
-        "revenue": 65848.21,
-        "avgRevenue": 82.11,
+        "revenue": 66106.18,
+        "avgRevenue": 82.12,
         "route_label": "Route 1",
         "technician": "Travis Johnson",
         "technician_status": "active",
@@ -257,14 +257,14 @@
     ],
     "appointment_statuses": {
       "Queued": 12434,
-      "Scheduled": 11170,
-      "Completed": 5778,
-      "Canceled": 335,
-      "Started": 253
+      "Scheduled": 11164,
+      "Completed": 5785,
+      "Canceled": 336,
+      "Started": 255
     },
     "service_mix": {
-      "Mojo Essential": 12754,
-      "Synthetic Barrier Spray - 2 week": 10382,
+      "Mojo Essential": 12755,
+      "Synthetic Barrier Spray - 2 week": 10385,
       "Misting System Recurring Service Bi-Monthly": 1543,
       "Gnat/Midge/No-seeums Service - 2 weeks": 1100,
       "HPD - 42 Days": 837,
@@ -325,7 +325,7 @@
       "total_techs": 6,
       "resprays": 133,
       "first_time_success": "99.3%",
-      "total_revenue": 2287362
+      "total_revenue": 2288268
     },
     "employees": [
       {
@@ -335,7 +335,7 @@
         "initials": "DM",
         "jobs": 1368,
         "rank": 1,
-        "revenue": 199369,
+        "revenue": 199475,
         "upsells": 0,
         "resprays": 0
       },
@@ -357,7 +357,7 @@
         "initials": "DC",
         "jobs": 1165,
         "rank": 3,
-        "revenue": 147968,
+        "revenue": 147711,
         "upsells": 0,
         "resprays": 0
       },
@@ -379,7 +379,7 @@
         "initials": "TJ",
         "jobs": 265,
         "rank": 5,
-        "revenue": 65848,
+        "revenue": 66106,
         "upsells": 0,
         "resprays": 0
       },
@@ -397,22 +397,22 @@
     ]
   },
   "salesKpi": {
-    "revenue": 2287362,
+    "revenue": 2288268,
     "proposals": 1664,
     "invoiced_proposals": 1235,
     "complete_proposals": 321,
     "sources": {
-      "Online": 16397,
-      "Referral": 14063,
-      "MoJo Customer": 7264,
+      "Online": 16401,
+      "Referral": 14066,
+      "MoJo Customer": 7265,
       "Yard Sign": 4907,
-      "Direct Mail Postcard": 4603,
-      "Mosquito Joe Vehicle": 3538,
+      "Direct Mail Postcard": 4604,
+      "Mosquito Joe Vehicle": 3540,
       "Other": 1680,
-      "Advertising": 1255,
+      "Advertising": 1256,
       "Printed Material": 634,
       "Mail Advertising": 531,
-      "Existing Customer": 439,
+      "Existing Customer": 440,
       "Online Search": 332,
       "DMP": 221,
       "Local Branding": 102,
@@ -509,17 +509,17 @@
       },
       {
         "month": "2026-11",
-        "invoiceRevenue": 135220.75,
-        "invoices": 1433,
-        "appointments": 4018,
+        "invoiceRevenue": 136126.29,
+        "invoices": 1442,
+        "appointments": 4019,
         "proposals": 2,
-        "cancels": 173
+        "cancels": 174
       },
       {
         "month": "2026-12",
         "invoiceRevenue": 0,
         "invoices": 0,
-        "appointments": 4402,
+        "appointments": 4405,
         "proposals": 0,
         "cancels": 73
       }
