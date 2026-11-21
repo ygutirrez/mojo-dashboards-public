@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-21T11:00:34.159Z",
-  "updated_at": "2026-11-21T11:15:14.771Z",
+  "generated_at": "2026-11-21T13:00:41.215Z",
+  "updated_at": "2026-11-21T13:00:41.216Z",
   "period": "Jan 1 - Nov 21, 2026 (YTD)",
   "summary": {
-    "total_jobs": 15474,
+    "total_jobs": 15478,
     "total_techs": 9,
     "resprays": 153,
     "first_time_success": "99.0%",
     "total_upsells": 5,
-    "total_revenue": 1452172
+    "total_revenue": 1452687
   },
   "employees": [
     {
@@ -50,8 +50,8 @@
     {
       "name": "Lenny Pierre",
       "initials": "LP",
-      "jobs": 1307,
-      "revenue": 110701.5,
+      "jobs": 1308,
+      "revenue": 110787.49,
       "resprays": 13,
       "upsells": 0,
       "rank": 5
@@ -59,8 +59,8 @@
     {
       "name": "Guillermo Rodriguez",
       "initials": "GR",
-      "jobs": 1121,
-      "revenue": 100680.18,
+      "jobs": 1123,
+      "revenue": 100842.16,
       "resprays": 3,
       "upsells": 0,
       "rank": 6
@@ -68,8 +68,8 @@
     {
       "name": "Wilbeni Pierre",
       "initials": "WP",
-      "jobs": 1082,
-      "revenue": 96223.59,
+      "jobs": 1083,
+      "revenue": 96491.09,
       "resprays": 4,
       "upsells": 0,
       "rank": 7
@@ -182,44 +182,26 @@
     "y2026": []
   },
   "current_day": {
-    "date": "2026-11-20",
-    "jobs": 82,
-    "revenue": 6805.34,
+    "date": "2026-11-21",
+    "jobs": 4,
+    "revenue": 515.47,
     "technicians": [
       {
-        "name": "Lenny Pierre",
-        "jobs": 18,
-        "revenue": 1376.28,
-        "resprays": 0
-      },
-      {
         "name": "Guillermo Rodriguez",
-        "jobs": 17,
-        "revenue": 1271.09,
-        "resprays": 0
-      },
-      {
-        "name": "Damian Machin",
-        "jobs": 15,
-        "revenue": 1506.06,
-        "resprays": 0
-      },
-      {
-        "name": "Joseph Pagan",
-        "jobs": 13,
-        "revenue": 1068.48,
+        "jobs": 2,
+        "revenue": 161.98,
         "resprays": 0
       },
       {
         "name": "Wilbeni Pierre",
-        "jobs": 12,
-        "revenue": 884.9,
+        "jobs": 1,
+        "revenue": 267.5,
         "resprays": 0
       },
       {
-        "name": "Travis Johnson",
-        "jobs": 7,
-        "revenue": 698.53,
+        "name": "Lenny Pierre",
+        "jobs": 1,
+        "revenue": 85.99,
         "resprays": 0
       }
     ]
@@ -227,20 +209,20 @@
   "this_week": {
     "start": "2026-11-16",
     "end": "2026-11-22",
-    "jobs": 363,
-    "revenue": 34973.31,
+    "jobs": 367,
+    "revenue": 35488.78,
     "prior_week_jobs": 398,
     "technicians": [
       {
         "name": "Guillermo Rodriguez",
-        "jobs": 64,
-        "revenue": 5373.18,
+        "jobs": 66,
+        "revenue": 5535.16,
         "resprays": 0
       },
       {
         "name": "Lenny Pierre",
-        "jobs": 63,
-        "revenue": 5100.26,
+        "jobs": 64,
+        "revenue": 5186.25,
         "resprays": 0
       },
       {
@@ -257,8 +239,8 @@
       },
       {
         "name": "Wilbeni Pierre",
-        "jobs": 40,
-        "revenue": 3163.74,
+        "jobs": 41,
+        "revenue": 3431.24,
         "resprays": 0
       },
       {
@@ -310,7 +292,7 @@
       "start": "2026-11-16",
       "end": "2026-11-22",
       "label": "Nov 16–Nov 22",
-      "jobs": 363
+      "jobs": 367
     }
   ],
   "sources": {
@@ -319,10 +301,10 @@
       "system": "ServiceMinder appointments API",
       "coverage": {
         "min": "2026-01-01",
-        "max": "2026-11-20"
+        "max": "2026-11-21"
       },
       "status": "current",
-      "detail": "25,228 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
+      "detail": "25,232 completed appointments. Production is credited to the actual named technician when present, then to the active route mapping. Technician dollar amounts are completed-appointment Total (production), not company invoice revenue. Company totals retain former and unassigned staff."
     },
     "quality": {
       "label": "Re-sprays / first-time success",
@@ -349,7 +331,7 @@
       "system": "Google Reviews bonus sheet CSV",
       "coverage": {
         "min": null,
-        "max": "2026-11-20"
+        "max": "2026-11-21"
       },
       "status": "limited",
       "detail": "Current cumulative credits and payouts; historical dated credit snapshots are not retained, so date filters do not change this metric."
@@ -358,8 +340,8 @@
       "label": "Driving safety",
       "system": "Zubie fleet snapshot",
       "coverage": {
-        "min": "2026-11-13",
-        "max": "2026-11-20"
+        "min": "2026-11-14",
+        "max": "2026-11-21"
       },
       "status": "limited",
       "detail": "Latest mapped driver score only. Historical driver scores are not retained; technicians without a mapped vehicle are excluded from this score component."
@@ -512,7 +494,7 @@
     "mention_rate": "39.2%",
     "updated_reviews_excluded": 7,
     "source": "Google Reviews bonus sheet CSV",
-    "updated_at": "2026-11-21T11:15:14.770Z"
+    "updated_at": "2026-11-21T11:50:58.163Z"
   },
   "featured_review": {
     "stars": 5,
@@ -527,18 +509,6 @@
       "amount": 1500,
       "reviews": 75.17,
       "cashed": 30
-    },
-    {
-      "name": "John",
-      "amount": 1000,
-      "reviews": 76,
-      "cashed": 20
-    },
-    {
-      "name": "Andrew",
-      "amount": 500,
-      "reviews": 18,
-      "cashed": 10
     }
   ],
   "payouts_2026": [
@@ -686,7 +656,7 @@
       "icon": "⭐",
       "title": "Quality Crew",
       "name": "Entire Team",
-      "stat": "Only 153 re-sprays out of 15474!"
+      "stat": "Only 153 re-sprays out of 15478!"
     }
   ]
 }
