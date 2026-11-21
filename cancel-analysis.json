@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T10:17:10.367927+00:00",
+  "generated_at": "2026-11-21T10:17:21.377968+00:00",
   "period": "ServiceMinder recorded losses \u00b7 2026-05-18 through 2026-11-19",
   "source": {
     "system": "ServiceMinder Org Download API + Office Tally",
@@ -7,12 +7,12 @@
     "loss_date": "Office Tally cancel date when exact customer name matches within 30 days; otherwise Contact UpdatedAt proxy",
     "value_metric": "Paid invoice revenue in the 365 days before the recorded loss",
     "reason_capture": "Office Tally reason/CSR joined only by unique exact normalized name within 30 days; ServiceMinder appointment reason is a fallback",
-    "office_tally_file": "sales-data-2026-11-19.csv",
+    "office_tally_file": "sales-data-2026-11-20.csv",
     "office_tally_invalid_dated_rows": 6,
     "generated": {
-      "contacts": "2026-11-20T10:16:28.030Z",
-      "appointments": "2026-11-20T10:16:18.584Z",
-      "invoices": "2026-11-20T10:16:36.088Z"
+      "contacts": "2026-11-21T10:16:36.256Z",
+      "appointments": "2026-11-21T10:16:25.873Z",
+      "invoices": "2026-11-21T10:16:47.472Z"
     }
   },
   "summary": {
@@ -30,13 +30,13 @@
     "unknown_events": 27,
     "controllable_value_lost": 70495.7,
     "uncontrollable_value_lost": 29551.74,
-    "total_sales_ytd": 148,
-    "net_new_customers": -13,
-    "cancel_to_sales_ratio": 1.09,
-    "active_customer_base": 1498,
+    "total_sales_ytd": 147,
+    "net_new_customers": -14,
+    "cancel_to_sales_ratio": 1.1,
+    "active_customer_base": 1495,
     "recorded_attrition_pct": 9.7,
-    "recent_30d_accounts": 15,
-    "recent_30d_revenue": 14659.95,
+    "recent_30d_accounts": 14,
+    "recent_30d_revenue": 13596.09,
     "recent_90d_accounts": 69,
     "reason_known_accounts": 134,
     "reason_capture_pct": 83.2
@@ -49,8 +49,8 @@
     "sales_logged_90d": 79,
     "restarts_ytd": 145,
     "restarts_30d": 4,
-    "gross_activity_gap_30d": 13,
-    "sales_per_confirmed_loss_30d": 1.87,
+    "gross_activity_gap_30d": 14,
+    "sales_per_confirmed_loss_30d": 2.0,
     "by_category": [
       {
         "category": "Barrier Spray",
