@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-23T21:30:21.878Z",
+  "updated_at": "2026-11-23T22:00:18.962Z",
   "csv_date": "2026-11-23",
   "period": "Jan 1 - Nov 23, 2026 (YTD)",
   "summary": {
-    "total_sales": 623,
+    "total_sales": 624,
     "total_cancels": 460,
-    "net": 163,
+    "net": 164,
     "paused_wp": 109,
     "paused_pct": 24,
     "days_tracked": 327
@@ -15,9 +15,9 @@
     "end": "2026-11-29",
     "label": "Nov 23 – Nov 29",
     "summary": {
-      "total_sales": 1,
+      "total_sales": 2,
       "total_cancels": 4,
-      "net": -3
+      "net": -2
     },
     "csrs": [
       {
@@ -27,23 +27,23 @@
         "net": 1
       },
       {
+        "name": "Lucy",
+        "sales": 1,
+        "cancels": 3,
+        "net": -2
+      },
+      {
         "name": "Bev",
         "sales": 0,
         "cancels": 1,
         "net": -1
-      },
-      {
-        "name": "Lucy",
-        "sales": 0,
-        "cancels": 3,
-        "net": -3
       }
     ]
   },
   "csrs": [
     {
       "name": "Lucy",
-      "sales": 361,
+      "sales": 362,
       "cancels": 150
     },
     {
@@ -142,7 +142,7 @@
   "sale_categories": [
     {
       "name": "Barrier Spray",
-      "count": 220
+      "count": 221
     },
     {
       "name": "Restart",
@@ -221,6 +221,13 @@
     {
       "date": "2026-11-23",
       "dateFmt": "Nov 23",
+      "type": "Sale",
+      "category": "Barrier Spray",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-23",
+      "dateFmt": "Nov 23",
       "type": "Cancel",
       "category": "Unhappy",
       "csr": "Lucy"
@@ -280,13 +287,6 @@
       "type": "Sale",
       "category": "Restart",
       "csr": "Norma"
-    },
-    {
-      "date": "2026-11-19",
-      "dateFmt": "Nov 19",
-      "type": "Cancel",
-      "category": "Not Interested",
-      "csr": "Bev"
     }
   ],
   "top_reason": {
