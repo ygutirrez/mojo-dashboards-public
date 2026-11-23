@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-23T18:30:20.378Z",
+  "updated_at": "2026-11-23T19:00:22.072Z",
   "csv_date": "2026-11-23",
   "period": "Jan 1 - Nov 23, 2026 (YTD)",
   "summary": {
     "total_sales": 623,
-    "total_cancels": 458,
-    "net": 165,
+    "total_cancels": 460,
+    "net": 163,
     "paused_wp": 109,
     "paused_pct": 24,
     "days_tracked": 327
@@ -16,8 +16,8 @@
     "label": "Nov 23 – Nov 29",
     "summary": {
       "total_sales": 1,
-      "total_cancels": 2,
-      "net": -1
+      "total_cancels": 4,
+      "net": -3
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Lucy",
         "sales": 0,
-        "cancels": 1,
-        "net": -1
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -44,7 +44,7 @@
     {
       "name": "Lucy",
       "sales": 361,
-      "cancels": 148
+      "cancels": 150
     },
     {
       "name": "Norma",
@@ -66,11 +66,11 @@
     {
       "name": "Moved",
       "count": 94,
-      "pct": 21
+      "pct": 20
     },
     {
       "name": "Not Interested",
-      "count": 84,
+      "count": 85,
       "pct": 18
     },
     {
@@ -80,8 +80,8 @@
     },
     {
       "name": "Unhappy",
-      "count": 48,
-      "pct": 10
+      "count": 49,
+      "pct": 11
     },
     {
       "name": "Barrier Spray",
@@ -222,6 +222,20 @@
       "date": "2026-11-23",
       "dateFmt": "Nov 23",
       "type": "Cancel",
+      "category": "Unhappy",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-23",
+      "dateFmt": "Nov 23",
+      "type": "Cancel",
+      "category": "Not Interested",
+      "csr": "Lucy"
+    },
+    {
+      "date": "2026-11-23",
+      "dateFmt": "Nov 23",
+      "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
     },
@@ -273,20 +287,6 @@
       "type": "Cancel",
       "category": "Not Interested",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-11-19",
-      "dateFmt": "Nov 19",
-      "type": "Sale",
-      "category": "Event Spray",
-      "csr": "Lucy"
-    },
-    {
-      "date": "2026-11-19",
-      "dateFmt": "Nov 19",
-      "type": "Cancel",
-      "category": "Unhappy",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
