@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T23:30:21.315Z",
-  "generated_date": "November 23, 2026",
+  "generated_at": "2026-11-24T10:18:56.826Z",
+  "generated_date": "November 24, 2026",
   "sales": {
     "csv_date": "2026-11-23",
     "total_sales": 624,
@@ -95,34 +95,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2304315,
+    "ytd_invoiced": 2316419,
     "avg_per_visit": 77,
-    "mtd": 152174,
-    "mtd_jobs": 1629
+    "mtd": 164277,
+    "mtd_jobs": 1772
   },
   "operations": {
     "total_jobs": 18651,
     "jobs_per_tech_day": 13.3,
-    "revenue_per_tech_day": 660,
+    "revenue_per_tech_day": 657,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 6,
-    "working_days_ytd": 233
+    "working_days_ytd": 234
   },
   "serviceminder": {
-    "generated_at": "2026-11-23T14:16:49.676Z",
+    "generated_at": "2026-11-24T10:18:56.826Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-23T14:16:43.027Z",
+      "generated_at": "2026-11-24T10:17:33.111Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52293,
-      "contacts": 14322,
-      "invoices": 49363,
+      "appointments": 52469,
+      "contacts": 14324,
+      "invoices": 49609,
       "proposals": 1665
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -199,7 +199,10 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9"
+      "Route 9",
+      "Damian Machin",
+      "Stanley Prophete",
+      "David Carbajal"
     ],
     "personnel_notes": [
       {
@@ -229,17 +232,17 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1556,
-    "total_cancels": 499,
-    "net": 1057,
+    "total_cancels": 505,
+    "net": 1051,
     "cancel_reasons": {
-      "Scheduling Conflict": 107,
-      "No Longer Needed": 95,
+      "Scheduling Conflict": 108,
+      "No Longer Needed": 96,
       "Workpool": 94,
-      "Error": 81,
+      "Error": 84,
       "Moving": 45,
       "Financial": 34,
       "Found Different Company": 20,
-      "Not Working": 14,
+      "Not Working": 15,
       "Weather": 9
     },
     "sale_categories": {

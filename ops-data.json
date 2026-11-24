@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T10:18:56.757Z",
+  "updated_at": "2026-11-24T10:18:56.826Z",
   "period": {
     "from": "2026-02-25T10:30:09.538Z",
     "to": "2026-03-04T10:30:09.537Z"
@@ -12,7 +12,7 @@
     "blowers_active": 13,
     "drivers_need_coaching": 0,
     "total_wo_completed": 18651,
-    "total_wo_revenue": 2302192
+    "total_wo_revenue": 2316419
   },
   "alerts": [
     {
@@ -583,8 +583,8 @@
     {
       "name": "Damian Machin",
       "jobs": 1368,
-      "revenue": 200111.43,
-      "avgRevenue": 89.42,
+      "revenue": 198204.52,
+      "avgRevenue": 89.36,
       "route_label": "Route 11",
       "technician": "Damian Machin",
       "technician_status": "active",
@@ -594,8 +594,8 @@
     {
       "name": "Marcus Rubi",
       "jobs": 1195,
-      "revenue": 120712.67,
-      "avgRevenue": 77.03,
+      "revenue": 120731.65,
+      "avgRevenue": 77.05,
       "route_label": "Route 6",
       "technician": "Marcus Rubi",
       "technician_status": "active",
@@ -605,8 +605,8 @@
     {
       "name": "David Carbajal",
       "jobs": 1165,
-      "revenue": 147532.86,
-      "avgRevenue": 82.1,
+      "revenue": 147314.89,
+      "avgRevenue": 82.12,
       "route_label": "Route 12",
       "technician": "David Carbajal",
       "technician_status": "active",
@@ -616,8 +616,8 @@
     {
       "name": "Joe Pagan",
       "jobs": 738,
-      "revenue": 239425.34,
-      "avgRevenue": 171.02,
+      "revenue": 239152.05,
+      "avgRevenue": 171.19,
       "route_label": "Misting Route",
       "technician": "Joe Pagan",
       "technician_status": "active",
@@ -627,8 +627,8 @@
     {
       "name": "Travis Johnson",
       "jobs": 265,
-      "revenue": 66106.18,
-      "avgRevenue": 82.12,
+      "revenue": 66816.08,
+      "avgRevenue": 81.98,
       "route_label": "Route 1",
       "technician": "Travis Johnson",
       "technician_status": "active",
@@ -648,18 +648,18 @@
     }
   ],
   "serviceminder": {
-    "generated_at": "2026-11-23T10:18:56.757Z",
+    "generated_at": "2026-11-24T10:18:56.826Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-23T10:17:40.158Z",
+      "generated_at": "2026-11-24T10:17:33.111Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52284,
-      "contacts": 14321,
-      "invoices": 49307,
+      "appointments": 52469,
+      "contacts": 14324,
+      "invoices": 49609,
       "proposals": 1665
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -736,7 +736,10 @@
       }
     },
     "unmapped_route_labels": [
-      "Route 9"
+      "Route 9",
+      "Damian Machin",
+      "Stanley Prophete",
+      "David Carbajal"
     ],
     "personnel_notes": [
       {
