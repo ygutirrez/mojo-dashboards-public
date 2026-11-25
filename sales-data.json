@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-25T16:30:30.279Z",
+  "updated_at": "2026-11-25T17:00:35.689Z",
   "csv_date": "2026-11-25",
   "period": "Jan 1 - Nov 25, 2026 (YTD)",
   "summary": {
     "total_sales": 624,
-    "total_cancels": 462,
-    "net": 162,
+    "total_cancels": 463,
+    "net": 161,
     "paused_wp": 111,
     "paused_pct": 24,
     "days_tracked": 329
@@ -16,8 +16,8 @@
     "label": "Nov 23 – Nov 29",
     "summary": {
       "total_sales": 2,
-      "total_cancels": 6,
-      "net": -4
+      "total_cancels": 7,
+      "net": -5
     },
     "csrs": [
       {
@@ -35,8 +35,8 @@
       {
         "name": "Bev",
         "sales": 0,
-        "cancels": 2,
-        "net": -2
+        "cancels": 3,
+        "net": -3
       }
     ]
   },
@@ -54,7 +54,7 @@
     {
       "name": "Bev",
       "sales": 73,
-      "cancels": 158
+      "cancels": 159
     }
   ],
   "cancel_reasons": [
@@ -75,7 +75,7 @@
     },
     {
       "name": "Financial",
-      "count": 51,
+      "count": 52,
       "pct": 11
     },
     {
@@ -219,6 +219,13 @@
   ],
   "recent_activity": [
     {
+      "date": "2026-11-25",
+      "dateFmt": "Nov 25",
+      "type": "Cancel",
+      "category": "Financial",
+      "csr": "Bev"
+    },
+    {
       "date": "2026-11-24",
       "dateFmt": "Nov 24",
       "type": "Cancel",
@@ -280,13 +287,6 @@
       "type": "Cancel",
       "category": "Paused/WP",
       "csr": "Bev"
-    },
-    {
-      "date": "2026-11-19",
-      "dateFmt": "Nov 19",
-      "type": "Sale",
-      "category": "Noseeum/Mosquito",
-      "csr": "Norma"
     }
   ],
   "top_reason": {
