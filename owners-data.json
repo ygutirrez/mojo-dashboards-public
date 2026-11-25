@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T23:30:24.499Z",
-  "generated_date": "November 24, 2026",
+  "generated_at": "2026-11-25T10:18:59.754Z",
+  "generated_date": "November 25, 2026",
   "sales": {
     "csv_date": "2026-11-24",
     "total_sales": 624,
@@ -95,34 +95,34 @@
     "blowers_active": 13
   },
   "revenue": {
-    "ytd_invoiced": 2318990,
+    "ytd_invoiced": 2330739,
     "avg_per_visit": 77,
-    "mtd": 166849,
-    "mtd_jobs": 1803
+    "mtd": 178598,
+    "mtd_jobs": 1947
   },
   "operations": {
     "total_jobs": 18651,
-    "jobs_per_tech_day": 13.3,
-    "revenue_per_tech_day": 657,
+    "jobs_per_tech_day": 13.2,
+    "revenue_per_tech_day": 654,
     "first_time_success": 99.3,
     "callback_rate": 0.7,
     "resprays": 133,
     "active_techs": 6,
-    "working_days_ytd": 234
+    "working_days_ytd": 235
   },
   "serviceminder": {
-    "generated_at": "2026-11-24T14:16:51.149Z",
+    "generated_at": "2026-11-25T10:18:59.754Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-24T14:16:44.936Z",
+      "generated_at": "2026-11-25T10:17:30.805Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52481,
-      "contacts": 14324,
-      "invoices": 49640,
+      "appointments": 52577,
+      "contacts": 14327,
+      "invoices": 49984,
       "proposals": 1665
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -200,6 +200,7 @@
     },
     "unmapped_route_labels": [
       "Route 9",
+      "John Sabin",
       "Damian Machin",
       "Stanley Prophete",
       "David Carbajal"
@@ -232,13 +233,13 @@
   },
   "serviceminder_sales_preview": {
     "total_sales": 1556,
-    "total_cancels": 506,
-    "net": 1050,
+    "total_cancels": 519,
+    "net": 1037,
     "cancel_reasons": {
-      "Scheduling Conflict": 108,
+      "Scheduling Conflict": 110,
+      "Workpool": 97,
       "No Longer Needed": 96,
-      "Workpool": 94,
-      "Error": 85,
+      "Error": 93,
       "Moving": 45,
       "Financial": 34,
       "Found Different Company": 20,
