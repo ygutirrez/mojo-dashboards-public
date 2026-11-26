@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-11-25T14:17:33.418Z",
+    "generated_at": "2026-11-26T10:18:42.070Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-25T14:17:22.969Z",
+      "generated_at": "2026-11-26T10:17:24.741Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52581,
-      "contacts": 14327,
-      "invoices": 49984,
+      "appointments": 52585,
+      "contacts": 14328,
+      "invoices": 49991,
       "proposals": 1665
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -130,24 +130,24 @@
     "operations": {
       "total_jobs": 18651,
       "jobs_per_tech_day": 13.2,
-      "revenue_per_tech_day": 654,
+      "revenue_per_tech_day": 651,
       "first_time_success": 99.3,
       "callback_rate": 0.7,
       "resprays": 133,
       "active_techs": 6,
-      "working_days_ytd": 235
+      "working_days_ytd": 236
     },
     "sales": {
       "total_sales": 1556,
-      "total_cancels": 519,
-      "net": 1037,
+      "total_cancels": 520,
+      "net": 1036,
       "cancel_reasons": {
         "Scheduling Conflict": 110,
         "Workpool": 97,
         "No Longer Needed": 96,
         "Error": 93,
         "Moving": 45,
-        "Financial": 34,
+        "Financial": 35,
         "Found Different Company": 20,
         "Not Working": 15,
         "Weather": 9
@@ -229,7 +229,7 @@
         "name": "Joe Pagan",
         "jobs": 738,
         "revenue": 239766.06,
-        "avgRevenue": 171.51,
+        "avgRevenue": 171.38,
         "route_label": "Misting Route",
         "technician": "Joe Pagan",
         "technician_status": "active",
@@ -260,10 +260,10 @@
       }
     ],
     "appointment_statuses": {
-      "Queued": 12503,
-      "Scheduled": 10648,
+      "Queued": 12501,
+      "Scheduled": 10649,
       "Completed": 6313,
-      "Canceled": 362,
+      "Canceled": 363,
       "Started": 253
     },
     "service_mix": {
@@ -403,8 +403,8 @@
   "salesKpi": {
     "revenue": 2330739,
     "proposals": 1665,
-    "invoiced_proposals": 1229,
-    "complete_proposals": 327,
+    "invoiced_proposals": 1228,
+    "complete_proposals": 328,
     "sources": {
       "Online": 16571,
       "Referral": 14219,
@@ -517,7 +517,7 @@
         "invoices": 1947,
         "appointments": 3996,
         "proposals": 3,
-        "cancels": 187
+        "cancels": 188
       },
       {
         "month": "2026-12",

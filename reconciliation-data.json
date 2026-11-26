@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-25T10:18:42.389Z",
+  "generated_at": "2026-11-26T10:18:27.997Z",
   "title": "Sales Data Reconciliation",
   "description": "Compares CSR-tracked data (Office Tracking CSV) with ServSuite system data to surface discrepancies and ensure accurate reporting.",
   "csvSource": {
-    "file": "sales-data-2026-11-24.csv",
-    "date": "2026-11-24",
+    "file": "sales-data-2026-11-25.csv",
+    "date": "2026-11-25",
     "totalSales": 614,
-    "totalCancels": 462,
-    "net": 152,
+    "totalCancels": 463,
+    "net": 151,
     "upsells": 9,
     "csrs": [
       {
@@ -23,7 +23,7 @@
       {
         "name": "Bev",
         "sales": 72,
-        "cancels": 158
+        "cancels": 159
       }
     ],
     "weekly": [
@@ -265,7 +265,7 @@
       {
         "week": "2026-11-23",
         "sales": 2,
-        "cancels": 6
+        "cancels": 7
       },
       {
         "week": "2926-07-22",
@@ -275,7 +275,7 @@
     ]
   },
   "servSuiteSource": {
-    "date": "2026-11-25T10:17:57.419Z",
+    "date": "2026-11-26T10:17:47.217Z",
     "totalSales": 307,
     "totalSaleValue": 306072,
     "totalRevenue": 946368,
@@ -297,12 +297,12 @@
       },
       {
         "metric": "Cancel Events",
-        "csv": 462,
+        "csv": 463,
         "servSuite": 509,
         "servSuiteUnique": 155,
-        "gap": 47,
+        "gap": 46,
         "severity": "info",
-        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (462). These are fundamentally different counts."
+        "explanation": "ServSuite records ALL cancel events (509 events, 155 unique accounts) including auto-cancels, program changes, etc. CSRs only log cancels they process directly (463). These are fundamentally different counts."
       },
       {
         "metric": "Revenue (YTD)",
@@ -329,7 +329,7 @@
         },
         {
           "name": "Financial",
-          "count": 51
+          "count": 52
         },
         {
           "name": "Unhappy",

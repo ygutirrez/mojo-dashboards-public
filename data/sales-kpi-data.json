@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-11-25T10:18:59.754Z",
-  "period": "Jan 1 - Nov 25, 2026 (YTD)",
+  "updated_at": "2026-11-26T10:18:42.070Z",
+  "period": "Jan 1 - Nov 26, 2026 (YTD)",
   "summary": {
     "total_sales": 624,
-    "total_cancels": 462,
+    "total_cancels": 463,
     "total_service_sales": 307,
     "total_sale_value": 306072,
     "total_annual_value": 101976,
     "total_revenue": 2330739,
     "total_invoices": 25373,
     "total_discounts": 15611,
-    "net": 162,
-    "days_tracked": 329,
+    "net": 161,
+    "days_tracked": 330,
     "sales_per_day": 1.9,
-    "revenue_per_day": 7084
+    "revenue_per_day": 7063
   },
   "office_tally": {
-    "csv_date": "2026-11-24",
+    "csv_date": "2026-11-25",
     "total_sales": 624,
-    "total_cancels": 462,
-    "net": 162,
+    "total_cancels": 463,
+    "net": 161,
     "paused_wp": 111,
     "paused_pct": 24,
     "sale_categories": [
@@ -118,7 +118,7 @@
       },
       {
         "name": "Financial",
-        "count": 51,
+        "count": 52,
         "pct": 11
       },
       {
@@ -344,7 +344,7 @@
     {
       "name": "Bev",
       "sales": 73,
-      "cancels": 158
+      "cancels": 159
     }
   ],
   "weekly_trend": [
@@ -451,10 +451,10 @@
       "week": "Nov 23",
       "sales": 0,
       "cancels": 0,
-      "revenue": 14227,
+      "revenue": 28547,
       "net": 0,
       "cumulative_sales": 0,
-      "cumulative_revenue": 2316419
+      "cumulative_revenue": 2330739
     }
   ],
   "active_customers": 2060,
@@ -462,11 +462,11 @@
   "revenue_pace": {
     "target_annual": 5000000,
     "ytd_revenue": 2330739,
-    "days_elapsed": 329,
+    "days_elapsed": 330,
     "days_total": 365,
-    "projected_annual": 2585774,
+    "projected_annual": 2577939,
     "on_pace": false,
-    "pct_of_target": 51.7
+    "pct_of_target": 51.6
   },
   "serviceminder_sales_preview": {
     "total_sales": 307,
@@ -479,27 +479,27 @@
     "service_mix": "ServiceMinder/ServSuite processed sales detail is used for service/source/program mix only",
     "revenue": "ServiceMinder Org Download API invoices",
     "sales_and_cancels": "Office tally / sales CSV remains source of truth for customer-level sales and cancels",
-    "serviceminder_cutover_at": "2026-11-25T10:18:59.754Z"
+    "serviceminder_cutover_at": "2026-11-26T10:18:42.070Z"
   },
   "data_freshness": {
-    "sales_csv_date": "2026-11-24",
-    "generated_at": "2026-11-25T10:18:00.124Z"
+    "sales_csv_date": "2026-11-25",
+    "generated_at": "2026-11-26T10:17:49.519Z"
   },
   "total_sales": 624,
-  "total_cancels": 462,
+  "total_cancels": 463,
   "serviceminder": {
-    "generated_at": "2026-11-25T10:18:59.754Z",
+    "generated_at": "2026-11-26T10:18:42.070Z",
     "source": "ServiceMinder Org Download API",
     "sync_health": {
       "status": "ok",
-      "generated_at": "2026-11-25T10:17:30.805Z",
+      "generated_at": "2026-11-26T10:17:24.741Z",
       "kinds_ok": 4,
       "kinds_failed": 0
     },
     "normalized_counts": {
-      "appointments": 52577,
-      "contacts": 14327,
-      "invoices": 49984,
+      "appointments": 52585,
+      "contacts": 14328,
+      "invoices": 49991,
       "proposals": 1665
     },
     "completed_jobs_source": "ServSuite Completed WO detail by date.xlsx via data/processed-techs.json",
@@ -611,8 +611,8 @@
   "serviceminder_sales_kpi": {
     "revenue": 2330739,
     "proposals": 1665,
-    "invoiced_proposals": 1229,
-    "complete_proposals": 327,
+    "invoiced_proposals": 1228,
+    "complete_proposals": 328,
     "sources": {
       "Online": 16571,
       "Referral": 14219,
@@ -725,7 +725,7 @@
         "invoices": 1947,
         "appointments": 3996,
         "proposals": 3,
-        "cancels": 187
+        "cancels": 188
       },
       {
         "month": "2026-12",
